@@ -1,0 +1,55 @@
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
+
+export function HelpPage() {
+  useDocumentTitle('Pomoc');
+  return (
+    <div className="page page--narrow prose">
+      <h1>Jak to działa?</h1>
+      <h2>Dwa rodzaje zadań</h2>
+      <ul>
+        <li>
+          <strong>Program</strong> (głównie część 2) – piszesz pełny program, który czyta plik z
+          danymi (np. <code>open("liczby.txt")</code>) i wypisuje odpowiedź przez <code>print</code>
+          . Program jest uruchamiany na danych przykładowych z arkusza oraz na pełnych danych z
+          matury.
+        </li>
+        <li>
+          <strong>Funkcja</strong> (głównie część 1) – zadania typu „zapisz algorytm”. Definiujesz
+          funkcję o podanej nazwie, a sprawdzarka wywołuje ją z różnymi argumentami.
+        </li>
+      </ul>
+      <h2>Jak porównywany jest wynik?</h2>
+      <ul>
+        <li>wielkość liter, dodatkowe spacje i puste linie nie mają znaczenia,</li>
+        <li>przecinek dziesiętny jest równoważny kropce,</li>
+        <li>
+          możesz dopisywać opisy, np. <code>print("Odpowiedź:", wynik)</code> – liczy się, czy w
+          wyjściu (w kolejnych liniach) pojawiają się wszystkie elementy odpowiedzi,
+        </li>
+        <li>liczby muszą się zgadzać dokładnie – zaokrąglaj tak, jak każe polecenie.</li>
+      </ul>
+      <h2>Gdzie jest mój kod?</h2>
+      <p>
+        Strona nie ma serwera. Python (Pyodide) działa w Twojej przeglądarce, a rozwiązania zapisują
+        się w jej pamięci lokalnej – na innym komputerze ich nie zobaczysz. Wyczyszczenie danych
+        witryny usuwa rozwiązania.
+      </p>
+      <h2>Skróty</h2>
+      <ul>
+        <li>
+          <kbd>Ctrl</kbd> + <kbd>Enter</kbd> – sprawdź rozwiązanie,
+        </li>
+        <li>
+          <kbd>Tab</kbd> w edytorze wstawia wcięcie; <kbd>Esc</kbd>, a potem <kbd>Tab</kbd> –
+          wyjście z edytora.
+        </li>
+      </ul>
+      <h2>Źródła</h2>
+      <p>
+        Arkusze, klucze odpowiedzi i pliki z danymi pochodzą od CKE i Politechniki Łódzkiej (przez
+        serwis arkusze.pl). Streszczenia zadań i testy do funkcji zostały przygotowane na potrzeby
+        tej strony – pełna treść zadań jest zawsze w arkuszu PDF.
+      </p>
+    </div>
+  );
+}

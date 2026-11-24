@@ -56,7 +56,8 @@ export class PythonRunner {
 
   constructor(options: RunnerOptions = {}) {
     this.createWorker = options.createWorker ?? defaultWorker;
-    this.resolveUrl = options.resolveUrl ?? ((path) => `${import.meta.env.BASE_URL}${path}`);
+    this.resolveUrl =
+      options.resolveUrl ?? ((path) => `${import.meta.env.BASE_URL}${encodeURI(path)}`);
     this.timeoutMs = options.timeoutMs ?? 20_000;
   }
 

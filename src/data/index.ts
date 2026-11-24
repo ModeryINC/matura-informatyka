@@ -43,4 +43,4 @@ export const tasksForSession = (sessionId: string): Task[] =>
   tasks.filter((t) => t.sessionId === sessionId);
 
 /** Adres pliku z katalogu `public/` z uwzględnieniem bazowej ścieżki aplikacji. */
-export const assetUrl = (path: string): string => `${import.meta.env.BASE_URL}${path}`;
+export const assetUrl = (path: string): string => `${import.meta.env.BASE_URL}${encodeURI(path)}`;

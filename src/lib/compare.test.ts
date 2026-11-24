@@ -1,4 +1,4 @@
-import { normalizeLines, outputMatches, tokenize } from './compare';
+import { normalizeLines, outputMatches, tokenize, tokensEqual } from './compare';
 
 describe('normalizeLines', () => {
   it('usuwa puste linie, spacje i zamienia przecinek dziesiętny', () => {
@@ -37,13 +37,37 @@ describe('outputMatches', () => {
     expect(outputMatches('ALA MA KOTA\n3.75', 'ala ma kota\n3,75')).toBe(true);
   });
 
-  it('wymaga wszystkich tokenów linii w jednej linii wyjścia', () => {
-    expect(outputMatches('12 7', '12 7')).toBe(true);
-    expect(outputMatches('12\n7', '12 7')).toBe(false);
+  it('dla odpowiedzi tekstowych wymaga całej linii w jednej linii wyjścia', () => {
+    expect(outputMatches('ala ma\nkota', 'ala ma kota')).toBe(false);
+  });
+
+  it('dla odpowiedzi liczbowych ignoruje podział na linie i opisy', () => {
+    expect(outputMatches('12\n7', '12 7')).toBe(true);
+    expect(outputMatches('Średnia: 5.52\nLiczba: 50\nPoczątek: 5', '5,52 50 5')).toBe(true);
+    expect(outputMatches('4.3\n10\n12\n14', '10 12 14')).toBe(true);
+    expect(outputMatches('10 14 12', '10 12 14')).toBe(false);
   });
 
   it('obsługuje pusty oczekiwany wynik', () => {
     expect(outputMatches('', '')).toBe(true);
     expect(outputMatches('coś', '')).toBe(false);
   });
+});
+
+describe('tokensEqual', () => {
+  it('porównuje liczby dziesiętne z dokładnością oczekiwanej odpowiedzi', () => {
+    expect(tokensEqual('5.5216', '5.52')).toBe(true);
+    expect(tokensEqual('1200.704918032787', '1200.70')).toBe(true);
+    expect(tokensEqual('1200.7', '1200.70')).toBe(true);
+    expect(tokensEqual('5.53', '5.52')).toBe(false);
+  });
+
+  it('liczby całkowite i tekst muszą być identyczne', () => {
+    expect(tokensEqual('42.0', '42')).toBe(false);
+    expect(tokensEqual('abc', '1.5')).toBe(false);
+  });
+});
+
+test('outputMatches toleruje dłuższe rozwinięcie dziesiętne', () => {
+  expect(outputMatches('Średnia: 5.5199999 50 5', '5,52 50 5')).toBe(true);
 });

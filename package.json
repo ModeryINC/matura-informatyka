@@ -13,16 +13,19 @@
     "preview": "vite preview",
     "catalog": "tsx scripts/build-catalog.ts",
     "typecheck": "tsc -b",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "verify:solutions": "python -I scripts/verify_solutions.py"
+    "verify:solutions": "tsx scripts/verify-solutions.ts",
+    "test:python": "python -I -m unittest discover -s tests/python"
   },
   "dependencies": {
+    "@codemirror/commands": "^6.11.1",
     "@codemirror/lang-python": "^6.2.1",
+    "@codemirror/language": "^6.13.1",
     "@codemirror/state": "^6.7.6",
     "@codemirror/view": "^6.43.15",
     "codemirror": "^6.0.2",

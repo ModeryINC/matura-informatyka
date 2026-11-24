@@ -1,3 +1,8 @@
+import { createHashRouter, RouterProvider } from 'react-router';
+import { routes } from './routes';
+
+const router = createHashRouter(routes);
+
 export function App() {
-  return <h1>Matura z informatyki</h1>;
+  return <RouterProvider router={router} />;
 }
