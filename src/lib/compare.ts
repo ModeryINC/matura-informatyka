@@ -78,6 +78,15 @@ function numbersMatch(actualLines: string[], expectedLines: string[]): boolean {
   return containsSequence(actual, expected);
 }
 
+/** Sprawdza, czy wyjście pasuje do którejkolwiek z dopuszczalnych odpowiedzi. */
+export function outputMatchesAny(
+  actual: string,
+  expected: string,
+  alternatives: string[] = [],
+): boolean {
+  return [expected, ...alternatives].some((candidate) => outputMatches(actual, candidate));
+}
+
 /** Sprawdza, czy wyjście programu zawiera oczekiwaną odpowiedź. */
 export function outputMatches(actual: string, expected: string): boolean {
   const expectedLines = normalizeLines(expected);

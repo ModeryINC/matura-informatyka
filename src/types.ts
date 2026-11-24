@@ -73,6 +73,8 @@ export interface ProgramCheck {
   files: Record<string, string>;
   /** Oczekiwany wynik (porównanie opisane w `src/lib/compare.ts`). */
   expected: string;
+  /** Inne odpowiedzi uznawane w kluczu (np. gdy kilka liczb spełnia warunek). */
+  alternatives?: string[];
 }
 
 /** Pojedynczy przypadek testowy dla zadania typu `function`. */

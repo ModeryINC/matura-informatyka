@@ -13,7 +13,7 @@ import { copyFileSync, existsSync, mkdtempSync, readFileSync, readdirSync, rmSyn
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { outputMatches } from '../src/lib/compare.ts';
+import { outputMatchesAny } from '../src/lib/compare.ts';
 import type { Task } from '../src/types.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -50,7 +50,7 @@ function verifyTask(task: Task): string[] {
         const result = runPython([file], dir);
         if (result.status !== 0) {
           errors.push(`${task.id} [${check.label}]: błąd wykonania\n${result.stderr}`);
-        } else if (!outputMatches(result.stdout, check.expected)) {
+        } else if (!outputMatchesAny(result.stdout, check.expected, check.alternatives)) {
           errors.push(
             `${task.id} [${check.label}]: wynik się nie zgadza\n  oczekiwano: ${JSON.stringify(check.expected)}\n  otrzymano:  ${JSON.stringify(result.stdout)}`,
           );

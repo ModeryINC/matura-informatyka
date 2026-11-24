@@ -1,4 +1,4 @@
-import { normalizeLines, outputMatches, tokenize, tokensEqual } from './compare';
+import { normalizeLines, outputMatches, outputMatchesAny, tokenize, tokensEqual } from './compare';
 
 describe('normalizeLines', () => {
   it('usuwa puste linie, spacje i zamienia przecinek dziesiętny', () => {
@@ -70,4 +70,10 @@ describe('tokensEqual', () => {
 
 test('outputMatches toleruje dłuższe rozwinięcie dziesiętne', () => {
   expect(outputMatches('Średnia: 5.5199999 50 5', '5,52 50 5')).toBe(true);
+});
+
+test('outputMatchesAny akceptuje odpowiedzi alternatywne', () => {
+  expect(outputMatchesAny('20992 10', '99792 10', ['20992 10', '56064 10'])).toBe(true);
+  expect(outputMatchesAny('12345 10', '99792 10', ['20992 10'])).toBe(false);
+  expect(outputMatchesAny('99792 10', '99792 10')).toBe(true);
 });

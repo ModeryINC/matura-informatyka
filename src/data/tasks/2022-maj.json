@@ -1,0 +1,138 @@
+[
+  {
+    "id": "2022-maj-1.2",
+    "sessionId": "2022/maj",
+    "number": "1.2",
+    "title": "Ile podmian do n-permutacji",
+    "part": 1,
+    "points": 4,
+    "topics": ["tablice", "slowniki"],
+    "summary": "n-permutacja to ciąg n liczb zawierający każdą z liczb 1, 2, …, n dokładnie raz. Dla danego ciągu n dodatnich liczb całkowitych oblicz najmniejszą liczbę elementów, które trzeba podmienić, aby otrzymać n-permutację, np. dla (1, 3, 1) wynik to 1.\n\nW arkuszu wolno używać tylko pojedynczych elementów tablic i podstawowych operacji (bez funkcji wbudowanych typu set czy sorted).",
+    "starterCode": "def podmiany(A):\n    n = len(A)\n    # zwróć minimalną liczbę elementów do podmiany\n    return 0\n",
+    "kind": "function",
+    "functionName": "podmiany",
+    "tests": [
+      {
+        "args": [[1, 3, 1]],
+        "expected": 1
+      },
+      {
+        "args": [[1, 4, 2, 5]],
+        "expected": 1
+      },
+      {
+        "args": [[2, 2, 2, 2, 2]],
+        "expected": 4
+      },
+      {
+        "args": [[4, 2, 3, 1]],
+        "expected": 0
+      },
+      {
+        "args": [[5, 4, 1, 5, 6, 8]],
+        "expected": 2
+      },
+      {
+        "args": [[8, 4, 9, 6, 5, 7]],
+        "expected": 3
+      },
+      {
+        "args": [[1]],
+        "expected": 0
+      },
+      {
+        "args": [[7]],
+        "expected": 1
+      },
+      {
+        "args": [[2, 1]],
+        "expected": 0
+      }
+    ]
+  },
+  {
+    "id": "2022-maj-4.1",
+    "sessionId": "2022/maj",
+    "number": "4.1",
+    "title": "Ta sama pierwsza i ostatnia cyfra",
+    "part": 2,
+    "points": 2,
+    "topics": ["teoria-liczb", "pliki-tekstowe"],
+    "summary": "Plik liczby.txt zawiera 200 różnych liczb z zakresu [10, 100000]. Podaj, ile z nich ma taką samą pierwszą i ostatnią cyfrę, oraz pierwszą taką liczbę w pliku.",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/maj/pliki/Dane_2205/przyklad.txt"
+        },
+        "expected": "26 626"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/maj/pliki/Dane_2205/liczby.txt"
+        },
+        "expected": "18 93639"
+      }
+    ]
+  },
+  {
+    "id": "2022-maj-4.2",
+    "sessionId": "2022/maj",
+    "number": "4.2",
+    "title": "Najwięcej czynników pierwszych",
+    "part": 2,
+    "points": 4,
+    "topics": ["liczby-pierwsze", "pliki-tekstowe"],
+    "summary": "Znajdź w pliku liczby.txt liczbę, która ma w rozkładzie najwięcej czynników pierwszych (licząc z powtórzeniami), oraz liczbę, która ma najwięcej różnych czynników pierwszych. Wypisz w jednej linii: pierwszą liczbę, liczbę jej czynników, drugą liczbę, liczbę jej różnych czynników (np. 420 = 2·2·3·5·7 ma 5 czynników, w tym 4 różne).",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/maj/pliki/Dane_2205/przyklad.txt"
+        },
+        "expected": "144 6 210 4"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/maj/pliki/Dane_2205/liczby.txt"
+        },
+        "expected": "99792 10 62790 6",
+        "alternatives": ["20992 10 62790 6", "56064 10 62790 6"]
+      }
+    ]
+  },
+  {
+    "id": "2022-maj-4.3",
+    "sessionId": "2022/maj",
+    "number": "4.3",
+    "title": "Dobre trójki i piątki",
+    "part": 2,
+    "points": 4,
+    "topics": ["teoria-liczb", "programowanie-dynamiczne", "pliki-tekstowe"],
+    "summary": "Trójka (x, y, z) różnych liczb z pliku jest dobra, jeśli x dzieli y, a y dzieli z; analogicznie definiujemy dobrą piątkę (każda kolejna liczba dzieli następną). Kolejność liczb w pliku nie ma znaczenia. Wypisz liczbę dobrych trójek, a w drugiej linii – liczbę dobrych piątek.",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/maj/pliki/Dane_2205/przyklad.txt"
+        },
+        "expected": "10\n1"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/maj/pliki/Dane_2205/liczby.txt"
+        },
+        "expected": "27\n2"
+      }
+    ]
+  }
+]

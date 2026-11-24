@@ -6,130 +6,35 @@
     "title": "Biblioteczka Adama – kolejność wypisywania",
     "part": 1,
     "points": 2,
-    "topics": [
-      "rekurencja",
-      "grafy"
-    ],
+    "topics": ["rekurencja", "grafy"],
     "summary": "Adam wstawia książki do biblioteczki zaczynając od przegródki B[0, 1]: jeśli przegródka jest zajęta, książkę o mniejszym numerze kieruje do B[i+1, 2j−1], a o większym do B[i+1, 2j] (to drzewo BST). Rekurencyjny algorytm A(i, j) wypisuje książkę z B[i, j], a potem odwiedza lewe i prawe dziecko.\n\nNapisz funkcję, która dla listy numerów książek (w kolejności wstawiania) zwróci listę numerów w kolejności wypisania przez algorytm A.",
     "starterCode": "def kolejnosc(ksiazki):\n    # zbuduj biblioteczkę, a potem zwróć listę numerów w kolejności algorytmu A\n    return []\n",
     "kind": "function",
     "functionName": "kolejnosc",
     "tests": [
       {
-        "args": [
-          [
-            10,
-            2,
-            15,
-            13,
-            1,
-            5,
-            25
-          ]
-        ],
-        "expected": [
-          10,
-          2,
-          1,
-          5,
-          15,
-          13,
-          25
-        ]
+        "args": [[10, 2, 15, 13, 1, 5, 25]],
+        "expected": [10, 2, 1, 5, 15, 13, 25]
       },
       {
-        "args": [
-          [
-            1,
-            5,
-            10,
-            15,
-            2,
-            25,
-            13
-          ]
-        ],
-        "expected": [
-          1,
-          5,
-          2,
-          10,
-          15,
-          13,
-          25
-        ]
+        "args": [[1, 5, 10, 15, 2, 25, 13]],
+        "expected": [1, 5, 2, 10, 15, 13, 25]
       },
       {
-        "args": [
-          [
-            14,
-            18,
-            12,
-            9,
-            20,
-            15,
-            17
-          ]
-        ],
-        "expected": [
-          14,
-          12,
-          9,
-          18,
-          15,
-          17,
-          20
-        ]
+        "args": [[14, 18, 12, 9, 20, 15, 17]],
+        "expected": [14, 12, 9, 18, 15, 17, 20]
       },
       {
-        "args": [
-          [
-            7
-          ]
-        ],
-        "expected": [
-          7
-        ]
+        "args": [[7]],
+        "expected": [7]
       },
       {
-        "args": [
-          [
-            5,
-            4,
-            3,
-            2,
-            1
-          ]
-        ],
-        "expected": [
-          5,
-          4,
-          3,
-          2,
-          1
-        ]
+        "args": [[5, 4, 3, 2, 1]],
+        "expected": [5, 4, 3, 2, 1]
       },
       {
-        "args": [
-          [
-            9,
-            2,
-            12,
-            10,
-            14,
-            13,
-            15
-          ]
-        ],
-        "expected": [
-          9,
-          2,
-          12,
-          10,
-          14,
-          13,
-          15
-        ]
+        "args": [[9, 2, 12, 10, 14, 13, 15]],
+        "expected": [9, 2, 12, 10, 14, 13, 15]
       }
     ]
   },
@@ -140,78 +45,54 @@
     "title": "Liczba bloków w zapisie binarnym",
     "part": 1,
     "points": 3,
-    "topics": [
-      "systemy-liczbowe"
-    ],
+    "topics": ["systemy-liczbowe"],
     "summary": "Blok w zapisie binarnym to maksymalny ciąg jednakowych cyfr, np. 1000011 (67) ma 3 bloki, a 11110101 (245) – 5.\n\nNapisz funkcję zwracającą liczbę bloków w zapisie binarnym dodatniej liczby n. W arkuszu nie wolno używać funkcji konwersji (np. bin) – tylko arytmetyki.",
     "starterCode": "def bloki(n):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "bloki",
     "tests": [
       {
-        "args": [
-          67
-        ],
+        "args": [67],
         "expected": 3
       },
       {
-        "args": [
-          245
-        ],
+        "args": [245],
         "expected": 5
       },
       {
-        "args": [
-          1
-        ],
+        "args": [1],
         "expected": 1
       },
       {
-        "args": [
-          2
-        ],
+        "args": [2],
         "expected": 2
       },
       {
-        "args": [
-          3
-        ],
+        "args": [3],
         "expected": 1
       },
       {
-        "args": [
-          5
-        ],
+        "args": [5],
         "expected": 3
       },
       {
-        "args": [
-          1023
-        ],
+        "args": [1023],
         "expected": 1
       },
       {
-        "args": [
-          1024
-        ],
+        "args": [1024],
         "expected": 2
       },
       {
-        "args": [
-          31799
-        ],
+        "args": [31799],
         "expected": 5
       },
       {
-        "args": [
-          65535
-        ],
+        "args": [65535],
         "expected": 1
       },
       {
-        "args": [
-          170
-        ],
+        "args": [170],
         "expected": 8
       }
     ]
@@ -223,11 +104,7 @@
     "title": "Liczby o co najwyżej dwóch blokach",
     "part": 2,
     "points": 2,
-    "topics": [
-      "systemy-liczbowe",
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["systemy-liczbowe", "napisy", "pliki-tekstowe"],
     "summary": "Plik bin.txt zawiera 100 liczb zapisanych binarnie (co najwyżej 20 cyfr). Podaj, ile z nich składa się z co najwyżej dwóch bloków.",
     "starterCode": "with open(\"bin.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -255,10 +132,7 @@
     "title": "Największa liczba binarna",
     "part": 2,
     "points": 2,
-    "topics": [
-      "systemy-liczbowe",
-      "pliki-tekstowe"
-    ],
+    "topics": ["systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Wypisz (w zapisie binarnym) największą z liczb zapisanych w pliku bin.txt.",
     "starterCode": "with open(\"bin.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -286,10 +160,7 @@
     "title": "p XOR (p div 2)",
     "part": 2,
     "points": 3,
-    "topics": [
-      "systemy-liczbowe",
-      "pliki-tekstowe"
-    ],
+    "topics": ["systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Dla każdej liczby p z pliku bin.txt oblicz p XOR (p div 2) i wypisz wynik w systemie binarnym – każdy w osobnym wierszu, w kolejności z pliku (to tzw. kod Graya).",
     "starterCode": "with open(\"bin.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -317,10 +188,7 @@
     "title": "Fragmenty dwucyfrowe większe od 90",
     "part": 2,
     "points": 2,
-    "topics": [
-      "podciagi",
-      "pliki-tekstowe"
-    ],
+    "topics": ["podciagi", "pliki-tekstowe"],
     "summary": "Plik pi.txt zawiera 10 000 cyfr rozwinięcia liczby π (po jednej w wierszu). Fragment 2-cyfrowy to dwie kolejne cyfry. Podaj, ile fragmentów 2-cyfrowych zapisuje liczbę większą od 90.",
     "starterCode": "with open(\"pi.txt\") as plik:\n    cyfry = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -348,10 +216,7 @@
     "title": "Najrzadszy i najczęstszy fragment",
     "part": 2,
     "points": 3,
-    "topics": [
-      "slowniki",
-      "pliki-tekstowe"
-    ],
+    "topics": ["slowniki", "pliki-tekstowe"],
     "summary": "Spośród 100 możliwych fragmentów 2-cyfrowych (00–99) znajdź ten, który występuje w pliku pi.txt najrzadziej, i ten, który występuje najczęściej (przy remisie – o mniejszej wartości). Wypisz w dwóch liniach: fragment i liczbę wystąpień.",
     "starterCode": "with open(\"pi.txt\") as plik:\n    cyfry = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -379,10 +244,7 @@
     "title": "Ciągi rosnąco-malejące długości 6",
     "part": 2,
     "points": 3,
-    "topics": [
-      "podciagi",
-      "pliki-tekstowe"
-    ],
+    "topics": ["podciagi", "pliki-tekstowe"],
     "summary": "Ciąg (co najmniej 4 elementy) jest rosnąco-malejący, jeśli da się go podzielić na niepusty ciąg ściśle rosnący (min. 2 elementy) i następujący po nim ściśle malejący (min. 2 elementy). Podaj, ile jest rosnąco-malejących ciągów złożonych z dokładnie sześciu kolejnych cyfr pliku pi.txt.",
     "starterCode": "with open(\"pi.txt\") as plik:\n    cyfry = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -410,10 +272,7 @@
     "title": "Najdłuższy ciąg rosnąco-malejący",
     "part": 2,
     "points": 2,
-    "topics": [
-      "podciagi",
-      "pliki-tekstowe"
-    ],
+    "topics": ["podciagi", "pliki-tekstowe"],
     "summary": "Znajdź najdłuższy rosnąco-malejący ciąg kolejnych cyfr w pliku pi.txt (jest jeden). W pierwszej linii wypisz numer wiersza, w którym się zaczyna, a w drugiej – jego cyfry bez odstępów.",
     "starterCode": "with open(\"pi.txt\") as plik:\n    cyfry = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",

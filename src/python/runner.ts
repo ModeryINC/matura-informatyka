@@ -1,4 +1,4 @@
-import { outputMatches } from '../lib/compare';
+import { outputMatchesAny } from '../lib/compare';
 import type { CheckResult, FunctionTask, ProgramTask, SubmissionResult, Task } from '../types';
 import type { FileMap, FunctionRun, ProgramRun, WorkerRequest, WorkerResponse } from './protocol';
 
@@ -223,9 +223,10 @@ export class PythonRunner {
       const run = runs[i] ?? { stdout: '', error: 'Brak wyniku' };
       return {
         label: check.label,
-        expected: check.expected,
+        expected: [check.expected, ...(check.alternatives ?? [])].join('\n— lub —\n'),
         actual: run.stdout,
-        passed: run.error === null && outputMatches(run.stdout, check.expected),
+        passed:
+          run.error === null && outputMatchesAny(run.stdout, check.expected, check.alternatives),
         ...(run.error ? { error: run.error } : {}),
       };
     });

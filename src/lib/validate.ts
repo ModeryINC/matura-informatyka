@@ -44,6 +44,12 @@ export function validateTask(value: unknown, sessionIds: ReadonlySet<string>): s
         if (typeof c.expected !== 'string' || c.expected.trim() === '') {
           fail(`checks[${i}].expected musi być niepustym tekstem`);
         }
+        if (
+          c.alternatives !== undefined &&
+          (!Array.isArray(c.alternatives) || !c.alternatives.every((a) => typeof a === 'string'))
+        ) {
+          fail(`checks[${i}].alternatives musi być listą tekstów`);
+        }
         if (typeof c.files !== 'object' || c.files === null) {
           fail(`checks[${i}].files musi być obiektem`);
         } else {

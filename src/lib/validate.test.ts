@@ -57,6 +57,17 @@ describe('validateTask', () => {
     ]);
   });
 
+  it('sprawdza odpowiedzi alternatywne', () => {
+    const withAlternatives = (alternatives: unknown) => ({
+      ...programTask,
+      checks: [{ ...programTask.checks[0], alternatives }],
+    });
+    expect(validateTask(withAlternatives(['2', '3']), sessions)).toEqual([]);
+    expect(validateTask(withAlternatives([2]), sessions)).toEqual([
+      '2024-maj-1.1: checks[0].alternatives musi być listą tekstów',
+    ]);
+  });
+
   it('sprawdza nazwę funkcji i rodzaj zadania', () => {
     expect(validateTask({ ...functionTask, functionName: '1abc' }, sessions)).toHaveLength(1);
     expect(validateTask({ ...programTask, kind: 'quiz' }, sessions)).toEqual([

@@ -6,79 +6,54 @@
     "title": "Nierekurencyjna funkcja przestaw",
     "part": 1,
     "points": 4,
-    "topics": [
-      "rekurencja",
-      "teoria-liczb"
-    ],
+    "topics": ["rekurencja", "teoria-liczb"],
     "summary": "Rekurencyjna funkcja przestaw(n) dzieli zapis liczby na pary cyfr od końca i w każdej parze zamienia cyfry miejscami (przy niepełnej, pierwszej parze z wiodącym zerem zostaje sama cyfra), np. przestaw(316498) = 134689.\n\nNapisz nierekurencyjną funkcję przestaw2(n), która zwraca ten sam wynik. W arkuszu wolno operować tylko na liczbach całkowitych (bez napisów i funkcji wbudowanych).",
     "starterCode": "def przestaw2(n):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "przestaw2",
     "tests": [
       {
-        "args": [
-          316498
-        ],
+        "args": [316498],
         "expected": 134689
       },
       {
-        "args": [
-          43657688
-        ],
+        "args": [43657688],
         "expected": 34566788
       },
       {
-        "args": [
-          154005710
-        ],
+        "args": [154005710],
         "expected": 145007501
       },
       {
-        "args": [
-          998877665544321
-        ],
+        "args": [998877665544321],
         "expected": 989786756453412
       },
       {
-        "args": [
-          0
-        ],
+        "args": [0],
         "expected": 0
       },
       {
-        "args": [
-          7
-        ],
+        "args": [7],
         "expected": 7
       },
       {
-        "args": [
-          12
-        ],
+        "args": [12],
         "expected": 21
       },
       {
-        "args": [
-          100
-        ],
+        "args": [100],
         "expected": 100
       },
       {
-        "args": [
-          1000
-        ],
+        "args": [1000],
         "expected": 100
       },
       {
-        "args": [
-          10203
-        ],
+        "args": [10203],
         "expected": 12030
       },
       {
-        "args": [
-          3050
-        ],
+        "args": [3050],
         "expected": 305
       }
     ]
@@ -90,11 +65,7 @@
     "title": "Palindromy z symboli",
     "part": 2,
     "points": 2,
-    "topics": [
-      "napisy",
-      "palindromy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "palindromy", "pliki-tekstowe"],
     "summary": "Plik symbole.txt zawiera 2000 napisów po 12 znaków z alfabetu o, +, *. Wypisz (po jednym w wierszu, w kolejności z pliku) wszystkie napisy, które są palindromami.",
     "starterCode": "with open(\"symbole.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -122,11 +93,7 @@
     "title": "Kwadraty 3×3 z identycznych symboli",
     "part": 2,
     "points": 4,
-    "topics": [
-      "tablice-2d",
-      "grafy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["tablice-2d", "grafy", "pliki-tekstowe"],
     "summary": "Traktując wiersze pliku symbole.txt jako planszę, znajdź wszystkie kwadraty 3×3 złożone z dziewięciu identycznych symboli. Wypisz ich liczbę, a następnie dla każdego kwadratu numer wiersza i numer pozycji (licząc od 1) jego środkowego pola.",
     "starterCode": "with open(\"symbole.txt\") as plik:\n    plansza = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -154,10 +121,7 @@
     "title": "Największa liczba w zapisie symbolicznym",
     "part": 2,
     "points": 2,
-    "topics": [
-      "systemy-liczbowe",
-      "pliki-tekstowe"
-    ],
+    "topics": ["systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Każdy napis traktujemy jak liczbę w systemie trójkowym (o = 0, + = 1, * = 2). Podaj największą z tych liczb w zapisie dziesiętnym oraz odpowiadający jej napis (w jednej linii).",
     "starterCode": "with open(\"symbole.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -185,10 +149,7 @@
     "title": "Suma liczb trójkowych",
     "part": 2,
     "points": 3,
-    "topics": [
-      "systemy-liczbowe",
-      "pliki-tekstowe"
-    ],
+    "topics": ["systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Oblicz sumę wszystkich liczb z pliku symbole.txt (zapis trójkowy jak w zadaniu 2.3). Podaj ją w zapisie dziesiętnym oraz w zapisie trójkowym z użyciem symboli o, +, * (w jednej linii).",
     "starterCode": "with open(\"symbole.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -216,10 +177,7 @@
     "title": "NWD przesunięć drona",
     "part": 2,
     "points": 2,
-    "topics": [
-      "teoria-liczb",
-      "pliki-tekstowe"
-    ],
+    "topics": ["teoria-liczb", "pliki-tekstowe"],
     "summary": "Plik dron.txt zawiera 100 par liczb [A, B] – przesunięcia drona w poziomie i w pionie. Podaj, dla ilu par NWD(|A|, |B|) jest większe od 1 (przyjmujemy NWD(A, 0) = A).",
     "starterCode": "with open(\"dron.txt\") as plik:\n    ruchy = [tuple(map(int, wiersz.split())) for wiersz in plik]\n\n",
     "kind": "program",
@@ -247,11 +205,7 @@
     "title": "Punkty na trasie drona",
     "part": 2,
     "points": 4,
-    "topics": [
-      "geometria",
-      "symulacja",
-      "pliki-tekstowe"
-    ],
+    "topics": ["geometria", "symulacja", "pliki-tekstowe"],
     "summary": "Dron startuje z (0, 0) i wykonuje kolejne przesunięcia z pliku dron.txt. Rozważ punkty, w których znalazł się po każdym ruchu.\n\na) Podaj, ile z nich leży ściśle wewnątrz kwadratu (0, 0)–(5000, 5000).\nb) Znajdź jedyną trójkę różnych punktów, z których jeden jest środkiem odcinka o końcach w dwóch pozostałych. Wypisz je w kolejności rosnącej współrzędnej x.",
     "starterCode": "with open(\"dron.txt\") as plik:\n    ruchy = [tuple(map(int, wiersz.split())) for wiersz in plik]\n\n",
     "kind": "program",
