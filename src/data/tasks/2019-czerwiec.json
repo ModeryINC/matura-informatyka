@@ -6,170 +6,49 @@
     "title": "Wywołania rekurencyjnego wyszukiwania binarnego",
     "part": 1,
     "points": 2,
-    "topics": [
-      "rekurencja",
-      "wyszukiwanie-binarne"
-    ],
+    "topics": ["rekurencja", "wyszukiwanie-binarne"],
     "summary": "Funkcja Rek(x, p, k) szuka x w rosnącej tablicy T[1..n]: dopóki p < k, bierze s = (p + k) div 2 i wywołuje Rek(x, p, s), gdy T[s] ≥ x, albo Rek(x, s + 1, k) w przeciwnym razie. Gdy p = k, zwraca p, jeśli T[p] = x, a inaczej −1.\n\nNapisz funkcję zwracającą listę par [p, k] wszystkich kolejnych wywołań (łącznie z pierwszym). Uwaga: arkusz numeruje tablicę od 1.",
     "starterCode": "def wywolania(T, x, p, k):\n    lista = [[p, k]]\n    # ...\n    return lista\n",
     "kind": "function",
     "functionName": "wywolania",
     "tests": [
       {
-        "args": [
-          [
-            1,
-            5,
-            8,
-            10,
-            12,
-            14,
-            19,
-            20,
-            23,
-            30,
-            38
-          ],
-          37,
-          1,
-          11
-        ],
+        "args": [[1, 5, 8, 10, 12, 14, 19, 20, 23, 30, 38], 37, 1, 11],
         "expected": [
-          [
-            1,
-            11
-          ],
-          [
-            7,
-            11
-          ],
-          [
-            10,
-            11
-          ],
-          [
-            11,
-            11
-          ]
+          [1, 11],
+          [7, 11],
+          [10, 11],
+          [11, 11]
         ]
       },
       {
-        "args": [
-          [
-            1,
-            5,
-            8,
-            10,
-            12,
-            14,
-            19,
-            20,
-            23,
-            30,
-            38
-          ],
-          1,
-          1,
-          11
-        ],
+        "args": [[1, 5, 8, 10, 12, 14, 19, 20, 23, 30, 38], 1, 1, 11],
         "expected": [
-          [
-            1,
-            11
-          ],
-          [
-            1,
-            6
-          ],
-          [
-            1,
-            3
-          ],
-          [
-            1,
-            2
-          ],
-          [
-            1,
-            1
-          ]
+          [1, 11],
+          [1, 6],
+          [1, 3],
+          [1, 2],
+          [1, 1]
         ]
       },
       {
-        "args": [
-          [
-            1,
-            5,
-            8,
-            10,
-            12,
-            14,
-            19,
-            20,
-            23,
-            30,
-            38
-          ],
-          14,
-          1,
-          11
-        ],
+        "args": [[1, 5, 8, 10, 12, 14, 19, 20, 23, 30, 38], 14, 1, 11],
         "expected": [
-          [
-            1,
-            11
-          ],
-          [
-            1,
-            6
-          ],
-          [
-            4,
-            6
-          ],
-          [
-            6,
-            6
-          ]
+          [1, 11],
+          [1, 6],
+          [4, 6],
+          [6, 6]
         ]
       },
       {
-        "args": [
-          [
-            4
-          ],
-          4,
-          1,
-          1
-        ],
-        "expected": [
-          [
-            1,
-            1
-          ]
-        ]
+        "args": [[4], 4, 1, 1],
+        "expected": [[1, 1]]
       },
       {
-        "args": [
-          [
-            2,
-            4,
-            6,
-            8
-          ],
-          9,
-          2,
-          4
-        ],
+        "args": [[2, 4, 6, 8], 9, 2, 4],
         "expected": [
-          [
-            2,
-            4
-          ],
-          [
-            4,
-            4
-          ]
+          [2, 4],
+          [4, 4]
         ]
       }
     ]
@@ -181,49 +60,30 @@
     "title": "Deszyfrowanie szyfru kolumnowego",
     "part": 1,
     "points": 4,
-    "topics": [
-      "szyfrowanie",
-      "napisy",
-      "tablice-2d"
-    ],
+    "topics": ["szyfrowanie", "napisy", "tablice-2d"],
     "summary": "Szyfr kolumnowy z kluczem k: tekst wpisuje się do tabeli o k wierszach kolejnymi kolumnami – w kolumnach nieparzystych z góry na dół, w parzystych z dołu do góry (puste miejsca wypełnia się znakiem _), a szyfrogram to kolejne wiersze odczytane od lewej do prawej. Np. MATURA_Z_INFORMATYKI z k = 3 daje MA_FOYKARZNRTITU_IMA_.\n\nNapisz funkcję deszyfruj(S, k), która dla szyfrogramu S (długość jest wielokrotnością k) zwróci tekst jawny.",
     "starterCode": "def deszyfruj(S, k):\n    # zwróć odszyfrowany tekst\n    return \"\"\n",
     "kind": "function",
     "functionName": "deszyfruj",
     "tests": [
       {
-        "args": [
-          "MA_FOYKARZNRTITU_IMA_",
-          3
-        ],
+        "args": ["MA_FOYKARZNRTITU_IMA_", 3],
         "expected": "MATURA_Z_INFORMATYKI_"
       },
       {
-        "args": [
-          "NKI_ATE_USGACYOKZZ_YYSJTCWEKI_SAEMTRLE_P",
-          10
-        ],
+        "args": ["NKI_ATE_USGACYOKZZ_YYSJTCWEKI_SAEMTRLE_P", 10],
         "expected": "NAUCZYCIELEM_WSZYSTKIEGO_JEST_PRAKTYKA__"
       },
       {
-        "args": [
-          "ABC",
-          1
-        ],
+        "args": ["ABC", 1],
         "expected": "ABC"
       },
       {
-        "args": [
-          "ADBC",
-          2
-        ],
+        "args": ["ADBC", 2],
         "expected": "ABCD"
       },
       {
-        "args": [
-          "AFGBEHCDI",
-          3
-        ],
+        "args": ["AFGBEHCDI", 3],
         "expected": "ABCDEFGHI"
       }
     ]
@@ -235,10 +95,7 @@
     "title": "Liczby pierwsze z przedziału [100, 5000]",
     "part": 2,
     "points": 4,
-    "topics": [
-      "liczby-pierwsze",
-      "pliki-tekstowe"
-    ],
+    "topics": ["liczby-pierwsze", "pliki-tekstowe"],
     "summary": "Plik liczby.txt zawiera 300 liczb z zakresu 1–100 000. Wypisz (w kolejności z pliku) te, które są liczbami pierwszymi z przedziału [100, 5000].",
     "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -266,11 +123,7 @@
     "title": "Liczby pierwsze czytane wspak",
     "part": 2,
     "points": 4,
-    "topics": [
-      "liczby-pierwsze",
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["liczby-pierwsze", "napisy", "pliki-tekstowe"],
     "summary": "Plik pierwsze.txt zawiera 200 liczb pierwszych. Wypisz (w kolejności z pliku) te, które czytane od prawej do lewej również są liczbami pierwszymi (np. 17 → 71).",
     "starterCode": "with open(\"pierwsze.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -298,10 +151,7 @@
     "title": "Waga liczby",
     "part": 2,
     "points": 4,
-    "topics": [
-      "teoria-liczb",
-      "pliki-tekstowe"
-    ],
+    "topics": ["teoria-liczb", "pliki-tekstowe"],
     "summary": "Wagą liczby N nazywamy jednocyfrowy wynik wielokrotnego sumowania cyfr (np. 31699 → 28 → 10 → 1, więc waga to 1). Podaj, ile liczb z pliku pierwsze.txt ma wagę równą 1.",
     "starterCode": "with open(\"pierwsze.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",

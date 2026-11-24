@@ -8,7 +8,8 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
 
 - **Przegląd arkuszy** – 39 sesji (główne, dodatkowe, próbne, stara formuła) z podglądem PDF,
   kluczem odpowiedzi i plikami z danymi.
-- **Zadania ze sprawdzarką** – 57 zadań z sesji głównych 2018–2026:
+- **Zadania ze sprawdzarką** – 113 zadań z sesji majowych (głównych) i czerwcowych (dodatkowych)
+  2018–2026:
   - _programy_ (część 2) – kod czyta plik z danymi i wypisuje odpowiedź; jest uruchamiany
     na danych przykładowych z arkusza i na pełnych danych egzaminacyjnych,
   - _funkcje_ (część 1, „zapisz algorytm”) – funkcja sprawdzana zestawem testów.

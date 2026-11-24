@@ -6,73 +6,50 @@
     "title": "Iteracyjne liczby Fibonacciego",
     "part": 1,
     "points": 2,
-    "topics": [
-      "rekurencja",
-      "zlozonosc"
-    ],
+    "topics": ["rekurencja", "zlozonosc"],
     "summary": "Liczby Fibonacciego: F1 = F2 = 1, Fn = Fn−1 + Fn−2. Napisz iteracyjną funkcję obliczającą Fn dla n ≥ 1 – bez tablic i bez rekurencji. (W zadaniu 2.2 z arkusza trzeba wyjaśnić, czemu wersja rekurencyjna dla n = 45 działa tak długo.)",
     "starterCode": "def fib(n):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "fib",
     "tests": [
       {
-        "args": [
-          1
-        ],
+        "args": [1],
         "expected": 1
       },
       {
-        "args": [
-          2
-        ],
+        "args": [2],
         "expected": 1
       },
       {
-        "args": [
-          3
-        ],
+        "args": [3],
         "expected": 2
       },
       {
-        "args": [
-          4
-        ],
+        "args": [4],
         "expected": 3
       },
       {
-        "args": [
-          5
-        ],
+        "args": [5],
         "expected": 5
       },
       {
-        "args": [
-          10
-        ],
+        "args": [10],
         "expected": 55
       },
       {
-        "args": [
-          20
-        ],
+        "args": [20],
         "expected": 6765
       },
       {
-        "args": [
-          45
-        ],
+        "args": [45],
         "expected": 1134903170
       },
       {
-        "args": [
-          70
-        ],
+        "args": [70],
         "expected": 190392490709135
       },
       {
-        "args": [
-          78
-        ],
+        "args": [78],
         "expected": 8944394323791464
       }
     ]
@@ -84,73 +61,50 @@
     "title": "Szybki rekurencyjny Fibonacci",
     "part": 1,
     "points": 2,
-    "topics": [
-      "rekurencja",
-      "zlozonosc"
-    ],
+    "topics": ["rekurencja", "zlozonosc"],
     "summary": "Napisz rekurencyjną funkcję obliczającą Fn, korzystając ze wzorów prawdziwych dla k ≥ 2:\nF(2k) = F(k+1)² − F(k−1)²,  F(2k−1) = F(k)² + F(k−1)².\n\nDzięki nim każde wywołanie zmniejsza n mniej więcej o połowę – sprawdzarka testuje także duże n.",
     "starterCode": "def fib(n):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "fib",
     "tests": [
       {
-        "args": [
-          1
-        ],
+        "args": [1],
         "expected": 1
       },
       {
-        "args": [
-          2
-        ],
+        "args": [2],
         "expected": 1
       },
       {
-        "args": [
-          3
-        ],
+        "args": [3],
         "expected": 2
       },
       {
-        "args": [
-          4
-        ],
+        "args": [4],
         "expected": 3
       },
       {
-        "args": [
-          5
-        ],
+        "args": [5],
         "expected": 5
       },
       {
-        "args": [
-          10
-        ],
+        "args": [10],
         "expected": 55
       },
       {
-        "args": [
-          30
-        ],
+        "args": [30],
         "expected": 832040
       },
       {
-        "args": [
-          45
-        ],
+        "args": [45],
         "expected": 1134903170
       },
       {
-        "args": [
-          60
-        ],
+        "args": [60],
         "expected": 1548008755920
       },
       {
-        "args": [
-          78
-        ],
+        "args": [78],
         "expected": 8944394323791464
       }
     ]
@@ -162,10 +116,7 @@
     "title": "Ta sama ostatnia liczba",
     "part": 2,
     "points": 1,
-    "topics": [
-      "tablice",
-      "pliki-tekstowe"
-    ],
+    "topics": ["tablice", "pliki-tekstowe"],
     "summary": "Pliki dane1.txt i dane2.txt mają po 1000 wierszy; w każdym jest niemalejący ciąg 10 liczb z przedziału [0, 100]. Porównaj odpowiadające sobie wiersze obu plików i podaj, w ilu z nich ostatnie liczby ciągów są równe.",
     "starterCode": "def wczytaj(nazwa):\n    with open(nazwa) as plik:\n        return [list(map(int, wiersz.split())) for wiersz in plik]\n\n\nA = wczytaj(\"dane1.txt\")\nB = wczytaj(\"dane2.txt\")\n",
     "kind": "program",
@@ -195,10 +146,7 @@
     "title": "Pięć parzystych i pięć nieparzystych",
     "part": 2,
     "points": 3,
-    "topics": [
-      "tablice",
-      "pliki-tekstowe"
-    ],
+    "topics": ["tablice", "pliki-tekstowe"],
     "summary": "Podaj, ile jest par odpowiadających sobie ciągów (z dane1.txt i dane2.txt), w których każdy z dwóch ciągów zawiera dokładnie 5 liczb parzystych i 5 nieparzystych.",
     "starterCode": "def wczytaj(nazwa):\n    with open(nazwa) as plik:\n        return [list(map(int, wiersz.split())) for wiersz in plik]\n\n\nA = wczytaj(\"dane1.txt\")\nB = wczytaj(\"dane2.txt\")\n",
     "kind": "program",
@@ -228,10 +176,7 @@
     "title": "Ciągi z tych samych liczb",
     "part": 2,
     "points": 4,
-    "topics": [
-      "slowniki",
-      "pliki-tekstowe"
-    ],
+    "topics": ["slowniki", "pliki-tekstowe"],
     "summary": "Policz pary odpowiadających sobie ciągów zbudowanych z tych samych liczb (liczba powtórzeń może się różnić). Wypisz liczbę takich par, a w drugiej linii numery wierszy, w których się znajdują.",
     "starterCode": "def wczytaj(nazwa):\n    with open(nazwa) as plik:\n        return [list(map(int, wiersz.split())) for wiersz in plik]\n\n\nA = wczytaj(\"dane1.txt\")\nB = wczytaj(\"dane2.txt\")\n",
     "kind": "program",
@@ -261,11 +206,7 @@
     "title": "Scalanie ciągów uporządkowanych",
     "part": 2,
     "points": 4,
-    "topics": [
-      "sortowanie",
-      "tablice",
-      "pliki-tekstowe"
-    ],
+    "topics": ["sortowanie", "tablice", "pliki-tekstowe"],
     "summary": "Scal każdą parę odpowiadających sobie ciągów w jeden ciąg niemalejący – tak jak w sortowaniu przez scalanie: porównuj pierwsze nieprzepisane elementy obu ciągów i przepisuj mniejszy. Wypisz wynikowe ciągi, po jednym w wierszu (liczby oddzielone spacjami). Spróbuj nie używać sort/sorted.",
     "starterCode": "def wczytaj(nazwa):\n    with open(nazwa) as plik:\n        return [list(map(int, wiersz.split())) for wiersz in plik]\n\n\nA = wczytaj(\"dane1.txt\")\nB = wczytaj(\"dane2.txt\")\n",
     "kind": "program",

@@ -6,77 +6,42 @@
     "title": "Cyfra w prawym dolnym rogu tablicy",
     "part": 1,
     "points": 4,
-    "topics": [
-      "systemy-liczbowe",
-      "tablice-2d"
-    ],
+    "topics": ["systemy-liczbowe", "tablice-2d"],
     "summary": "Cyfry zapisu binarnego liczby n wpisujemy wierszami do tablicy w × k, zaczynając od lewego górnego rogu; po ostatniej cyfrze zaczynamy znów od pierwszej, aż do zapełnienia tablicy. Np. dla w = 5, k = 3, n = 19 (10011) w prawym dolnym rogu jest 1.\n\nNapisz funkcję zwracającą cyfrę z prawego dolnego rogu. Postaraj się nie budować całej tablicy – wystarczy arytmetyka.",
     "starterCode": "def rog(w, k, n):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "rog",
     "tests": [
       {
-        "args": [
-          5,
-          3,
-          19
-        ],
+        "args": [5, 3, 19],
         "expected": 1
       },
       {
-        "args": [
-          4,
-          5,
-          179
-        ],
+        "args": [4, 5, 179],
         "expected": 1
       },
       {
-        "args": [
-          1,
-          1,
-          1
-        ],
+        "args": [1, 1, 1],
         "expected": 1
       },
       {
-        "args": [
-          1,
-          1,
-          2
-        ],
+        "args": [1, 1, 2],
         "expected": 1
       },
       {
-        "args": [
-          3,
-          3,
-          8
-        ],
+        "args": [3, 3, 8],
         "expected": 1
       },
       {
-        "args": [
-          2,
-          7,
-          5
-        ],
+        "args": [2, 7, 5],
         "expected": 0
       },
       {
-        "args": [
-          10,
-          10,
-          1000
-        ],
+        "args": [10, 10, 1000],
         "expected": 0
       },
       {
-        "args": [
-          1000,
-          1000,
-          6
-        ],
+        "args": [1000, 1000, 6],
         "expected": 1
       }
     ]
@@ -88,10 +53,7 @@
     "title": "Fragment k?t",
     "part": 2,
     "points": 3,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik slowa.txt zawiera 1000 słów z małych liter. Podaj, w ilu słowach występuje trzyliterowy fragment k?t, gdzie ? to dowolna litera (np. w alamakota i brokat, ale nie w krata).",
     "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -119,11 +81,7 @@
     "title": "ROT13 czytane wspak",
     "part": 2,
     "points": 3,
-    "topics": [
-      "szyfrowanie",
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["szyfrowanie", "napisy", "pliki-tekstowe"],
     "summary": "ROT13 zamienia każdą literę na literę o 13 pozycji dalej w alfabecie (cyklicznie). Słowo aren po zakodowaniu daje nera – to samo słowo czytane wspak. Podaj, ile słów z pliku ma tę własność, a w drugiej linii wypisz najdłuższe z nich.",
     "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -151,11 +109,7 @@
     "title": "Litera na co najmniej połowie pozycji",
     "part": 2,
     "points": 3,
-    "topics": [
-      "slowniki",
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["slowniki", "napisy", "pliki-tekstowe"],
     "summary": "Wypisz (po jednym w wierszu, w kolejności z pliku) wszystkie słowa, w których ta sama litera występuje na co najmniej połowie pozycji (np. owocowo – litera o 4 razy na 7).",
     "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -183,11 +137,7 @@
     "title": "Komputery, które nic nie odbierają",
     "part": 2,
     "points": 2,
-    "topics": [
-      "grafy",
-      "tablice",
-      "pliki-tekstowe"
-    ],
+    "topics": ["grafy", "tablice", "pliki-tekstowe"],
     "summary": "Plik odbiorcy.txt opisuje sieć 1024 komputerów: w i-tym wierszu jest numer komputera, do którego komputer i wysyła pakiety. Podaj, ile komputerów nie jest odbiorcą żadnych pakietów.",
     "starterCode": "with open(\"odbiorcy.txt\") as plik:\n    odbiorca = [int(wiersz) for wiersz in plik]  # odbiorca[i - 1] dla komputera i\n\n",
     "kind": "program",
@@ -215,11 +165,7 @@
     "title": "Pierwszy powrót pakietu",
     "part": 2,
     "points": 3,
-    "topics": [
-      "grafy",
-      "symulacja",
-      "pliki-tekstowe"
-    ],
+    "topics": ["grafy", "symulacja", "pliki-tekstowe"],
     "summary": "W rundzie 0 każdy komputer ma jeden pakiet o swoim numerze; w każdej rundzie wszystkie komputery przekazują wszystkie swoje pakiety swoim odbiorcom. Wyznacz najmniejszy numer rundy, po której jakiś pakiet wraca do komputera, z którego wystartował, i podaj najmniejszy numer takiego pakietu.",
     "starterCode": "with open(\"odbiorcy.txt\") as plik:\n    odbiorca = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -247,11 +193,7 @@
     "title": "Najwięcej pakietów w jednym komputerze",
     "part": 2,
     "points": 3,
-    "topics": [
-      "slowniki",
-      "symulacja",
-      "pliki-tekstowe"
-    ],
+    "topics": ["slowniki", "symulacja", "pliki-tekstowe"],
     "summary": "Podaj, ile najwięcej pakietów znajduje się w jednym komputerze po rundach 1, 2, 4 i 8 – cztery liczby w jednym wierszu.",
     "starterCode": "with open(\"odbiorcy.txt\") as plik:\n    odbiorca = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",

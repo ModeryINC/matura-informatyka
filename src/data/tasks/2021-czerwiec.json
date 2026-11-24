@@ -6,79 +6,54 @@
     "title": "Zachłanna reprezentacja kwadratowa",
     "part": 1,
     "points": 3,
-    "topics": [
-      "zachlanne",
-      "teoria-liczb"
-    ],
+    "topics": ["zachlanne", "teoria-liczb"],
     "summary": "Każdą dodatnią liczbę n można zapisać jako sumę kwadratów liczb dodatnich. Metoda zachłanna w każdym kroku bierze największy kwadrat, który nie przekracza tego, co zostało do n, np. 12 = 3² + 1² + 1² + 1² (długość 4).\n\nNapisz funkcję zwracającą długość reprezentacji kwadratowej n otrzymanej metodą zachłanną. W arkuszu nie wolno używać funkcji wbudowanych, w szczególności pierwiastka.",
     "starterCode": "def dlugosc(n):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "dlugosc",
     "tests": [
       {
-        "args": [
-          1
-        ],
+        "args": [1],
         "expected": 1
       },
       {
-        "args": [
-          9
-        ],
+        "args": [9],
         "expected": 1
       },
       {
-        "args": [
-          12
-        ],
+        "args": [12],
         "expected": 4
       },
       {
-        "args": [
-          18
-        ],
+        "args": [18],
         "expected": 3
       },
       {
-        "args": [
-          23
-        ],
+        "args": [23],
         "expected": 5
       },
       {
-        "args": [
-          2
-        ],
+        "args": [2],
         "expected": 2
       },
       {
-        "args": [
-          3
-        ],
+        "args": [3],
         "expected": 3
       },
       {
-        "args": [
-          4
-        ],
+        "args": [4],
         "expected": 1
       },
       {
-        "args": [
-          100
-        ],
+        "args": [100],
         "expected": 1
       },
       {
-        "args": [
-          99
-        ],
+        "args": [99],
         "expected": 4
       },
       {
-        "args": [
-          2021
-        ],
+        "args": [2021],
         "expected": 3
       }
     ]
@@ -90,154 +65,31 @@
     "title": "Rekurencyjna procedura modyfikuj",
     "part": 1,
     "points": 3,
-    "topics": [
-      "rekurencja",
-      "tablice"
-    ],
+    "topics": ["rekurencja", "tablice"],
     "summary": "Procedura modyfikuj(s, k) działa na tablicy T[1..n]: jeśli s + k < n, najpierw wywołuje modyfikuj(s + k, k), a potem do T[s] dodaje kolejno T[s+1], …, T[min(n, s+k)].\n\nZaimplementuj ją jako funkcję modyfikuj(T, s, k), która zmodyfikuje listę T i ją zwróci (pamiętaj o numeracji od 1). Np. dla ośmiu jedynek i s = k = 3 wynik to [1, 1, 6, 1, 1, 3, 1, 1].",
     "starterCode": "def modyfikuj(T, s, k):\n    n = len(T)\n    # ...\n    return T\n",
     "kind": "function",
     "functionName": "modyfikuj",
     "tests": [
       {
-        "args": [
-          [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1
-          ],
-          3,
-          3
-        ],
-        "expected": [
-          1,
-          1,
-          6,
-          1,
-          1,
-          3,
-          1,
-          1
-        ]
+        "args": [[1, 1, 1, 1, 1, 1, 1, 1], 3, 3],
+        "expected": [1, 1, 6, 1, 1, 3, 1, 1]
       },
       {
-        "args": [
-          [
-            1,
-            4,
-            2,
-            8,
-            3,
-            6,
-            2,
-            9,
-            1,
-            5
-          ],
-          5,
-          6
-        ],
-        "expected": [
-          1,
-          4,
-          2,
-          8,
-          26,
-          6,
-          2,
-          9,
-          1,
-          5
-        ]
+        "args": [[1, 4, 2, 8, 3, 6, 2, 9, 1, 5], 5, 6],
+        "expected": [1, 4, 2, 8, 26, 6, 2, 9, 1, 5]
       },
       {
-        "args": [
-          [
-            4,
-            2,
-            6,
-            2,
-            9,
-            3,
-            5,
-            2,
-            7,
-            4,
-            3,
-            2,
-            3
-          ],
-          3,
-          5
-        ],
-        "expected": [
-          4,
-          2,
-          46,
-          2,
-          9,
-          3,
-          5,
-          21,
-          7,
-          4,
-          3,
-          2,
-          3
-        ]
+        "args": [[4, 2, 6, 2, 9, 3, 5, 2, 7, 4, 3, 2, 3], 3, 5],
+        "expected": [4, 2, 46, 2, 9, 3, 5, 21, 7, 4, 3, 2, 3]
       },
       {
-        "args": [
-          [
-            4,
-            2,
-            6,
-            2,
-            9,
-            3,
-            5,
-            2,
-            7,
-            4,
-            3,
-            2,
-            3
-          ],
-          4,
-          4
-        ],
-        "expected": [
-          4,
-          2,
-          6,
-          40,
-          9,
-          3,
-          5,
-          21,
-          7,
-          4,
-          3,
-          5,
-          3
-        ]
+        "args": [[4, 2, 6, 2, 9, 3, 5, 2, 7, 4, 3, 2, 3], 4, 4],
+        "expected": [4, 2, 6, 40, 9, 3, 5, 21, 7, 4, 3, 5, 3]
       },
       {
-        "args": [
-          [
-            5
-          ],
-          1,
-          1
-        ],
-        "expected": [
-          5
-        ]
+        "args": [[5], 1, 1],
+        "expected": [5]
       }
     ]
   },
@@ -248,10 +100,7 @@
     "title": "Liczba cyfr w napisach",
     "part": 2,
     "points": 2,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik napisy.txt zawiera 1000 wierszy po 50 znaków (wielkie litery i cyfry). Podaj łączną liczbę cyfr we wszystkich napisach.",
     "starterCode": "with open(\"napisy.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -279,10 +128,7 @@
     "title": "Hasło z co dwudziestego wiersza",
     "part": 2,
     "points": 2,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "W wierszach o numerach 20, 40, …, 1000 ukryto po jednej literze hasła: w wierszu 20 na pozycji 1, w wierszu 40 na pozycji 2, …, w wierszu 1000 na pozycji 50. Wypisz to hasło.",
     "starterCode": "with open(\"napisy.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -310,11 +156,7 @@
     "title": "Prawie palindromy",
     "part": 2,
     "points": 4,
-    "topics": [
-      "palindromy",
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["palindromy", "napisy", "pliki-tekstowe"],
     "summary": "Niektóre napisy można zamienić w palindrom, dopisując dokładnie jeden znak na początku albo na końcu. Złóż hasło ze środkowych liter tak utworzonych palindromów (w kolejności wierszy).",
     "starterCode": "with open(\"napisy.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -342,11 +184,7 @@
     "title": "Hasło ukryte w cyfrach",
     "part": 2,
     "points": 4,
-    "topics": [
-      "napisy",
-      "systemy-liczbowe",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Cyfry z każdego wiersza grupuj po dwie (ostatnią pomiń, jeśli jest ich nieparzyście). Liczbę z pary zamień na znak ASCII, jeśli należy do [65, 90]; w przeciwnym razie ją pomiń. Zakończ po otrzymaniu trzech kolejnych znaków X i wypisz odczytane hasło (razem z XXX).",
     "starterCode": "with open(\"napisy.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",

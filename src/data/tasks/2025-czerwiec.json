@@ -6,55 +6,34 @@
     "title": "Rekurencyjna funkcja f(a, b)",
     "part": 1,
     "points": 2,
-    "topics": [
-      "rekurencja",
-      "teoria-liczb"
-    ],
+    "topics": ["rekurencja", "teoria-liczb"],
     "summary": "Funkcja f(a, b): dla b = 0 zwraca 0; w przeciwnym razie bierze k – ostatnią cyfrę b, oblicza w = f(a, b bez ostatniej cyfry), dopisuje do w zero na końcu (w·10), a potem k razy dodaje do w liczbę a.\n\nZaimplementuj tę funkcję dokładnie według opisu i sprawdź wartości z tabeli w arkuszu. Co tak naprawdę oblicza f?",
     "starterCode": "def f(a, b):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "f",
     "tests": [
       {
-        "args": [
-          42,
-          2
-        ],
+        "args": [42, 2],
         "expected": 84
       },
       {
-        "args": [
-          4,
-          125
-        ],
+        "args": [4, 125],
         "expected": 500
       },
       {
-        "args": [
-          103,
-          104
-        ],
+        "args": [103, 104],
         "expected": 10712
       },
       {
-        "args": [
-          2024,
-          1000
-        ],
+        "args": [2024, 1000],
         "expected": 2024000
       },
       {
-        "args": [
-          5,
-          0
-        ],
+        "args": [5, 0],
         "expected": 0
       },
       {
-        "args": [
-          0,
-          7
-        ],
+        "args": [0, 7],
         "expected": 0
       }
     ]
@@ -66,85 +45,43 @@
     "title": "Cięcie liczby na połowę",
     "part": 1,
     "points": 4,
-    "topics": [
-      "teoria-liczb"
-    ],
+    "topics": ["teoria-liczb"],
     "summary": "Liczba k ma parzystą liczbę cyfr. Cięcie na połowę dzieli jej zapis na lewą połowę (liczba a) i prawą połowę (liczba b), np. 123456 → 123 i 456, a 120056 → 120 i 56.\n\nNapisz funkcję zwracającą [a, b]. W arkuszu wolno używać tylko operacji arytmetycznych (bez napisów, tablic i list).",
     "starterCode": "def ciecie(k):\n    # zwróć [a, b]\n    return [0, 0]\n",
     "kind": "function",
     "functionName": "ciecie",
     "tests": [
       {
-        "args": [
-          123456
-        ],
-        "expected": [
-          123,
-          456
-        ]
+        "args": [123456],
+        "expected": [123, 456]
       },
       {
-        "args": [
-          120056
-        ],
-        "expected": [
-          120,
-          56
-        ]
+        "args": [120056],
+        "expected": [120, 56]
       },
       {
-        "args": [
-          3487
-        ],
-        "expected": [
-          34,
-          87
-        ]
+        "args": [3487],
+        "expected": [34, 87]
       },
       {
-        "args": [
-          230095
-        ],
-        "expected": [
-          230,
-          95
-        ]
+        "args": [230095],
+        "expected": [230, 95]
       },
       {
-        "args": [
-          10
-        ],
-        "expected": [
-          1,
-          0
-        ]
+        "args": [10],
+        "expected": [1, 0]
       },
       {
-        "args": [
-          99
-        ],
-        "expected": [
-          9,
-          9
-        ]
+        "args": [99],
+        "expected": [9, 9]
       },
       {
-        "args": [
-          10000001
-        ],
-        "expected": [
-          1000,
-          1
-        ]
+        "args": [10000001],
+        "expected": [1000, 1]
       },
       {
-        "args": [
-          12345678
-        ],
-        "expected": [
-          1234,
-          5678
-        ]
+        "args": [12345678],
+        "expected": [1234, 5678]
       }
     ]
   },
@@ -155,10 +92,7 @@
     "title": "Liczby połowicznie względnie pierwsze",
     "part": 2,
     "points": 3,
-    "topics": [
-      "teoria-liczb",
-      "pliki-tekstowe"
-    ],
+    "topics": ["teoria-liczb", "pliki-tekstowe"],
     "summary": "Liczba o parzystej liczbie cyfr jest połowicznie względnie pierwsza, gdy NWD liczb powstałych z cięcia jej zapisu na połowę jest równe 1 (np. 3487: NWD(34, 87) = 1). Plik liczby1.txt zawiera 500 liczb (4, 6 lub 8 cyfr) – podaj, ile z nich jest połowicznie względnie pierwszych.",
     "starterCode": "from math import gcd\n\nwith open(\"liczby1.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -186,11 +120,7 @@
     "title": "Stopień Kaprekara",
     "part": 2,
     "points": 3,
-    "topics": [
-      "teoria-liczb",
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["teoria-liczb", "napisy", "pliki-tekstowe"],
     "summary": "Rozważ wszystkie cięcia zapisu liczby n² na dwie niepuste części a i b (np. 7601049 → 760 i 1049). Stopień Kaprekara liczby n to liczba cięć, dla których a + b ≤ n. Plik liczby2.txt zawiera 1000 liczb z [10, 30000] – wypisz największy stopień Kaprekara, a w drugiej linii liczbę, która go ma.",
     "starterCode": "with open(\"liczby2.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -218,10 +148,7 @@
     "title": "Liczby zaczynające się od 50",
     "part": 2,
     "points": 3,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik dane.txt zawiera jeden napis z 10 000 znaków, wśród których ukryte są liczby – maksymalne ciągi cyfr. Podaj, ile ukrytych liczb zaczyna się od cyfr 50 (powtórzenia liczymy osobno).",
     "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
     "kind": "program",
@@ -249,10 +176,7 @@
     "title": "Najczęstsza cyfra",
     "part": 2,
     "points": 3,
-    "topics": [
-      "slowniki",
-      "pliki-tekstowe"
-    ],
+    "topics": ["slowniki", "pliki-tekstowe"],
     "summary": "Podaj cyfrę, która występuje w pliku dane.txt najczęściej, oraz liczbę jej wystąpień.",
     "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
     "kind": "program",
@@ -280,10 +204,7 @@
     "title": "Numery telefonów od piątki",
     "part": 2,
     "points": 3,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Numer telefonu to ukryta liczba złożona z dokładnie 9 cyfr. Wypisz, w kolejności występowania, wszystkie numery telefonów zaczynające się od cyfry 5.",
     "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
     "kind": "program",
@@ -311,11 +232,7 @@
     "title": "Najmniej różnych cyfr",
     "part": 2,
     "points": 3,
-    "topics": [
-      "napisy",
-      "slowniki",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "slowniki", "pliki-tekstowe"],
     "summary": "Spośród wszystkich numerów telefonów (9-cyfrowych ukrytych liczb) wypisz te, które składają się z najmniejszej liczby różnych cyfr.",
     "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
     "kind": "program",
@@ -333,9 +250,7 @@
           "dane.txt": "arkusze/2025/czerwiec/pliki/informatyka-2025-czerwiec-matura-rozszerzona-zalaczniki/dane.txt"
         },
         "expected": "033035335\n050525250",
-        "alternatives": [
-          "050525250\n033035335"
-        ]
+        "alternatives": ["050525250\n033035335"]
       }
     ]
   }

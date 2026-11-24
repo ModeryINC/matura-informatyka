@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { sessions } from '../data';
+import { sessions, tasksForSession } from '../data';
 import { renderAt } from '../../tests/render';
 import { routes } from '../routes';
 
@@ -25,7 +25,8 @@ describe('SessionsPage i SessionPage', () => {
   });
 
   it('sesja bez zadań informuje o tym', () => {
-    renderAt('/arkusze/2024/czerwiec', routes);
+    const empty = sessions.find((s) => tasksForSession(s.id).length === 0)!;
+    renderAt(`/arkusze/${empty.id}`, routes);
     expect(screen.getByText(/nie ma jeszcze zadań ze sprawdzarką/)).toBeInTheDocument();
   });
 
