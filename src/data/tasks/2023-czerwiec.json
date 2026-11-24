@@ -360,7 +360,7 @@
       "systemy-liczbowe",
       "pliki-tekstowe"
     ],
-    "summary": "Anagramy cyfrowe to liczby z tego samego zestawu cyfr w innej kolejności, bez zera na początku (np. z 11100 można utworzyć 6 anagramów). Wypisz, w kolejności z pliku, wszystkie 8-cyfrowe liczby binarne, z których można utworzyć najwięcej anagramów.",
+    "summary": "Anagramy cyfrowe to liczby z tego samego zestawu cyfr w innej kolejności, bez zera na początku (np. z 11100 można utworzyć 6 anagramów). Wypisz, w kolejności z pliku, wszystkie 8-cyfrowe liczby binarne, z których można utworzyć najwięcej anagramów.\n\nUwaga: w odpowiedzi do pliku przykładowego w arkuszu pominięto liczbę 10011100, choć spełnia ona warunek – sprawdzarka jej wymaga.",
     "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
     "checks": [
