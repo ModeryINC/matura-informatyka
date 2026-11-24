@@ -1,0 +1,402 @@
+[
+  {
+    "id": "2020-czerwiec-1.2",
+    "sessionId": "2020/czerwiec",
+    "number": "1.2",
+    "title": "Czy tablice są k-podobne",
+    "part": 1,
+    "points": 3,
+    "topics": [
+      "tablice"
+    ],
+    "summary": "Tablice A[1..n] i B[1..n] są k-podobne (0 ≤ k < n), gdy A[1..k] = B[n−k+1..n] oraz A[k+1..n] = B[1..n−k] – czyli B powstaje z A przez przesunięcie cykliczne.\n\nNapisz funkcję zwracającą True, jeśli A i B są k-podobne, i False w przeciwnym razie. W arkuszu wolno odwoływać się tylko do pojedynczych elementów tablic.",
+    "starterCode": "def czy_k_podobne(A, B, k):\n    n = len(A)\n    # zwróć True albo False\n    return False\n",
+    "kind": "function",
+    "functionName": "czy_k_podobne",
+    "tests": [
+      {
+        "args": [
+          [
+            5,
+            7,
+            9
+          ],
+          [
+            5,
+            7,
+            9
+          ],
+          0
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          [
+            10,
+            9,
+            12,
+            10,
+            9
+          ],
+          [
+            10,
+            10,
+            9,
+            9,
+            12
+          ],
+          3
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          [
+            3,
+            6,
+            5,
+            1,
+            8
+          ],
+          [
+            5,
+            1,
+            8,
+            3,
+            6
+          ],
+          4
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          [
+            3,
+            4,
+            5,
+            1,
+            2
+          ],
+          2
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          [
+            1,
+            1,
+            1,
+            1,
+            3,
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            3,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          4
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          [
+            4,
+            2,
+            4,
+            4,
+            2,
+            6
+          ],
+          [
+            4,
+            4,
+            2,
+            6,
+            4,
+            2
+          ],
+          1
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          [
+            3,
+            6,
+            5,
+            1,
+            8
+          ],
+          [
+            5,
+            1,
+            8,
+            3,
+            6
+          ],
+          2
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          1
+        ],
+        "expected": true
+      }
+    ]
+  },
+  {
+    "id": "2020-czerwiec-1.3",
+    "sessionId": "2020/czerwiec",
+    "number": "1.3",
+    "title": "Czy tablice są podobne",
+    "part": 1,
+    "points": 2,
+    "topics": [
+      "tablice"
+    ],
+    "summary": "Napisz funkcję czy_podobne(A, B), która zwraca True, jeśli istnieje takie k (0 ≤ k < n), że tablice A i B są k-podobne (definicja w zadaniu 1.2), a False w przeciwnym razie. Możesz zdefiniować i wykorzystać pomocniczą funkcję czy_k_podobne.",
+    "starterCode": "def czy_k_podobne(A, B, k):\n    ...\n\n\ndef czy_podobne(A, B):\n    return False\n",
+    "kind": "function",
+    "functionName": "czy_podobne",
+    "tests": [
+      {
+        "args": [
+          [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          [
+            3,
+            4,
+            5,
+            1,
+            2
+          ]
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          [
+            10,
+            9,
+            12,
+            10,
+            9
+          ],
+          [
+            10,
+            10,
+            9,
+            9,
+            12
+          ]
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          [
+            5,
+            7,
+            9
+          ],
+          [
+            5,
+            7,
+            9
+          ]
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            3,
+            2,
+            1
+          ]
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          [
+            7
+          ],
+          [
+            7
+          ]
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          [
+            7
+          ],
+          [
+            8
+          ]
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          [
+            4,
+            2,
+            4,
+            4,
+            2,
+            6
+          ],
+          [
+            4,
+            4,
+            2,
+            6,
+            4,
+            2
+          ]
+        ],
+        "expected": true
+      }
+    ]
+  },
+  {
+    "id": "2020-czerwiec-4.1",
+    "sessionId": "2020/czerwiec",
+    "number": "4.1",
+    "title": "Hipoteza Goldbacha",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "liczby-pierwsze",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik pary.txt zawiera 100 wierszy: liczbę (3–100) i słowo. Każdą parzystą liczbę z pliku przedstaw jako sumę dwóch liczb pierwszych – wybierz rozkład o największej różnicy składników. Wypisz w kolejnych wierszach: liczbę i oba składniki w kolejności niemalejącej (np. 20 3 17).",
+    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]  # [liczba (tekst), słowo]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "pary.txt": "arkusze/2020/czerwiec/pliki/Dane_PR2/przyklad.txt"
+        },
+        "expected": "24 5 19\n6 3 3\n6 3 3"
+      },
+      {
+        "label": "Dane egzaminacyjne (pary.txt)",
+        "files": {
+          "pary.txt": "arkusze/2020/czerwiec/pliki/Dane_PR2/pary.txt"
+        },
+        "expected": "68 7 61\n24 5 19\n48 5 43\n12 5 7\n42 5 37\n66 5 61\n78 5 73\n88 5 83\n76 3 73\n64 3 61\n24 5 19\n22 3 19\n64 3 61\n18 5 13\n36 5 31\n42 5 37\n56 3 53\n30 7 23\n44 3 41\n28 5 23\n94 5 89\n28 5 23\n52 5 47\n28 5 23\n6 3 3\n36 5 31\n34 3 31\n58 5 53"
+      }
+    ]
+  },
+  {
+    "id": "2020-czerwiec-4.2",
+    "sessionId": "2020/czerwiec",
+    "number": "4.2",
+    "title": "Najdłuższy fragment z identycznych liter",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "napisy",
+      "podciagi",
+      "pliki-tekstowe"
+    ],
+    "summary": "Dla każdego słowa z pliku pary.txt znajdź najdłuższy spójny fragment złożony z identycznych liter (przy remisie – pierwszy). Wypisz w kolejnych wierszach ten fragment i jego długość, np. dla zxyzzzz: zzzz 4.",
+    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]  # [liczba (tekst), słowo]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "pary.txt": "arkusze/2020/czerwiec/pliki/Dane_PR2/przyklad.txt"
+        },
+        "expected": "aaaaa 5\nbb 2\ncccccc 6\nbbbb 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4\ntttt 4"
+      },
+      {
+        "label": "Dane egzaminacyjne (pary.txt)",
+        "files": {
+          "pary.txt": "arkusze/2020/czerwiec/pliki/Dane_PR2/pary.txt"
+        },
+        "expected": "d 1\ntt 2\na 1\nlllllll 7\nooooo 5\nwwwwww 6\naaaaaaaaaaa 11\njj 2\naaaaaaaaaaaa 12\nttt 3\nqqq 3\nuu 2\ns 1\npppp 4\nsssssssssssss 13\nww 2\nmm 2\nddddd 5\nss 2\nll 2\nxxx 3\nttttt 5\nhhhhhhhhh 9\nggggggg 7\npppp 4\nw 1\nkkkkkkkkk 9\nv 1\nx 1\nz 1\nttttttt 7\nc 1\ntttttttttttt 12\nyyyyyyyyyyyy 12\nccc 3\nj 1\naaaaa 5\na 1\nr 1\ngg 2\nzzzzzzzz 8\njj 2\noooooooooooooooo 16\nppppp 5\ndddddd 6\npppp 4\nx 1\npppp 4\nd 1\nsssss 5\naaaaaaa 7\npppp 4\nkkkkkkkk 8\nwwwwww 6\nxxxx 4\ns 1\ngggg 4\nbb 2\nz 1\no 1\nmmmmm 5\naaaaaaa 7\nl 1\nllll 4\nggggg 5\naaaaa 5\njjjjjjjjjj 10\na 1\njj 2\nkkkkk 5\nd 1\nkkkkk 5\neee 3\ntttttttttt 10\nbbb 3\nuuuuuuuuuu 10\ndddd 4\nggggggggg 9\nlll 3\nttttttttttttttttttttttttttttttttt 33\ni 1\nfffff 5\ndd 2\nbb 2\na 1\nh 1\nhh 2\naaaa 4\ndddddddd 8\nee 2\nd 1\nrrrrrrrrrrrrrr 14\njjjjjjj 7\nn 1\naaaaaaa 7\ns 1\na 1\nuuuu 4\njj 2\nd 1"
+      }
+    ]
+  },
+  {
+    "id": "2020-czerwiec-4.3",
+    "sessionId": "2020/czerwiec",
+    "number": "4.3",
+    "title": "Najmniejsza para (liczba, słowo)",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "sortowanie",
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Spośród par z pliku pary.txt, w których liczba jest równa długości słowa, wypisz najmniejszą – porównujemy najpierw liczby, a przy równych liczbach słowa leksykograficznie.",
+    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]  # [liczba (tekst), słowo]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "pary.txt": "arkusze/2020/czerwiec/pliki/Dane_PR2/przyklad.txt"
+        },
+        "expected": "6 abbbbc"
+      },
+      {
+        "label": "Dane egzaminacyjne (pary.txt)",
+        "files": {
+          "pary.txt": "arkusze/2020/czerwiec/pliki/Dane_PR2/pary.txt"
+        },
+        "expected": "3 asd"
+      }
+    ]
+  }
+]
