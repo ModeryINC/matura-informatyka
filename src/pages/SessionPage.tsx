@@ -53,7 +53,7 @@ export function SessionPage() {
         <h2 id="zadania">Zadania z automatycznym sprawdzaniem</h2>
         {tasks.length === 0 ? (
           <p className="muted">
-            Dla tego arkusza nie ma jeszcze zadań ze sprawdzaczką. Możesz rozwiązać go samodzielnie,
+            Dla tego arkusza nie ma jeszcze zadań ze sprawdzarką. Możesz rozwiązać go samodzielnie,
             korzystając z klucza odpowiedzi.
           </p>
         ) : (

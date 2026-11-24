@@ -1,0 +1,41 @@
+import { screen, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { tasks } from '../data';
+import { saveSolution } from '../lib/storage';
+import { renderAt } from '../../tests/render';
+import { routes } from '../routes';
+
+describe('TasksPage', () => {
+  it('wyświetla wszystkie zadania i postęp', () => {
+    renderAt('/', routes);
+    expect(
+      screen.getByRole('heading', { level: 1, name: /Zadania maturalne/ }),
+    ).toBeInTheDocument();
+    const list = screen.getByRole('heading', { name: /Wszystkie zadania/ }).parentElement!;
+    expect(within(list).getAllByRole('article')).toHaveLength(tasks.length);
+    expect(screen.getByText(/Zaliczone:/)).toHaveTextContent(`Zaliczone: 0 z ${tasks.length}`);
+  });
+
+  it('filtruje po temacie i zapisuje filtr w adresie', async () => {
+    const { router } = renderAt('/', routes);
+    await userEvent.click(screen.getByRole('button', { name: /^Rekurencja/ }));
+    const expected = tasks.filter((t) => t.topics.includes('rekurencja')).length;
+    expect(screen.getByRole('heading', { name: /Wyniki wyszukiwania/ })).toHaveTextContent(
+      `(${expected})`,
+    );
+    expect(router.state.location.search).toBe('?tematy=rekurencja');
+  });
+
+  it('odczytuje filtry z adresu i pokazuje komunikat, gdy nic nie pasuje', () => {
+    renderAt('/?q=zzzzzz-nie-ma-takiego', routes);
+    expect(screen.getByText(/Brak zadań spełniających kryteria/)).toBeInTheDocument();
+  });
+
+  it('uwzględnia status zapisany w przeglądarce', () => {
+    const task = tasks[0]!;
+    saveSolution(task.id, { code: 'x', lastResult: { passed: true, results: [], durationMs: 1 } });
+    renderAt('/?status=zaliczone', routes);
+    expect(screen.getAllByRole('article')).toHaveLength(1);
+    expect(screen.getByText(/Zaliczone:/)).toHaveTextContent(`Zaliczone: 1 z ${tasks.length}`);
+  });
+});

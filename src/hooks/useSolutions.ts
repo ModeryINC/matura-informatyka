@@ -23,11 +23,14 @@ const createLookup = (): StatusLookup => {
 
 let snapshot: StatusLookup = createLookup();
 
-const subscribe = (callback: () => void) =>
-  subscribeSolutions(() => {
+const subscribe = (callback: () => void) => {
+  // Zmiany mogły nastąpić, gdy nikt nie nasłuchiwał – zaczynamy od świeżej migawki.
+  snapshot = createLookup();
+  return subscribeSolutions(() => {
     snapshot = createLookup();
     callback();
   });
+};
 
 const getSnapshot = () => snapshot;
 

@@ -6,78 +6,54 @@
     "title": "Algorytm z wyszukiwaniem binarnym",
     "part": 1,
     "points": 1,
-    "topics": [
-      "wyszukiwanie-binarne"
-    ],
+    "topics": ["wyszukiwanie-binarne"],
     "summary": "Algorytm z arkusza ustawia p = 1, q = n i dopóki p < q: s = (p + q) div 2; jeśli s·s·s < n, to p = s + 1, w przeciwnym razie q = s. Wynikiem jest p.\n\nZaimplementuj ten algorytm jako funkcję algorytm(n) i zastanów się, co oblicza (przyda się w zadaniach 1.1–1.3 z arkusza).",
     "starterCode": "def algorytm(n):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "algorytm",
     "tests": [
       {
-        "args": [
-          28
-        ],
+        "args": [28],
         "expected": 4
       },
       {
-        "args": [
-          64
-        ],
+        "args": [64],
         "expected": 4
       },
       {
-        "args": [
-          80
-        ],
+        "args": [80],
         "expected": 5
       },
       {
-        "args": [
-          1
-        ],
+        "args": [1],
         "expected": 1
       },
       {
-        "args": [
-          2
-        ],
+        "args": [2],
         "expected": 2
       },
       {
-        "args": [
-          8
-        ],
+        "args": [8],
         "expected": 2
       },
       {
-        "args": [
-          9
-        ],
+        "args": [9],
         "expected": 3
       },
       {
-        "args": [
-          1000
-        ],
+        "args": [1000],
         "expected": 10
       },
       {
-        "args": [
-          1001
-        ],
+        "args": [1001],
         "expected": 11
       },
       {
-        "args": [
-          729
-        ],
+        "args": [729],
         "expected": 9
       },
       {
-        "args": [
-          730
-        ],
+        "args": [730],
         "expected": 10
       }
     ]
@@ -89,10 +65,7 @@
     "title": "Skrajnie lewy szczyt",
     "part": 1,
     "points": 2,
-    "topics": [
-      "geometria",
-      "tablice"
-    ],
+    "topics": ["geometria", "tablice"],
     "summary": "Szczyty to punkty (X[i], Y[i]) z Y > 0, a obserwator stoi w (0, 0). Szczyt A jest widoczny na lewo od B, gdy X_A/Y_A < X_B/Y_B (żadne dwa nie leżą na jednej prostej z obserwatorem).\n\nNapisz funkcję zwracającą współrzędne [x, y] szczytu widocznego najbardziej na lewo. Wskazówka: porównuj iloczyny zamiast ilorazów, żeby uniknąć ułamków.",
     "starterCode": "def skrajnie_lewy(X, Y):\n    # zwróć [x, y]\n    return [X[0], Y[0]]\n",
     "kind": "function",
@@ -100,73 +73,28 @@
     "tests": [
       {
         "args": [
-          [
-            3,
-            -2,
-            5,
-            -4
-          ],
-          [
-            2,
-            1,
-            10,
-            1
-          ]
+          [3, -2, 5, -4],
+          [2, 1, 10, 1]
         ],
-        "expected": [
-          -4,
-          1
-        ]
+        "expected": [-4, 1]
+      },
+      {
+        "args": [[1], [1]],
+        "expected": [1, 1]
       },
       {
         "args": [
-          [
-            1
-          ],
-          [
-            1
-          ]
+          [5, -7, 0],
+          [2, 3, 4]
         ],
-        "expected": [
-          1,
-          1
-        ]
+        "expected": [-7, 3]
       },
       {
         "args": [
-          [
-            5,
-            -7,
-            0
-          ],
-          [
-            2,
-            3,
-            4
-          ]
+          [-1, -3, 2],
+          [2, 5, 1]
         ],
-        "expected": [
-          -7,
-          3
-        ]
-      },
-      {
-        "args": [
-          [
-            -1,
-            -3,
-            2
-          ],
-          [
-            2,
-            5,
-            1
-          ]
-        ],
-        "expected": [
-          -3,
-          5
-        ]
+        "expected": [-3, 5]
       }
     ]
   },
@@ -177,10 +105,7 @@
     "title": "Uporządkuj szczyty od lewej do prawej",
     "part": 1,
     "points": 4,
-    "topics": [
-      "sortowanie",
-      "geometria"
-    ],
+    "topics": ["sortowanie", "geometria"],
     "summary": "Przestaw elementy tablic X i Y tak, aby szczyty były uporządkowane w kolejności, w jakiej obserwator widzi je od lewej do prawej (rosnąco według X/Y). Funkcja ma zwrócić [X, Y].\n\nW arkuszu nie wolno używać funkcji bibliotecznych (np. sorted), a pełną liczbę punktów daje algorytm o złożoności co najwyżej kwadratowej – np. sortowanie przez wybieranie.",
     "starterCode": "def uporzadkuj(X, Y):\n    # posortuj szczyty bez użycia sort/sorted\n    return [X, Y]\n",
     "kind": "function",
@@ -188,158 +113,56 @@
     "tests": [
       {
         "args": [
-          [
-            3,
-            -2,
-            5,
-            -4
-          ],
-          [
-            2,
-            1,
-            10,
-            1
-          ]
+          [3, -2, 5, -4],
+          [2, 1, 10, 1]
         ],
         "expected": [
-          [
-            -4,
-            -2,
-            5,
-            3
-          ],
-          [
-            1,
-            1,
-            10,
-            2
-          ]
+          [-4, -2, 5, 3],
+          [1, 1, 10, 2]
+        ]
+      },
+      {
+        "args": [[1], [1]],
+        "expected": [[1], [1]]
+      },
+      {
+        "args": [
+          [5, -7, 0],
+          [2, 3, 4]
+        ],
+        "expected": [
+          [-7, 0, 5],
+          [3, 4, 2]
         ]
       },
       {
         "args": [
-          [
-            1
-          ],
-          [
-            1
-          ]
+          [-1, -3, 2],
+          [2, 5, 1]
         ],
         "expected": [
-          [
-            1
-          ],
-          [
-            1
-          ]
+          [-3, -1, 2],
+          [5, 2, 1]
         ]
       },
       {
         "args": [
-          [
-            5,
-            -7,
-            0
-          ],
-          [
-            2,
-            3,
-            4
-          ]
+          [4, 3, 2, 1],
+          [1, 1, 1, 1]
         ],
         "expected": [
-          [
-            -7,
-            0,
-            5
-          ],
-          [
-            3,
-            4,
-            2
-          ]
+          [1, 2, 3, 4],
+          [1, 1, 1, 1]
         ]
       },
       {
         "args": [
-          [
-            -1,
-            -3,
-            2
-          ],
-          [
-            2,
-            5,
-            1
-          ]
+          [0, 10, -10],
+          [5, 1, 1]
         ],
         "expected": [
-          [
-            -3,
-            -1,
-            2
-          ],
-          [
-            5,
-            2,
-            1
-          ]
-        ]
-      },
-      {
-        "args": [
-          [
-            4,
-            3,
-            2,
-            1
-          ],
-          [
-            1,
-            1,
-            1,
-            1
-          ]
-        ],
-        "expected": [
-          [
-            1,
-            2,
-            3,
-            4
-          ],
-          [
-            1,
-            1,
-            1,
-            1
-          ]
-        ]
-      },
-      {
-        "args": [
-          [
-            0,
-            10,
-            -10
-          ],
-          [
-            5,
-            1,
-            1
-          ]
-        ],
-        "expected": [
-          [
-            -10,
-            0,
-            10
-          ],
-          [
-            1,
-            5,
-            1
-          ]
+          [-10, 0, 10],
+          [1, 5, 1]
         ]
       }
     ]
@@ -351,10 +174,7 @@
     "title": "Ukryte przesłanie",
     "part": 2,
     "points": 3,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik sygnaly.txt zawiera 1000 słów z wielkich liter. Złącz dziesiąte litery co czterdziestego słowa (zaczynając od słowa czterdziestego) i wypisz powstałe przesłanie.",
     "starterCode": "with open(\"sygnaly.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -382,11 +202,7 @@
     "title": "Najwięcej różnych liter",
     "part": 2,
     "points": 4,
-    "topics": [
-      "napisy",
-      "slowniki",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "slowniki", "pliki-tekstowe"],
     "summary": "Znajdź słowo z największą liczbą różnych liter (przy remisie – pierwsze w pliku). Wypisz to słowo i liczbę różnych liter.",
     "starterCode": "with open(\"sygnaly.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -414,10 +230,7 @@
     "title": "Litery odległe co najwyżej o 10",
     "part": 2,
     "points": 4,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Wypisz (po jednym w wierszu, w kolejności z pliku) wszystkie słowa, w których każde dwie litery są odległe w alfabecie co najwyżej o 10 (np. CGECF tak, ABEZA nie – odległość A–Z to 25).",
     "starterCode": "with open(\"sygnaly.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",

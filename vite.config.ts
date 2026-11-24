@@ -22,7 +22,16 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       include: ['src/**/*.{ts,tsx}', 'scripts/**/*.ts'],
-      exclude: ['src/**/*.test.{ts,tsx}', 'src/main.tsx', 'src/**/*.d.ts'],
+      exclude: [
+        'src/**/*.test.{ts,tsx}',
+        'src/main.tsx',
+        'src/**/*.d.ts',
+        // Worker wymaga prawdziwego Pyodide – testowany przez harness (unittest) i ręcznie.
+        'src/python/worker.ts',
+        'scripts/build-catalog.ts',
+        'scripts/verify-solutions.ts',
+      ],
+      thresholds: { lines: 80, functions: 80, branches: 70, statements: 80 },
     },
   },
 });
