@@ -1,0 +1,345 @@
+[
+  {
+    "id": "2026-maj-1.2",
+    "sessionId": "2026/maj",
+    "number": "1.2",
+    "title": "Rekurencyjna funkcja A(m, n)",
+    "part": 1,
+    "points": 1,
+    "topics": [
+      "rekurencja"
+    ],
+    "summary": "Funkcja A(m, n) jest zdefiniowana rekurencyjnie: A(m, 1) = m; dla parzystego n > 1: A(m, n) = A(2m, n/2); dla nieparzystego n > 1: A(m, n) = 2·A(m, (n−1)/2) + m.\n\nZaimplementuj tę funkcję dokładnie według definicji. W arkuszu trzeba śledzić jej wywołania i obliczać wartości – implementacja pozwala sprawdzić odpowiedzi i zauważyć, co właściwie liczy A.",
+    "starterCode": "def A(m, n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "A",
+    "tests": [
+      {
+        "args": [
+          3,
+          9
+        ],
+        "expected": 27
+      },
+      {
+        "args": [
+          25,
+          25
+        ],
+        "expected": 625
+      },
+      {
+        "args": [
+          10,
+          15
+        ],
+        "expected": 150
+      },
+      {
+        "args": [
+          1,
+          777
+        ],
+        "expected": 777
+      },
+      {
+        "args": [
+          2,
+          1000000
+        ],
+        "expected": 2000000
+      },
+      {
+        "args": [
+          5,
+          1
+        ],
+        "expected": 5
+      },
+      {
+        "args": [
+          7,
+          2
+        ],
+        "expected": 14
+      },
+      {
+        "args": [
+          1,
+          1048577
+        ],
+        "expected": 1048577
+      }
+    ]
+  },
+  {
+    "id": "2026-maj-2.2",
+    "sessionId": "2026/maj",
+    "number": "2.2",
+    "title": "Liczba przeniesień w dodawaniu pisemnym",
+    "part": 1,
+    "points": 4,
+    "topics": [
+      "teoria-liczb"
+    ],
+    "summary": "Dla dwóch dodatnich liczb a i b o tej samej liczbie cyfr oblicz, ile przeniesień pojawia się podczas ich dodawania pisemnego, np. dla 27732 i 72619 są 4 przeniesienia.\n\nW arkuszu wolno używać tylko pojedynczych zmiennych całkowitych i operacji arytmetycznych (bez napisów i list).",
+    "starterCode": "def przeniesienia(a, b):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "przeniesienia",
+    "tests": [
+      {
+        "args": [
+          27732,
+          72619
+        ],
+        "expected": 4
+      },
+      {
+        "args": [
+          37932,
+          12528
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          88765,
+          11111
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          456789,
+          222222
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          1,
+          1
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          5,
+          5
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          999,
+          999
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          123,
+          456
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          19,
+          81
+        ],
+        "expected": 2
+      }
+    ]
+  },
+  {
+    "id": "2026-maj-3.1",
+    "sessionId": "2026/maj",
+    "number": "3.1",
+    "title": "Największa różnica sum kodów ASCII",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik pary.txt zawiera 500 par słów. Niech f(s) to suma kodów ASCII liter słowa s. Znajdź parę z jednego wiersza, dla której |f(s1) − f(s2)| jest największe, i wypisz oba słowa oraz tę wartość.",
+    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (pary_przyklad.txt)",
+        "files": {
+          "pary.txt": "arkusze/2026/maj/pliki/Dane-NF-2605/pary_przyklad.txt"
+        },
+        "expected": "eddcd eededcddceeecededcc 1403"
+      },
+      {
+        "label": "Dane egzaminacyjne (pary.txt)",
+        "files": {
+          "pary.txt": "arkusze/2026/maj/pliki/Dane-NF-2605/pary.txt"
+        },
+        "expected": "gpeeazeugmvsbzwsrxfplqdbakoxxe lhpbmoirdm 2206"
+      }
+    ]
+  },
+  {
+    "id": "2026-maj-3.2",
+    "sessionId": "2026/maj",
+    "number": "3.2",
+    "title": "Wspólne wystąpienia liter",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "napisy",
+      "slowniki",
+      "pliki-tekstowe"
+    ],
+    "summary": "Wspólna liczba wystąpień litery x w słowach s1, s2 to minimum z liczby jej wystąpień w każdym z nich. Znajdź parę słów z jednego wiersza, dla której suma wspólnych wystąpień wszystkich liter jest największa; wypisz oba słowa i tę sumę.",
+    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (pary_przyklad.txt)",
+        "files": {
+          "pary.txt": "arkusze/2026/maj/pliki/Dane-NF-2605/pary_przyklad.txt"
+        },
+        "expected": "ccccdcedddddecde ccdcdddecc 10"
+      },
+      {
+        "label": "Dane egzaminacyjne (pary.txt)",
+        "files": {
+          "pary.txt": "arkusze/2026/maj/pliki/Dane-NF-2605/pary.txt"
+        },
+        "expected": "aacbcccaacacbcabac cccccaaaacaccbabcba 18"
+      }
+    ]
+  },
+  {
+    "id": "2026-maj-3.3",
+    "sessionId": "2026/maj",
+    "number": "3.3",
+    "title": "Prefiksosufiksy",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Prefiksosufiks pary słów to słowo, które jest początkiem jednego z nich i jednocześnie końcem drugiego. Wypisz (w kolejności z pliku) wszystkie pary, których najdłuższy prefiksosufiks ma co najmniej 5 liter, a przy każdej parze – długość tego prefiksosufiksu.",
+    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (pary_przyklad.txt)",
+        "files": {
+          "pary.txt": "arkusze/2026/maj/pliki/Dane-NF-2605/pary_przyklad.txt"
+        },
+        "expected": "ececdddeed dddeedd 6"
+      },
+      {
+        "label": "Dane egzaminacyjne (pary.txt)",
+        "files": {
+          "pary.txt": "arkusze/2026/maj/pliki/Dane-NF-2605/pary.txt"
+        },
+        "expected": "bbbbaabbababbaaaa baaaaabaaabbbabab 5\naababbbababbbbbbaab bbbbaabbababababa 7\naaaababaaaabbbb aabbbbbabbbaaaa 6\nbbbbabaaabbbabb aaababaabbbbbbba 5\nccccabacbba acbbabcbcbcbaa 5\ncaabbccabccc cabccccabbaac 6\nabaacabcccccabbbc abbbcbbbbbcabaca 5"
+      }
+    ]
+  },
+  {
+    "id": "2026-maj-4.2",
+    "sessionId": "2026/maj",
+    "number": "4.2",
+    "title": "Pracownicy bez podwładnych",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "grafy",
+      "tablice",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik korpo.txt opisuje hierarchię 50 000 pracowników: w i-tym wierszu jest numer bezpośredniego przełożonego pracownika i (prezes, nr 1, ma 0). Podaj, ilu pracowników nie jest przełożonym nikogo.",
+    "starterCode": "with open(\"korpo.txt\") as plik:\n    przelozony = [int(wiersz) for wiersz in plik]  # przelozony[i - 1] dla pracownika i\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (korpo_przyklad.txt)",
+        "files": {
+          "korpo.txt": "arkusze/2026/maj/pliki/Dane-NF-2605/korpo_przyklad.txt"
+        },
+        "expected": "49998"
+      },
+      {
+        "label": "Dane egzaminacyjne (korpo.txt)",
+        "files": {
+          "korpo.txt": "arkusze/2026/maj/pliki/Dane-NF-2605/korpo.txt"
+        },
+        "expected": "25113"
+      }
+    ]
+  },
+  {
+    "id": "2026-maj-4.3",
+    "sessionId": "2026/maj",
+    "number": "4.3",
+    "title": "Najwięcej bezpośrednich podwładnych",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "slowniki",
+      "grafy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Podaj numer pracownika, który ma najwięcej bezpośrednich podwładnych, oraz liczbę tych podwładnych.",
+    "starterCode": "with open(\"korpo.txt\") as plik:\n    przelozony = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (korpo_przyklad.txt)",
+        "files": {
+          "korpo.txt": "arkusze/2026/maj/pliki/Dane-NF-2605/korpo_przyklad.txt"
+        },
+        "expected": "3 49997"
+      },
+      {
+        "label": "Dane egzaminacyjne (korpo.txt)",
+        "files": {
+          "korpo.txt": "arkusze/2026/maj/pliki/Dane-NF-2605/korpo.txt"
+        },
+        "expected": "2 19"
+      }
+    ]
+  },
+  {
+    "id": "2026-maj-4.4",
+    "sessionId": "2026/maj",
+    "number": "4.4",
+    "title": "Najdłuższa ścieżka przełożonych",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "grafy",
+      "programowanie-dynamiczne",
+      "pliki-tekstowe"
+    ],
+    "summary": "Przełożonymi pracownika są jego bezpośredni przełożony i wszyscy przełożeni tamtego. Podaj, ilu najwięcej przełożonych ma jeden pracownik, oraz ilu pracowników ma taką liczbę przełożonych. Wskazówka: numer przełożonego jest zawsze mniejszy od numeru pracownika.",
+    "starterCode": "with open(\"korpo.txt\") as plik:\n    przelozony = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (korpo_przyklad.txt)",
+        "files": {
+          "korpo.txt": "arkusze/2026/maj/pliki/Dane-NF-2605/korpo_przyklad.txt"
+        },
+        "expected": "2 49997"
+      },
+      {
+        "label": "Dane egzaminacyjne (korpo.txt)",
+        "files": {
+          "korpo.txt": "arkusze/2026/maj/pliki/Dane-NF-2605/korpo.txt"
+        },
+        "expected": "22 2"
+      }
+    ]
+  }
+]
