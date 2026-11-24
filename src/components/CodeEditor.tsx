@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { basicSetup, EditorView } from 'codemirror';
 import { python } from '@codemirror/lang-python';
-import { indentUnit } from '@codemirror/language';
+import { HighlightStyle, indentUnit, syntaxHighlighting } from '@codemirror/language';
+import { tags } from '@lezer/highlight';
 import { EditorState } from '@codemirror/state';
 import { keymap } from '@codemirror/view';
 import { indentWithTab } from '@codemirror/commands';
@@ -28,6 +29,21 @@ const theme = EditorView.theme({
   },
   '.cm-cursor': { borderLeftColor: 'var(--accent)' },
 });
+
+/** Kolorowanie składni oparte na zmiennych CSS – czytelne w obu motywach. */
+const highlight = HighlightStyle.define([
+  { tag: [tags.keyword, tags.controlKeyword, tags.operatorKeyword], color: 'var(--syn-keyword)' },
+  { tag: [tags.string, tags.special(tags.string)], color: 'var(--syn-string)' },
+  { tag: [tags.number, tags.bool, tags.null], color: 'var(--syn-number)' },
+  { tag: tags.comment, color: 'var(--syn-comment)', fontStyle: 'italic' },
+  {
+    tag: [tags.function(tags.variableName), tags.function(tags.definition(tags.variableName))],
+    color: 'var(--syn-function)',
+  },
+  { tag: [tags.className, tags.definition(tags.className)], color: 'var(--syn-function)' },
+  { tag: [tags.standard(tags.variableName), tags.self], color: 'var(--syn-builtin)' },
+  { tag: tags.operator, color: 'var(--syn-operator)' },
+]);
 
 /**
  * Edytor kodu Python oparty na CodeMirror 6.
@@ -64,6 +80,7 @@ export function CodeEditor({ value, onChange, onSubmit, label }: CodeEditorProps
           python(),
           indentUnit.of('    '),
           theme,
+          syntaxHighlighting(highlight),
           EditorView.contentAttributes.of({ 'aria-label': label }),
           EditorView.updateListener.of((update) => {
             if (update.docChanged) callbacks.current.onChange(update.state.doc.toString());

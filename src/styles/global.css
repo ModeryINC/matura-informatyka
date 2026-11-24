@@ -42,6 +42,13 @@
   --code-gutter: #f1f3f9;
   --code-active: #eef2ff;
   --code-selection: #cdd9ff;
+  --syn-keyword: #8b2fc9;
+  --syn-string: #1a7f37;
+  --syn-number: #b35900;
+  --syn-comment: #6a737d;
+  --syn-function: #1f5fd6;
+  --syn-builtin: #0b7a8a;
+  --syn-operator: #6b4b00;
 
   --radius: 12px;
   --radius-sm: 8px;
@@ -75,6 +82,13 @@
     --code-gutter: #161b27;
     --code-active: #1b2233;
     --code-selection: #2c3b66;
+    --syn-keyword: #d2a8ff;
+    --syn-string: #a5d6a7;
+    --syn-number: #ffb86c;
+    --syn-comment: #8b95a8;
+    --syn-function: #82aaff;
+    --syn-builtin: #7fdbca;
+    --syn-operator: #f0c674;
     --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 4px 12px rgb(0 0 0 / 30%);
   }
 }
@@ -102,6 +116,13 @@
   --code-gutter: #161b27;
   --code-active: #1b2233;
   --code-selection: #2c3b66;
+  --syn-keyword: #d2a8ff;
+  --syn-string: #a5d6a7;
+  --syn-number: #ffb86c;
+  --syn-comment: #8b95a8;
+  --syn-function: #82aaff;
+  --syn-builtin: #7fdbca;
+  --syn-operator: #f0c674;
   --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 4px 12px rgb(0 0 0 / 30%);
 }
 
