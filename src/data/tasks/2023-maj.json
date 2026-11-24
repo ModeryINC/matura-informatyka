@@ -1,0 +1,437 @@
+[
+  {
+    "id": "2023-maj-1.3",
+    "sessionId": "2023/maj",
+    "number": "1.3",
+    "title": "Biblioteczka Adama – kolejność wypisywania",
+    "part": 1,
+    "points": 2,
+    "topics": [
+      "rekurencja",
+      "grafy"
+    ],
+    "summary": "Adam wstawia książki do biblioteczki zaczynając od przegródki B[0, 1]: jeśli przegródka jest zajęta, książkę o mniejszym numerze kieruje do B[i+1, 2j−1], a o większym do B[i+1, 2j] (to drzewo BST). Rekurencyjny algorytm A(i, j) wypisuje książkę z B[i, j], a potem odwiedza lewe i prawe dziecko.\n\nNapisz funkcję, która dla listy numerów książek (w kolejności wstawiania) zwróci listę numerów w kolejności wypisania przez algorytm A.",
+    "starterCode": "def kolejnosc(ksiazki):\n    # zbuduj biblioteczkę, a potem zwróć listę numerów w kolejności algorytmu A\n    return []\n",
+    "kind": "function",
+    "functionName": "kolejnosc",
+    "tests": [
+      {
+        "args": [
+          [
+            10,
+            2,
+            15,
+            13,
+            1,
+            5,
+            25
+          ]
+        ],
+        "expected": [
+          10,
+          2,
+          1,
+          5,
+          15,
+          13,
+          25
+        ]
+      },
+      {
+        "args": [
+          [
+            1,
+            5,
+            10,
+            15,
+            2,
+            25,
+            13
+          ]
+        ],
+        "expected": [
+          1,
+          5,
+          2,
+          10,
+          15,
+          13,
+          25
+        ]
+      },
+      {
+        "args": [
+          [
+            14,
+            18,
+            12,
+            9,
+            20,
+            15,
+            17
+          ]
+        ],
+        "expected": [
+          14,
+          12,
+          9,
+          18,
+          15,
+          17,
+          20
+        ]
+      },
+      {
+        "args": [
+          [
+            7
+          ]
+        ],
+        "expected": [
+          7
+        ]
+      },
+      {
+        "args": [
+          [
+            5,
+            4,
+            3,
+            2,
+            1
+          ]
+        ],
+        "expected": [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      },
+      {
+        "args": [
+          [
+            9,
+            2,
+            12,
+            10,
+            14,
+            13,
+            15
+          ]
+        ],
+        "expected": [
+          9,
+          2,
+          12,
+          10,
+          14,
+          13,
+          15
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2023-maj-2.1",
+    "sessionId": "2023/maj",
+    "number": "2.1",
+    "title": "Liczba bloków w zapisie binarnym",
+    "part": 1,
+    "points": 3,
+    "topics": [
+      "systemy-liczbowe"
+    ],
+    "summary": "Blok w zapisie binarnym to maksymalny ciąg jednakowych cyfr, np. 1000011 (67) ma 3 bloki, a 11110101 (245) – 5.\n\nNapisz funkcję zwracającą liczbę bloków w zapisie binarnym dodatniej liczby n. W arkuszu nie wolno używać funkcji konwersji (np. bin) – tylko arytmetyki.",
+    "starterCode": "def bloki(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "bloki",
+    "tests": [
+      {
+        "args": [
+          67
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          245
+        ],
+        "expected": 5
+      },
+      {
+        "args": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "args": [
+          3
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          5
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          1023
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          1024
+        ],
+        "expected": 2
+      },
+      {
+        "args": [
+          31799
+        ],
+        "expected": 5
+      },
+      {
+        "args": [
+          65535
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          170
+        ],
+        "expected": 8
+      }
+    ]
+  },
+  {
+    "id": "2023-maj-2.2",
+    "sessionId": "2023/maj",
+    "number": "2.2",
+    "title": "Liczby o co najwyżej dwóch blokach",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "systemy-liczbowe",
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik bin.txt zawiera 100 liczb zapisanych binarnie (co najwyżej 20 cyfr). Podaj, ile z nich składa się z co najwyżej dwóch bloków.",
+    "starterCode": "with open(\"bin.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (bin_przyklad.txt)",
+        "files": {
+          "bin.txt": "arkusze/2023/maj/pliki/Dane_2305/bin_przyklad.txt"
+        },
+        "expected": "3"
+      },
+      {
+        "label": "Dane egzaminacyjne (bin.txt)",
+        "files": {
+          "bin.txt": "arkusze/2023/maj/pliki/Dane_2305/bin.txt"
+        },
+        "expected": "10"
+      }
+    ]
+  },
+  {
+    "id": "2023-maj-2.3",
+    "sessionId": "2023/maj",
+    "number": "2.3",
+    "title": "Największa liczba binarna",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "systemy-liczbowe",
+      "pliki-tekstowe"
+    ],
+    "summary": "Wypisz (w zapisie binarnym) największą z liczb zapisanych w pliku bin.txt.",
+    "starterCode": "with open(\"bin.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (bin_przyklad.txt)",
+        "files": {
+          "bin.txt": "arkusze/2023/maj/pliki/Dane_2305/bin_przyklad.txt"
+        },
+        "expected": "10001111110111100000"
+      },
+      {
+        "label": "Dane egzaminacyjne (bin.txt)",
+        "files": {
+          "bin.txt": "arkusze/2023/maj/pliki/Dane_2305/bin.txt"
+        },
+        "expected": "1110100011100011100"
+      }
+    ]
+  },
+  {
+    "id": "2023-maj-2.5",
+    "sessionId": "2023/maj",
+    "number": "2.5",
+    "title": "p XOR (p div 2)",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "systemy-liczbowe",
+      "pliki-tekstowe"
+    ],
+    "summary": "Dla każdej liczby p z pliku bin.txt oblicz p XOR (p div 2) i wypisz wynik w systemie binarnym – każdy w osobnym wierszu, w kolejności z pliku (to tzw. kod Graya).",
+    "starterCode": "with open(\"bin.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (bin_przyklad.txt)",
+        "files": {
+          "bin.txt": "arkusze/2023/maj/pliki/Dane_2305/bin_przyklad.txt"
+        },
+        "expected": "10000\n100001011\n1001000\n1000010000\n11001000001100010000\n1000001000110000\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111\n111"
+      },
+      {
+        "label": "Dane egzaminacyjne (bin.txt)",
+        "files": {
+          "bin.txt": "arkusze/2023/maj/pliki/Dane_2305/bin.txt"
+        },
+        "expected": "1001011000\n1111000001\n1110001000\n1101100001111010\n110100010\n1100110000110000\n100010000\n1110111101\n1100110011\n1110001100001\n111110111101000\n100110100011010\n1000001000\n11101010110100010\n11101101111\n1100001010101010\n10011110101\n1101000111100010001\n1010000101110010\n11101100000\n1000000000\n100000010010\n1100010\n11010011\n110110000001000\n1000010\n10100111001001\n1100011101111\n101010110001\n1001100100001111\n100110000111\n110100110011110111\n111000110110110011\n10100111101010\n1111000110011000\n101111110101\n1110011111111011\n11010110100100100\n110000000\n1000000110010011\n1001111100001\n1111011101\n11000000100\n10000101000011110\n10100010111101\n1\n110001000\n111101100011001\n100110000\n1101101011110100\n110110101111\n101110111001000100\n1110110000100111\n1011001010011\n100000000\n1111110111100\n11011110111001\n110110101110000110\n1101101000111101\n111100010\n100111010111001\n110000010100\n1010111011\n1001110010010010010\n101100111101\n1010110011111100111\n1101010101000\n111110101011100\n10000000\n11010111000\n11001110100\n1010000011010111111\n110110100101\n11101100000110\n1011110010101000000\n1001010001010010\n10101100111\n10000101101\n100101000010\n110011000100\n10010110010110\n101010010111001\n1100011110\n1011100110001011110\n101001110111001\n10011000101101011\n10000000\n11110110010101011\n1101011010110\n1100010010111001\n11010001001100011\n1010101001001\n100000000\n1100010010010\n1111100011000\n1011111011110100\n11100101101110101\n110001011011011\n1011000101011000000\n11001011110011000"
+      }
+    ]
+  },
+  {
+    "id": "2023-maj-3.1",
+    "sessionId": "2023/maj",
+    "number": "3.1",
+    "title": "Fragmenty dwucyfrowe większe od 90",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "podciagi",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik pi.txt zawiera 10 000 cyfr rozwinięcia liczby π (po jednej w wierszu). Fragment 2-cyfrowy to dwie kolejne cyfry. Podaj, ile fragmentów 2-cyfrowych zapisuje liczbę większą od 90.",
+    "starterCode": "with open(\"pi.txt\") as plik:\n    cyfry = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (pi_przyklad.txt)",
+        "files": {
+          "pi.txt": "arkusze/2023/maj/pliki/Dane_2305/pi_przyklad.txt"
+        },
+        "expected": "13"
+      },
+      {
+        "label": "Dane egzaminacyjne (pi.txt)",
+        "files": {
+          "pi.txt": "arkusze/2023/maj/pliki/Dane_2305/pi.txt"
+        },
+        "expected": "902"
+      }
+    ]
+  },
+  {
+    "id": "2023-maj-3.2",
+    "sessionId": "2023/maj",
+    "number": "3.2",
+    "title": "Najrzadszy i najczęstszy fragment",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "slowniki",
+      "pliki-tekstowe"
+    ],
+    "summary": "Spośród 100 możliwych fragmentów 2-cyfrowych (00–99) znajdź ten, który występuje w pliku pi.txt najrzadziej, i ten, który występuje najczęściej (przy remisie – o mniejszej wartości). Wypisz w dwóch liniach: fragment i liczbę wystąpień.",
+    "starterCode": "with open(\"pi.txt\") as plik:\n    cyfry = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (pi_przyklad.txt)",
+        "files": {
+          "pi.txt": "arkusze/2023/maj/pliki/Dane_2305/pi_przyklad.txt"
+        },
+        "expected": "00 0\n62 4"
+      },
+      {
+        "label": "Dane egzaminacyjne (pi.txt)",
+        "files": {
+          "pi.txt": "arkusze/2023/maj/pliki/Dane_2305/pi.txt"
+        },
+        "expected": "88 80\n65 124"
+      }
+    ]
+  },
+  {
+    "id": "2023-maj-3.3",
+    "sessionId": "2023/maj",
+    "number": "3.3",
+    "title": "Ciągi rosnąco-malejące długości 6",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "podciagi",
+      "pliki-tekstowe"
+    ],
+    "summary": "Ciąg (co najmniej 4 elementy) jest rosnąco-malejący, jeśli da się go podzielić na niepusty ciąg ściśle rosnący (min. 2 elementy) i następujący po nim ściśle malejący (min. 2 elementy). Podaj, ile jest rosnąco-malejących ciągów złożonych z dokładnie sześciu kolejnych cyfr pliku pi.txt.",
+    "starterCode": "with open(\"pi.txt\") as plik:\n    cyfry = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (pi_przyklad.txt)",
+        "files": {
+          "pi.txt": "arkusze/2023/maj/pliki/Dane_2305/pi_przyklad.txt"
+        },
+        "expected": "3"
+      },
+      {
+        "label": "Dane egzaminacyjne (pi.txt)",
+        "files": {
+          "pi.txt": "arkusze/2023/maj/pliki/Dane_2305/pi.txt"
+        },
+        "expected": "214"
+      }
+    ]
+  },
+  {
+    "id": "2023-maj-3.4",
+    "sessionId": "2023/maj",
+    "number": "3.4",
+    "title": "Najdłuższy ciąg rosnąco-malejący",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "podciagi",
+      "pliki-tekstowe"
+    ],
+    "summary": "Znajdź najdłuższy rosnąco-malejący ciąg kolejnych cyfr w pliku pi.txt (jest jeden). W pierwszej linii wypisz numer wiersza, w którym się zaczyna, a w drugiej – jego cyfry bez odstępów.",
+    "starterCode": "with open(\"pi.txt\") as plik:\n    cyfry = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (pi_przyklad.txt)",
+        "files": {
+          "pi.txt": "arkusze/2023/maj/pliki/Dane_2305/pi_przyklad.txt"
+        },
+        "expected": "77\n0899862"
+      },
+      {
+        "label": "Dane egzaminacyjne (pi.txt)",
+        "files": {
+          "pi.txt": "arkusze/2023/maj/pliki/Dane_2305/pi.txt"
+        },
+        "expected": "2781\n014576540"
+      }
+    ]
+  }
+]
