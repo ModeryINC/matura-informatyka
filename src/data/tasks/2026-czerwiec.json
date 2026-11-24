@@ -1,0 +1,359 @@
+[
+  {
+    "id": "2026-czerwiec-1.1",
+    "sessionId": "2026/czerwiec",
+    "number": "1.1",
+    "title": "Algorytm Szyfr",
+    "part": 1,
+    "points": 2,
+    "topics": [
+      "szyfrowanie",
+      "napisy",
+      "tablice"
+    ],
+    "summary": "Algorytm Szyfr z kluczem k: a = n div k, c = n − a; dla i = 1, …, n: jeśli i mod k = 0, to znak T[i] trafia na pozycję S[n − a + i div k], w przeciwnym razie na S[c], a c zmniejsza się o 1.\n\nZaimplementuj go jako funkcję szyfr(T, k), która dla napisu T zwróci szyfrogram (pamiętaj o numeracji od 1). Np. szyfr(\"defragmentacja\", 3) = \"ajatemaredfgnc\".",
+    "starterCode": "def szyfr(T, k):\n    n = len(T)\n    # ...\n    return \"\"\n",
+    "kind": "function",
+    "functionName": "szyfr",
+    "tests": [
+      {
+        "args": [
+          "defragmentacja",
+          3
+        ],
+        "expected": "ajatemaredfgnc"
+      },
+      {
+        "args": [
+          "defragmentacja",
+          5
+        ],
+        "expected": "ajcanemgrfedat"
+      },
+      {
+        "args": [
+          "tropikalny",
+          5
+        ],
+        "expected": "nlakportiy"
+      },
+      {
+        "args": [
+          "tropikalny",
+          10
+        ],
+        "expected": "nlakiporty"
+      },
+      {
+        "args": [
+          "serwer",
+          1
+        ],
+        "expected": "serwer"
+      },
+      {
+        "args": [
+          "serwer",
+          7
+        ],
+        "expected": "rewres"
+      },
+      {
+        "args": [
+          "abc",
+          2
+        ],
+        "expected": "cab"
+      }
+    ]
+  },
+  {
+    "id": "2026-czerwiec-2.2",
+    "sessionId": "2026/czerwiec",
+    "number": "2.2",
+    "title": "Największe k, dla którego tablica jest k-podobna",
+    "part": 1,
+    "points": 4,
+    "topics": [
+      "tablice",
+      "napisy"
+    ],
+    "summary": "Tablica T[1..n] jest k-podobna (1 ≤ k < n), gdy jej k pierwszych elementów jest równych k ostatnim: T[1..k] = T[n−k+1..n]; każda tablica jest 0-podobna. Np. [1, 2, 1, 1, 2, 1, 1] jest 0-, 1- i 4-podobna.\n\nNapisz funkcję zwracającą największe k, dla którego T jest k-podobna. W arkuszu nie wolno używać wycinków list ani funkcji wbudowanych.",
+    "starterCode": "def najwieksze_k(T):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "najwieksze_k",
+    "tests": [
+      {
+        "args": [
+          [
+            1,
+            2,
+            1,
+            1,
+            2,
+            1,
+            1
+          ]
+        ],
+        "expected": 4
+      },
+      {
+        "args": [
+          [
+            1,
+            2,
+            2
+          ]
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          [
+            2,
+            2,
+            2
+          ]
+        ],
+        "expected": 2
+      },
+      {
+        "args": [
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          [
+            1,
+            2,
+            3,
+            2,
+            4
+          ]
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          [
+            3,
+            5,
+            3,
+            5,
+            3,
+            5,
+            3,
+            5,
+            3,
+            5
+          ]
+        ],
+        "expected": 8
+      },
+      {
+        "args": [
+          [
+            7,
+            7
+          ]
+        ],
+        "expected": 1
+      }
+    ]
+  },
+  {
+    "id": "2026-czerwiec-3.1",
+    "sessionId": "2026/czerwiec",
+    "number": "3.1",
+    "title": "Powtarzające się np-pary",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "np-para to dwa kolejne znaki napisu, z których pierwszy stoi na pozycji nieparzystej (MATURA ma np-pary MA, TU, RA). Plik dane.txt zawiera jeden napis parzystej długości. Podaj, ile razy dwie kolejne np-pary są takie same (dla ABABAB odpowiedź to 2).",
+    "starterCode": "with open(\"dane.txt\") as plik:\n    s = plik.read().strip()\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (dane_przyklad.txt)",
+        "files": {
+          "dane.txt": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/dane_przyklad.txt"
+        },
+        "expected": "2"
+      },
+      {
+        "label": "Dane egzaminacyjne (dane.txt)",
+        "files": {
+          "dane.txt": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/dane.txt"
+        },
+        "expected": "17"
+      }
+    ]
+  },
+  {
+    "id": "2026-czerwiec-3.2",
+    "sessionId": "2026/czerwiec",
+    "number": "3.2",
+    "title": "Najdłuższy fragment parzyście pierwszy",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "liczby-pierwsze",
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Fragment napisu złożony z kolejnych np-par (zaczyna się na pozycji nieparzystej i ma parzystą długość) nazwijmy parzyście pierwszym, gdy suma kodów ASCII jego znaków jest liczbą pierwszą – np. NEWS (317). Wypisz najdłuższy taki fragment napisu z pliku dane.txt (jest jeden). Uwaga na wydajność: przydadzą się sumy prefiksowe.",
+    "starterCode": "with open(\"dane.txt\") as plik:\n    s = plik.read().strip()\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (dane_przyklad.txt)",
+        "files": {
+          "dane.txt": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/dane_przyklad.txt"
+        },
+        "expected": "FORMYKINRMRMATYKYKATYKATFO"
+      },
+      {
+        "label": "Dane egzaminacyjne (dane.txt)",
+        "files": {
+          "dane.txt": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/dane.txt"
+        },
+        "expected": "INRZWZASEKYPYPYIEKDLEKODASINWNWNUPJNINEKYPDLUZASJNINYPUPWZRZJNILRZRZILNYUZWZRZZAZABYASASWZUZURUZJNDLDLEKURYIUPWNWZILWZJNWNNYEKUPASYIDLILWZEKIERZEKWZUZUZYIILINASINUZRAZAILRZWNYPURODWNINZAEKEKYPYIEKILNYWNNYDLRZDLILWZDLYPZAIEUZILRZZAUZURININODDLINILEKLOYIYIDLASILYIUZDLJNWZRZOZEKASRZINJNUZEKWZODASASUZDLURURDLRZODZALOWZRARARZZAINYPRZRAINOZRZZAURYPURYIRZEKINUZURYPJNINEKODZAUPURUPYPWZILASUZUZRZEKILRAEKODLOINNYJNODUZJNILILWNILYPASEKLOINURODEKILILASUPIEOZILZALTWZILUZYPWZJNEKINDLRZRARZUZINDLWNIELTLODLJNINILYPASYPZAILASDLDLJNRZINUZILJNRAINYIRAWZODNY"
+      }
+    ]
+  },
+  {
+    "id": "2026-czerwiec-3.3",
+    "sessionId": "2026/czerwiec",
+    "number": "3.3",
+    "title": "np-pary według liczby wystąpień",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "slowniki",
+      "sortowanie",
+      "pliki-tekstowe"
+    ],
+    "summary": "Uporządkuj różne np-pary rosnąco według liczby ich wystąpień (żadne dwie nie mają tej samej liczby wystąpień) i wypisz napis powstały z ich złączenia, np. dla RAPARA: PARA.",
+    "starterCode": "with open(\"dane.txt\") as plik:\n    s = plik.read().strip()\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (dane_przyklad.txt)",
+        "files": {
+          "dane.txt": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/dane_przyklad.txt"
+        },
+        "expected": "INFORMATYK"
+      },
+      {
+        "label": "Dane egzaminacyjne (dane.txt)",
+        "files": {
+          "dane.txt": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/dane.txt"
+        },
+        "expected": "BYLTOZIELONYUPRAWNYIURODZAJNYPASWZDLUZRZEKINIL"
+      }
+    ]
+  },
+  {
+    "id": "2026-czerwiec-4.1",
+    "sessionId": "2026/czerwiec",
+    "number": "4.1",
+    "title": "Największe miasto",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "tablice",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik mapa.txt zawiera dane 1000 miast: współrzędne x, y i liczbę mieszkańców w tysiącach. Podaj numer miasta (numer wiersza) o największej liczbie mieszkańców oraz tę liczbę.",
+    "starterCode": "with open(\"mapa.txt\") as plik:\n    miasta = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (mapa_przyklad.txt)",
+        "files": {
+          "mapa.txt": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/mapa_przyklad.txt"
+        },
+        "expected": "10 48967"
+      },
+      {
+        "label": "Dane egzaminacyjne (mapa.txt)",
+        "files": {
+          "mapa.txt": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/mapa.txt"
+        },
+        "expected": "254 2483"
+      }
+    ]
+  },
+  {
+    "id": "2026-czerwiec-4.2",
+    "sessionId": "2026/czerwiec",
+    "number": "4.2",
+    "title": "Najbliższe pary miast",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "geometria",
+      "pliki-tekstowe"
+    ],
+    "summary": "Odległość między miastami liczymy jako |x1 − x2| + |y1 − y2| (metryka miejska). Wypisz najmniejszą odległość między dwoma miastami, a potem wszystkie pary miast (numery, każda para raz, mniejszy numer pierwszy) położone w tej odległości – po jednej parze w wierszu, w kolejności rosnących numerów.",
+    "starterCode": "with open(\"mapa.txt\") as plik:\n    miasta = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (mapa_przyklad.txt)",
+        "files": {
+          "mapa.txt": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/mapa_przyklad.txt"
+        },
+        "expected": "7\n14 15\n27 32"
+      },
+      {
+        "label": "Dane egzaminacyjne (mapa.txt)",
+        "files": {
+          "mapa.txt": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/mapa.txt"
+        },
+        "expected": "2\n30 170\n120 176\n422 637\n426 599\n737 778"
+      }
+    ]
+  },
+  {
+    "id": "2026-czerwiec-4.3",
+    "sessionId": "2026/czerwiec",
+    "number": "4.3",
+    "title": "Aglomeracja",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "geometria",
+      "pliki-tekstowe"
+    ],
+    "summary": "Aglomeracja to kwadrat o lewym dolnym rogu (0, 0) i całkowitym boku, w którym gęstość zaludnienia (suma mieszkańców miast leżących ściśle wewnątrz podzielona przez pole) jest większa od 2. Znajdź największą aglomerację i wypisz długość jej boku oraz sumaryczną liczbę mieszkańców.",
+    "starterCode": "with open(\"mapa.txt\") as plik:\n    miasta = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (mapa_przyklad.txt)",
+        "files": {
+          "mapa.txt": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/mapa_przyklad.txt"
+        },
+        "expected": "94 17674"
+      },
+      {
+        "label": "Dane egzaminacyjne (mapa.txt)",
+        "files": {
+          "mapa.txt": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/mapa.txt"
+        },
+        "expected": "114 26078"
+      }
+    ]
+  }
+]
