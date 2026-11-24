@@ -1,0 +1,338 @@
+[
+  {
+    "id": "2022-czerwiec-1.2",
+    "sessionId": "2022/czerwiec",
+    "number": "1.2",
+    "title": "Suma kwadratów cyfr",
+    "part": 1,
+    "points": 2,
+    "topics": [
+      "teoria-liczb"
+    ],
+    "summary": "Napisz funkcję suma_kw_cyfr(n), która dla dodatniej liczby n zwraca sumę kwadratów jej cyfr w zapisie dziesiętnym, np. dla 123 wynik to 1² + 2² + 3² = 14. W arkuszu wolno używać tylko operacji arytmetycznych (bez zamiany na napis).",
+    "starterCode": "def suma_kw_cyfr(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "suma_kw_cyfr",
+    "tests": [
+      {
+        "args": [
+          123
+        ],
+        "expected": 14
+      },
+      {
+        "args": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          9
+        ],
+        "expected": 81
+      },
+      {
+        "args": [
+          10
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          999
+        ],
+        "expected": 243
+      },
+      {
+        "args": [
+          2022
+        ],
+        "expected": 12
+      },
+      {
+        "args": [
+          7
+        ],
+        "expected": 49
+      }
+    ]
+  },
+  {
+    "id": "2022-czerwiec-1.3",
+    "sessionId": "2022/czerwiec",
+    "number": "1.3",
+    "title": "Liczby nudne i ciekawe",
+    "part": 1,
+    "points": 3,
+    "topics": [
+      "teoria-liczb",
+      "tablice",
+      "symulacja"
+    ],
+    "summary": "Tworzymy ciąg: zaczynamy od n, a każdy kolejny element to suma kwadratów cyfr poprzedniego. Jeśli w ciągu pojawi się 1, liczba n jest nudna, w przeciwnym razie – ciekawa (ciąg wpada wtedy w cykl, np. 4 → 16 → 37 → … → 4).\n\nNapisz funkcję czy_nudna(n) dla 0 < n < 1000, zwracającą True dla liczb nudnych i False dla ciekawych. Przyda się fakt, że suma kwadratów cyfr liczby trzycyfrowej nie przekracza 243 – możesz zapamiętywać odwiedzone wartości w tablicy.",
+    "starterCode": "def suma_kw_cyfr(n):\n    ...\n\n\ndef czy_nudna(n):\n    return False\n",
+    "kind": "function",
+    "functionName": "czy_nudna",
+    "tests": [
+      {
+        "args": [
+          4
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          13
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          229
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          82
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          1
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          7
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          2
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          100
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          999
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          145
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          998
+        ],
+        "expected": true
+      }
+    ]
+  },
+  {
+    "id": "2022-czerwiec-2.1",
+    "sessionId": "2022/czerwiec",
+    "number": "2.1",
+    "title": "Rekurencyjna funkcja Koduj",
+    "part": 1,
+    "points": 2,
+    "topics": [
+      "rekurencja",
+      "napisy",
+      "systemy-liczbowe"
+    ],
+    "summary": "Funkcja Koduj(n): dla n = 1 zwraca słowo puste; w przeciwnym razie oblicza k = n div 2 i zwraca Koduj(k) + 'A', gdy k jest parzyste, albo 'B' + Koduj(k), gdy k jest nieparzyste.\n\nZaimplementuj ją i porównaj wyniki z tabelą z arkusza (np. Koduj(12) = 'BBA').",
+    "starterCode": "def koduj(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "koduj",
+    "tests": [
+      {
+        "args": [
+          1
+        ],
+        "expected": ""
+      },
+      {
+        "args": [
+          2
+        ],
+        "expected": "B"
+      },
+      {
+        "args": [
+          3
+        ],
+        "expected": "B"
+      },
+      {
+        "args": [
+          12
+        ],
+        "expected": "BBA"
+      },
+      {
+        "args": [
+          33
+        ],
+        "expected": "BAAAA"
+      },
+      {
+        "args": [
+          158
+        ],
+        "expected": "BBBBBAA"
+      },
+      {
+        "args": [
+          1022
+        ],
+        "expected": "BBBBBBBBB"
+      },
+      {
+        "args": [
+          7
+        ],
+        "expected": "BB"
+      }
+    ]
+  },
+  {
+    "id": "2022-czerwiec-4.1",
+    "sessionId": "2022/czerwiec",
+    "number": "4.1",
+    "title": "Odbicia podzielne przez 17",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "napisy",
+      "teoria-liczb",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik liczby.txt zawiera 100 nieparzystych liczb z przedziału [10, 9999]. Odbicie liczby to liczba o odwróconej kolejności cyfr (2019 → 9102). Wypisz (w kolejności z pliku) te odbicia, które są podzielne przez 17.",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/czerwiec/pliki/DANE/przyklad.txt"
+        },
+        "expected": "51"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/czerwiec/pliki/DANE/liczby.txt"
+        },
+        "expected": "1156\n102\n51\n765\n119\n119\n731"
+      }
+    ]
+  },
+  {
+    "id": "2022-czerwiec-4.2",
+    "sessionId": "2022/czerwiec",
+    "number": "4.2",
+    "title": "Największa różnica liczby i odbicia",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Znajdź liczbę z pliku, dla której wartość bezwzględna różnicy między nią a jej odbiciem jest największa. Wypisz tę liczbę i tę różnicę.",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/czerwiec/pliki/DANE/przyklad.txt"
+        },
+        "expected": "741 594"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/czerwiec/pliki/DANE/liczby.txt"
+        },
+        "expected": "1129 8082"
+      }
+    ]
+  },
+  {
+    "id": "2022-czerwiec-4.3",
+    "sessionId": "2022/czerwiec",
+    "number": "4.3",
+    "title": "Pierwsze liczby o pierwszych odbiciach",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "liczby-pierwsze",
+      "pliki-tekstowe"
+    ],
+    "summary": "Wypisz (po jednej w wierszu, w kolejności z pliku) wszystkie liczby pierwsze z pliku, których odbicia również są liczbami pierwszymi.",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/czerwiec/pliki/DANE/przyklad.txt"
+        },
+        "expected": "13\n131"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/czerwiec/pliki/DANE/liczby.txt"
+        },
+        "expected": "157\n31\n347\n929\n941\n761"
+      }
+    ]
+  },
+  {
+    "id": "2022-czerwiec-4.4",
+    "sessionId": "2022/czerwiec",
+    "number": "4.4",
+    "title": "Powtórzenia liczb",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "slowniki",
+      "pliki-tekstowe"
+    ],
+    "summary": "Podaj w jednej linii: ile różnych liczb jest w pliku, ile liczb występuje w nim dokładnie dwa razy, a ile dokładnie trzy razy.",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/czerwiec/pliki/DANE/przyklad.txt"
+        },
+        "expected": "10 1 0"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/czerwiec/pliki/DANE/liczby.txt"
+        },
+        "expected": "85 13 1"
+      }
+    ]
+  }
+]
