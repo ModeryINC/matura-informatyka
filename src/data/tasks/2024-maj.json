@@ -1,0 +1,168 @@
+[
+  {
+    "id": "2024-maj-3.1",
+    "sessionId": "2024/maj",
+    "number": "3.1",
+    "title": "Nieparzysty skrót liczby",
+    "part": 1,
+    "points": 3,
+    "topics": ["teoria-liczb"],
+    "summary": "Nieparzysty skrót liczby n powstaje przez usunięcie z jej zapisu dziesiętnego wszystkich cyfr parzystych, np. skrót 294762 to 97, a 39101 to 3911.\n\nNapisz funkcję zwracającą nieparzysty skrót liczby n (wiadomo, że skrót istnieje). W arkuszu wolno używać tylko operacji arytmetycznych na liczbach całkowitych – spróbuj obejść się bez zamiany na napis.",
+    "starterCode": "def skrot(n):\n    # zwróć nieparzysty skrót liczby n\n    return 0\n",
+    "kind": "function",
+    "functionName": "skrot",
+    "tests": [
+      { "args": [294762], "expected": 97 },
+      { "args": [39101], "expected": 3911 },
+      { "args": [13579], "expected": 13579 },
+      { "args": [1], "expected": 1 },
+      { "args": [2468013], "expected": 13 },
+      { "args": [1000001], "expected": 11 },
+      { "args": [86420864209], "expected": 9 }
+    ]
+  },
+  {
+    "id": "2024-maj-3.2",
+    "sessionId": "2024/maj",
+    "number": "3.2",
+    "title": "Liczby bez nieparzystego skrótu",
+    "part": 2,
+    "points": 3,
+    "topics": ["teoria-liczb", "pliki-tekstowe"],
+    "summary": "Plik skrot.txt zawiera 200 liczb (po jednej w wierszu). Podaj, ile z nich nie ma nieparzystego skrótu (składają się tylko z cyfr parzystych), oraz największą z takich liczb.",
+    "starterCode": "with open(\"skrot.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n# wypisz liczbę takich liczb, a w drugiej linii największą z nich\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (skrot_przyklad.txt)",
+        "files": { "skrot.txt": "arkusze/2024/maj/pliki/Dane-NF-2405/skrot_przyklad.txt" },
+        "expected": "2\n2428"
+      },
+      {
+        "label": "Dane egzaminacyjne (skrot.txt)",
+        "files": { "skrot.txt": "arkusze/2024/maj/pliki/Dane-NF-2405/skrot.txt" },
+        "expected": "18\n28422"
+      }
+    ]
+  },
+  {
+    "id": "2024-maj-3.3",
+    "sessionId": "2024/maj",
+    "number": "3.3",
+    "title": "NWD liczby i jej skrótu",
+    "part": 2,
+    "points": 4,
+    "topics": ["teoria-liczb", "pliki-tekstowe"],
+    "summary": "Plik skrot2.txt zawiera 200 liczb, z których każda ma nieparzysty skrót. Wypisz (po jednej w wierszu, w kolejności z pliku) te liczby, dla których największy wspólny dzielnik liczby i jej nieparzystego skrótu jest równy 7.",
+    "starterCode": "with open(\"skrot2.txt\") as plik:\n    for wiersz in plik:\n        n = int(wiersz)\n        # ...\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (skrot2_przyklad.txt)",
+        "files": { "skrot2.txt": "arkusze/2024/maj/pliki/Dane-NF-2405/skrot2_przyklad.txt" },
+        "expected": "4872\n23527"
+      },
+      {
+        "label": "Dane egzaminacyjne (skrot2.txt)",
+        "files": { "skrot2.txt": "arkusze/2024/maj/pliki/Dane-NF-2405/skrot2.txt" },
+        "expected": "784\n14196\n2247\n24087\n3871\n10192"
+      }
+    ]
+  },
+  {
+    "id": "2024-maj-4.1",
+    "sessionId": "2024/maj",
+    "number": "4.1",
+    "title": "Dzielniki liczb z drugiego wiersza",
+    "part": 2,
+    "points": 2,
+    "topics": ["liczby-pierwsze", "pliki-tekstowe"],
+    "summary": "Plik liczby.txt ma dwa wiersze: w pierwszym 3000 liczb pierwszych z przedziału [2, 2000], w drugim 20 liczb całkowitych. Podaj, ile liczb z pierwszego wiersza jest dzielnikiem co najmniej jednej liczby z drugiego wiersza (powtórzenia liczymy osobno).",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    pierwsze = list(map(int, plik.readline().split()))\n    druga = list(map(int, plik.readline().split()))\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (liczby_przyklad.txt)",
+        "files": { "liczby.txt": "arkusze/2024/maj/pliki/Dane-NF-2405/liczby_przyklad.txt" },
+        "expected": "199"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": { "liczby.txt": "arkusze/2024/maj/pliki/Dane-NF-2405/liczby.txt" },
+        "expected": "212"
+      }
+    ]
+  },
+  {
+    "id": "2024-maj-4.2",
+    "sessionId": "2024/maj",
+    "number": "4.2",
+    "title": "Sto pierwsza liczba od największej",
+    "part": 2,
+    "points": 2,
+    "topics": ["sortowanie", "pliki-tekstowe"],
+    "summary": "Spośród liczb z pierwszego wiersza pliku liczby.txt podaj tę, która po uporządkowaniu jest sto pierwsza w kolejności, licząc od największej (powtórzenia zajmują osobne miejsca).",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    pierwsze = list(map(int, plik.readline().split()))\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (liczby_przyklad.txt)",
+        "files": { "liczby.txt": "arkusze/2024/maj/pliki/Dane-NF-2405/liczby_przyklad.txt" },
+        "expected": "5"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": { "liczby.txt": "arkusze/2024/maj/pliki/Dane-NF-2405/liczby.txt" },
+        "expected": "1933"
+      }
+    ]
+  },
+  {
+    "id": "2024-maj-4.3",
+    "sessionId": "2024/maj",
+    "number": "4.3",
+    "title": "Iloczyny liczb z pierwszego wiersza",
+    "part": 2,
+    "points": 3,
+    "topics": ["liczby-pierwsze", "slowniki"],
+    "summary": "Dla każdej liczby z drugiego wiersza pliku liczby.txt sprawdź, czy da się ją przedstawić jako iloczyn liczb z pierwszego wiersza, przy czym każdy czynnik może wystąpić najwyżej tyle razy, ile razy występuje w pierwszym wierszu. Wypisz wszystkie takie liczby w kolejności z pliku.",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    pierwsze = list(map(int, plik.readline().split()))\n    druga = list(map(int, plik.readline().split()))\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (liczby_przyklad.txt)",
+        "files": { "liczby.txt": "arkusze/2024/maj/pliki/Dane-NF-2405/liczby_przyklad.txt" },
+        "expected": "10 12 14 15 18 20 21 25 27 28"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": { "liczby.txt": "arkusze/2024/maj/pliki/Dane-NF-2405/liczby.txt" },
+        "expected": "547839600 2954285 573219169 573549984 212444924"
+      }
+    ]
+  },
+  {
+    "id": "2024-maj-4.4",
+    "sessionId": "2024/maj",
+    "number": "4.4",
+    "title": "Fragment o największej średniej",
+    "part": 2,
+    "points": 3,
+    "topics": ["podciagi", "tablice"],
+    "summary": "W ciągu liczb z pierwszego wiersza pliku liczby.txt znajdź spójny fragment o co najmniej 50 elementach, którego średnia arytmetyczna jest największa (przy remisie – pierwszy w pliku). Wypisz tę średnią (wystarczą 2 miejsca po przecinku), liczbę elementów fragmentu i jego pierwszy element.",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    a = list(map(int, plik.readline().split()))\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (liczby_przyklad.txt)",
+        "files": { "liczby.txt": "arkusze/2024/maj/pliki/Dane-NF-2405/liczby_przyklad.txt" },
+        "expected": "5.52 50 5"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": { "liczby.txt": "arkusze/2024/maj/pliki/Dane-NF-2405/liczby.txt" },
+        "expected": "1200.70 61 1847"
+      }
+    ]
+  }
+]
