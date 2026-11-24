@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+*.local
+.vite/
+__pycache__/
+# generowany katalog arkuszy (tworzony przez `npm run catalog`)
+src/data/catalog.generated.json

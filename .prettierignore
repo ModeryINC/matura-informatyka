@@ -1,0 +1,5 @@
+dist
+coverage
+public/arkusze
+package-lock.json
+src/data/catalog.generated.json

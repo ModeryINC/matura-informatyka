@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.pdf binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.xlsx binary
+*.accdb binary
+*.mdb binary
+public/arkusze/**/*.txt -text
