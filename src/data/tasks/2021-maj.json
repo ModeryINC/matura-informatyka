@@ -1,0 +1,312 @@
+[
+  {
+    "id": "2021-maj-1.2",
+    "sessionId": "2021/maj",
+    "number": "1.2",
+    "title": "Cyfrowe dopełnienie",
+    "part": 1,
+    "points": 4,
+    "topics": [
+      "teoria-liczb"
+    ],
+    "summary": "Cyfrowe dopełnienie liczby n powstaje przez zamianę każdej jej cyfry na uzupełnienie do 9, np. dopełnieniem 2021 jest 7978. Pierwsza cyfra n jest większa od 0 i mniejsza od 9.\n\nNapisz funkcję zwracającą cyfrowe dopełnienie liczby n, operując wyłącznie na liczbach całkowitych (bez zamiany na napis).",
+    "starterCode": "def dopelnienie(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "dopelnienie",
+    "tests": [
+      {
+        "args": [
+          2021
+        ],
+        "expected": 7978
+      },
+      {
+        "args": [
+          1
+        ],
+        "expected": 8
+      },
+      {
+        "args": [
+          8
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          10
+        ],
+        "expected": 89
+      },
+      {
+        "args": [
+          5000
+        ],
+        "expected": 4999
+      },
+      {
+        "args": [
+          123456789
+        ],
+        "expected": 876543210
+      },
+      {
+        "args": [
+          80000
+        ],
+        "expected": 19999
+      },
+      {
+        "args": [
+          4999
+        ],
+        "expected": 5000
+      }
+    ]
+  },
+  {
+    "id": "2021-maj-2.1",
+    "sessionId": "2021/maj",
+    "number": "2.1",
+    "title": "Wstawianie do kopca – funkcja d(x)",
+    "part": 1,
+    "points": 2,
+    "topics": [
+      "tablice",
+      "sortowanie"
+    ],
+    "summary": "Funkcja d(x) dopisuje x na koniec tablicy T[1..n], a potem – dopóki element nie jest na pozycji 1 i jest większy od elementu na pozycji s div 2 – zamienia go z tym elementem (to wstawianie do kopca maksymalnego).\n\nZaimplementuj d jako funkcję d(T, x), która zmodyfikuje listę T i ją zwróci. Pamiętaj, że arkusz numeruje tablicę od 1.",
+    "starterCode": "def d(T, x):\n    T.append(x)\n    s = len(T)  # pozycja nowego elementu, numerując od 1\n    # ...\n    return T\n",
+    "kind": "function",
+    "functionName": "d",
+    "tests": [
+      {
+        "args": [
+          [
+            26,
+            3,
+            5,
+            -4
+          ],
+          5
+        ],
+        "expected": [
+          26,
+          5,
+          5,
+          -4,
+          3
+        ]
+      },
+      {
+        "args": [
+          [
+            36,
+            15,
+            17,
+            3
+          ],
+          -5
+        ],
+        "expected": [
+          36,
+          15,
+          17,
+          3,
+          -5
+        ]
+      },
+      {
+        "args": [
+          [
+            27,
+            6,
+            13,
+            4,
+            -3,
+            -2,
+            -3
+          ],
+          30
+        ],
+        "expected": [
+          30,
+          27,
+          13,
+          6,
+          -3,
+          -2,
+          -3,
+          4
+        ]
+      },
+      {
+        "args": [
+          [],
+          7
+        ],
+        "expected": [
+          7
+        ]
+      },
+      {
+        "args": [
+          [
+            1
+          ],
+          2
+        ],
+        "expected": [
+          2,
+          1
+        ]
+      },
+      {
+        "args": [
+          [
+            27,
+            12,
+            26,
+            -4,
+            6
+          ],
+          8
+        ],
+        "expected": [
+          27,
+          12,
+          26,
+          -4,
+          6,
+          8
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2021-maj-4.1",
+    "sessionId": "2021/maj",
+    "number": "4.1",
+    "title": "Długość napisu na neonie",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "napisy",
+      "symulacja",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik instrukcje.txt zawiera 2000 instrukcji automatu tworzącego napis: DOPISZ litera, ZMIEN litera (zmienia ostatnią literę), USUN 1 (usuwa ostatnią literę), PRZESUN litera (pierwsze wystąpienie litery zamienia na następną w alfabecie, Z na A). Napis jest początkowo pusty. Podaj długość napisu po wykonaniu wszystkich instrukcji.",
+    "starterCode": "with open(\"instrukcje.txt\") as plik:\n    instrukcje = [wiersz.split() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "instrukcje.txt": "arkusze/2021/maj/pliki/DANE_2105/przyklad.txt"
+        },
+        "expected": "10"
+      },
+      {
+        "label": "Dane egzaminacyjne (instrukcje.txt)",
+        "files": {
+          "instrukcje.txt": "arkusze/2021/maj/pliki/DANE_2105/instrukcje.txt"
+        },
+        "expected": "517"
+      }
+    ]
+  },
+  {
+    "id": "2021-maj-4.2",
+    "sessionId": "2021/maj",
+    "number": "4.2",
+    "title": "Najdłuższy ciąg instrukcji jednego rodzaju",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "podciagi",
+      "pliki-tekstowe"
+    ],
+    "summary": "Znajdź najdłuższy ciąg kolejnych instrukcji tego samego rodzaju (DOPISZ, ZMIEN, USUN lub PRZESUN). Wypisz rodzaj instrukcji i długość ciągu.",
+    "starterCode": "with open(\"instrukcje.txt\") as plik:\n    instrukcje = [wiersz.split() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "instrukcje.txt": "arkusze/2021/maj/pliki/DANE_2105/przyklad.txt"
+        },
+        "expected": "DOPISZ 5"
+      },
+      {
+        "label": "Dane egzaminacyjne (instrukcje.txt)",
+        "files": {
+          "instrukcje.txt": "arkusze/2021/maj/pliki/DANE_2105/instrukcje.txt"
+        },
+        "expected": "ZMIEN 7"
+      }
+    ]
+  },
+  {
+    "id": "2021-maj-4.3",
+    "sessionId": "2021/maj",
+    "number": "4.3",
+    "title": "Najczęściej dopisywana litera",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "slowniki",
+      "pliki-tekstowe"
+    ],
+    "summary": "Podaj literę, która najczęściej występuje w instrukcjach DOPISZ, oraz ile razy jest dopisywana.",
+    "starterCode": "with open(\"instrukcje.txt\") as plik:\n    instrukcje = [wiersz.split() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "instrukcje.txt": "arkusze/2021/maj/pliki/DANE_2105/przyklad.txt"
+        },
+        "expected": "U 3"
+      },
+      {
+        "label": "Dane egzaminacyjne (instrukcje.txt)",
+        "files": {
+          "instrukcje.txt": "arkusze/2021/maj/pliki/DANE_2105/instrukcje.txt"
+        },
+        "expected": "Z 37"
+      }
+    ]
+  },
+  {
+    "id": "2021-maj-4.4",
+    "sessionId": "2021/maj",
+    "number": "4.4",
+    "title": "Końcowy napis",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "napisy",
+      "symulacja",
+      "pliki-tekstowe"
+    ],
+    "summary": "Wykonaj wszystkie instrukcje z pliku instrukcje.txt (wszystkie cztery rodzaje) i wypisz powstały napis.",
+    "starterCode": "with open(\"instrukcje.txt\") as plik:\n    instrukcje = [wiersz.split() for wiersz in plik]\n\nnapis = []\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "instrukcje.txt": "arkusze/2021/maj/pliki/DANE_2105/przyklad.txt"
+        },
+        "expected": "ALANTURING"
+      },
+      {
+        "label": "Dane egzaminacyjne (instrukcje.txt)",
+        "files": {
+          "instrukcje.txt": "arkusze/2021/maj/pliki/DANE_2105/instrukcje.txt"
+        },
+        "expected": "POZNIEJMOWIONOZECZLOWIEKTENNADSZEDLODPOLNOCYODBRAMYPOWROZNICZEJSZEDLPIESZOAOBJUCZONEGOKONIAPROWADZILZAUZDEBYLOPOZNEPOPOLUDNIEIKRAMYPOWROZNIKOWIRYMARZYBYLYJUZZAMKNIETEAULICZKAPUSTABYLOCIEPLOACZLOWIEKTENMIALNASOBIECZARNYPLASZCZNARZUCONYNARAMIONAZWRACALUWAGEZATRZYMALSIEPRZEDGOSPODASTARYNARAKORTPOSTALCHWILEPOSLUCHALGWARUGLOSOWGOSPODAJAKZWYKLEOTEJPORZEBYLAPELNALUDZINIEZNAJOMYNIEWSZEDLDOSTAREGONARAKORTUPOCIAGNALKONIADALEJWDOLULICZKITAMBYLADRUGAKARCZMAMNIEJSZANAZYWALASIEPODLISEMTUBYLOPUSTOKARCZMANIEMIALANAJLEPSZEJSLAWY"
+      }
+    ]
+  }
+]
