@@ -1,0 +1,446 @@
+[
+  {
+    "id": "2023-czerwiec-1.2",
+    "sessionId": "2023/czerwiec",
+    "number": "1.2",
+    "title": "Liczba dodawań w rekurencyjnym mnożeniu",
+    "part": 1,
+    "points": 2,
+    "topics": [
+      "rekurencja"
+    ],
+    "summary": "Funkcja iloczyn(x, y) mnoży rekurencyjnie: dla y = 1 zwraca x; w przeciwnym razie oblicza z = iloczyn(x, y div 2) i zwraca z + z (y parzyste – jedno dodawanie) albo x + z + z (y nieparzyste – dwa dodawania). Np. iloczyn(9, 11) wykonuje 5 dodawań.\n\nNapisz funkcję liczba_dodawan(x, y), która zwraca, ile dodawań wykona iloczyn(x, y).",
+    "starterCode": "def liczba_dodawan(x, y):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "liczba_dodawan",
+    "tests": [
+      {
+        "args": [
+          9,
+          11
+        ],
+        "expected": 5
+      },
+      {
+        "args": [
+          8,
+          32
+        ],
+        "expected": 5
+      },
+      {
+        "args": [
+          2,
+          47
+        ],
+        "expected": 9
+      },
+      {
+        "args": [
+          112,
+          112
+        ],
+        "expected": 8
+      },
+      {
+        "args": [
+          10,
+          45
+        ],
+        "expected": 8
+      },
+      {
+        "args": [
+          5,
+          1
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          3,
+          2
+        ],
+        "expected": 1
+      }
+    ]
+  },
+  {
+    "id": "2023-czerwiec-1.3",
+    "sessionId": "2023/czerwiec",
+    "number": "1.3",
+    "title": "Iteracyjne mnożenie przez dodawanie",
+    "part": 1,
+    "points": 2,
+    "topics": [
+      "systemy-liczbowe",
+      "teoria-liczb"
+    ],
+    "summary": "Uzupełnij iteracyjny algorytm mnożenia z arkusza: z zaczyna od pewnej wartości, a w pętli – jeśli y jest nieparzyste, z ← z + x; potem x ← x + x i y ← …. Napisz funkcję iloczyn(x, y) zwracającą x·y, używając tylko dodawania, odejmowania oraz div/mod 2 (bez operatora mnożenia).",
+    "starterCode": "def iloczyn(x, y):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "iloczyn",
+    "tests": [
+      {
+        "args": [
+          9,
+          11
+        ],
+        "expected": 99
+      },
+      {
+        "args": [
+          10,
+          45
+        ],
+        "expected": 450
+      },
+      {
+        "args": [
+          1,
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          7,
+          1
+        ],
+        "expected": 7
+      },
+      {
+        "args": [
+          1,
+          1000
+        ],
+        "expected": 1000
+      },
+      {
+        "args": [
+          123,
+          456
+        ],
+        "expected": 56088
+      },
+      {
+        "args": [
+          2,
+          1024
+        ],
+        "expected": 2048
+      }
+    ]
+  },
+  {
+    "id": "2023-czerwiec-2.2",
+    "sessionId": "2023/czerwiec",
+    "number": "2.2",
+    "title": "Porównywanie sufiksów",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "napisy",
+      "sortowanie"
+    ],
+    "summary": "Sufiks s[k..n] słowa s to jego końcowy fragment od pozycji k. Plik slowa.txt ma trzy wiersze: długość n, słowo s oraz liczby k1 i k2. Zaimplementuj funkcję czy_mniejszy z arkusza i wypisz TAK, jeśli sufiks s[k1..n] jest alfabetycznie mniejszy od s[k2..n], albo NIE w przeciwnym razie (pozycje numerujemy od 1). Program jest uruchamiany kolejno na kilku plikach.",
+    "starterCode": "with open(\"slowa.txt\") as plik:\n    n = int(plik.readline())\n    s = plik.readline().strip()\n    k1, k2 = map(int, plik.readline().split())\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Przykład sufiks_1.txt",
+        "files": {
+          "slowa.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/sufiks_1.txt"
+        },
+        "expected": "TAK"
+      },
+      {
+        "label": "Przykład sufiks_2.txt",
+        "files": {
+          "slowa.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/sufiks_2.txt"
+        },
+        "expected": "NIE"
+      },
+      {
+        "label": "Plik slowa1.txt",
+        "files": {
+          "slowa.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/slowa1.txt"
+        },
+        "expected": "TAK"
+      },
+      {
+        "label": "Plik slowa2.txt",
+        "files": {
+          "slowa.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/slowa2.txt"
+        },
+        "expected": "NIE"
+      },
+      {
+        "label": "Plik slowa3.txt",
+        "files": {
+          "slowa.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/slowa3.txt"
+        },
+        "expected": "NIE"
+      }
+    ]
+  },
+  {
+    "id": "2023-czerwiec-2.3",
+    "sessionId": "2023/czerwiec",
+    "number": "2.3",
+    "title": "Tablica sufiksowa",
+    "part": 1,
+    "points": 3,
+    "topics": [
+      "sortowanie",
+      "napisy"
+    ],
+    "summary": "Napisz funkcję sufiksy(s), która zwróci listę numerów sufiksów słowa s (numerując od 1) uporządkowanych alfabetycznie, np. dla mascarpone: [5, 2, 4, 10, 1, 9, 8, 7, 6, 3]. W arkuszu trzeba to zrobić z pomocą funkcji czy_mniejszy z zadania 2.2, bez gotowych funkcji sortujących.",
+    "starterCode": "def czy_mniejszy(n, s, k1, k2):\n    ...\n\n\ndef sufiksy(s):\n    return []\n",
+    "kind": "function",
+    "functionName": "sufiksy",
+    "tests": [
+      {
+        "args": [
+          "mascarpone"
+        ],
+        "expected": [
+          5,
+          2,
+          4,
+          10,
+          1,
+          9,
+          8,
+          7,
+          6,
+          3
+        ]
+      },
+      {
+        "args": [
+          "kalafiorowa"
+        ],
+        "expected": [
+          11,
+          4,
+          2,
+          5,
+          6,
+          1,
+          3,
+          7,
+          9,
+          8,
+          10
+        ]
+      },
+      {
+        "args": [
+          "banan"
+        ],
+        "expected": [
+          4,
+          2,
+          1,
+          5,
+          3
+        ]
+      },
+      {
+        "args": [
+          "a"
+        ],
+        "expected": [
+          1
+        ]
+      },
+      {
+        "args": [
+          "aaa"
+        ],
+        "expected": [
+          3,
+          2,
+          1
+        ]
+      },
+      {
+        "args": [
+          "abracadabra"
+        ],
+        "expected": [
+          11,
+          8,
+          1,
+          4,
+          6,
+          9,
+          2,
+          5,
+          7,
+          10,
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2023-czerwiec-2.4",
+    "sessionId": "2023/czerwiec",
+    "number": "2.4",
+    "title": "Najmniejszy sufiks",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik slowa4.txt zawiera 10 wierszy: długość n i słowo. Dla każdego słowa wypisz (w osobnym wierszu) jego alfabetycznie najmniejszy sufiks, np. dla mascarpone – arpone.",
+    "starterCode": "with open(\"slowa4.txt\") as plik:\n    for wiersz in plik:\n        n, s = wiersz.split()\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (sufiks_4.txt)",
+        "files": {
+          "slowa4.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/sufiks_4.txt"
+        },
+        "expected": "an\narpone\na\naturazinformatyki"
+      },
+      {
+        "label": "Dane egzaminacyjne (slowa4.txt)",
+        "files": {
+          "slowa4.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/slowa4.txt"
+        },
+        "expected": "ato\na\nabracadabrad\nabecadlo\naaababbbbcaababaz\na\naaababbbbcaababaaabcaabbccbbccbacbcaabbaabbccbbccbaaababbbbcaababaz\naaababbbbcaababaz\naaababbbbcaababacaacacaacaacaacacacacb\naaababbbbcacbabaaabcaabbccbbccbaabcaabbaabbccbbccbaaababbbbccababazbcabbab"
+      }
+    ]
+  },
+  {
+    "id": "2023-czerwiec-3.1",
+    "sessionId": "2023/czerwiec",
+    "number": "3.1",
+    "title": "Liczby zrównoważone",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "systemy-liczbowe",
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik anagram.txt zawiera 1000 różnych liczb binarnych (do 14 cyfr). Liczba jest zrównoważona, gdy ma tyle samo zer i jedynek, a prawie zrównoważona, gdy te liczby różnią się o 1. Wypisz liczbę zrównoważonych, a w drugiej linii – prawie zrównoważonych.",
+    "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "anagram.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/przyklad.txt"
+        },
+        "expected": "21\n15"
+      },
+      {
+        "label": "Dane egzaminacyjne (anagram.txt)",
+        "files": {
+          "anagram.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/anagram.txt"
+        },
+        "expected": "118\n219"
+      }
+    ]
+  },
+  {
+    "id": "2023-czerwiec-3.2",
+    "sessionId": "2023/czerwiec",
+    "number": "3.2",
+    "title": "Najwięcej anagramów",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "anagramy",
+      "systemy-liczbowe",
+      "pliki-tekstowe"
+    ],
+    "summary": "Anagramy cyfrowe to liczby z tego samego zestawu cyfr w innej kolejności, bez zera na początku (np. z 11100 można utworzyć 6 anagramów). Wypisz, w kolejności z pliku, wszystkie 8-cyfrowe liczby binarne, z których można utworzyć najwięcej anagramów.",
+    "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "anagram.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/przyklad.txt"
+        },
+        "expected": "10001011\n10111000\n10100111\n11111000\n10011100\n11100011\n10111010\n10100011\n10011010\n10110001\n11011010"
+      },
+      {
+        "label": "Dane egzaminacyjne (anagram.txt)",
+        "files": {
+          "anagram.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/anagram.txt"
+        },
+        "expected": "10110101\n11010100\n10100101\n11001001\n10110100\n11001101\n11000110"
+      }
+    ]
+  },
+  {
+    "id": "2023-czerwiec-3.3",
+    "sessionId": "2023/czerwiec",
+    "number": "3.3",
+    "title": "Największa różnica sąsiednich liczb",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "systemy-liczbowe",
+      "pliki-tekstowe"
+    ],
+    "summary": "Podaj największą wartość bezwzględną różnicy między liczbami z sąsiednich wierszy pliku anagram.txt – w zapisie binarnym.",
+    "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "anagram.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/przyklad.txt"
+        },
+        "expected": "1110001010"
+      },
+      {
+        "label": "Dane egzaminacyjne (anagram.txt)",
+        "files": {
+          "anagram.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/anagram.txt"
+        },
+        "expected": "10011000111001"
+      }
+    ]
+  },
+  {
+    "id": "2023-czerwiec-3.4",
+    "sessionId": "2023/czerwiec",
+    "number": "3.4",
+    "title": "Cyfry w zapisie dziesiętnym",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "systemy-liczbowe",
+      "teoria-liczb",
+      "pliki-tekstowe"
+    ],
+    "summary": "Zamień liczby z pliku na system dziesiętny. a) Podaj, w ilu z nich nie występuje cyfra 0. b) Podaj liczbę o największej sumie różnych cyfr (np. dla 20462 to 2 + 0 + 4 + 6 = 12; przy remisie – pierwszą w pliku). Odpowiedzi wypisz w dwóch liniach.",
+    "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (przyklad.txt)",
+        "files": {
+          "anagram.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/przyklad.txt"
+        },
+        "expected": "81\n895"
+      },
+      {
+        "label": "Dane egzaminacyjne (anagram.txt)",
+        "files": {
+          "anagram.txt": "arkusze/2023/czerwiec/pliki/DANE/DANE_M/anagram.txt"
+        },
+        "expected": "728\n7896"
+      }
+    ]
+  }
+]
