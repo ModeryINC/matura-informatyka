@@ -1,0 +1,325 @@
+[
+  {
+    "id": "2019-czerwiec-1.2",
+    "sessionId": "2019/czerwiec",
+    "number": "1.2",
+    "title": "Wywołania rekurencyjnego wyszukiwania binarnego",
+    "part": 1,
+    "points": 2,
+    "topics": [
+      "rekurencja",
+      "wyszukiwanie-binarne"
+    ],
+    "summary": "Funkcja Rek(x, p, k) szuka x w rosnącej tablicy T[1..n]: dopóki p < k, bierze s = (p + k) div 2 i wywołuje Rek(x, p, s), gdy T[s] ≥ x, albo Rek(x, s + 1, k) w przeciwnym razie. Gdy p = k, zwraca p, jeśli T[p] = x, a inaczej −1.\n\nNapisz funkcję zwracającą listę par [p, k] wszystkich kolejnych wywołań (łącznie z pierwszym). Uwaga: arkusz numeruje tablicę od 1.",
+    "starterCode": "def wywolania(T, x, p, k):\n    lista = [[p, k]]\n    # ...\n    return lista\n",
+    "kind": "function",
+    "functionName": "wywolania",
+    "tests": [
+      {
+        "args": [
+          [
+            1,
+            5,
+            8,
+            10,
+            12,
+            14,
+            19,
+            20,
+            23,
+            30,
+            38
+          ],
+          37,
+          1,
+          11
+        ],
+        "expected": [
+          [
+            1,
+            11
+          ],
+          [
+            7,
+            11
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            11,
+            11
+          ]
+        ]
+      },
+      {
+        "args": [
+          [
+            1,
+            5,
+            8,
+            10,
+            12,
+            14,
+            19,
+            20,
+            23,
+            30,
+            38
+          ],
+          1,
+          1,
+          11
+        ],
+        "expected": [
+          [
+            1,
+            11
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "args": [
+          [
+            1,
+            5,
+            8,
+            10,
+            12,
+            14,
+            19,
+            20,
+            23,
+            30,
+            38
+          ],
+          14,
+          1,
+          11
+        ],
+        "expected": [
+          [
+            1,
+            11
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            6,
+            6
+          ]
+        ]
+      },
+      {
+        "args": [
+          [
+            4
+          ],
+          4,
+          1,
+          1
+        ],
+        "expected": [
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "args": [
+          [
+            2,
+            4,
+            6,
+            8
+          ],
+          9,
+          2,
+          4
+        ],
+        "expected": [
+          [
+            2,
+            4
+          ],
+          [
+            4,
+            4
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2019-czerwiec-2.2",
+    "sessionId": "2019/czerwiec",
+    "number": "2.2",
+    "title": "Deszyfrowanie szyfru kolumnowego",
+    "part": 1,
+    "points": 4,
+    "topics": [
+      "szyfrowanie",
+      "napisy",
+      "tablice-2d"
+    ],
+    "summary": "Szyfr kolumnowy z kluczem k: tekst wpisuje się do tabeli o k wierszach kolejnymi kolumnami – w kolumnach nieparzystych z góry na dół, w parzystych z dołu do góry (puste miejsca wypełnia się znakiem _), a szyfrogram to kolejne wiersze odczytane od lewej do prawej. Np. MATURA_Z_INFORMATYKI z k = 3 daje MA_FOYKARZNRTITU_IMA_.\n\nNapisz funkcję deszyfruj(S, k), która dla szyfrogramu S (długość jest wielokrotnością k) zwróci tekst jawny.",
+    "starterCode": "def deszyfruj(S, k):\n    # zwróć odszyfrowany tekst\n    return \"\"\n",
+    "kind": "function",
+    "functionName": "deszyfruj",
+    "tests": [
+      {
+        "args": [
+          "MA_FOYKARZNRTITU_IMA_",
+          3
+        ],
+        "expected": "MATURA_Z_INFORMATYKI_"
+      },
+      {
+        "args": [
+          "NKI_ATE_USGACYOKZZ_YYSJTCWEKI_SAEMTRLE_P",
+          10
+        ],
+        "expected": "NAUCZYCIELEM_WSZYSTKIEGO_JEST_PRAKTYKA__"
+      },
+      {
+        "args": [
+          "ABC",
+          1
+        ],
+        "expected": "ABC"
+      },
+      {
+        "args": [
+          "ADBC",
+          2
+        ],
+        "expected": "ABCD"
+      },
+      {
+        "args": [
+          "AFGBEHCDI",
+          3
+        ],
+        "expected": "ABCDEFGHI"
+      }
+    ]
+  },
+  {
+    "id": "2019-czerwiec-4.1",
+    "sessionId": "2019/czerwiec",
+    "number": "4.1",
+    "title": "Liczby pierwsze z przedziału [100, 5000]",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "liczby-pierwsze",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik liczby.txt zawiera 300 liczb z zakresu 1–100 000. Wypisz (w kolejności z pliku) te, które są liczbami pierwszymi z przedziału [100, 5000].",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (liczby_przyklad.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2019/czerwiec/pliki/MIN-R2A1P-193_dane/liczby_przyklad.txt"
+        },
+        "expected": "103\n163\n173\n701\n1033\n2137\n3529\n4933\n977\n2143"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2019/czerwiec/pliki/MIN-R2A1P-193_dane/liczby.txt"
+        },
+        "expected": "563\n2087\n163\n2423\n3581\n911\n997\n113\n1049\n1511\n2467\n283\n3559\n521\n4201\n877\n1301\n2749\n4919\n1213\n2039\n4111\n3331\n401\n2221"
+      }
+    ]
+  },
+  {
+    "id": "2019-czerwiec-4.2",
+    "sessionId": "2019/czerwiec",
+    "number": "4.2",
+    "title": "Liczby pierwsze czytane wspak",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "liczby-pierwsze",
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik pierwsze.txt zawiera 200 liczb pierwszych. Wypisz (w kolejności z pliku) te, które czytane od prawej do lewej również są liczbami pierwszymi (np. 17 → 71).",
+    "starterCode": "with open(\"pierwsze.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (pierwsze_przyklad.txt)",
+        "files": {
+          "pierwsze.txt": "arkusze/2019/czerwiec/pliki/MIN-R2A1P-193_dane/pierwsze_przyklad.txt"
+        },
+        "expected": "701\n709\n1033\n167\n1109\n1619\n1009\n179\n1499\n76001\n1601\n31873"
+      },
+      {
+        "label": "Dane egzaminacyjne (pierwsze.txt)",
+        "files": {
+          "pierwsze.txt": "arkusze/2019/czerwiec/pliki/MIN-R2A1P-193_dane/pierwsze.txt"
+        },
+        "expected": "31\n37\n101\n1009\n1021\n113\n1499\n1213\n1217\n1229\n1231\n1237\n1487\n1223\n7027\n7043\n3821\n31873\n1511\n140527\n151169\n151189\n193261\n1297001\n1061\n100267\n100271\n100279\n181957\n13\n112163\n112181\n3803\n76001\n160183\n160201\n160243\n17\n907\n701\n383\n389\n1103\n1109\n31721\n1583\n1597\n1601\n1619\n3571\n112111"
+      }
+    ]
+  },
+  {
+    "id": "2019-czerwiec-4.3",
+    "sessionId": "2019/czerwiec",
+    "number": "4.3",
+    "title": "Waga liczby",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "teoria-liczb",
+      "pliki-tekstowe"
+    ],
+    "summary": "Wagą liczby N nazywamy jednocyfrowy wynik wielokrotnego sumowania cyfr (np. 31699 → 28 → 10 → 1, więc waga to 1). Podaj, ile liczb z pliku pierwsze.txt ma wagę równą 1.",
+    "starterCode": "with open(\"pierwsze.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (pierwsze_przyklad.txt)",
+        "files": {
+          "pierwsze.txt": "arkusze/2019/czerwiec/pliki/MIN-R2A1P-193_dane/pierwsze_przyklad.txt"
+        },
+        "expected": "6"
+      },
+      {
+        "label": "Dane egzaminacyjne (pierwsze.txt)",
+        "files": {
+          "pierwsze.txt": "arkusze/2019/czerwiec/pliki/MIN-R2A1P-193_dane/pierwsze.txt"
+        },
+        "expected": "27"
+      }
+    ]
+  }
+]
