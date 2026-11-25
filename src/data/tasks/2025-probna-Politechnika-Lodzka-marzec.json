@@ -1,0 +1,630 @@
+[
+  {
+    "id": "2025-probna-Politechnika-Lodzka-marzec-1.3",
+    "sessionId": "2025/probna-Politechnika-Lodzka-marzec",
+    "number": "1.3",
+    "title": "Liczba k z rozkładu x = S(x) + 9k",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "teoria-liczb"
+    ],
+    "summary": "Każdą liczbę naturalną x można zapisać jako x = S(x) + 9·k, gdzie S(x) to suma cyfr x, a k – liczba naturalna (np. 1984 = 22 + 9·218). Napisz funkcję wyznacz_k(x) dla x ≤ 10^13.",
+    "starterCode": "def wyznacz_k(x):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "wyznacz_k",
+    "tests": [
+      {
+        "args": [
+          8
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          12
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          64
+        ],
+        "expected": 6
+      },
+      {
+        "args": [
+          1984
+        ],
+        "expected": 218
+      },
+      {
+        "args": [
+          37
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          6532
+        ],
+        "expected": 724
+      },
+      {
+        "args": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          10000000000000
+        ],
+        "expected": 1111111111111
+      },
+      {
+        "args": [
+          999999999999
+        ],
+        "expected": 111111111099
+      }
+    ]
+  },
+  {
+    "id": "2025-probna-Politechnika-Lodzka-marzec-1.4",
+    "sessionId": "2025/probna-Politechnika-Lodzka-marzec",
+    "number": "1.4",
+    "title": "Największa liczba ≤ x podzielna przez 9",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "teoria-liczb"
+    ],
+    "summary": "Jeśli x nie dzieli się przez 9, to x pomniejszone o resztę z dzielenia sumy cyfr przez 9 już się dzieli (np. 367: suma cyfr 16, reszta 7 → 360). Napisz funkcję zwracającą największą liczbę y ≤ x podzielną przez 9 (dla dodatniego x ≤ 10^8), korzystając z tej własności.",
+    "starterCode": "def podzielna_przez_9(x):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "podzielna_przez_9",
+    "tests": [
+      {
+        "args": [
+          367
+        ],
+        "expected": 360
+      },
+      {
+        "args": [
+          9
+        ],
+        "expected": 9
+      },
+      {
+        "args": [
+          8
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          18
+        ],
+        "expected": 18
+      },
+      {
+        "args": [
+          100000000
+        ],
+        "expected": 99999999
+      },
+      {
+        "args": [
+          12345678
+        ],
+        "expected": 12345678
+      },
+      {
+        "args": [
+          1
+        ],
+        "expected": 0
+      }
+    ]
+  },
+  {
+    "id": "2025-probna-Politechnika-Lodzka-marzec-2.3",
+    "sessionId": "2025/probna-Politechnika-Lodzka-marzec",
+    "number": "2.3",
+    "title": "Ciąg Fareya",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "podciagi",
+      "teoria-liczb"
+    ],
+    "summary": "Ciąg Fareya rzędu n to rosnący ciąg wszystkich nieskracalnych ułamków k/l z przedziału [0, 1], gdzie 1 ≤ l ≤ n. Można go budować, zaczynając od 0/1 i 1/1 i wstawiając między sąsiednie ułamki a/b i c/d ułamek (a+c)/(b+d), dopóki jego mianownik nie przekracza n.\n\nNapisz funkcję farey(n) zwracającą listę par [licznik, mianownik], np. farey(3) = [[0, 1], [1, 3], [1, 2], [2, 3], [1, 1]].",
+    "starterCode": "def farey(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "farey",
+    "tests": [
+      {
+        "args": [
+          1
+        ],
+        "expected": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "args": [
+          2
+        ],
+        "expected": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "args": [
+          3
+        ],
+        "expected": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "args": [
+          5
+        ],
+        "expected": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "args": [
+          8
+        ],
+        "expected": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            8
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            7
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            3,
+            8
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2025-probna-Politechnika-Lodzka-marzec-2.4",
+    "sessionId": "2025/probna-Politechnika-Lodzka-marzec",
+    "number": "2.4",
+    "title": "Długość ciągu Fareya",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "teoria-liczb"
+    ],
+    "summary": "Napisz funkcję zwracającą liczbę wyrazów ciągu Fareya rzędu n (np. rzędu 2: 3 wyrazy, rzędu 5: 11).",
+    "starterCode": "def dlugosc_fareya(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "dlugosc_fareya",
+    "tests": [
+      {
+        "args": [
+          1
+        ],
+        "expected": 2
+      },
+      {
+        "args": [
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          3
+        ],
+        "expected": 5
+      },
+      {
+        "args": [
+          4
+        ],
+        "expected": 7
+      },
+      {
+        "args": [
+          5
+        ],
+        "expected": 11
+      },
+      {
+        "args": [
+          8
+        ],
+        "expected": 23
+      },
+      {
+        "args": [
+          11
+        ],
+        "expected": 43
+      },
+      {
+        "args": [
+          16
+        ],
+        "expected": 81
+      }
+    ]
+  },
+  {
+    "id": "2025-probna-Politechnika-Lodzka-marzec-3.1",
+    "sessionId": "2025/probna-Politechnika-Lodzka-marzec",
+    "number": "3.1",
+    "title": "Punkty współliniowe",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "geometria"
+    ],
+    "summary": "Napisz funkcję wspolliniowe(xA, yA, xB, yB, xC, yC) zwracającą True, gdy punkt C leży na prostej przechodzącej przez różne punkty A i B. Współrzędne są liczbami rzeczywistymi – unikaj dzielenia i porównuj z tolerancją (np. iloczyn wektorowy).",
+    "starterCode": "def wspolliniowe(xA, yA, xB, yB, xC, yC):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "wspolliniowe",
+    "tests": [
+      {
+        "args": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          3
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          1.5,
+          -4.5,
+          7.5,
+          0.75,
+          6.5,
+          -0.125
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          5
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          2,
+          4,
+          3.5,
+          5,
+          0.5,
+          3
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          1,
+          1,
+          2,
+          3,
+          3,
+          4
+        ],
+        "expected": false
+      }
+    ]
+  },
+  {
+    "id": "2025-probna-Politechnika-Lodzka-marzec-3.3",
+    "sessionId": "2025/probna-Politechnika-Lodzka-marzec",
+    "number": "3.3",
+    "title": "Czy odcinki się przecinają",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "geometria"
+    ],
+    "summary": "Napisz funkcję przecinaja(xA, yA, xB, yB, xC, yC, xD, yD) zwracającą True, gdy odcinki AB i CD mają co najmniej jeden punkt wspólny (także końce lub nakładające się fragmenty), a False w przeciwnym razie. Testy pochodzą z przykładu w arkuszu.",
+    "starterCode": "def przecinaja(xA, yA, xB, yB, xC, yC, xD, yD):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "przecinaja",
+    "tests": [
+      {
+        "args": [
+          4.5,
+          12,
+          2,
+          7,
+          0,
+          15,
+          3,
+          9
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          -1,
+          2.5,
+          -8,
+          6,
+          1,
+          1.5,
+          6,
+          -1
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          3.5,
+          5,
+          -0.5,
+          4,
+          -3,
+          6,
+          1,
+          2
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          1,
+          2.5,
+          -2,
+          -0.5,
+          -1.5,
+          0,
+          4.5,
+          6
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          -1,
+          -4,
+          3,
+          4,
+          1,
+          3,
+          5,
+          11
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          4,
+          6,
+          1,
+          6,
+          -1,
+          3,
+          2,
+          9
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          4,
+          6,
+          1,
+          6,
+          2,
+          3.5,
+          5,
+          3.5
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          -2,
+          -2,
+          -8,
+          -2,
+          4,
+          -2,
+          -4,
+          -2
+        ],
+        "expected": true
+      }
+    ]
+  }
+]
