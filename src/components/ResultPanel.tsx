@@ -1,20 +1,4 @@
 import type { SubmissionResult } from '../types';
-import type { ExecutionOutput } from '../python/runner';
-
-/** Wynik uruchomienia („Uruchom”) – surowe wyjście programu. */
-export function OutputPanel({ output }: { output: ExecutionOutput }) {
-  return (
-    <section className="output" aria-label="Wynik uruchomienia">
-      <h3 className="output__title">Wyjście programu</h3>
-      {output.stdout ? (
-        <pre className="output__stdout">{output.stdout}</pre>
-      ) : (
-        <p className="muted">(brak wyjścia)</p>
-      )}
-      {output.error && <pre className="output__error">{output.error}</pre>}
-    </section>
-  );
-}
 
 /** Wynik sprawdzenia („Sprawdź”) – lista testów z porównaniem. */
 export function ResultPanel({ result }: { result: SubmissionResult }) {

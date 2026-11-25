@@ -55,6 +55,13 @@ src/data/tasks/*.json ───────────────(import.meta.
   uruchomieniu kodu, a przeglądarka trzyma ją w pamięci podręcznej.
 - **Web Worker + limit czasu** – jedyny niezawodny sposób przerwania nieskończonej pętli
   w Pyodide to zakończenie workera; `PythonRunner` robi to automatycznie.
+- **Konsola z wejściem podanym z góry** – „Uruchom” wysyła wyjście na bieżąco (komunikaty
+  `output`, grupowane w harnessie po pełnych liniach). Prawdziwie interaktywne `input()`
+  wymagałoby zatrzymania workera (`SharedArrayBuffer` + `Atomics.wait`), a to wymaga
+  nagłówków COOP/COEP, których GitHub Pages nie wysyła. Dlatego dane dla `input()` wpisuje
+  się w pole „Wejście” przed uruchomieniem; harness podmienia `input` i `sys.stdin`, a wpisane
+  wartości pokazuje w konsoli. Przy „Sprawdź” wejście jest puste, a wyjście nie jest
+  przesyłane na bieżąco.
 - **Rozwiązania wzorcowe w CI** – każde oczekiwane `expected` jest potwierdzone uruchomieniem
   programu w prawdziwym CPythonie (`npm run verify:solutions`), więc literówka w kluczu nie
   przejdzie niezauważona.

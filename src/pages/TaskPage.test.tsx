@@ -68,11 +68,39 @@ describe('TaskPage', () => {
     expect(screen.getByText('NameError')).toBeInTheDocument();
   });
 
-  it('przycisk Uruchom pokazuje wyjście programu', async () => {
-    renderTask(fakeRunner({ passed: true, results: [], durationMs: 1 }));
+  it('przycisk Uruchom pokazuje wyjście w konsoli i przekazuje dane wejściowe', async () => {
+    const runner = fakeRunner({ passed: true, results: [], durationMs: 1 });
+    renderTask(runner);
+    await userEvent.type(screen.getByLabelText('Wejście (stdin)'), '5{enter}7');
     await userEvent.click(screen.getByRole('button', { name: /Uruchom/ }));
-    expect(await screen.findByText('Wyjście programu')).toBeInTheDocument();
-    expect(screen.getByText('Witaj')).toBeInTheDocument();
+    expect(await screen.findByRole('log')).toHaveTextContent('Witaj');
+    expect(runner.execute).toHaveBeenCalledWith(
+      task,
+      task.starterCode,
+      expect.objectContaining({ stdin: '5\n7' }),
+    );
+
+    await userEvent.click(screen.getByRole('button', { name: 'Wyczyść' }));
+    expect(screen.getByRole('log')).not.toHaveTextContent('Witaj');
+  });
+
+  it('pokazuje wyjście na bieżąco i błąd programu', async () => {
+    const runner = fakeRunner({ passed: true, results: [], durationMs: 1 });
+    let finish: (value: { stdout: string; error: string | null }) => void = () => {};
+    runner.execute.mockImplementation(
+      (_task: unknown, _code: unknown, options: { onOutput: (text: string) => void }) => {
+        options.onOutput('Podaj n: 3\n');
+        return new Promise((resolve) => (finish = resolve));
+      },
+    );
+    renderTask(runner);
+    await userEvent.click(screen.getByRole('button', { name: /Uruchom/ }));
+    expect(await screen.findByText('działa…')).toBeInTheDocument();
+    expect(screen.getByRole('log')).toHaveTextContent('Podaj n: 3');
+
+    finish({ stdout: 'Podaj n: 3\n', error: 'ZeroDivisionError' });
+    expect(await screen.findByText('ZeroDivisionError')).toBeInTheDocument();
+    expect(screen.queryByText('działa…')).not.toBeInTheDocument();
   });
 
   it('dla nieznanego zadania pokazuje stronę 404', () => {

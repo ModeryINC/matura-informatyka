@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { CodeEditor } from '../components/CodeEditor';
+import { Console } from '../components/Console';
 import { FileList } from '../components/FileList';
 import { PdfViewer } from '../components/PdfViewer';
-import { OutputPanel, ResultPanel } from '../components/ResultPanel';
+import { ResultPanel } from '../components/ResultPanel';
 import { StatusBadge } from '../components/StatusBadge';
 import { TopicList } from '../components/TopicBadge';
 import { sessionsById, tasksById, tasksForSession } from '../data';
@@ -22,6 +23,9 @@ const STATUS_TEXT = {
   error: 'Nie udało się załadować Pythona – sprawdź połączenie z internetem',
 } as const;
 
+const EMPTY_OUTPUT: ExecutionOutput = { stdout: '', error: null };
+const USES_INPUT = /\binput\s*\(/;
+
 export function TaskPage({ runner = getRunner() }: { runner?: PythonRunner }) {
   const { taskId = '' } = useParams();
   const task = tasksById.get(taskId);
@@ -38,7 +42,9 @@ function TaskWorkspace({ task, runner }: { task: Task; runner: PythonRunner }) {
   const [result, setResult] = useState<SubmissionResult | null>(
     () => loadSolution(task.id)?.lastResult ?? null,
   );
-  const [output, setOutput] = useState<ExecutionOutput | null>(null);
+  const [output, setOutput] = useState<ExecutionOutput>(EMPTY_OUTPUT);
+  const [stdin, setStdin] = useState('');
+  const [running, setRunning] = useState(false);
   const [busy, setBusy] = useState(false);
   const [showSheet, setShowSheet] = useState(false);
   const runnerStatus = useRunnerStatus(runner);
@@ -53,14 +59,20 @@ function TaskWorkspace({ task, runner }: { task: Task; runner: PythonRunner }) {
 
   const run = useCallback(async () => {
     setBusy(true);
+    setRunning(true);
     setResult(null);
-    setOutput(await runner.execute(task, code));
+    setOutput(EMPTY_OUTPUT);
+    const finished = await runner.execute(task, code, {
+      stdin,
+      onOutput: (text) => setOutput((current) => ({ ...current, stdout: current.stdout + text })),
+    });
+    setOutput(finished);
+    setRunning(false);
     setBusy(false);
-  }, [runner, task, code]);
+  }, [runner, task, code, stdin]);
 
   const submit = useCallback(async () => {
     setBusy(true);
-    setOutput(null);
     const submission = await runner.submit(task, code);
     saveSolution(task.id, { code, lastResult: submission });
     setResult(submission);
@@ -72,7 +84,7 @@ function TaskWorkspace({ task, runner }: { task: Task; runner: PythonRunner }) {
     removeSolution(task.id);
     setCode(task.starterCode);
     setResult(null);
-    setOutput(null);
+    setOutput(EMPTY_OUTPUT);
   };
 
   const siblings = tasksForSession(task.sessionId);
@@ -200,10 +212,16 @@ function TaskWorkspace({ task, runner }: { task: Task; runner: PythonRunner }) {
           <p className={`runner-status runner-status--${runnerStatus}`} role="status">
             {STATUS_TEXT[runnerStatus]}
           </p>
-          <div aria-live="polite">
-            {output && <OutputPanel output={output} />}
-            {result && <ResultPanel result={result} />}
-          </div>
+          <Console
+            output={output.stdout}
+            error={output.error}
+            running={running}
+            stdin={stdin}
+            onStdinChange={setStdin}
+            onClear={() => setOutput(EMPTY_OUTPUT)}
+            usesInput={USES_INPUT.test(code)}
+          />
+          <div aria-live="polite">{result && <ResultPanel result={result} />}</div>
         </section>
       </div>
     </div>

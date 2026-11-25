@@ -966,7 +966,115 @@ progress::-moz-progress-bar {
   color: var(--danger);
 }
 
-.output,
+/* Konsola: wyjście programu i dane wejściowe */
+.console {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--code-bg);
+}
+
+.console__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.console__title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.console__running {
+  color: var(--warning);
+  font-size: 0.82rem;
+}
+
+.console__header .button {
+  margin-inline-start: auto;
+}
+
+.button--small {
+  min-block-size: 2rem;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.85rem;
+}
+
+.console__output {
+  min-block-size: 5rem;
+  max-block-size: 280px;
+  margin: 0;
+  padding: 0.6rem 0.75rem;
+  overflow: auto;
+  background: var(--surface-2);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.console__output:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+.console__placeholder {
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+}
+
+.console__error {
+  display: block;
+  margin-block-start: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.console__stdin {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.console__stdin label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.console__stdin textarea {
+  inline-size: 100%;
+  min-block-size: 3rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  resize: vertical;
+}
+
+.console__stdin textarea:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--focus);
+}
+
+.console__hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.console__hint--warn {
+  color: var(--warning);
+}
+
 .result {
   display: grid;
   gap: 0.6rem;
@@ -976,13 +1084,11 @@ progress::-moz-progress-bar {
   background: var(--code-bg);
 }
 
-.output__title,
 .result__title {
   margin: 0;
   font-size: 1rem;
 }
 
-.output__stdout,
 .check__body pre {
   max-block-size: 260px;
   overflow: auto;
@@ -991,7 +1097,6 @@ progress::-moz-progress-bar {
   border-radius: 6px;
 }
 
-.output__error,
 .check__error pre {
   padding: 0.6rem 0.75rem;
   background: var(--danger-soft);

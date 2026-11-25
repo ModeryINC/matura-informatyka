@@ -18,6 +18,8 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
 - **Wyszukiwanie** po temacie (sortowanie, rekurencja, słowniki, liczby pierwsze, …), roku,
   części arkusza, statusie i dowolnej frazie – bez względu na polskie znaki. Filtry są
   zapisywane w adresie, więc wyszukiwanie można udostępnić linkiem.
+- **Konsola** – „Uruchom” pokazuje wyjście `print` na bieżąco; dane dla `input()` wpisuje
+  się w pole „Wejście” (po jednej linii na wywołanie).
 - **Postęp** – rozwiązania i statusy zapisują się lokalnie w przeglądarce.
 - Motyw jasny/ciemny, obsługa klawiatury (Ctrl+Enter – sprawdź), układ na telefon.
 
