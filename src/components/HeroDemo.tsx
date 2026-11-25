@@ -127,6 +127,10 @@ const ROWS = [
 export function HeroDemo() {
   const demo = useHeroAnimation();
   const { scene } = demo;
+  const python = scene.kind === 'python';
+  const caret = demo.typing && !demo.reduced && <span className="hero-caret" />;
+  // Kolumna E wypełnia się po wpisaniu formuły (w ukrytej scenie – od razu, by zająć miejsce).
+  const filled = python || demo.showOutput;
 
   return (
     <div className="hero-demo" data-paused={demo.paused || undefined}>
@@ -158,20 +162,24 @@ export function HeroDemo() {
         </div>
 
         <div className="hero-window__body" aria-hidden="true">
-          {scene.kind === 'python' ? (
-            <pre className="hero-code">
+          {/*
+           * Obie sceny leżą w tej samej komórce siatki (nieaktywna jest niewidoczna,
+           * ale zajmuje miejsce), więc okno ma zawsze ten sam rozmiar – największy
+           * z obu – niezależnie od szerokości ekranu i czcionki.
+           */}
+          <div className="hero-stage">
+            <pre className={`hero-code${python ? '' : ' is-hidden'}`}>
               <code>
-                {highlight(demo.typed)}
-                {demo.typing && !demo.reduced && <span className="hero-caret" />}
+                {highlight(python ? demo.typed : SCENES[0]!.code)}
+                {python && caret}
               </code>
             </pre>
-          ) : (
-            <div className="hero-sheet">
+            <div className={`hero-sheet${python ? ' is-hidden' : ''}`}>
               <div className="hero-sheet__formula">
                 <span>fx</span>
                 <code>
-                  {highlight(demo.typed)}
-                  {demo.typing && !demo.reduced && <span className="hero-caret" />}
+                  {highlight(python ? SCENES[1]!.code : demo.typed)}
+                  {!python && caret}
                 </code>
               </div>
               <table>
@@ -190,8 +198,8 @@ export function HeroDemo() {
                       {row.map((cell, c) => (
                         <td key={c}>{cell}</td>
                       ))}
-                      <td className={demo.showOutput ? 'hero-sheet__filled' : ''}>
-                        {demo.showOutput
+                      <td className={filled ? 'hero-sheet__filled' : ''}>
+                        {filled
                           ? Number(row[3]) > Math.max(Number(row[1]), Number(row[2]))
                             ? 1
                             : 0
@@ -202,7 +210,7 @@ export function HeroDemo() {
                 </tbody>
               </table>
             </div>
-          )}
+          </div>
 
           <div className="hero-output">
             <div className={`hero-output__line${demo.showOutput ? ' is-visible' : ''}`}>
