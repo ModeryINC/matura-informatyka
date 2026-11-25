@@ -1,0 +1,72 @@
+[
+  {
+    "id": "2018-stara-formula-maj-4",
+    "sessionId": "2018/stara-formula-maj",
+    "number": "4",
+    "title": "Inwestycja w akcje",
+    "summary": "W pliku gielda.txt są kursy akcji firm A, B i C z 500 kolejnych dni notowań (dzień 1 – pierwszy wiersz danych).\n\nStrategia inwestora (tylko akcje firmy C): na starcie ma 5000 zł. Pierwszego dnia kupuje jak najwięcej akcji za najwyżej 1000 zł (2. i 3. dnia nie kupuje). Jeśli kursy w dniach i−2, i−1, i (i ≥ 3) tworzą ciąg malejący, następnego dnia kupuje jak najwięcej akcji za najwyżej 1000 zł (po kursie z tego dnia) – o ile ma co najmniej 1000 zł. Gdy kurs osiąga najwyższą wartość od początku notowań, następnego dnia sprzedaje wszystkie akcje (nie w 1. i 2. dniu). Brak dodatkowych kosztów. Kontrola: na koniec dnia 100 inwestor ma 0 akcji i 5 834,75 zł.",
+    "files": [
+      {
+        "sheet": "gielda",
+        "path": "arkusze/2018/stara-formula-maj/pliki/Dane_PR2/DANE_PR/gielda.txt",
+        "hasHeader": true
+      }
+    ],
+    "parts": [
+      {
+        "number": "4.1",
+        "points": 2,
+        "prompt": "Utwórz wykres liniowy kursów akcji poszczególnych firm w kolejnych dniach.",
+        "chart": "Pamiętaj o czytelności wykresu."
+      },
+      {
+        "number": "4.2",
+        "points": 2,
+        "prompt": "Podaj firmę, dla której wystąpił najdłuższy ciąg rosnących kursów, i długość tego ciągu (np. 71,27 72,34… 78,94 – sześć kursów – ma długość 6).",
+        "fields": [
+          {
+            "label": "Firma (A, B lub C)",
+            "expected": "C"
+          },
+          {
+            "label": "Długość ciągu",
+            "expected": "12"
+          }
+        ]
+      },
+      {
+        "number": "4.3",
+        "points": 2,
+        "prompt": "Dzień hossy firmy to dzień, w którym kurs jest wyższy od wszystkich wcześniejszych (dzień 1 nigdy nim nie jest). Podaj numery dni (rosnąco), które były dniami hossy dla co najmniej dwóch firm.",
+        "table": {
+          "rows": ["1.", "2.", "3.", "4.", "5.", "6.", "7.", "8."],
+          "columns": ["numer dnia"],
+          "expected": [["3"], ["4"], ["5"], ["7"], ["10"], ["11"], ["12"], ["16"]]
+        }
+      },
+      {
+        "number": "4.4",
+        "points": 4,
+        "prompt": "Przeprowadź symulację strategii inwestora. Podaj największą liczbę posiadanych akcji, liczbę transakcji kupna oraz liczbę akcji i kwotę pieniędzy na koniec dnia 500.",
+        "fields": [
+          {
+            "label": "Największa liczba akcji",
+            "expected": "64"
+          },
+          {
+            "label": "Liczba zakupów",
+            "expected": "31"
+          },
+          {
+            "label": "Akcje na koniec",
+            "expected": "36"
+          },
+          {
+            "label": "Pieniądze na koniec (zł)",
+            "expected": "974.21"
+          }
+        ]
+      }
+    ]
+  }
+]

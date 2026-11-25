@@ -1,0 +1,92 @@
+[
+  {
+    "id": "2022-maj-5",
+    "sessionId": "2022/maj",
+    "number": "5",
+    "title": "Sok",
+    "summary": "Plik soki.txt zawiera zamówienia butelkowanego soku składane w zakładzie przez cztery magazyny (Gniezno, Malbork, Ogrodzieniec, Przemyśl): numer zamówienia, data, magazyn i liczba butelek. Każdy magazyn składa najwyżej jedno zamówienie dziennie.\n\nZakład główny produkuje 12 000 butelek w dni robocze i 5 000 w soboty i niedziele. Po dziennej produkcji realizuje zamówienia z tego dnia w kolejności numerów; jeśli na zamówienie brakuje soku, całe zamówienie realizuje filia (której sok się nie kończy). 2.01.2021 rano (przed produkcją) zakład główny miał 30 000 butelek.",
+    "files": [
+      {
+        "sheet": "soki",
+        "path": "arkusze/2022/maj/pliki/Dane_2205/soki.txt",
+        "hasHeader": true
+      }
+    ],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 1,
+        "prompt": "Podaj, ile razy składano zamówienia z każdego magazynu.",
+        "table": {
+          "rows": ["Gniezno", "Malbork", "Ogrodzieniec", "Przemysl"],
+          "columns": ["liczba zamówień"],
+          "expected": [["152"], ["183"], ["222"], ["198"]]
+        }
+      },
+      {
+        "number": "5.2",
+        "points": 2,
+        "prompt": "Podaj długość najdłuższego okresu, w którym zamówienia z Ogrodzieńca wpływały codziennie, oraz daty jego pierwszego i ostatniego dnia.",
+        "fields": [
+          {
+            "label": "Liczba dni",
+            "expected": "8"
+          },
+          {
+            "label": "Pierwszy dzień",
+            "expected": "2021-10-07"
+          },
+          {
+            "label": "Ostatni dzień",
+            "expected": "2021-10-14"
+          }
+        ]
+      },
+      {
+        "number": "5.3",
+        "points": 3,
+        "prompt": "Wykonaj zestawienie łącznej liczby zamówionych butelek z każdego magazynu.",
+        "chart": "Utwórz procentowy wykres kołowy (tytuł, legenda, wartości procentowe).",
+        "table": {
+          "rows": ["Gniezno", "Malbork", "Ogrodzieniec", "Przemysl"],
+          "columns": ["liczba butelek"],
+          "expected": [["819000"], ["944240"], ["1115560"], ["1062920"]]
+        }
+      },
+      {
+        "number": "5.4",
+        "points": 4,
+        "prompt": "Podaj datę i numer pierwszego zamówienia zrealizowanego przez filię, liczbę zamówień przekazanych w ciągu roku do filii i łączną liczbę butelek wysłanych przez filię. Kontrola: po zamówieniu nr 20 w zakładzie głównym zostało 9 680 butelek.",
+        "fields": [
+          {
+            "label": "Data",
+            "expected": "2021-03-19"
+          },
+          {
+            "label": "Numer zamówienia",
+            "expected": "154"
+          },
+          {
+            "label": "Liczba zamówień dla filii",
+            "expected": "37"
+          },
+          {
+            "label": "Łączna liczba butelek z filii",
+            "expected": "285230"
+          }
+        ]
+      },
+      {
+        "number": "5.5",
+        "points": 2,
+        "prompt": "Podaj najmniejszą liczbę butelek, którą zakład główny powinien produkować w dni robocze (bez zmian w weekendy), aby sam zrealizował wszystkie zamówienia.",
+        "fields": [
+          {
+            "label": "Produkcja w dni robocze",
+            "expected": "13179"
+          }
+        ]
+      }
+    ]
+  }
+]

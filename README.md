@@ -18,8 +18,8 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
   - _programy_ (część 2) – kod czyta plik z danymi i wypisuje odpowiedź; jest uruchamiany
     na danych przykładowych z arkusza i na pełnych danych egzaminacyjnych,
   - _funkcje_ (część 1, „zapisz algorytm”) – funkcja sprawdzana zestawem testów.
-- **Zadania z Excela** (Zadania → Excel) – zadania z arkusza kalkulacyjnego z sesji majowych
-  nowej formuły (2023–2026). Dane są od razu wczytane do arkusza w przeglądarce
+- **Zadania z Excela** (Zadania → Excel) – 34 zadania z arkusza kalkulacyjnego ze wszystkich
+  arkuszy 2018–2026 (poza próbnymi Politechniki Łódzkiej – skany lub niepełny klucz). Dane są od razu wczytane do arkusza w przeglądarce
   ([Fortune Sheet](https://github.com/ruilisi/fortune-sheet), MIT), formuły można pisać po
   polsku (`=LICZ.JEŻELI(A:A;">5")`), a odpowiedzi – także całe zestawienia wstawiane
   z zaznaczenia – są sprawdzane z kluczem CKE. Wykresów nie sprawdzamy.

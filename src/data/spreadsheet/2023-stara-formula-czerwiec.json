@@ -1,0 +1,65 @@
+[
+  {
+    "id": "2023-stara-formula-czerwiec-5",
+    "sessionId": "2023/stara-formula-czerwiec",
+    "number": "5",
+    "title": "Hurtownia ogrodnicza",
+    "summary": "Hurtownia sprzedaje drzewka jabłoni i wiśni od poniedziałku do soboty (w niedziele – nie; święta pomijamy), od piątku 1 kwietnia do 31 października 2022. Na początku ma 100 jabłoni i 75 wiśni.\n\nW czwartki rano (przed sprzedażą) dostarczane jest 50 jabłoni i 25 wiśni. Jeśli w ostatni piątek i sobotę sprzedano łącznie więcej niż 25 jabłoni, w poniedziałek rano dowożonych jest dodatkowo 15 jabłoni. Każdego dnia pracy sprzedaje się 30% porannego stanu jabłoni i 20% stanu wiśni (po dostawie, w górę do liczby całkowitej). W poniedziałki rano, przed ewentualną dostawą, 5% jabłoni (w górę) to odpad. Kontrola: w całym okresie odpad to 34 jabłonie.\n\nTo zadanie nie ma pliku z danymi – całą symulację budujesz sam.",
+    "files": [],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 2,
+        "prompt": "Podaj, ile razy do hurtowni dowożono jabłonie, a ile razy wiśnie.",
+        "fields": [
+          {
+            "label": "Dostawy jabłoni",
+            "expected": "32"
+          },
+          {
+            "label": "Dostawy wiśni",
+            "expected": "30"
+          }
+        ]
+      },
+      {
+        "number": "5.2",
+        "points": 3,
+        "prompt": "Sporządź wykres liniowy porównujący sprzedaż jabłoni i wiśni od 1 lipca do 31 sierpnia 2022.",
+        "chart": "Pamiętaj o tytule i opisach osi."
+      },
+      {
+        "number": "5.3",
+        "points": 2,
+        "prompt": "Podaj datę, kiedy po raz pierwszy sprzedaż wiśni spadła poniżej 3 sztuk.",
+        "fields": [
+          {
+            "label": "Data",
+            "expected": "2022-04-27"
+          }
+        ]
+      },
+      {
+        "number": "5.4",
+        "points": 3,
+        "prompt": "Podaj, ile było dni (razem z niedzielami, gdy sprzedaż wynosi 0), w których sprzedaż jabłoni była mniejsza niż 10, od 10 do poniżej 20 oraz co najmniej 20 drzewek.",
+        "table": {
+          "rows": ["mniej niż 10", "od 10 do 19", "20 i więcej"],
+          "columns": ["liczba dni"],
+          "expected": [["148"], ["63"], ["3"]]
+        }
+      },
+      {
+        "number": "5.5",
+        "points": 2,
+        "prompt": "Podaj największy początkowy stan jabłoni, przy którym (przy tych samych zasadach) nigdy nie trzeba by dowozić jabłoni w poniedziałek, a ich stan nigdy nie spadłby do 0.",
+        "fields": [
+          {
+            "label": "Stan początkowy",
+            "expected": "48"
+          }
+        ]
+      }
+    ]
+  }
+]

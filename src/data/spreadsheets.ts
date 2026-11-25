@@ -29,6 +29,10 @@ export const spreadsheetTasksById: Map<string, SpreadsheetTask> = new Map(
   spreadsheetTasks.map((t) => [t.id, t]),
 );
 
+/** Podpunkty sprawdzane automatycznie (bez samych wykresów). */
+export const checkableParts = (task: SpreadsheetTask) =>
+  task.parts.filter((part) => part.fields !== undefined || part.table !== undefined);
+
 /** Łączna liczba punktów za zadanie. */
 export const totalPoints = (task: SpreadsheetTask): number =>
   task.parts.reduce((sum, part) => sum + part.points, 0);

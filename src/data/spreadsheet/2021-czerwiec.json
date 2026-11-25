@@ -1,0 +1,102 @@
+[
+  {
+    "id": "2021-czerwiec-5",
+    "sessionId": "2021/czerwiec",
+    "number": "5",
+    "title": "Wypożyczalnia",
+    "summary": "Przedsiębiorca otwiera wypożyczalnię rowerów i symuluje działalność od 1 stycznia 2023 (niedziela) do 31 grudnia 2024 (wtorek). Kupuje na początek 10 rowerów po 800 zł; wypożyczenie roweru na dzień kosztuje 30 zł. Wypożyczalnia jest zamknięta w soboty i niedziele; w każdą niedzielę serwisuje wszystkie rowery (15 zł za rower). Każdego dnia roboczego wypożycza się (w dół do liczby całkowitej) zimą 20% rowerów, wiosną 50%, latem 90%, jesienią 40%.\n\nPory roku: zima 21.12–20.03, wiosna 21.03–20.06, lato 21.06–22.09, jesień 23.09–20.12. Dochód = przychody − koszty (z zakupem rowerów). Kontrola: łączny dochód 31.03.2023 wynosi −5240 zł.\n\nTo zadanie nie ma pliku z danymi – symulację budujesz od zera.",
+    "files": [],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 3,
+        "prompt": "Podaj łączne koszty i łączne przychody po zakończeniu 31 grudnia 2023 (z kosztem zakupu 8000 zł) oraz datę, po której łączne koszty po raz pierwszy będą mniejsze od łącznych przychodów.",
+        "fields": [
+          {
+            "label": "Koszty (zł)",
+            "expected": "15950"
+          },
+          {
+            "label": "Przychody (zł)",
+            "expected": "39600"
+          },
+          {
+            "label": "Data",
+            "expected": "2023-06-01"
+          }
+        ]
+      },
+      {
+        "number": "5.2",
+        "points": 3,
+        "prompt": "Przygotuj zestawienie dochodów (przychody − koszty) w kolejnych miesiącach 2023 roku.",
+        "chart": "Sporządź wykres kolumnowy miesięcznych dochodów (tytuł, opisy osi).",
+        "table": {
+          "rows": [
+            "styczeń",
+            "luty",
+            "marzec",
+            "kwiecień",
+            "maj",
+            "czerwiec",
+            "lipiec",
+            "sierpień",
+            "wrzesień",
+            "październik",
+            "listopad",
+            "grudzień"
+          ],
+          "columns": ["dochód (zł)"],
+          "expected": [
+            ["-7430"],
+            ["600"],
+            ["1590"],
+            ["2250"],
+            ["2850"],
+            ["3660"],
+            ["4920"],
+            ["5610"],
+            ["4320"],
+            ["1890"],
+            ["2040"],
+            ["1350"]
+          ]
+        }
+      },
+      {
+        "number": "5.3",
+        "points": 3,
+        "prompt": "Jaka musiałaby być najniższa cena wypożyczenia (w pełnych złotych), aby po dwóch latach całkowity dochód wynosił co najmniej a) 100 000 zł, b) 125 000 zł, c) 150 000 zł?",
+        "fields": [
+          {
+            "label": "a) Cena (zł)",
+            "expected": "47"
+          },
+          {
+            "label": "b) Cena (zł)",
+            "expected": "57"
+          },
+          {
+            "label": "c) Cena (zł)",
+            "expected": "66"
+          }
+        ]
+      },
+      {
+        "number": "5.4",
+        "points": 4,
+        "prompt": "Ostatniego dnia każdego miesiąca przedsiębiorca kupuje 3 rowery, o ile łączny dochód na początku tego dnia na to pozwala (rowery są dostępne od następnego dnia; 31.12.2024 już nie kupuje). Podaj łączne przychody i koszty w całym okresie.",
+        "fields": [
+          {
+            "label": "Przychody (zł)",
+            "expected": "249630"
+          },
+          {
+            "label": "Koszty (zł)",
+            "expected": "100655"
+          }
+        ]
+      }
+    ]
+  }
+]

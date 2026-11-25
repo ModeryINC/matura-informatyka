@@ -136,12 +136,17 @@ całe zadanie z arkusza (np. „Zadanie 6. Konfitury owocowe”) z podpunktami:
 ```
 
 - `files` – każdy plik trafia do osobnej karty arkusza. `hasHeader: true`, gdy pierwszy wiersz
-  pliku to nagłówki; `headers: [...]` dopisuje nagłówki plikowi, który ich nie ma.
+  pliku to nagłówki; `headers: [...]` dopisuje nagłówki plikowi, który ich nie ma;
+  `separator: ";"` (lub `" "`), gdy kolumny nie są rozdzielone tabulatorem. Pusta lista –
+  zadanie bez pliku (symulacja), zaczyna się od pustego arkusza. Daty (`rrrr-mm-dd`,
+  `dd.mm.rrrr`, `d-mm-rrrr`), godziny i daty z godziną są wczytywane jako wartości czasu.
+- podpunkt z samym `chart` (bez `fields` i `table`) to wykres – nie jest sprawdzany i nie liczy
+  się do postępu.
 - `fields` – pojedyncze odpowiedzi; `alternatives` – inne poprawne zapisy, `tolerance` –
   dopuszczalna różnica liczb (domyślnie: liczby całkowite dokładnie, ułamki z dokładnością
   ostatniej cyfry klucza). Daty zapisuj jako `rrrr-mm-dd`.
 - `table` – zestawienie; uczeń może je wstawić z zaznaczenia (z podpisami lub bez, także
-  transponowane).
+  transponowane). Podpunkt może mieć jednocześnie `fields` i `table`.
 
 Klucz potwierdź obliczeniami w `solutions/excel/<id>.py` (opis w `solutions/README.md`)
 i uruchom `npm run verify:excel`, a potem `python scripts/find_sheet_pages.py`.

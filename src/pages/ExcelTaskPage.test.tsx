@@ -57,12 +57,13 @@ describe('ExcelTasksPage', () => {
       }),
     );
     renderAt('/excel', routes);
-    expect(screen.getByRole('link', { name: 'Konfitury owocowe' })).toHaveAttribute(
+    expect(screen.getAllByRole('link', { name: 'Konfitury owocowe' })[0]).toHaveAttribute(
       'href',
       '/excel/2023-maj-6',
     );
     expect(screen.getByText('Wszystko zaliczone')).toBeInTheDocument();
-    expect(screen.getAllByText(/Zaliczone: 0\//).length).toBe(3);
+    expect(screen.getAllByText(/Zaliczone: 0\//).length).toBeGreaterThan(30);
+    expect(screen.getByRole('heading', { name: '2018' })).toBeInTheDocument();
   });
 });
 
@@ -177,5 +178,17 @@ describe('ExcelTaskPage', () => {
   it('nieznane zadanie → 404', () => {
     renderAt('/excel/brak', routes);
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/nie znaleziono|404/i);
+  });
+});
+
+describe('zadanie bez pliku i podpunkt z samym wykresem', () => {
+  it('pokazuje pusty arkusz i podpunkt wykresu bez przycisków sprawdzania', async () => {
+    renderAt('/excel/2023-stara-formula-czerwiec-5', routes);
+    expect(await screen.findByTestId('arkusz')).toHaveTextContent('Arkusz1');
+    expect(fetch).not.toHaveBeenCalled();
+    expect(screen.getByText(/zaczynasz od pustego arkusza/)).toBeInTheDocument();
+    const chartOnly = screen.getByRole('region', { name: 'Zadanie 5.2' });
+    expect(within(chartOnly).queryByRole('button', { name: /Sprawdź/ })).not.toBeInTheDocument();
+    expect(screen.getByText(/Zaliczone: 0\/4 podpunktów/)).toBeInTheDocument();
   });
 });

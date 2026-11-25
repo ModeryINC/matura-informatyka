@@ -3,7 +3,7 @@ import { FileList } from '../components/FileList';
 import { MorphItem } from '../components/MorphItem';
 import { PdfViewer } from '../components/PdfViewer';
 import { sessionsById, tasksForSession } from '../data';
-import { spreadsheetTasks } from '../data/spreadsheets';
+import { checkableParts, spreadsheetTasks } from '../data/spreadsheets';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useSolutionStatuses } from '../hooks/useSolutions';
 import { passedParts } from '../lib/spreadsheet/storage';
@@ -69,7 +69,7 @@ export function SessionPage() {
               );
             })}
             {excelTasks.map((task) => {
-              const done = passedParts(task.id) === task.parts.length;
+              const done = passedParts(task.id) === checkableParts(task).length;
               return (
                 <MorphItem key={task.id} to={`/excel/${encodeURIComponent(task.id)}`}>
                   <Link

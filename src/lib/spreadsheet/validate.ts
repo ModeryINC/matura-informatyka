@@ -16,14 +16,16 @@ export function validateSpreadsheetTask(value: unknown, sessionIds: ReadonlySet<
   if (typeof task.sessionId === 'string' && !sessionIds.has(task.sessionId))
     fail(`nieznana sesja "${task.sessionId}"`);
 
-  if (!Array.isArray(task.files) || task.files.length === 0) {
-    fail('zadanie wymaga listy "files"');
+  if (!Array.isArray(task.files)) {
+    fail('zadanie wymaga listy "files" (może być pusta)');
   } else {
     const names = new Set<string>();
     for (const file of task.files as Record<string, unknown>[]) {
       if (!isText(file.sheet) || !isText(file.path)) fail('plik wymaga pól "sheet" i "path"');
       if (names.has(file.sheet as string)) fail(`powtórzona karta "${String(file.sheet)}"`);
       names.add(file.sheet as string);
+      if (file.separator !== undefined && !isText(file.separator))
+        fail(`plik "${String(file.sheet)}": "separator" musi być niepustym tekstem`);
       if (file.headers !== undefined && file.hasHeader !== undefined)
         fail(`plik "${String(file.sheet)}": "headers" i "hasHeader" wykluczają się`);
     }
@@ -40,7 +42,8 @@ export function validateSpreadsheetTask(value: unknown, sessionIds: ReadonlySet<
       fail(`${label}: "points" musi być > 0`);
     const fields = part.fields as Record<string, unknown>[] | undefined;
     const table = part.table as Record<string, unknown> | undefined;
-    if (!fields && !table) fail(`${label}: wymaga "fields" lub "table"`);
+    if (!fields && !table && !isText(part.chart))
+      fail(`${label}: wymaga "fields", "table" lub "chart"`);
     for (const field of fields ?? []) {
       if (!isText(field.label) || !isText(field.expected))
         fail(`${label}: pole wymaga "label" i "expected"`);

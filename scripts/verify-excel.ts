@@ -20,7 +20,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const python = process.env.PYTHON ?? 'python';
 const dataDir = join(root, 'src', 'data', 'spreadsheet');
 
-type Output = Record<string, string[] | { table: string[][]; rows?: string[] }>;
+type Output = Record<string, string[] | { table: string[][]; rows?: string[]; fields?: string[] }>;
 
 function verify(task: SpreadsheetTask): string[] {
   const errors: string[] = [];
@@ -49,12 +49,14 @@ function verify(task: SpreadsheetTask): string[] {
     for (const part of task.parts) {
       const actual = output[part.number];
       const where = `${task.id} ${part.number}`;
+      // Podpunkt z samym wykresem nie ma odpowiedzi do sprawdzenia.
+      if (!part.fields && !part.table) continue;
       if (actual === undefined) {
         errors.push(`${where}: brak wyniku w obliczeniach wzorcowych`);
         continue;
       }
       if (part.fields) {
-        const values = Array.isArray(actual) ? actual : [];
+        const values = Array.isArray(actual) ? actual : (actual.fields ?? []);
         part.fields.forEach((field, i) => {
           if (!fieldMatches(values[i] ?? '', field))
             errors.push(

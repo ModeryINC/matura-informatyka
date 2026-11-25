@@ -1,0 +1,127 @@
+[
+  {
+    "id": "2024-stara-formula-maj-5",
+    "sessionId": "2024/stara-formula-maj",
+    "number": "5",
+    "title": "Hurtownia",
+    "summary": "W pliku jablka.txt jest 2500 transakcji sprzedaży jabłek z 2022 roku: data, odmiana, kod pory dojrzewania (L – letnia, J – jesienna, Z – zimowa), NIP klienta i liczba kilogramów. W pliku cennik.txt jest cena 1 kg każdej odmiany (w zł).\n\nPliki nie mają nagłówków – na stronie kolumny są już podpisane.",
+    "files": [
+      {
+        "sheet": "jablka",
+        "path": "arkusze/2024/stara-formula-maj/pliki/Dane_SF_2405/jablka.txt",
+        "headers": ["data", "odmiana", "kod", "nip", "kg"]
+      },
+      {
+        "sheet": "cennik",
+        "path": "arkusze/2024/stara-formula-maj/pliki/Dane_SF_2405/cennik.txt",
+        "headers": ["odmiana", "cena"]
+      }
+    ],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 2,
+        "prompt": "Dla każdego dnia sprzedaży oblicz łączną liczbę sprzedanych kilogramów. Znajdź najdłuższy ciąg kolejnych dni sprzedaży, w którym sprzedaż rosła. Podaj datę początku i końca tego ciągu oraz liczby kilogramów sprzedanych w tych dniach.",
+        "fields": [
+          {
+            "label": "Data początku",
+            "expected": "2022-03-23"
+          },
+          {
+            "label": "kg w dniu początku",
+            "expected": "789"
+          },
+          {
+            "label": "Data końca",
+            "expected": "2022-03-29"
+          },
+          {
+            "label": "kg w dniu końca",
+            "expected": "5776"
+          }
+        ]
+      },
+      {
+        "number": "5.2",
+        "points": 2,
+        "prompt": "Dla każdego klienta policz łączną liczbę kilogramów kupionych jabłek odmian zimowych (Z). Podaj NIP-y trzech klientów, którzy kupili ich najwięcej, i liczbę kilogramów (od największej).",
+        "table": {
+          "rows": ["1.", "2.", "3."],
+          "columns": ["NIP", "kg"],
+          "expected": [
+            ["164-61-25-530", "12185"],
+            ["159-34-45-151", "12047"],
+            ["091-99-74-175", "11769"]
+          ]
+        }
+      },
+      {
+        "number": "5.3",
+        "points": 2,
+        "prompt": "Przychód z transakcji = cena 1 kg × liczba kilogramów. Podaj całkowity przychód hurtowni i odmianę, która dała największy przychód.",
+        "fields": [
+          {
+            "label": "Całkowity przychód (zł)",
+            "expected": "2422669.40"
+          },
+          {
+            "label": "Odmiana z największym przychodem",
+            "expected": "Reneta"
+          }
+        ]
+      },
+      {
+        "number": "5.4",
+        "points": 3,
+        "prompt": "Dla każdego miesiąca 2022 roku podaj najpopularniejszą odmianę (której sprzedano najwięcej kilogramów) i ile jej sprzedano.",
+        "chart": "Utwórz wykres kolumnowy wielkości sprzedaży najpopularniejszych odmian; na osi X nazwa miesiąca połączona z nazwą odmiany, opis osi Y i tytuł.",
+        "table": {
+          "rows": [
+            "styczeń",
+            "luty",
+            "marzec",
+            "kwiecień",
+            "maj",
+            "czerwiec",
+            "lipiec",
+            "sierpień",
+            "wrzesień",
+            "październik",
+            "listopad",
+            "grudzień"
+          ],
+          "columns": ["odmiana", "kg"],
+          "expected": [
+            ["Gala", "14017"],
+            ["Gala", "14969"],
+            ["Jonagored", "15079"],
+            ["Gala", "19404"],
+            ["Gala", "17382"],
+            ["Reneta", "18661"],
+            ["Melba", "21216"],
+            ["Reneta", "19054"],
+            ["Reneta", "20881"],
+            ["Reneta", "17065"],
+            ["Reneta", "19755"],
+            ["Jonagored", "13425"]
+          ]
+        }
+      },
+      {
+        "number": "5.5",
+        "points": 3,
+        "prompt": "Rabat za każdy kilogram w transakcji: 5 gr, jeśli klient łącznie (z bieżącą transakcją) kupił co najmniej 15 000 kg, ale mniej niż 20 000 kg; 10 gr – od 20 000 kg. Podaj liczbę transakcji z rabatem i łączną wartość rabatów w zł.",
+        "fields": [
+          {
+            "label": "Liczba transakcji z rabatem",
+            "expected": "180"
+          },
+          {
+            "label": "Łączna wartość rabatów (zł)",
+            "expected": "3089.10"
+          }
+        ]
+      }
+    ]
+  }
+]

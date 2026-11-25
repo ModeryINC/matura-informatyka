@@ -6,7 +6,7 @@ import { PdfViewer } from '../components/PdfViewer';
 import { SpreadsheetPartCard } from '../components/SpreadsheetPartCard';
 import type { SpreadsheetHandle } from '../components/SpreadsheetWorkbook';
 import { sessionsById, sheetLocation } from '../data';
-import { spreadsheetTasksById, totalPoints } from '../data/spreadsheets';
+import { checkableParts, spreadsheetTasksById, totalPoints } from '../data/spreadsheets';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { chainScroll } from '../lib/scrollChain';
 import { POLISH_FUNCTIONS } from '../lib/spreadsheet/formulaLocale';
@@ -139,8 +139,8 @@ function ExcelWorkspace({ task }: { task: SpreadsheetTask }) {
           <h1>{task.title}</h1>
         </div>
         <p className="xl-progress" role="status">
-          Zaliczone: {passed.length}/{task.parts.length} podpunktów · {points}/{totalPoints(task)}{' '}
-          pkt
+          Zaliczone: {passed.length}/{checkableParts(task).length} podpunktów · {points}/
+          {totalPoints(task)} pkt
         </p>
       </header>
 
@@ -173,10 +173,14 @@ function ExcelWorkspace({ task }: { task: SpreadsheetTask }) {
             initialPage={sheetLocation(task.id)?.page}
           />
         )}
-        <details className="data-files">
-          <summary>Pliki z danymi ({task.files.length})</summary>
-          <FileList files={task.files.map((f) => f.path)} preview />
-        </details>
+        {task.files.length > 0 ? (
+          <details className="data-files">
+            <summary>Pliki z danymi ({task.files.length})</summary>
+            <FileList files={task.files.map((f) => f.path)} preview />
+          </details>
+        ) : (
+          <p className="muted">To zadanie nie ma pliku z danymi – zaczynasz od pustego arkusza.</p>
+        )}
         <details className="xl-cheatsheet">
           <summary>Jak pracować w arkuszu</summary>
           <ul>

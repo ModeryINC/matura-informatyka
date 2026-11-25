@@ -3,6 +3,8 @@ import {
   fieldMatches,
   fitSelection,
   isoToSerial,
+  parseClock,
+  parseDateTime,
   parseDate,
   parseNumber,
   serialToIso,
@@ -137,5 +139,31 @@ describe('zestawienia', () => {
 
   it('odrzuca zaznaczenie złego rozmiaru', () => {
     expect(fitSelection([['1']], table)).toBeNull();
+  });
+});
+
+describe('godziny, daty z godziną i polskie znaki', () => {
+  it('porównuje godziny w różnych zapisach i jako ułamek doby', () => {
+    expect(parseClock('9:05')).toBe(545);
+    expect(valueMatches('19:54:00', '19:54')).toBe(true);
+    expect(valueMatches(String(1194 / 1440), '19:54')).toBe(true);
+    expect(valueMatches('19:55', '19:54')).toBe(false);
+    expect(valueMatches('abc', '19:54')).toBe(false);
+  });
+
+  it('porównuje daty z godziną w różnych zapisach i jako numer seryjny', () => {
+    expect(parseDateTime('22.05.2019 16:00')).toBe('2019-05-22 16:00');
+    expect(valueMatches('22.05.2019 16:00', '2019-05-22 16:00')).toBe(true);
+    expect(valueMatches('2019-05-22 4:00', '2019-05-22 04:00')).toBe(true);
+    expect(valueMatches(String(isoToSerial('2019-05-22') + 16 / 24), '2019-05-22 16:00')).toBe(
+      true,
+    );
+    expect(valueMatches('2019-05-22 17:00', '2019-05-22 16:00')).toBe(false);
+    expect(valueMatches('jutro', '2019-05-22 16:00')).toBe(false);
+  });
+
+  it('pomija polskie znaki w tekście', () => {
+    expect(valueMatches('Ciechanów', 'Ciechanow')).toBe(true);
+    expect(valueMatches('Łódź', 'lodz')).toBe(true);
   });
 });

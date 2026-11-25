@@ -1,0 +1,93 @@
+[
+  {
+    "id": "2022-probna-CKE-grudzien-4",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "4",
+    "title": "EKOdom",
+    "summary": "EKOdom zbiera z dachu deszczówkę do zbiornika. W pliku ekodom.txt jest ilość zebranej wody (w litrach) w kolejnych dniach 2022 roku.\n\nRodzina codziennie zużywa ze zbiornika 190 l, a w środy 260 l. Od 1 kwietnia do 30 września, gdy kolejne dni są bez opadów, piątego dnia bez opadów podlewa ogródek (300 l), a przy dłuższej suszy – 10., 15. dnia itd. Gdy w zbiorniku zabraknie wody, rodzina korzysta z wodociągu. Zbiornik się nie przepełnia; każdego dnia najpierw dolewa się deszczówkę, potem zużywa wodę.",
+    "files": [
+      {
+        "sheet": "ekodom",
+        "path": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/ekodom.txt",
+        "hasHeader": true
+      }
+    ],
+    "parts": [
+      {
+        "number": "4.1",
+        "points": 2,
+        "prompt": "a) Podaj długość najdłuższego okresu bez opadów (zbiornik nie był napełniany) oraz daty jego początku i końca. b) Podaj, ile razy od 1 kwietnia do 30 września podlewano ogródek.",
+        "fields": [
+          {
+            "label": "a) Liczba dni",
+            "expected": "21"
+          },
+          {
+            "label": "a) Początek",
+            "expected": "2022-08-12"
+          },
+          {
+            "label": "a) Koniec",
+            "expected": "2022-09-01"
+          },
+          {
+            "label": "b) Liczba podlewań",
+            "expected": "18"
+          }
+        ]
+      },
+      {
+        "number": "4.2",
+        "points": 3,
+        "prompt": "Utwórz zestawienie łącznej ilości zebranej wody w każdym miesiącu.",
+        "chart": "Utwórz wykres kolumnowy (oś X – miesiące, oś Y – litry, tytuł).",
+        "table": {
+          "rows": [
+            "styczeń",
+            "luty",
+            "marzec",
+            "kwiecień",
+            "maj",
+            "czerwiec",
+            "lipiec",
+            "sierpień",
+            "wrzesień",
+            "październik",
+            "listopad",
+            "grudzień"
+          ],
+          "columns": ["litry"],
+          "expected": [
+            ["2452"],
+            ["1381"],
+            ["3755"],
+            ["4213"],
+            ["3935"],
+            ["5566"],
+            ["6516"],
+            ["2698"],
+            ["5680"],
+            ["12225"],
+            ["14761"],
+            ["840"]
+          ]
+        }
+      },
+      {
+        "number": "4.3",
+        "points": 4,
+        "prompt": "1.01.2022 rano w zbiorniku było 5000 l wody. a) W ilu dniach zabrakło wody w zbiorniku (brakującą część pobierano z wodociągu)? b) Ile łącznie litrów pobrano z wodociągu?",
+        "fields": [
+          {
+            "label": "a) Liczba dni",
+            "expected": "93"
+          },
+          {
+            "label": "b) Litry z wodociągu",
+            "expected": "19152"
+          }
+        ]
+      }
+    ]
+  }
+]

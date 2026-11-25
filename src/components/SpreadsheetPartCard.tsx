@@ -95,6 +95,8 @@ export function SpreadsheetPartCard({
     ok === undefined ? '' : ok ? ' xl-input--ok' : ' xl-input--wrong';
 
   const headingId = `podpunkt-${part.number}`;
+  // Podpunkt z samym wykresem nie ma odpowiedzi do sprawdzenia.
+  const checkable = part.fields !== undefined || part.table !== undefined;
   return (
     <section
       className={`xl-part${answer.passed ? ' xl-part--passed' : ''}`}
@@ -171,14 +173,16 @@ export function SpreadsheetPartCard({
         </div>
       )}
 
-      <div className="xl-part__actions">
-        <button type="button" className="button button--small" onClick={insertSelection}>
-          <LuClipboardPaste aria-hidden className="icon" /> Wstaw z zaznaczenia
-        </button>
-        <button type="button" className="button button--small button--primary" onClick={check}>
-          <LuCheck aria-hidden className="icon" /> Sprawdź
-        </button>
-      </div>
+      {checkable && (
+        <div className="xl-part__actions">
+          <button type="button" className="button button--small" onClick={insertSelection}>
+            <LuClipboardPaste aria-hidden className="icon" /> Wstaw z zaznaczenia
+          </button>
+          <button type="button" className="button button--small button--primary" onClick={check}>
+            <LuCheck aria-hidden className="icon" /> Sprawdź
+          </button>
+        </div>
+      )}
       <div aria-live="polite">
         {message && <p className="xl-part__message">{message}</p>}
         {feedback?.passed && (

@@ -1,0 +1,89 @@
+[
+  {
+    "id": "2024-czerwiec-7",
+    "sessionId": "2024/czerwiec",
+    "number": "7",
+    "title": "Uzdrowisko",
+    "summary": "W pliku uzdrowisko.txt są dane z 2023 roku: data oraz liczba kuracjuszy, którzy tego dnia przyjechali do uzdrowiska i z niego wyjechali.\n\nŹródło daje 3900 litrów wody na dobę, a każdy kuracjusz wypija dziennie 0,4 litra (w dniu przyjazdu tak, w dniu wyjazdu nie). Nadmiar wody uzdrowisko butelkuje w pełne 5-litrowe butelki (resztę zużywa inaczej). Gdy wody ze źródła brakuje, brakującą ilość podaje się z butelek; otwarta butelka zawsze jest zużywana do końca. 31.12.2022 w uzdrowisku było 10 000 kuracjuszy, a wieczorem w magazynie 120 butelek.",
+    "files": [
+      {
+        "sheet": "uzdrowisko",
+        "path": "arkusze/2024/czerwiec/pliki/informatyka-2024-czerwiec-matura-rozszerzona-zalaczniki/informatyka-2024-czerwiec-matura-rozszerzona-zalaczniki/uzdrowisko.txt",
+        "hasHeader": true
+      }
+    ],
+    "parts": [
+      {
+        "number": "7.1",
+        "points": 3,
+        "prompt": "Utwórz zestawienie łącznej liczby kuracjuszy, którzy przyjechali w każdym miesiącu 2023 roku.",
+        "chart": "Sporządź wykres kolumnowy (tytuł i opisy osi).",
+        "table": {
+          "rows": [
+            "styczeń",
+            "luty",
+            "marzec",
+            "kwiecień",
+            "maj",
+            "czerwiec",
+            "lipiec",
+            "sierpień",
+            "wrzesień",
+            "październik",
+            "listopad",
+            "grudzień"
+          ],
+          "columns": ["przyjechali"],
+          "expected": [
+            ["15226"],
+            ["13394"],
+            ["15096"],
+            ["15292"],
+            ["15723"],
+            ["14880"],
+            ["16378"],
+            ["14778"],
+            ["14294"],
+            ["15637"],
+            ["15272"],
+            ["15528"]
+          ]
+        }
+      },
+      {
+        "number": "7.2",
+        "points": 2,
+        "prompt": "Podaj datę, kiedy liczba kuracjuszy (po przyjazdach i wyjazdach danego dnia) po raz pierwszy przekroczyła 11 000, oraz datę, kiedy była największa.",
+        "fields": [
+          {
+            "label": "Pierwszy dzień powyżej 11 000",
+            "expected": "2023-10-16"
+          },
+          {
+            "label": "Dzień z największą liczbą",
+            "expected": "2023-10-27"
+          }
+        ]
+      },
+      {
+        "number": "7.3",
+        "points": 4,
+        "prompt": "a) Podaj datę, kiedy po raz pierwszy zabrakło wody ze źródła i z butelek dla wszystkich kuracjuszy. b) Podaj liczbę dni, w których zabrakło wody. c) Podaj najmniejszą liczbę butelek w magazynie 31.12.2022, przy której wody nie zabrakłoby przez cały rok.",
+        "fields": [
+          {
+            "label": "a) Data",
+            "expected": "2023-02-20"
+          },
+          {
+            "label": "b) Liczba dni",
+            "expected": "7"
+          },
+          {
+            "label": "c) Liczba butelek",
+            "expected": "291"
+          }
+        ]
+      }
+    ]
+  }
+]

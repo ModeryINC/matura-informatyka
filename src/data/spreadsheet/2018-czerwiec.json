@@ -1,0 +1,152 @@
+[
+  {
+    "id": "2018-czerwiec-5",
+    "sessionId": "2018/czerwiec",
+    "number": "5",
+    "title": "Pomiary temperatury",
+    "summary": "W laboratorium jest 10 czujników temperatury. W pliku pomiary.txt (dane rozdzielone średnikami – na stronie już w kolumnach) jest 200 odczytów: data, godzina i temperatury z czujników 1–10 (°C, z dokładnością do setnych).\n\nDo 5.5: wyniki z 2017 roku zaginęły. W tych samych dniach i godzinach co w 2016: I – od 5. do 10. dnia miesiąca czujniki 1, 2 i 9 pokazywały o 1,2°C mniej; II – czujnik 8 w lipcu i sierpniu pokazywał o 7% więcej (w dół do 2 miejsc po przecinku); III – w maju wszystkie czujniki pokazywały dodatkowo o 0,9°C więcej. W pozostałych przypadkach odczyty są jak w 2016.",
+    "files": [
+      {
+        "sheet": "pomiary",
+        "path": "arkusze/2018/czerwiec/pliki/informatyka-2018-czerwiec-matura-rozszerzona-zalaczniki/pomiary.txt",
+        "hasHeader": true,
+        "separator": ";"
+      }
+    ],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 2,
+        "prompt": "Oblicz średnią temperaturę z czujnika 5 w godzinach od 5:00 do 12:00 włącznie (z dokładnością do dwóch miejsc po przecinku).",
+        "fields": [
+          {
+            "label": "Średnia (°C)",
+            "expected": "12.50"
+          }
+        ]
+      },
+      {
+        "number": "5.2",
+        "points": 2,
+        "prompt": "Przelicz każdy odczyt na kelwiny (T[K] = 273,15 + T[°C]) i zaokrąglij w dół do liczby całkowitej. Dla każdego czujnika podaj najczęstszą wartość.",
+        "fields": [
+          {
+            "label": "Czujnik 1",
+            "expected": "287"
+          },
+          {
+            "label": "Czujnik 2",
+            "expected": "286",
+            "alternatives": ["288"]
+          },
+          {
+            "label": "Czujnik 3",
+            "expected": "283"
+          },
+          {
+            "label": "Czujnik 4",
+            "expected": "284"
+          },
+          {
+            "label": "Czujnik 5",
+            "expected": "284"
+          },
+          {
+            "label": "Czujnik 6",
+            "expected": "287",
+            "alternatives": ["296"]
+          },
+          {
+            "label": "Czujnik 7",
+            "expected": "286"
+          },
+          {
+            "label": "Czujnik 8",
+            "expected": "288"
+          },
+          {
+            "label": "Czujnik 9",
+            "expected": "285"
+          },
+          {
+            "label": "Czujnik 10",
+            "expected": "286"
+          }
+        ]
+      },
+      {
+        "number": "5.3",
+        "points": 3,
+        "prompt": "Podaj średnie temperatury z czujnika 10 w poszczególnych miesiącach 2016 roku (z dokładnością do dwóch miejsc po przecinku).",
+        "chart": "Przedstaw je na wykresie słupkowym (etykiety danych, opisy osi, tytuł).",
+        "table": {
+          "rows": [
+            "styczeń",
+            "luty",
+            "marzec",
+            "kwiecień",
+            "maj",
+            "czerwiec",
+            "lipiec",
+            "sierpień",
+            "wrzesień",
+            "październik",
+            "listopad",
+            "grudzień"
+          ],
+          "columns": ["średnia (°C)"],
+          "expected": [
+            ["0.91"],
+            ["0.16"],
+            ["2.30"],
+            ["12.84"],
+            ["13.56"],
+            ["14.54"],
+            ["22.22"],
+            ["22.23"],
+            ["16.03"],
+            ["15.03"],
+            ["15.54"],
+            ["0.65"]
+          ]
+        }
+      },
+      {
+        "number": "5.4",
+        "points": 2,
+        "prompt": "W którym przedziale temperatur – (−10, 15] czy (15, 20] – mieści się więcej odczytów (wszystkich czujników)? Podaj przedział i liczbę odczytów.",
+        "fields": [
+          {
+            "label": "Przedział",
+            "alternatives": ["(-10,15]", "-10,15"],
+            "expected": "(-10, 15]"
+          },
+          {
+            "label": "Liczba odczytów",
+            "expected": "1150"
+          }
+        ]
+      },
+      {
+        "number": "5.5",
+        "points": 4,
+        "prompt": "Odtwórz odczyty czujników 1, 2, 8 i 9 w 2017 roku. Podaj pierwsze odczyty z dni 5.05.2017 i 7.07.2017 po zastosowaniu wniosków I i II oraz osobno po zastosowaniu wszystkich trzech wniosków.",
+        "table": {
+          "rows": [
+            "5.05 – wnioski I i II",
+            "7.07 – wnioski I i II",
+            "5.05 – wnioski I–III",
+            "7.07 – wnioski I–III"
+          ],
+          "columns": ["czujnik 1", "czujnik 2", "czujnik 8", "czujnik 9"],
+          "expected": [
+            ["9.46", "9.39", "14.52", "10.45"],
+            ["23.42", "19.39", "26.67", "20.70"],
+            ["10.36", "10.29", "15.42", "11.35"],
+            ["23.42", "19.39", "26.67", "20.70"]
+          ]
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,118 @@
+[
+  {
+    "id": "2019-stara-formula-maj-6",
+    "sessionId": "2019/stara-formula-maj",
+    "number": "6",
+    "title": "Transport",
+    "summary": "Firma „Algorytmiczne Usługi Transportowe” ma jedną ciężarówkę. W pliku kursy.txt (dane rozdzielone średnikami – na stronie już w kolumnach) jest 300 kursów z 2017 roku: data, miasto startowe, miasto docelowe, masa towaru (kg), liczba kilometrów i wynagrodzenie za kurs (zł).",
+    "files": [
+      {
+        "sheet": "kursy",
+        "path": "arkusze/2019/stara-formula-maj/pliki/Dane_PR2/kursy.txt",
+        "hasHeader": true,
+        "separator": ";"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 1,
+        "prompt": "Który kurs miał największą stawkę za kilometr? Podaj miasto startowe, docelowe i stawkę z dokładnością do dwóch miejsc po przecinku.",
+        "fields": [
+          {
+            "label": "Miasto startowe",
+            "expected": "Tarnobrzeg"
+          },
+          {
+            "label": "Miasto docelowe",
+            "expected": "Kielce"
+          },
+          {
+            "label": "Stawka (zł/km)",
+            "expected": "4.26"
+          }
+        ]
+      },
+      {
+        "number": "6.2",
+        "points": 1,
+        "prompt": "Ile firma zarobiła łącznie na kursach dłuższych niż 400 km?",
+        "fields": [
+          {
+            "label": "Wynagrodzenie (zł)",
+            "expected": "21108"
+          }
+        ]
+      },
+      {
+        "number": "6.3",
+        "points": 2,
+        "prompt": "Znajdź parę miast, między którymi (z pierwszego do drugiego) przewieziono łącznie najwięcej towaru; kierunki liczymy oddzielnie. Podaj miasta i łączną masę.",
+        "fields": [
+          {
+            "label": "Z miasta",
+            "expected": "Ciechanow"
+          },
+          {
+            "label": "Do miasta",
+            "expected": "Olsztyn"
+          },
+          {
+            "label": "Masa (kg)",
+            "expected": "15736"
+          }
+        ]
+      },
+      {
+        "number": "6.4",
+        "points": 3,
+        "prompt": "Podaj miasta, do których odbyło się co najmniej 8 kursów, i liczbę kursów do każdego, malejąco według liczby kursów (przy równej liczbie – alfabetycznie).",
+        "chart": "Wykonaj wykres słupkowy (czytelny opis).",
+        "table": {
+          "rows": [
+            "Warszawa",
+            "Szczecin",
+            "Bielsko-Biala",
+            "Konin",
+            "Ciechanow",
+            "Kielce",
+            "Kostrzyn",
+            "Opole",
+            "Pila",
+            "Poznan",
+            "Zielona Gora"
+          ],
+          "columns": ["liczba kursów"],
+          "expected": [
+            ["11"],
+            ["10"],
+            ["9"],
+            ["9"],
+            ["8"],
+            ["8"],
+            ["8"],
+            ["8"],
+            ["8"],
+            ["8"],
+            ["8"]
+          ]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 3,
+        "prompt": "Znajdź najdłuższy ciąg kolejnych kursów, w którym każdy następny zaczyna się w mieście, gdzie skończył się poprzedni, i odbywa się dzień później. Podaj datę pierwszego i ostatniego kursu.",
+        "fields": [
+          {
+            "label": "Pierwszy dzień",
+            "expected": "2017-12-10"
+          },
+          {
+            "label": "Ostatni dzień",
+            "expected": "2017-12-20"
+          }
+        ]
+      }
+    ]
+  }
+]

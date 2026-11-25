@@ -163,6 +163,8 @@ export interface SpreadsheetFile {
   headers?: string[];
   /** Pierwszy wiersz pliku to nagłówki kolumn. */
   hasHeader?: boolean;
+  /** Separator kolumn (domyślnie tabulator), np. `;`. */
+  separator?: string;
 }
 
 /** Pojedyncza odpowiedź (liczba, tekst lub data). */
@@ -192,7 +194,10 @@ export interface SpreadsheetPart {
   points: number;
   /** Skrót polecenia. */
   prompt: string;
-  /** Podpunkt wymaga wykresu – wykres nie jest sprawdzany automatycznie. */
+  /**
+   * Podpunkt wymaga wykresu – wykres nie jest sprawdzany automatycznie. Podpunkt
+   * z samym wykresem (bez `fields` i `table`) nie liczy się do postępu.
+   */
   chart?: string;
   fields?: SpreadsheetField[];
   table?: SpreadsheetTable;
@@ -207,6 +212,7 @@ export interface SpreadsheetTask {
   title: string;
   /** Wprowadzenie z arkusza (akapity rozdzielone pustą linią). */
   summary: string;
+  /** Pliki z danymi; pusta lista – zadanie startuje z pustym arkuszem. */
   files: SpreadsheetFile[];
   parts: SpreadsheetPart[];
 }

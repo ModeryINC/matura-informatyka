@@ -1,0 +1,79 @@
+[
+  {
+    "id": "2022-czerwiec-5",
+    "sessionId": "2022/czerwiec",
+    "number": "5",
+    "title": "Plażowy biznes",
+    "summary": "Pani Ania sprzedaje na plaży hot-dogi, lody i kukurydzę. W pliku temperatury.txt są prognozowane temperatury od 1 czerwca do 31 sierpnia 2022 (data i temperatura, rozdzielone średnikiem – na stronie są już rozdzielone na kolumny).\n\nDzienna sprzedaż produktu to p · (1 + w · (t − 24) / 2) zaokrąglone w dół, gdzie t – temperatura, p – sprzedaż pierwszego dnia (hot-dogi 90, lody 120, kukurydza 80), w – współczynnik (hot-dogi 1/13, lody 2/29, kukurydza 1/17). Ceny: lody 5 zł, kukurydza 6 zł, hot-dog 7 zł. Przykład: 3.06 (27°C) sprzedaż lodów = 120 · (1 + 2/29 · 3/2) ≈ 132.",
+    "files": [
+      {
+        "sheet": "temperatury",
+        "path": "arkusze/2022/czerwiec/pliki/DANE/temperatury.txt",
+        "headers": ["data", "temperatura"],
+        "separator": ";"
+      }
+    ],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 2,
+        "prompt": "Dzień jest ciepły, gdy temperatura przekracza 20°C. Podaj datę początku i końca najdłuższego ciągu ciepłych dni.",
+        "fields": [
+          {
+            "label": "Początek",
+            "expected": "2022-08-17"
+          },
+          {
+            "label": "Koniec",
+            "expected": "2022-08-31"
+          }
+        ]
+      },
+      {
+        "number": "5.2",
+        "points": 4,
+        "prompt": "Wylicz dzienną sprzedaż każdego produktu i sporządź zestawienie liczby sprzedanych lodów, kukurydzy i hot-dogów w poszczególnych miesiącach.",
+        "chart": "Przedstaw dane na jednym wykresie kolumnowym (legenda, tytuł, etykiety danych, opisy osi).",
+        "table": {
+          "rows": ["czerwiec", "lipiec", "sierpień"],
+          "columns": ["lody", "kukurydza", "hot-dogi"],
+          "expected": [
+            ["3527", "2355", "2639"],
+            ["3675", "2448", "2747"],
+            ["3579", "2390", "2665"]
+          ]
+        }
+      },
+      {
+        "number": "5.3",
+        "points": 2,
+        "prompt": "Oblicz dzienny utarg (łącznie ze wszystkich produktów) i narastającą sumę utargów. Którego dnia suma po raz pierwszy przekroczy 45 000 zł? Podaj datę i sumę do tego dnia włącznie.",
+        "fields": [
+          {
+            "label": "Data",
+            "expected": "2022-06-27"
+          },
+          {
+            "label": "Suma utargów (zł)",
+            "expected": "45358"
+          }
+        ]
+      },
+      {
+        "number": "5.4",
+        "points": 3,
+        "prompt": "We wrześniu temperatura 1. i 2. dnia wynosi 23°C, a co drugi dzień spada o 1°C (3. i 4. – 22°C itd.). a) Którego dnia września utarg po raz pierwszy będzie mniejszy niż 1000 zł? b) O ile najmniej (z dokładnością do 1 grosza) trzeba podnieść cenę każdego produktu, aby każdego dnia września utarg wynosił co najmniej 1000 zł?",
+        "fields": [
+          {
+            "label": "a) Data",
+            "expected": "2022-09-23"
+          },
+          {
+            "label": "b) Podwyżka (zł)",
+            "expected": "1.34"
+          }
+        ]
+      }
+    ]
+  }
+]

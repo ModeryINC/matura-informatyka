@@ -1,0 +1,135 @@
+[
+  {
+    "id": "2024-probna-CKE-grudzien-7",
+    "sessionId": "2024/probna-CKE-grudzien",
+    "number": "7",
+    "title": "Energia odnawialna",
+    "summary": "W pliku energia.txt jest godzinowa produkcja energii (MWh) ze źródeł wiatrowych i fotowoltaicznych w kwietniu 2024: data, godzina (1–24), produkcja wiatrowa i fotowoltaiczna – bez luk.\n\nW pliku zapotrzebowanie.txt jest godzinowe zapotrzebowanie na energię. Nadwyżka energii trafia do magazynów (łączna pojemność 200 000 MWh), a gdy produkcja nie wystarcza, energię pobiera się z magazynów – bez strat.",
+    "files": [
+      {
+        "sheet": "energia",
+        "path": "arkusze/2024/probna-CKE-grudzien/pliki/Dane-2412/energia.txt",
+        "hasHeader": true
+      },
+      {
+        "sheet": "zapotrzebowanie",
+        "path": "arkusze/2024/probna-CKE-grudzien/pliki/Dane-2412/zapotrzebowanie.txt",
+        "hasHeader": true
+      }
+    ],
+    "parts": [
+      {
+        "number": "7.1",
+        "points": 2,
+        "prompt": "Podaj dzień, w którym łącznie wytworzono najwięcej energii ze źródeł wiatrowych, oraz dzień, w którym wytworzono najwięcej energii ze źródeł fotowoltaicznych.",
+        "fields": [
+          {
+            "label": "Dzień – wiatr",
+            "expected": "2024-04-02"
+          },
+          {
+            "label": "Dzień – fotowoltaika",
+            "expected": "2024-04-30"
+          }
+        ]
+      },
+      {
+        "number": "7.2",
+        "points": 3,
+        "prompt": "Dla każdej godziny doby (1–24) podaj średnią produkcję energii fotowoltaicznej w kwietniu z dokładnością do dwóch miejsc po przecinku.",
+        "chart": "Wykonaj wykres kolumnowy (tytuł, opisy osi).",
+        "table": {
+          "rows": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24"
+          ],
+          "columns": ["średnia (MWh)"],
+          "tolerance": 0.01,
+          "expected": [
+            ["0.00"],
+            ["0.00"],
+            ["0.00"],
+            ["0.00"],
+            ["0.03"],
+            ["64.67"],
+            ["491.30"],
+            ["1723.63"],
+            ["3492.93"],
+            ["5164.23"],
+            ["6246.15"],
+            ["6623.02"],
+            ["6658.38"],
+            ["6489.51"],
+            ["6099.17"],
+            ["5410.74"],
+            ["4338.69"],
+            ["2796.16"],
+            ["1240.49"],
+            ["311.03"],
+            ["15.68"],
+            ["0.00"],
+            ["0.00"],
+            ["0.00"]
+          ]
+        }
+      },
+      {
+        "number": "7.3",
+        "points": 3,
+        "prompt": "Znajdź najdłuższy przedział czasu, w którym produkcja energii wiatrowej cały czas rosła (z godziny na godzinę). Podaj datę i godzinę jego początku oraz końca.",
+        "fields": [
+          {
+            "label": "Data początku",
+            "expected": "2024-04-02"
+          },
+          {
+            "label": "Godzina początku",
+            "expected": "1"
+          },
+          {
+            "label": "Data końca",
+            "expected": "2024-04-02"
+          },
+          {
+            "label": "Godzina końca",
+            "expected": "16"
+          }
+        ]
+      },
+      {
+        "number": "7.4",
+        "points": 3,
+        "prompt": "Podaj (z dokładnością do 1 MWh), ile najmniej energii powinno być w magazynach 1 kwietnia o 0:00, aby przez cały kwiecień ani razu nie zabrakło energii (produkcja + magazyny pokrywają zapotrzebowanie).",
+        "fields": [
+          {
+            "label": "Energia (MWh)",
+            "tolerance": 1,
+            "expected": "179736"
+          }
+        ]
+      }
+    ]
+  }
+]

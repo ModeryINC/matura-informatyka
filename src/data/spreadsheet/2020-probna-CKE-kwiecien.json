@@ -1,0 +1,68 @@
+[
+  {
+    "id": "2020-probna-CKE-kwiecien-5",
+    "sessionId": "2020/probna-CKE-kwiecien",
+    "number": "5",
+    "title": "Zbiornik wody",
+    "summary": "Właściciele ogrodu mają zbiornik na wodę o pojemności 25 000 l. W pliku pogoda.txt są średnie dobowe temperatury i opady (l/m²) w kolejnych dniach od 1 kwietnia do 30 września 2015 (wiersz 1 – 1 kwietnia, bez kolumny z datą).\n\nKażdego dnia: przy opadach x zbiornik zyskuje 700 · x litrów (najwyżej do pełna); w dni bez deszczu paruje 0,03% · T^1,5 · y litrów (w górę do pełnych litrów; T – temperatura, y – stan z 21:00 dnia poprzedniego). O 20:00 ogród jest podlewany, gdy temperatura przekracza 15°C, a opady nie przekraczają 0,6 l/m²: 12 000 l, a przy temperaturze powyżej 30°C – 24 000 l. Gdy wody jest za mało, tuż przed podlaniem zbiornik dopełnia się wodą z wodociągu. 31 marca o 21:00 zbiornik był pełny. Kontrola: od kwietnia do września dolano 743 427 l.",
+    "files": [
+      {
+        "sheet": "pogoda",
+        "path": "arkusze/2020/probna-CKE-kwiecien/pliki/pogoda.txt",
+        "hasHeader": true
+      }
+    ],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 1,
+        "prompt": "Podaj liczby dni, w których: temperatura nie przekraczała 15°C; temperatura przekraczała 15°C, a opady nie przekraczały 0,6 l/m²; temperatura przekraczała 15°C, a opady przekraczały 0,6 l/m².",
+        "fields": [
+          {
+            "label": "Temperatura ≤ 15°C",
+            "expected": "88"
+          },
+          {
+            "label": "> 15°C i opady ≤ 0,6",
+            "expected": "73"
+          },
+          {
+            "label": "> 15°C i opady > 0,6",
+            "expected": "22"
+          }
+        ]
+      },
+      {
+        "number": "5.2",
+        "points": 2,
+        "prompt": "Podaj datę, kiedy pierwszy raz trzeba było dolać wodę do zbiornika, i ilość dolanej wody (w litrach).",
+        "fields": [
+          {
+            "label": "Data",
+            "expected": "2015-05-06"
+          },
+          {
+            "label": "Litry",
+            "expected": "13172"
+          }
+        ]
+      },
+      {
+        "number": "5.3",
+        "points": 3,
+        "prompt": "Utwórz wykres liniowy ilości wody w zbiorniku od 1 kwietnia do 30 września 2015 (stan z 21:00 po podlaniu).",
+        "chart": "Pamiętaj o tytule i opisach osi."
+      },
+      {
+        "number": "5.4",
+        "points": 4,
+        "prompt": "Wykonaj miesięczne zestawienie kosztów wody z wodociągu (kwiecień–wrzesień). 1 m³ kosztuje 11,74 zł, a w każdym miesiącu płaci się za pełne m³ (w górę).",
+        "table": {
+          "rows": ["kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień"],
+          "columns": ["koszt (zł)"],
+          "expected": [["0.00"], ["164.36"], ["1056.60"], ["2559.32"], ["3651.14"], ["1326.62"]]
+        }
+      }
+    ]
+  }
+]

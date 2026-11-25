@@ -1,0 +1,191 @@
+[
+  {
+    "id": "2020-czerwiec-6",
+    "sessionId": "2020/czerwiec",
+    "number": "6",
+    "title": "Statek",
+    "summary": "Statek „Kormoran” pływał między dziesięcioma portami Morza Śródziemnego, przewożąc pięć towarów (T1–T5); z portu wypływał tego samego dnia, w którym przypłynął. W pliku statek.txt są kursy od 2016-01-01 do 2018-12-18: data pobytu w porcie, port, towar, Z/W (załadunek/wyładunek), liczba ton i cena za tonę w talarach.\n\nPrzy załadunku kapitan płaci za towar, a przy wyładunku dostaje zapłatę. Przed pierwszym rejsem miał w kasie 500 000 talarów.",
+    "files": [
+      {
+        "sheet": "statek",
+        "path": "arkusze/2020/czerwiec/pliki/Dane_PR2/statek.txt",
+        "hasHeader": true
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 2,
+        "prompt": "Podaj towar, który ładowano na statek najwięcej razy, oraz łączną masę tych załadunków (w tonach).",
+        "fields": [
+          {
+            "label": "Towar",
+            "expected": "T4"
+          },
+          {
+            "label": "Masa (t)",
+            "expected": "905"
+          }
+        ]
+      },
+      {
+        "number": "6.2",
+        "points": 1,
+        "prompt": "Podaj liczbę kursów, w których statek spędził na morzu więcej niż 20 pełnych dni (np. wypłynięcie 2016-01-10, przypłynięcie 2016-01-16 – 5 pełnych dni).",
+        "fields": [
+          {
+            "label": "Liczba kursów",
+            "expected": "22"
+          }
+        ]
+      },
+      {
+        "number": "6.3",
+        "points": 2,
+        "prompt": "1 lutego 2016 i 1 sierpnia 2018 statek był na morzu. Dla każdego z tych dni podaj towar, którego na statku było najwięcej, i jego liczbę ton oraz towar, którego było najmniej (ale więcej niż 0 t), i jego liczbę ton.",
+        "fields": [
+          {
+            "label": "2016-02-01: najwięcej – towar",
+            "expected": "T2"
+          },
+          {
+            "label": "2016-02-01: najwięcej – tony",
+            "expected": "48"
+          },
+          {
+            "label": "2016-02-01: najmniej – towar",
+            "expected": "T4"
+          },
+          {
+            "label": "2016-02-01: najmniej – tony",
+            "expected": "24"
+          },
+          {
+            "label": "2018-08-01: najwięcej – towar",
+            "expected": "T5"
+          },
+          {
+            "label": "2018-08-01: najwięcej – tony",
+            "expected": "125"
+          },
+          {
+            "label": "2018-08-01: najmniej – towar",
+            "expected": "T1"
+          },
+          {
+            "label": "2018-08-01: najmniej – tony",
+            "expected": "3"
+          }
+        ]
+      },
+      {
+        "number": "6.4",
+        "points": 3,
+        "prompt": "Zestaw, ile ton towaru T5 załadowano i ile wyładowano w każdym miesiącu od stycznia 2016 do grudnia 2018.",
+        "chart": "Sporządź wykres kolumnowy (dwie kolumny na miesiąc, oś pozioma w formacie rrrr-mm, opisy osi, tytuł).",
+        "table": {
+          "rows": [
+            "2016-01",
+            "2016-02",
+            "2016-03",
+            "2016-04",
+            "2016-05",
+            "2016-06",
+            "2016-07",
+            "2016-08",
+            "2016-09",
+            "2016-10",
+            "2016-11",
+            "2016-12",
+            "2017-01",
+            "2017-02",
+            "2017-03",
+            "2017-04",
+            "2017-05",
+            "2017-06",
+            "2017-07",
+            "2017-08",
+            "2017-09",
+            "2017-10",
+            "2017-11",
+            "2017-12",
+            "2018-01",
+            "2018-02",
+            "2018-03",
+            "2018-04",
+            "2018-05",
+            "2018-06",
+            "2018-07",
+            "2018-08",
+            "2018-09",
+            "2018-10",
+            "2018-11",
+            "2018-12"
+          ],
+          "columns": ["załadunek (t)", "wyładunek (t)"],
+          "expected": [
+            ["76", "32"],
+            ["8", "0"],
+            ["0", "50"],
+            ["68", "0"],
+            ["0", "0"],
+            ["42", "0"],
+            ["83", "0"],
+            ["0", "191"],
+            ["44", "4"],
+            ["0", "0"],
+            ["30", "0"],
+            ["0", "0"],
+            ["39", "112"],
+            ["0", "1"],
+            ["35", "0"],
+            ["1", "0"],
+            ["33", "68"],
+            ["8", "0"],
+            ["42", "0"],
+            ["4", "48"],
+            ["0", "0"],
+            ["0", "6"],
+            ["12", "1"],
+            ["0", "0"],
+            ["10", "22"],
+            ["34", "0"],
+            ["0", "34"],
+            ["5", "0"],
+            ["0", "0"],
+            ["95", "0"],
+            ["25", "0"],
+            ["22", "121"],
+            ["0", "26"],
+            ["20", "0"],
+            ["48", "64"],
+            ["0", "4"]
+          ]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 4,
+        "prompt": "a) Podaj stan kasy 18 grudnia 2018 po wszystkich transakcjach oraz dzień, w którym po wypłynięciu z portu stan kasy był największy, i ten stan. b) Podaj najmniejszą liczbę talarów przed pierwszym rejsem, przy której kapitan zapłaciłby za każdy załadunek (transakcje w kolejności z pliku).",
+        "fields": [
+          {
+            "label": "a) Stan kasy 18.12.2018",
+            "expected": "545844"
+          },
+          {
+            "label": "a) Dzień największego stanu",
+            "expected": "2018-10-08"
+          },
+          {
+            "label": "a) Największy stan",
+            "expected": "550079"
+          },
+          {
+            "label": "b) Minimum talarów",
+            "expected": "6399"
+          }
+        ]
+      }
+    ]
+  }
+]

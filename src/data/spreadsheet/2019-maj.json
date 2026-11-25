@@ -1,0 +1,87 @@
+[
+  {
+    "id": "2019-maj-5",
+    "sessionId": "2019/maj",
+    "number": "5",
+    "title": "Chmury",
+    "summary": "Na odległej planecie są chmury dwóch kategorii – cirrusy (C) i stratusy (S) – o wielkościach 1–5; jednego dnia występuje tylko jeden rodzaj chmur. W pliku pogoda.txt (dane rozdzielone średnikami – na stronie już w kolumnach) są pomiary z 500 dni: numer dnia, temperatura, opad (mm), kategoria i wielkość chmur (0 – bezchmurnie). Od dnia 301 kamera jest zepsuta i raportuje same dni bezchmurne (temperatura i opady są poprawne).\n\nTeoria prof. Nubisa: po dniu bez chmur pojawiają się chmury wielkości 1 – kategorii C, jeśli temperatura tego dnia jest ≥ 10, w przeciwnym razie S; chmury po trzech dniach przechodzą w wielkość o 1 większą (aż do 5); chmury wielkości 5 zanikają, gdy danego dnia spadnie co najmniej 20 mm deszczu – następny dzień jest wtedy bezchmurny. Kontrola: przez pierwszych 20 dni teoria zgadza się z obserwacjami.",
+    "files": [
+      {
+        "sheet": "pogoda",
+        "path": "arkusze/2019/maj/pliki/Dane_PR/pogoda.txt",
+        "hasHeader": true,
+        "separator": ";"
+      }
+    ],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 2,
+        "prompt": "Podaj liczbę dni z temperaturą co najmniej 20 i opadem co najwyżej 5 mm.",
+        "fields": [
+          {
+            "label": "Liczba dni",
+            "expected": "63"
+          }
+        ]
+      },
+      {
+        "number": "5.2",
+        "points": 2,
+        "prompt": "Znajdź najdłuższy ciąg dni, w których temperatura każdego dnia jest wyższa niż dnia poprzedniego. Podaj numer pierwszego i ostatniego dnia ciągu (np. dla 3,4; 3,5; 3,6; 3,7; 3,5 w dniach 35–39 ciąg to dni 36–38).",
+        "fields": [
+          {
+            "label": "Pierwszy dzień",
+            "expected": "448"
+          },
+          {
+            "label": "Ostatni dzień",
+            "expected": "455"
+          }
+        ]
+      },
+      {
+        "number": "5.3",
+        "points": 3,
+        "prompt": "Dla pierwszych 300 dni oblicz średni opad dla każdego rodzaju chmur (C1–C5, S1–S5) z dokładnością do dwóch miejsc po przecinku.",
+        "chart": "Przedstaw wyniki na wykresie kolumnowym (czytelny opis).",
+        "table": {
+          "rows": ["C1", "C2", "C3", "C4", "C5", "S1", "S2", "S3", "S4", "S5"],
+          "columns": ["średni opad (mm)"],
+          "expected": [
+            ["3.45"],
+            ["7.28"],
+            ["9.05"],
+            ["11.58"],
+            ["19.40"],
+            ["3.73"],
+            ["6.52"],
+            ["10.29"],
+            ["15.00"],
+            ["19.64"]
+          ]
+        }
+      },
+      {
+        "number": "5.4",
+        "points": 4,
+        "prompt": "Załóż, że przez 500 dni chmury rozwijają się według teorii (dzień 1 bezchmurny, opady jak w pliku). a) Podaj liczbę dni z chmurami wielkości 0–5 (tabela). b) Ile spośród pierwszych 300 dni ma wielkość chmur zgodną z kamerą? c) Ile spośród pierwszych 300 dni ma kategorię chmur zgodną z kamerą?",
+        "fields": [
+          {
+            "label": "b) Zgodna wielkość (dni)",
+            "expected": "296"
+          },
+          {
+            "label": "c) Zgodna kategoria (dni)",
+            "expected": "286"
+          }
+        ],
+        "table": {
+          "rows": ["0", "1", "2", "3", "4", "5"],
+          "columns": ["liczba dni"],
+          "expected": [["34"], ["102"], ["102"], ["102"], ["100"], ["60"]]
+        }
+      }
+    ]
+  }
+]

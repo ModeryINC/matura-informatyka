@@ -1,0 +1,107 @@
+[
+  {
+    "id": "2026-czerwiec-7",
+    "sessionId": "2026/czerwiec",
+    "number": "7",
+    "title": "Recykling",
+    "summary": "W pliku dostawy.txt są dostawy materiałów do magazynu przetwórni zajmującej się recyklingiem w 2023 roku: numer dostawy, data, nazwa dostawcy i liczba kilogramów materiału.\n\nPrzetwórnia działa tylko w dniach dostaw i przetwarza najwyżej 3900 kg dziennie. Materiał pobiera rano z magazynu: jeśli jest w nim co najwyżej 3900 kg – przetwarza całość, a jeśli więcej – 3900 kg, reszta zostaje. Na koniec dnia magazyn powiększa się o dostawy z tego dnia. Rano 2.01.2023 (przed przetwarzaniem i dostawami) w magazynie było 5000 kg.",
+    "files": [
+      {
+        "sheet": "dostawy",
+        "path": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/dostawy.txt",
+        "hasHeader": true
+      }
+    ],
+    "parts": [
+      {
+        "number": "7.1",
+        "points": 2,
+        "prompt": "Podaj datę, kiedy dostarczono łącznie najwięcej materiału, oraz liczbę dostarczonych tego dnia kilogramów.",
+        "fields": [
+          {
+            "label": "Data",
+            "expected": "2023-08-16"
+          },
+          {
+            "label": "Liczba kg",
+            "expected": "6399"
+          }
+        ]
+      },
+      {
+        "number": "7.2",
+        "points": 2,
+        "prompt": "Podaj, ile razy ten sam dostawca przywiózł materiał dokładnie dwa razy w tym samym dniu.",
+        "fields": [
+          {
+            "label": "Liczba przypadków",
+            "expected": "29"
+          }
+        ]
+      },
+      {
+        "number": "7.3",
+        "points": 3,
+        "prompt": "Dla każdego miesiąca podaj łączną liczbę kilogramów dostarczonego materiału.",
+        "chart": "Wykonaj wykres kolumnowy (tytuł, nazwy miesięcy na osi X).",
+        "table": {
+          "rows": [
+            "styczeń",
+            "luty",
+            "marzec",
+            "kwiecień",
+            "maj",
+            "czerwiec",
+            "lipiec",
+            "sierpień",
+            "wrzesień",
+            "październik",
+            "listopad",
+            "grudzień"
+          ],
+          "columns": ["kg"],
+          "expected": [
+            ["91769"],
+            ["86776"],
+            ["99704"],
+            ["78678"],
+            ["98806"],
+            ["86931"],
+            ["88897"],
+            ["105548"],
+            ["89532"],
+            ["83961"],
+            ["96910"],
+            ["80636"]
+          ]
+        }
+      },
+      {
+        "number": "7.4",
+        "points": 2,
+        "prompt": "Podaj największy stan magazynu na koniec dnia (po przetworzeniu i dostawach) oraz datę tego dnia.",
+        "fields": [
+          {
+            "label": "Stan magazynu (kg)",
+            "expected": "11224"
+          },
+          {
+            "label": "Data",
+            "expected": "2023-08-25"
+          }
+        ]
+      },
+      {
+        "number": "7.5",
+        "points": 2,
+        "prompt": "Podaj (z dokładnością do 1 kg) największą dzienną wydajność przetwórni, przy której każdego dnia pracy przetwarzałaby dokładnie tyle kg, ile wynosi jej wydajność.",
+        "fields": [
+          {
+            "label": "Wydajność (kg)",
+            "expected": "3126"
+          }
+        ]
+      }
+    ]
+  }
+]

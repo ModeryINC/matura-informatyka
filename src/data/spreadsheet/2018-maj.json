@@ -1,0 +1,100 @@
+[
+  {
+    "id": "2018-maj-5",
+    "sessionId": "2018/maj",
+    "number": "5",
+    "title": "Zbiornik",
+    "summary": "Na rzece Wirce zbudowano zbiornik retencyjny. W pliku woda.txt jest dzienny dopływ wody (m³) do zbiornika w kolejnych dniach lat 2008–2017 (3653 wiersze: data i liczba m³).\n\nCykl pracy zbiornika: tuż po północy mierzy się objętość wody; jeśli przekracza 1 000 000 m³, nadmiar jest od razu wypuszczany. O 8:00 wypuszcza się 2% objętości z pomiaru o północy (w górę do pełnych m³). W ciągu doby do zbiornika dopływa woda z rzeki. Pomiar 2008-01-01 wskazał 500 000 m³. Kontrola: pomiar po północy 2008-02-01 wskazał 338 406 m³.",
+    "files": [
+      {
+        "sheet": "woda",
+        "path": "arkusze/2018/maj/pliki/Dane_PR/woda.txt",
+        "headers": ["data", "doplyw"]
+      }
+    ],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 2,
+        "prompt": "Podaj rok, w którym do zbiornika dopłynęło łącznie najwięcej wody.",
+        "fields": [
+          {
+            "label": "Rok",
+            "expected": "2015"
+          }
+        ]
+      },
+      {
+        "number": "5.2",
+        "points": 2,
+        "prompt": "Znajdź najdłuższy okres, w którym codziennie dopływało co najmniej 10 000 m³ wody. Podaj datę początkową i końcową.",
+        "fields": [
+          {
+            "label": "Początek",
+            "expected": "2015-03-17"
+          },
+          {
+            "label": "Koniec",
+            "expected": "2015-05-10"
+          }
+        ]
+      },
+      {
+        "number": "5.3",
+        "points": 3,
+        "prompt": "Podaj zestawienie łącznego dopływu wody w kolejnych miesiącach 2008 roku.",
+        "chart": "Wykonaj wykres kolumnowy (tytuł, opisy osi).",
+        "table": {
+          "rows": [
+            "styczeń",
+            "luty",
+            "marzec",
+            "kwiecień",
+            "maj",
+            "czerwiec",
+            "lipiec",
+            "sierpień",
+            "wrzesień",
+            "październik",
+            "listopad",
+            "grudzień"
+          ],
+          "columns": ["dopływ (m³)"],
+          "expected": [
+            ["95433"],
+            ["94730"],
+            ["109439"],
+            ["632931"],
+            ["329203"],
+            ["85628"],
+            ["166597"],
+            ["139747"],
+            ["282342"],
+            ["170729"],
+            ["222440"],
+            ["172072"]
+          ]
+        }
+      },
+      {
+        "number": "5.4",
+        "points": 5,
+        "prompt": "a) Podaj dzień, w którym pierwszy raz wypuszczono nadmiar wody po przepełnieniu. b) W ilu dniach (2008–2017) pomiar wskazał co najmniej 800 000 m³? c) Ile najwięcej wody wskazałby pomiar, gdyby zrezygnować z wypuszczania nadmiaru powyżej 1 000 000 m³ (zbiornik bez ograniczenia pojemności)?",
+        "fields": [
+          {
+            "label": "a) Data",
+            "expected": "2015-04-19"
+          },
+          {
+            "label": "b) Liczba dni",
+            "expected": "188"
+          },
+          {
+            "label": "c) Największa objętość (m³)",
+            "expected": "1399242"
+          }
+        ]
+      }
+    ]
+  }
+]

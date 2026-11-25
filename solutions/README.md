@@ -13,3 +13,9 @@ Nazwa pliku: `<rok>-<sesja>/<numer zadania>.py`, np. `2024-maj/3.2.py`.
 "7.3": {"table": [["Gala", "14017"], …]}}`. `npm run verify:excel` uruchamia program w katalogu
 z plikami danych zadania i porównuje wynik z kluczem tą samą funkcją, która sprawdza odpowiedzi
 na stronie.
+
+Zadanie starej formuły z tymi samymi danymi co zadanie nowej formuły nie powtarza obliczeń:
+jego plik wywołuje obliczenia tamtego zadania przez `_alias.py` i tylko zmienia numerację
+podpunktów (np. `2026-stara-formula-czerwiec-5.py`). Wynik podpunktu z polami i tabelą naraz
+zapisuje się jako `{"fields": [...], "table": [[...]]}`; `"alternatives"` (lista list) dopisuje
+inne poprawne odpowiedzi do pól.

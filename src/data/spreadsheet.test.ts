@@ -31,13 +31,15 @@ describe.each(files)('%s', (file) => {
 });
 
 test('wszystkie zadania są wczytane, z unikalnymi identyfikatorami', () => {
-  expect(spreadsheetTasks.map((t) => t.id)).toEqual([
-    // Jak w katalogu arkuszy: od najnowszych.
-    '2026-maj-7',
-    '2025-maj-6',
-    '2024-maj-7',
-    '2023-maj-6',
-  ]);
+  // Wszystkie zadania z plików przechodzą walidację (nic nie odpada po cichu).
+  const inFiles = files.flatMap(
+    (file) => JSON.parse(readFileSync(join(dir, file), 'utf8')) as { id: string }[],
+  );
+  expect(spreadsheetTasks).toHaveLength(inFiles.length);
+  expect(spreadsheetTasks.length).toBeGreaterThanOrEqual(34);
+  // Jak w katalogu arkuszy: od najnowszych.
+  expect(spreadsheetTasks[0]!.sessionId.startsWith('2026')).toBe(true);
+  expect(spreadsheetTasks.at(-1)!.sessionId.startsWith('2018')).toBe(true);
   expect(spreadsheetTasksById.size).toBe(spreadsheetTasks.length);
   expect(totalPoints(spreadsheetTasksById.get('2023-maj-6')!)).toBe(10);
 });
@@ -88,10 +90,13 @@ describe('validateSpreadsheetTask', () => {
     expect(errors.join('\n')).toMatch(/powtórzona karta/);
     expect(errors.join('\n')).toMatch(/"sheet" i "path"/);
     expect(errors.join('\n')).toMatch(/points/);
-    expect(errors.join('\n')).toMatch(/"fields" lub "table"/);
+    expect(errors.join('\n')).toMatch(/"fields", "table" lub "chart"/);
     expect(errors.join('\n')).toMatch(/"label" i "expected"/);
     expect(errors.join('\n')).toMatch(/rozmiar "expected"/);
     expect(errors.join('\n')).toMatch(/wymaga "rows", "columns"/);
-    expect(validateSpreadsheetTask({ ...valid, files: [], parts: [] }, sessionIds)).toHaveLength(2);
+    expect(validateSpreadsheetTask({ ...valid, files: [], parts: [] }, sessionIds)).toEqual([
+      'x: zadanie wymaga listy "parts"',
+    ]);
+    expect(validateSpreadsheetTask({ ...valid, files: undefined }, sessionIds)).toHaveLength(1);
   });
 });

@@ -11,6 +11,10 @@ export async function loadTaskSheets(
   task: SpreadsheetTask,
   fetchImpl: typeof fetch = fetch,
 ): Promise<Sheet[]> {
+  // Zadanie bez plików (np. symulacja) – pusty arkusz.
+  if (task.files.length === 0) {
+    return [{ name: 'Arkusz1', order: 0, status: 1, celldata: [], row: 200, column: 26 }];
+  }
   return Promise.all(
     task.files.map(async (file, i) => {
       const response = await fetchImpl(assetUrl(file.path));

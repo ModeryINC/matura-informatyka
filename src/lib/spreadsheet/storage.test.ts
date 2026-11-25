@@ -91,3 +91,10 @@ describe('loadTaskSheets', () => {
     await expect(loadTaskSheets(task, fetchImpl as unknown as typeof fetch)).rejects.toThrow('404');
   });
 });
+
+test('zadanie bez plików startuje z pustym arkuszem', async () => {
+  const fetchImpl = vi.fn();
+  const sheets = await loadTaskSheets({ files: [] } as unknown as SpreadsheetTask, fetchImpl);
+  expect(sheets).toEqual([expect.objectContaining({ name: 'Arkusz1', celldata: [] })]);
+  expect(fetchImpl).not.toHaveBeenCalled();
+});

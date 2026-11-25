@@ -1,4 +1,4 @@
-import { cellFromText, sheetFromText, splitRows } from './importData';
+import { cellFromText, sheetFromText, splitRows, timeFraction } from './importData';
 
 describe('cellFromText', () => {
   it('rozpoznaje liczby (także z przecinkiem dziesiętnym)', () => {
@@ -64,5 +64,27 @@ describe('sheetFromText', () => {
   it('bez nagłówka pierwszy wiersz to dane', () => {
     const sheet = sheetFromText({ sheet: 's', path: 'x' }, 'Alwa\t2,9\n', 0);
     expect(sheet.celldata?.[0]?.v).not.toHaveProperty('bl');
+  });
+});
+
+describe('godziny, daty z godziną i inne separatory', () => {
+  it('rozpoznaje godzinę jako ułamek doby', () => {
+    expect(timeFraction('12:00')).toBe(0.5);
+    expect(timeFraction('07:42:56')).toBeCloseTo((7 * 3600 + 42 * 60 + 56) / 86400);
+    expect(timeFraction('25:00')).toBeNull();
+    expect(cellFromText('07:42:56')).toMatchObject({ m: '07:42:56', ct: { t: 'd' } });
+  });
+
+  it('rozpoznaje datę z godziną i daty z jednocyfrowym dniem', () => {
+    const cell = cellFromText('01.01.2020 01:00');
+    expect(cell.m).toBe('2020-01-01 01:00');
+    expect(cell.v).toBeCloseTo(43831 + 1 / 24);
+    expect(cellFromText('3-07-2017')).toMatchObject({ m: '2017-07-03', ct: { t: 'd' } });
+  });
+
+  it('dzieli wiersze według podanego separatora', () => {
+    expect(splitRows('2022-06-01;24\n', ';')).toEqual([['2022-06-01', '24']]);
+    const sheet = sheetFromText({ sheet: 't', path: 'x', separator: ';' }, 'a;1\n', 0);
+    expect(sheet.celldata?.map((c) => c.v?.v)).toEqual(['a', 1]);
   });
 });

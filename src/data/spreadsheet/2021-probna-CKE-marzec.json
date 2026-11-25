@@ -1,0 +1,130 @@
+[
+  {
+    "id": "2021-probna-CKE-marzec-5",
+    "sessionId": "2021/probna-CKE-marzec",
+    "number": "5",
+    "title": "Telefony",
+    "summary": "W pliku telefony.txt są połączenia wykonane przez firmę w lipcu 2017 roku (dane rozdzielone spacją – na stronie już w kolumnach): numer telefonu, data, godzina rozpoczęcia i zakończenia (gg:mm:ss).\n\nNumery siedmiocyfrowe są stacjonarne, ośmiocyfrowe – komórkowe, a dziesięciocyfrowe i dłuższe – zagraniczne.",
+    "files": [
+      {
+        "sheet": "telefony",
+        "path": "arkusze/2021/probna-CKE-marzec/pliki/Dane_2103/telefony.txt",
+        "hasHeader": true,
+        "separator": " "
+      }
+    ],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 2,
+        "prompt": "Podaj trzy numery, pod które wykonano najwięcej połączeń, oraz liczby tych połączeń.",
+        "table": {
+          "rows": ["1.", "2.", "3."],
+          "columns": ["numer", "liczba połączeń"],
+          "expected": [
+            ["4546455", "8"],
+            ["3505978", "7"],
+            ["4657345", "6"]
+          ]
+        }
+      },
+      {
+        "number": "5.2",
+        "points": 3,
+        "prompt": "Utwórz zestawienie liczby połączeń do telefonów komórkowych i stacjonarnych w poszczególnych dniach.",
+        "chart": "Wykonaj wykres kolumnowy (opisy osi, tytuł, legenda).",
+        "table": {
+          "rows": [
+            "2017-07-03",
+            "2017-07-04",
+            "2017-07-05",
+            "2017-07-06",
+            "2017-07-07",
+            "2017-07-10",
+            "2017-07-11",
+            "2017-07-12",
+            "2017-07-13",
+            "2017-07-14",
+            "2017-07-17",
+            "2017-07-18",
+            "2017-07-19",
+            "2017-07-20",
+            "2017-07-21",
+            "2017-07-24",
+            "2017-07-25",
+            "2017-07-26",
+            "2017-07-27",
+            "2017-07-28",
+            "2017-07-31"
+          ],
+          "columns": ["komórkowe", "stacjonarne"],
+          "expected": [
+            ["27", "67"],
+            ["23", "68"],
+            ["24", "79"],
+            ["20", "78"],
+            ["31", "69"],
+            ["23", "73"],
+            ["27", "60"],
+            ["27", "70"],
+            ["24", "67"],
+            ["24", "74"],
+            ["26", "76"],
+            ["17", "74"],
+            ["24", "67"],
+            ["20", "75"],
+            ["25", "73"],
+            ["30", "77"],
+            ["27", "79"],
+            ["24", "78"],
+            ["22", "70"],
+            ["24", "68"],
+            ["23", "82"]
+          ]
+        }
+      },
+      {
+        "number": "5.3",
+        "points": 2,
+        "prompt": "Podaj liczbę połączeń na numery stacjonarne zaczynające się od 12 oraz ich łączny czas trwania w minutach (zaokrąglony w górę).",
+        "fields": [
+          {
+            "label": "Liczba połączeń",
+            "expected": "21"
+          },
+          {
+            "label": "Łączny czas (min)",
+            "expected": "192"
+          }
+        ]
+      },
+      {
+        "number": "5.4",
+        "points": 4,
+        "prompt": "Abonament kosztuje 50 zł i obejmuje pierwsze 800 minut rozmów krajowych (stacjonarnych i komórkowych łącznie, w kolejności połączeń). Dalsze minuty rozlicza się w pakietach po 100 minut: każdy rozpoczęty pakiet na stacjonarne kosztuje 5 zł, na komórkowe – 6 zł. Rozmowy zagraniczne: 1 zł za każdą rozpoczętą minutę rozmowy. Podaj abonament, koszt rozmów na stacjonarne, komórkowe, zagraniczne i całą kwotę rachunku.",
+        "fields": [
+          {
+            "label": "Abonament (zł)",
+            "expected": "50"
+          },
+          {
+            "label": "Stacjonarne (zł)",
+            "expected": "610"
+          },
+          {
+            "label": "Komórkowe (zł)",
+            "expected": "240"
+          },
+          {
+            "label": "Zagraniczne (zł)",
+            "expected": "967"
+          },
+          {
+            "label": "Razem (zł)",
+            "expected": "1867"
+          }
+        ]
+      }
+    ]
+  }
+]

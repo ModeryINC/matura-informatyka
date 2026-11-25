@@ -6,8 +6,9 @@
  *   przecinek dziesiętny = kropka; liczby całkowite muszą się zgadzać dokładnie,
  *   ułamki – z dokładnością do pół jednostki ostatniej cyfry klucza (`1,1` akceptuje `1,13`),
  * - daty: `2035-12-13`, `13.12.2035`, `13-12-2035`, `13/12/2035` i numer seryjny daty
- *   z arkusza (np. `49291`) oznaczają to samo,
- * - tekst: bez względu na wielkość liter i nadmiarowe spacje.
+ *   z arkusza (np. `49291`) oznaczają to samo; podobnie daty z godziną
+ *   (`2019-05-22 16:00`, `22.05.2019 16:00`),
+ * - tekst: bez względu na wielkość liter, nadmiarowe spacje i polskie znaki.
  */
 import type { SpreadsheetField, SpreadsheetTable } from '../../types';
 
@@ -47,6 +48,21 @@ export function parseDate(text: string): string | null {
   return date.toISOString().slice(0, 10);
 }
 
+/** Godzina `g:mm` lub `g:mm:00` jako liczba minut od północy albo `null`. */
+export function parseClock(text: string): number | null {
+  const match = /^(\d{1,2}):(\d{2})(?::00)?$/.exec(text.trim());
+  if (!match || Number(match[1]) > 23 || Number(match[2]) > 59) return null;
+  return Number(match[1]) * 60 + Number(match[2]);
+}
+
+/** Data z godziną jako `rrrr-mm-dd gg:mm` albo `null` (np. `22.05.2019 16:00`, `2019-05-22 4:00`). */
+export function parseDateTime(text: string): string | null {
+  const match = /^(\S+)[ T]+(\d{1,2}):(\d{2})(?::00)?$/.exec(text.trim());
+  const day = match ? parseDate(match[1]!) : null;
+  if (!match || !day || Number(match[2]) > 23 || Number(match[3]) > 59) return null;
+  return `${day} ${match[2]!.padStart(2, '0')}:${match[3]}`;
+}
+
 /** Numer seryjny daty (jak w Excelu) → `rrrr-mm-dd`. */
 export function serialToIso(serial: number): string {
   return new Date(SERIAL_EPOCH + Math.round(serial) * DAY_MS).toISOString().slice(0, 10);
@@ -58,11 +74,40 @@ export function isoToSerial(iso: string): number {
   return Math.round((Date.UTC(y, m - 1, d) - SERIAL_EPOCH) / DAY_MS);
 }
 
-const normalizeText = (text: string) => text.trim().replace(/\s+/g, ' ').toLocaleLowerCase('pl');
+/** Tekst bez względu na wielkość liter, odstępy i polskie znaki (pliki CKE bywają bez nich). */
+const normalizeText = (text: string) =>
+  text
+    .trim()
+    .replace(/\s+/g, ' ')
+    .toLocaleLowerCase('pl')
+    .replace(/ł/g, 'l')
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '');
 
 /** Czy odpowiedź `actual` zgadza się z jedną oczekiwaną wartością. */
 export function valueMatches(actual: string, expected: string, tolerance?: number): boolean {
   if (actual.trim() === '') return false;
+
+  const expectedTime = parseClock(expected);
+  if (expectedTime !== null) {
+    const asTime = parseClock(actual);
+    if (asTime !== null) return asTime === expectedTime;
+    // Komórka z godziną bez formatu pokazuje ułamek doby.
+    const fraction = parseNumber(actual);
+    return fraction !== null && fraction < 1 && Math.round(fraction * 1440) === expectedTime;
+  }
+
+  const expectedDateTime = parseDateTime(expected);
+  if (expectedDateTime) {
+    const asDateTime = parseDateTime(actual);
+    if (asDateTime) return asDateTime === expectedDateTime;
+    // Komórka z datą i godziną bez formatu pokazuje numer seryjny z ułamkiem doby.
+    const serial = parseNumber(actual);
+    if (serial === null) return false;
+    const minutes = Math.round((serial - Math.floor(serial)) * 1440);
+    const clock = `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
+    return `${serialToIso(Math.floor(serial))} ${clock}` === expectedDateTime;
+  }
 
   const expectedDate = parseDate(expected);
   if (expectedDate) {

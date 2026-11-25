@@ -1,0 +1,118 @@
+[
+  {
+    "id": "2025-stara-formula-czerwiec-6",
+    "sessionId": "2025/stara-formula-czerwiec",
+    "number": "6",
+    "title": "Fotowoltaika",
+    "summary": "Pan Iksiński ma panele fotowoltaiczne. Prąd z paneli zużywa na bieżąco, nadmiar oddaje do zakładu energetycznego, a gdy energii brakuje – pobiera ją z zakładu. W pliku fotowoltaika.txt są dane z 2022 roku: data, godzina wschodu i zachodu słońca, stopień zachmurzenia (0–8), energia wyprodukowana, oddana do zakładu i pobrana z zakładu (w kWh).\n\nZa przechowanie energii zakład pobiera 20% energii oddanej: po oddaniu 1 kWh można później pobrać bez opłat 0,8 kWh. Przed 1 stycznia 2022 na koncie pana Iksińskiego było 100 kWh.",
+    "files": [
+      {
+        "sheet": "fotowoltaika",
+        "path": "arkusze/2025/stara-formula-czerwiec/pliki/informatyka-2025-czerwiec-matura-stara-rozszerzona-zalaczniki/fotowoltaika.txt",
+        "hasHeader": true
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 1,
+        "prompt": "Oblicz, ile energii (w kWh) pan Iksiński wyprodukował w każdym miesiącu 2022 roku.",
+        "table": {
+          "rows": [
+            "styczeń",
+            "luty",
+            "marzec",
+            "kwiecień",
+            "maj",
+            "czerwiec",
+            "lipiec",
+            "sierpień",
+            "wrzesień",
+            "październik",
+            "listopad",
+            "grudzień"
+          ],
+          "columns": ["produkcja (kWh)"],
+          "expected": [
+            ["154.26"],
+            ["164.33"],
+            ["233.03"],
+            ["207.12"],
+            ["268.41"],
+            ["342.51"],
+            ["514.98"],
+            ["519.41"],
+            ["435.43"],
+            ["206.15"],
+            ["119.38"],
+            ["72.57"]
+          ]
+        }
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Podaj, ile energii (w kWh) pan Iksiński zużył przez cały 2022 rok: energia pobrana z zakładu plus wyprodukowana minus oddana. Kontrola: w styczniu zużył 162,68 kWh.",
+        "fields": [
+          {
+            "label": "Zużyta energia (kWh)",
+            "expected": "2715.32"
+          }
+        ]
+      },
+      {
+        "number": "6.3",
+        "points": 2,
+        "prompt": "Znajdź najdłuższy ciąg kolejnych dni, w których zachmurzenie nie wzrosło, a produkcja nie zmalała w porównaniu z dniem poprzednim. Podaj długość ciągu (liczbę takich dni) i datę jego pierwszego dnia.",
+        "fields": [
+          {
+            "label": "Długość ciągu",
+            "expected": "6"
+          },
+          {
+            "label": "Data pierwszego dnia",
+            "expected": "2022-05-26"
+          }
+        ]
+      },
+      {
+        "number": "6.4",
+        "points": 3,
+        "prompt": "Dla każdego dnia oblicz czas nasłonecznienia (od wschodu do zachodu) w pełnych godzinach (zaokrąglony w dół). Dla każdej liczby godzin podaj średnią produkcję, średnią energię oddaną i średnią pobraną.",
+        "chart": "Utwórz wykres liniowy porównujący te wartości (tytuł, legenda, tytuły osi).",
+        "table": {
+          "rows": ["7", "8", "9", "10", "11", "12", "13", "14", "15", "16"],
+          "columns": ["średnia produkcja", "średnia oddana", "średnia pobrana"],
+          "tolerance": 0.01,
+          "expected": [
+            ["2.885", "1.087", "4.925"],
+            ["3.848", "1.653", "3.385"],
+            ["5.401", "2.559", "3.103"],
+            ["6.937", "3.020", "2.818"],
+            ["7.154", "3.482", "2.626"],
+            ["11.323", "5.401", "2.658"],
+            ["12.232", "6.347", "2.497"],
+            ["10.975", "5.514", "2.508"],
+            ["13.208", "6.700", "2.445"],
+            ["12.593", "6.741", "2.792"]
+          ]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 3,
+        "prompt": "a) Uwzględniając prowizję zakładu (na konto trafia 0,8 kWh z każdej oddanej kWh) oraz energię oddawaną i pobieraną każdego dnia, podaj, w ilu dniach 2022 roku stan konta był mniejszy niż 50 kWh. b) Podaj najmniejszy początkowy stan konta (zaokrąglony w górę do liczby całkowitej), przy którym nie trzeba byłoby dokupować energii. Kontrola: na koniec 31.01.2022 na koncie było 78,634 kWh.",
+        "fields": [
+          {
+            "label": "a) Liczba dni",
+            "expected": "71"
+          },
+          {
+            "label": "b) Minimalny stan początkowy (kWh)",
+            "expected": "67"
+          }
+        ]
+      }
+    ]
+  }
+]

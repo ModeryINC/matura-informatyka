@@ -1,0 +1,112 @@
+[
+  {
+    "id": "2020-lipiec-5",
+    "sessionId": "2020/lipiec",
+    "number": "5",
+    "title": "Szybka myjnia automatyczna",
+    "summary": "Jednostanowiskowa myjnia jest czynna od 6:00 do 24:00. Klienci ustawiają się w kolejce i wybierają program mycia; jeśli musieliby czekać dłużej niż 5 minut, rezygnują. W pliku myjnia.txt (dane rozdzielone średnikami – na stronie już w kolumnach) jest 144 klientów z jednego dnia: po ilu minutach od przyjazdu poprzedniego klienta (pierwszy – od otwarcia) przyjechał klient, czas programu (1–15 min) i numer rejestracyjny.\n\nPrzykład: 3;5 – klient przyjechał 3 min po otwarciu, mycie skończyło się po 8 min; 12;13 – przyjazd po 15 min, koniec po 28; 1;10 – przyjazd po 16 min, czekałby 12 min, więc rezygnuje; 7;2 – przyjazd po 23 min, mycie od 28 do 30 min.",
+    "files": [
+      {
+        "sheet": "myjnia",
+        "path": "arkusze/2020/lipiec/pliki/DANE/myjnia.txt",
+        "headers": ["odstep", "czas_mycia", "rejestracja"],
+        "separator": ";"
+      }
+    ],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 1,
+        "prompt": "Dla każdej długości programu mycia (1–15 min) podaj liczbę klientów, którzy go wybrali.",
+        "table": {
+          "rows": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"],
+          "columns": ["liczba klientów"],
+          "expected": [
+            ["11"],
+            ["9"],
+            ["9"],
+            ["7"],
+            ["6"],
+            ["10"],
+            ["11"],
+            ["6"],
+            ["12"],
+            ["8"],
+            ["16"],
+            ["14"],
+            ["7"],
+            ["12"],
+            ["6"]
+          ]
+        }
+      },
+      {
+        "number": "5.2",
+        "points": 2,
+        "prompt": "Dwie pierwsze litery tablicy rejestracyjnej oznaczają miasto. Z ilu miast przyjechał tylko jeden samochód, a z ilu dokładnie dwa?",
+        "fields": [
+          {
+            "label": "Miasta z jednym samochodem",
+            "expected": "78"
+          },
+          {
+            "label": "Miasta z dwoma samochodami",
+            "expected": "21"
+          }
+        ]
+      },
+      {
+        "number": "5.3",
+        "points": 2,
+        "prompt": "Analizujemy pracę myjni od 6:00 do 20:00. a) Ilu klientów przybyło przed 20:00? b) O której godzinie przyjechał ostatni klient przed 20:00?",
+        "fields": [
+          {
+            "label": "a) Liczba klientów",
+            "expected": "114"
+          },
+          {
+            "label": "b) Godzina (gg:mm)",
+            "expected": "19:54"
+          }
+        ]
+      },
+      {
+        "number": "5.4",
+        "points": 3,
+        "prompt": "Ilu klientów przybyło w pierwszej (0–59 min po otwarciu), drugiej, …, szóstej godzinie pracy myjni?",
+        "chart": "Utwórz wykres kolumnowy liczby klientów w tych godzinach (czytelny opis).",
+        "table": {
+          "rows": [
+            "1. godzina",
+            "2. godzina",
+            "3. godzina",
+            "4. godzina",
+            "5. godzina",
+            "6. godzina"
+          ],
+          "columns": ["liczba klientów"],
+          "expected": [["9"], ["8"], ["7"], ["9"], ["5"], ["10"]]
+        }
+      },
+      {
+        "number": "5.5",
+        "points": 4,
+        "prompt": "Podaj numer rejestracyjny klienta, który jako drugi zrezygnował z kolejki, łączną liczbę rezygnacji oraz największą liczbę klientów, którzy zrezygnowali jeden po drugim.",
+        "fields": [
+          {
+            "label": "Numer drugiego rezygnującego",
+            "expected": "KP566"
+          },
+          {
+            "label": "Liczba rezygnacji",
+            "expected": "44"
+          },
+          {
+            "label": "Najwięcej rezygnacji z rzędu",
+            "expected": "3"
+          }
+        ]
+      }
+    ]
+  }
+]
