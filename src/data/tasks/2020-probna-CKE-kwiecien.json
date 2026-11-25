@@ -1,0 +1,276 @@
+[
+  {
+    "id": "2020-probna-CKE-kwiecien-1.2",
+    "sessionId": "2020/probna-CKE-kwiecien",
+    "number": "1.2",
+    "title": "Wywołania rekurencyjnego wyszukiwania binarnego",
+    "part": 1,
+    "points": 2,
+    "topics": [
+      "rekurencja",
+      "wyszukiwanie-binarne"
+    ],
+    "summary": "Funkcja Rek(x, p, k) szuka x w rosnącej tablicy T[1..n]: dopóki p < k, bierze s = (p + k) div 2 i wywołuje Rek(x, p, s), gdy T[s] ≥ x, albo Rek(x, s + 1, k) w przeciwnym razie.\n\nNapisz funkcję zwracającą listę par [p, k] kolejnych wywołań (łącznie z pierwszym), np. dla T = [1, 5, 8, 10, 12, 14, 19, 20, 23, 30, 38] i Rek(7, 1, 11). Tablica jest numerowana od 1.",
+    "starterCode": "def wywolania(T, x, p, k):\n    lista = [[p, k]]\n    # ...\n    return lista\n",
+    "kind": "function",
+    "functionName": "wywolania",
+    "tests": [
+      {
+        "args": [
+          [
+            1,
+            5,
+            8,
+            10,
+            12,
+            14,
+            19,
+            20,
+            23,
+            30,
+            38
+          ],
+          7,
+          1,
+          11
+        ],
+        "expected": [
+          [
+            1,
+            11
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            3,
+            3
+          ]
+        ]
+      },
+      {
+        "args": [
+          [
+            1,
+            5,
+            8,
+            10,
+            12,
+            14,
+            19,
+            20,
+            23,
+            30,
+            38
+          ],
+          38,
+          1,
+          11
+        ],
+        "expected": [
+          [
+            1,
+            11
+          ],
+          [
+            7,
+            11
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            11,
+            11
+          ]
+        ]
+      },
+      {
+        "args": [
+          [
+            2,
+            4,
+            6,
+            8
+          ],
+          9,
+          2,
+          4
+        ],
+        "expected": [
+          [
+            2,
+            4
+          ],
+          [
+            4,
+            4
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2020-probna-CKE-kwiecien-2.2",
+    "sessionId": "2020/probna-CKE-kwiecien",
+    "number": "2.2",
+    "title": "Moda zestawu danych",
+    "part": 1,
+    "points": 5,
+    "topics": [
+      "tablice",
+      "slowniki"
+    ],
+    "summary": "Moda (dominanta) to element występujący w zestawie najczęściej. Napisz funkcję moda(T) dla tablicy, w której jest dokładnie jedna moda. W arkuszu wolno używać tylko pojedynczych elementów tablicy i podstawowych operacji (bez słowników i funkcji wbudowanych).",
+    "starterCode": "def moda(T):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "moda",
+    "tests": [
+      {
+        "args": [
+          [
+            2,
+            3,
+            4,
+            2,
+            3,
+            5,
+            2,
+            100,
+            67
+          ]
+        ],
+        "expected": 2
+      },
+      {
+        "args": [
+          [
+            1,
+            1,
+            2
+          ]
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          [
+            5,
+            -1,
+            -1,
+            7,
+            8
+          ]
+        ],
+        "expected": -1
+      },
+      {
+        "args": [
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          [
+            3,
+            9,
+            9,
+            4,
+            9,
+            3
+          ]
+        ],
+        "expected": 9
+      }
+    ]
+  },
+  {
+    "id": "2020-probna-CKE-kwiecien-4.1",
+    "sessionId": "2020/probna-CKE-kwiecien",
+    "number": "4.1",
+    "title": "Największa i najmniejsza luka",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "tablice",
+      "pliki-tekstowe"
+    ],
+    "summary": "Luka to wartość bezwzględna różnicy dwóch kolejnych elementów ciągu. Plik dane4.txt zawiera ciąg 1000 dodatnich liczb. Wypisz największą i najmniejszą lukę.",
+    "starterCode": "with open(\"dane4.txt\") as plik:\n    a = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane egzaminacyjne (dane4.txt)",
+        "files": {
+          "dane4.txt": "arkusze/2020/probna-CKE-kwiecien/pliki/dane4.txt"
+        },
+        "expected": "1056392131 1",
+        "alternatives": [
+          "1 1056392131"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2020-probna-CKE-kwiecien-4.2",
+    "sessionId": "2020/probna-CKE-kwiecien",
+    "number": "4.2",
+    "title": "Najdłuższy fragment regularny",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "podciagi",
+      "pliki-tekstowe"
+    ],
+    "summary": "Fragment ciągu jest regularny, gdy wszystkie jego luki są równe (np. 11, 12, 13, 14). Znajdź najdłuższy fragment regularny (jest jeden) i wypisz jego długość oraz wartości na jego początku i końcu.",
+    "starterCode": "with open(\"dane4.txt\") as plik:\n    a = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane egzaminacyjne (dane4.txt)",
+        "files": {
+          "dane4.txt": "arkusze/2020/probna-CKE-kwiecien/pliki/dane4.txt"
+        },
+        "expected": "17 193134524 223545714"
+      }
+    ]
+  },
+  {
+    "id": "2020-probna-CKE-kwiecien-4.3",
+    "sessionId": "2020/probna-CKE-kwiecien",
+    "number": "4.3",
+    "title": "Najczęstsza luka",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "slowniki",
+      "pliki-tekstowe"
+    ],
+    "summary": "Krotność luki to liczba jej wystąpień. Wypisz krotność najczęstszej luki, a następnie wartości wszystkich luk o tej krotności (w dowolnej kolejności).",
+    "starterCode": "with open(\"dane4.txt\") as plik:\n    a = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane egzaminacyjne (dane4.txt)",
+        "files": {
+          "dane4.txt": "arkusze/2020/probna-CKE-kwiecien/pliki/dane4.txt"
+        },
+        "expected": "31 11 149",
+        "alternatives": [
+          "31 149 11"
+        ]
+      }
+    ]
+  }
+]
