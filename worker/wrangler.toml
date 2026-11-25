@@ -5,6 +5,8 @@ name = "matura-informatyka-ai"
 main = "src/index.ts"
 compatibility_date = "2026-06-01"
 workers_dev = true
+# Bez publicznych adresów podglądu dla każdej wersji – wystarczy jeden adres Workera.
+preview_urls = false
 
 [vars]
 # Strony, z których wolno wysyłać zapytania (po przecinku).

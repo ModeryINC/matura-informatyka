@@ -106,11 +106,28 @@ export async function handleRequest(
   }
 
   if (!upstream.ok) {
-    // Szczegóły błędu Gemini (mogą dotyczyć klucza) zostają w logach Workera.
-    console.error('Gemini', upstream.status, (await upstream.text()).slice(0, 500));
+    // Pełny komunikat Gemini zostaje w logach Workera; na zewnątrz tylko kody przyczyny
+    // (np. API_KEY_INVALID, FAILED_PRECONDITION) – bez treści i bez klucza.
+    const text = await upstream.text();
+    console.error('Gemini', upstream.status, text.slice(0, 500));
+    let reason: string | undefined;
+    try {
+      const data = JSON.parse(text) as {
+        error?: { status?: string; details?: { reason?: string }[] };
+      };
+      reason = [data.error?.status, data.error?.details?.find((d) => d.reason)?.reason]
+        .filter((part) => part && /^[A-Z_]+$/.test(part))
+        .join('/');
+    } catch {
+      reason = undefined;
+    }
     // 401/403 z Gemini to problem klucza po stronie pośrednika, nie użytkownika.
     const status = upstream.status === 401 || upstream.status === 403 ? 502 : upstream.status;
-    return error('Usługa AI odrzuciła zapytanie.', status, cors);
+    return json(
+      { error: { message: 'Usługa AI odrzuciła zapytanie.', ...(reason ? { reason } : {}) } },
+      status,
+      cors,
+    );
   }
   return json(await upstream.json(), 200, cors);
 }

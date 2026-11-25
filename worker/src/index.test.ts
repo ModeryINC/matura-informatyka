@@ -96,6 +96,25 @@ describe('pośrednik podpowiedzi AI', () => {
     expect(denied.status).toBe(502);
     expect(await denied.text()).not.toContain('secret-key');
 
+    const invalid = await handleRequest(
+      post({ prompt: 'x' }),
+      env(),
+      gemini(
+        {
+          error: {
+            status: 'INVALID_ARGUMENT',
+            message: 'API key not valid secret-key',
+            details: [{ reason: 'API_KEY_INVALID' }],
+          },
+        },
+        400,
+      ),
+    );
+    expect(invalid.status).toBe(400);
+    const invalidBody = await invalid.text();
+    expect(JSON.parse(invalidBody).error.reason).toBe('INVALID_ARGUMENT/API_KEY_INVALID');
+    expect(invalidBody).not.toContain('secret-key');
+
     const limited = await handleRequest(post({ prompt: 'x' }), env(), gemini({}, 429));
     expect(limited.status).toBe(429);
 
