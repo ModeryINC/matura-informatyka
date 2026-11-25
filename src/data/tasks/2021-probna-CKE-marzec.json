@@ -1,0 +1,169 @@
+[
+  {
+    "id": "2021-probna-CKE-marzec-1.2",
+    "sessionId": "2021/probna-CKE-marzec",
+    "number": "1.2",
+    "title": "Runda spotkania w turnieju",
+    "part": 1,
+    "points": 3,
+    "topics": [
+      "systemy-liczbowe",
+      "rekurencja"
+    ],
+    "summary": "W turnieju pucharowym 2^k drużyn (numery 0 … 2^k − 1) w pierwszej rundzie grają pary (0, 1), (2, 3), …, a w kolejnych rundach zwycięzcy sąsiednich meczów. Numer rundy, w której mogą się spotkać drużyny x i y, wynika z ich zapisów binarnych.\n\nNapisz funkcję runda(k, x, y) zwracającą ten numer, bez funkcji potęgowania i innych funkcji wbudowanych.",
+    "starterCode": "def runda(k, x, y):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "runda",
+    "tests": [
+      {
+        "args": [
+          3,
+          2,
+          6
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          4,
+          0,
+          3
+        ],
+        "expected": 2
+      },
+      {
+        "args": [
+          4,
+          3,
+          7
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          5,
+          16,
+          30
+        ],
+        "expected": 4
+      },
+      {
+        "args": [
+          1,
+          0,
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          3,
+          6,
+          7
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          10,
+          0,
+          1023
+        ],
+        "expected": 10
+      }
+    ]
+  },
+  {
+    "id": "2021-probna-CKE-marzec-4.1",
+    "sessionId": "2021/probna-CKE-marzec",
+    "number": "4.1",
+    "title": "Liczba miast z galeriami w krajach",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "slowniki",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik galerie.txt opisuje 50 galerii: kod kraju, miasto i 70 par liczb – wymiary lokali (pary zerowe oznaczają brak lokalu). Dla każdego kraju wypisz kod i liczbę miast z galeriami – kraje w kolejności pierwszego wystąpienia w pliku.",
+    "starterCode": "with open(\"galerie.txt\") as plik:\n    galerie = [wiersz.split() for wiersz in plik]  # [kraj, miasto, liczby...]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (galerie_przyklad.txt)",
+        "files": {
+          "galerie.txt": "arkusze/2021/probna-CKE-marzec/pliki/Dane_2103/galerie_przyklad.txt"
+        },
+        "expected": "H 1\nI 2\nF 1\nGB 1\nD 3\nNL 1\nDK 1"
+      },
+      {
+        "label": "Dane egzaminacyjne (galerie.txt)",
+        "files": {
+          "galerie.txt": "arkusze/2021/probna-CKE-marzec/pliki/Dane_2103/galerie.txt"
+        },
+        "expected": "GB 5\nD 15\nE 6\nI 6\nF 2\nRO 1\nA 1\nH 1\nBG 1\nCZ 1\nB 1\nS 1\nHR 1\nNL 2\nLV 1\nGR 1\nLT 1\nFIN 1\nDK 1\nIRL 1"
+      }
+    ]
+  },
+  {
+    "id": "2021-probna-CKE-marzec-4.2",
+    "sessionId": "2021/probna-CKE-marzec",
+    "number": "4.2",
+    "title": "Powierzchnie galerii",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "tablice",
+      "pliki-tekstowe"
+    ],
+    "summary": "a) Dla każdej galerii (w kolejności z pliku) wypisz miasto, łączną powierzchnię lokali (suma iloczynów wymiarów) i liczbę lokali.\nb) Następnie wypisz miasto z galerią o największej powierzchni i tę powierzchnię, a w kolejnej linii – miasto z galerią o najmniejszej powierzchni.",
+    "starterCode": "with open(\"galerie.txt\") as plik:\n    galerie = [wiersz.split() for wiersz in plik]  # [kraj, miasto, liczby...]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (galerie_przyklad.txt)",
+        "files": {
+          "galerie.txt": "arkusze/2021/probna-CKE-marzec/pliki/Dane_2103/galerie_przyklad.txt"
+        },
+        "expected": "Budapeszt 3598 64\nNeapol 3352 48\nMarsylia 3444 56\nLeeds 2952 44\nFrankfurt 3515 57\nGenua 3386 56\nDortmund 3697 57\nRotterdam 3184 49\nDusseldorf 3737 63\nKopenhaga 3765 60\nKopenhaga 3765\nLeeds 2952"
+      },
+      {
+        "label": "Dane egzaminacyjne (galerie.txt)",
+        "files": {
+          "galerie.txt": "arkusze/2021/probna-CKE-marzec/pliki/Dane_2103/galerie.txt"
+        },
+        "expected": "Londyn 3628 58\nBerlin 3777 59\nMadryt 2217 34\nRzym 3678 51\nParyz 3889 62\nBukareszt 1957 33\nWieden 2694 42\nHamburg 3518 52\nBudapeszt 3598 64\nBarcelona 4059 60\nMonachium 1734 31\nMediolan 1958 35\nSofia 3631 59\nPraga 2622 40\nBruksela 4316 64\nBirmingham 1826 25\nKolonia 2104 31\nNeapol 3352 48\nTuryn 2646 39\nMarsylia 3444 56\nSztokholm 2133 33\nWalencja 3981 68\nZagrzeb 2177 31\nLeeds 2952 44\nAmsterdam 3371 60\nSewilla 4305 70\nRyga 1745 30\nFrankfurt 3515 57\nPalermo 2733 43\nAteny 4435 65\nSaragossa 3480 50\nGenua 3386 56\nStuttgart 1718 32\nDortmund 3697 57\nRotterdam 3184 49\nEssen 4760 67\nGlasgow 3731 68\nDusseldorf 3737 63\nWilno 1620 28\nHelsinki 3597 56\nMalaga 3757 57\nBrema 2948 44\nSheffield 2324 36\nHanower 3532 53\nLipsk 1871 29\nKopenhaga 3765 60\nDrezno 1900 26\nDublin 1986 31\nNorymberga 4178 69\nDuisburg 3948 61\nEssen 4760\nWilno 1620"
+      }
+    ]
+  },
+  {
+    "id": "2021-probna-CKE-marzec-4.3",
+    "sessionId": "2021/probna-CKE-marzec",
+    "number": "4.3",
+    "title": "Rodzaje lokali",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "slowniki",
+      "pliki-tekstowe"
+    ],
+    "summary": "Lokale są tego samego rodzaju, gdy mają tę samą powierzchnię. Wypisz miasto z galerią o największej liczbie różnych rodzajów lokali i tę liczbę, a w drugiej linii – miasto z galerią o najmniejszej liczbie rodzajów.",
+    "starterCode": "with open(\"galerie.txt\") as plik:\n    galerie = [wiersz.split() for wiersz in plik]  # [kraj, miasto, liczby...]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (galerie_przyklad.txt)",
+        "files": {
+          "galerie.txt": "arkusze/2021/probna-CKE-marzec/pliki/Dane_2103/galerie_przyklad.txt"
+        },
+        "expected": "Dusseldorf 34\nGenua 23"
+      },
+      {
+        "label": "Dane egzaminacyjne (galerie.txt)",
+        "files": {
+          "galerie.txt": "arkusze/2021/probna-CKE-marzec/pliki/Dane_2103/galerie.txt"
+        },
+        "expected": "Berlin 35\nKolonia 18"
+      }
+    ]
+  }
+]
