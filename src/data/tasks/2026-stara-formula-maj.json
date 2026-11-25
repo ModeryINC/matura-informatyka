@@ -1,0 +1,249 @@
+[
+  {
+    "id": "2026-stara-formula-maj-1.2",
+    "sessionId": "2026/stara-formula-maj",
+    "number": "1.2",
+    "title": "Rekurencyjna funkcja A(m, n)",
+    "part": 1,
+    "points": 1,
+    "topics": [
+      "rekurencja"
+    ],
+    "summary": "Funkcja A(m, n) jest zdefiniowana rekurencyjnie: A(m, 1) = m; dla parzystego n > 1: A(m, n) = A(2m, n/2); dla nieparzystego n > 1: A(m, n) = 2·A(m, (n−1)/2) + m.\n\nZaimplementuj tę funkcję dokładnie według definicji. W arkuszu trzeba śledzić jej wywołania i obliczać wartości – implementacja pozwala sprawdzić odpowiedzi i zauważyć, co właściwie liczy A.",
+    "starterCode": "def A(m, n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "A",
+    "tests": [
+      {
+        "args": [
+          3,
+          9
+        ],
+        "expected": 27
+      },
+      {
+        "args": [
+          25,
+          25
+        ],
+        "expected": 625
+      },
+      {
+        "args": [
+          10,
+          15
+        ],
+        "expected": 150
+      },
+      {
+        "args": [
+          1,
+          777
+        ],
+        "expected": 777
+      },
+      {
+        "args": [
+          2,
+          1000000
+        ],
+        "expected": 2000000
+      },
+      {
+        "args": [
+          5,
+          1
+        ],
+        "expected": 5
+      },
+      {
+        "args": [
+          7,
+          2
+        ],
+        "expected": 14
+      },
+      {
+        "args": [
+          1,
+          1048577
+        ],
+        "expected": 1048577
+      }
+    ]
+  },
+  {
+    "id": "2026-stara-formula-maj-2.2",
+    "sessionId": "2026/stara-formula-maj",
+    "number": "2.2",
+    "title": "Liczba przeniesień w dodawaniu pisemnym",
+    "part": 1,
+    "points": 4,
+    "topics": [
+      "teoria-liczb"
+    ],
+    "summary": "Dla dwóch dodatnich liczb a i b o tej samej liczbie cyfr oblicz, ile przeniesień pojawia się podczas ich dodawania pisemnego, np. dla 27732 i 72619 są 4 przeniesienia.\n\nW arkuszu wolno używać tylko pojedynczych zmiennych całkowitych i operacji arytmetycznych (bez napisów i list).",
+    "starterCode": "def przeniesienia(a, b):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "przeniesienia",
+    "tests": [
+      {
+        "args": [
+          27732,
+          72619
+        ],
+        "expected": 4
+      },
+      {
+        "args": [
+          37932,
+          12528
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          88765,
+          11111
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          456789,
+          222222
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          1,
+          1
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          5,
+          5
+        ],
+        "expected": 1
+      },
+      {
+        "args": [
+          999,
+          999
+        ],
+        "expected": 3
+      },
+      {
+        "args": [
+          123,
+          456
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          19,
+          81
+        ],
+        "expected": 2
+      }
+    ]
+  },
+  {
+    "id": "2026-stara-formula-maj-4.1",
+    "sessionId": "2026/stara-formula-maj",
+    "number": "4.1",
+    "title": "Sumy kodów ASCII w parach słów",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik pary.txt zawiera 500 par słów. Niech f(s) to suma kodów ASCII liter słowa s.\n\na) Wypisz parę z jednego wiersza, dla której f(s1) + f(s2) jest najmniejsza, oraz tę sumę.\nb) Wypisz parę, dla której |f(s1) − f(s2)| jest największa, oraz tę wartość.",
+    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (pary_przyklad.txt)",
+        "files": {
+          "pary.txt": "arkusze/2026/stara-formula-maj/pliki/informatyka-2026-maj-matura-stara-rozszerzona-zalaczniki/pary_przyklad.txt"
+        },
+        "expected": "aba aab 584\neddcd eededcddceeecededcc 1403"
+      },
+      {
+        "label": "Dane egzaminacyjne (pary.txt)",
+        "files": {
+          "pary.txt": "arkusze/2026/stara-formula-maj/pliki/informatyka-2026-maj-matura-stara-rozszerzona-zalaczniki/pary.txt"
+        },
+        "expected": "bca cdd 593\ngpeeazeugmvsbzwsrxfplqdbakoxxe lhpbmoirdm 2206"
+      }
+    ]
+  },
+  {
+    "id": "2026-stara-formula-maj-4.2",
+    "sessionId": "2026/stara-formula-maj",
+    "number": "4.2",
+    "title": "Wspólne wystąpienia liter (litera b)",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "slowniki",
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Wspólna liczba wystąpień litery x w słowach s1, s2 to minimum z liczby jej wystąpień w obu słowach.\n\na) Wypisz parę (lub pary – każdą w osobnym wierszu, w kolejności z pliku), w której litera b ma największą wspólną liczbę wystąpień.\nb) Wypisz parę, dla której suma wspólnych wystąpień wszystkich liter jest największa.",
+    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (pary_przyklad.txt)",
+        "files": {
+          "pary.txt": "arkusze/2026/stara-formula-maj/pliki/informatyka-2026-maj-matura-stara-rozszerzona-zalaczniki/pary_przyklad.txt"
+        },
+        "expected": "bbabac bbac\nccccdcedddddecde ccdcdddecc"
+      },
+      {
+        "label": "Dane egzaminacyjne (pary.txt)",
+        "files": {
+          "pary.txt": "arkusze/2026/stara-formula-maj/pliki/informatyka-2026-maj-matura-stara-rozszerzona-zalaczniki/pary.txt"
+        },
+        "expected": "abbbbaabbbabbba abbbbbbbbbabbabbaba\naababbbababbbbbbaab bbbbaabbababababa\naacbcccaacacbcabac cccccaaaacaccbabcba"
+      }
+    ]
+  },
+  {
+    "id": "2026-stara-formula-maj-4.3",
+    "sessionId": "2026/stara-formula-maj",
+    "number": "4.3",
+    "title": "Prefiksosufiksy",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Prefiksosufiks pary słów to słowo, które jest początkiem jednego z nich i jednocześnie końcem drugiego. Wypisz (w kolejności z pliku) wszystkie pary, których najdłuższy prefiksosufiks ma co najmniej 5 liter, a przy każdej parze – długość tego prefiksosufiksu.",
+    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (pary_przyklad.txt)",
+        "files": {
+          "pary.txt": "arkusze/2026/stara-formula-maj/pliki/informatyka-2026-maj-matura-stara-rozszerzona-zalaczniki/pary_przyklad.txt"
+        },
+        "expected": "ececdddeed dddeedd 6"
+      },
+      {
+        "label": "Dane egzaminacyjne (pary.txt)",
+        "files": {
+          "pary.txt": "arkusze/2026/stara-formula-maj/pliki/informatyka-2026-maj-matura-stara-rozszerzona-zalaczniki/pary.txt"
+        },
+        "expected": "bbbbaabbababbaaaa baaaaabaaabbbabab 5\naababbbababbbbbbaab bbbbaabbababababa 7\naaaababaaaabbbb aabbbbbabbbaaaa 6\nbbbbabaaabbbabb aaababaabbbbbbba 5\nccccabacbba acbbabcbcbcbaa 5\ncaabbccabccc cabccccabbaac 6\nabaacabcccccabbbc abbbcbbbbbcabaca 5"
+      }
+    ]
+  }
+]
