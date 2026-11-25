@@ -4,5 +4,6 @@ import { cleanup } from '@testing-library/react';
 
 afterEach(() => {
   cleanup();
-  localStorage.clear();
+  // Testy Workera działają w środowisku Node, bez localStorage.
+  if (typeof localStorage !== 'undefined') localStorage.clear();
 });

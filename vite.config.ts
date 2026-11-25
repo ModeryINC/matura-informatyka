@@ -18,12 +18,18 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./tests/setup.ts'],
-    include: ['src/**/*.test.{ts,tsx}', 'tests/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts'],
+    include: [
+      'src/**/*.test.{ts,tsx}',
+      'tests/**/*.test.{ts,tsx}',
+      'scripts/**/*.test.ts',
+      'worker/**/*.test.ts',
+    ],
     coverage: {
       provider: 'v8',
-      include: ['src/**/*.{ts,tsx}', 'scripts/**/*.ts'],
+      include: ['src/**/*.{ts,tsx}', 'scripts/**/*.ts', 'worker/src/**/*.ts'],
       exclude: [
         'src/**/*.test.{ts,tsx}',
+        'worker/**/*.test.ts',
         'src/main.tsx',
         'src/**/*.d.ts',
         // Worker wymaga prawdziwego Pyodide – testowany przez harness (unittest) i ręcznie.
