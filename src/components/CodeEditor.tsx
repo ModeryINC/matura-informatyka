@@ -6,6 +6,7 @@ import { tags } from '@lezer/highlight';
 import { EditorState } from '@codemirror/state';
 import { keymap } from '@codemirror/view';
 import { indentWithTab } from '@codemirror/commands';
+import { acceptCompletion } from '@codemirror/autocomplete';
 
 interface CodeEditorProps {
   value: string;
@@ -74,6 +75,8 @@ export function CodeEditor({ value, onChange, onSubmit, label }: CodeEditorProps
                 return true;
               },
             },
+            // Tab zatwierdza podpowiedź, a bez otwartej listy podpowiedzi robi wcięcie.
+            { key: 'Tab', run: acceptCompletion },
             indentWithTab,
           ]),
           basicSetup,

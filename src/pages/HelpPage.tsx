@@ -40,8 +40,8 @@ export function HelpPage() {
           <kbd>Ctrl</kbd> + <kbd>Enter</kbd> – sprawdź rozwiązanie,
         </li>
         <li>
-          <kbd>Tab</kbd> w edytorze wstawia wcięcie; <kbd>Esc</kbd>, a potem <kbd>Tab</kbd> –
-          wyjście z edytora.
+          <kbd>Tab</kbd> w edytorze zatwierdza podpowiedź (gdy lista jest otwarta), a w innym
+          wypadku wstawia wcięcie; <kbd>Esc</kbd>, a potem <kbd>Tab</kbd> – wyjście z edytora.
         </li>
       </ul>
       <h2>Źródła</h2>
