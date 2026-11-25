@@ -1,0 +1,299 @@
+[
+  {
+    "id": "2022-probna-CKE-grudzien-1.1",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "1.1",
+    "title": "Zmiany zwycięzcy rozgrywek",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik mecz.txt zawiera jeden napis z 10 000 znaków A i B – zwycięzców kolejnych rozgrywek. Podaj, w ilu rozgrywkach wygrała inna drużyna niż w poprzedniej (ile razy dwa kolejne znaki się różnią).",
+    "starterCode": "with open(\"mecz.txt\") as plik:\n    s = plik.read().strip()\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (mecz_przyklad.txt)",
+        "files": {
+          "mecz.txt": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/mecz_przyklad.txt"
+        },
+        "expected": "1798"
+      },
+      {
+        "label": "Dane egzaminacyjne (mecz.txt)",
+        "files": {
+          "mecz.txt": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/mecz.txt"
+        },
+        "expected": "5030"
+      }
+    ]
+  },
+  {
+    "id": "2022-probna-CKE-grudzien-1.2",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "1.2",
+    "title": "Pierwszy set",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "symulacja",
+      "pliki-tekstowe"
+    ],
+    "summary": "Pierwszy set kończy się, gdy jedna z drużyn ma co najmniej 1000 punktów, a druga co najmniej 3 punkty mniej. Wypisz drużynę, która wygrała pierwszego seta, i wynik w tym momencie w postaci A:B (np. A 1000:5).",
+    "starterCode": "with open(\"mecz.txt\") as plik:\n    s = plik.read().strip()\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (mecz_przyklad.txt)",
+        "files": {
+          "mecz.txt": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/mecz_przyklad.txt"
+        },
+        "expected": "A 1000:5"
+      },
+      {
+        "label": "Dane egzaminacyjne (mecz.txt)",
+        "files": {
+          "mecz.txt": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/mecz.txt"
+        },
+        "expected": "B 1001:1004"
+      }
+    ]
+  },
+  {
+    "id": "2022-probna-CKE-grudzien-1.3",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "1.3",
+    "title": "Dobre passy",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "podciagi",
+      "pliki-tekstowe"
+    ],
+    "summary": "Dobra passa to co najmniej 10 kolejnych wygranych jednej drużyny (zakończonych przegraną lub końcem meczu). Podaj łączną liczbę dobrych pass obu drużyn, a następnie drużynę z najdłuższą passą i jej długość – w jednej linii.",
+    "starterCode": "with open(\"mecz.txt\") as plik:\n    s = plik.read().strip()\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (mecz_przyklad.txt)",
+        "files": {
+          "mecz.txt": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/mecz_przyklad.txt"
+        },
+        "expected": "2 A 1000"
+      },
+      {
+        "label": "Dane egzaminacyjne (mecz.txt)",
+        "files": {
+          "mecz.txt": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/mecz.txt"
+        },
+        "expected": "6 B 15"
+      }
+    ]
+  },
+  {
+    "id": "2022-probna-CKE-grudzien-2.4",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "2.4",
+    "title": "Ścieżki po strzałkach",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "grafy",
+      "rekurencja",
+      "pliki-tekstowe"
+    ],
+    "summary": "Funkcja rysuj(x) rysuje strzałki x → 2x i x → 2x + 1 (dla punktów ≤ N) i wywołuje się rekurencyjnie dla 2x i 2x + 1 – powstaje drzewo jak w kopcu. Plik pary.txt zawiera pary liczb x < y. Wypisz (w kolejności z pliku) te pary, dla których z punktu x można dojść do y po jednej lub wielu strzałkach.",
+    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [tuple(map(int, wiersz.split())) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane egzaminacyjne (pary.txt)",
+        "files": {
+          "pary.txt": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/pary.txt"
+        },
+        "expected": "47 3044\n7650 61204\n1 245\n7 63669\n9125 18250\n5 43246"
+      }
+    ]
+  },
+  {
+    "id": "2022-probna-CKE-grudzien-3.1",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "3.1",
+    "title": "Sito Eratostenesa",
+    "part": 1,
+    "points": 3,
+    "topics": [
+      "liczby-pierwsze",
+      "tablice"
+    ],
+    "summary": "Uzupełnij (zaimplementuj) algorytm sita Eratostenesa: tablica logiczna SITO[1..N], w której dla kolejnych liczb pierwszych i wykreśla się wielokrotności, zaczynając od i·i. Napisz funkcję sito(N) zwracającą listę wszystkich liczb pierwszych nie większych od N.",
+    "starterCode": "def sito(N):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "sito",
+    "tests": [
+      {
+        "args": [
+          2
+        ],
+        "expected": [
+          2
+        ]
+      },
+      {
+        "args": [
+          10
+        ],
+        "expected": [
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      {
+        "args": [
+          30
+        ],
+        "expected": [
+          2,
+          3,
+          5,
+          7,
+          11,
+          13,
+          17,
+          19,
+          23,
+          29
+        ]
+      },
+      {
+        "args": [
+          49
+        ],
+        "expected": [
+          2,
+          3,
+          5,
+          7,
+          11,
+          13,
+          17,
+          19,
+          23,
+          29,
+          31,
+          37,
+          41,
+          43,
+          47
+        ]
+      },
+      {
+        "args": [
+          4
+        ],
+        "expected": [
+          2,
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022-probna-CKE-grudzien-3.2",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "3.2",
+    "title": "Liczba minus jeden jest pierwsza",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "liczby-pierwsze",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik liczby.txt zawiera 100 liczb parzystych z przedziału [4, 1 000 000]. Podaj, ile z nich po zmniejszeniu o 1 daje liczbę pierwszą.",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (liczby_przyklad.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/liczby_przyklad.txt"
+        },
+        "expected": "94"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/liczby.txt"
+        },
+        "expected": "21"
+      }
+    ]
+  },
+  {
+    "id": "2022-probna-CKE-grudzien-3.3",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "3.3",
+    "title": "Rozkłady Goldbacha",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "liczby-pierwsze",
+      "pliki-tekstowe"
+    ],
+    "summary": "Dla każdej liczby z pliku policz, na ile sposobów można ją zapisać jako sumę dwóch liczb pierwszych (p + q i q + p to ten sam rozkład). Wypisz w jednej linii: liczbę z największą liczbą rozkładów i tę liczbę rozkładów, a potem liczbę z najmniejszą liczbą rozkładów i liczbę jej rozkładów. Przyda się sito.",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (liczby_przyklad.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/liczby_przyklad.txt"
+        },
+        "expected": "996 37 4 1"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/liczby.txt"
+        },
+        "expected": "910620 9932 18676 195"
+      }
+    ]
+  },
+  {
+    "id": "2022-probna-CKE-grudzien-3.4",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "3.4",
+    "title": "Cyfry szesnastkowe",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "systemy-liczbowe",
+      "slowniki",
+      "pliki-tekstowe"
+    ],
+    "summary": "Zapisz każdą liczbę z pliku w systemie szesnastkowym i dla każdej cyfry 0–F podaj, ile razy łącznie występuje we wszystkich zapisach. Wypisz 16 wierszy w formacie cyfra:liczba (np. 4:94), w kolejności 0, 1, …, F.",
+    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (liczby_przyklad.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/liczby_przyklad.txt"
+        },
+        "expected": "0:2\n1:3\n2:5\n3:2\n4:94\n5:0\n6:1\n7:0\n8:2\n9:2\nA:0\nB:0\nC:1\nD:1\nE:3\nF:0"
+      },
+      {
+        "label": "Dane egzaminacyjne (liczby.txt)",
+        "files": {
+          "liczby.txt": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/liczby.txt"
+        },
+        "expected": "0:32\n1:26\n2:37\n3:31\n4:43\n5:25\n6:28\n7:23\n8:38\n9:28\nA:45\nB:33\nC:29\nD:23\nE:44\nF:10"
+      }
+    ]
+  }
+]
