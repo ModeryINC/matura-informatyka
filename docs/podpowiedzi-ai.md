@@ -46,6 +46,7 @@ na darmowym planie tylko ok. 20 zapytań dziennie na cały klucz. Model zmienia 
    Klucz i token muszą być **sekretami** (_Environment secrets_), nie zmiennymi: zmienne GitHub
    wypisuje w logach otwartym tekstem, a logi publicznego repo są dostępne dla każdego.
    Workflow przerwie się z komunikatem, jeśli znajdzie je wśród zmiennych.
+
 5. Uruchom workflow (push na `main` albo _Actions → CI/CD → Run workflow_). Job
    „Pośrednik podpowiedzi AI” wdroży Workera i wgra do niego klucz, a build strony dostanie
    adres Workera automatycznie.

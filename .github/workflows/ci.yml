@@ -59,7 +59,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: [frontend]
     runs-on: ubuntu-latest
-    # Środowisko github-pages ma AI_API_KEY i dane Cloudflare (sekrety lub zmienne).
+    # Środowisko github-pages ma sekrety AI_API_KEY, CLOUDFLARE_API_TOKEN i CLOUDFLARE_ACCOUNT_ID.
     environment: github-pages
     outputs:
       url: ${{ steps.deploy.outputs.deployment-url }}
