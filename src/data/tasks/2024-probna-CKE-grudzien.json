@@ -6,84 +6,39 @@
     "title": "Pozycje jedynek w zapisie binarnym",
     "part": 1,
     "points": 3,
-    "topics": [
-      "systemy-liczbowe"
-    ],
+    "topics": ["systemy-liczbowe"],
     "summary": "J(n) to ciąg pozycji jedynek w zapisie dwójkowym liczby n, licząc od 1 od najmniej znaczącej cyfry, np. 19 = 10011, więc J(19) = (1, 2, 5). Napisz funkcję J(n) zwracającą tę listę, bez funkcji zamiany na system dwójkowy.",
     "starterCode": "def J(n):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "J",
     "tests": [
       {
-        "args": [
-          19
-        ],
-        "expected": [
-          1,
-          2,
-          5
-        ]
+        "args": [19],
+        "expected": [1, 2, 5]
       },
       {
-        "args": [
-          6
-        ],
-        "expected": [
-          2,
-          3
-        ]
+        "args": [6],
+        "expected": [2, 3]
       },
       {
-        "args": [
-          42
-        ],
-        "expected": [
-          2,
-          4,
-          6
-        ]
+        "args": [42],
+        "expected": [2, 4, 6]
       },
       {
-        "args": [
-          75
-        ],
-        "expected": [
-          1,
-          2,
-          4,
-          7
-        ]
+        "args": [75],
+        "expected": [1, 2, 4, 7]
       },
       {
-        "args": [
-          1
-        ],
-        "expected": [
-          1
-        ]
+        "args": [1],
+        "expected": [1]
       },
       {
-        "args": [
-          1024
-        ],
-        "expected": [
-          11
-        ]
+        "args": [1024],
+        "expected": [11]
       },
       {
-        "args": [
-          255
-        ],
-        "expected": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8
-        ]
+        "args": [255],
+        "expected": [1, 2, 3, 4, 5, 6, 7, 8]
       }
     ]
   },
@@ -94,10 +49,7 @@
     "title": "Kwadraty liczb całkowitych",
     "part": 2,
     "points": 2,
-    "topics": [
-      "teoria-liczb",
-      "pliki-tekstowe"
-    ],
+    "topics": ["teoria-liczb", "pliki-tekstowe"],
     "summary": "Plik liczby.txt zawiera 2000 różnych liczb czterocyfrowych. Podaj, ile z nich jest kwadratami liczb całkowitych, oraz pierwszą taką liczbę w pliku.",
     "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -125,10 +77,7 @@
     "title": "Pięć różnych czynników pierwszych",
     "part": 2,
     "points": 3,
-    "topics": [
-      "liczby-pierwsze",
-      "pliki-tekstowe"
-    ],
+    "topics": ["liczby-pierwsze", "pliki-tekstowe"],
     "summary": "Wypisz (w kolejności z pliku) liczby, w których rozkładzie na czynniki pierwsze występuje co najmniej pięć różnych liczb pierwszych (np. 2730 = 2·3·5·7·13).",
     "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -156,11 +105,7 @@
     "title": "Procedura Kaprekara",
     "part": 2,
     "points": 3,
-    "topics": [
-      "teoria-liczb",
-      "sortowanie",
-      "pliki-tekstowe"
-    ],
+    "topics": ["teoria-liczb", "sortowanie", "pliki-tekstowe"],
     "summary": "Z cyfr liczby układamy największą i najmniejszą możliwą liczbę (zera traktujemy jak inne cyfry) i obliczamy ich różnicę, np. 3151 → 5311 − 1135 = 4176. Podaj, ile razy różnica jest mniejsza od danej liczby, ile razy większa, a ile razy równa – w jednej linii – a potem wypisz liczby, dla których różnica jest równa danej liczbie.",
     "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -188,10 +133,7 @@
     "title": "Najmniejsze i największe pole",
     "part": 2,
     "points": 2,
-    "topics": [
-      "geometria",
-      "pliki-tekstowe"
-    ],
+    "topics": ["geometria", "pliki-tekstowe"],
     "summary": "Plik prostokaty.txt opisuje 5000 prostokątów (wysokość i szerokość). Podaj najmniejsze i największe pole prostokąta.",
     "starterCode": "with open(\"prostokaty.txt\") as plik:\n    prostokaty = [tuple(map(int, wiersz.split())) for wiersz in plik]  # (wysokość, szerokość)\n\n",
     "kind": "program",
@@ -219,10 +161,7 @@
     "title": "Prostokąty mieszczące się w poprzednich",
     "part": 2,
     "points": 2,
-    "topics": [
-      "podciagi",
-      "pliki-tekstowe"
-    ],
+    "topics": ["podciagi", "pliki-tekstowe"],
     "summary": "Prostokąt mieści się w poprzednim, gdy jego szerokość i wysokość są nie większe niż poprzedniego. Znajdź najdłuższy ciąg kolejnych prostokątów, w którym każdy (poza pierwszym) mieści się w poprzednim. Wypisz długość ciągu oraz wysokość i szerokość ostatniego prostokąta.",
     "starterCode": "with open(\"prostokaty.txt\") as plik:\n    prostokaty = [tuple(map(int, wiersz.split())) for wiersz in plik]  # (wysokość, szerokość)\n\n",
     "kind": "program",
@@ -250,11 +189,7 @@
     "title": "Sklejanie prostokątów",
     "part": 2,
     "points": 4,
-    "topics": [
-      "slowniki",
-      "sortowanie",
-      "pliki-tekstowe"
-    ],
+    "topics": ["slowniki", "sortowanie", "pliki-tekstowe"],
     "summary": "Prostokąty o tej samej wysokości można skleić w jeden – jego szerokość to suma szerokości. Podaj największe szerokości, jakie można uzyskać, sklejając dokładnie 2, 3 i 5 prostokątów z różnych wierszy pliku (trzy liczby w jednej linii).",
     "starterCode": "with open(\"prostokaty.txt\") as plik:\n    prostokaty = [tuple(map(int, wiersz.split())) for wiersz in plik]  # (wysokość, szerokość)\n\n",
     "kind": "program",

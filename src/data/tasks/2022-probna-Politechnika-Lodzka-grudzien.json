@@ -6,66 +6,46 @@
     "title": "Liczenie wyrazów w wierszu",
     "part": 1,
     "points": 3,
-    "topics": [
-      "napisy"
-    ],
+    "topics": ["napisy"],
     "summary": "W arkuszu trzeba znaleźć i poprawić błędy w funkcji LiczWyrazy. Po poprawkach funkcja ma zwracać liczbę wyrazów w wierszu: wyraz to ciąg co najmniej dwóch znaków niebędących spacją, a pojedyncze znaki (spójniki i, a, w, z, o) nie są liczone. Spacje mogą występować obok siebie, także na początku i końcu.\n\nNapisz poprawną funkcję licz_wyrazy(linia), np. dla \"Ala i kot\" wynik to 2. (Plik PanTadeusz.txt potrzebny do zadań F–H nie był dołączony do materiałów, dlatego te zadania pominięto.)",
     "starterCode": "def licz_wyrazy(linia):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "licz_wyrazy",
     "tests": [
       {
-        "args": [
-          "Ala ma bardzo malego kotka"
-        ],
+        "args": ["Ala ma bardzo malego kotka"],
         "expected": 5
       },
       {
-        "args": [
-          "Ala i kot"
-        ],
+        "args": ["Ala i kot"],
         "expected": 2
       },
       {
-        "args": [
-          "  dwa   spacje  "
-        ],
+        "args": ["  dwa   spacje  "],
         "expected": 2
       },
       {
-        "args": [
-          ""
-        ],
+        "args": [""],
         "expected": 0
       },
       {
-        "args": [
-          "   "
-        ],
+        "args": ["   "],
         "expected": 0
       },
       {
-        "args": [
-          "a"
-        ],
+        "args": ["a"],
         "expected": 0
       },
       {
-        "args": [
-          "ab"
-        ],
+        "args": ["ab"],
         "expected": 1
       },
       {
-        "args": [
-          "Kot, pies i mysz."
-        ],
+        "args": ["Kot, pies i mysz."],
         "expected": 3
       },
       {
-        "args": [
-          "x y z"
-        ],
+        "args": ["x y z"],
         "expected": 0
       }
     ]
@@ -77,62 +57,38 @@
     "title": "Szybkie potęgowanie",
     "part": 1,
     "points": 3,
-    "topics": [
-      "teoria-liczb",
-      "zlozonosc"
-    ],
+    "topics": ["teoria-liczb", "zlozonosc"],
     "summary": "Rekurencyjne a·Potega(a, b − 1) wymaga b − 1 mnożeń. Szybciej: przeglądamy bity wykładnika od najmłodszego – przy bicie 1 mnożymy wynik przez aktualną podstawę, a podstawę za każdym razem podnosimy do kwadratu (np. 3^11 wymaga tylko kilku mnożeń).\n\nNapisz funkcję potega(a, b) działającą w ten sposób (bez operatora ** i funkcji pow).",
     "starterCode": "def potega(a, b):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "potega",
     "tests": [
       {
-        "args": [
-          3,
-          11
-        ],
+        "args": [3, 11],
         "expected": 177147
       },
       {
-        "args": [
-          3,
-          12
-        ],
+        "args": [3, 12],
         "expected": 531441
       },
       {
-        "args": [
-          2,
-          10
-        ],
+        "args": [2, 10],
         "expected": 1024
       },
       {
-        "args": [
-          5,
-          0
-        ],
+        "args": [5, 0],
         "expected": 1
       },
       {
-        "args": [
-          7,
-          1
-        ],
+        "args": [7, 1],
         "expected": 7
       },
       {
-        "args": [
-          10,
-          15
-        ],
+        "args": [10, 15],
         "expected": 1000000000000000
       },
       {
-        "args": [
-          3,
-          33
-        ],
+        "args": [3, 33],
         "expected": 5559060566555523
       }
     ]

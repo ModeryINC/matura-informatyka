@@ -6,54 +6,38 @@
     "title": "Liczba dzielników właściwych",
     "part": 1,
     "points": 3,
-    "topics": [
-      "teoria-liczb"
-    ],
+    "topics": ["teoria-liczb"],
     "summary": "Dzielnik właściwy liczby to każdy jej dzielnik mniejszy od niej samej (28 ma dzielniki właściwe 1, 2, 4, 7, 14). Napisz funkcję zwracającą liczbę dzielników właściwych liczby x. (W arkuszu trzeba znaleźć i poprawić błąd w gotowym programie w C++.)",
     "starterCode": "def dzielniki_wlasciwe(x):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "dzielniki_wlasciwe",
     "tests": [
       {
-        "args": [
-          86
-        ],
+        "args": [86],
         "expected": 3
       },
       {
-        "args": [
-          159
-        ],
+        "args": [159],
         "expected": 3
       },
       {
-        "args": [
-          126
-        ],
+        "args": [126],
         "expected": 11
       },
       {
-        "args": [
-          184
-        ],
+        "args": [184],
         "expected": 7
       },
       {
-        "args": [
-          28
-        ],
+        "args": [28],
         "expected": 5
       },
       {
-        "args": [
-          1
-        ],
+        "args": [1],
         "expected": 0
       },
       {
-        "args": [
-          97
-        ],
+        "args": [97],
         "expected": 1
       }
     ]
@@ -65,60 +49,42 @@
     "title": "Liczby deficytowe",
     "part": 1,
     "points": 1,
-    "topics": [
-      "teoria-liczb"
-    ],
+    "topics": ["teoria-liczb"],
     "summary": "Liczba deficytowa to liczba naturalna, której suma dzielników właściwych jest mniejsza od niej samej. Napisz funkcję czy_deficytowa(x) zwracającą True albo False.",
     "starterCode": "def czy_deficytowa(x):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "czy_deficytowa",
     "tests": [
       {
-        "args": [
-          8
-        ],
+        "args": [8],
         "expected": true
       },
       {
-        "args": [
-          12
-        ],
+        "args": [12],
         "expected": false
       },
       {
-        "args": [
-          28
-        ],
+        "args": [28],
         "expected": false
       },
       {
-        "args": [
-          1
-        ],
+        "args": [1],
         "expected": true
       },
       {
-        "args": [
-          945
-        ],
+        "args": [945],
         "expected": false
       },
       {
-        "args": [
-          13
-        ],
+        "args": [13],
         "expected": true
       },
       {
-        "args": [
-          16
-        ],
+        "args": [16],
         "expected": true
       },
       {
-        "args": [
-          18
-        ],
+        "args": [18],
         "expected": false
       }
     ]
@@ -130,55 +96,34 @@
     "title": "Szyfr Cezara z kluczem",
     "part": 1,
     "points": 1,
-    "topics": [
-      "szyfrowanie",
-      "napisy"
-    ],
+    "topics": ["szyfrowanie", "napisy"],
     "summary": "Zmodyfikowany szyfr Cezara: klucz to ciąg cyfr, a i-tą literę tekstu (wielkie litery A–Z) przesuwamy w alfabecie o i-tą cyfrę klucza (cyklicznie – po wyczerpaniu cyfr wracamy do początku klucza, a po Z jest A). Np. MAMA z kluczem 210 → OBMC.\n\nNapisz funkcję szyfruj(tekst, klucz) zwracającą zaszyfrowany tekst.",
     "starterCode": "def szyfruj(tekst, klucz):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "szyfruj",
     "tests": [
       {
-        "args": [
-          "MAMA",
-          "210"
-        ],
+        "args": ["MAMA", "210"],
         "expected": "OBMC"
       },
       {
-        "args": [
-          "LIPIEC",
-          "2134"
-        ],
+        "args": ["LIPIEC", "2134"],
         "expected": "NJSMGD"
       },
       {
-        "args": [
-          "ALAMAKOTA",
-          "2031"
-        ],
+        "args": ["ALAMAKOTA", "2031"],
         "expected": "CLDNCKRUC"
       },
       {
-        "args": [
-          "MAMAJADZIA",
-          "3"
-        ],
+        "args": ["MAMAJADZIA", "3"],
         "expected": "PDPDMDGCLD"
       },
       {
-        "args": [
-          "DOMEK",
-          "3"
-        ],
+        "args": ["DOMEK", "3"],
         "expected": "GRPHN"
       },
       {
-        "args": [
-          "XYZ",
-          "3"
-        ],
+        "args": ["XYZ", "3"],
         "expected": "ABC"
       }
     ]
@@ -190,11 +135,7 @@
     "title": "Szyfrowanie i deszyfrowanie pliku",
     "part": 2,
     "points": 5,
-    "topics": [
-      "szyfrowanie",
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["szyfrowanie", "napisy", "pliki-tekstowe"],
     "summary": "Zmodyfikowany szyfr Cezara: klucz to ciąg cyfr, a i-tą literę tekstu (wielkie litery A–Z) przesuwamy w alfabecie o i-tą cyfrę klucza (cyklicznie – po wyczerpaniu cyfr wracamy do początku klucza, a po Z jest A). Np. MAMA z kluczem 210 → OBMC.\n\nPlik dane.txt zawiera klucz, liczbę n i n wierszy: rodzaj łańcucha (0 – jawny, 1 – zaszyfrowany) i łańcuch. Plik wynikowy ma zawierać klucz, n, a potem każdy łańcuch w przeciwnej postaci, poprzedzony nowym rodzajem (np. 0 ABC → 1 …). Wypisz wiersz numer 25 takiego pliku wynikowego.\n\nUwaga: odpowiedź w kluczu Politechniki różni się od wyniku algorytmu na trzech pozycjach – sprawdzarka wymaga wyniku zgodnego z opisanym algorytmem.",
     "starterCode": "with open(\"dane.txt\") as plik:\n    klucz = plik.readline().strip()\n    n = int(plik.readline())\n    wiersze = [plik.readline().split() for _ in range(n)]  # [rodzaj, łańcuch]\n\n",
     "kind": "program",
@@ -215,9 +156,7 @@
     "title": "Łańcuchy niezaszyfrowane",
     "part": 2,
     "points": 1,
-    "topics": [
-      "pliki-tekstowe"
-    ],
+    "topics": ["pliki-tekstowe"],
     "summary": "Podaj, ile łańcuchów w pliku dane.txt jest niezaszyfrowanych (rodzaj 0).",
     "starterCode": "with open(\"dane.txt\") as plik:\n    klucz = plik.readline().strip()\n    n = int(plik.readline())\n    wiersze = [plik.readline().split() for _ in range(n)]  # [rodzaj, łańcuch]\n\n",
     "kind": "program",

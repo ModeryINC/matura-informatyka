@@ -6,82 +6,50 @@
     "title": "Dobre przyjaciółki",
     "part": 1,
     "points": 4,
-    "topics": [
-      "teoria-liczb"
-    ],
+    "topics": ["teoria-liczb"],
     "summary": "Liczby a i b są przyjaciółkami, gdy mają równe sumy cyfr, a dobrymi przyjaciółkami – gdy dodatkowo pierwsza cyfra jednej z nich jest równa ostatniej cyfrze drugiej (np. 124 i 61, 431 i 17; ale 15 i 24 to tylko przyjaciółki).\n\nNapisz funkcję zwracającą True dla dobrych przyjaciółek i False w przeciwnym razie, używając tylko arytmetyki (bez zamiany na napisy).",
     "starterCode": "def dobre_przyjaciolki(a, b):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "dobre_przyjaciolki",
     "tests": [
       {
-        "args": [
-          15,
-          24
-        ],
+        "args": [15, 24],
         "expected": false
       },
       {
-        "args": [
-          124,
-          61
-        ],
+        "args": [124, 61],
         "expected": true
       },
       {
-        "args": [
-          431,
-          17
-        ],
+        "args": [431, 17],
         "expected": true
       },
       {
-        "args": [
-          433,
-          352
-        ],
+        "args": [433, 352],
         "expected": true
       },
       {
-        "args": [
-          131,
-          50
-        ],
+        "args": [131, 50],
         "expected": false
       },
       {
-        "args": [
-          416,
-          84
-        ],
+        "args": [416, 84],
         "expected": false
       },
       {
-        "args": [
-          32,
-          221
-        ],
+        "args": [32, 221],
         "expected": true
       },
       {
-        "args": [
-          5,
-          5
-        ],
+        "args": [5, 5],
         "expected": true
       },
       {
-        "args": [
-          19,
-          91
-        ],
+        "args": [19, 91],
         "expected": true
       },
       {
-        "args": [
-          1000,
-          1
-        ],
+        "args": [1000, 1],
         "expected": true
       }
     ]
@@ -93,61 +61,38 @@
     "title": "Liczba dodawań w rekurencyjnym mnożeniu",
     "part": 1,
     "points": 2,
-    "topics": [
-      "rekurencja"
-    ],
+    "topics": ["rekurencja"],
     "summary": "Funkcja iloczyn(x, y) mnoży rekurencyjnie: dla y = 1 zwraca x; w przeciwnym razie oblicza z = iloczyn(x, y div 2) i zwraca z + z (y parzyste – jedno dodawanie) albo x + z + z (y nieparzyste – dwa dodawania). Np. iloczyn(9, 11) wykonuje 5 dodawań.\n\nNapisz funkcję liczba_dodawan(x, y), która zwraca, ile dodawań wykona iloczyn(x, y).",
     "starterCode": "def liczba_dodawan(x, y):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "liczba_dodawan",
     "tests": [
       {
-        "args": [
-          9,
-          11
-        ],
+        "args": [9, 11],
         "expected": 5
       },
       {
-        "args": [
-          8,
-          32
-        ],
+        "args": [8, 32],
         "expected": 5
       },
       {
-        "args": [
-          2,
-          47
-        ],
+        "args": [2, 47],
         "expected": 9
       },
       {
-        "args": [
-          112,
-          112
-        ],
+        "args": [112, 112],
         "expected": 8
       },
       {
-        "args": [
-          10,
-          45
-        ],
+        "args": [10, 45],
         "expected": 8
       },
       {
-        "args": [
-          5,
-          1
-        ],
+        "args": [5, 1],
         "expected": 0
       },
       {
-        "args": [
-          3,
-          2
-        ],
+        "args": [3, 2],
         "expected": 1
       }
     ]
@@ -159,62 +104,38 @@
     "title": "Iteracyjne mnożenie przez dodawanie",
     "part": 1,
     "points": 2,
-    "topics": [
-      "systemy-liczbowe",
-      "teoria-liczb"
-    ],
+    "topics": ["systemy-liczbowe", "teoria-liczb"],
     "summary": "Uzupełnij iteracyjny algorytm mnożenia z arkusza: z zaczyna od pewnej wartości, a w pętli – jeśli y jest nieparzyste, z ← z + x; potem x ← x + x i y ← …. Napisz funkcję iloczyn(x, y) zwracającą x·y, używając tylko dodawania, odejmowania oraz div/mod 2 (bez operatora mnożenia).",
     "starterCode": "def iloczyn(x, y):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "iloczyn",
     "tests": [
       {
-        "args": [
-          9,
-          11
-        ],
+        "args": [9, 11],
         "expected": 99
       },
       {
-        "args": [
-          10,
-          45
-        ],
+        "args": [10, 45],
         "expected": 450
       },
       {
-        "args": [
-          1,
-          1
-        ],
+        "args": [1, 1],
         "expected": 1
       },
       {
-        "args": [
-          7,
-          1
-        ],
+        "args": [7, 1],
         "expected": 7
       },
       {
-        "args": [
-          1,
-          1000
-        ],
+        "args": [1, 1000],
         "expected": 1000
       },
       {
-        "args": [
-          123,
-          456
-        ],
+        "args": [123, 456],
         "expected": 56088
       },
       {
-        "args": [
-          2,
-          1024
-        ],
+        "args": [2, 1024],
         "expected": 2048
       }
     ]
@@ -226,11 +147,7 @@
     "title": "Liczby zrównoważone",
     "part": 2,
     "points": 2,
-    "topics": [
-      "systemy-liczbowe",
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["systemy-liczbowe", "napisy", "pliki-tekstowe"],
     "summary": "Plik anagram.txt zawiera 1000 różnych liczb binarnych (do 14 cyfr). Liczba jest zrównoważona, gdy ma tyle samo zer i jedynek, a prawie zrównoważona, gdy te liczby różnią się o 1. Wypisz liczbę zrównoważonych, a w drugiej linii – prawie zrównoważonych.",
     "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -258,11 +175,7 @@
     "title": "Najwięcej anagramów",
     "part": 2,
     "points": 3,
-    "topics": [
-      "anagramy",
-      "systemy-liczbowe",
-      "pliki-tekstowe"
-    ],
+    "topics": ["anagramy", "systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Anagramy cyfrowe to liczby z tego samego zestawu cyfr w innej kolejności, bez zera na początku (np. z 11100 można utworzyć 6 anagramów). Wypisz, w kolejności z pliku, wszystkie 8-cyfrowe liczby binarne, z których można utworzyć najwięcej anagramów.",
     "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -290,10 +203,7 @@
     "title": "Największa różnica sąsiednich liczb",
     "part": 2,
     "points": 2,
-    "topics": [
-      "systemy-liczbowe",
-      "pliki-tekstowe"
-    ],
+    "topics": ["systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Podaj największą wartość bezwzględną różnicy między liczbami z sąsiednich wierszy pliku anagram.txt – w zapisie binarnym.",
     "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -321,11 +231,7 @@
     "title": "Cyfry w zapisie dziesiętnym",
     "part": 2,
     "points": 4,
-    "topics": [
-      "systemy-liczbowe",
-      "teoria-liczb",
-      "pliki-tekstowe"
-    ],
+    "topics": ["systemy-liczbowe", "teoria-liczb", "pliki-tekstowe"],
     "summary": "Zamień liczby z pliku na system dziesiętny. a) Podaj, w ilu z nich nie występuje cyfra 0. b) Podaj liczbę o największej sumie różnych cyfr (np. dla 20462 to 2 + 0 + 4 + 6 = 12; przy remisie – pierwszą w pliku). Odpowiedzi wypisz w dwóch liniach.",
     "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",

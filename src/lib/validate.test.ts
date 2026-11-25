@@ -68,6 +68,16 @@ describe('validateTask', () => {
     ]);
   });
 
+  it('odrzuca liczby całkowite spoza bezpiecznego zakresu', () => {
+    const errors = validateTask(
+      { ...functionTask, tests: [{ args: [2 ** 60], expected: 1 }] },
+      sessions,
+    );
+    expect(errors).toEqual([
+      '2024-maj-1.2: tests[0] zawiera liczbę całkowitą większą niż 2^53 (traci precyzję w JSON)',
+    ]);
+  });
+
   it('sprawdza nazwę funkcji i rodzaj zadania', () => {
     expect(validateTask({ ...functionTask, functionName: '1abc' }, sessions)).toHaveLength(1);
     expect(validateTask({ ...programTask, kind: 'quiz' }, sessions)).toEqual([

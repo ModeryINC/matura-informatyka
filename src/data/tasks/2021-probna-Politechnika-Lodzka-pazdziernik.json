@@ -6,96 +6,35 @@
     "title": "Sortowanie bąbelkowe",
     "part": 1,
     "points": 2,
-    "topics": [
-      "sortowanie",
-      "tablice"
-    ],
+    "topics": ["sortowanie", "tablice"],
     "summary": "Jaś pisze funkcję sortującą: dla każdego i < n i każdego j < n − 1, jeśli tab[j] > tab[j+1], zamienia te elementy miejscami (w arkuszu brakuje dwóch linijek zamiany). Napisz funkcję sortuj(tab), która posortuje listę rosnąco w ten sposób i ją zwróci – bez sort/sorted.",
     "starterCode": "def sortuj(tab):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "sortuj",
     "tests": [
       {
-        "args": [
-          [
-            3,
-            2,
-            6,
-            7,
-            1
-          ]
-        ],
-        "expected": [
-          1,
-          2,
-          3,
-          6,
-          7
-        ]
+        "args": [[3, 2, 6, 7, 1]],
+        "expected": [1, 2, 3, 6, 7]
       },
       {
-        "args": [
-          [
-            5,
-            4,
-            3,
-            2,
-            1
-          ]
-        ],
-        "expected": [
-          1,
-          2,
-          3,
-          4,
-          5
-        ]
+        "args": [[5, 4, 3, 2, 1]],
+        "expected": [1, 2, 3, 4, 5]
       },
       {
-        "args": [
-          [
-            1
-          ]
-        ],
-        "expected": [
-          1
-        ]
+        "args": [[1]],
+        "expected": [1]
       },
       {
-        "args": [
-          []
-        ],
+        "args": [[]],
         "expected": []
       },
       {
-        "args": [
-          [
-            2,
-            2,
-            1
-          ]
-        ],
-        "expected": [
-          1,
-          2,
-          2
-        ]
+        "args": [[2, 2, 1]],
+        "expected": [1, 2, 2]
       },
       {
-        "args": [
-          [
-            -3,
-            10,
-            0,
-            -3
-          ]
-        ],
-        "expected": [
-          -3,
-          -3,
-          0,
-          10
-        ]
+        "args": [[-3, 10, 0, -3]],
+        "expected": [-3, -3, 0, 10]
       }
     ]
   },
@@ -106,60 +45,42 @@
     "title": "Rekurencyjny wyraz ciągu",
     "part": 1,
     "points": 1,
-    "topics": [
-      "rekurencja"
-    ],
+    "topics": ["rekurencja"],
     "summary": "Funkcja Wyraz_ciagu(i): dla i = 1 zwraca 2, dla i = 2 zwraca 1; gdy i mod 3 = 0 zwraca 2·W(i−1); gdy i mod 3 = 1 zwraca W(i−2) − W(i−3); w pozostałych przypadkach W(i−1) + W(i−2).\n\nZaimplementuj tę funkcję jako wyraz_ciagu(i).",
     "starterCode": "def wyraz_ciagu(i):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "wyraz_ciagu",
     "tests": [
       {
-        "args": [
-          1
-        ],
+        "args": [1],
         "expected": 2
       },
       {
-        "args": [
-          2
-        ],
+        "args": [2],
         "expected": 1
       },
       {
-        "args": [
-          3
-        ],
+        "args": [3],
         "expected": 2
       },
       {
-        "args": [
-          4
-        ],
+        "args": [4],
         "expected": -1
       },
       {
-        "args": [
-          5
-        ],
+        "args": [5],
         "expected": 1
       },
       {
-        "args": [
-          9
-        ],
+        "args": [9],
         "expected": 8
       },
       {
-        "args": [
-          12
-        ],
+        "args": [12],
         "expected": 20
       },
       {
-        "args": [
-          20
-        ],
+        "args": [20],
         "expected": 208
       }
     ]
@@ -171,61 +92,42 @@
     "title": "Liczba wywołań rekurencyjnych",
     "part": 1,
     "points": 2,
-    "topics": [
-      "rekurencja",
-      "zlozonosc"
-    ],
+    "topics": ["rekurencja", "zlozonosc"],
     "summary": "Funkcja Wyraz_ciagu(i): dla i = 1 zwraca 2, dla i = 2 zwraca 1; gdy i mod 3 = 0 zwraca 2·W(i−1); gdy i mod 3 = 1 zwraca W(i−2) − W(i−3); w pozostałych przypadkach W(i−1) + W(i−2).\n\nNapisz funkcję liczba_wywolan(i) zwracającą, ile razy łącznie zostanie wywołana funkcja Wyraz_ciagu przy obliczaniu i-tego wyrazu (łącznie z pierwszym wywołaniem). W arkuszu trzeba podać n10 − n9.",
     "starterCode": "def liczba_wywolan(i):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "liczba_wywolan",
     "tests": [
       {
-        "args": [
-          1
-        ],
+        "args": [1],
         "expected": 1
       },
       {
-        "args": [
-          2
-        ],
+        "args": [2],
         "expected": 1
       },
       {
-        "args": [
-          3
-        ],
+        "args": [3],
         "expected": 2
       },
       {
-        "args": [
-          4
-        ],
+        "args": [4],
         "expected": 3
       },
       {
-        "args": [
-          5
-        ],
+        "args": [5],
         "expected": 6
       },
       {
-        "args": [
-          9
-        ],
+        "args": [9],
         "expected": 19
       },
       {
-        "args": [
-          10
-        ],
+        "args": [10],
         "expected": 29
       },
       {
-        "args": [
-          15
-        ],
+        "args": [15],
         "expected": 131
       }
     ]

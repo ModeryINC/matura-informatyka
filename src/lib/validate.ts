@@ -1,5 +1,14 @@
 import { TOPICS, type Task } from '../types';
 
+/** Czy wartość JSON zawiera liczbę całkowitą spoza bezpiecznego zakresu JavaScriptu (2^53). */
+function hasUnsafeInteger(value: unknown): boolean {
+  if (typeof value === 'number') return Number.isInteger(value) && !Number.isSafeInteger(value);
+  if (Array.isArray(value)) return value.some(hasUnsafeInteger);
+  if (typeof value === 'object' && value !== null)
+    return Object.values(value).some(hasUnsafeInteger);
+  return false;
+}
+
 /**
  * Sprawdza poprawność opisu zadania wczytanego z JSON.
  * Zwraca listę błędów (pusta lista = zadanie poprawne).
@@ -72,6 +81,9 @@ export function validateTask(value: unknown, sessionIds: ReadonlySet<string>): s
         const t = test as Record<string, unknown>;
         if (!Array.isArray(t.args)) fail(`tests[${i}].args musi być listą`);
         if (!('expected' in t)) fail(`tests[${i}] nie ma pola "expected"`);
+        if (hasUnsafeInteger(t.args) || hasUnsafeInteger(t.expected)) {
+          fail(`tests[${i}] zawiera liczbę całkowitą większą niż 2^53 (traci precyzję w JSON)`);
+        }
       });
     }
   } else {

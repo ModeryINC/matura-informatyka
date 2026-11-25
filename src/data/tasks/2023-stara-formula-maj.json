@@ -6,89 +6,34 @@
     "title": "Długość opisu ciągu",
     "part": 1,
     "points": 3,
-    "topics": [
-      "tablice",
-      "podciagi"
-    ],
+    "topics": ["tablice", "podciagi"],
     "summary": "Opis ciągu A powstaje przez zamianę każdego maksymalnego fragmentu złożonego z p powtórzeń liczby x na dwie liczby p i x, np. (1, 1, 3, 2, 2, 2, 1) → (2, 1, 1, 3, 3, 2, 1, 1).\n\nNapisz funkcję zwracającą długość opisu (liczbę elementów ciągu B) dla danej listy A, bez budowania samego opisu.",
     "starterCode": "def dlugosc_opisu(A):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "dlugosc_opisu",
     "tests": [
       {
-        "args": [
-          [
-            1,
-            1,
-            3,
-            2,
-            2,
-            2,
-            1
-          ]
-        ],
+        "args": [[1, 1, 3, 2, 2, 2, 1]],
         "expected": 8
       },
       {
-        "args": [
-          [
-            2,
-            2,
-            2,
-            2,
-            5,
-            3,
-            3
-          ]
-        ],
+        "args": [[2, 2, 2, 2, 5, 3, 3]],
         "expected": 6
       },
       {
-        "args": [
-          [
-            3,
-            3,
-            3,
-            2,
-            2,
-            1,
-            1,
-            1,
-            6
-          ]
-        ],
+        "args": [[3, 3, 3, 2, 2, 1, 1, 1, 6]],
         "expected": 8
       },
       {
-        "args": [
-          [
-            2,
-            2,
-            2,
-            2,
-            2,
-            2
-          ]
-        ],
+        "args": [[2, 2, 2, 2, 2, 2]],
         "expected": 2
       },
       {
-        "args": [
-          [
-            7
-          ]
-        ],
+        "args": [[7]],
         "expected": 2
       },
       {
-        "args": [
-          [
-            1,
-            2,
-            1,
-            2
-          ]
-        ],
+        "args": [[1, 2, 1, 2]],
         "expected": 8
       }
     ]
@@ -100,94 +45,31 @@
     "title": "Rekurencyjna funkcja f(p, q)",
     "part": 1,
     "points": 3,
-    "topics": [
-      "rekurencja",
-      "tablice"
-    ],
+    "topics": ["rekurencja", "tablice"],
     "summary": "Funkcja f(p, q) dla p < q oblicza k = (q − p + 1) div 2, zamienia miejscami A[p + i − 1] z A[q − k + i] dla i = 1, …, k, a następnie wywołuje f(p, p + k − 1) i f(q − k + 1, q).\n\nNapisz funkcję przestaw(A), która wykona f(1, n) na liście A (numeracja od 1) i zwróci wynikową listę. Co robi ta procedura?",
     "starterCode": "def przestaw(A):\n    def f(p, q):\n        ...\n\n    f(1, len(A))\n    return A\n",
     "kind": "function",
     "functionName": "przestaw",
     "tests": [
       {
-        "args": [
-          [
-            2,
-            3,
-            4
-          ]
-        ],
-        "expected": [
-          4,
-          3,
-          2
-        ]
+        "args": [[2, 3, 4]],
+        "expected": [4, 3, 2]
       },
       {
-        "args": [
-          [
-            1,
-            2,
-            3,
-            4
-          ]
-        ],
-        "expected": [
-          4,
-          3,
-          2,
-          1
-        ]
+        "args": [[1, 2, 3, 4]],
+        "expected": [4, 3, 2, 1]
       },
       {
-        "args": [
-          [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10
-          ]
-        ],
-        "expected": [
-          10,
-          9,
-          8,
-          7,
-          6,
-          5,
-          4,
-          3,
-          2,
-          1
-        ]
+        "args": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]],
+        "expected": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
       },
       {
-        "args": [
-          [
-            5
-          ]
-        ],
-        "expected": [
-          5
-        ]
+        "args": [[5]],
+        "expected": [5]
       },
       {
-        "args": [
-          [
-            1,
-            2
-          ]
-        ],
-        "expected": [
-          2,
-          1
-        ]
+        "args": [[1, 2]],
+        "expected": [2, 1]
       }
     ]
   },
@@ -198,10 +80,7 @@
     "title": "WK-słowa",
     "part": 2,
     "points": 4,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik slowa.txt zawiera 50 słów z małych liter. WK-słowo to słowo, w którym litery w i k występują tyle samo razy (także 0 razy). Wypisz wszystkie WK-słowa, po jednym w wierszu, w kolejności z pliku.",
     "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -229,11 +108,7 @@
     "title": "Ile słów „wakacje”",
     "part": 2,
     "points": 4,
-    "topics": [
-      "slowniki",
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["slowniki", "napisy", "pliki-tekstowe"],
     "summary": "Dla każdego słowa oblicz, ile słów wakacje można ułożyć z jego liter (każdej litery można użyć najwyżej raz). Wypisz w jednym wierszu 50 liczb oddzielonych spacjami.",
     "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -261,11 +136,7 @@
     "title": "Wakacyjne słowa",
     "part": 2,
     "points": 4,
-    "topics": [
-      "napisy",
-      "zachlanne",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "zachlanne", "pliki-tekstowe"],
     "summary": "Wakacyjne słowo to wakacje sklejone ze sobą dowolnie wiele razy (także słowo puste). Dla każdego słowa oblicz najmniejszą liczbę liter, które trzeba z niego wykreślić, aby powstało wakacyjne słowo. Wypisz w jednym wierszu 50 liczb oddzielonych spacjami.",
     "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",

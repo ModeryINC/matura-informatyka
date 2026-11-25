@@ -6,86 +6,39 @@
     "title": "Rozkład na ułamki egipskie",
     "part": 1,
     "points": 4,
-    "topics": [
-      "zachlanne",
-      "teoria-liczb"
-    ],
+    "topics": ["zachlanne", "teoria-liczb"],
     "summary": "Ułamek egipski ma postać 1/m. Metoda zachłanna rozkłada liczbę p/q < 1: bierzemy najmniejsze n ≥ q/p (sufit), odejmujemy 1/n i powtarzamy dla reszty, aż będzie równa 0. Np. 4/5 = 1/2 + 1/4 + 1/20.\n\nNapisz funkcję egipskie(p, q), która zwróci listę kolejnych mianowników. Licz na liczbach całkowitych, nie na ułamkach dziesiętnych – inaczej pojawią się błędy zaokrągleń.",
     "starterCode": "def egipskie(p, q):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "egipskie",
     "tests": [
       {
-        "args": [
-          4,
-          5
-        ],
-        "expected": [
-          2,
-          4,
-          20
-        ]
+        "args": [4, 5],
+        "expected": [2, 4, 20]
       },
       {
-        "args": [
-          3,
-          4
-        ],
-        "expected": [
-          2,
-          4
-        ]
+        "args": [3, 4],
+        "expected": [2, 4]
       },
       {
-        "args": [
-          2,
-          3
-        ],
-        "expected": [
-          2,
-          6
-        ]
+        "args": [2, 3],
+        "expected": [2, 6]
       },
       {
-        "args": [
-          5,
-          6
-        ],
-        "expected": [
-          2,
-          3
-        ]
+        "args": [5, 6],
+        "expected": [2, 3]
       },
       {
-        "args": [
-          7,
-          15
-        ],
-        "expected": [
-          3,
-          8,
-          120
-        ]
+        "args": [7, 15],
+        "expected": [3, 8, 120]
       },
       {
-        "args": [
-          1,
-          7
-        ],
-        "expected": [
-          7
-        ]
+        "args": [1, 7],
+        "expected": [7]
       },
       {
-        "args": [
-          3,
-          7
-        ],
-        "expected": [
-          3,
-          11,
-          231
-        ]
+        "args": [3, 7],
+        "expected": [3, 11, 231]
       }
     ]
   },
@@ -96,10 +49,7 @@
     "title": "Największa suma cyfr identyfikatora",
     "part": 2,
     "points": 3,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik identyfikator.txt zawiera 200 identyfikatorów dokumentów: seria (3 wielkie litery) i numer (6 cyfr). Wypisz, w kolejności z pliku, identyfikatory o największej sumie cyfr numeru.",
     "starterCode": "with open(\"identyfikator.txt\") as plik:\n    identyfikatory = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -127,11 +77,7 @@
     "title": "Palindromy w identyfikatorach",
     "part": 2,
     "points": 4,
-    "topics": [
-      "palindromy",
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["palindromy", "napisy", "pliki-tekstowe"],
     "summary": "Wypisz, w kolejności z pliku, identyfikatory, w których seria lub numer jest palindromem.\n\nUwaga: odpowiedź do pliku przykładowego podana w arkuszu pomija identyfikator MOS302203, którego numer jest palindromem – dlatego sprawdzarka testuje tylko pełne dane.",
     "starterCode": "with open(\"identyfikator.txt\") as plik:\n    identyfikatory = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -152,11 +98,7 @@
     "title": "Cyfra kontrolna identyfikatora",
     "part": 2,
     "points": 4,
-    "topics": [
-      "napisy",
-      "teoria-liczb",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "teoria-liczb", "pliki-tekstowe"],
     "summary": "Pierwsza cyfra numeru jest cyfrą kontrolną. Litery serii zamieniamy na liczby (A = 10, …, Z = 35), mnożymy kolejne elementy identyfikatora (bez cyfry kontrolnej) przez wagi 7, 3, 1, 7, 3, 1, 7, 3 i sumujemy; identyfikator jest poprawny, gdy suma mod 10 jest równa cyfrze kontrolnej. Wypisz wszystkie niepoprawne identyfikatory w kolejności z pliku.",
     "starterCode": "with open(\"identyfikator.txt\") as plik:\n    identyfikatory = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",

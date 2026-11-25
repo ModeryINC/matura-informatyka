@@ -6,60 +6,42 @@
     "title": "Liczba jedynek w kodzie BCD",
     "part": 1,
     "points": 4,
-    "topics": [
-      "systemy-liczbowe"
-    ],
+    "topics": ["systemy-liczbowe"],
     "summary": "Kod BCD liczby powstaje przez zamianę każdej cyfry dziesiętnej na jej czterobitowy zapis binarny, np. 3768 → 0011 0111 0110 1000. Napisz funkcję zwracającą liczbę jedynek w kodzie BCD dodatniej liczby L, używając tylko arytmetyki.",
     "starterCode": "def jedynki_bcd(L):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "jedynki_bcd",
     "tests": [
       {
-        "args": [
-          259
-        ],
+        "args": [259],
         "expected": 5
       },
       {
-        "args": [
-          2017
-        ],
+        "args": [2017],
         "expected": 5
       },
       {
-        "args": [
-          15893
-        ],
+        "args": [15893],
         "expected": 8
       },
       {
-        "args": [
-          3768
-        ],
+        "args": [3768],
         "expected": 8
       },
       {
-        "args": [
-          1
-        ],
+        "args": [1],
         "expected": 1
       },
       {
-        "args": [
-          9
-        ],
+        "args": [9],
         "expected": 2
       },
       {
-        "args": [
-          7777
-        ],
+        "args": [7777],
         "expected": 12
       },
       {
-        "args": [
-          100
-        ],
+        "args": [100],
         "expected": 1
       }
     ]
@@ -71,10 +53,7 @@
     "title": "Liczby pierwsze w pliku",
     "part": 2,
     "points": 3,
-    "topics": [
-      "liczby-pierwsze",
-      "pliki-tekstowe"
-    ],
+    "topics": ["liczby-pierwsze", "pliki-tekstowe"],
     "summary": "Plik dane.txt zawiera 5000 różnych liczb z zakresu 100–100 000. Podaj, ile z nich jest liczbami pierwszymi, a w kolejnych liniach największą i najmniejszą z nich.",
     "starterCode": "with open(\"dane.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -102,11 +81,7 @@
     "title": "Liczby (prawie) palindromiczne",
     "part": 2,
     "points": 3,
-    "topics": [
-      "palindromy",
-      "systemy-liczbowe",
-      "pliki-tekstowe"
-    ],
+    "topics": ["palindromy", "systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Liczba jest palindromiczna, gdy jej zapis binarny jest palindromem (107 = 1101011), a prawie palindromiczna, gdy staje się palindromem po dopisaniu zer przed najstarszą jedynką (238 = 11101110 → 011101110). Podaj łączną liczbę liczb palindromicznych i prawie palindromicznych w pliku.",
     "starterCode": "with open(\"dane.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -134,11 +109,7 @@
     "title": "Pary liczb z tymi samymi cyframi",
     "part": 2,
     "points": 4,
-    "topics": [
-      "slowniki",
-      "teoria-liczb",
-      "pliki-tekstowe"
-    ],
+    "topics": ["slowniki", "teoria-liczb", "pliki-tekstowe"],
     "summary": "Podaj, ile różnych par liczb z pliku ma w zapisie dziesiętnym ten sam zbiór cyfr (np. 178 i 817, 10122 i 120). Pary (a, b) i (b, a) liczymy raz.",
     "starterCode": "with open(\"dane.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",

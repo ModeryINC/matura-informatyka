@@ -8,8 +8,8 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
 
 - **Przegląd arkuszy** – 39 sesji (główne, dodatkowe, próbne, stara formuła) z podglądem PDF,
   kluczem odpowiedzi i plikami z danymi.
-- **Zadania ze sprawdzarką** – 113 zadań z sesji majowych (głównych) i czerwcowych (dodatkowych)
-  2018–2026:
+- **Zadania ze sprawdzarką** – 230 zadań ze wszystkich 39 sesji 2018–2026 (główne, dodatkowe,
+  stara formuła, próbne CKE i Politechniki Łódzkiej, przykładowy arkusz CKE):
   - _programy_ (część 2) – kod czyta plik z danymi i wypisuje odpowiedź; jest uruchamiany
     na danych przykładowych z arkusza i na pełnych danych egzaminacyjnych,
   - _funkcje_ (część 1, „zapisz algorytm”) – funkcja sprawdzana zestawem testów.
@@ -90,6 +90,17 @@ Workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
   ścieżkę ustawia zmienna `BASE_PATH`).
 
 Dependabot co tydzień proponuje aktualizacje zależności i akcji.
+
+## Uwagi o danych
+
+- W kilku miejscach klucz lub przykład w arkuszu zawiera błąd – opis zadania mówi wtedy, czego
+  wymaga sprawdzarka (np. czerwiec 2023 zad. 3.2, lipiec 2020 zad. 4.2, próbna PŁ październik
+  2022 zad. 2.5).
+- Arkusze próbne Politechniki Łódzkiej z lat 2021–2022 są skanami, a w marcu 2024 tekst nie ma
+  mapowania znaków – ich treść została odczytana z obrazu stron. Gdy klucz był dostępny tylko
+  jako skan, oczekiwane wyniki pochodzą z rozwiązań wzorcowych (zaznaczono to w opisie zadania).
+- Zadania wymagające arkusza kalkulacyjnego lub bazy danych oraz pytania testowe (P/F) nie mają
+  sprawdzarki – są dostępne w arkuszach PDF.
 
 ## Źródła i prawa
 

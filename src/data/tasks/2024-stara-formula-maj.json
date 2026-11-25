@@ -6,73 +6,50 @@
     "title": "Największy czynnik pierwszy",
     "part": 1,
     "points": 4,
-    "topics": [
-      "liczby-pierwsze",
-      "teoria-liczb"
-    ],
+    "topics": ["liczby-pierwsze", "teoria-liczb"],
     "summary": "Napisz funkcję zwracającą największy czynnik w rozkładzie liczby n > 1 na czynniki pierwsze, np. dla 120 = 2·2·2·3·5 wynik to 5. Wolno operować tylko na liczbach całkowitych, bez funkcji wbudowanych. Sprawdzarka testuje też dużą liczbę – zadbaj o wydajność.",
     "starterCode": "def najwiekszy_czynnik(n):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "najwiekszy_czynnik",
     "tests": [
       {
-        "args": [
-          120
-        ],
+        "args": [120],
         "expected": 5
       },
       {
-        "args": [
-          14
-        ],
+        "args": [14],
         "expected": 7
       },
       {
-        "args": [
-          32
-        ],
+        "args": [32],
         "expected": 2
       },
       {
-        "args": [
-          252
-        ],
+        "args": [252],
         "expected": 7
       },
       {
-        "args": [
-          2
-        ],
+        "args": [2],
         "expected": 2
       },
       {
-        "args": [
-          97
-        ],
+        "args": [97],
         "expected": 97
       },
       {
-        "args": [
-          1001
-        ],
+        "args": [1001],
         "expected": 13
       },
       {
-        "args": [
-          999983
-        ],
+        "args": [999983],
         "expected": 999983
       },
       {
-        "args": [
-          1024
-        ],
+        "args": [1024],
         "expected": 2
       },
       {
-        "args": [
-          600851475143
-        ],
+        "args": [600851475143],
         "expected": 6857
       }
     ]
@@ -84,11 +61,7 @@
     "title": "Wolne miejsca na jednomasztowce",
     "part": 2,
     "points": 3,
-    "topics": [
-      "tablice-2d",
-      "grafy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["tablice-2d", "grafy", "pliki-tekstowe"],
     "summary": "Plik plansza.txt opisuje planszę 100×100 z cyfr 0/1 (1 – pole statku). Podaj, na ilu polach można jeszcze postawić jednomasztowiec, tzn. ile pól zawiera 0 i nie styka się bokiem ani wierzchołkiem z żadnym polem statku.",
     "starterCode": "with open(\"plansza.txt\") as plik:\n    P = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
     "kind": "program",
@@ -116,11 +89,7 @@
     "title": "Symetryczne pary jednomasztowców",
     "part": 2,
     "points": 3,
-    "topics": [
-      "tablice-2d",
-      "grafy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["tablice-2d", "grafy", "pliki-tekstowe"],
     "summary": "Jednomasztowiec to pojedyncze pole statku otoczone zerami (lub krawędzią planszy). Podaj liczbę par jednomasztowców położonych symetrycznie względem przekątnej z lewego górnego do prawego dolnego rogu (statków na przekątnej nie liczymy).",
     "starterCode": "with open(\"plansza.txt\") as plik:\n    P = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
     "kind": "program",
@@ -148,11 +117,7 @@
     "title": "Liczba dwumasztowców",
     "part": 2,
     "points": 3,
-    "topics": [
-      "tablice-2d",
-      "grafy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["tablice-2d", "grafy", "pliki-tekstowe"],
     "summary": "Dwumasztowiec to dwa sąsiednie (w poziomie lub pionie) pola statku otoczone zerami. Statki nie stykają się ze sobą. Podaj liczbę dwumasztowców na planszy.",
     "starterCode": "with open(\"plansza.txt\") as plik:\n    P = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
     "kind": "program",
@@ -180,11 +145,7 @@
     "title": "Statki na przekątnych",
     "part": 2,
     "points": 3,
-    "topics": [
-      "tablice-2d",
-      "grafy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["tablice-2d", "grafy", "pliki-tekstowe"],
     "summary": "Podaj liczbę jednomasztowców, a w drugiej linii liczbę dwumasztowców, których co najmniej jedno pole leży na jednej z dwóch głównych przekątnych planszy.",
     "starterCode": "with open(\"plansza.txt\") as plik:\n    P = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
     "kind": "program",

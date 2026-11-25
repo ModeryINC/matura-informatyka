@@ -1,6 +1,16 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { sessions, tasksForSession } from '../data';
+import { sessions } from '../data';
+
+// Wszystkie sesje mają już zadania – do testu pustej sesji podmieniamy jedną z nich.
+const PUSTA = '2021/probna-Politechnika-Lodzka-pazdziernik';
+vi.mock('../data', async (importOriginal) => {
+  const original = await importOriginal<typeof import('../data')>();
+  return {
+    ...original,
+    tasksForSession: (id: string) => (id === PUSTA ? [] : original.tasksForSession(id)),
+  };
+});
 import { renderAt } from '../../tests/render';
 import { routes } from '../routes';
 
@@ -25,8 +35,7 @@ describe('SessionsPage i SessionPage', () => {
   });
 
   it('sesja bez zadań informuje o tym', () => {
-    const empty = sessions.find((s) => tasksForSession(s.id).length === 0)!;
-    renderAt(`/arkusze/${empty.id}`, routes);
+    renderAt(`/arkusze/${PUSTA}`, routes);
     expect(screen.getByText(/nie ma jeszcze zadań ze sprawdzarką/)).toBeInTheDocument();
   });
 

@@ -6,10 +6,7 @@
     "title": "Zmiany zwycięzcy rozgrywek",
     "part": 2,
     "points": 2,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik mecz.txt zawiera jeden napis z 10 000 znaków A i B – zwycięzców kolejnych rozgrywek. Podaj, w ilu rozgrywkach wygrała inna drużyna niż w poprzedniej (ile razy dwa kolejne znaki się różnią).",
     "starterCode": "with open(\"mecz.txt\") as plik:\n    s = plik.read().strip()\n\n",
     "kind": "program",
@@ -37,10 +34,7 @@
     "title": "Pierwszy set",
     "part": 2,
     "points": 3,
-    "topics": [
-      "symulacja",
-      "pliki-tekstowe"
-    ],
+    "topics": ["symulacja", "pliki-tekstowe"],
     "summary": "Pierwszy set kończy się, gdy jedna z drużyn ma co najmniej 1000 punktów, a druga co najmniej 3 punkty mniej. Wypisz drużynę, która wygrała pierwszego seta, i wynik w tym momencie w postaci A:B (np. A 1000:5).",
     "starterCode": "with open(\"mecz.txt\") as plik:\n    s = plik.read().strip()\n\n",
     "kind": "program",
@@ -68,10 +62,7 @@
     "title": "Dobre passy",
     "part": 2,
     "points": 3,
-    "topics": [
-      "podciagi",
-      "pliki-tekstowe"
-    ],
+    "topics": ["podciagi", "pliki-tekstowe"],
     "summary": "Dobra passa to co najmniej 10 kolejnych wygranych jednej drużyny (zakończonych przegraną lub końcem meczu). Podaj łączną liczbę dobrych pass obu drużyn, a następnie drużynę z najdłuższą passą i jej długość – w jednej linii.",
     "starterCode": "with open(\"mecz.txt\") as plik:\n    s = plik.read().strip()\n\n",
     "kind": "program",
@@ -99,11 +90,7 @@
     "title": "Ścieżki po strzałkach",
     "part": 2,
     "points": 3,
-    "topics": [
-      "grafy",
-      "rekurencja",
-      "pliki-tekstowe"
-    ],
+    "topics": ["grafy", "rekurencja", "pliki-tekstowe"],
     "summary": "Funkcja rysuj(x) rysuje strzałki x → 2x i x → 2x + 1 (dla punktów ≤ N) i wywołuje się rekurencyjnie dla 2x i 2x + 1 – powstaje drzewo jak w kopcu. Plik pary.txt zawiera pary liczb x < y. Wypisz (w kolejności z pliku) te pary, dla których z punktu x można dojść do y po jednej lub wielu strzałkach.",
     "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [tuple(map(int, wiersz.split())) for wiersz in plik]\n\n",
     "kind": "program",
@@ -124,81 +111,31 @@
     "title": "Sito Eratostenesa",
     "part": 1,
     "points": 3,
-    "topics": [
-      "liczby-pierwsze",
-      "tablice"
-    ],
+    "topics": ["liczby-pierwsze", "tablice"],
     "summary": "Uzupełnij (zaimplementuj) algorytm sita Eratostenesa: tablica logiczna SITO[1..N], w której dla kolejnych liczb pierwszych i wykreśla się wielokrotności, zaczynając od i·i. Napisz funkcję sito(N) zwracającą listę wszystkich liczb pierwszych nie większych od N.",
     "starterCode": "def sito(N):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "sito",
     "tests": [
       {
-        "args": [
-          2
-        ],
-        "expected": [
-          2
-        ]
+        "args": [2],
+        "expected": [2]
       },
       {
-        "args": [
-          10
-        ],
-        "expected": [
-          2,
-          3,
-          5,
-          7
-        ]
+        "args": [10],
+        "expected": [2, 3, 5, 7]
       },
       {
-        "args": [
-          30
-        ],
-        "expected": [
-          2,
-          3,
-          5,
-          7,
-          11,
-          13,
-          17,
-          19,
-          23,
-          29
-        ]
+        "args": [30],
+        "expected": [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
       },
       {
-        "args": [
-          49
-        ],
-        "expected": [
-          2,
-          3,
-          5,
-          7,
-          11,
-          13,
-          17,
-          19,
-          23,
-          29,
-          31,
-          37,
-          41,
-          43,
-          47
-        ]
+        "args": [49],
+        "expected": [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
       },
       {
-        "args": [
-          4
-        ],
-        "expected": [
-          2,
-          3
-        ]
+        "args": [4],
+        "expected": [2, 3]
       }
     ]
   },
@@ -209,10 +146,7 @@
     "title": "Liczba minus jeden jest pierwsza",
     "part": 2,
     "points": 2,
-    "topics": [
-      "liczby-pierwsze",
-      "pliki-tekstowe"
-    ],
+    "topics": ["liczby-pierwsze", "pliki-tekstowe"],
     "summary": "Plik liczby.txt zawiera 100 liczb parzystych z przedziału [4, 1 000 000]. Podaj, ile z nich po zmniejszeniu o 1 daje liczbę pierwszą.",
     "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -240,10 +174,7 @@
     "title": "Rozkłady Goldbacha",
     "part": 2,
     "points": 4,
-    "topics": [
-      "liczby-pierwsze",
-      "pliki-tekstowe"
-    ],
+    "topics": ["liczby-pierwsze", "pliki-tekstowe"],
     "summary": "Dla każdej liczby z pliku policz, na ile sposobów można ją zapisać jako sumę dwóch liczb pierwszych (p + q i q + p to ten sam rozkład). Wypisz w jednej linii: liczbę z największą liczbą rozkładów i tę liczbę rozkładów, a potem liczbę z najmniejszą liczbą rozkładów i liczbę jej rozkładów. Przyda się sito.",
     "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",
@@ -271,11 +202,7 @@
     "title": "Cyfry szesnastkowe",
     "part": 2,
     "points": 3,
-    "topics": [
-      "systemy-liczbowe",
-      "slowniki",
-      "pliki-tekstowe"
-    ],
+    "topics": ["systemy-liczbowe", "slowniki", "pliki-tekstowe"],
     "summary": "Zapisz każdą liczbę z pliku w systemie szesnastkowym i dla każdej cyfry 0–F podaj, ile razy łącznie występuje we wszystkich zapisach. Wypisz 16 wierszy w formacie cyfra:liczba (np. 4:94), w kolejności 0, 1, …, F.",
     "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
     "kind": "program",

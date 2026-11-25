@@ -6,130 +6,35 @@
     "title": "Tablica C – najdłuższe podciągi rosnące",
     "part": 1,
     "points": 4,
-    "topics": [
-      "programowanie-dynamiczne",
-      "podciagi"
-    ],
+    "topics": ["programowanie-dynamiczne", "podciagi"],
     "summary": "Algorytm z arkusza dla tablicy A[1..n] oblicza tablicę C: C[i] = 1, a potem dla każdego j < i, jeśli A[j] < A[i] i C[j] + 1 > C[i], ustawia C[i] = C[j] + 1. (C[i] to długość najdłuższego podciągu rosnącego kończącego się na A[i].)\n\nZaimplementuj funkcję zwracającą tablicę C dla podanej listy A.",
     "starterCode": "def tablica_c(A):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "tablica_c",
     "tests": [
       {
-        "args": [
-          [
-            4,
-            2,
-            3,
-            1,
-            5
-          ]
-        ],
-        "expected": [
-          1,
-          1,
-          2,
-          1,
-          3
-        ]
+        "args": [[4, 2, 3, 1, 5]],
+        "expected": [1, 1, 2, 1, 3]
       },
       {
-        "args": [
-          [
-            3,
-            3,
-            3,
-            3
-          ]
-        ],
-        "expected": [
-          1,
-          1,
-          1,
-          1
-        ]
+        "args": [[3, 3, 3, 3]],
+        "expected": [1, 1, 1, 1]
       },
       {
-        "args": [
-          [
-            1,
-            2,
-            3,
-            4
-          ]
-        ],
-        "expected": [
-          1,
-          2,
-          3,
-          4
-        ]
+        "args": [[1, 2, 3, 4]],
+        "expected": [1, 2, 3, 4]
       },
       {
-        "args": [
-          [
-            1,
-            3,
-            2,
-            5
-          ]
-        ],
-        "expected": [
-          1,
-          2,
-          2,
-          3
-        ]
+        "args": [[1, 3, 2, 5]],
+        "expected": [1, 2, 2, 3]
       },
       {
-        "args": [
-          [
-            3,
-            5,
-            1,
-            4,
-            6,
-            7,
-            2,
-            10,
-            9,
-            11
-          ]
-        ],
-        "expected": [
-          1,
-          2,
-          1,
-          2,
-          3,
-          4,
-          2,
-          5,
-          5,
-          6
-        ]
+        "args": [[3, 5, 1, 4, 6, 7, 2, 10, 9, 11]],
+        "expected": [1, 2, 1, 2, 3, 4, 2, 5, 5, 6]
       },
       {
-        "args": [
-          [
-            3,
-            1,
-            4,
-            2,
-            6,
-            5,
-            7
-          ]
-        ],
-        "expected": [
-          1,
-          1,
-          2,
-          2,
-          3,
-          3,
-          4
-        ]
+        "args": [[3, 1, 4, 2, 6, 5, 7]],
+        "expected": [1, 1, 2, 2, 3, 3, 4]
       }
     ]
   },
@@ -140,47 +45,30 @@
     "title": "Potęga modulo – pot(a, k)",
     "part": 1,
     "points": 2,
-    "topics": [
-      "teoria-liczb"
-    ],
+    "topics": ["teoria-liczb"],
     "summary": "Napisz funkcję pot(a, k) zwracającą a^k mod k dla liczb naturalnych 2 ≤ a < k. Wolno używać tylko podstawowych działań arytmetycznych – bez operatora potęgowania i funkcji pow.",
     "starterCode": "def pot(a, k):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "pot",
     "tests": [
       {
-        "args": [
-          2,
-          5
-        ],
+        "args": [2, 5],
         "expected": 2
       },
       {
-        "args": [
-          3,
-          7
-        ],
+        "args": [3, 7],
         "expected": 3
       },
       {
-        "args": [
-          2,
-          10
-        ],
+        "args": [2, 10],
         "expected": 4
       },
       {
-        "args": [
-          4,
-          9
-        ],
+        "args": [4, 9],
         "expected": 1
       },
       {
-        "args": [
-          5,
-          12
-        ],
+        "args": [5, 12],
         "expected": 1
       }
     ]
@@ -192,61 +80,42 @@
     "title": "Test pierwszości Fermata",
     "part": 1,
     "points": 2,
-    "topics": [
-      "liczby-pierwsze",
-      "teoria-liczb"
-    ],
+    "topics": ["liczby-pierwsze", "teoria-liczb"],
     "summary": "Liczba k > 2 jest prawdopodobnie pierwsza, gdy dla każdego a, 2 ≤ a < k, zachodzi a^k mod k = a. Napisz funkcję testF(k) zwracającą 1, gdy k jest prawdopodobnie pierwsza, a 0 w przeciwnym razie (możesz zdefiniować pomocniczą funkcję pot z zadania 2.1).",
     "starterCode": "def testF(k):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "testF",
     "tests": [
       {
-        "args": [
-          3
-        ],
+        "args": [3],
         "expected": 1
       },
       {
-        "args": [
-          4
-        ],
+        "args": [4],
         "expected": 0
       },
       {
-        "args": [
-          5
-        ],
+        "args": [5],
         "expected": 1
       },
       {
-        "args": [
-          9
-        ],
+        "args": [9],
         "expected": 0
       },
       {
-        "args": [
-          13
-        ],
+        "args": [13],
         "expected": 1
       },
       {
-        "args": [
-          15
-        ],
+        "args": [15],
         "expected": 0
       },
       {
-        "args": [
-          561
-        ],
+        "args": [561],
         "expected": 1
       },
       {
-        "args": [
-          97
-        ],
+        "args": [97],
         "expected": 1
       }
     ]
@@ -258,73 +127,50 @@
     "title": "Liczby Carmichaela",
     "part": 1,
     "points": 4,
-    "topics": [
-      "liczby-pierwsze",
-      "teoria-liczb"
-    ],
+    "topics": ["liczby-pierwsze", "teoria-liczb"],
     "summary": "Liczba Carmichaela to liczba złożona, która przechodzi test Fermata (jest prawdopodobnie pierwsza), np. 561 = 3·11·17. Napisz funkcję czyLC(k) dla k > 2, zwracającą 1 dla liczb Carmichaela i 0 dla pozostałych.",
     "starterCode": "def czyLC(k):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "czyLC",
     "tests": [
       {
-        "args": [
-          3
-        ],
+        "args": [3],
         "expected": 0
       },
       {
-        "args": [
-          4
-        ],
+        "args": [4],
         "expected": 0
       },
       {
-        "args": [
-          5
-        ],
+        "args": [5],
         "expected": 0
       },
       {
-        "args": [
-          9
-        ],
+        "args": [9],
         "expected": 0
       },
       {
-        "args": [
-          13
-        ],
+        "args": [13],
         "expected": 0
       },
       {
-        "args": [
-          561
-        ],
+        "args": [561],
         "expected": 1
       },
       {
-        "args": [
-          1105
-        ],
+        "args": [1105],
         "expected": 1
       },
       {
-        "args": [
-          97
-        ],
+        "args": [97],
         "expected": 0
       },
       {
-        "args": [
-          1729
-        ],
+        "args": [1729],
         "expected": 1
       },
       {
-        "args": [
-          15
-        ],
+        "args": [15],
         "expected": 0
       }
     ]
@@ -336,10 +182,7 @@
     "title": "Działki porośnięte trawą",
     "part": 2,
     "points": 3,
-    "topics": [
-      "tablice-2d",
-      "pliki-tekstowe"
-    ],
+    "topics": ["tablice-2d", "pliki-tekstowe"],
     "summary": "Plik dzialki.txt zawiera 50 map działek 30×30 (po każdej mapie pusty wiersz): . – pole puste, * – trawa, X – przeszkoda. Podaj, ile działek ma co najmniej 70% powierzchni porośniętej trawą.",
     "starterCode": "with open(\"dzialki.txt\") as plik:\n    wiersze = [w.strip() for w in plik if w.strip()]\nmapy = [wiersze[i:i + 30] for i in range(0, len(wiersze), 30)]\n\n",
     "kind": "program",
@@ -367,10 +210,7 @@
     "title": "Działki identyczne po obrocie",
     "part": 2,
     "points": 3,
-    "topics": [
-      "tablice-2d",
-      "pliki-tekstowe"
-    ],
+    "topics": ["tablice-2d", "pliki-tekstowe"],
     "summary": "Dwie mapy są identyczne, gdy jedną z nich obróci się o 180°. Podaj numery tych dwóch działek (numeracja według kolejności w pliku, od 1).",
     "starterCode": "with open(\"dzialki.txt\") as plik:\n    wiersze = [w.strip() for w in plik if w.strip()]\nmapy = [wiersze[i:i + 30] for i in range(0, len(wiersze), 30)]\n\n",
     "kind": "program",
@@ -398,10 +238,7 @@
     "title": "Największy plac w lewym górnym rogu",
     "part": 2,
     "points": 4,
-    "topics": [
-      "tablice-2d",
-      "pliki-tekstowe"
-    ],
+    "topics": ["tablice-2d", "pliki-tekstowe"],
     "summary": "W lewym górnym rogu działki trzeba wytyczyć kwadratowy plac bez przeszkód (X). Znajdź działkę(-i), na której zmieści się największy taki plac, i wypisz jej numer oraz długość boku placu – po jednej działce w wierszu.",
     "starterCode": "with open(\"dzialki.txt\") as plik:\n    wiersze = [w.strip() for w in plik if w.strip()]\nmapy = [wiersze[i:i + 30] for i in range(0, len(wiersze), 30)]\n\n",
     "kind": "program",

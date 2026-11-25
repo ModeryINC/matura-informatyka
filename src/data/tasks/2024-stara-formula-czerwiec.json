@@ -6,90 +6,62 @@
     "title": "Liczby nieliczne",
     "part": 1,
     "points": 3,
-    "topics": [
-      "systemy-liczbowe"
-    ],
+    "topics": ["systemy-liczbowe"],
     "summary": "Liczba jest nieliczna, gdy w jej zapisie binarnym żadne dwie jedynki nie sąsiadują ze sobą (np. 10 = 1010 jest nieliczna, a 259 = 100000011 – nie). Napisz funkcję czy_nieliczna(k) zwracającą True albo False, bez funkcji zamiany systemów liczbowych.",
     "starterCode": "def czy_nieliczna(k):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "czy_nieliczna",
     "tests": [
       {
-        "args": [
-          259
-        ],
+        "args": [259],
         "expected": false
       },
       {
-        "args": [
-          1
-        ],
+        "args": [1],
         "expected": true
       },
       {
-        "args": [
-          2
-        ],
+        "args": [2],
         "expected": true
       },
       {
-        "args": [
-          3
-        ],
+        "args": [3],
         "expected": false
       },
       {
-        "args": [
-          5
-        ],
+        "args": [5],
         "expected": true
       },
       {
-        "args": [
-          10
-        ],
+        "args": [10],
         "expected": true
       },
       {
-        "args": [
-          21
-        ],
+        "args": [21],
         "expected": true
       },
       {
-        "args": [
-          42
-        ],
+        "args": [42],
         "expected": true
       },
       {
-        "args": [
-          85
-        ],
+        "args": [85],
         "expected": true
       },
       {
-        "args": [
-          6
-        ],
+        "args": [6],
         "expected": false
       },
       {
-        "args": [
-          1365
-        ],
+        "args": [1365],
         "expected": true
       },
       {
-        "args": [
-          1366
-        ],
+        "args": [1366],
         "expected": false
       },
       {
-        "args": [
-          8202
-        ],
+        "args": [8202],
         "expected": true
       }
     ]
@@ -101,10 +73,7 @@
     "title": "Fragment k?t",
     "part": 2,
     "points": 3,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik slowa.txt zawiera 1000 słów z małych liter. Podaj, w ilu słowach występuje trzyliterowy fragment k?t, gdzie ? to dowolna litera (np. w alamakota i brokat, ale nie w krata).",
     "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -132,10 +101,7 @@
     "title": "Pięcioliterowe fragmenty e???e",
     "part": 2,
     "points": 3,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Wypisz, w kolejności występowania, wszystkie pięcioliterowe fragmenty słów z pliku slowa.txt, które zaczynają się i kończą literą e (fragmenty mogą na siebie zachodzić). Możesz wypisać je w jednej linii lub po jednym w wierszu.",
     "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -146,9 +112,7 @@
           "slowa.txt": "arkusze/2024/stara-formula-czerwiec/pliki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/slowa_przyklad.txt"
         },
         "expected": "erefe\nefere",
-        "alternatives": [
-          "erefe efere"
-        ]
+        "alternatives": ["erefe efere"]
       },
       {
         "label": "Dane egzaminacyjne (slowa.txt)",
@@ -169,11 +133,7 @@
     "title": "ROT13 czytane wspak",
     "part": 2,
     "points": 3,
-    "topics": [
-      "szyfrowanie",
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["szyfrowanie", "napisy", "pliki-tekstowe"],
     "summary": "ROT13 zamienia każdą literę na literę o 13 pozycji dalej w alfabecie (cyklicznie). Słowo aren po zakodowaniu daje nera – to samo słowo czytane wspak. Podaj, ile słów z pliku ma tę własność, a w drugiej linii wypisz najdłuższe z nich.",
     "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",
@@ -201,11 +161,7 @@
     "title": "Litera na co najmniej połowie pozycji",
     "part": 2,
     "points": 3,
-    "topics": [
-      "slowniki",
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["slowniki", "napisy", "pliki-tekstowe"],
     "summary": "Wypisz (po jednym w wierszu, w kolejności z pliku) wszystkie słowa, w których ta sama litera występuje na co najmniej połowie pozycji (np. owocowo – litera o 4 razy na 7).",
     "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
     "kind": "program",

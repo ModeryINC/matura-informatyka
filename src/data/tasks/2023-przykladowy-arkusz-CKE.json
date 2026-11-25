@@ -6,10 +6,7 @@
     "title": "Puste kolumny na szachownicy",
     "part": 2,
     "points": 3,
-    "topics": [
-      "tablice-2d",
-      "pliki-tekstowe"
-    ],
+    "topics": ["tablice-2d", "pliki-tekstowe"],
     "summary": "Plik szachy.txt zawiera 125 plansz 8×8 (kropka – puste pole, wielkie litery – białe bierki, małe – czarne), po każdej pusty wiersz. Podaj, na ilu planszach jest co najmniej jedna pusta kolumna, oraz największą liczbę pustych kolumn na jednej planszy.",
     "starterCode": "with open(\"szachy.txt\") as plik:\n    wiersze = [w.strip() for w in plik if w.strip()]\nplansze = [wiersze[i:i + 8] for i in range(0, len(wiersze), 8)]\n\n",
     "kind": "program",
@@ -37,11 +34,7 @@
     "title": "Plansze w równowadze",
     "part": 2,
     "points": 3,
-    "topics": [
-      "slowniki",
-      "tablice-2d",
-      "pliki-tekstowe"
-    ],
+    "topics": ["slowniki", "tablice-2d", "pliki-tekstowe"],
     "summary": "Plansza jest w równowadze, gdy białych i czarnych bierek jest tyle samo i są takie same (np. jeden biały i jeden czarny skoczek). Podaj liczbę plansz w równowadze oraz najmniejszą łączną liczbę bierek na takiej planszy.",
     "starterCode": "with open(\"szachy.txt\") as plik:\n    wiersze = [w.strip() for w in plik if w.strip()]\nplansze = [wiersze[i:i + 8] for i in range(0, len(wiersze), 8)]\n\n",
     "kind": "program",
@@ -69,11 +62,7 @@
     "title": "Szach wieżą",
     "part": 2,
     "points": 4,
-    "topics": [
-      "tablice-2d",
-      "symulacja",
-      "pliki-tekstowe"
-    ],
+    "topics": ["tablice-2d", "symulacja", "pliki-tekstowe"],
     "summary": "Wieża szachuje króla przeciwnika, gdy stoi w tym samym wierszu lub kolumnie i między nimi nie ma żadnej bierki (W/w – wieża, K/k – król). Podaj, na ilu planszach biała wieża szachuje czarnego króla oraz na ilu czarna wieża szachuje białego króla.",
     "starterCode": "with open(\"szachy.txt\") as plik:\n    wiersze = [w.strip() for w in plik if w.strip()]\nplansze = [wiersze[i:i + 8] for i in range(0, len(wiersze), 8)]\n\n",
     "kind": "program",
@@ -101,82 +90,34 @@
     "title": "Gra w stawianie pionków",
     "part": 1,
     "points": 2,
-    "topics": [
-      "programowanie-dynamiczne",
-      "tablice"
-    ],
+    "topics": ["programowanie-dynamiczne", "tablice"],
     "summary": "Plansza B ma pola 0…s, na początku pionek stoi tylko na polu 0. W k-tej turze dla i = s, s−1, …, A[k]: jeśli na polu i − A[k] stoi pionek, a pole i jest puste, stawiamy pionek na i. Gra kończy się sukcesem, gdy po wszystkich turach na polu s stoi pionek.\n\nNapisz funkcję gra(A, s) zwracającą True przy sukcesie i False przy porażce. (To problem sumy podzbioru.)",
     "starterCode": "def gra(A, s):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "gra",
     "tests": [
       {
-        "args": [
-          [
-            1,
-            2,
-            3
-          ],
-          5
-        ],
+        "args": [[1, 2, 3], 5],
         "expected": true
       },
       {
-        "args": [
-          [
-            1,
-            2,
-            5,
-            10
-          ],
-          14
-        ],
+        "args": [[1, 2, 5, 10], 14],
         "expected": false
       },
       {
-        "args": [
-          [
-            13,
-            5,
-            5,
-            2,
-            7
-          ],
-          17
-        ],
+        "args": [[13, 5, 5, 2, 7], 17],
         "expected": true
       },
       {
-        "args": [
-          [
-            7,
-            6,
-            5,
-            4,
-            3,
-            2,
-            1
-          ],
-          25
-        ],
+        "args": [[7, 6, 5, 4, 3, 2, 1], 25],
         "expected": true
       },
       {
-        "args": [
-          [
-            5
-          ],
-          5
-        ],
+        "args": [[5], 5],
         "expected": true
       },
       {
-        "args": [
-          [
-            2
-          ],
-          3
-        ],
+        "args": [[2], 3],
         "expected": false
       }
     ]
@@ -188,69 +129,38 @@
     "title": "Szybkie potęgowanie modularne",
     "part": 1,
     "points": 4,
-    "topics": [
-      "teoria-liczb",
-      "zlozonosc"
-    ],
+    "topics": ["teoria-liczb", "zlozonosc"],
     "summary": "Napisz funkcję potega(a, x, M) obliczającą a^x mod M. Pełną liczbę punktów daje algorytm wykonujący O(log x) operacji – szybkie potęgowanie przez podnoszenie do kwadratu. Nie używaj operatora ** ani funkcji pow.",
     "starterCode": "def potega(a, x, M):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "potega",
     "tests": [
       {
-        "args": [
-          2,
-          5,
-          7
-        ],
+        "args": [2, 5, 7],
         "expected": 4
       },
       {
-        "args": [
-          3,
-          3,
-          11
-        ],
+        "args": [3, 3, 11],
         "expected": 5
       },
       {
-        "args": [
-          10,
-          2,
-          13
-        ],
+        "args": [10, 2, 13],
         "expected": 9
       },
       {
-        "args": [
-          5,
-          25,
-          31
-        ],
+        "args": [5, 25, 31],
         "expected": 5
       },
       {
-        "args": [
-          2,
-          5,
-          59
-        ],
+        "args": [2, 5, 59],
         "expected": 32
       },
       {
-        "args": [
-          7,
-          0,
-          5
-        ],
+        "args": [7, 0, 5],
         "expected": 1
       },
       {
-        "args": [
-          123,
-          1000000,
-          1000
-        ],
+        "args": [123, 1000000, 1000],
         "expected": 1
       }
     ]
@@ -262,10 +172,7 @@
     "title": "Pierwsze moduły",
     "part": 2,
     "points": 2,
-    "topics": [
-      "liczby-pierwsze",
-      "pliki-tekstowe"
-    ],
+    "topics": ["liczby-pierwsze", "pliki-tekstowe"],
     "summary": "Plik liczby.txt zawiera 1000 trójek M, a, b. Podaj, w ilu wierszach liczba M jest liczbą pierwszą.",
     "starterCode": "with open(\"liczby.txt\") as plik:\n    trojki = [tuple(map(int, wiersz.split())) for wiersz in plik]  # (M, a, b)\n\n",
     "kind": "program",
@@ -293,10 +200,7 @@
     "title": "Względnie pierwsze M i a",
     "part": 2,
     "points": 2,
-    "topics": [
-      "teoria-liczb",
-      "pliki-tekstowe"
-    ],
+    "topics": ["teoria-liczb", "pliki-tekstowe"],
     "summary": "Podaj, w ilu wierszach liczby M i a są względnie pierwsze (NWD równe 1).",
     "starterCode": "with open(\"liczby.txt\") as plik:\n    trojki = [tuple(map(int, wiersz.split())) for wiersz in plik]  # (M, a, b)\n\n",
     "kind": "program",
@@ -324,10 +228,7 @@
     "title": "Logarytm dyskretny",
     "part": 2,
     "points": 2,
-    "topics": [
-      "teoria-liczb",
-      "pliki-tekstowe"
-    ],
+    "topics": ["teoria-liczb", "pliki-tekstowe"],
     "summary": "Dla każdej trójki (M, a, b) sprawdź, czy istnieje x z przedziału [0, M − 1], dla którego a^x mod M = b. Podaj, dla ilu trójek takie x istnieje.",
     "starterCode": "with open(\"liczby.txt\") as plik:\n    trojki = [tuple(map(int, wiersz.split())) for wiersz in plik]  # (M, a, b)\n\n",
     "kind": "program",

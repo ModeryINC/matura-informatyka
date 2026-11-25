@@ -6,90 +6,62 @@
     "title": "Liczba automorficzna",
     "part": 1,
     "points": 4,
-    "topics": [
-      "teoria-liczb"
-    ],
+    "topics": ["teoria-liczb"],
     "summary": "Liczba n jest automorficzna, gdy n² mod 10^k = n, gdzie k to liczba cyfr n – czyli kwadrat liczby kończy się nią samą (np. 25² = 625, 76² = 5776).\n\nNapisz funkcję zwracającą True dla liczb automorficznych i False dla pozostałych. W arkuszu wolno używać tylko dodawania, odejmowania, mnożenia, dzielenia całkowitego i reszty.",
     "starterCode": "def czy_automorficzna(n):\n    # Twoje rozwiązanie\n    return 0\n",
     "kind": "function",
     "functionName": "czy_automorficzna",
     "tests": [
       {
-        "args": [
-          5
-        ],
+        "args": [5],
         "expected": true
       },
       {
-        "args": [
-          6
-        ],
+        "args": [6],
         "expected": true
       },
       {
-        "args": [
-          25
-        ],
+        "args": [25],
         "expected": true
       },
       {
-        "args": [
-          36
-        ],
+        "args": [36],
         "expected": false
       },
       {
-        "args": [
-          76
-        ],
+        "args": [76],
         "expected": true
       },
       {
-        "args": [
-          1
-        ],
+        "args": [1],
         "expected": true
       },
       {
-        "args": [
-          2
-        ],
+        "args": [2],
         "expected": false
       },
       {
-        "args": [
-          10
-        ],
+        "args": [10],
         "expected": false
       },
       {
-        "args": [
-          376
-        ],
+        "args": [376],
         "expected": true
       },
       {
-        "args": [
-          625
-        ],
+        "args": [625],
         "expected": true
       },
       {
-        "args": [
-          9376
-        ],
+        "args": [9376],
         "expected": true
       },
       {
-        "args": [
-          100
-        ],
+        "args": [100],
         "expected": false
       },
       {
-        "args": [
-          7
-        ],
+        "args": [7],
         "expected": false
       }
     ]
@@ -101,10 +73,7 @@
     "title": "Słowa kończące się na A",
     "part": 2,
     "points": 2,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik slowa.txt zawiera 1000 wierszy po dwa słowa z wielkich liter. Podaj, ile słów (licząc oba słowa w każdym wierszu) kończy się literą A.",
     "starterCode": "with open(\"slowa.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
     "kind": "program",
@@ -125,10 +94,7 @@
     "title": "Pierwsze słowo zawarte w drugim",
     "part": 2,
     "points": 4,
-    "topics": [
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Podaj, w ilu wierszach pierwsze słowo zawiera się (jako spójny fragment) w drugim, np. ADC zawiera się w ASWADCF, ale nie w ASWADFC.",
     "starterCode": "with open(\"slowa.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
     "kind": "program",
@@ -149,11 +115,7 @@
     "title": "Pary anagramów",
     "part": 2,
     "points": 4,
-    "topics": [
-      "anagramy",
-      "napisy",
-      "pliki-tekstowe"
-    ],
+    "topics": ["anagramy", "napisy", "pliki-tekstowe"],
     "summary": "Podaj, w ilu wierszach pierwsze słowo jest anagramem drugiego (składa się z tych samych liter w tej samej liczbie), a następnie wypisz te pary – po jednej w wierszu, w kolejności z pliku.",
     "starterCode": "with open(\"slowa.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
     "kind": "program",
