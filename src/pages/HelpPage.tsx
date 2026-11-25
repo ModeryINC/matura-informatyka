@@ -40,6 +40,10 @@ export function HelpPage() {
           <kbd>Ctrl</kbd> + <kbd>Enter</kbd> – sprawdź rozwiązanie,
         </li>
         <li>
+          <kbd>Ctrl</kbd> + <kbd>S</kbd> – pobierz rozwiązanie jako plik <code>.py</code> (zamiast
+          zapisywać stronę),
+        </li>
+        <li>
           <kbd>Tab</kbd> w edytorze zatwierdza podpowiedź (gdy lista jest otwarta), a w innym
           wypadku wstawia wcięcie; <kbd>Esc</kbd>, a potem <kbd>Tab</kbd> – wyjście z edytora.
         </li>

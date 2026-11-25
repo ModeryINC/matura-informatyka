@@ -2,6 +2,7 @@
  * Punkt dostępu do danych: katalog sesji (generowany) i zadania (pisane ręcznie).
  */
 import catalogJson from './catalog.generated.json';
+import sheetPagesJson from './sheet-pages.json';
 import type { ExamSession, Task } from '../types';
 import { validateTask } from '../lib/validate';
 
@@ -44,3 +45,20 @@ export const tasksForSession = (sessionId: string): Task[] =>
 
 /** Adres pliku z katalogu `public/` z uwzględnieniem bazowej ścieżki aplikacji. */
 export const assetUrl = (path: string): string => `${import.meta.env.BASE_URL}${encodeURI(path)}`;
+
+/** Miejsce zadania w arkuszu: indeks części (pliku PDF) i numer strony od 1. */
+export interface SheetLocation {
+  part: number;
+  page: number;
+}
+
+const sheetPages: Record<string, number[] | undefined> = sheetPagesJson;
+
+/**
+ * Strona arkusza, na której zaczyna się zadanie (generowane skryptem
+ * `scripts/find_sheet_pages.py`); brak dla arkuszy będących skanami.
+ */
+export function sheetLocation(taskId: string): SheetLocation | undefined {
+  const [part, page] = sheetPages[taskId] ?? [];
+  return part !== undefined && page !== undefined ? { part, page } : undefined;
+}
