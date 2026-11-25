@@ -121,8 +121,10 @@ export async function handleRequest(
     } catch {
       reason = undefined;
     }
-    // 401/403 z Gemini to problem klucza po stronie pośrednika, nie użytkownika.
-    const status = upstream.status === 401 || upstream.status === 403 ? 502 : upstream.status;
+    // Problem z kluczem (401/403 albo 400 API_KEY_INVALID) to błąd pośrednika, nie ucznia.
+    const keyProblem =
+      upstream.status === 401 || upstream.status === 403 || Boolean(reason?.includes('API_KEY'));
+    const status = keyProblem ? 502 : upstream.status;
     return json(
       { error: { message: 'Usługa AI odrzuciła zapytanie.', ...(reason ? { reason } : {}) } },
       status,
