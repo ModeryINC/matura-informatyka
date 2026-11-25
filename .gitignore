@@ -7,3 +7,6 @@ __pycache__/
 # generowany katalog arkuszy (tworzony przez `npm run catalog`)
 src/data/catalog.generated.json
 .claude/
+
+# Lokalne zmienne środowiskowe (np. VITE_AI_API_KEY)
+.env*.local

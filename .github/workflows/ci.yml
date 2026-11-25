@@ -30,15 +30,11 @@ jobs:
       - run: npm run format:check
       - run: npm run typecheck
       - run: npm run test:coverage
+      # Kontrolny build bez klucza AI – strona wdrażana jest budowana w jobie deploy.
       - name: Build (z bazową ścieżką GitHub Pages)
         run: npm run build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
-      - name: Zapisz zbudowaną stronę
-        if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: dist
 
   python:
     name: Harness Pythona i rozwiązania wzorcowe
@@ -64,12 +60,31 @@ jobs:
     needs: [frontend, python]
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       pages: write
       id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      # Klucz Gemini jest dostępny tylko w środowisku github-pages, dlatego build do
+      # wdrożenia odbywa się tutaj. Uwaga: klucz trafia do publicznego bundla JS
+      # (strona nie ma serwera) – ogranicz go w Google Cloud, patrz docs/podpowiedzi-ai.md.
+      - name: Build strony z podpowiedziami AI
+        run: npm run build
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/
+          VITE_AI_API_KEY: ${{ secrets.AI_API_KEY || vars.AI_API_KEY }}
+          VITE_AI_MODEL: ${{ vars.AI_MODEL }}
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
       - uses: actions/configure-pages@v6
       - id: deployment
         uses: actions/deploy-pages@v5

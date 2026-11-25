@@ -20,6 +20,8 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
   zapisywane w adresie, więc wyszukiwanie można udostępnić linkiem.
 - **Konsola** – „Uruchom” pokazuje wyjście `print` na bieżąco; dane dla `input()` wpisuje
   się w pole „Wejście” (po jednej linii na wywołanie).
+- **Podpowiedzi AI** (Google Gemini) – naprowadzają na podstawie Twojego kodu i wyniku
+  sprawdzenia, bez podawania gotowego rozwiązania ([konfiguracja](docs/podpowiedzi-ai.md)).
 - **Postęp** – rozwiązania i statusy zapisują się lokalnie w przeglądarce.
 - Motyw jasny/ciemny, obsługa klawiatury (Ctrl+Enter – sprawdź), układ na telefon.
 
@@ -81,7 +83,8 @@ tests/                   konfiguracja testów i testy harnessu Pythona
 docs/                    dokumentacja techniczna
 ```
 
-Więcej: [architektura](docs/architektura.md) · [jak dodać zadanie](docs/dodawanie-zadan.md).
+Więcej: [architektura](docs/architektura.md) · [jak dodać zadanie](docs/dodawanie-zadan.md) ·
+[podpowiedzi AI](docs/podpowiedzi-ai.md).
 
 ## CI/CD
 
@@ -90,8 +93,9 @@ Workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
 - przy każdym pushu i pull requeście: lint, formatowanie, typy, testy z pokryciem, build,
   testy harnessu Pythona oraz **weryfikacja wszystkich kluczy odpowiedzi** rozwiązaniami
   wzorcowymi,
-- po zmianach na `main`: wdrożenie na GitHub Pages (strona działa pod `/<nazwa-repo>/`,
-  ścieżkę ustawia zmienna `BASE_PATH`).
+- po zmianach na `main`: build z kluczem Gemini (`AI_API_KEY` ze środowiska `github-pages`)
+  i wdrożenie na GitHub Pages (strona działa pod `/<nazwa-repo>/`, ścieżkę ustawia zmienna
+  `BASE_PATH`).
 
 Dependabot co tydzień proponuje aktualizacje zależności i akcji.
 
