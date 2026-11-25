@@ -1,0 +1,499 @@
+[
+  {
+    "id": "2024-probna-Politechnika-Lodzka-marzec-1.3",
+    "sessionId": "2024/probna-Politechnika-Lodzka-marzec",
+    "number": "1.3",
+    "title": "Poprawność loginu",
+    "part": 1,
+    "points": 2,
+    "topics": [
+      "napisy"
+    ],
+    "summary": "Login jest poprawny, gdy: składa się tylko z liter a–z, A–Z, cyfr i kropek; ma od 4 do 10 znaków; zawiera co najmniej jedną wielką literę, jedną małą i jedną cyfrę; nie zaczyna się od cyfry; nie ma dwóch identycznych znaków obok siebie.\n\nNapisz funkcję czy_poprawny(login) zwracającą True dla poprawnych loginów i False dla pozostałych.",
+    "starterCode": "def czy_poprawny(login):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "czy_poprawny",
+    "tests": [
+      {
+        "args": [
+          "An.s4nRo"
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          "Ab1"
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          "Abc1"
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          "abc1"
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          "ABC1"
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          "1Abc"
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          "Aab1"
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          "Aa.1"
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          "Aa#1"
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          "Abcdefghi1"
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          "Abcdefghij1"
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          "Zz9.Zz9"
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          "Abb1"
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          "Ab..1"
+        ],
+        "expected": false
+      }
+    ]
+  },
+  {
+    "id": "2024-probna-Politechnika-Lodzka-marzec-1.4",
+    "sessionId": "2024/probna-Politechnika-Lodzka-marzec",
+    "number": "1.4",
+    "title": "Loginy z kropką",
+    "part": 2,
+    "points": 1,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik loginy.txt zawiera loginy istniejących kont (po jednym w wierszu). Podaj, ile z nich zawiera co najmniej jedną kropkę.\n\nUwaga: klucz odpowiedzi do tego arkusza jest dostępny tylko jako skan – oczekiwany wynik pochodzi z rozwiązania wzorcowego.",
+    "starterCode": "with open(\"loginy.txt\") as plik:\n    loginy = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane egzaminacyjne (loginy.txt)",
+        "files": {
+          "loginy.txt": "arkusze/2024/probna-Politechnika-Lodzka-marzec/pliki/informatyka-2024-marzec-politechnika-lodzka-probna-rozszerzona-zalaczniki/loginy.txt"
+        },
+        "expected": "48"
+      }
+    ]
+  },
+  {
+    "id": "2024-probna-Politechnika-Lodzka-marzec-1.5",
+    "sessionId": "2024/probna-Politechnika-Lodzka-marzec",
+    "number": "1.5",
+    "title": "Liczba poprawnych loginów",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Login jest poprawny, gdy: składa się tylko z liter a–z, A–Z, cyfr i kropek; ma od 4 do 10 znaków; zawiera co najmniej jedną wielką literę, jedną małą i jedną cyfrę; nie zaczyna się od cyfry; nie ma dwóch identycznych znaków obok siebie. Podaj, ile loginów z pliku loginy.txt jest poprawnych.\n\nUwaga: klucz odpowiedzi do tego arkusza jest dostępny tylko jako skan – oczekiwany wynik pochodzi z rozwiązania wzorcowego.",
+    "starterCode": "with open(\"loginy.txt\") as plik:\n    loginy = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane egzaminacyjne (loginy.txt)",
+        "files": {
+          "loginy.txt": "arkusze/2024/probna-Politechnika-Lodzka-marzec/pliki/informatyka-2024-marzec-politechnika-lodzka-probna-rozszerzona-zalaczniki/loginy.txt"
+        },
+        "expected": "73"
+      }
+    ]
+  },
+  {
+    "id": "2024-probna-Politechnika-Lodzka-marzec-2.5",
+    "sessionId": "2024/probna-Politechnika-Lodzka-marzec",
+    "number": "2.5",
+    "title": "Punkt w wielokącie",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "geometria",
+      "pliki-tekstowe"
+    ],
+    "summary": "Każdy wiersz pliku punkty.txt opisuje wielokąt i punkt: n, współrzędne n wierzchołków (zgodnie z ruchem wskazówek zegara), a na końcu współrzędne punktu A. Podaj, w ilu wierszach punkt A należy do wielokąta – punkty leżące na brzegu też się liczą (wskazówka: metoda promienia).\n\nUwaga: klucz odpowiedzi do tego arkusza jest dostępny tylko jako skan – oczekiwany wynik pochodzi z rozwiązania wzorcowego.",
+    "starterCode": "with open(\"punkty.txt\") as plik:\n    wiersze = [list(map(float, wiersz.split())) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane egzaminacyjne (punkty.txt)",
+        "files": {
+          "punkty.txt": "arkusze/2024/probna-Politechnika-Lodzka-marzec/pliki/informatyka-2024-marzec-politechnika-lodzka-probna-rozszerzona-zalaczniki/punkty.txt"
+        },
+        "expected": "14"
+      }
+    ]
+  },
+  {
+    "id": "2024-probna-Politechnika-Lodzka-marzec-4.3",
+    "sessionId": "2024/probna-Politechnika-Lodzka-marzec",
+    "number": "4.3",
+    "title": "Ciąg Collatza",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "rekurencja",
+      "symulacja"
+    ],
+    "summary": "Funkcja f(x) = 1 dla x = 1, f(x/2) dla parzystego x i f(3x + 1) dla nieparzystego x wyznacza ciąg kolejnych wartości (np. dla 8: 8, 4, 2, 1). Napisz iteracyjną funkcję ciag(n) zwracającą listę wszystkich wyrazów ciągu, od n do 1 włącznie. (W arkuszu trzeba podać liczbę wyrazów dla n = 1000.)",
+    "starterCode": "def ciag(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "ciag",
+    "tests": [
+      {
+        "args": [
+          1
+        ],
+        "expected": [
+          1
+        ]
+      },
+      {
+        "args": [
+          3
+        ],
+        "expected": [
+          3,
+          10,
+          5,
+          16,
+          8,
+          4,
+          2,
+          1
+        ]
+      },
+      {
+        "args": [
+          8
+        ],
+        "expected": [
+          8,
+          4,
+          2,
+          1
+        ]
+      },
+      {
+        "args": [
+          21
+        ],
+        "expected": [
+          21,
+          64,
+          32,
+          16,
+          8,
+          4,
+          2,
+          1
+        ]
+      },
+      {
+        "args": [
+          48
+        ],
+        "expected": [
+          48,
+          24,
+          12,
+          6,
+          3,
+          10,
+          5,
+          16,
+          8,
+          4,
+          2,
+          1
+        ]
+      },
+      {
+        "args": [
+          27
+        ],
+        "expected": [
+          27,
+          82,
+          41,
+          124,
+          62,
+          31,
+          94,
+          47,
+          142,
+          71,
+          214,
+          107,
+          322,
+          161,
+          484,
+          242,
+          121,
+          364,
+          182,
+          91,
+          274,
+          137,
+          412,
+          206,
+          103,
+          310,
+          155,
+          466,
+          233,
+          700,
+          350,
+          175,
+          526,
+          263,
+          790,
+          395,
+          1186,
+          593,
+          1780,
+          890,
+          445,
+          1336,
+          668,
+          334,
+          167,
+          502,
+          251,
+          754,
+          377,
+          1132,
+          566,
+          283,
+          850,
+          425,
+          1276,
+          638,
+          319,
+          958,
+          479,
+          1438,
+          719,
+          2158,
+          1079,
+          3238,
+          1619,
+          4858,
+          2429,
+          7288,
+          3644,
+          1822,
+          911,
+          2734,
+          1367,
+          4102,
+          2051,
+          6154,
+          3077,
+          9232,
+          4616,
+          2308,
+          1154,
+          577,
+          1732,
+          866,
+          433,
+          1300,
+          650,
+          325,
+          976,
+          488,
+          244,
+          122,
+          61,
+          184,
+          92,
+          46,
+          23,
+          70,
+          35,
+          106,
+          53,
+          160,
+          80,
+          40,
+          20,
+          10,
+          5,
+          16,
+          8,
+          4,
+          2,
+          1
+        ]
+      },
+      {
+        "args": [
+          1000
+        ],
+        "expected": [
+          1000,
+          500,
+          250,
+          125,
+          376,
+          188,
+          94,
+          47,
+          142,
+          71,
+          214,
+          107,
+          322,
+          161,
+          484,
+          242,
+          121,
+          364,
+          182,
+          91,
+          274,
+          137,
+          412,
+          206,
+          103,
+          310,
+          155,
+          466,
+          233,
+          700,
+          350,
+          175,
+          526,
+          263,
+          790,
+          395,
+          1186,
+          593,
+          1780,
+          890,
+          445,
+          1336,
+          668,
+          334,
+          167,
+          502,
+          251,
+          754,
+          377,
+          1132,
+          566,
+          283,
+          850,
+          425,
+          1276,
+          638,
+          319,
+          958,
+          479,
+          1438,
+          719,
+          2158,
+          1079,
+          3238,
+          1619,
+          4858,
+          2429,
+          7288,
+          3644,
+          1822,
+          911,
+          2734,
+          1367,
+          4102,
+          2051,
+          6154,
+          3077,
+          9232,
+          4616,
+          2308,
+          1154,
+          577,
+          1732,
+          866,
+          433,
+          1300,
+          650,
+          325,
+          976,
+          488,
+          244,
+          122,
+          61,
+          184,
+          92,
+          46,
+          23,
+          70,
+          35,
+          106,
+          53,
+          160,
+          80,
+          40,
+          20,
+          10,
+          5,
+          16,
+          8,
+          4,
+          2,
+          1
+        ]
+      }
+    ]
+  }
+]
