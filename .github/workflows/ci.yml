@@ -54,18 +54,13 @@ jobs:
       - name: Weryfikacja kluczy odpowiedzi rozwiązaniami wzorcowymi
         run: npm run verify:solutions
 
-  deploy:
-    name: Wdrożenie na GitHub Pages
+  pages-build:
+    name: Build strony do wdrożenia
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: [frontend, python]
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # Środowisko daje dostęp do AI_API_KEY (sekret lub zmienna) ustawionego w github-pages.
+    environment: github-pages
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -73,10 +68,9 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
-      # Klucz Gemini jest dostępny tylko w środowisku github-pages, dlatego build do
-      # wdrożenia odbywa się tutaj. Uwaga: klucz trafia do publicznego bundla JS
-      # (strona nie ma serwera) – ogranicz go w Google Cloud, patrz docs/podpowiedzi-ai.md.
-      - name: Build strony z podpowiedziami AI
+      # Uwaga: klucz trafia do publicznego bundla JS (strona nie ma serwera) –
+      # ogranicz go w Google Cloud, patrz docs/podpowiedzi-ai.md.
+      - name: Build z podpowiedziami AI
         run: npm run build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
@@ -85,6 +79,18 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
+
+  deploy:
+    name: Wdrożenie na GitHub Pages
+    needs: pages-build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - uses: actions/configure-pages@v6
       - id: deployment
         uses: actions/deploy-pages@v5
