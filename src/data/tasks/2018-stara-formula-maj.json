@@ -1,0 +1,170 @@
+[
+  {
+    "id": "2018-stara-formula-maj-2.2",
+    "sessionId": "2018/stara-formula-maj",
+    "number": "2.2",
+    "title": "Liczba automorficzna",
+    "part": 1,
+    "points": 4,
+    "topics": [
+      "teoria-liczb"
+    ],
+    "summary": "Liczba n jest automorficzna, gdy n² mod 10^k = n, gdzie k to liczba cyfr n – czyli kwadrat liczby kończy się nią samą (np. 25² = 625, 76² = 5776).\n\nNapisz funkcję zwracającą True dla liczb automorficznych i False dla pozostałych. W arkuszu wolno używać tylko dodawania, odejmowania, mnożenia, dzielenia całkowitego i reszty.",
+    "starterCode": "def czy_automorficzna(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "czy_automorficzna",
+    "tests": [
+      {
+        "args": [
+          5
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          6
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          25
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          36
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          76
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          1
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          2
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          10
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          376
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          625
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          9376
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          100
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          7
+        ],
+        "expected": false
+      }
+    ]
+  },
+  {
+    "id": "2018-stara-formula-maj-6.1",
+    "sessionId": "2018/stara-formula-maj",
+    "number": "6.1",
+    "title": "Słowa kończące się na A",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik slowa.txt zawiera 1000 wierszy po dwa słowa z wielkich liter. Podaj, ile słów (licząc oba słowa w każdym wierszu) kończy się literą A.",
+    "starterCode": "with open(\"slowa.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane egzaminacyjne (slowa.txt)",
+        "files": {
+          "slowa.txt": "arkusze/2018/stara-formula-maj/pliki/Dane_PR2/DANE_PR/slowa.txt"
+        },
+        "expected": "71"
+      }
+    ]
+  },
+  {
+    "id": "2018-stara-formula-maj-6.2",
+    "sessionId": "2018/stara-formula-maj",
+    "number": "6.2",
+    "title": "Pierwsze słowo zawarte w drugim",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Podaj, w ilu wierszach pierwsze słowo zawiera się (jako spójny fragment) w drugim, np. ADC zawiera się w ASWADCF, ale nie w ASWADFC.",
+    "starterCode": "with open(\"slowa.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane egzaminacyjne (slowa.txt)",
+        "files": {
+          "slowa.txt": "arkusze/2018/stara-formula-maj/pliki/Dane_PR2/DANE_PR/slowa.txt"
+        },
+        "expected": "234"
+      }
+    ]
+  },
+  {
+    "id": "2018-stara-formula-maj-6.3",
+    "sessionId": "2018/stara-formula-maj",
+    "number": "6.3",
+    "title": "Pary anagramów",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "anagramy",
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Podaj, w ilu wierszach pierwsze słowo jest anagramem drugiego (składa się z tych samych liter w tej samej liczbie), a następnie wypisz te pary – po jednej w wierszu, w kolejności z pliku.",
+    "starterCode": "with open(\"slowa.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane egzaminacyjne (slowa.txt)",
+        "files": {
+          "slowa.txt": "arkusze/2018/stara-formula-maj/pliki/Dane_PR2/DANE_PR/slowa.txt"
+        },
+        "expected": "38\nAYE YEA\nBRD RDB\nBWRHQ BWRHQ\nDANHC DANHC\nDCCD CDDC\nDFI DIF\nDJIFZ DJIFZ\nEGGN GNEG\nELUYQ ELUYQ\nFAFEI FAFEI\nGHBND GHBND\nGOIJY GOIJY\nHKDBM HKDBM\nHSHXY HSHXY\nIBBS BSIB\nIZKVK IZKVK\nJECJZ JECJZ\nKFRFN KFRFN\nLFGDR LFGDR\nLLLUR LLLUR\nNURUA NURUA\nOWWU WUOW\nPKKF KFPK\nQMPGL QMPGL\nRBBI BIRB\nSKKZ KZSK\nTFYOI TFYOI\nUCN CNU\nUYMWB UYMWB\nVDSVQ VDSVQ\nVGGW GWVG\nVIEGW VIEGW\nWJBOF WJBOF\nXOXMT XOXMT\nYJUHB YJUHB\nZIHQU ZIHQU\nZQHCK ZQHCK\nZRE REZ"
+      }
+    ]
+  }
+]
