@@ -235,6 +235,15 @@ pre {
   max-inline-size: 65ch;
 }
 
+/* Ikony SVG (react-icons) – wielkości tekstu, wyrównane do linii pisma. */
+.icon {
+  display: inline-block;
+  inline-size: 1.1em;
+  block-size: 1.1em;
+  flex-shrink: 0;
+  vertical-align: -0.18em;
+}
+
 /* 3. Układ strony ---------------------------------------------------------- */
 .skip-link {
   position: absolute;
@@ -562,9 +571,8 @@ select:focus-visible {
   overflow-wrap: anywhere;
 }
 
-.file-list a::before,
-.file-list__open::before {
-  content: '📄 ';
+.file-list .icon {
+  margin-inline-end: 0.3em;
 }
 
 .file-list__open {
@@ -2276,7 +2284,13 @@ progress::-moz-progress-bar {
 }
 
 .feature-card__icon {
-  font-size: 1.8rem;
+  inline-size: 2rem;
+  block-size: 2rem;
+  color: var(--accent);
+}
+
+.feature-card--soon .feature-card__icon {
+  color: var(--text-muted);
 }
 
 .feature-card h3 {
@@ -2423,8 +2437,9 @@ progress::-moz-progress-bar {
 }
 
 .coming-soon__icon {
-  margin: 0;
-  font-size: 3rem;
+  inline-size: 3rem;
+  block-size: 3rem;
+  color: var(--text-muted);
 }
 
 .coming-soon h2 {

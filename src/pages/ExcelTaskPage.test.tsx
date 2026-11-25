@@ -61,7 +61,7 @@ describe('ExcelTasksPage', () => {
       'href',
       '/excel/2023-maj-6',
     );
-    expect(screen.getByText('✓ Wszystko zaliczone')).toBeInTheDocument();
+    expect(screen.getByText('Wszystko zaliczone')).toBeInTheDocument();
     expect(screen.getAllByText(/Zaliczone: 0\//).length).toBe(3);
   });
 });

@@ -4,6 +4,7 @@ import { spreadsheetTasks, totalPoints } from '../data/spreadsheets';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { plural } from '../lib/plural';
 import { passedParts } from '../lib/spreadsheet/storage';
+import { LuCircleCheck } from 'react-icons/lu';
 
 /** Lista zadań rozwiązywanych w arkuszu kalkulacyjnym. */
 export function ExcelTasksPage() {
@@ -38,9 +39,13 @@ export function ExcelTasksPage() {
                 {totalPoints(task)} pkt
               </p>
               <p className={done === task.parts.length ? 'xl-card__done' : 'session-card__tasks'}>
-                {done === task.parts.length
-                  ? '✓ Wszystko zaliczone'
-                  : `Zaliczone: ${done}/${task.parts.length}`}
+                {done === task.parts.length ? (
+                  <>
+                    <LuCircleCheck aria-hidden className="icon" /> Wszystko zaliczone
+                  </>
+                ) : (
+                  `Zaliczone: ${done}/${task.parts.length}`
+                )}
               </p>
             </li>
           );

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { assetUrl } from '../data';
 import { fileName } from '../lib/sessions';
+import { LuExternalLink } from 'react-icons/lu';
 
 interface PdfViewerProps {
   files: string[];
@@ -44,7 +45,7 @@ export function PdfViewer({ files, title, initialPart = 0, initialPage }: PdfVie
         )}
         {page && <span className="muted pdf-viewer__page">strona {page}</span>}
         <a href={src} target="_blank" rel="noopener" className="button button--ghost">
-          Otwórz {fileName(current)} ↗
+          Otwórz {fileName(current)} <LuExternalLink aria-hidden className="icon" />
         </a>
       </div>
       <iframe

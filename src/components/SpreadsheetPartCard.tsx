@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { fieldMatches, fitSelection, tableMatches } from '../lib/spreadsheet/answers';
 import type { PartAnswer } from '../lib/spreadsheet/storage';
 import type { SpreadsheetPart } from '../types';
+import { LuCheck, LuCircleCheck, LuClipboardPaste, LuPartyPopper } from 'react-icons/lu';
 
 interface SpreadsheetPartCardProps {
   part: SpreadsheetPart;
@@ -102,7 +103,11 @@ export function SpreadsheetPartCard({
       <header className="xl-part__header">
         <h3 id={headingId}>Zadanie {part.number}</h3>
         <span className="muted">{part.points} pkt</span>
-        {answer.passed && <span className="xl-part__badge">✓ Zaliczone</span>}
+        {answer.passed && (
+          <span className="xl-part__badge">
+            <LuCircleCheck aria-hidden className="icon" /> Zaliczone
+          </span>
+        )}
       </header>
       <p>{part.prompt}</p>
       {part.chart && (
@@ -168,15 +173,19 @@ export function SpreadsheetPartCard({
 
       <div className="xl-part__actions">
         <button type="button" className="button button--small" onClick={insertSelection}>
-          ⇲ Wstaw z zaznaczenia
+          <LuClipboardPaste aria-hidden className="icon" /> Wstaw z zaznaczenia
         </button>
         <button type="button" className="button button--small button--primary" onClick={check}>
-          ✓ Sprawdź
+          <LuCheck aria-hidden className="icon" /> Sprawdź
         </button>
       </div>
       <div aria-live="polite">
         {message && <p className="xl-part__message">{message}</p>}
-        {feedback?.passed && <p className="xl-part__success">Wszystko się zgadza! 🎉</p>}
+        {feedback?.passed && (
+          <p className="xl-part__success">
+            <LuPartyPopper aria-hidden className="icon" /> Wszystko się zgadza!
+          </p>
+        )}
       </div>
     </section>
   );

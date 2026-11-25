@@ -66,7 +66,7 @@ describe('strona startowa', () => {
 
     // Po napisaniu całego kodu: wynik i oba testy.
     act(() => vi.advanceTimersByTime(45 * 200));
-    expect(within(window).getByText('✓ Klucz CKE: 19')).toHaveClass('is-visible');
+    expect(within(window).getByText('Klucz CKE: 19')).toHaveClass('is-visible');
 
     // Następna scena: Excel.
     act(() => vi.advanceTimersByTime(45 * 60));
@@ -84,7 +84,7 @@ describe('strona startowa', () => {
     renderAt('/', routes);
     const window = screen.getByRole('figure');
     expect(window.querySelector('code')).toHaveTextContent('print(dni)');
-    expect(within(window).getByText('✓ Klucz CKE: 19')).toHaveClass('is-visible');
+    expect(within(window).getByText('Klucz CKE: 19')).toHaveClass('is-visible');
     expect(screen.queryByRole('button', { name: /animację/ })).not.toBeInTheDocument();
   });
 });

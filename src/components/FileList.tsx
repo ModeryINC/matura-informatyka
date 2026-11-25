@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { assetUrl } from '../data';
 import { fileName } from '../lib/sessions';
+import { LuFileSpreadsheet, LuFileText } from 'react-icons/lu';
 import { FilePreviewDialog } from './FilePreviewDialog';
 
 interface FileListProps {
@@ -20,10 +21,12 @@ export function FileList({ files, preview = false }: FileListProps) {
           <li key={path}>
             {preview ? (
               <button type="button" className="file-list__open" onClick={() => setOpened(path)}>
+                <LuFileSpreadsheet aria-hidden className="icon" />
                 {fileName(path)}
               </button>
             ) : (
               <a href={assetUrl(path)} target="_blank" rel="noopener">
+                <LuFileText aria-hidden className="icon" />
                 {fileName(path)}
               </a>
             )}

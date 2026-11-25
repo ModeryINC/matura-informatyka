@@ -1,12 +1,14 @@
 import { Link, NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router';
 import { useTheme } from '../hooks/useTheme';
+import { LuMoon, LuSun, LuSunMoon } from 'react-icons/lu';
 
 const THEME_LABELS = { system: 'Motyw: systemowy', light: 'Motyw: jasny', dark: 'Motyw: ciemny' };
-const THEME_ICONS = { system: '◐', light: '☀', dark: '☾' };
+const THEME_ICONS = { system: LuSunMoon, light: LuSun, dark: LuMoon };
 
 /** Wspólny układ strony: nagłówek z nawigacją, treść i stopka. */
 export function Layout() {
   const [theme, cycleTheme] = useTheme();
+  const ThemeIcon = THEME_ICONS[theme];
   // „Zadania” są aktywne także na stronie pojedynczego zadania (Python i Excel).
   const tasksActive = /^\/(zadania|zadanie|excel)(\/|$)/.test(useLocation().pathname);
 
@@ -45,7 +47,7 @@ export function Layout() {
             aria-label={THEME_LABELS[theme]}
             title={THEME_LABELS[theme]}
           >
-            <span aria-hidden="true">{THEME_ICONS[theme]}</span>
+            <ThemeIcon aria-hidden className="icon" />
           </button>
         </div>
       </header>

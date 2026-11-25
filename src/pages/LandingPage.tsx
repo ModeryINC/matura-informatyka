@@ -4,6 +4,8 @@ import { sessions, tasks } from '../data';
 import { spreadsheetTasks } from '../data/spreadsheets';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useSolutionStatuses } from '../hooks/useSolutions';
+import { LuDatabase, LuFileText, LuSheet } from 'react-icons/lu';
+import { SiPython } from 'react-icons/si';
 
 const years = sessions.map((s) => s.year);
 const firstYear = Math.min(...years);
@@ -12,26 +14,26 @@ const lastYear = Math.max(...years);
 const FEATURES = [
   {
     to: '/zadania/python',
-    icon: '🐍',
+    icon: SiPython,
     title: 'Python',
     text: `${tasks.length} zadań algorytmicznych. Kod uruchamia się w przeglądarce i jest sprawdzany na danych z matury.`,
   },
   {
     to: '/zadania/excel',
-    icon: '📊',
+    icon: LuSheet,
     title: 'Excel',
     text: 'Zadania z arkusza kalkulacyjnego z wczytanymi danymi. Formuły po polsku, odpowiedzi sprawdzane z kluczem.',
   },
   {
     to: '/zadania/sql',
-    icon: '🗄️',
+    icon: LuDatabase,
     title: 'SQL',
     text: 'Zadania z baz danych – w przygotowaniu.',
     soon: true,
   },
   {
     to: '/arkusze',
-    icon: '📄',
+    icon: LuFileText,
     title: 'Arkusze',
     text: `${sessions.length} arkuszy z lat ${firstYear}–${lastYear} z kluczami odpowiedzi i plikami z danymi.`,
   },
@@ -105,9 +107,7 @@ export function LandingPage() {
               key={feature.to}
               className={`feature-card${feature.soon ? ' feature-card--soon' : ''}`}
             >
-              <span className="feature-card__icon" aria-hidden="true">
-                {feature.icon}
-              </span>
+              <feature.icon aria-hidden className="feature-card__icon" />
               <h3>
                 <Link to={feature.to} className="stretched-link">
                   {feature.title}

@@ -18,6 +18,14 @@ import { loadSolution, removeSolution, saveSolution, solutionStatus } from '../l
 import { getRunner, type ExecutionOutput, type PythonRunner } from '../python/runner';
 import type { SubmissionResult, Task } from '../types';
 import { NotFoundPage } from './NotFoundPage';
+import {
+  LuArrowLeft,
+  LuArrowRight,
+  LuCheck,
+  LuDownload,
+  LuPlay,
+  LuTriangleAlert,
+} from 'react-icons/lu';
 
 const STATUS_TEXT = {
   off: 'Python zostanie załadowany przy pierwszym uruchomieniu',
@@ -170,7 +178,9 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
 
           {task.restrictions && (
             <aside className="restriction" aria-label="Ograniczenia z arkusza">
-              <strong>⚠ Bez funkcji wbudowanych</strong>
+              <strong>
+                <LuTriangleAlert aria-hidden className="icon" /> Bez funkcji wbudowanych
+              </strong>
               <p>{task.restrictions.note}</p>
             </aside>
           )}
@@ -229,13 +239,15 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
           <nav className="pager" aria-label="Inne zadania z arkusza">
             {previous ? (
               <Link to={`/zadanie/${encodeURIComponent(previous.id)}`}>
-                ← Zadanie {previous.number}
+                <LuArrowLeft aria-hidden className="icon" /> Zadanie {previous.number}
               </Link>
             ) : (
               <span />
             )}
             {next && (
-              <Link to={`/zadanie/${encodeURIComponent(next.id)}`}>Zadanie {next.number} →</Link>
+              <Link to={`/zadanie/${encodeURIComponent(next.id)}`}>
+                Zadanie {next.number} <LuArrowRight aria-hidden className="icon" />
+              </Link>
             )}
           </nav>
         </section>
@@ -243,7 +255,7 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
         <section className="workspace__editor" aria-label="Rozwiązanie">
           <div className="editor-toolbar">
             <button type="button" className="button" onClick={run} disabled={busy}>
-              ▶ Uruchom
+              <LuPlay aria-hidden className="icon" /> Uruchom
             </button>
             <button
               type="button"
@@ -251,7 +263,7 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
               onClick={submit}
               disabled={busy}
             >
-              ✓ Sprawdź
+              <LuCheck aria-hidden className="icon" /> Sprawdź
             </button>
             <button type="button" className="button button--ghost" onClick={reset} disabled={busy}>
               Resetuj
@@ -262,7 +274,7 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
               onClick={saveFile}
               title="Pobierz rozwiązanie jako plik .py (Ctrl+S)"
             >
-              ⬇ .py
+              <LuDownload aria-hidden className="icon" /> .py
             </button>
             <span className="editor-toolbar__hint muted">
               Ctrl+Enter – sprawdź · Ctrl+S – pobierz
@@ -282,7 +294,8 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
               </p>
               {forbiddenUsed.length > 0 && (
                 <p className="restriction-warning" role="status">
-                  ⚠ W tym zadaniu na maturze nie wolno używać:{' '}
+                  <LuTriangleAlert aria-hidden className="icon" /> W tym zadaniu na maturze nie
+                  wolno używać:{' '}
                   {forbiddenUsed.map((name, i) => (
                     <span key={name}>
                       {i > 0 && ', '}

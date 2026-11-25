@@ -1,14 +1,13 @@
 import { Link } from 'react-router';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { LuDatabase } from 'react-icons/lu';
 
 /** Zapowiedź zadań z baz danych (SQL). */
 export function SqlTasksPage() {
   useDocumentTitle('Zadania z SQL');
   return (
     <section className="coming-soon" aria-labelledby="sql-tytul">
-      <p className="coming-soon__icon" aria-hidden="true">
-        🗄️
-      </p>
+      <LuDatabase aria-hidden className="coming-soon__icon" />
       <h2 id="sql-tytul">Zadania z SQL – już wkrótce</h2>
       <p className="lead">
         Pracujemy nad zadaniami z baz danych z arkuszy maturalnych: zapytania SQL uruchamiane w

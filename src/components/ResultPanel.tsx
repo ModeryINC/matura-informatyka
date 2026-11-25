@@ -1,4 +1,5 @@
 import type { SubmissionResult } from '../types';
+import { LuCheck, LuCircleCheck, LuCircleX, LuX } from 'react-icons/lu';
 
 /** Wynik sprawdzenia („Sprawdź”) – lista testów z porównaniem. */
 export function ResultPanel({ result }: { result: SubmissionResult }) {
@@ -9,7 +10,12 @@ export function ResultPanel({ result }: { result: SubmissionResult }) {
       aria-label="Wynik sprawdzenia"
     >
       <h3 className="result__title">
-        {result.passed ? '✓ Zaliczone!' : '✗ Jeszcze nie'}{' '}
+        {result.passed ? (
+          <LuCircleCheck aria-hidden className="icon" />
+        ) : (
+          <LuCircleX aria-hidden className="icon" />
+        )}
+        {result.passed ? 'Zaliczone!' : 'Jeszcze nie'}{' '}
         <span className="muted">
           ({passedCount}/{result.results.length} testów, {result.durationMs} ms)
         </span>
@@ -19,7 +25,12 @@ export function ResultPanel({ result }: { result: SubmissionResult }) {
           <li key={i} className={`check ${check.passed ? 'check--passed' : 'check--failed'}`}>
             <details open={!check.passed}>
               <summary>
-                <span aria-hidden="true">{check.passed ? '✓' : '✗'}</span> {check.label}
+                {check.passed ? (
+                  <LuCheck aria-hidden className="icon" />
+                ) : (
+                  <LuX aria-hidden className="icon" />
+                )}{' '}
+                {check.label}
                 <span className="visually-hidden">
                   {check.passed ? ' – poprawnie' : ' – błędnie'}
                 </span>

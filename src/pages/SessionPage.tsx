@@ -7,6 +7,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useSolutionStatuses } from '../hooks/useSolutions';
 import { passedParts } from '../lib/spreadsheet/storage';
 import { NotFoundPage } from './NotFoundPage';
+import { LuCircleCheck } from 'react-icons/lu';
 
 /** Arkusz: podgląd PDF, przyciski do zadań z tego arkusza, klucz i pliki z danymi. */
 export function SessionPage() {
@@ -52,7 +53,9 @@ export function SessionPage() {
                     title={task.title}
                   >
                     <span className="task-jump__number">
-                      {status === 'zaliczone' && <span aria-label="zaliczone">✓ </span>}
+                      {status === 'zaliczone' && (
+                        <LuCircleCheck className="icon" aria-label="zaliczone" />
+                      )}
                       {task.number}
                     </span>
                     <span className="task-jump__name">{task.title}</span>
@@ -70,7 +73,7 @@ export function SessionPage() {
                     title={task.title}
                   >
                     <span className="task-jump__number">
-                      {done && <span aria-label="zaliczone">✓ </span>}
+                      {done && <LuCircleCheck className="icon" aria-label="zaliczone" />}
                       {task.number} · Excel
                     </span>
                     <span className="task-jump__name">{task.title}</span>

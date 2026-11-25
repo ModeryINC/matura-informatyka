@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { BasicsExample } from '../data/pythonBasics';
 import type { ExecutionOutput, PythonRunner } from '../python/runner';
 import { CodeEditor } from './CodeEditor';
+import { LuPlay } from 'react-icons/lu';
 
 interface RunnableExampleProps {
   example: BasicsExample;
@@ -47,7 +48,8 @@ export function RunnableExample({ example, runner, label }: RunnableExampleProps
       )}
       <div className="example__actions">
         <button type="button" className="button button--small" onClick={run} disabled={running}>
-          {running ? 'Uruchamiam…' : '▶ Uruchom'}
+          {!running && <LuPlay aria-hidden className="icon" />}
+          {running ? 'Uruchamiam…' : 'Uruchom'}
         </button>
         {code !== example.code && (
           <button

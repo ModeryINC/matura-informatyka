@@ -3,6 +3,7 @@ import type { SolutionStatus } from '../lib/search';
 import type { ExamSession, Task } from '../types';
 import { StatusBadge } from './StatusBadge';
 import { TopicList } from './TopicBadge';
+import { LuTriangleAlert } from 'react-icons/lu';
 
 interface TaskCardProps {
   task: Task;
@@ -29,7 +30,7 @@ export function TaskCard({ task, session, status }: TaskCardProps) {
       <TopicList topics={task.topics} />
       {task.restrictions && (
         <p className="restriction-badge" title={task.restrictions.note}>
-          ⚠ Bez funkcji wbudowanych
+          <LuTriangleAlert aria-hidden className="icon" /> Bez funkcji wbudowanych
         </p>
       )}
     </article>

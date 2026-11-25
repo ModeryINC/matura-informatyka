@@ -10,6 +10,7 @@ import {
 import type { ExecutionOutput } from '../python/runner';
 import type { SubmissionResult, Task } from '../types';
 import { HintText } from './HintText';
+import { LuLightbulb } from 'react-icons/lu';
 
 interface HintPanelProps {
   config: AiConfig;
@@ -84,7 +85,7 @@ export function HintPanel({
 
   let status: string | null = null;
   if (solved) {
-    status = 'Zadanie zaliczone – podpowiedzi AI nie są już potrzebne. 🎉';
+    status = 'Zadanie zaliczone – podpowiedzi AI nie są już potrzebne.';
   } else if (!quota.allowed) {
     status =
       quota.reason === 'daily'
@@ -102,7 +103,8 @@ export function HintPanel({
           onClick={ask}
           disabled={loading || solved || !quota.allowed}
         >
-          {loading ? 'Myślę…' : hints.length ? '💡 Kolejna podpowiedź' : '💡 Poproś o podpowiedź'}
+          {!loading && <LuLightbulb aria-hidden className="icon" />}
+          {loading ? 'Myślę…' : hints.length ? 'Kolejna podpowiedź' : 'Poproś o podpowiedź'}
         </button>
       </header>
 

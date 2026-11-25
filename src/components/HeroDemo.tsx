@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react';
+import { LuCheck, LuPause, LuPlay } from 'react-icons/lu';
 
 /**
  * Animacja w sekcji hero: na zmianę rozwiązanie zadania w Pythonie i w Excelu,
@@ -210,10 +211,10 @@ export function HeroDemo() {
             </div>
             <div className="hero-checks">
               <span className={`hero-check${demo.check1 ? ' is-visible' : ''}`}>
-                ✓ Dane przykładowe
+                <LuCheck aria-hidden className="icon" /> Dane przykładowe
               </span>
               <span className={`hero-check${demo.check2 ? ' is-visible' : ''}`}>
-                ✓ Klucz CKE: 19
+                <LuCheck aria-hidden className="icon" /> Klucz CKE: 19
               </span>
             </div>
           </div>
@@ -222,7 +223,15 @@ export function HeroDemo() {
 
       {!demo.reduced && (
         <button type="button" className="hero-demo__pause" onClick={demo.togglePause}>
-          {demo.paused ? '▶ Wznów animację' : '⏸ Zatrzymaj animację'}
+          {demo.paused ? (
+            <>
+              <LuPlay aria-hidden className="icon" /> Wznów animację
+            </>
+          ) : (
+            <>
+              <LuPause aria-hidden className="icon" /> Zatrzymaj animację
+            </>
+          )}
         </button>
       )}
     </div>
