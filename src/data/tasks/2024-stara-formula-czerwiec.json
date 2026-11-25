@@ -1,0 +1,229 @@
+[
+  {
+    "id": "2024-stara-formula-czerwiec-1.2",
+    "sessionId": "2024/stara-formula-czerwiec",
+    "number": "1.2",
+    "title": "Liczby nieliczne",
+    "part": 1,
+    "points": 3,
+    "topics": [
+      "systemy-liczbowe"
+    ],
+    "summary": "Liczba jest nieliczna, gdy w jej zapisie binarnym żadne dwie jedynki nie sąsiadują ze sobą (np. 10 = 1010 jest nieliczna, a 259 = 100000011 – nie). Napisz funkcję czy_nieliczna(k) zwracającą True albo False, bez funkcji zamiany systemów liczbowych.",
+    "starterCode": "def czy_nieliczna(k):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "czy_nieliczna",
+    "tests": [
+      {
+        "args": [
+          259
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          1
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          2
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          3
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          5
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          10
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          21
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          42
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          85
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          6
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          1365
+        ],
+        "expected": true
+      },
+      {
+        "args": [
+          1366
+        ],
+        "expected": false
+      },
+      {
+        "args": [
+          8202
+        ],
+        "expected": true
+      }
+    ]
+  },
+  {
+    "id": "2024-stara-formula-czerwiec-4.1",
+    "sessionId": "2024/stara-formula-czerwiec",
+    "number": "4.1",
+    "title": "Fragment k?t",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik slowa.txt zawiera 1000 słów z małych liter. Podaj, w ilu słowach występuje trzyliterowy fragment k?t, gdzie ? to dowolna litera (np. w alamakota i brokat, ale nie w krata).",
+    "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (slowa_przyklad.txt)",
+        "files": {
+          "slowa.txt": "arkusze/2024/stara-formula-czerwiec/pliki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/slowa_przyklad.txt"
+        },
+        "expected": "2"
+      },
+      {
+        "label": "Dane egzaminacyjne (slowa.txt)",
+        "files": {
+          "slowa.txt": "arkusze/2024/stara-formula-czerwiec/pliki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/slowa.txt"
+        },
+        "expected": "26"
+      }
+    ]
+  },
+  {
+    "id": "2024-stara-formula-czerwiec-4.2",
+    "sessionId": "2024/stara-formula-czerwiec",
+    "number": "4.2",
+    "title": "Pięcioliterowe fragmenty e???e",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Wypisz, w kolejności występowania, wszystkie pięcioliterowe fragmenty słów z pliku slowa.txt, które zaczynają się i kończą literą e (fragmenty mogą na siebie zachodzić). Możesz wypisać je w jednej linii lub po jednym w wierszu.",
+    "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (slowa_przyklad.txt)",
+        "files": {
+          "slowa.txt": "arkusze/2024/stara-formula-czerwiec/pliki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/slowa_przyklad.txt"
+        },
+        "expected": "erefe\nefere",
+        "alternatives": [
+          "erefe efere"
+        ]
+      },
+      {
+        "label": "Dane egzaminacyjne (slowa.txt)",
+        "files": {
+          "slowa.txt": "arkusze/2024/stara-formula-czerwiec/pliki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/slowa.txt"
+        },
+        "expected": "ebeee\neeeie\neipqe\neqgle\nejoge\necype\nevuye\nenmje\nellye\nelome\nexsxe\nezobe\nelnne\nehcye\nevrue\nesfxe\netrfe\neryae\nexdye\netcce\netuke\nevtte",
+        "alternatives": [
+          "ebeee eeeie eipqe eqgle ejoge ecype evuye enmje ellye elome exsxe ezobe elnne ehcye evrue esfxe etrfe eryae exdye etcce etuke evtte"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2024-stara-formula-czerwiec-4.3",
+    "sessionId": "2024/stara-formula-czerwiec",
+    "number": "4.3",
+    "title": "ROT13 czytane wspak",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "szyfrowanie",
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "ROT13 zamienia każdą literę na literę o 13 pozycji dalej w alfabecie (cyklicznie). Słowo aren po zakodowaniu daje nera – to samo słowo czytane wspak. Podaj, ile słów z pliku ma tę własność, a w drugiej linii wypisz najdłuższe z nich.",
+    "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (slowa_przyklad.txt)",
+        "files": {
+          "slowa.txt": "arkusze/2024/stara-formula-czerwiec/pliki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/slowa_przyklad.txt"
+        },
+        "expected": "2\naren"
+      },
+      {
+        "label": "Dane egzaminacyjne (slowa.txt)",
+        "files": {
+          "slowa.txt": "arkusze/2024/stara-formula-czerwiec/pliki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/slowa.txt"
+        },
+        "expected": "5\nrhszzohhubwbojohuubmmfue"
+      }
+    ]
+  },
+  {
+    "id": "2024-stara-formula-czerwiec-4.4",
+    "sessionId": "2024/stara-formula-czerwiec",
+    "number": "4.4",
+    "title": "Litera na co najmniej połowie pozycji",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "slowniki",
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Wypisz (po jednym w wierszu, w kolejności z pliku) wszystkie słowa, w których ta sama litera występuje na co najmniej połowie pozycji (np. owocowo – litera o 4 razy na 7).",
+    "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (slowa_przyklad.txt)",
+        "files": {
+          "slowa.txt": "arkusze/2024/stara-formula-czerwiec/pliki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/slowa_przyklad.txt"
+        },
+        "expected": "terefere\nananas\nbo\nalabama"
+      },
+      {
+        "label": "Dane egzaminacyjne (slowa.txt)",
+        "files": {
+          "slowa.txt": "arkusze/2024/stara-formula-czerwiec/pliki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/informatyka-2024-czerwiec-matura-stara-rozszerzona-zalaczniki/slowa.txt"
+        },
+        "expected": "vzwzwgszezvzzlzzzzzzouz\nazaaasfakaaaxbaaaaau\nppppppnoppnoclpop\nzggggggpegpnovzgg\nnyrpvqycpaylffffffffffffff\nkkkkkkkkkkwpijccdbl\ntstevttebttktnetitbttti\ngvsvjvvvvvqppvuvcvvvi"
+      }
+    ]
+  }
+]
