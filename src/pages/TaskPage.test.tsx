@@ -112,7 +112,7 @@ describe('TaskPage', () => {
     renderAt(`/zadanie/${task.id}`, [
       {
         path: '/zadanie/:taskId',
-        element: <TaskPage runner={runner} aiConfig={{ apiKey: 'k', model: 'm' }} />,
+        element: <TaskPage runner={runner} aiConfig={{ endpoint: 'https://proxy.example/' }} />,
       },
     ]);
     expect(screen.getByRole('region', { name: 'Podpowiedzi AI' })).toBeInTheDocument();

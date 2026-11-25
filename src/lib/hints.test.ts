@@ -3,7 +3,6 @@ import type { FunctionTask, ProgramTask } from '../types';
 import {
   aiConfigFromEnv,
   buildHintPrompt,
-  DEFAULT_MODEL,
   HINT_COOLDOWN_MS,
   HINT_DAILY_LIMIT,
   HintError,
@@ -33,25 +32,22 @@ const functionTask: FunctionTask = {
   tests: [{ args: [4, 6], expected: 2 }],
 };
 
-const config = { apiKey: 'test-key', model: 'gemini-test' };
+const config = { endpoint: 'https://proxy.example/' };
+const asEnv = (env: Record<string, string>) => env as unknown as ImportMetaEnv;
 
 const geminiReply = (body: unknown, status = 200) =>
   vi.fn().mockResolvedValue(new Response(JSON.stringify(body), { status }));
 
 describe('aiConfigFromEnv', () => {
-  it('bez klucza wyłącza podpowiedzi', () => {
-    expect(aiConfigFromEnv({} as ImportMetaEnv)).toBeNull();
-    expect(aiConfigFromEnv({ VITE_AI_API_KEY: '  ' } as ImportMetaEnv)).toBeNull();
+  it('bez adresu pośrednika wyłącza podpowiedzi', () => {
+    expect(aiConfigFromEnv(asEnv({}))).toBeNull();
+    expect(aiConfigFromEnv(asEnv({ VITE_AI_ENDPOINT: '  ' }))).toBeNull();
   });
 
-  it('używa domyślnego modelu albo podanego', () => {
-    expect(aiConfigFromEnv({ VITE_AI_API_KEY: 'k' } as ImportMetaEnv)).toEqual({
-      apiKey: 'k',
-      model: DEFAULT_MODEL,
+  it('czyta adres pośrednika', () => {
+    expect(aiConfigFromEnv(asEnv({ VITE_AI_ENDPOINT: ' https://ai.example/ ' }))).toEqual({
+      endpoint: 'https://ai.example/',
     });
-    expect(
-      aiConfigFromEnv({ VITE_AI_API_KEY: 'k', VITE_AI_MODEL: 'inny' } as ImportMetaEnv)?.model,
-    ).toBe('inny');
   });
 });
 
@@ -110,7 +106,7 @@ describe('buildHintPrompt', () => {
 });
 
 describe('requestHint', () => {
-  it('wysyła zapytanie z kluczem i zwraca tekst (bez „myśli” modelu)', async () => {
+  it('wysyła sam prompt do pośrednika (bez klucza) i zwraca tekst bez „myśli” modelu', async () => {
     const fetchMock = geminiReply({
       candidates: [
         { content: { parts: [{ text: 'tok', thought: true }, { text: ' Sprawdź pętlę. ' }] } },
@@ -118,16 +114,16 @@ describe('requestHint', () => {
     });
     await expect(requestHint(config, 'pytanie', fetchMock)).resolves.toBe('Sprawdź pętlę.');
     const [url, init] = fetchMock.mock.calls[0]!;
-    expect(url).toContain('/models/gemini-test:generateContent');
-    expect(init.headers['x-goog-api-key']).toBe('test-key');
-    expect(JSON.parse(init.body).contents[0].parts[0].text).toBe('pytanie');
+    expect(url).toBe('https://proxy.example/');
+    expect(init.headers).toEqual({ 'Content-Type': 'application/json' });
+    expect(JSON.parse(init.body)).toEqual({ prompt: 'pytanie' });
   });
 
   it.each([
     [429, /limit zapytań/],
-    [403, /klucz API/],
-    [404, /niedostępny/],
-    [503, /chwilowo/],
+    [403, /nie ma dostępu/],
+    [400, /skrócić/],
+    [502, /chwilowo/],
     [418, /HTTP 418/],
   ])('tłumaczy błąd HTTP %i', async (status, message) => {
     const promise = requestHint(config, 'p', geminiReply({}, status));

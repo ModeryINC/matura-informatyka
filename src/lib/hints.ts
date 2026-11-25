@@ -1,50 +1,33 @@
 /**
  * Podpowiedzi AI (Google Gemini) – logika bez Reacta.
  *
- * Strona nie ma serwera, więc zapytanie idzie prosto z przeglądarki do Gemini API,
- * a klucz jest wstawiany przy buildzie (`VITE_AI_API_KEY`). Klucz jest przez to
- * publiczny – trzeba go ograniczyć w Google Cloud (patrz `docs/podpowiedzi-ai.md`),
- * a tutaj dodatkowo pilnujemy limitu zapytań z jednej przeglądarki.
+ * Strona nie ma serwera, więc zapytania idą przez pośrednika – Cloudflare Worker
+ * (`worker/`), który trzyma klucz Gemini jako sekret, dokłada instrukcję systemową
+ * i wybiera model. Strona zna tylko adres pośrednika (`VITE_AI_ENDPOINT`), więc
+ * w jej kodzie nie ma żadnego klucza. Dodatkowo pilnujemy limitu zapytań
+ * z jednej przeglądarki (pośrednik ma własny limit na adres IP).
  */
 import type { SubmissionResult, Task } from '../types';
 import type { ExecutionOutput } from '../python/runner';
 
-/**
- * Domyślny model: Flash-Lite ma na darmowym planie najwięcej zapytań
- * (ok. 15/min i kilkaset dziennie), a do krótkich podpowiedzi w zupełności wystarcza.
- */
-export const DEFAULT_MODEL = 'gemini-3.5-flash-lite';
-
-const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models';
-
 /** Odstęp między zapytaniami z jednej przeglądarki. */
 export const HINT_COOLDOWN_MS = 20_000;
-/** Dzienny limit podpowiedzi na przeglądarkę (wspólny klucz ma ograniczoną pulę). */
+/** Dzienny limit podpowiedzi na przeglądarkę (darmowy plan Gemini ma ograniczoną pulę). */
 export const HINT_DAILY_LIMIT = 25;
 
 const MAX_CODE_CHARS = 8_000;
 const MAX_OUTPUT_CHARS = 1_500;
 
 export interface AiConfig {
-  apiKey: string;
-  model: string;
+  /** Adres pośrednika (Cloudflare Worker). */
+  endpoint: string;
 }
 
-/** Konfiguracja z buildu; `null`, gdy klucz nie został ustawiony. */
+/** Konfiguracja z buildu; `null`, gdy adres pośrednika nie został ustawiony. */
 export function aiConfigFromEnv(env: ImportMetaEnv = import.meta.env): AiConfig | null {
-  const apiKey = env.VITE_AI_API_KEY?.trim();
-  if (!apiKey) return null;
-  return { apiKey, model: env.VITE_AI_MODEL?.trim() || DEFAULT_MODEL };
+  const endpoint = env.VITE_AI_ENDPOINT?.trim();
+  return endpoint ? { endpoint } : null;
 }
-
-export const SYSTEM_PROMPT = `Jesteś cierpliwym nauczycielem informatyki, który pomaga uczniowi przygotować się do matury z informatyki (poziom rozszerzony) w Pythonie.
-Zasady:
-- Odpowiadaj po polsku, krótko: 2–6 zdań. Bez powitań i formułek na końcu („daj znać, jak poszło”) – od razu do rzeczy.
-- NIE podawaj pełnego rozwiązania ani gotowego programu. Naprowadzaj: wskaż błąd, przypadek brzegowy, pomysł na algorytm albo następny krok.
-- Jeśli kod ma błąd, powiedz, w której linii lub konstrukcji, i dlaczego – ale nie przepisuj całego kodu.
-- Możesz pokazać najwyżej 1–3 linijki kodu jako przykład konstrukcji.
-- Gdy to kolejna podpowiedź, bądź bardziej konkretny niż poprzednio, ale nadal bez gotowego rozwiązania.
-- Formatowanie: zwykły tekst, \`kod\` w odwrotnych apostrofach, **pogrubienie**, listy z "- ", bloki kodu w \`\`\`. Bez nagłówków i tabel.`;
 
 const clip = (text: string, max: number) =>
   text.length > max ? `${text.slice(0, max)}\n… (obcięte)` : text;
@@ -123,14 +106,13 @@ interface GeminiResponse {
 const errorMessage = (status: number): string => {
   if (status === 429)
     return 'Wyczerpano limit zapytań do AI (darmowy plan). Spróbuj za kilka minut albo jutro.';
-  if (status === 400 || status === 401 || status === 403)
-    return 'Usługa AI odrzuciła zapytanie – klucz API jest nieprawidłowy lub ograniczony.';
-  if (status === 404) return 'Wybrany model AI jest niedostępny.';
+  if (status === 403) return 'Ta strona nie ma dostępu do usługi podpowiedzi.';
+  if (status === 400) return 'Usługa AI odrzuciła zapytanie – spróbuj skrócić kod.';
   if (status >= 500) return 'Usługa AI jest chwilowo niedostępna – spróbuj ponownie za chwilę.';
   return `Nie udało się pobrać podpowiedzi (HTTP ${status}).`;
 };
 
-/** Wysyła zapytanie do Gemini i zwraca tekst podpowiedzi. */
+/** Wysyła prompt do pośrednika i zwraca tekst podpowiedzi. */
 export async function requestHint(
   config: AiConfig,
   prompt: string,
@@ -139,14 +121,10 @@ export async function requestHint(
 ): Promise<string> {
   let response: Response;
   try {
-    response = await fetchImpl(`${API_URL}/${encodeURIComponent(config.model)}:generateContent`, {
+    response = await fetchImpl(config.endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-goog-api-key': config.apiKey },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-        contents: [{ role: 'user', parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.4 },
-      }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt }),
       signal,
     });
   } catch (error) {

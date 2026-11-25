@@ -25,7 +25,7 @@ const reply = (text: string) =>
 const renderPanel = (fetchImpl: typeof fetch) =>
   render(
     <HintPanel
-      config={{ apiKey: 'k', model: 'm' }}
+      config={{ endpoint: 'https://proxy.example/' }}
       task={task}
       code="print(0)"
       result={null}
