@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useSearchParams } from 'react-router';
+import { Link, useSearchParams } from 'react-router';
 import { TaskCard } from '../components/TaskCard';
 import { TaskFilters } from '../components/TaskFilters';
 import { sessionsById, tasks } from '../data';
@@ -13,9 +13,9 @@ import {
   type TaskFilters as Filters,
 } from '../lib/search';
 
-/** Strona główna: wyszukiwarka i lista zadań z automatycznym sprawdzaniem. */
+/** Zakładka „Python”: wyszukiwarka i lista zadań z automatycznym sprawdzaniem. */
 export function TasksPage() {
-  useDocumentTitle();
+  useDocumentTitle('Zadania w Pythonie');
   const [params, setParams] = useSearchParams();
   const filters = useMemo(() => paramsToFilters(params), [params]);
   const statusOf = useSolutionStatuses();
@@ -37,12 +37,13 @@ export function TasksPage() {
   const onChange = (next: Filters) => setParams(filtersToParams(next), { replace: true });
 
   return (
-    <div className="page page--tasks">
-      <section className="hero">
-        <h1>Zadania maturalne z informatyki</h1>
-        <p className="hero__lead">
-          Rozwiązuj zadania algorytmiczne z arkuszy CKE w Pythonie. Kod uruchamia się w Twojej
-          przeglądarce i jest od razu porównywany z kluczem odpowiedzi.
+    <>
+      <section className="tab-intro" aria-labelledby="python-tytul">
+        <h2 id="python-tytul">Zadania w Pythonie</h2>
+        <p className="lead">
+          Zadania algorytmiczne z arkuszy CKE. Kod uruchamia się w Twojej przeglądarce i jest od
+          razu porównywany z kluczem odpowiedzi. Nowy w Pythonie? Zacznij od{' '}
+          <Link to="/python">podstaw Pythona</Link>.
         </p>
         <p className="progress" aria-live="polite">
           <span>
@@ -83,6 +84,6 @@ export function TasksPage() {
           )}
         </section>
       </div>
-    </div>
+    </>
   );
 }

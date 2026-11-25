@@ -106,7 +106,7 @@ function ExcelWorkspace({ task }: { task: SpreadsheetTask }) {
   return (
     <div className="page page--excel">
       <nav aria-label="Okruszki" className="breadcrumbs">
-        <Link to="/excel">Excel</Link> <span aria-hidden="true">/</span>{' '}
+        <Link to="/zadania/excel">Zadania z Excela</Link> <span aria-hidden="true">/</span>{' '}
         {session && (
           <>
             <Link to={`/arkusze/${session.id}`}>

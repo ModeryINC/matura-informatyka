@@ -102,7 +102,7 @@ Podgląd PDF otwiera się na stronie z zadaniem. Po dodaniu zadań odśwież map
 python scripts/find_sheet_pages.py   # zapisuje src/data/sheet-pages.json
 ```
 
-## Zadania z arkusza kalkulacyjnego (zakładka „Excel”)
+## Zadania z arkusza kalkulacyjnego (Zadania → Excel)
 
 Plik `src/data/spreadsheet/<rok>-<sesja>.json` to tablica zadań; jedno zadanie obejmuje
 całe zadanie z arkusza (np. „Zadanie 6. Konfitury owocowe”) z podpunktami:

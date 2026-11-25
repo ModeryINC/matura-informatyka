@@ -16,7 +16,7 @@ export function PythonBasicsPage({ runner = getRunner() }: { runner?: PythonRunn
         <p>
           Najważniejsze elementy języka potrzebne na maturze z informatyki. Każdy przykład możesz
           zmienić i uruchomić (<kbd>Ctrl</kbd> + <kbd>Enter</kbd> w edytorze) – działa w
-          przeglądarce, tak jak sprawdzarka w <Link to="/">zadaniach</Link>.
+          przeglądarce, tak jak sprawdzarka w <Link to="/zadania/python">zadaniach</Link>.
         </p>
       </header>
 

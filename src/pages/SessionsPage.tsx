@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
 import { sessions, tasksForSession } from '../data';
+import { spreadsheetTasks } from '../data/spreadsheets';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { SESSION_KIND_LABELS } from '../lib/sessions';
 import type { SessionKind } from '../types';
@@ -52,7 +53,9 @@ export function SessionsPage() {
           <h2 id={`rok-${year}`}>{year}</h2>
           <ul className="session-grid">
             {list.map((session) => {
-              const count = tasksForSession(session.id).length;
+              const count =
+                tasksForSession(session.id).length +
+                spreadsheetTasks.filter((t) => t.sessionId === session.id).length;
               return (
                 <li key={session.id} className="session-card">
                   <h3>

@@ -10,8 +10,8 @@ export function ExcelTasksPage() {
   useDocumentTitle('Zadania z Excela');
 
   return (
-    <div className="page">
-      <h1>Zadania z arkusza kalkulacyjnego</h1>
+    <section className="tab-intro-wrap" aria-labelledby="excel-tytul">
+      <h2 id="excel-tytul">Zadania z arkusza kalkulacyjnego</h2>
       <p className="lead">
         Zadania z matury (nowa formuła, sesje majowe), które rozwiązuje się w Excelu. Dane są już
         wczytane do arkusza w przeglądarce – pisz formuły (także po polsku), a odpowiedzi sprawdzisz
@@ -27,11 +27,11 @@ export function ExcelTasksPage() {
                 {session ? `${session.label} ${session.year}` : task.sessionId} · zadanie{' '}
                 {task.number}
               </p>
-              <h2 className="xl-card__title">
+              <h3 className="xl-card__title">
                 <Link to={`/excel/${encodeURIComponent(task.id)}`} className="stretched-link">
                   {task.title}
                 </Link>
-              </h2>
+              </h3>
               <p className="muted">
                 {task.parts.length}{' '}
                 {plural(task.parts.length, 'podpunkt', 'podpunkty', 'podpunktów')} ·{' '}
@@ -46,6 +46,6 @@ export function ExcelTasksPage() {
           );
         })}
       </ul>
-    </div>
+    </section>
   );
 }

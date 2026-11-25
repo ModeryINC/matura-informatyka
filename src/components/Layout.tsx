@@ -1,4 +1,4 @@
-import { NavLink, Outlet, ScrollRestoration } from 'react-router';
+import { Link, NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router';
 import { useTheme } from '../hooks/useTheme';
 
 const THEME_LABELS = { system: 'Motyw: systemowy', light: 'Motyw: jasny', dark: 'Motyw: ciemny' };
@@ -7,6 +7,8 @@ const THEME_ICONS = { system: '◐', light: '☀', dark: '☾' };
 /** Wspólny układ strony: nagłówek z nawigacją, treść i stopka. */
 export function Layout() {
   const [theme, cycleTheme] = useTheme();
+  // „Zadania” są aktywne także na stronie pojedynczego zadania (Python i Excel).
+  const tasksActive = /^\/(zadania|zadanie|excel)(\/|$)/.test(useLocation().pathname);
 
   return (
     <>
@@ -24,18 +26,12 @@ export function Layout() {
           <nav aria-label="Główna nawigacja">
             <ul className="nav">
               <li>
-                <NavLink to="/" end>
+                <Link to="/zadania" aria-current={tasksActive ? 'page' : undefined}>
                   Zadania
-                </NavLink>
+                </Link>
               </li>
               <li>
                 <NavLink to="/arkusze">Arkusze</NavLink>
-              </li>
-              <li>
-                <NavLink to="/excel">Excel</NavLink>
-              </li>
-              <li>
-                <NavLink to="/python">Python</NavLink>
               </li>
               <li>
                 <NavLink to="/pomoc">Pomoc</NavLink>

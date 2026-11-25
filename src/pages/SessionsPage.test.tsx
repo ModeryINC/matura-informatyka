@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { sessions } from '../data';
 
@@ -31,7 +31,15 @@ describe('SessionsPage i SessionPage', () => {
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Maj 2024');
     expect(screen.getByRole('heading', { name: 'Klucz odpowiedzi' })).toBeInTheDocument();
     expect(screen.getByTitle(/Arkusz Maj 2024/)).toBeInTheDocument();
-    expect(screen.getAllByRole('article').length).toBeGreaterThan(0);
+    const jump = screen.getByRole('navigation', { name: 'Zadania z tego arkusza' });
+    expect(within(jump).getByRole('link', { name: /^3\.1/ })).toHaveAttribute(
+      'href',
+      '/zadanie/2024-maj-3.1',
+    );
+    expect(within(jump).getByRole('link', { name: /7 · Excel/ })).toHaveAttribute(
+      'href',
+      '/excel/2024-maj-7',
+    );
   });
 
   it('sesja bez zadań informuje o tym', () => {

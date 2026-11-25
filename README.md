@@ -8,14 +8,17 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
 
 ## Co potrafi
 
+- **Strona startowa** z animowanym przykładem rozwiązania (Python i Excel) i skrótem
+  możliwości; menu: **Zadania** (podział: Python, Excel, SQL – wkrótce), **Arkusze**, **Pomoc**.
 - **Przegląd arkuszy** – 39 sesji (główne, dodatkowe, próbne, stara formuła) z podglądem PDF,
-  kluczem odpowiedzi i plikami z danymi (podgląd w oknie z przyciskiem pobierania).
+  przyciskami do zadań z danego arkusza, kluczem odpowiedzi i plikami z danymi (podgląd
+  w oknie z przyciskiem pobierania).
 - **Zadania ze sprawdzarką** – 230 zadań ze wszystkich 39 sesji 2018–2026 (główne, dodatkowe,
   stara formuła, próbne CKE i Politechniki Łódzkiej, przykładowy arkusz CKE):
   - _programy_ (część 2) – kod czyta plik z danymi i wypisuje odpowiedź; jest uruchamiany
     na danych przykładowych z arkusza i na pełnych danych egzaminacyjnych,
   - _funkcje_ (część 1, „zapisz algorytm”) – funkcja sprawdzana zestawem testów.
-- **Zadania z Excela** (zakładka „Excel”) – zadania z arkusza kalkulacyjnego z sesji majowych
+- **Zadania z Excela** (Zadania → Excel) – zadania z arkusza kalkulacyjnego z sesji majowych
   nowej formuły (2023–2026). Dane są od razu wczytane do arkusza w przeglądarce
   ([Fortune Sheet](https://github.com/ruilisi/fortune-sheet), MIT), formuły można pisać po
   polsku (`=LICZ.JEŻELI(A:A;">5")`), a odpowiedzi – także całe zestawienia wstawiane
@@ -79,7 +82,7 @@ npm run dev          # http://localhost:5173
 public/arkusze/<rok>/<sesja>/{arkusz,odpowiedzi,pliki}/   materiały CKE
 src/
   data/tasks/*.json      zadania (po jednym pliku na sesję)
-  data/spreadsheet/*.json  zadania z arkusza kalkulacyjnego (zakładka „Excel”)
+  data/spreadsheet/*.json  zadania z arkusza kalkulacyjnego (Zadania → Excel)
   data/index.ts          dostęp do katalogu i zadań
   lib/                   logika bez Reacta: porównywanie, wyszukiwanie, zapis, walidacja
   python/                worker Pyodide, harness i klient (PythonRunner)

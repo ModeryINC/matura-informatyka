@@ -140,7 +140,7 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
   return (
     <div className="page page--task">
       <nav aria-label="Okruszki" className="breadcrumbs">
-        <Link to="/">Zadania</Link> <span aria-hidden="true">/</span>{' '}
+        <Link to="/zadania/python">Zadania</Link> <span aria-hidden="true">/</span>{' '}
         {session && (
           <>
             <Link to={`/arkusze/${session.id}`}>

@@ -1,0 +1,230 @@
+import { useEffect, useState, type ReactNode } from 'react';
+
+/**
+ * Animacja w sekcji hero: na zmianę rozwiązanie zadania w Pythonie i w Excelu,
+ * pisane znak po znaku i „sprawdzane” z kluczem. Zadanie jest prawdziwe
+ * (maj 2023, zadanie 6.2 – w 19 dniach dostarczono najwięcej porzeczek).
+ *
+ * Ruch włącza się tylko bez preferencji ograniczenia animacji; przycisk
+ * pauzy zatrzymuje także pływające w tle symbole (WCAG 2.2.2).
+ */
+
+interface Scene {
+  kind: 'python' | 'excel';
+  title: string;
+  code: string;
+  result: string;
+}
+
+const SCENES: Scene[] = [
+  {
+    kind: 'python',
+    title: 'rozwiazanie.py',
+    code: `dni = 0
+with open("owoce.txt") as plik:
+    next(plik)
+    for linia in plik:
+        data, m, t, p = linia.split()
+        if int(p) > max(int(m), int(t)):
+            dni += 1
+print(dni)`,
+    result: '19',
+  },
+  {
+    kind: 'excel',
+    title: 'owoce.xlsx',
+    code: '=JEŻELI(ORAZ(D2>B2;D2>C2);1;0)',
+    result: '19',
+  },
+];
+
+const TYPE_MS = 45;
+/** Klatki po napisaniu kodu: wynik, dwa testy, przerwa przed kolejną sceną. */
+const AFTER = { output: 8, check1: 20, check2: 30, next: 85 };
+
+const KEYWORDS = /\b(with|open|as|for|in|if|print|int|max|next|JEŻELI|ORAZ)\b/;
+const TOKEN = /("[^"]*"?|\b\d+\b|\b(?:with|open|as|for|in|if|print|int|max|next|JEŻELI|ORAZ)\b)/;
+
+/** Proste kolorowanie składni dla częściowo napisanego kodu. */
+function highlight(code: string): ReactNode[] {
+  return code.split(TOKEN).map((part, i) => {
+    if (!part) return null;
+    if (part.startsWith('"'))
+      return (
+        <span key={i} className="hl-string">
+          {part}
+        </span>
+      );
+    if (/^\d+$/.test(part))
+      return (
+        <span key={i} className="hl-number">
+          {part}
+        </span>
+      );
+    if (KEYWORDS.test(part))
+      return (
+        <span key={i} className="hl-keyword">
+          {part}
+        </span>
+      );
+    return part;
+  });
+}
+
+function prefersReducedMotion(): boolean {
+  return typeof window.matchMedia === 'function'
+    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    : false;
+}
+
+/** Sterowanie animacją (wydzielone, żeby dało się je testować). */
+function useHeroAnimation() {
+  const [reduced] = useState(prefersReducedMotion);
+  const [paused, setPaused] = useState(false);
+  const [{ scene, frame }, setPosition] = useState({ scene: 0, frame: 0 });
+  const current = SCENES[scene]!;
+  const total = current.code.length + AFTER.next;
+
+  // Kolejna klatka; po ostatniej przechodzimy do następnej sceny.
+  useEffect(() => {
+    if (reduced || paused) return;
+    const timer = setInterval(
+      () =>
+        setPosition((p) =>
+          p.frame + 1 < SCENES[p.scene]!.code.length + AFTER.next
+            ? { scene: p.scene, frame: p.frame + 1 }
+            : { scene: (p.scene + 1) % SCENES.length, frame: 0 },
+        ),
+      TYPE_MS,
+    );
+    return () => clearInterval(timer);
+  }, [reduced, paused]);
+
+  // Bez animacji pokazujemy od razu stan końcowy.
+  const shown = reduced ? total - 1 : frame;
+  const after = shown - current.code.length;
+  return {
+    reduced,
+    paused,
+    togglePause: () => setPaused((p) => !p),
+    scene: current,
+    typed: current.code.slice(0, shown),
+    typing: after < 0,
+    showOutput: after >= AFTER.output,
+    check1: after >= AFTER.check1,
+    check2: after >= AFTER.check2,
+  };
+}
+
+const ROWS = [
+  ['01.05.2020', '211', '281', '88'],
+  ['02.05.2020', '393', '313', '83'],
+  ['03.05.2020', '389', '315', '104'],
+  ['04.05.2020', '308', '221', '119'],
+];
+
+export function HeroDemo() {
+  const demo = useHeroAnimation();
+  const { scene } = demo;
+
+  return (
+    <div className="hero-demo" data-paused={demo.paused || undefined}>
+      <div className="hero-demo__glyphs" aria-hidden="true">
+        {['def', '{ }', '=SUMA', 'SELECT', '0101', 'for', '∑', 'if', 'print()', '%'].map(
+          (glyph, i) => (
+            <span
+              key={glyph}
+              style={{ '--i': i, '--top': `${6 + ((i * 37) % 88)}%` } as React.CSSProperties}
+            >
+              {glyph}
+            </span>
+          ),
+        )}
+      </div>
+
+      <figure
+        className={`hero-window hero-window--${scene.kind}`}
+        aria-label="Przykład: rozwiązanie zadania 6.2 z matury 2023 w Pythonie i w Excelu, sprawdzone z kluczem"
+      >
+        <div className="hero-window__bar" aria-hidden="true">
+          <span className="hero-window__dots">
+            <i />
+            <i />
+            <i />
+          </span>
+          <span className="hero-window__title">{scene.title}</span>
+          <span className="hero-window__tag">{scene.kind === 'python' ? 'Python' : 'Excel'}</span>
+        </div>
+
+        <div className="hero-window__body" aria-hidden="true">
+          {scene.kind === 'python' ? (
+            <pre className="hero-code">
+              <code>
+                {highlight(demo.typed)}
+                {demo.typing && !demo.reduced && <span className="hero-caret" />}
+              </code>
+            </pre>
+          ) : (
+            <div className="hero-sheet">
+              <div className="hero-sheet__formula">
+                <span>fx</span>
+                <code>
+                  {highlight(demo.typed)}
+                  {demo.typing && !demo.reduced && <span className="hero-caret" />}
+                </code>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>data</th>
+                    <th>maliny</th>
+                    <th>truskawki</th>
+                    <th>porzeczki</th>
+                    <th>E</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ROWS.map((row, r) => (
+                    <tr key={r}>
+                      {row.map((cell, c) => (
+                        <td key={c}>{cell}</td>
+                      ))}
+                      <td className={demo.showOutput ? 'hero-sheet__filled' : ''}>
+                        {demo.showOutput
+                          ? Number(row[3]) > Math.max(Number(row[1]), Number(row[2]))
+                            ? 1
+                            : 0
+                          : ''}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          <div className="hero-output">
+            <div className={`hero-output__line${demo.showOutput ? ' is-visible' : ''}`}>
+              <span className="muted">{scene.kind === 'python' ? '>>>' : '=SUMA(E2:E154)'}</span>{' '}
+              <strong>{scene.result}</strong>
+            </div>
+            <div className="hero-checks">
+              <span className={`hero-check${demo.check1 ? ' is-visible' : ''}`}>
+                ✓ Dane przykładowe
+              </span>
+              <span className={`hero-check${demo.check2 ? ' is-visible' : ''}`}>
+                ✓ Klucz CKE: 19
+              </span>
+            </div>
+          </div>
+        </div>
+      </figure>
+
+      {!demo.reduced && (
+        <button type="button" className="hero-demo__pause" onClick={demo.togglePause}>
+          {demo.paused ? '▶ Wznów animację' : '⏸ Zatrzymaj animację'}
+        </button>
+      )}
+    </div>
+  );
+}

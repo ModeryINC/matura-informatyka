@@ -1,13 +1,14 @@
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import { FileList } from '../components/FileList';
 import { PdfViewer } from '../components/PdfViewer';
-import { TaskCard } from '../components/TaskCard';
 import { sessionsById, tasksForSession } from '../data';
+import { spreadsheetTasks } from '../data/spreadsheets';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useSolutionStatuses } from '../hooks/useSolutions';
+import { passedParts } from '../lib/spreadsheet/storage';
 import { NotFoundPage } from './NotFoundPage';
 
-/** Szczegóły sesji: podgląd arkusza, klucz, pliki z danymi i zadania. */
+/** Arkusz: podgląd PDF, przyciski do zadań z tego arkusza, klucz i pliki z danymi. */
 export function SessionPage() {
   const { year = '', slug = '' } = useParams();
   const session = sessionsById.get(`${year}/${slug}`);
@@ -15,15 +16,77 @@ export function SessionPage() {
   const statusOf = useSolutionStatuses();
   if (!session) return <NotFoundPage />;
   const tasks = tasksForSession(session.id);
+  const excelTasks = spreadsheetTasks.filter((t) => t.sessionId === session.id);
+  const count = tasks.length + excelTasks.length;
 
   return (
     <div className="page">
+      <nav aria-label="Okruszki" className="breadcrumbs">
+        <Link to="/arkusze">Arkusze</Link> <span aria-hidden="true">/</span>{' '}
+        <span aria-current="page">
+          {session.label} {session.year}
+        </span>
+      </nav>
       <h1>
         {session.label} {session.year}
       </h1>
+
+      <nav className="task-jump" aria-labelledby="zadania">
+        <h2 id="zadania" className="task-jump__title">
+          Zadania z tego arkusza
+        </h2>
+        {count === 0 ? (
+          <p className="muted">
+            Dla tego arkusza nie ma jeszcze zadań ze sprawdzarką. Możesz rozwiązać go samodzielnie,
+            korzystając z klucza odpowiedzi.
+          </p>
+        ) : (
+          <ul className="task-jump__list">
+            {tasks.map((task) => {
+              const status = statusOf(task.id);
+              return (
+                <li key={task.id}>
+                  <Link
+                    to={`/zadanie/${encodeURIComponent(task.id)}`}
+                    className={`task-jump__button task-jump__button--${status}`}
+                    title={task.title}
+                  >
+                    <span className="task-jump__number">
+                      {status === 'zaliczone' && <span aria-label="zaliczone">✓ </span>}
+                      {task.number}
+                    </span>
+                    <span className="task-jump__name">{task.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+            {excelTasks.map((task) => {
+              const done = passedParts(task.id) === task.parts.length;
+              return (
+                <li key={task.id}>
+                  <Link
+                    to={`/excel/${encodeURIComponent(task.id)}`}
+                    className={`task-jump__button task-jump__button--excel${done ? ' task-jump__button--zaliczone' : ''}`}
+                    title={task.title}
+                  >
+                    <span className="task-jump__number">
+                      {done && <span aria-label="zaliczone">✓ </span>}
+                      {task.number} · Excel
+                    </span>
+                    <span className="task-jump__name">{task.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </nav>
+
       <div className="session-layout">
         <section aria-labelledby="podglad">
-          <h2 id="podglad">Arkusz</h2>
+          <h2 id="podglad" className="visually-hidden">
+            Arkusz
+          </h2>
           <PdfViewer files={session.sheets} title={`Arkusz ${session.label} ${session.year}`} />
         </section>
         <aside className="session-layout__side">
@@ -49,23 +112,6 @@ export function SessionPage() {
           </section>
         </aside>
       </div>
-      <section aria-labelledby="zadania" className="session-tasks">
-        <h2 id="zadania">Zadania z automatycznym sprawdzaniem</h2>
-        {tasks.length === 0 ? (
-          <p className="muted">
-            Dla tego arkusza nie ma jeszcze zadań ze sprawdzarką. Możesz rozwiązać go samodzielnie,
-            korzystając z klucza odpowiedzi.
-          </p>
-        ) : (
-          <ul className="task-grid">
-            {tasks.map((task) => (
-              <li key={task.id}>
-                <TaskCard task={task} session={session} status={statusOf(task.id)} />
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
     </div>
   );
 }
