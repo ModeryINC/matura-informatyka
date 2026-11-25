@@ -155,7 +155,7 @@ function TaskWorkspace({ task, runner }: { task: Task; runner: PythonRunner }) {
           {dataFiles.length > 0 && (
             <details className="data-files">
               <summary>Pliki z danymi ({dataFiles.length})</summary>
-              <FileList files={dataFiles} download />
+              <FileList files={dataFiles} preview />
             </details>
           )}
 

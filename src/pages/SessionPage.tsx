@@ -41,7 +41,7 @@ export function SessionPage() {
             {session.attachments.length ? (
               <details>
                 <summary>{session.attachments.length} plików</summary>
-                <FileList files={session.attachments} download />
+                <FileList files={session.attachments} preview />
               </details>
             ) : (
               <p className="muted">Brak</p>
