@@ -75,6 +75,34 @@ jobs:
       - id: check
         name: Sprawdź konfigurację Cloudflare
         run: echo "enabled=${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.AI_API_KEY != '' }}" >> "$GITHUB_OUTPUT"
+      # Czytelny błąd zamiast „Authentication error” z wranglera. Wypisuje tylko wynik,
+      # nigdy wartości sekretów.
+      - name: Sprawdź token Cloudflare i klucz
+        if: steps.check.outputs.enabled == 'true'
+        env:
+          TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          KEY: ${{ secrets.AI_API_KEY }}
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          for name in TOKEN KEY; do
+            if printf '%s' "${!name}" | grep -q '[[:space:]]'; then
+              echo "::error::Sekret ($name) zawiera spacje lub znaki nowej linii – wklej go ponownie."
+              exit 1
+            fi
+          done
+          ok=false
+          for url in "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+                     "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tokens/verify"; do
+            if curl -fsS -H "Authorization: Bearer $TOKEN" "$url" | jq -e '.success and .result.status == "active"' >/dev/null 2>&1; then
+              ok=true
+              break
+            fi
+          done
+          if [ "$ok" != true ]; then
+            echo "::error::Cloudflare odrzuca CLOUDFLARE_API_TOKEN – utwórz nowy token (szablon „Edit Cloudflare Workers”) i zapisz go jako sekret."
+            exit 1
+          fi
+          echo "Token Cloudflare jest aktywny."
       # Klucz Gemini trafia wyłącznie do Workera jako sekret GEMINI_API_KEY.
       - id: deploy
         if: steps.check.outputs.enabled == 'true'
