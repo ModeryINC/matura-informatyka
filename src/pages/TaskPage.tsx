@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { CodeEditor } from '../components/CodeEditor';
 import { Console } from '../components/Console';
@@ -71,11 +71,17 @@ function TaskWorkspace({ task, runner }: { task: Task; runner: PythonRunner }) {
     setBusy(false);
   }, [runner, task, code, stdin]);
 
+  const resultRef = useRef<HTMLDivElement>(null);
+
   const submit = useCallback(async () => {
     setBusy(true);
     const submission = await runner.submit(task, code);
     saveSolution(task.id, { code, lastResult: submission });
     setResult(submission);
+    // Wynik jest pod konsolą – pokazujemy go (w prawej kolumnie lub na stronie).
+    requestAnimationFrame(() =>
+      resultRef.current?.scrollIntoView?.({ block: 'nearest', behavior: 'smooth' }),
+    );
     setBusy(false);
   }, [runner, task, code]);
 
@@ -203,25 +209,34 @@ function TaskWorkspace({ task, runner }: { task: Task; runner: PythonRunner }) {
             </button>
             <span className="editor-toolbar__hint muted">Ctrl+Enter – sprawdź</span>
           </div>
-          <CodeEditor
-            value={code}
-            onChange={setCode}
-            onSubmit={busy ? undefined : submit}
-            label={`Kod rozwiązania zadania ${task.number}`}
-          />
-          <p className={`runner-status runner-status--${runnerStatus}`} role="status">
-            {STATUS_TEXT[runnerStatus]}
-          </p>
-          <Console
-            output={output.stdout}
-            error={output.error}
-            running={running}
-            stdin={stdin}
-            onStdinChange={setStdin}
-            onClear={() => setOutput(EMPTY_OUTPUT)}
-            usesInput={USES_INPUT.test(code)}
-          />
-          <div aria-live="polite">{result && <ResultPanel result={result} />}</div>
+          {/* Na szerokim ekranie: kod po lewej, konsola i wynik sprawdzenia po prawej. */}
+          <div className="editor-pane">
+            <div className="editor-pane__code">
+              <CodeEditor
+                value={code}
+                onChange={setCode}
+                onSubmit={busy ? undefined : submit}
+                label={`Kod rozwiązania zadania ${task.number}`}
+              />
+              <p className={`runner-status runner-status--${runnerStatus}`} role="status">
+                {STATUS_TEXT[runnerStatus]}
+              </p>
+            </div>
+            <div className="editor-pane__output">
+              <Console
+                output={output.stdout}
+                error={output.error}
+                running={running}
+                stdin={stdin}
+                onStdinChange={setStdin}
+                onClear={() => setOutput(EMPTY_OUTPUT)}
+                usesInput={USES_INPUT.test(code)}
+              />
+              <div aria-live="polite" ref={resultRef}>
+                {result && <ResultPanel result={result} />}
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </div>

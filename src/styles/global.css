@@ -875,6 +875,48 @@ progress::-moz-progress-bar {
   }
 }
 
+/* Kod i jego wynik */
+.editor-pane,
+.editor-pane__code,
+.editor-pane__output {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+  min-inline-size: 0;
+}
+
+/*
+ * Szeroki ekran: treść zadania | kod | konsola i wynik. Strona zadania jest
+ * szersza od pozostałych, żeby trzy kolumny się mieściły.
+ */
+@media (min-width: 1280px) {
+  :root:has(.page--task) .site-header__inner,
+  .site-main:has(.page--task) {
+    max-inline-size: 1920px;
+  }
+
+  .workspace {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 9fr);
+  }
+
+  .editor-pane {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: start;
+  }
+
+  .editor-pane__code .code-editor {
+    block-size: clamp(420px, calc(100dvh - 15rem), 820px);
+  }
+
+  /* Prawa kolumna nie wyższa od edytora – dłuższe wyniki przewijają się w niej. */
+  .editor-pane__output {
+    max-block-size: clamp(420px, calc(100dvh - 15rem), 820px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-inline-end: 0.25rem;
+  }
+}
+
 .workspace__task,
 .workspace__editor {
   display: grid;
