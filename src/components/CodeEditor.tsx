@@ -14,6 +14,8 @@ interface CodeEditorProps {
   /** Skrót Ctrl/Cmd+Enter. */
   onSubmit?: () => void;
   label: string;
+  /** Wysokość dopasowana do treści (np. krótkie przykłady) zamiast stałej. */
+  autoHeight?: boolean;
 }
 
 const theme = EditorView.theme({
@@ -54,7 +56,7 @@ const highlight = HighlightStyle.define([
  * Komponent jest „półkontrolowany”: zewnętrzna zmiana `value` (np. reset)
  * podmienia treść, a wpisywanie zgłasza zmiany przez `onChange`.
  */
-export function CodeEditor({ value, onChange, onSubmit, label }: CodeEditorProps) {
+export function CodeEditor({ value, onChange, onSubmit, label, autoHeight }: CodeEditorProps) {
   const host = useRef<HTMLDivElement>(null);
   const view = useRef<EditorView | null>(null);
   const callbacks = useRef({ onChange, onSubmit });
@@ -110,5 +112,7 @@ export function CodeEditor({ value, onChange, onSubmit, label }: CodeEditorProps
     }
   }, [value]);
 
-  return <div className="code-editor" ref={host} />;
+  return (
+    <div className={autoHeight ? 'code-editor code-editor--auto' : 'code-editor'} ref={host} />
+  );
 }

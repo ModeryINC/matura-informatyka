@@ -53,6 +53,8 @@ jobs:
       - run: npm run test:python
       - name: Weryfikacja kluczy odpowiedzi rozwiązaniami wzorcowymi
         run: npm run verify:solutions
+      - name: Przykłady z „Podstaw Pythona” działają
+        run: npm run verify:basics
 
   ai-proxy:
     name: Pośrednik podpowiedzi AI (Cloudflare Worker)

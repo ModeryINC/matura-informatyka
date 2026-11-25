@@ -9,6 +9,11 @@ export function HintText({ text }: { text: string }) {
   return <div className="hint-text">{renderBlocks(text)}</div>;
 }
 
+/** Jedna linia tekstu z `kodem` i **pogrubieniem** (bez akapitów). */
+export function InlineText({ text }: { text: string }) {
+  return <>{renderInline(text, 'i')}</>;
+}
+
 function renderInline(text: string, keyPrefix: string): ReactNode[] {
   // Dzielimy na `kod` i **pogrubienie**; reszta to zwykły tekst.
   return text

@@ -1035,6 +1035,14 @@ progress::-moz-progress-bar {
   overflow: hidden;
 }
 
+.code-editor--auto {
+  block-size: auto;
+}
+
+.code-editor--auto .cm-editor {
+  max-block-size: 520px;
+}
+
 .code-editor .cm-editor {
   block-size: 100%;
   font-size: 0.92rem;
@@ -1460,4 +1468,137 @@ progress::-moz-progress-bar {
     animation-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Podstawy Pythona */
+.basics-header {
+  max-inline-size: 75ch;
+  margin-block-end: 1.5rem;
+}
+
+.basics-header h1 {
+  margin-block-start: 0;
+}
+
+.basics {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.basics__toc {
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.basics__toc h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.basics__toc ol {
+  margin: 0;
+  padding-inline-start: 1.25rem;
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.92rem;
+}
+
+@media (min-width: 1000px) {
+  .basics {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .basics__toc {
+    position: sticky;
+    inset-block-start: 5rem;
+  }
+}
+
+.basics__content {
+  display: grid;
+  gap: 1.5rem;
+  min-inline-size: 0;
+}
+
+.basics-section {
+  display: grid;
+  gap: 0.75rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  scroll-margin-block-start: 5rem;
+}
+
+.basics-section h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.basics-section p {
+  margin: 0;
+  max-inline-size: 80ch;
+  line-height: 1.6;
+}
+
+.basics-section code,
+.basics-tips code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 0.05em 0.3em;
+  border-radius: 4px;
+  background: var(--surface-2);
+}
+
+.basics-tips {
+  margin: 0;
+  padding: 0.75rem 1rem 0.75rem 2rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.example {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.example__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.example__stdin {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.example__stdin textarea {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  resize: vertical;
+}
+
+.example__output {
+  margin: 0;
+  padding: 0.6rem 0.75rem;
+  max-block-size: 260px;
+  overflow: auto;
+  border-radius: 6px;
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  white-space: pre-wrap;
 }

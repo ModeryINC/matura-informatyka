@@ -201,8 +201,21 @@ export class PythonRunner {
    * z pierwszego testu (zwykle dane przykładowe). Po błędzie (np. przekroczeniu
    * czasu) zwraca wyjście zebrane do tej chwili.
    */
-  async execute(task: Task, code: string, options: ExecuteOptions = {}): Promise<ExecutionOutput> {
+  execute(task: Task, code: string, options: ExecuteOptions = {}): Promise<ExecutionOutput> {
     const files = task.kind === 'program' && task.checks[0] ? task.checks[0].files : {};
+    return this.executeWithFiles(files, code, options);
+  }
+
+  /** Uruchamia dowolny kod bez plików z danymi (np. przykłady z „Podstaw Pythona”). */
+  executeSnippet(code: string, options: ExecuteOptions = {}): Promise<ExecutionOutput> {
+    return this.executeWithFiles({}, code, options);
+  }
+
+  private async executeWithFiles(
+    files: Record<string, string>,
+    code: string,
+    options: ExecuteOptions,
+  ): Promise<ExecutionOutput> {
     let streamed = '';
     const onOutput = (text: string) => {
       streamed += text;

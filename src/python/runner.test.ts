@@ -235,6 +235,19 @@ describe('PythonRunner', () => {
     expect(workers[0]!.received[1]).toMatchObject({ stream: false });
   });
 
+  it('uruchamia przykład bez plików z danymi', async () => {
+    const { runner, workers } = makeRunner((request) =>
+      request.type === 'program'
+        ? { type: 'program-result', id: request.id, runs: [{ stdout: 'ok', error: null }] }
+        : null,
+    );
+    expect(await runner.executeSnippet('print("ok")', { stdin: '1' })).toEqual({
+      stdout: 'ok',
+      error: null,
+    });
+    expect(workers[0]!.received[1]).toMatchObject({ runs: [{}], stdin: '1' });
+  });
+
   it('informuje o zmianach stanu', async () => {
     const { runner } = makeRunner((request) =>
       request.type === 'program'

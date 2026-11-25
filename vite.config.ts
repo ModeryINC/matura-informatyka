@@ -36,6 +36,7 @@ export default defineConfig({
         'src/python/worker.ts',
         'scripts/build-catalog.ts',
         'scripts/verify-solutions.ts',
+        'scripts/verify-basics.ts',
       ],
       thresholds: { lines: 80, functions: 80, branches: 70, statements: 80 },
     },

@@ -32,6 +32,9 @@ export function Layout() {
                 <NavLink to="/arkusze">Arkusze</NavLink>
               </li>
               <li>
+                <NavLink to="/python">Python</NavLink>
+              </li>
+              <li>
                 <NavLink to="/pomoc">Pomoc</NavLink>
               </li>
             </ul>

@@ -20,6 +20,7 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "verify:solutions": "tsx scripts/verify-solutions.ts",
+    "verify:basics": "tsx scripts/verify-basics.ts",
     "test:python": "python -I -m unittest discover -s tests/python"
   },
   "dependencies": {
