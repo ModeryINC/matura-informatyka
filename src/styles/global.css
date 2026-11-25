@@ -136,6 +136,52 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /*
+   * Paski przewijania w kolorach strony. `scrollbar-color` dziedziczy się, więc
+   * jedna deklaracja obejmuje stronę i wszystkie przewijane obszary. Suwak ma
+   * kontrast ≥ 3:1 względem tła (WCAG 1.4.11); tor jest przezroczysty.
+   */
+  --scrollbar-thumb: color-mix(in srgb, var(--text-muted) 80%, var(--surface-2));
+  --scrollbar-track: transparent;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+
+  @media (prefers-contrast: more) {
+    --scrollbar-thumb: var(--text);
+    --scrollbar-track: var(--bg);
+  }
+}
+
+/* Wewnętrzne przewijane obszary – cieńsze paski (pasek strony zostaje zwykły). */
+body * {
+  scrollbar-width: thin;
+}
+
+/* Starsze Safari (bez `scrollbar-color`) – niestandardowe pseudoelementy. */
+@supports not (scrollbar-color: auto) {
+  body * {
+    scrollbar-width: auto;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  body *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
 }
 
 body {
@@ -920,7 +966,6 @@ progress::-moz-progress-bar {
   .editor-pane__output {
     max-block-size: clamp(420px, calc(100dvh - 15rem), 820px);
     overflow-y: auto;
-    overscroll-behavior: contain;
     padding-inline-end: 0.25rem;
   }
 }
@@ -1689,7 +1734,6 @@ progress::-moz-progress-bar {
   .xl-parts {
     max-block-size: calc(100dvh - 6rem);
     overflow-y: auto;
-    overscroll-behavior: contain;
     padding-inline-end: 0.25rem;
   }
 }
@@ -1710,6 +1754,17 @@ progress::-moz-progress-bar {
   background: #fff;
   color: #1a1f2e;
   color-scheme: light;
+  /* Paski przewijania arkusza – jasne, jak on sam. */
+  --scrollbar-thumb: #7a8296;
+  scrollbar-color: var(--scrollbar-thumb) #eef1f8;
+}
+
+/*
+ * Przesuwanie palcem po komórkach przewija arkusz (nie stronę naraz z nim);
+ * na krawędzi arkusza przewijanie przechodzi na stronę (src/lib/scrollChain.ts).
+ */
+.xl-sheet__frame .fortune-sheet-overlay {
+  touch-action: none;
 }
 
 .xl-parts {

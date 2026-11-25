@@ -8,6 +8,7 @@ import type { SpreadsheetHandle } from '../components/SpreadsheetWorkbook';
 import { sessionsById, sheetLocation } from '../data';
 import { spreadsheetTasksById, totalPoints } from '../data/spreadsheets';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { chainScroll } from '../lib/scrollChain';
 import { POLISH_FUNCTIONS } from '../lib/spreadsheet/formulaLocale';
 import { compactSheets, loadTaskSheets } from '../lib/spreadsheet/workbook';
 import {
@@ -46,6 +47,15 @@ function ExcelWorkspace({ task }: { task: SpreadsheetTask }) {
   const workbook = useRef<SpreadsheetHandle>(null);
   const pending = useRef<Sheet[] | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const frame = useRef<HTMLDivElement>(null);
+  const sheetsReady = sheets !== null;
+
+  // Arkusz sam obsługuje kółko i dotyk – na jego krawędzi przewijamy dalej stronę.
+  useEffect(() => {
+    const container = frame.current;
+    if (!container) return;
+    return chainScroll(container, () => container.querySelector('.luckysheet-scrollbar-y'));
+  }, [sheetsReady]);
 
   // Pierwsze wejście (albo „przywróć dane”): wczytujemy pliki z danymi.
   useEffect(() => {
@@ -208,7 +218,7 @@ function ExcelWorkspace({ task }: { task: SpreadsheetTask }) {
               {loadError}
             </p>
           ) : sheets ? (
-            <div className="xl-sheet__frame">
+            <div className="xl-sheet__frame" ref={frame}>
               <Suspense fallback={<p className="muted">Ładowanie arkusza…</p>}>
                 <SpreadsheetWorkbook
                   key={version}
