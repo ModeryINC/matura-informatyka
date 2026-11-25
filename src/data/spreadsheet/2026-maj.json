@@ -1,0 +1,75 @@
+[
+  {
+    "id": "2026-maj-7",
+    "sessionId": "2026/maj",
+    "number": "7",
+    "title": "Staw",
+    "summary": "W pliku staw.txt są pomiary z całego 2022 roku: data, temperatura w °C (z dokładnością do 0,1) i wielkość opadu w mm.\n\nDo zadań 7.3–7.4: przez 184 dni, od 1 marca do 31 sierpnia 2023, rzęsa wodna rośnie w nocy o 1,75% dziennie, a pomiar zarośnięcia jest rano. 1 marca rano rzęsa zajmowała 2000 m² stawu o powierzchni 10 000 m² (20%). W stawie jest 80 amurów, każdy zjada w ciągu dnia 0,25 m² rzęsy, a w każdy piątek w ciągu dnia właściciel odławia dodatkowo 60 m². Kontrola: 30 kwietnia rano staw był zarośnięty w 25,79%.",
+    "files": [
+      { "sheet": "staw", "path": "arkusze/2026/maj/pliki/Dane-NF-2605/staw.txt", "hasHeader": true }
+    ],
+    "parts": [
+      {
+        "number": "7.1",
+        "points": 3,
+        "prompt": "Utwórz zestawienie średnich miesięcznych temperatur w zaokrągleniu do jednego miejsca po przecinku.",
+        "chart": "Utwórz wykres kolumnowy porównujący średnie temperatury (tytuł, opisy osi, miesiące na osi X).",
+        "table": {
+          "rows": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+          "columns": ["średnia temperatura"],
+          "expected": [
+            ["1.1"],
+            ["4.1"],
+            ["4.1"],
+            ["7.4"],
+            ["15.9"],
+            ["20.5"],
+            ["20.4"],
+            ["21.1"],
+            ["13.7"],
+            ["12.5"],
+            ["5.2"],
+            ["1.6"]
+          ]
+        }
+      },
+      {
+        "number": "7.2",
+        "points": 2,
+        "prompt": "Dla każdego miesiąca wyznacz długość najdłuższego ciągu kolejnych dni bez opadów (opady = 0) w tym miesiącu.",
+        "table": {
+          "rows": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+          "columns": ["najdłuższy ciąg dni bez opadów"],
+          "expected": [
+            ["11"],
+            ["7"],
+            ["20"],
+            ["8"],
+            ["20"],
+            ["11"],
+            ["10"],
+            ["8"],
+            ["14"],
+            ["15"],
+            ["10"],
+            ["10"]
+          ]
+        }
+      },
+      {
+        "number": "7.3",
+        "points": 2,
+        "prompt": "Podaj, w którym dniu (licząc od 1 marca 2023 jako dnia 1.) pomiar po raz pierwszy wykazał, że rzęsa zajmuje więcej niż 75% powierzchni stawu.",
+        "fields": [
+          { "label": "Numer dnia (lub data)", "expected": "167", "alternatives": ["2023-08-14"] }
+        ]
+      },
+      {
+        "number": "7.4",
+        "points": 2,
+        "prompt": "Podaj najmniejszą liczbę amurów, którą musi wpuścić właściciel, by rzęsa w całym badanym okresie zajmowała maksymalnie 50% powierzchni stawu.",
+        "fields": [{ "label": "Liczba amurów", "expected": "94" }]
+      }
+    ]
+  }
+]

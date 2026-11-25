@@ -101,3 +101,47 @@ Podgląd PDF otwiera się na stronie z zadaniem. Po dodaniu zadań odśwież map
 ```bash
 python scripts/find_sheet_pages.py   # zapisuje src/data/sheet-pages.json
 ```
+
+## Zadania z arkusza kalkulacyjnego (zakładka „Excel”)
+
+Plik `src/data/spreadsheet/<rok>-<sesja>.json` to tablica zadań; jedno zadanie obejmuje
+całe zadanie z arkusza (np. „Zadanie 6. Konfitury owocowe”) z podpunktami:
+
+```json
+{
+  "id": "2023-maj-6",
+  "sessionId": "2023/maj",
+  "number": "6",
+  "title": "Konfitury owocowe",
+  "summary": "Wprowadzenie z arkusza (akapity oddzielone \n\n)",
+  "files": [
+    { "sheet": "owoce", "path": "arkusze/2023/maj/pliki/Dane_2305/owoce.txt", "hasHeader": true }
+  ],
+  "parts": [
+    {
+      "number": "6.2",
+      "points": 1,
+      "prompt": "…",
+      "fields": [{ "label": "Liczba dni", "expected": "19" }]
+    },
+    {
+      "number": "6.3",
+      "points": 3,
+      "prompt": "…",
+      "chart": "opis wykresu (nie jest sprawdzany)",
+      "table": { "rows": ["…"], "columns": ["…"], "expected": [["41"], ["72"], ["40"]] }
+    }
+  ]
+}
+```
+
+- `files` – każdy plik trafia do osobnej karty arkusza. `hasHeader: true`, gdy pierwszy wiersz
+  pliku to nagłówki; `headers: [...]` dopisuje nagłówki plikowi, który ich nie ma.
+- `fields` – pojedyncze odpowiedzi; `alternatives` – inne poprawne zapisy, `tolerance` –
+  dopuszczalna różnica liczb (domyślnie: liczby całkowite dokładnie, ułamki z dokładnością
+  ostatniej cyfry klucza). Daty zapisuj jako `rrrr-mm-dd`.
+- `table` – zestawienie; uczeń może je wstawić z zaznaczenia (z podpisami lub bez, także
+  transponowane).
+
+Klucz potwierdź obliczeniami w `solutions/excel/<id>.py` (opis w `solutions/README.md`)
+i uruchom `npm run verify:excel`, a potem `python scripts/find_sheet_pages.py`.

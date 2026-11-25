@@ -1,5 +1,7 @@
 import type { RouteObject } from 'react-router';
 import { Layout } from './components/Layout';
+import { ExcelTaskPage } from './pages/ExcelTaskPage';
+import { ExcelTasksPage } from './pages/ExcelTasksPage';
 import { HelpPage } from './pages/HelpPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { PythonBasicsPage } from './pages/PythonBasicsPage';
@@ -23,6 +25,8 @@ export const routes: RouteObject[] = [
       { path: 'zadanie/:taskId', element: <TaskPage /> },
       { path: 'arkusze', element: <SessionsPage /> },
       { path: 'arkusze/:year/:slug', element: <SessionPage /> },
+      { path: 'excel', element: <ExcelTasksPage /> },
+      { path: 'excel/:taskId', element: <ExcelTaskPage /> },
       { path: 'python', element: <PythonBasicsPage /> },
       { path: 'pomoc', element: <HelpPage /> },
       { path: '*', element: <NotFoundPage /> },

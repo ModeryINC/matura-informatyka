@@ -37,6 +37,9 @@ export default defineConfig({
         'scripts/build-catalog.ts',
         'scripts/verify-solutions.ts',
         'scripts/verify-basics.ts',
+        'scripts/verify-excel.ts',
+        // Arkusz rysuje na <canvas> (brak w jsdom) – w testach jest podmieniany.
+        'src/components/SpreadsheetWorkbook.tsx',
       ],
       thresholds: { lines: 80, functions: 80, branches: 70, statements: 80 },
     },

@@ -15,6 +15,11 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
   - _programy_ (część 2) – kod czyta plik z danymi i wypisuje odpowiedź; jest uruchamiany
     na danych przykładowych z arkusza i na pełnych danych egzaminacyjnych,
   - _funkcje_ (część 1, „zapisz algorytm”) – funkcja sprawdzana zestawem testów.
+- **Zadania z Excela** (zakładka „Excel”) – zadania z arkusza kalkulacyjnego z sesji majowych
+  nowej formuły (2023–2026). Dane są od razu wczytane do arkusza w przeglądarce
+  ([Fortune Sheet](https://github.com/ruilisi/fortune-sheet), MIT), formuły można pisać po
+  polsku (`=LICZ.JEŻELI(A:A;">5")`), a odpowiedzi – także całe zestawienia wstawiane
+  z zaznaczenia – są sprawdzane z kluczem CKE. Wykresów nie sprawdzamy.
 - **Wyszukiwanie** po temacie (sortowanie, rekurencja, słowniki, liczby pierwsze, …), roku,
   części arkusza, statusie i dowolnej frazie – bez względu na polskie znaki. Filtry są
   zapisywane w adresie, więc wyszukiwanie można udostępnić linkiem.
@@ -46,6 +51,7 @@ npm run dev          # http://localhost:5173
 | `npm run test:coverage`    | testy z raportem pokrycia (progi w `vite.config.ts`)             |
 | `npm run test:python`      | testy `harness.py` (unittest)                                    |
 | `npm run verify:solutions` | uruchamia rozwiązania wzorcowe i porównuje je z kluczem w danych |
+| `npm run verify:excel`     | obliczenia wzorcowe zadań z Excela kontra klucz w danych         |
 | `npm run lint`             | ESLint (bez tolerancji ostrzeżeń)                                |
 | `npm run typecheck`        | TypeScript                                                       |
 | `npm run format`           | Prettier                                                         |
@@ -73,12 +79,14 @@ npm run dev          # http://localhost:5173
 public/arkusze/<rok>/<sesja>/{arkusz,odpowiedzi,pliki}/   materiały CKE
 src/
   data/tasks/*.json      zadania (po jednym pliku na sesję)
+  data/spreadsheet/*.json  zadania z arkusza kalkulacyjnego (zakładka „Excel”)
   data/index.ts          dostęp do katalogu i zadań
   lib/                   logika bez Reacta: porównywanie, wyszukiwanie, zapis, walidacja
   python/                worker Pyodide, harness i klient (PythonRunner)
   components/, pages/    interfejs (React 19, React Router – HashRouter)
   styles/global.css      style w czystym CSS (tokeny, motywy, układ)
 solutions/<sesja>/*.py   rozwiązania wzorcowe (tylko do weryfikacji w CI)
+solutions/excel/*.py     obliczenia wzorcowe do kluczy zadań z Excela
 worker/                  pośrednik podpowiedzi AI (Cloudflare Worker, klucz Gemini jako sekret)
 scripts/                 generowanie katalogu i weryfikacja rozwiązań
 tests/                   konfiguracja testów i testy harnessu Pythona
@@ -94,7 +102,7 @@ Workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
 
 - przy każdym pushu i pull requeście: lint, formatowanie, typy, testy z pokryciem, build,
   testy harnessu Pythona oraz **weryfikacja wszystkich kluczy odpowiedzi** rozwiązaniami
-  wzorcowymi,
+  wzorcowymi (także zadań z Excela),
 - po zmianach na `main`: wdrożenie pośrednika podpowiedzi AI na Cloudflare Workers (klucz
   Gemini jako sekret Workera), build strony z adresem pośrednika i wdrożenie na GitHub Pages
   (strona działa pod `/<nazwa-repo>/`, ścieżkę ustawia zmienna `BASE_PATH`).

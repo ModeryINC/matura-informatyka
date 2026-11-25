@@ -1,0 +1,57 @@
+[
+  {
+    "id": "2023-maj-6",
+    "sessionId": "2023/maj",
+    "number": "6",
+    "title": "Konfitury owocowe",
+    "summary": "W pliku owoce.txt są dostawy owoców do przetwórni od 01.05.2020 do 30.09.2020 (dostawy odbywały się codziennie). W każdym wierszu: data, liczba kilogramów dostarczonych malin, truskawek i porzeczek.\n\nPrzetwórnia produkuje konfitury dwuowocowe w proporcji 1:1. Każdego dnia rano (po dostawie) wybiera dwa owoce, których jest w przetwórni najwięcej, i zużywa ich maksymalną możliwą ilość. Niewykorzystane owoce czekają w chłodni do następnego dnia.",
+    "files": [
+      { "sheet": "owoce", "path": "arkusze/2023/maj/pliki/Dane_2305/owoce.txt", "hasHeader": true }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 3,
+        "prompt": "Dla każdego miesiąca (maj–wrzesień) wykonaj zestawienie liczby dostarczonych kilogramów malin, truskawek i porzeczek.",
+        "chart": "Na podstawie zestawienia utwórz wykres kolumnowy (tytuł, legenda, na osi X nazwy miesięcy, na osi Y liczba kilogramów).",
+        "table": {
+          "rows": ["maj", "czerwiec", "lipiec", "sierpień", "wrzesień"],
+          "columns": ["maliny", "truskawki", "porzeczki"],
+          "expected": [
+            ["9238", "9287", "3309"],
+            ["9485", "8916", "5081"],
+            ["11592", "11339", "10567"],
+            ["11045", "11386", "11078"],
+            ["6532", "7476", "6355"]
+          ]
+        }
+      },
+      {
+        "number": "6.2",
+        "points": 1,
+        "prompt": "Podaj liczbę dni, w których spośród trzech rodzajów owoców dostarczono najwięcej porzeczek.",
+        "fields": [{ "label": "Liczba dni", "expected": "19" }]
+      },
+      {
+        "number": "6.3",
+        "points": 3,
+        "prompt": "Podaj, ile razy w okresie od 01.05.2020 do 30.09.2020 produkowano konfitury poszczególnych rodzajów.",
+        "table": {
+          "rows": ["malinowo-porzeczkowe", "malinowo-truskawkowe", "truskawkowo-porzeczkowe"],
+          "columns": ["liczba dni produkcji"],
+          "expected": [["41"], ["72"], ["40"]]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 3,
+        "prompt": "Na 1 kg konfitury potrzeba po 1 kg każdego z dwóch owoców. Podaj, ile kilogramów konfitur każdego rodzaju wyprodukowano.",
+        "table": {
+          "rows": ["malinowo-porzeczkowe", "malinowo-truskawkowe", "truskawkowo-porzeczkowe"],
+          "columns": ["kg konfitur"],
+          "expected": [["18008"], ["29732"], ["18382"]]
+        }
+      }
+    ]
+  }
+]

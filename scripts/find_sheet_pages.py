@@ -36,7 +36,10 @@ def main():
     catalog = json.loads((ROOT / "src" / "data" / "catalog.generated.json").read_text("utf-8"))
     sessions = {session["id"]: session for session in catalog}
     found, missing = {}, []
-    for task_file in sorted(glob.glob(str(ROOT / "src" / "data" / "tasks" / "*.json"))):
+    task_files = glob.glob(str(ROOT / "src" / "data" / "tasks" / "*.json")) + glob.glob(
+        str(ROOT / "src" / "data" / "spreadsheet" / "*.json")
+    )
+    for task_file in sorted(task_files):
         for task in json.loads(Path(task_file).read_text("utf-8")):
             # Nagłówek „Zadanie 3.1.” (z wielkiej litery – pomija odwołania „do zadania 3.1”).
             pattern = re.compile(r"Zadanie\s+" + re.escape(task["number"]) + r"\.?(?![\d.])")

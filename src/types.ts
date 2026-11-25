@@ -147,3 +147,66 @@ export interface SubmissionResult {
   /** Czas wykonania w milisekundach. */
   durationMs: number;
 }
+
+/* ───────────────────────── Zadania z arkusza kalkulacyjnego ───────────────────────── */
+
+/** Plik z danymi wczytywany do osobnej karty arkusza. */
+export interface SpreadsheetFile {
+  /** Nazwa karty, np. `owoce`. */
+  sheet: string;
+  /** Ścieżka względem `public/`. */
+  path: string;
+  /**
+   * Nagłówki dopisywane nad danymi, gdy plik ich nie ma (jak przy imporcie,
+   * gdy uczeń sam podpisze kolumny).
+   */
+  headers?: string[];
+  /** Pierwszy wiersz pliku to nagłówki kolumn. */
+  hasHeader?: boolean;
+}
+
+/** Pojedyncza odpowiedź (liczba, tekst lub data). */
+export interface SpreadsheetField {
+  label: string;
+  expected: string;
+  /** Inne poprawne odpowiedzi, np. numer dnia zamiast daty. */
+  alternatives?: string[];
+  /** Dopuszczalna różnica dla liczb (domyślnie pół jednostki ostatniej cyfry). */
+  tolerance?: number;
+}
+
+/** Odpowiedź w postaci zestawienia (tabeli). */
+export interface SpreadsheetTable {
+  /** Podpisy wierszy (np. miesiące) – kolejność jak w kluczu. */
+  rows: string[];
+  /** Podpisy kolumn z wartościami. */
+  columns: string[];
+  /** Oczekiwane wartości: `expected[wiersz][kolumna]`. */
+  expected: string[][];
+  tolerance?: number;
+}
+
+/** Podpunkt zadania, np. `6.2`. */
+export interface SpreadsheetPart {
+  number: string;
+  points: number;
+  /** Skrót polecenia. */
+  prompt: string;
+  /** Podpunkt wymaga wykresu – wykres nie jest sprawdzany automatycznie. */
+  chart?: string;
+  fields?: SpreadsheetField[];
+  table?: SpreadsheetTable;
+}
+
+/** Zadanie rozwiązywane w arkuszu kalkulacyjnym (np. „Zadanie 6. Konfitury owocowe”). */
+export interface SpreadsheetTask {
+  /** Np. `2023-maj-6`. */
+  id: string;
+  sessionId: string;
+  number: string;
+  title: string;
+  /** Wprowadzenie z arkusza (akapity rozdzielone pustą linią). */
+  summary: string;
+  files: SpreadsheetFile[];
+  parts: SpreadsheetPart[];
+}

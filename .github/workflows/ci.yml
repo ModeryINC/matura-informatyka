@@ -55,6 +55,8 @@ jobs:
         run: npm run verify:solutions
       - name: Przykłady z „Podstaw Pythona” działają
         run: npm run verify:basics
+      - name: Klucze zadań z Excela zgadzają się z obliczeniami wzorcowymi
+        run: npm run verify:excel
 
   ai-proxy:
     name: Pośrednik podpowiedzi AI (Cloudflare Worker)

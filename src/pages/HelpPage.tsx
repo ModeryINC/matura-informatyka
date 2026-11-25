@@ -18,6 +18,16 @@ export function HelpPage() {
           funkcję o podanej nazwie, a sprawdzarka wywołuje ją z różnymi argumentami.
         </li>
       </ul>
+      <h2>Zadania z Excela</h2>
+      <p>
+        W zakładce „Excel” są zadania z arkusza kalkulacyjnego (sesje majowe nowej formuły). Dane z
+        plików są już wczytane – każdy plik w osobnej karcie. Formuły możesz pisać po polsku (
+        <code>=SUMA.JEŻELI(B2:B100;"Z";E2:E100)</code>) – zamienią się na angielskie nazwy funkcji.
+        Odpowiedź wpisz albo zaznacz komórki w arkuszu i kliknij „Wstaw z zaznaczenia”. Liczby
+        całkowite muszą się zgadzać dokładnie, ułamki – z dokładnością klucza; daty można zapisać
+        jako <code>2035-12-13</code> lub <code>13.12.2035</code>. Wykresy zrób w Excelu – nie są
+        sprawdzane.
+      </p>
       <h2>Jak porównywany jest wynik?</h2>
       <ul>
         <li>wielkość liter, dodatkowe spacje i puste linie nie mają znaczenia,</li>
