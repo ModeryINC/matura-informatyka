@@ -313,6 +313,7 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
                   code={code}
                   result={result}
                   output={output.stdout || output.error ? output : null}
+                  solved={status === 'zaliczone'}
                 />
               )}
             </div>

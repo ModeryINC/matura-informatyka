@@ -17,6 +17,8 @@ interface HintPanelProps {
   code: string;
   result: SubmissionResult | null;
   output: ExecutionOutput | null;
+  /** Zadanie zaliczone – nowe podpowiedzi są wtedy zablokowane. */
+  solved?: boolean;
   /** Podmiana `fetch` w testach. */
   fetchImpl?: typeof fetch;
 }
@@ -26,7 +28,15 @@ interface HintPanelProps {
  * podpowiedzi, więc AI może naprowadzać coraz konkretniej. Historia żyje tylko
  * w tej karcie – po przejściu do innego zadania zaczyna się od nowa.
  */
-export function HintPanel({ config, task, code, result, output, fetchImpl }: HintPanelProps) {
+export function HintPanel({
+  config,
+  task,
+  code,
+  result,
+  output,
+  solved = false,
+  fetchImpl,
+}: HintPanelProps) {
   const [hints, setHints] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -47,7 +57,7 @@ export function HintPanel({ config, task, code, result, output, fetchImpl }: Hin
 
   const ask = async () => {
     const current = hintQuota();
-    if (!current.allowed) {
+    if (solved || !current.allowed) {
       setNow(Date.now());
       return;
     }
@@ -73,7 +83,9 @@ export function HintPanel({ config, task, code, result, output, fetchImpl }: Hin
   };
 
   let status: string | null = null;
-  if (!quota.allowed) {
+  if (solved) {
+    status = 'Zadanie zaliczone – podpowiedzi AI nie są już potrzebne. 🎉';
+  } else if (!quota.allowed) {
     status =
       quota.reason === 'daily'
         ? 'Wykorzystano dzisiejszy limit podpowiedzi AI. Wróć jutro!'
@@ -88,13 +100,13 @@ export function HintPanel({ config, task, code, result, output, fetchImpl }: Hin
           type="button"
           className="button button--small"
           onClick={ask}
-          disabled={loading || !quota.allowed}
+          disabled={loading || solved || !quota.allowed}
         >
           {loading ? 'Myślę…' : hints.length ? '💡 Kolejna podpowiedź' : '💡 Poproś o podpowiedź'}
         </button>
       </header>
 
-      {hints.length === 0 && !loading && !error && (
+      {hints.length === 0 && !loading && !error && !solved && (
         <p className="hints__intro">
           Utknąłeś? AI spojrzy na Twój kod i wynik sprawdzenia i naprowadzi Cię – bez podawania
           gotowego rozwiązania.

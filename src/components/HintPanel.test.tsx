@@ -22,7 +22,7 @@ const task: ProgramTask = {
 const reply = (text: string) =>
   new Response(JSON.stringify({ candidates: [{ content: { parts: [{ text }] } }] }));
 
-const renderPanel = (fetchImpl: typeof fetch) =>
+const renderPanel = (fetchImpl: typeof fetch, solved = false) =>
   render(
     <HintPanel
       config={{ endpoint: 'https://proxy.example/' }}
@@ -30,6 +30,7 @@ const renderPanel = (fetchImpl: typeof fetch) =>
       code="print(0)"
       result={null}
       output={null}
+      solved={solved}
       fetchImpl={fetchImpl}
     />,
   );
@@ -45,6 +46,16 @@ describe('HintPanel', () => {
     expect(fetchImpl).toHaveBeenCalledTimes(1);
     expect(screen.getByRole('button', { name: /Kolejna podpowiedź/ })).toBeDisabled();
     expect(screen.getByText(/Następna podpowiedź za \d+ s/)).toBeInTheDocument();
+  });
+
+  it('po zaliczeniu zadania nie pozwala prosić o podpowiedź', async () => {
+    const fetchImpl = vi.fn();
+    renderPanel(fetchImpl, true);
+    const button = screen.getByRole('button', { name: /podpowied/ });
+    expect(button).toBeDisabled();
+    expect(screen.getByText(/Zadanie zaliczone/)).toBeInTheDocument();
+    await userEvent.click(button);
+    expect(fetchImpl).not.toHaveBeenCalled();
   });
 
   it('pokazuje błąd usługi', async () => {
