@@ -103,6 +103,21 @@ describe('TaskPage', () => {
     expect(screen.queryByText('działa…')).not.toBeInTheDocument();
   });
 
+  it('pokazuje podpowiedzi AI tylko wtedy, gdy build ma klucz', () => {
+    const runner = fakeRunner({ passed: true, results: [], durationMs: 1 });
+    const { unmount } = renderTask(runner);
+    expect(screen.queryByRole('region', { name: 'Podpowiedzi AI' })).not.toBeInTheDocument();
+    unmount();
+
+    renderAt(`/zadanie/${task.id}`, [
+      {
+        path: '/zadanie/:taskId',
+        element: <TaskPage runner={runner} aiConfig={{ apiKey: 'k', model: 'm' }} />,
+      },
+    ]);
+    expect(screen.getByRole('region', { name: 'Podpowiedzi AI' })).toBeInTheDocument();
+  });
+
   it('dla nieznanego zadania pokazuje stronę 404', () => {
     renderTask(fakeRunner({ passed: true, results: [], durationMs: 1 }), 'nie-ma');
     expect(screen.getByRole('heading', { name: 'Nie znaleziono strony' })).toBeInTheDocument();

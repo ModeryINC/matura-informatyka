@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router';
 import { CodeEditor } from '../components/CodeEditor';
 import { Console } from '../components/Console';
 import { FileList } from '../components/FileList';
+import { HintPanel } from '../components/HintPanel';
 import { PdfViewer } from '../components/PdfViewer';
 import { ResultPanel } from '../components/ResultPanel';
 import { StatusBadge } from '../components/StatusBadge';
@@ -10,6 +11,7 @@ import { TopicList } from '../components/TopicBadge';
 import { sessionsById, tasksById, tasksForSession } from '../data';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useRunnerStatus } from '../hooks/useRunnerStatus';
+import { aiConfigFromEnv, type AiConfig } from '../lib/hints';
 import { loadSolution, removeSolution, saveSolution, solutionStatus } from '../lib/storage';
 import { getRunner, type ExecutionOutput, type PythonRunner } from '../python/runner';
 import type { SubmissionResult, Task } from '../types';
@@ -26,15 +28,29 @@ const STATUS_TEXT = {
 const EMPTY_OUTPUT: ExecutionOutput = { stdout: '', error: null };
 const USES_INPUT = /\binput\s*\(/;
 
-export function TaskPage({ runner = getRunner() }: { runner?: PythonRunner }) {
+const ENV_AI_CONFIG = aiConfigFromEnv();
+
+interface TaskPageProps {
+  runner?: PythonRunner;
+  /** Konfiguracja podpowiedzi AI; `null` – wyłączone (brak klucza w buildzie). */
+  aiConfig?: AiConfig | null;
+}
+
+export function TaskPage({ runner = getRunner(), aiConfig = ENV_AI_CONFIG }: TaskPageProps) {
   const { taskId = '' } = useParams();
   const task = tasksById.get(taskId);
   if (!task) return <NotFoundPage />;
   // `key` zapewnia świeży stan edytora po przejściu do innego zadania.
-  return <TaskWorkspace key={task.id} task={task} runner={runner} />;
+  return <TaskWorkspace key={task.id} task={task} runner={runner} aiConfig={aiConfig} />;
 }
 
-function TaskWorkspace({ task, runner }: { task: Task; runner: PythonRunner }) {
+interface TaskWorkspaceProps {
+  task: Task;
+  runner: PythonRunner;
+  aiConfig: AiConfig | null;
+}
+
+function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
   const session = sessionsById.get(task.sessionId);
   useDocumentTitle(`Zadanie ${task.number} – ${task.title}`);
 
@@ -235,6 +251,15 @@ function TaskWorkspace({ task, runner }: { task: Task; runner: PythonRunner }) {
               <div aria-live="polite" ref={resultRef}>
                 {result && <ResultPanel result={result} />}
               </div>
+              {aiConfig && (
+                <HintPanel
+                  config={aiConfig}
+                  task={task}
+                  code={code}
+                  result={result}
+                  output={output.stdout || output.error ? output : null}
+                />
+              )}
             </div>
           </div>
         </section>

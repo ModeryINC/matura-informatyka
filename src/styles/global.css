@@ -1125,6 +1125,105 @@ progress::-moz-progress-bar {
   color: var(--warning);
 }
 
+/* Podpowiedzi AI */
+.hints {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--accent-soft) 45%, var(--code-bg));
+}
+
+.hints__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.hints__title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.hints__header .button {
+  margin-inline-start: auto;
+}
+
+.hints__intro,
+.hints__status,
+.hints__note {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.hints__note {
+  font-size: 0.75rem;
+}
+
+.hints__list {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hints__item {
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.hints__error {
+  margin: 0;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-size: 0.85rem;
+}
+
+.hint-text {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.hint-text p,
+.hint-text ul {
+  margin: 0;
+}
+
+.hint-text ul {
+  padding-inline-start: 1.2rem;
+}
+
+.hint-text code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  padding: 0.05em 0.3em;
+  border-radius: 4px;
+  background: var(--surface-2);
+}
+
+.hint-text pre {
+  margin: 0;
+  padding: 0.5rem 0.7rem;
+  overflow-x: auto;
+  border-radius: 6px;
+  background: var(--code-bg);
+}
+
+.hint-text pre code {
+  padding: 0;
+  background: none;
+}
+
 .result {
   display: grid;
   gap: 0.6rem;
