@@ -8,5 +8,7 @@ __pycache__/
 src/data/catalog.generated.json
 .claude/
 
-# Lokalne zmienne środowiskowe (np. VITE_AI_API_KEY)
+# Lokalne zmienne środowiskowe (np. VITE_AI_ENDPOINT) i sekrety Workera
 .env*.local
+worker/.dev.vars
+worker/.wrangler/

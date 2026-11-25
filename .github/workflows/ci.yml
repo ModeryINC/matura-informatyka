@@ -54,13 +54,39 @@ jobs:
       - name: Weryfikacja kluczy odpowiedzi rozwiązaniami wzorcowymi
         run: npm run verify:solutions
 
+  ai-proxy:
+    name: Pośrednik podpowiedzi AI (Cloudflare Worker)
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: [frontend]
+    runs-on: ubuntu-latest
+    # Środowisko github-pages ma AI_API_KEY i dane Cloudflare (sekrety lub zmienne).
+    environment: github-pages
+    outputs:
+      url: ${{ steps.deploy.outputs.deployment-url }}
+    steps:
+      - uses: actions/checkout@v7
+      - id: check
+        name: Sprawdź konfigurację Cloudflare
+        run: echo "enabled=${{ secrets.CLOUDFLARE_API_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
+      # Klucz Gemini trafia wyłącznie do Workera jako sekret GEMINI_API_KEY.
+      - id: deploy
+        if: steps.check.outputs.enabled == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || vars.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: latest
+          workingDirectory: worker
+          secrets: |
+            GEMINI_API_KEY
+        env:
+          GEMINI_API_KEY: ${{ secrets.AI_API_KEY || vars.AI_API_KEY }}
+
   pages-build:
     name: Build strony do wdrożenia
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    needs: [frontend, python]
+    needs: [frontend, python, ai-proxy]
     runs-on: ubuntu-latest
-    # Środowisko daje dostęp do AI_API_KEY (sekret lub zmienna) ustawionego w github-pages.
-    environment: github-pages
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -68,14 +94,13 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
-      # Uwaga: klucz trafia do publicznego bundla JS (strona nie ma serwera) –
-      # ogranicz go w Google Cloud, patrz docs/podpowiedzi-ai.md.
-      - name: Build z podpowiedziami AI
+      # Strona dostaje tylko adres pośrednika – żadnego klucza. Bez Workera
+      # (brak CLOUDFLARE_API_TOKEN i AI_ENDPOINT) podpowiedzi AI są wyłączone.
+      - name: Build
         run: npm run build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
-          VITE_AI_API_KEY: ${{ secrets.AI_API_KEY || vars.AI_API_KEY }}
-          VITE_AI_MODEL: ${{ vars.AI_MODEL }}
+          VITE_AI_ENDPOINT: ${{ needs.ai-proxy.outputs.url || vars.AI_ENDPOINT }}
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist

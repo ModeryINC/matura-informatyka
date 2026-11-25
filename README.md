@@ -21,7 +21,8 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
 - **Konsola** – „Uruchom” pokazuje wyjście `print` na bieżąco; dane dla `input()` wpisuje
   się w pole „Wejście” (po jednej linii na wywołanie).
 - **Podpowiedzi AI** (Google Gemini) – naprowadzają na podstawie Twojego kodu i wyniku
-  sprawdzenia, bez podawania gotowego rozwiązania ([konfiguracja](docs/podpowiedzi-ai.md)).
+  sprawdzenia, bez podawania gotowego rozwiązania. Klucz jest bezpieczny po stronie
+  pośrednika na Cloudflare Workers ([konfiguracja](docs/podpowiedzi-ai.md)).
 - **Postęp** – rozwiązania i statusy zapisują się lokalnie w przeglądarce.
 - Motyw jasny/ciemny, obsługa klawiatury (Ctrl+Enter – sprawdź), układ na telefon.
 
@@ -78,6 +79,7 @@ src/
   components/, pages/    interfejs (React 19, React Router – HashRouter)
   styles/global.css      style w czystym CSS (tokeny, motywy, układ)
 solutions/<sesja>/*.py   rozwiązania wzorcowe (tylko do weryfikacji w CI)
+worker/                  pośrednik podpowiedzi AI (Cloudflare Worker, klucz Gemini jako sekret)
 scripts/                 generowanie katalogu i weryfikacja rozwiązań
 tests/                   konfiguracja testów i testy harnessu Pythona
 docs/                    dokumentacja techniczna
@@ -93,9 +95,9 @@ Workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
 - przy każdym pushu i pull requeście: lint, formatowanie, typy, testy z pokryciem, build,
   testy harnessu Pythona oraz **weryfikacja wszystkich kluczy odpowiedzi** rozwiązaniami
   wzorcowymi,
-- po zmianach na `main`: build z kluczem Gemini (`AI_API_KEY` ze środowiska `github-pages`)
-  i wdrożenie na GitHub Pages (strona działa pod `/<nazwa-repo>/`, ścieżkę ustawia zmienna
-  `BASE_PATH`).
+- po zmianach na `main`: wdrożenie pośrednika podpowiedzi AI na Cloudflare Workers (klucz
+  Gemini jako sekret Workera), build strony z adresem pośrednika i wdrożenie na GitHub Pages
+  (strona działa pod `/<nazwa-repo>/`, ścieżkę ustawia zmienna `BASE_PATH`).
 
 Dependabot co tydzień proponuje aktualizacje zależności i akcji.
 
