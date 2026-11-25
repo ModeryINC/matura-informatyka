@@ -1,0 +1,208 @@
+[
+  {
+    "id": "2024-stara-formula-maj-1.2",
+    "sessionId": "2024/stara-formula-maj",
+    "number": "1.2",
+    "title": "Największy czynnik pierwszy",
+    "part": 1,
+    "points": 4,
+    "topics": [
+      "liczby-pierwsze",
+      "teoria-liczb"
+    ],
+    "summary": "Napisz funkcję zwracającą największy czynnik w rozkładzie liczby n > 1 na czynniki pierwsze, np. dla 120 = 2·2·2·3·5 wynik to 5. Wolno operować tylko na liczbach całkowitych, bez funkcji wbudowanych. Sprawdzarka testuje też dużą liczbę – zadbaj o wydajność.",
+    "starterCode": "def najwiekszy_czynnik(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "najwiekszy_czynnik",
+    "tests": [
+      {
+        "args": [
+          120
+        ],
+        "expected": 5
+      },
+      {
+        "args": [
+          14
+        ],
+        "expected": 7
+      },
+      {
+        "args": [
+          32
+        ],
+        "expected": 2
+      },
+      {
+        "args": [
+          252
+        ],
+        "expected": 7
+      },
+      {
+        "args": [
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "args": [
+          97
+        ],
+        "expected": 97
+      },
+      {
+        "args": [
+          1001
+        ],
+        "expected": 13
+      },
+      {
+        "args": [
+          999983
+        ],
+        "expected": 999983
+      },
+      {
+        "args": [
+          1024
+        ],
+        "expected": 2
+      },
+      {
+        "args": [
+          600851475143
+        ],
+        "expected": 6857
+      }
+    ]
+  },
+  {
+    "id": "2024-stara-formula-maj-4.1",
+    "sessionId": "2024/stara-formula-maj",
+    "number": "4.1",
+    "title": "Wolne miejsca na jednomasztowce",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "tablice-2d",
+      "grafy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik plansza.txt opisuje planszę 100×100 z cyfr 0/1 (1 – pole statku). Podaj, na ilu polach można jeszcze postawić jednomasztowiec, tzn. ile pól zawiera 0 i nie styka się bokiem ani wierzchołkiem z żadnym polem statku.",
+    "starterCode": "with open(\"plansza.txt\") as plik:\n    P = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (plansza_przyklad.txt)",
+        "files": {
+          "plansza.txt": "arkusze/2024/stara-formula-maj/pliki/Dane_SF_2405/plansza_przyklad.txt"
+        },
+        "expected": "11"
+      },
+      {
+        "label": "Dane egzaminacyjne (plansza.txt)",
+        "files": {
+          "plansza.txt": "arkusze/2024/stara-formula-maj/pliki/Dane_SF_2405/plansza.txt"
+        },
+        "expected": "9321"
+      }
+    ]
+  },
+  {
+    "id": "2024-stara-formula-maj-4.2",
+    "sessionId": "2024/stara-formula-maj",
+    "number": "4.2",
+    "title": "Symetryczne pary jednomasztowców",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "tablice-2d",
+      "grafy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Jednomasztowiec to pojedyncze pole statku otoczone zerami (lub krawędzią planszy). Podaj liczbę par jednomasztowców położonych symetrycznie względem przekątnej z lewego górnego do prawego dolnego rogu (statków na przekątnej nie liczymy).",
+    "starterCode": "with open(\"plansza.txt\") as plik:\n    P = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (plansza_przyklad.txt)",
+        "files": {
+          "plansza.txt": "arkusze/2024/stara-formula-maj/pliki/Dane_SF_2405/plansza_przyklad.txt"
+        },
+        "expected": "2"
+      },
+      {
+        "label": "Dane egzaminacyjne (plansza.txt)",
+        "files": {
+          "plansza.txt": "arkusze/2024/stara-formula-maj/pliki/Dane_SF_2405/plansza.txt"
+        },
+        "expected": "5"
+      }
+    ]
+  },
+  {
+    "id": "2024-stara-formula-maj-4.3",
+    "sessionId": "2024/stara-formula-maj",
+    "number": "4.3",
+    "title": "Liczba dwumasztowców",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "tablice-2d",
+      "grafy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Dwumasztowiec to dwa sąsiednie (w poziomie lub pionie) pola statku otoczone zerami. Statki nie stykają się ze sobą. Podaj liczbę dwumasztowców na planszy.",
+    "starterCode": "with open(\"plansza.txt\") as plik:\n    P = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (plansza_przyklad.txt)",
+        "files": {
+          "plansza.txt": "arkusze/2024/stara-formula-maj/pliki/Dane_SF_2405/plansza_przyklad.txt"
+        },
+        "expected": "7"
+      },
+      {
+        "label": "Dane egzaminacyjne (plansza.txt)",
+        "files": {
+          "plansza.txt": "arkusze/2024/stara-formula-maj/pliki/Dane_SF_2405/plansza.txt"
+        },
+        "expected": "35"
+      }
+    ]
+  },
+  {
+    "id": "2024-stara-formula-maj-4.4",
+    "sessionId": "2024/stara-formula-maj",
+    "number": "4.4",
+    "title": "Statki na przekątnych",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "tablice-2d",
+      "grafy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Podaj liczbę jednomasztowców, a w drugiej linii liczbę dwumasztowców, których co najmniej jedno pole leży na jednej z dwóch głównych przekątnych planszy.",
+    "starterCode": "with open(\"plansza.txt\") as plik:\n    P = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (plansza_przyklad.txt)",
+        "files": {
+          "plansza.txt": "arkusze/2024/stara-formula-maj/pliki/Dane_SF_2405/plansza_przyklad.txt"
+        },
+        "expected": "1\n3"
+      },
+      {
+        "label": "Dane egzaminacyjne (plansza.txt)",
+        "files": {
+          "plansza.txt": "arkusze/2024/stara-formula-maj/pliki/Dane_SF_2405/plansza.txt"
+        },
+        "expected": "1\n10"
+      }
+    ]
+  }
+]
