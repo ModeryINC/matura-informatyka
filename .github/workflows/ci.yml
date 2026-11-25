@@ -90,30 +90,29 @@ jobs:
               exit 1
             fi
           done
-          ok=false
-          for url in "https://api.cloudflare.com/client/v4/user/tokens/verify" \
-                     "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tokens/verify"; do
-            if curl -fsS -H "Authorization: Bearer $TOKEN" "$url" | jq -e '.success and .result.status == "active"' >/dev/null 2>&1; then
-              ok=true
-              break
-            fi
-          done
-          if [ "$ok" != true ]; then
+          api=https://api.cloudflare.com/client/v4
+          # Kod HTTP i kody błędów Cloudflare dla zapytania (bez treści odpowiedzi).
+          probe() {
+            local body code
+            body=$(curl -sS -w '
+%{http_code}' -H "Authorization: Bearer $TOKEN" "$api$1")
+            code=$(echo "$body" | tail -n1)
+            echo "$1 → HTTP $code $(echo "$body" | sed '$d' | jq -c '[.errors[]?.code]' 2>/dev/null)"
+            [ "$code" = 200 ]
+          }
+          user_token=false; account_token=false
+          probe /user/tokens/verify && user_token=true
+          probe "/accounts/$ACCOUNT_ID/tokens/verify" && account_token=true
+          if [ "$user_token" != true ] && [ "$account_token" != true ]; then
             echo "::error::Cloudflare odrzuca CLOUDFLARE_API_TOKEN – utwórz nowy token (szablon „Edit Cloudflare Workers”) i zapisz go jako sekret."
             exit 1
           fi
-          echo "Token Cloudflare jest aktywny."
-          # Do jakich kont token ma dostęp i czy zgadza się z CLOUDFLARE_ACCOUNT_ID
-          # (wypisujemy tylko liczby i kody błędów).
-          accounts=$(curl -sS -H "Authorization: Bearer $TOKEN" "https://api.cloudflare.com/client/v4/accounts")
-          echo "Konta dostępne dla tokenu: $(echo "$accounts" | jq '.result | length // 0'), błędy: $(echo "$accounts" | jq -c '[.errors[]?.code]')"
-          if ! echo "$accounts" | jq -e --arg id "$ACCOUNT_ID" '.result[]? | select(.id == $id)' >/dev/null; then
-            echo "::error::Token nie ma dostępu do konta z CLOUDFLARE_ACCOUNT_ID – sprawdź identyfikator konta i sekcję „Account policy” tokenu."
+          echo "Token aktywny (użytkownika: $user_token, konta: $account_token)."
+          if ! probe "/accounts/$ACCOUNT_ID/workers/scripts"; then
+            echo "::error::Token nie ma uprawnienia do Workerów na koncie z CLOUDFLARE_ACCOUNT_ID – w tokenie dodaj Account → Workers Scripts → Edit dla swojego konta."
             exit 1
           fi
-          scripts=$(curl -sS -o /dev/null -w '%{http_code}' -H "Authorization: Bearer $TOKEN" \
-            "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/scripts")
-          echo "Lista Workerów: HTTP $scripts"
+          probe /memberships || echo "::warning::Token nie odczyta listy kont (Memberships) – wrangler może tego potrzebować."
       # Klucz Gemini trafia wyłącznie do Workera jako sekret GEMINI_API_KEY.
       - id: deploy
         if: steps.check.outputs.enabled == 'true'
