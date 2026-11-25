@@ -103,6 +103,17 @@ jobs:
             exit 1
           fi
           echo "Token Cloudflare jest aktywny."
+          # Do jakich kont token ma dostęp i czy zgadza się z CLOUDFLARE_ACCOUNT_ID
+          # (wypisujemy tylko liczby i kody błędów).
+          accounts=$(curl -sS -H "Authorization: Bearer $TOKEN" "https://api.cloudflare.com/client/v4/accounts")
+          echo "Konta dostępne dla tokenu: $(echo "$accounts" | jq '.result | length // 0'), błędy: $(echo "$accounts" | jq -c '[.errors[]?.code]')"
+          if ! echo "$accounts" | jq -e --arg id "$ACCOUNT_ID" '.result[]? | select(.id == $id)' >/dev/null; then
+            echo "::error::Token nie ma dostępu do konta z CLOUDFLARE_ACCOUNT_ID – sprawdź identyfikator konta i sekcję „Account policy” tokenu."
+            exit 1
+          fi
+          scripts=$(curl -sS -o /dev/null -w '%{http_code}' -H "Authorization: Bearer $TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/scripts")
+          echo "Lista Workerów: HTTP $scripts"
       # Klucz Gemini trafia wyłącznie do Workera jako sekret GEMINI_API_KEY.
       - id: deploy
         if: steps.check.outputs.enabled == 'true'
