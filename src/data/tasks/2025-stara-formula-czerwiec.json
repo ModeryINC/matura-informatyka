@@ -1,0 +1,308 @@
+[
+  {
+    "id": "2025-stara-formula-czerwiec-1.2",
+    "sessionId": "2025/stara-formula-czerwiec",
+    "number": "1.2",
+    "title": "Klasyfikacja liczb według rozkładu",
+    "part": 1,
+    "points": 3,
+    "topics": [
+      "liczby-pierwsze",
+      "tablice"
+    ],
+    "summary": "Tablica P[2..n] zawiera najmniejszy czynnik pierwszy każdej liczby i. Algorytm Rozkład zamienia P[i] na 1, gdy i jest pierwsza, na 2, gdy i jest iloczynem dokładnie dwóch różnych liczb pierwszych, i na 3 w pozostałych przypadkach (w arkuszu trzeba uzupełnić luki w tym algorytmie).\n\nNapisz funkcję rozklad(n), która zwróci listę [P[2], P[3], …, P[n]] po takiej klasyfikacji.",
+    "starterCode": "def rozklad(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "rozklad",
+    "tests": [
+      {
+        "args": [
+          2
+        ],
+        "expected": [
+          1
+        ]
+      },
+      {
+        "args": [
+          6
+        ],
+        "expected": [
+          1,
+          1,
+          3,
+          1,
+          2
+        ]
+      },
+      {
+        "args": [
+          10
+        ],
+        "expected": [
+          1,
+          1,
+          3,
+          1,
+          2,
+          1,
+          3,
+          3,
+          2
+        ]
+      },
+      {
+        "args": [
+          19
+        ],
+        "expected": [
+          1,
+          1,
+          3,
+          1,
+          2,
+          1,
+          3,
+          3,
+          2,
+          1,
+          3,
+          1,
+          2,
+          2,
+          3,
+          1,
+          3,
+          1
+        ]
+      },
+      {
+        "args": [
+          33
+        ],
+        "expected": [
+          1,
+          1,
+          3,
+          1,
+          2,
+          1,
+          3,
+          3,
+          2,
+          1,
+          3,
+          1,
+          2,
+          2,
+          3,
+          1,
+          3,
+          1,
+          3,
+          2,
+          2,
+          1,
+          3,
+          3,
+          2,
+          3,
+          3,
+          1,
+          3,
+          1,
+          3,
+          2
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2025-stara-formula-czerwiec-2.1",
+    "sessionId": "2025/stara-formula-czerwiec",
+    "number": "2.1",
+    "title": "Rekurencyjna funkcja f(a, b)",
+    "part": 1,
+    "points": 2,
+    "topics": [
+      "rekurencja",
+      "teoria-liczb"
+    ],
+    "summary": "Funkcja f(a, b): dla b = 0 zwraca 0; w przeciwnym razie bierze k – ostatnią cyfrę b, oblicza w = f(a, b bez ostatniej cyfry), dopisuje do w zero na końcu (w·10), a potem k razy dodaje do w liczbę a.\n\nZaimplementuj tę funkcję dokładnie według opisu i sprawdź wartości z tabeli w arkuszu. Co tak naprawdę oblicza f?",
+    "starterCode": "def f(a, b):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "f",
+    "tests": [
+      {
+        "args": [
+          42,
+          2
+        ],
+        "expected": 84
+      },
+      {
+        "args": [
+          4,
+          125
+        ],
+        "expected": 500
+      },
+      {
+        "args": [
+          103,
+          104
+        ],
+        "expected": 10712
+      },
+      {
+        "args": [
+          2024,
+          1000
+        ],
+        "expected": 2024000
+      },
+      {
+        "args": [
+          5,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "args": [
+          0,
+          7
+        ],
+        "expected": 0
+      }
+    ]
+  },
+  {
+    "id": "2025-stara-formula-czerwiec-4.1",
+    "sessionId": "2025/stara-formula-czerwiec",
+    "number": "4.1",
+    "title": "Liczby zaczynające się od 50",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik dane.txt zawiera jeden napis z 10 000 znaków, wśród których ukryte są liczby – maksymalne ciągi cyfr. Podaj, ile ukrytych liczb zaczyna się od cyfr 50 (powtórzenia liczymy osobno).",
+    "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (dane_przyklad.txt)",
+        "files": {
+          "dane.txt": "arkusze/2025/stara-formula-czerwiec/pliki/informatyka-2025-czerwiec-matura-stara-rozszerzona-zalaczniki/dane_przyklad.txt"
+        },
+        "expected": "2"
+      },
+      {
+        "label": "Dane egzaminacyjne (dane.txt)",
+        "files": {
+          "dane.txt": "arkusze/2025/stara-formula-czerwiec/pliki/informatyka-2025-czerwiec-matura-stara-rozszerzona-zalaczniki/dane.txt"
+        },
+        "expected": "4"
+      }
+    ]
+  },
+  {
+    "id": "2025-stara-formula-czerwiec-4.2",
+    "sessionId": "2025/stara-formula-czerwiec",
+    "number": "4.2",
+    "title": "Najczęstsza cyfra",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "slowniki",
+      "pliki-tekstowe"
+    ],
+    "summary": "Podaj cyfrę, która występuje w pliku dane.txt najczęściej, oraz liczbę jej wystąpień.",
+    "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (dane_przyklad.txt)",
+        "files": {
+          "dane.txt": "arkusze/2025/stara-formula-czerwiec/pliki/informatyka-2025-czerwiec-matura-stara-rozszerzona-zalaczniki/dane_przyklad.txt"
+        },
+        "expected": "0 17"
+      },
+      {
+        "label": "Dane egzaminacyjne (dane.txt)",
+        "files": {
+          "dane.txt": "arkusze/2025/stara-formula-czerwiec/pliki/informatyka-2025-czerwiec-matura-stara-rozszerzona-zalaczniki/dane.txt"
+        },
+        "expected": "1 342"
+      }
+    ]
+  },
+  {
+    "id": "2025-stara-formula-czerwiec-4.3",
+    "sessionId": "2025/stara-formula-czerwiec",
+    "number": "4.3",
+    "title": "Numery telefonów od piątki",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Numer telefonu to ukryta liczba złożona z dokładnie 9 cyfr. Wypisz, w kolejności występowania, wszystkie numery telefonów zaczynające się od cyfry 5.",
+    "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (dane_przyklad.txt)",
+        "files": {
+          "dane.txt": "arkusze/2025/stara-formula-czerwiec/pliki/informatyka-2025-czerwiec-matura-stara-rozszerzona-zalaczniki/dane_przyklad.txt"
+        },
+        "expected": "577050221"
+      },
+      {
+        "label": "Dane egzaminacyjne (dane.txt)",
+        "files": {
+          "dane.txt": "arkusze/2025/stara-formula-czerwiec/pliki/informatyka-2025-czerwiec-matura-stara-rozszerzona-zalaczniki/dane.txt"
+        },
+        "expected": "588095244\n593151643\n583327270\n565269349\n583672019\n506585224\n574489008\n587103844\n510672749\n529135372\n515437684\n589477488"
+      }
+    ]
+  },
+  {
+    "id": "2025-stara-formula-czerwiec-4.4",
+    "sessionId": "2025/stara-formula-czerwiec",
+    "number": "4.4",
+    "title": "Najmniej różnych cyfr",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "napisy",
+      "slowniki",
+      "pliki-tekstowe"
+    ],
+    "summary": "Spośród wszystkich numerów telefonów (9-cyfrowych ukrytych liczb) wypisz te, które składają się z najmniejszej liczby różnych cyfr.",
+    "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (dane_przyklad.txt)",
+        "files": {
+          "dane.txt": "arkusze/2025/stara-formula-czerwiec/pliki/informatyka-2025-czerwiec-matura-stara-rozszerzona-zalaczniki/dane_przyklad.txt"
+        },
+        "expected": "303004411"
+      },
+      {
+        "label": "Dane egzaminacyjne (dane.txt)",
+        "files": {
+          "dane.txt": "arkusze/2025/stara-formula-czerwiec/pliki/informatyka-2025-czerwiec-matura-stara-rozszerzona-zalaczniki/dane.txt"
+        },
+        "expected": "033035335\n050525250",
+        "alternatives": [
+          "050525250\n033035335"
+        ]
+      }
+    ]
+  }
+]
