@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
+import { MorphItem } from '../components/MorphItem';
 import { sessions, tasksForSession } from '../data';
 import { spreadsheetTasks } from '../data/spreadsheets';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
@@ -57,9 +58,9 @@ export function SessionsPage() {
                 tasksForSession(session.id).length +
                 spreadsheetTasks.filter((t) => t.sessionId === session.id).length;
               return (
-                <li key={session.id} className="session-card">
+                <MorphItem key={session.id} to={`/arkusze/${session.id}`} className="session-card">
                   <h3>
-                    <Link to={`/arkusze/${session.id}`} className="stretched-link">
+                    <Link to={`/arkusze/${session.id}`} className="stretched-link" viewTransition>
                       {session.label}
                     </Link>
                   </h3>
@@ -68,7 +69,7 @@ export function SessionsPage() {
                     {session.attachments.length} plików z danymi
                   </p>
                   {count > 0 && <p className="session-card__tasks">{count} zadań do rozwiązania</p>}
-                </li>
+                </MorphItem>
               );
             })}
           </ul>

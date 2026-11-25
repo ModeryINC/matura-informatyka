@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { MorphItem } from '../components/MorphItem';
 import { sessionsById } from '../data';
 import { spreadsheetTasks, totalPoints } from '../data/spreadsheets';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
@@ -22,14 +23,15 @@ export function ExcelTasksPage() {
         {spreadsheetTasks.map((task) => {
           const session = sessionsById.get(task.sessionId);
           const done = passedParts(task.id);
+          const to = `/excel/${encodeURIComponent(task.id)}`;
           return (
-            <li key={task.id} className="session-card">
+            <MorphItem key={task.id} to={to} className="session-card">
               <p className="task-card__meta">
                 {session ? `${session.label} ${session.year}` : task.sessionId} · zadanie{' '}
                 {task.number}
               </p>
               <h3 className="xl-card__title">
-                <Link to={`/excel/${encodeURIComponent(task.id)}`} className="stretched-link">
+                <Link to={to} className="stretched-link" viewTransition>
                   {task.title}
                 </Link>
               </h3>
@@ -47,7 +49,7 @@ export function ExcelTasksPage() {
                   `Zaliczone: ${done}/${task.parts.length}`
                 )}
               </p>
-            </li>
+            </MorphItem>
           );
         })}
       </ul>

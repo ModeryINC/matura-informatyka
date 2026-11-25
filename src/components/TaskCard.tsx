@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { MorphItem } from './MorphItem';
 import type { SolutionStatus } from '../lib/search';
 import type { ExamSession, Task } from '../types';
 import { StatusBadge } from './StatusBadge';
@@ -12,8 +13,9 @@ interface TaskCardProps {
 }
 
 export function TaskCard({ task, session, status }: TaskCardProps) {
+  const to = `/zadanie/${encodeURIComponent(task.id)}`;
   return (
-    <article className="task-card">
+    <MorphItem as="article" to={to} className="task-card">
       <header className="task-card__header">
         <p className="task-card__meta">
           {session ? `${session.label} ${session.year}` : task.sessionId} · zad. {task.number} ·{' '}
@@ -22,7 +24,7 @@ export function TaskCard({ task, session, status }: TaskCardProps) {
         <StatusBadge status={status} />
       </header>
       <h3 className="task-card__title">
-        <Link to={`/zadanie/${encodeURIComponent(task.id)}`} className="stretched-link">
+        <Link to={to} className="stretched-link" viewTransition>
           {task.title}
         </Link>
       </h3>
@@ -33,6 +35,6 @@ export function TaskCard({ task, session, status }: TaskCardProps) {
           <LuTriangleAlert aria-hidden className="icon" /> Bez funkcji wbudowanych
         </p>
       )}
-    </article>
+    </MorphItem>
   );
 }

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Link, NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router';
 import { useTheme } from '../hooks/useTheme';
 import { LuMoon, LuSun, LuSunMoon } from 'react-icons/lu';
@@ -10,7 +11,9 @@ export function Layout() {
   const [theme, cycleTheme] = useTheme();
   const ThemeIcon = THEME_ICONS[theme];
   // „Zadania” są aktywne także na stronie pojedynczego zadania (Python i Excel).
-  const tasksActive = /^\/(zadania|zadanie|excel)(\/|$)/.test(useLocation().pathname);
+  const { pathname } = useLocation();
+  const tasksActive = /^\/(zadania|zadanie|excel)(\/|$)/.test(pathname);
+  useFocusOnNavigation(pathname);
 
   return (
     <>
@@ -19,7 +22,7 @@ export function Layout() {
       </a>
       <header className="site-header">
         <div className="site-header__inner">
-          <NavLink to="/" className="brand">
+          <NavLink to="/" className="brand" viewTransition>
             <span className="brand__logo" aria-hidden="true">
               {'</>'}
             </span>
@@ -28,22 +31,26 @@ export function Layout() {
           <nav aria-label="Główna nawigacja">
             <ul className="nav">
               <li>
-                <Link to="/zadania" aria-current={tasksActive ? 'page' : undefined}>
+                <Link to="/zadania" aria-current={tasksActive ? 'page' : undefined} viewTransition>
                   Zadania
                 </Link>
               </li>
               <li>
-                <NavLink to="/arkusze">Arkusze</NavLink>
+                <NavLink to="/arkusze" viewTransition>
+                  Arkusze
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/pomoc">Pomoc</NavLink>
+                <NavLink to="/pomoc" viewTransition>
+                  Pomoc
+                </NavLink>
               </li>
             </ul>
           </nav>
           <button
             type="button"
             className="icon-button"
-            onClick={cycleTheme}
+            onClick={(event) => cycleTheme(event.currentTarget)}
             aria-label={THEME_LABELS[theme]}
             title={THEME_LABELS[theme]}
           >
@@ -63,4 +70,20 @@ export function Layout() {
       <ScrollRestoration />
     </>
   );
+}
+
+/**
+ * Po przejściu na inną stronę fokus trafia na treść (`#tresc`), żeby czytnik ekranu
+ * i klawiatura zaczynały od nowej zawartości, a nie od klikniętego, już nieistniejącego
+ * linku. Przełączanie zakładek „Zadania” (Python / Excel / SQL) zostawia fokus na zakładce.
+ */
+function useFocusOnNavigation(pathname: string) {
+  const previous = useRef(pathname);
+  useEffect(() => {
+    const before = previous.current;
+    previous.current = pathname;
+    if (before === pathname) return;
+    if (before.startsWith('/zadania/') && pathname.startsWith('/zadania/')) return;
+    document.getElementById('tresc')?.focus({ preventScroll: true });
+  }, [pathname]);
 }

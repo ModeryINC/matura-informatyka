@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router';
 import { FileList } from '../components/FileList';
+import { MorphItem } from '../components/MorphItem';
 import { PdfViewer } from '../components/PdfViewer';
 import { sessionsById, tasksForSession } from '../data';
 import { spreadsheetTasks } from '../data/spreadsheets';
@@ -21,9 +22,12 @@ export function SessionPage() {
   const count = tasks.length + excelTasks.length;
 
   return (
-    <div className="page">
+    <div className="page page--detail">
       <nav aria-label="Okruszki" className="breadcrumbs">
-        <Link to="/arkusze">Arkusze</Link> <span aria-hidden="true">/</span>{' '}
+        <Link to="/arkusze" viewTransition>
+          Arkusze
+        </Link>{' '}
+        <span aria-hidden="true">/</span>{' '}
         <span aria-current="page">
           {session.label} {session.year}
         </span>
@@ -46,8 +50,9 @@ export function SessionPage() {
             {tasks.map((task) => {
               const status = statusOf(task.id);
               return (
-                <li key={task.id}>
+                <MorphItem key={task.id} to={`/zadanie/${encodeURIComponent(task.id)}`}>
                   <Link
+                    viewTransition
                     to={`/zadanie/${encodeURIComponent(task.id)}`}
                     className={`task-jump__button task-jump__button--${status}`}
                     title={task.title}
@@ -60,14 +65,15 @@ export function SessionPage() {
                     </span>
                     <span className="task-jump__name">{task.title}</span>
                   </Link>
-                </li>
+                </MorphItem>
               );
             })}
             {excelTasks.map((task) => {
               const done = passedParts(task.id) === task.parts.length;
               return (
-                <li key={task.id}>
+                <MorphItem key={task.id} to={`/excel/${encodeURIComponent(task.id)}`}>
                   <Link
+                    viewTransition
                     to={`/excel/${encodeURIComponent(task.id)}`}
                     className={`task-jump__button task-jump__button--excel${done ? ' task-jump__button--zaliczone' : ''}`}
                     title={task.title}
@@ -78,7 +84,7 @@ export function SessionPage() {
                     </span>
                     <span className="task-jump__name">{task.title}</span>
                   </Link>
-                </li>
+                </MorphItem>
               );
             })}
           </ul>

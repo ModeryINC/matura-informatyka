@@ -362,6 +362,9 @@ pre {
   color: var(--text-muted);
   text-decoration: none;
   font-weight: 500;
+  transition:
+    color 0.15s ease-out,
+    background-color 0.15s ease-out;
 }
 
 .nav a:hover {
@@ -421,19 +424,71 @@ pre {
   text-decoration: none;
   cursor: pointer;
   transition:
-    background-color 0.15s,
-    border-color 0.15s,
-    transform 0.05s;
+    background-color 0.15s ease-out,
+    border-color 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    color 0.15s ease-out;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      background-color 0.15s ease-out,
+      border-color 0.15s ease-out,
+      box-shadow 0.15s ease-out,
+      color 0.15s ease-out,
+      translate 0.15s ease-out,
+      scale 0.1s ease-out;
+  }
 }
 
 .button:hover:not(:disabled),
 .icon-button:hover {
   background: var(--surface-2);
   color: var(--text);
+  box-shadow: 0 4px 12px rgb(16 24 40 / 12%);
+
+  @media (prefers-reduced-motion: no-preference) {
+    translate: 0 -1px;
+  }
 }
 
-.button:active:not(:disabled) {
-  transform: translateY(1px);
+.button:active:not(:disabled),
+.icon-button:active {
+  box-shadow: none;
+
+  @media (prefers-reduced-motion: no-preference) {
+    translate: 0 0;
+    scale: 0.97;
+  }
+}
+
+/* Ikona w przycisku lekko „odpowiada” na najechanie. */
+.button .icon,
+.icon-button .icon,
+.pager a .icon {
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      translate 0.2s ease-out,
+      rotate 0.3s ease-out,
+      scale 0.2s ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .button:hover:not(:disabled) .icon {
+    scale: 1.15;
+  }
+
+  .icon-button:hover .icon {
+    rotate: 30deg;
+  }
+
+  .pager a:hover .icon {
+    translate: 3px 0;
+  }
+
+  .pager a:first-child:hover .icon {
+    translate: -3px 0;
+  }
 }
 
 .button:disabled {
@@ -508,8 +563,20 @@ select:focus-visible {
   cursor: pointer;
 }
 
+.chip {
+  transition:
+    border-color 0.15s ease-out,
+    background-color 0.15s ease-out,
+    color 0.15s ease-out;
+}
+
 .chip:hover {
   border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.chip[aria-pressed='true']:hover {
+  background: var(--accent-strong);
 }
 
 .chip[aria-pressed='true'] {
@@ -854,14 +921,27 @@ progress::-moz-progress-bar {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   transition:
-    border-color 0.15s,
-    transform 0.15s;
+    border-color 0.2s ease-out,
+    box-shadow 0.2s ease-out;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      border-color 0.2s ease-out,
+      box-shadow 0.2s ease-out,
+      translate 0.2s ease-out;
+  }
 }
 
 .task-card:hover,
 .session-card:hover {
   border-color: var(--accent);
-  transform: translateY(-2px);
+  box-shadow:
+    var(--shadow),
+    0 10px 28px color-mix(in srgb, var(--accent) 18%, transparent);
+
+  @media (prefers-reduced-motion: no-preference) {
+    translate: 0 -4px;
+  }
 }
 
 .task-card__header {
@@ -2327,6 +2407,12 @@ progress::-moz-progress-bar {
 
 .feature-card {
   position: relative;
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      border-color 0.2s ease-out,
+      box-shadow 0.2s ease-out,
+      translate 0.2s ease-out;
+  }
   display: grid;
   gap: 0.4rem;
   align-content: start;
@@ -2341,7 +2427,28 @@ progress::-moz-progress-bar {
 
 .feature-card:hover {
   border-color: var(--accent);
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow),
+    0 10px 28px color-mix(in srgb, var(--accent) 18%, transparent);
+
+  @media (prefers-reduced-motion: no-preference) {
+    translate: 0 -4px;
+  }
+}
+
+.feature-card__icon {
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      scale 0.3s cubic-bezier(0.3, 1.5, 0.5, 1),
+      rotate 0.3s ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .feature-card:hover .feature-card__icon {
+    scale: 1.15;
+    rotate: -6deg;
+  }
 }
 
 .feature-card--soon {
@@ -2458,10 +2565,56 @@ progress::-moz-progress-bar {
   color: var(--text);
 }
 
+.tabs__tab {
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s ease-out;
+}
+
 .tabs__tab[aria-current='page'] {
-  background: var(--surface);
   color: var(--accent);
+  anchor-name: --aktywna-zakladka;
+}
+
+/*
+ * Kapsułka aktywnej zakładki to jeden element (pseudoelement listy) przypięty do
+ * aktywnej zakładki przez anchor positioning – przy zmianie zakładki przesuwa się
+ * na nowe miejsce zamiast pojawiać się od razu. Ramka (przezroczysta) zostaje
+ * widoczna w trybie wymuszonych kolorów, gdy tło znika.
+ */
+.tabs {
+  position: relative;
+  isolation: isolate;
+}
+
+.tabs::before {
+  content: '';
+  position: absolute;
+  position-anchor: --aktywna-zakladka;
+  inset-block-start: anchor(self-start);
+  inset-block-end: anchor(self-end);
+  inset-inline-start: anchor(self-start);
+  inset-inline-end: anchor(self-end);
+  z-index: 0;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--surface);
   box-shadow: var(--shadow);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: inset 0.35s cubic-bezier(0.3, 1.3, 0.5, 1);
+  }
+}
+
+@supports not (position-anchor: --aktywna-zakladka) {
+  .tabs::before {
+    content: none;
+  }
+
+  .tabs__tab[aria-current='page'] {
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
 }
 
 .tabs__count {
@@ -2552,6 +2705,19 @@ progress::-moz-progress-bar {
 .task-jump__button:hover {
   border-color: var(--accent);
   background: var(--accent-soft);
+
+  @media (prefers-reduced-motion: no-preference) {
+    translate: 0 -2px;
+  }
+}
+
+.task-jump__button {
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      border-color 0.2s ease-out,
+      background-color 0.2s ease-out,
+      translate 0.2s ease-out;
+  }
 }
 
 .task-jump__button--excel {
@@ -2578,4 +2744,93 @@ progress::-moz-progress-bar {
   font-size: 0.8rem;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Logo: znaczek obraca się lekko po najechaniu. */
+.brand__logo {
+  @media (prefers-reduced-motion: no-preference) {
+    transition: rotate 0.4s cubic-bezier(0.3, 1.5, 0.5, 1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .brand:hover .brand__logo {
+    rotate: -8deg;
+  }
+}
+
+.file-list a,
+.file-list__open {
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness 0.15s ease-out;
+}
+
+.file-list a:hover,
+.file-list__open:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+/* Przejścia między stronami (View Transitions) ---------------------------- */
+
+/* Nagłówek strony stoi w miejscu – zmienia się tylko treść. */
+:root:not(.theme-transition) .site-header {
+  view-transition-name: naglowek;
+}
+
+/*
+ * Karta zadania (lub przycisk zadania, karta arkusza) rozciąga się w stronę
+ * szczegółów. Nazwę dostaje strona szczegółów, a kliknięta karta – tylko na czas
+ * przejścia (src/hooks/useMorph.ts).
+ */
+.page--detail {
+  view-transition-name: szczegoly;
+}
+
+::view-transition-group(szczegoly) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+::view-transition-old(szczegoly),
+::view-transition-new(szczegoly) {
+  block-size: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+::view-transition-old(szczegoly) {
+  animation-duration: 0.2s;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+}
+
+/* Zmiana motywu: nowe kolory rozlewają się kołem od przycisku motywu. */
+.theme-transition::view-transition-old(root) {
+  animation: none;
+}
+
+.theme-transition::view-transition-new(root) {
+  animation: rozlanie-motywu 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes rozlanie-motywu {
+  from {
+    clip-path: circle(0 at var(--theme-x) var(--theme-y));
+  }
+
+  to {
+    clip-path: circle(var(--theme-r) at var(--theme-x) var(--theme-y));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

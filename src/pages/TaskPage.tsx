@@ -146,9 +146,12 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
     task.kind === 'program' ? [...new Set(task.checks.flatMap((c) => Object.values(c.files)))] : [];
 
   return (
-    <div className="page page--task">
+    <div className="page page--task page--detail">
       <nav aria-label="Okruszki" className="breadcrumbs">
-        <Link to="/zadania/python">Zadania</Link> <span aria-hidden="true">/</span>{' '}
+        <Link to="/zadania/python" viewTransition>
+          Zadania
+        </Link>{' '}
+        <span aria-hidden="true">/</span>{' '}
         {session && (
           <>
             <Link to={`/arkusze/${session.id}`}>
@@ -238,14 +241,14 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
 
           <nav className="pager" aria-label="Inne zadania z arkusza">
             {previous ? (
-              <Link to={`/zadanie/${encodeURIComponent(previous.id)}`}>
+              <Link to={`/zadanie/${encodeURIComponent(previous.id)}`} viewTransition>
                 <LuArrowLeft aria-hidden className="icon" /> Zadanie {previous.number}
               </Link>
             ) : (
               <span />
             )}
             {next && (
-              <Link to={`/zadanie/${encodeURIComponent(next.id)}`}>
+              <Link to={`/zadanie/${encodeURIComponent(next.id)}`} viewTransition>
                 Zadanie {next.number} <LuArrowRight aria-hidden className="icon" />
               </Link>
             )}

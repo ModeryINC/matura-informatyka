@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import type { ReactElement } from 'react';
-import { createMemoryRouter, RouterProvider, type RouteObject } from 'react-router';
+import { createMemoryRouter, type RouteObject } from 'react-router';
+import { RouterProvider } from 'react-router/dom';
 
 /** Renderuje element w routerze pamięciowym pod wskazanym adresem. */
 export function renderAt(path: string, routes: RouteObject[]) {

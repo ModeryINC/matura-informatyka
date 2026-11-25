@@ -114,9 +114,12 @@ function ExcelWorkspace({ task }: { task: SpreadsheetTask }) {
   const getSelection = useCallback(() => workbook.current?.getSelectionValues() ?? null, []);
 
   return (
-    <div className="page page--excel">
+    <div className="page page--excel page--detail">
       <nav aria-label="Okruszki" className="breadcrumbs">
-        <Link to="/zadania/excel">Zadania z Excela</Link> <span aria-hidden="true">/</span>{' '}
+        <Link to="/zadania/excel" viewTransition>
+          Zadania z Excela
+        </Link>{' '}
+        <span aria-hidden="true">/</span>{' '}
         {session && (
           <>
             <Link to={`/arkusze/${session.id}`}>
