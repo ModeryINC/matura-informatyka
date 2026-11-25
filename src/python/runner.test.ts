@@ -188,6 +188,53 @@ describe('PythonRunner', () => {
     expect(workers).toHaveLength(2);
   });
 
+  it('przekazuje dane wejściowe i wyjście na bieżąco (konsola)', async () => {
+    const { runner, workers } = makeRunner(() => null);
+    const chunks: string[] = [];
+    const pending = runner.execute(programTask, 'print(input())', {
+      stdin: '7\n',
+      onOutput: (text) => chunks.push(text),
+    });
+    await vi.waitFor(() => expect(workers[0]!.received).toHaveLength(2));
+    const request = workers[0]!.received[1] as Extract<WorkerRequest, { type: 'program' }>;
+    expect(request).toMatchObject({ stdin: '7\n', stream: true });
+
+    workers[0]!.emit({ type: 'output', id: request.id, text: '7\n' });
+    expect(chunks).toEqual(['7\n']);
+    workers[0]!.emit({
+      type: 'program-result',
+      id: request.id,
+      runs: [{ stdout: '7\n', error: null }],
+    });
+    expect(await pending).toEqual({ stdout: '7\n', error: null });
+  });
+
+  it('po przekroczeniu czasu zachowuje wyjście zebrane w konsoli', async () => {
+    const { runner, workers } = makeRunner(() => null, 300);
+    const pending = runner.execute(programTask, 'while True: print(1)');
+    await vi.waitFor(() => expect(workers[0]!.received).toHaveLength(2), { interval: 5 });
+    const { id } = workers[0]!.received[1] as Extract<WorkerRequest, { type: 'program' }>;
+    workers[0]!.emit({ type: 'output', id, text: '1\n1\n' });
+    expect(await pending).toEqual({ stdout: '1\n1\n', error: TIMEOUT_MESSAGE });
+  });
+
+  it('nie wysyła wyjścia na bieżąco przy sprawdzaniu', async () => {
+    const { runner, workers } = makeRunner((request) =>
+      request.type === 'program'
+        ? {
+            type: 'program-result',
+            id: request.id,
+            runs: [
+              { stdout: '3', error: null },
+              { stdout: '10 20', error: null },
+            ],
+          }
+        : null,
+    );
+    await runner.submit(programTask, 'print(3)');
+    expect(workers[0]!.received[1]).toMatchObject({ stream: false });
+  });
+
   it('informuje o zmianach stanu', async () => {
     const { runner } = makeRunner((request) =>
       request.type === 'program'

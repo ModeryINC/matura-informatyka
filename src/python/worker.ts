@@ -85,9 +85,13 @@ self.addEventListener('message', async (event: MessageEvent<WorkerRequest>) => {
     if (request.type === 'program') {
       const runProgram = pyodide.globals.get('run_program');
       const runs = [];
+      const { id } = request;
+      const onOutput = request.stream
+        ? (text: string) => post({ type: 'output', id, text })
+        : undefined;
       for (const files of request.runs) {
         await prepareWorkdir(pyodide, files);
-        runs.push(JSON.parse(runProgram(request.code, WORKDIR)));
+        runs.push(JSON.parse(runProgram(request.code, WORKDIR, request.stdin ?? '', onOutput)));
       }
       post({ type: 'program-result', id: request.id, runs });
     } else {

@@ -36,7 +36,16 @@ export const TIMEOUT_MESSAGE =
 type Pending = {
   resolve: (response: WorkerResponse) => void;
   reject: (error: Error) => void;
+  onOutput?: (text: string) => void;
 };
+
+/** Opcje zwykłego uruchomienia (konsola). */
+export interface ExecuteOptions {
+  /** Dane dla `input()` – kolejne linie pola „Wejście”. */
+  stdin?: string;
+  /** Wywoływane z fragmentami wyjścia na bieżąco, w trakcie działania programu. */
+  onOutput?: (text: string) => void;
+}
 
 /**
  * Zarządza workerem z Pyodide: leniwie go uruchamia, wysyła rozwiązania,
@@ -91,6 +100,8 @@ export class PythonRunner {
         } else if (message.type === 'init-error') {
           this.reset('error');
           reject(new Error(`Nie udało się załadować Pythona: ${message.message}`));
+        } else if (message.type === 'output') {
+          this.pending.get(message.id)?.onOutput?.(message.text);
         } else {
           const pending = this.pending.get(message.id);
           this.pending.delete(message.id);
@@ -121,7 +132,10 @@ export class PythonRunner {
     this.reset('off');
   }
 
-  private async request(build: (id: number) => WorkerRequest): Promise<WorkerResponse> {
+  private async request(
+    build: (id: number) => WorkerRequest,
+    onOutput?: (text: string) => void,
+  ): Promise<WorkerResponse> {
     await this.init();
     const id = this.nextId++;
     this.setStatus('running');
@@ -140,6 +154,7 @@ export class PythonRunner {
             clearTimeout(timer);
             reject(error);
           },
+          onOutput,
         });
         this.worker!.postMessage(build(id));
       });
@@ -154,8 +169,16 @@ export class PythonRunner {
     );
   }
 
-  private async runProgram(code: string, runs: FileMap[]): Promise<ProgramRun[]> {
-    const response = await this.request((id) => ({ type: 'program', id, code, runs }));
+  private async runProgram(
+    code: string,
+    runs: FileMap[],
+    options: ExecuteOptions = {},
+  ): Promise<ProgramRun[]> {
+    const { stdin, onOutput } = options;
+    const response = await this.request(
+      (id) => ({ type: 'program', id, code, runs, stdin, stream: onOutput !== undefined }),
+      onOutput,
+    );
     if (response.type === 'program-result') return response.runs;
     throw new Error(response.type === 'error' ? response.message : 'Nieoczekiwana odpowiedź');
   }
@@ -175,15 +198,24 @@ export class PythonRunner {
 
   /**
    * Uruchamia kod bez sprawdzania. Dla zadań typu `program` używa plików
-   * z pierwszego testu (zwykle dane przykładowe).
+   * z pierwszego testu (zwykle dane przykładowe). Po błędzie (np. przekroczeniu
+   * czasu) zwraca wyjście zebrane do tej chwili.
    */
-  async execute(task: Task, code: string): Promise<ExecutionOutput> {
+  async execute(task: Task, code: string, options: ExecuteOptions = {}): Promise<ExecutionOutput> {
     const files = task.kind === 'program' && task.checks[0] ? task.checks[0].files : {};
+    let streamed = '';
+    const onOutput = (text: string) => {
+      streamed += text;
+      options.onOutput?.(text);
+    };
     try {
-      const [run] = await this.runProgram(code, [this.resolveFiles(files)]);
-      return run ?? { stdout: '', error: null };
+      const [run] = await this.runProgram(code, [this.resolveFiles(files)], {
+        stdin: options.stdin ?? '',
+        onOutput,
+      });
+      return run ?? { stdout: streamed, error: null };
     } catch (error) {
-      return { stdout: '', error: (error as Error).message };
+      return { stdout: streamed, error: (error as Error).message };
     }
   }
 

@@ -40,6 +40,28 @@ class RunProgramTest(unittest.TestCase):
         out = self.run_code("print(1)\nexit()\nprint(2)")
         self.assertEqual(out, {"stdout": "1\n", "error": None})
 
+    def test_input_reads_lines_and_echoes_them(self):
+        code = "a = input('a=')\nb = input()\nprint(int(a) + int(b))"
+        out = json.loads(harness.run_program(code, self.dir, "2\n3\n"))
+        self.assertEqual(out, {"stdout": "a=2\n3\n5\n", "error": None})
+
+    def test_sys_stdin_is_available(self):
+        code = "import sys\nprint(sys.stdin.read().split())"
+        out = json.loads(harness.run_program(code, self.dir, "1 2\n"))
+        self.assertEqual(out["stdout"], "['1', '2']\n")
+
+    def test_missing_input_is_explained(self):
+        out = self.run_code("input('n=')")
+        self.assertIn("EOFError", out["error"])
+        self.assertIn("Wejście", out["error"])
+
+    def test_output_is_streamed(self):
+        chunks = []
+        code = "for i in range(3):\n    print(i)\nprint('x' * 5000)"
+        out = json.loads(harness.run_program(code, self.dir, "", chunks.append))
+        self.assertEqual("".join(chunks), out["stdout"])
+        self.assertGreaterEqual(len(chunks), 2)
+
     def test_output_is_truncated(self):
         out = self.run_code("print('x' * 300000)")
         self.assertTrue(out["stdout"].endswith("(wyjście obcięte)"))
