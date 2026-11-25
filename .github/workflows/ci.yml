@@ -94,8 +94,7 @@ jobs:
           # Kod HTTP i kody błędów Cloudflare dla zapytania (bez treści odpowiedzi).
           probe() {
             local body code
-            body=$(curl -sS -w '
-%{http_code}' -H "Authorization: Bearer $TOKEN" "$api$1")
+            body=$(curl -sS -w '\n%{http_code}' -H "Authorization: Bearer $TOKEN" "$api$1")
             code=$(echo "$body" | tail -n1)
             echo "$1 → HTTP $code $(echo "$body" | sed '$d' | jq -c '[.errors[]?.code]' 2>/dev/null)"
             [ "$code" = 200 ]
