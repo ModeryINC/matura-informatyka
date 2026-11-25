@@ -4,10 +4,12 @@ Strona z arkuszami maturalnymi z informatyki (poziom rozszerzony, 2018–2026), 
 **rozwiązywać zadania algorytmiczne w Pythonie** i od razu sprawdzać je z kluczem CKE.
 Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na GitHub Pages.
 
+**Strona: <https://moderyinc.github.io/matura-informatyka/>**
+
 ## Co potrafi
 
 - **Przegląd arkuszy** – 39 sesji (główne, dodatkowe, próbne, stara formuła) z podglądem PDF,
-  kluczem odpowiedzi i plikami z danymi.
+  kluczem odpowiedzi i plikami z danymi (podgląd w oknie z przyciskiem pobierania).
 - **Zadania ze sprawdzarką** – 230 zadań ze wszystkich 39 sesji 2018–2026 (główne, dodatkowe,
   stara formuła, próbne CKE i Politechniki Łódzkiej, przykładowy arkusz CKE):
   - _programy_ (część 2) – kod czyta plik z danymi i wypisuje odpowiedź; jest uruchamiany
