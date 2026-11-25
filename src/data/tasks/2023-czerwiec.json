@@ -144,6 +144,9 @@
     "topics": ["sortowanie", "napisy"],
     "summary": "Napisz funkcję sufiksy(s), która zwróci listę numerów sufiksów słowa s (numerując od 1) uporządkowanych alfabetycznie, np. dla mascarpone: [5, 2, 4, 10, 1, 9, 8, 7, 6, 3]. W arkuszu trzeba to zrobić z pomocą funkcji czy_mniejszy z zadania 2.2, bez gotowych funkcji sortujących.",
     "starterCode": "def czy_mniejszy(n, s, k1, k2):\n    ...\n\n\ndef sufiksy(s):\n    return []\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. Sortowanie napisz samodzielnie; znaki porównuj pojedynczo."
+    },
     "kind": "function",
     "functionName": "sufiksy",
     "tests": [

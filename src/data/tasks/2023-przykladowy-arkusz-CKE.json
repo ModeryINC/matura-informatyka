@@ -132,6 +132,10 @@
     "topics": ["teoria-liczb", "zlozonosc"],
     "summary": "Napisz funkcję potega(a, x, M) obliczającą a^x mod M. Pełną liczbę punktów daje algorytm wykonujący O(log x) operacji – szybkie potęgowanie przez podnoszenie do kwadratu. Nie używaj operatora ** ani funkcji pow.",
     "starterCode": "def potega(a, x, M):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. Bez wbudowanego potęgowania (pow, **).",
+      "also": ["**"]
+    },
     "kind": "function",
     "functionName": "potega",
     "tests": [

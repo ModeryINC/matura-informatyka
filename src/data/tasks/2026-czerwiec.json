@@ -52,6 +52,10 @@
     "topics": ["tablice", "napisy"],
     "summary": "Tablica T[1..n] jest k-podobna (1 ≤ k < n), gdy jej k pierwszych elementów jest równych k ostatnim: T[1..k] = T[n−k+1..n]; każda tablica jest 0-podobna. Np. [1, 2, 1, 1, 2, 1, 1] jest 0-, 1- i 4-podobna.\n\nNapisz funkcję zwracającą największe k, dla którego T jest k-podobna. W arkuszu nie wolno używać wycinków list ani funkcji wbudowanych.",
     "starterCode": "def najwieksze_k(T):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez pobierania fragmentu listy (wycinków t[a:b]).",
+      "also": ["[:]"]
+    },
     "kind": "function",
     "functionName": "najwieksze_k",
     "tests": [

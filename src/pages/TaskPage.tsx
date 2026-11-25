@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { CodeEditor } from '../components/CodeEditor';
 import { Console } from '../components/Console';
@@ -8,9 +8,11 @@ import { PdfViewer } from '../components/PdfViewer';
 import { ResultPanel } from '../components/ResultPanel';
 import { StatusBadge } from '../components/StatusBadge';
 import { TopicList } from '../components/TopicBadge';
-import { sessionsById, tasksById, tasksForSession } from '../data';
+import { sessionsById, sheetLocation, tasksById, tasksForSession } from '../data';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useRunnerStatus } from '../hooks/useRunnerStatus';
+import { downloadText, isSaveShortcut, solutionFileName } from '../lib/download';
+import { findForbidden } from '../lib/restrictions';
 import { aiConfigFromEnv, type AiConfig } from '../lib/hints';
 import { loadSolution, removeSolution, saveSolution, solutionStatus } from '../lib/storage';
 import { getRunner, type ExecutionOutput, type PythonRunner } from '../python/runner';
@@ -88,6 +90,10 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
   }, [runner, task, code, stdin]);
 
   const resultRef = useRef<HTMLDivElement>(null);
+  const forbiddenUsed = useMemo(
+    () => findForbidden(code, task.restrictions),
+    [code, task.restrictions],
+  );
 
   const submit = useCallback(async () => {
     setBusy(true);
@@ -100,6 +106,21 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
     );
     setBusy(false);
   }, [runner, task, code]);
+
+  // Ctrl+S na stronie zadania pobiera rozwiązanie jako plik .py zamiast zapisywać stronę.
+  const saveFile = useCallback(
+    () => downloadText(solutionFileName(task.id), code),
+    [task.id, code],
+  );
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (!isSaveShortcut(event)) return;
+      event.preventDefault();
+      saveFile();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [saveFile]);
 
   const reset = () => {
     if (!window.confirm('Przywrócić kod startowy? Twoje rozwiązanie zostanie usunięte.')) return;
@@ -147,6 +168,13 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
             ))}
           </div>
 
+          {task.restrictions && (
+            <aside className="restriction" aria-label="Ograniczenia z arkusza">
+              <strong>⚠ Bez funkcji wbudowanych</strong>
+              <p>{task.restrictions.note}</p>
+            </aside>
+          )}
+
           <div className="task-howto">
             {task.kind === 'program' ? (
               <p>
@@ -183,7 +211,12 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
             </div>
           )}
           {showSheet && session && (
-            <PdfViewer files={session.sheets} title={`Arkusz ${session.label} ${session.year}`} />
+            <PdfViewer
+              files={session.sheets}
+              title={`Arkusz ${session.label} ${session.year}`}
+              initialPart={sheetLocation(task.id)?.part}
+              initialPage={sheetLocation(task.id)?.page}
+            />
           )}
 
           {dataFiles.length > 0 && (
@@ -223,7 +256,17 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
             <button type="button" className="button button--ghost" onClick={reset} disabled={busy}>
               Resetuj
             </button>
-            <span className="editor-toolbar__hint muted">Ctrl+Enter – sprawdź</span>
+            <button
+              type="button"
+              className="button button--ghost"
+              onClick={saveFile}
+              title="Pobierz rozwiązanie jako plik .py (Ctrl+S)"
+            >
+              ⬇ .py
+            </button>
+            <span className="editor-toolbar__hint muted">
+              Ctrl+Enter – sprawdź · Ctrl+S – pobierz
+            </span>
           </div>
           {/* Na szerokim ekranie: kod po lewej, konsola i wynik sprawdzenia po prawej. */}
           <div className="editor-pane">
@@ -237,6 +280,18 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
               <p className={`runner-status runner-status--${runnerStatus}`} role="status">
                 {STATUS_TEXT[runnerStatus]}
               </p>
+              {forbiddenUsed.length > 0 && (
+                <p className="restriction-warning" role="status">
+                  ⚠ W tym zadaniu na maturze nie wolno używać:{' '}
+                  {forbiddenUsed.map((name, i) => (
+                    <span key={name}>
+                      {i > 0 && ', '}
+                      <code>{name}</code>
+                    </span>
+                  ))}
+                  . Sprawdzarka i tak oceni wynik, ale napisz to samodzielnie.
+                </p>
+              )}
             </div>
             <div className="editor-pane__output">
               <Console

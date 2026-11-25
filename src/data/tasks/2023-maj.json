@@ -48,6 +48,9 @@
     "topics": ["systemy-liczbowe"],
     "summary": "Blok w zapisie binarnym to maksymalny ciąg jednakowych cyfr, np. 1000011 (67) ma 3 bloki, a 11110101 (245) – 5.\n\nNapisz funkcję zwracającą liczbę bloków w zapisie binarnym dodatniej liczby n. W arkuszu nie wolno używać funkcji konwersji (np. bin) – tylko arytmetyki.",
     "starterCode": "def bloki(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez zamiany na system dwójkowy (bin, format) i konwersji typów."
+    },
     "kind": "function",
     "functionName": "bloki",
     "tests": [

@@ -9,6 +9,10 @@
     "topics": ["tablice"],
     "summary": "Tablice A[1..n] i B[1..n] są k-podobne (0 ≤ k < n), gdy A[1..k] = B[n−k+1..n] oraz A[k+1..n] = B[1..n−k] – czyli B powstaje z A przez przesunięcie cykliczne.\n\nNapisz funkcję zwracającą True, jeśli A i B są k-podobne, i False w przeciwnym razie. W arkuszu wolno odwoływać się tylko do pojedynczych elementów tablic.",
     "starterCode": "def czy_k_podobne(A, B, k):\n    n = len(A)\n    # zwróć True albo False\n    return False\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. Elementy tablic porównuj pojedynczo.",
+      "also": ["[:]"]
+    },
     "kind": "function",
     "functionName": "czy_k_podobne",
     "tests": [

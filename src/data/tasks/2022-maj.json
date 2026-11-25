@@ -9,6 +9,9 @@
     "topics": ["tablice", "slowniki"],
     "summary": "n-permutacja to ciąg n liczb zawierający każdą z liczb 1, 2, …, n dokładnie raz. Dla danego ciągu n dodatnich liczb całkowitych oblicz najmniejszą liczbę elementów, które trzeba podmienić, aby otrzymać n-permutację, np. dla (1, 3, 1) wynik to 1.\n\nW arkuszu wolno używać tylko pojedynczych elementów tablic i podstawowych operacji (bez funkcji wbudowanych typu set czy sorted).",
     "starterCode": "def podmiany(A):\n    n = len(A)\n    # zwróć minimalną liczbę elementów do podmiany\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. Bez sortowania i zliczania wbudowanymi funkcjami."
+    },
     "kind": "function",
     "functionName": "podmiany",
     "tests": [

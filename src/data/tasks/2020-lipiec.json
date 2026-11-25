@@ -9,6 +9,9 @@
     "topics": ["zachlanne", "teoria-liczb"],
     "summary": "Ułamek egipski ma postać 1/m. Metoda zachłanna rozkłada liczbę p/q < 1: bierzemy najmniejsze n ≥ q/p (sufit), odejmujemy 1/n i powtarzamy dla reszty, aż będzie równa 0. Np. 4/5 = 1/2 + 1/4 + 1/20.\n\nNapisz funkcję egipskie(p, q), która zwróci listę kolejnych mianowników. Licz na liczbach całkowitych, nie na ułamkach dziesiętnych – inaczej pojawią się błędy zaokrągleń.",
     "starterCode": "def egipskie(p, q):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. Sufit oblicz samodzielnie (bez math.ceil)."
+    },
     "kind": "function",
     "functionName": "egipskie",
     "tests": [

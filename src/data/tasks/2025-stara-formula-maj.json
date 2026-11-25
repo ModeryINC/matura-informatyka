@@ -9,6 +9,9 @@
     "topics": ["teoria-liczb"],
     "summary": "Liczba falista ma w zapisie na przemian tylko dwie różne cyfry (np. 41414). Z liczby bazowej n (dwie ostatnie cyfry różne od zera i od siebie) tworzymy liczbę falistą tej samej długości, powtarzając na przemian jej dwie ostatnie cyfry, np. 78234 → 43434, 556621 → 212121.\n\nNapisz funkcję zwracającą tę liczbę falistą, używając tylko arytmetyki na liczbach całkowitych.",
     "starterCode": "def falista(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez zamiany liczby na napis i odwrotnie (str, int, bin…)."
+    },
     "kind": "function",
     "functionName": "falista",
     "tests": [

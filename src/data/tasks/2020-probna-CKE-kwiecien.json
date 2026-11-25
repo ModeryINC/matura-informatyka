@@ -49,6 +49,9 @@
     "topics": ["tablice", "slowniki"],
     "summary": "Moda (dominanta) to element występujący w zestawie najczęściej. Napisz funkcję moda(T) dla tablicy, w której jest dokładnie jedna moda. W arkuszu wolno używać tylko pojedynczych elementów tablicy i podstawowych operacji (bez słowników i funkcji wbudowanych).",
     "starterCode": "def moda(T):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. Bez sortowania i zliczania wbudowanymi funkcjami."
+    },
     "kind": "function",
     "functionName": "moda",
     "tests": [

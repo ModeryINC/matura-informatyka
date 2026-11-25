@@ -101,6 +101,19 @@ interface TaskBase {
   summary: string;
   /** Kod startowy wstawiany do edytora. */
   starterCode: string;
+  /** Ograniczenia z arkusza (np. zakaz funkcji wbudowanych) – opis w `src/lib/restrictions.ts`. */
+  restrictions?: TaskRestrictions;
+}
+
+/** Dodatkowe zakazy poza funkcjami wbudowanymi. */
+export type RestrictionToken = '**' | '[:]' | '[]';
+
+/** Ograniczenia z treści zadania: „zabronione jest używanie funkcji wbudowanych…”. */
+export interface TaskRestrictions {
+  /** Opis dla ucznia (z arkusza, w skrócie). */
+  note: string;
+  /** Dodatkowe zakazy: potęgowanie, wycinki list, listy w ogóle. */
+  also?: RestrictionToken[];
 }
 
 export interface ProgramTask extends TaskBase {

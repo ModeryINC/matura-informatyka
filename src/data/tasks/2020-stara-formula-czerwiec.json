@@ -9,6 +9,9 @@
     "topics": ["systemy-liczbowe"],
     "summary": "Kod BCD liczby powstaje przez zamianę każdej cyfry dziesiętnej na jej czterobitowy zapis binarny, np. 3768 → 0011 0111 0110 1000. Napisz funkcję zwracającą liczbę jedynek w kodzie BCD dodatniej liczby L, używając tylko arytmetyki.",
     "starterCode": "def jedynki_bcd(L):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez zamiany liczby na napis i odwrotnie (str, int, bin…)."
+    },
     "kind": "function",
     "functionName": "jedynki_bcd",
     "tests": [

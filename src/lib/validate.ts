@@ -43,6 +43,17 @@ export function validateTask(value: unknown, sessionIds: ReadonlySet<string>): s
     }
   }
 
+  if (task.restrictions !== undefined) {
+    const r = task.restrictions as { note?: unknown; also?: unknown };
+    if (typeof r.note !== 'string' || r.note === '')
+      fail('"restrictions.note" musi być niepustym napisem');
+    if (
+      r.also !== undefined &&
+      (!Array.isArray(r.also) || r.also.some((t) => !['**', '[:]', '[]'].includes(t as string)))
+    )
+      fail('"restrictions.also" może zawierać tylko "**", "[:]" i "[]"');
+  }
+
   if (task.kind === 'program') {
     if (!Array.isArray(task.checks) || task.checks.length === 0) {
       fail('zadanie typu "program" wymaga listy "checks"');

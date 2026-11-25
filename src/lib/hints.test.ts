@@ -77,6 +77,17 @@ describe('buildHintPrompt', () => {
     expect(prompt).toContain('Uczeń prosi o podpowiedź.');
   });
 
+  it('przekazuje ograniczenia z arkusza', () => {
+    const prompt = buildHintPrompt({
+      task: { ...functionTask, restrictions: { note: 'Bez funkcji wbudowanych.' } },
+      code: '',
+      result: null,
+      output: null,
+      previousHints: [],
+    });
+    expect(prompt).toContain('# Ograniczenia z arkusza\nBez funkcji wbudowanych.');
+  });
+
   it('dla funkcji podaje jej nazwę, a przy kolejnej prośbie wcześniejsze podpowiedzi', () => {
     const prompt = buildHintPrompt({
       task: functionTask,

@@ -9,6 +9,9 @@
     "topics": ["systemy-liczbowe"],
     "summary": "Liczba jest nieliczna, gdy w jej zapisie binarnym żadne dwie jedynki nie sąsiadują ze sobą (np. 10 = 1010 jest nieliczna, a 259 = 100000011 – nie). Napisz funkcję czy_nieliczna(k) zwracającą True albo False, bez funkcji zamiany systemów liczbowych.",
     "starterCode": "def czy_nieliczna(k):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez zamiany między systemami liczbowymi (bin, int(…, 2), format)."
+    },
     "kind": "function",
     "functionName": "czy_nieliczna",
     "tests": [

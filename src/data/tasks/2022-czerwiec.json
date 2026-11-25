@@ -9,6 +9,9 @@
     "topics": ["teoria-liczb"],
     "summary": "Napisz funkcję suma_kw_cyfr(n), która dla dodatniej liczby n zwraca sumę kwadratów jej cyfr w zapisie dziesiętnym, np. dla 123 wynik to 1² + 2² + 3² = 14. W arkuszu wolno używać tylko operacji arytmetycznych (bez zamiany na napis).",
     "starterCode": "def suma_kw_cyfr(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez zamiany liczby na napis i odwrotnie (str, int, bin…)."
+    },
     "kind": "function",
     "functionName": "suma_kw_cyfr",
     "tests": [
@@ -52,6 +55,9 @@
     "topics": ["teoria-liczb", "tablice", "symulacja"],
     "summary": "Tworzymy ciąg: zaczynamy od n, a każdy kolejny element to suma kwadratów cyfr poprzedniego. Jeśli w ciągu pojawi się 1, liczba n jest nudna, w przeciwnym razie – ciekawa (ciąg wpada wtedy w cykl, np. 4 → 16 → 37 → … → 4).\n\nNapisz funkcję czy_nudna(n) dla 0 < n < 1000, zwracającą True dla liczb nudnych i False dla ciekawych. Przyda się fakt, że suma kwadratów cyfr liczby trzycyfrowej nie przekracza 243 – możesz zapamiętywać odwiedzone wartości w tablicy.",
     "starterCode": "def suma_kw_cyfr(n):\n    ...\n\n\ndef czy_nudna(n):\n    return False\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez zamiany liczby na napis i odwrotnie (str, int, bin…)."
+    },
     "kind": "function",
     "functionName": "czy_nudna",
     "tests": [

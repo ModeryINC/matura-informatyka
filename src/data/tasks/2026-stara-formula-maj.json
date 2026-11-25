@@ -56,6 +56,10 @@
     "topics": ["teoria-liczb"],
     "summary": "Dla dwóch dodatnich liczb a i b o tej samej liczbie cyfr oblicz, ile przeniesień pojawia się podczas ich dodawania pisemnego, np. dla 27732 i 72619 są 4 przeniesienia.\n\nW arkuszu wolno używać tylko pojedynczych zmiennych całkowitych i operacji arytmetycznych (bez napisów i list).",
     "starterCode": "def przeniesienia(a, b):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez tablic i list oraz bez zamiany liczby na napis.",
+      "also": ["[]"]
+    },
     "kind": "function",
     "functionName": "przeniesienia",
     "tests": [

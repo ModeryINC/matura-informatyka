@@ -48,6 +48,10 @@
     "topics": ["teoria-liczb"],
     "summary": "Napisz funkcję pot(a, k) zwracającą a^k mod k dla liczb naturalnych 2 ≤ a < k. Wolno używać tylko podstawowych działań arytmetycznych – bez operatora potęgowania i funkcji pow.",
     "starterCode": "def pot(a, k):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. Bez potęgowania (pow, **).",
+      "also": ["**"]
+    },
     "kind": "function",
     "functionName": "pot",
     "tests": [
@@ -83,6 +87,10 @@
     "topics": ["liczby-pierwsze", "teoria-liczb"],
     "summary": "Liczba k > 2 jest prawdopodobnie pierwsza, gdy dla każdego a, 2 ≤ a < k, zachodzi a^k mod k = a. Napisz funkcję testF(k) zwracającą 1, gdy k jest prawdopodobnie pierwsza, a 0 w przeciwnym razie (możesz zdefiniować pomocniczą funkcję pot z zadania 2.1).",
     "starterCode": "def testF(k):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. Możesz użyć funkcji pot(a, k) z zadania 2.1 – zdefiniuj ją sam.",
+      "also": ["**"]
+    },
     "kind": "function",
     "functionName": "testF",
     "tests": [
@@ -130,6 +138,10 @@
     "topics": ["liczby-pierwsze", "teoria-liczb"],
     "summary": "Liczba Carmichaela to liczba złożona, która przechodzi test Fermata (jest prawdopodobnie pierwsza), np. 561 = 3·11·17. Napisz funkcję czyLC(k) dla k > 2, zwracającą 1 dla liczb Carmichaela i 0 dla pozostałych.",
     "starterCode": "def czyLC(k):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. Możesz użyć funkcji testF(k) z zadania 2.2 – zdefiniuj ją sam.",
+      "also": ["**"]
+    },
     "kind": "function",
     "functionName": "czyLC",
     "tests": [

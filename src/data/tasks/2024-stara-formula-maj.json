@@ -9,6 +9,9 @@
     "topics": ["liczby-pierwsze", "teoria-liczb"],
     "summary": "Napisz funkcję zwracającą największy czynnik w rozkładzie liczby n > 1 na czynniki pierwsze, np. dla 120 = 2·2·2·3·5 wynik to 5. Wolno operować tylko na liczbach całkowitych, bez funkcji wbudowanych. Sprawdzarka testuje też dużą liczbę – zadbaj o wydajność.",
     "starterCode": "def najwiekszy_czynnik(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych."
+    },
     "kind": "function",
     "functionName": "najwiekszy_czynnik",
     "tests": [

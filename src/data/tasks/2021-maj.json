@@ -9,6 +9,9 @@
     "topics": ["teoria-liczb"],
     "summary": "Cyfrowe dopełnienie liczby n powstaje przez zamianę każdej jej cyfry na uzupełnienie do 9, np. dopełnieniem 2021 jest 7978. Pierwsza cyfra n jest większa od 0 i mniejsza od 9.\n\nNapisz funkcję zwracającą cyfrowe dopełnienie liczby n, operując wyłącznie na liczbach całkowitych (bez zamiany na napis).",
     "starterCode": "def dopelnienie(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez zamiany liczby na napis i odwrotnie (str, int, bin…)."
+    },
     "kind": "function",
     "functionName": "dopelnienie",
     "tests": [

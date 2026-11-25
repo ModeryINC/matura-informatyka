@@ -9,6 +9,9 @@
     "topics": ["systemy-liczbowe"],
     "summary": "J(n) to ciąg pozycji jedynek w zapisie dwójkowym liczby n, licząc od 1 od najmniej znaczącej cyfry, np. 19 = 10011, więc J(19) = (1, 2, 5). Napisz funkcję J(n) zwracającą tę listę, bez funkcji zamiany na system dwójkowy.",
     "starterCode": "def J(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez funkcji zamiany typów danych (str, int, bin…)."
+    },
     "kind": "function",
     "functionName": "J",
     "tests": [

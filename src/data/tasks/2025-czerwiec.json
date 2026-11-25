@@ -48,6 +48,10 @@
     "topics": ["teoria-liczb"],
     "summary": "Liczba k ma parzystą liczbę cyfr. Cięcie na połowę dzieli jej zapis na lewą połowę (liczba a) i prawą połowę (liczba b), np. 123456 → 123 i 456, a 120056 → 120 i 56.\n\nNapisz funkcję zwracającą [a, b]. W arkuszu wolno używać tylko operacji arytmetycznych (bez napisów, tablic i list).",
     "starterCode": "def ciecie(k):\n    # zwróć [a, b]\n    return [0, 0]\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez tablic i list.",
+      "also": ["[]"]
+    },
     "kind": "function",
     "functionName": "ciecie",
     "tests": [

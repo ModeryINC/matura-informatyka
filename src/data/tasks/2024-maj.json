@@ -9,6 +9,9 @@
     "topics": ["teoria-liczb"],
     "summary": "Nieparzysty skrót liczby n powstaje przez usunięcie z jej zapisu dziesiętnego wszystkich cyfr parzystych, np. skrót 294762 to 97, a 39101 to 3911.\n\nNapisz funkcję zwracającą nieparzysty skrót liczby n (wiadomo, że skrót istnieje). W arkuszu wolno używać tylko operacji arytmetycznych na liczbach całkowitych – spróbuj obejść się bez zamiany na napis.",
     "starterCode": "def skrot(n):\n    # zwróć nieparzysty skrót liczby n\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez zamiany liczby na napis i odwrotnie (str, int, bin…)."
+    },
     "kind": "function",
     "functionName": "skrot",
     "tests": [

@@ -62,6 +62,12 @@ export function buildHintPrompt({
     );
   }
 
+  if (task.restrictions) {
+    parts.push(
+      `# Ograniczenia z arkusza\n${task.restrictions.note}\nNie proponuj konstrukcji, które łamią te ograniczenia.`,
+    );
+  }
+
   parts.push('# Kod ucznia', '```python', clip(code.trim() || '(pusty)', MAX_CODE_CHARS), '```');
 
   if (result) {

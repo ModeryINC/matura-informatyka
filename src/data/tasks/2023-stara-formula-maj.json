@@ -9,6 +9,9 @@
     "topics": ["tablice", "podciagi"],
     "summary": "Opis ciągu A powstaje przez zamianę każdego maksymalnego fragmentu złożonego z p powtórzeń liczby x na dwie liczby p i x, np. (1, 1, 3, 2, 2, 2, 1) → (2, 1, 1, 3, 3, 2, 1, 1).\n\nNapisz funkcję zwracającą długość opisu (liczbę elementów ciągu B) dla danej listy A, bez budowania samego opisu.",
     "starterCode": "def dlugosc_opisu(A):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych."
+    },
     "kind": "function",
     "functionName": "dlugosc_opisu",
     "tests": [

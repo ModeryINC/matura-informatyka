@@ -61,6 +61,22 @@ Wspólne pola:
 `args` i `expected` to wartości JSON. Liczby całkowite w testach muszą mieścić się w zakresie
 bezpiecznym dla JavaScriptu (|x| < 2⁵³).
 
+### Ograniczenia z arkusza (opcjonalnie)
+
+Gdy arkusz zabrania funkcji wbudowanych („w zapisie możesz wykorzystać tylko operacje
+arytmetyczne…”), dodaj pole `restrictions`:
+
+```json
+"restrictions": {
+  "note": "Na maturze wolno tu używać tylko operacji arytmetycznych… bez funkcji wbudowanych.",
+  "also": ["**", "[:]", "[]"]
+}
+```
+
+`note` jest pokazywany na stronie zadania, a `also` (opcjonalne) dodaje zakazy potęgowania,
+wycinków list i list w ogóle. Strona ostrzega, gdy kod ucznia używa zakazanych konstrukcji
+(`src/lib/restrictions.ts`) – nie wpływa to na zaliczenie testów.
+
 ## 2. Rozwiązanie wzorcowe
 
 Dodaj `solutions/<rok>-<sesja>/<numer>.py`:
@@ -76,3 +92,12 @@ npm test                               # walidacja JSON, istnienie plików, unik
 ```
 
 Oba polecenia działają też w CI – pull request z błędnym kluczem nie przejdzie.
+
+## 4. Strona w arkuszu
+
+Podgląd PDF otwiera się na stronie z zadaniem. Po dodaniu zadań odśwież mapowanie
+(wymaga `pdftotext` z pakietu poppler):
+
+```bash
+python scripts/find_sheet_pages.py   # zapisuje src/data/sheet-pages.json
+```

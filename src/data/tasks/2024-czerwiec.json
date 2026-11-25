@@ -9,6 +9,9 @@
     "topics": ["systemy-liczbowe", "tablice-2d"],
     "summary": "Cyfry zapisu binarnego liczby n wpisujemy wierszami do tablicy w × k, zaczynając od lewego górnego rogu; po ostatniej cyfrze zaczynamy znów od pierwszej, aż do zapełnienia tablicy. Np. dla w = 5, k = 3, n = 19 (10011) w prawym dolnym rogu jest 1.\n\nNapisz funkcję zwracającą cyfrę z prawego dolnego rogu. Postaraj się nie budować całej tablicy – wystarczy arytmetyka.",
     "starterCode": "def rog(w, k, n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez zamiany na system dwójkowy (bin, format)."
+    },
     "kind": "function",
     "functionName": "rog",
     "tests": [

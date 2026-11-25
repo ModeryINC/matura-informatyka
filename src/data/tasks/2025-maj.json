@@ -9,6 +9,9 @@
     "topics": ["rekurencja", "teoria-liczb"],
     "summary": "Rekurencyjna funkcja przestaw(n) dzieli zapis liczby na pary cyfr od końca i w każdej parze zamienia cyfry miejscami (przy niepełnej, pierwszej parze z wiodącym zerem zostaje sama cyfra), np. przestaw(316498) = 134689.\n\nNapisz nierekurencyjną funkcję przestaw2(n), która zwraca ten sam wynik. W arkuszu wolno operować tylko na liczbach całkowitych (bez napisów i funkcji wbudowanych).",
     "starterCode": "def przestaw2(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. Funkcję przestaw napisz samodzielnie."
+    },
     "kind": "function",
     "functionName": "przestaw2",
     "tests": [

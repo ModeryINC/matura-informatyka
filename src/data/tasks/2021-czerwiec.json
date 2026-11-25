@@ -9,6 +9,10 @@
     "topics": ["zachlanne", "teoria-liczb"],
     "summary": "Każdą dodatnią liczbę n można zapisać jako sumę kwadratów liczb dodatnich. Metoda zachłanna w każdym kroku bierze największy kwadrat, który nie przekracza tego, co zostało do n, np. 12 = 3² + 1² + 1² + 1² (długość 4).\n\nNapisz funkcję zwracającą długość reprezentacji kwadratowej n otrzymanej metodą zachłanną. W arkuszu nie wolno używać funkcji wbudowanych, w szczególności pierwiastka.",
     "starterCode": "def dlugosc(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez pierwiastka (sqrt, ** 0.5).",
+      "also": ["**"]
+    },
     "kind": "function",
     "functionName": "dlugosc",
     "tests": [

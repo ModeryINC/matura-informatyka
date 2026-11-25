@@ -9,6 +9,10 @@
     "topics": ["systemy-liczbowe", "rekurencja"],
     "summary": "W turnieju pucharowym 2^k drużyn (numery 0 … 2^k − 1) w pierwszej rundzie grają pary (0, 1), (2, 3), …, a w kolejnych rundach zwycięzcy sąsiednich meczów. Numer rundy, w której mogą się spotkać drużyny x i y, wynika z ich zapisów binarnych.\n\nNapisz funkcję runda(k, x, y) zwracającą ten numer, bez funkcji potęgowania i innych funkcji wbudowanych.",
     "starterCode": "def runda(k, x, y):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych. W szczególności bez potęgowania (pow, **).",
+      "also": ["**"]
+    },
     "kind": "function",
     "functionName": "runda",
     "tests": [

@@ -27,6 +27,11 @@ export function TaskCard({ task, session, status }: TaskCardProps) {
       </h3>
       <p className="task-card__summary">{task.summary}</p>
       <TopicList topics={task.topics} />
+      {task.restrictions && (
+        <p className="restriction-badge" title={task.restrictions.note}>
+          ⚠ Bez funkcji wbudowanych
+        </p>
+      )}
     </article>
   );
 }

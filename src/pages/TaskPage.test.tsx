@@ -1,7 +1,7 @@
-import { screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { tasks } from '../data';
-import { loadSolution } from '../lib/storage';
+import { loadSolution, saveSolution } from '../lib/storage';
 import type { PythonRunner } from '../python/runner';
 import type { SubmissionResult } from '../types';
 import { renderAt } from '../../tests/render';
@@ -116,6 +116,38 @@ describe('TaskPage', () => {
       },
     ]);
     expect(screen.getByRole('region', { name: 'Podpowiedzi AI' })).toBeInTheDocument();
+  });
+
+  it('pokazuje ograniczenia z arkusza i ostrzega przed zakazanymi funkcjami', () => {
+    const restricted = tasks.find((t) => t.id === '2024-maj-3.1')!;
+    saveSolution(restricted.id, { code: 'def skrot(n):\n    return int(str(n)[::2])' });
+    renderTask(fakeRunner({ passed: true, results: [], durationMs: 1 }), restricted.id);
+    expect(
+      screen.getByRole('complementary', { name: 'Ograniczenia z arkusza' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/nie wolno używać/)).toHaveTextContent('int(), str()');
+  });
+
+  it('Ctrl+S pobiera rozwiązanie jako plik .py', () => {
+    const createUrl = vi.fn().mockReturnValue('blob:x');
+    vi.stubGlobal('URL', { ...URL, createObjectURL: createUrl, revokeObjectURL: vi.fn() });
+    const click = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
+    renderTask(fakeRunner({ passed: true, results: [], durationMs: 1 }));
+
+    const event = fireEvent.keyDown(window, { key: 's', ctrlKey: true });
+
+    expect(event).toBe(false); // preventDefault – przeglądarka nie zapisuje strony
+    expect(createUrl).toHaveBeenCalledTimes(1);
+    expect(click).toHaveBeenCalledTimes(1);
+    click.mockRestore();
+    vi.unstubAllGlobals();
+  });
+
+  it('podgląd arkusza otwiera się na stronie z zadaniem', async () => {
+    renderTask(fakeRunner({ passed: true, results: [], durationMs: 1 }), '2024-maj-3.1');
+    await userEvent.click(screen.getByRole('button', { name: /Pokaż arkusz/ }));
+    expect(screen.getByTitle(/Arkusz/).getAttribute('src')).toMatch(/#page=8$/);
+    expect(screen.getByText('strona 8')).toBeInTheDocument();
   });
 
   it('dla nieznanego zadania pokazuje stronę 404', () => {

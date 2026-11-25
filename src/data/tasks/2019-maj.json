@@ -9,6 +9,9 @@
     "topics": ["wyszukiwanie-binarne", "zlozonosc", "tablice"],
     "summary": "Tablica A zawiera najpierw wyłącznie liczby nieparzyste (zapisane przez Małgosię), a potem wyłącznie parzyste (zapisane przez Jasia); każde z dzieci zapisało co najmniej jedną liczbę. Napisz funkcję zwracającą pierwszą od lewej liczbę parzystą, np. dla 5, 99, 3, 7, 111, 13, 4, 24, 4, 8 wynik to 4.\n\nMaksymalną liczbę punktów dostaje się za algorytm o złożoności lepszej niż liniowa – użyj wyszukiwania binarnego.",
     "starterCode": "def pierwsza_parzysta(A):\n    # Twoje rozwiązanie\n    return 0\n",
+    "restrictions": {
+      "note": "Na maturze wolno tu używać tylko operacji arytmetycznych (+, -, *, /, //, %), porównań, instrukcji sterujących, przypisań i własnych funkcji – bez funkcji wbudowanych."
+    },
     "kind": "function",
     "functionName": "pierwsza_parzysta",
     "tests": [
