@@ -593,6 +593,13 @@ select:focus-visible {
   background: var(--surface);
   color: var(--text);
   box-shadow: 0 20px 50px rgb(0 0 0 / 30%);
+  /* Przewija się tylko zawartość pliku, nie całe okno. */
+  overflow: hidden;
+}
+
+.file-preview[open] {
+  display: flex;
+  flex-direction: column;
 }
 
 .file-preview::backdrop {
@@ -601,8 +608,9 @@ select:focus-visible {
 
 .file-preview__inner {
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
-  max-block-size: calc(100dvh - 2rem);
+  min-block-size: 0;
 }
 
 .file-preview__header {

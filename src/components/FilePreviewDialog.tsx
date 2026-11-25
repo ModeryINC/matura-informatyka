@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { assetUrl } from '../data';
 import { fileName } from '../lib/sessions';
 
@@ -57,7 +58,8 @@ export function FilePreviewDialog({ path, onClose }: FilePreviewDialogProps) {
 
   const name = path ? fileName(path) : '';
 
-  return (
+  // Portal do <body>: okno działa także wtedy, gdy lista plików jest w zwiniętym <details>.
+  return createPortal(
     <dialog
       ref={dialogRef}
       className="file-preview"
@@ -114,6 +116,7 @@ export function FilePreviewDialog({ path, onClose }: FilePreviewDialogProps) {
           )}
         </div>
       )}
-    </dialog>
+    </dialog>,
+    document.body,
   );
 }
