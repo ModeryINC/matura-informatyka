@@ -65,9 +65,16 @@ jobs:
       url: ${{ steps.deploy.outputs.deployment-url }}
     steps:
       - uses: actions/checkout@v7
+      # Zmienne (vars) GitHub wypisuje w logach otwartym tekstem, a logi publicznego repo
+      # widzi każdy – klucz i token muszą być sekretami (w logach jako ***).
+      - name: Klucz i token muszą być sekretami
+        if: vars.AI_API_KEY != '' || vars.CLOUDFLARE_API_TOKEN != ''
+        run: |
+          echo "::error::AI_API_KEY i CLOUDFLARE_API_TOKEN zapisz jako sekrety (Environment secrets), nie zmienne – zmienne są widoczne w publicznych logach. Usuń je ze zmiennych."
+          exit 1
       - id: check
         name: Sprawdź konfigurację Cloudflare
-        run: echo "enabled=${{ secrets.CLOUDFLARE_API_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
+        run: echo "enabled=${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.AI_API_KEY != '' }}" >> "$GITHUB_OUTPUT"
       # Klucz Gemini trafia wyłącznie do Workera jako sekret GEMINI_API_KEY.
       - id: deploy
         if: steps.check.outputs.enabled == 'true'
@@ -80,7 +87,7 @@ jobs:
           secrets: |
             GEMINI_API_KEY
         env:
-          GEMINI_API_KEY: ${{ secrets.AI_API_KEY || vars.AI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.AI_API_KEY }}
 
   pages-build:
     name: Build strony do wdrożenia

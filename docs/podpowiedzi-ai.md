@@ -41,8 +41,11 @@ na darmowym planie tylko ok. 20 zapytań dziennie na cały klucz. Model zmienia 
 4. GitHub → _Settings → Environments → github-pages_:
    - sekret `CLOUDFLARE_API_TOKEN` – token z punktu 2,
    - sekret lub zmienna `CLOUDFLARE_ACCOUNT_ID` – z punktu 3,
-   - `AI_API_KEY` – klucz Gemini z [Google AI Studio](https://aistudio.google.com/apikey)
-     (najlepiej jako **sekret**).
+   - sekret `AI_API_KEY` – klucz Gemini z [Google AI Studio](https://aistudio.google.com/apikey).
+
+   Klucz i token muszą być **sekretami** (_Environment secrets_), nie zmiennymi: zmienne GitHub
+   wypisuje w logach otwartym tekstem, a logi publicznego repo są dostępne dla każdego.
+   Workflow przerwie się z komunikatem, jeśli znajdzie je wśród zmiennych.
 5. Uruchom workflow (push na `main` albo _Actions → CI/CD → Run workflow_). Job
    „Pośrednik podpowiedzi AI” wdroży Workera i wgra do niego klucz, a build strony dostanie
    adres Workera automatycznie.
