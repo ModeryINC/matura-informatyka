@@ -1,0 +1,237 @@
+[
+  {
+    "id": "2025-stara-formula-maj-2.2",
+    "sessionId": "2025/stara-formula-maj",
+    "number": "2.2",
+    "title": "Liczba falista",
+    "part": 1,
+    "points": 4,
+    "topics": [
+      "teoria-liczb"
+    ],
+    "summary": "Liczba falista ma w zapisie na przemian tylko dwie różne cyfry (np. 41414). Z liczby bazowej n (dwie ostatnie cyfry różne od zera i od siebie) tworzymy liczbę falistą tej samej długości, powtarzając na przemian jej dwie ostatnie cyfry, np. 78234 → 43434, 556621 → 212121.\n\nNapisz funkcję zwracającą tę liczbę falistą, używając tylko arytmetyki na liczbach całkowitych.",
+    "starterCode": "def falista(n):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "falista",
+    "tests": [
+      {
+        "args": [
+          78234
+        ],
+        "expected": 43434
+      },
+      {
+        "args": [
+          52786
+        ],
+        "expected": 68686
+      },
+      {
+        "args": [
+          326
+        ],
+        "expected": 626
+      },
+      {
+        "args": [
+          414141
+        ],
+        "expected": 414141
+      },
+      {
+        "args": [
+          7732
+        ],
+        "expected": 3232
+      },
+      {
+        "args": [
+          21289
+        ],
+        "expected": 98989
+      },
+      {
+        "args": [
+          556621
+        ],
+        "expected": 212121
+      },
+      {
+        "args": [
+          45621
+        ],
+        "expected": 12121
+      },
+      {
+        "args": [
+          12
+        ],
+        "expected": 12
+      },
+      {
+        "args": [
+          98
+        ],
+        "expected": 98
+      }
+    ]
+  },
+  {
+    "id": "2025-stara-formula-maj-4.1",
+    "sessionId": "2025/stara-formula-maj",
+    "number": "4.1",
+    "title": "Palindromy z symboli",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "napisy",
+      "palindromy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik symbole.txt zawiera 2000 napisów po 12 znaków z alfabetu o, +, *. Wypisz (po jednym w wierszu, w kolejności z pliku) wszystkie napisy, które są palindromami.",
+    "starterCode": "with open(\"symbole.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (symbole_przyklad.txt)",
+        "files": {
+          "symbole.txt": "arkusze/2025/stara-formula-maj/pliki/dane maj 23/symbole_przyklad.txt"
+        },
+        "expected": "oooo+**+oooo"
+      },
+      {
+        "label": "Dane egzaminacyjne (symbole.txt)",
+        "files": {
+          "symbole.txt": "arkusze/2025/stara-formula-maj/pliki/dane maj 23/symbole.txt"
+        },
+        "expected": "++o+o++o+o++\n+*+**++**+*+\n*+o++**++o+*\n*oo*o**o*oo*\n+*++*oo*++*+\n+o++oooo++o+"
+      }
+    ]
+  },
+  {
+    "id": "2025-stara-formula-maj-4.2",
+    "sessionId": "2025/stara-formula-maj",
+    "number": "4.2",
+    "title": "Prawie palindromy z symboli",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "palindromy",
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Podaj, ile napisów z pliku symbole.txt nie jest palindromami, ale stanie się nimi po zmianie dokładnie jednego znaku.",
+    "starterCode": "with open(\"symbole.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (symbole_przyklad.txt)",
+        "files": {
+          "symbole.txt": "arkusze/2025/stara-formula-maj/pliki/dane maj 23/symbole_przyklad.txt"
+        },
+        "expected": "1"
+      },
+      {
+        "label": "Dane egzaminacyjne (symbole.txt)",
+        "files": {
+          "symbole.txt": "arkusze/2025/stara-formula-maj/pliki/dane maj 23/symbole.txt"
+        },
+        "expected": "32"
+      }
+    ]
+  },
+  {
+    "id": "2025-stara-formula-maj-4.3",
+    "sessionId": "2025/stara-formula-maj",
+    "number": "4.3",
+    "title": "Kwadraty 3×3 z identycznych symboli",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "tablice-2d",
+      "grafy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Traktując wiersze pliku symbole.txt jako planszę, znajdź wszystkie kwadraty 3×3 złożone z dziewięciu identycznych symboli. Wypisz ich liczbę, a następnie dla każdego kwadratu numer wiersza i numer pozycji (licząc od 1) jego środkowego pola.",
+    "starterCode": "with open(\"symbole.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (symbole_przyklad.txt)",
+        "files": {
+          "symbole.txt": "arkusze/2025/stara-formula-maj/pliki/dane maj 23/symbole_przyklad.txt"
+        },
+        "expected": "1\n6 3"
+      },
+      {
+        "label": "Dane egzaminacyjne (symbole.txt)",
+        "files": {
+          "symbole.txt": "arkusze/2025/stara-formula-maj/pliki/dane maj 23/symbole.txt"
+        },
+        "expected": "3\n399 5\n546 2\n630 11"
+      }
+    ]
+  },
+  {
+    "id": "2025-stara-formula-maj-4.4",
+    "sessionId": "2025/stara-formula-maj",
+    "number": "4.4",
+    "title": "Największa liczba w zapisie symbolicznym",
+    "part": 2,
+    "points": 2,
+    "topics": [
+      "systemy-liczbowe",
+      "pliki-tekstowe"
+    ],
+    "summary": "Każdy napis traktujemy jak liczbę w systemie trójkowym (o = 0, + = 1, * = 2). Podaj największą z tych liczb w zapisie dziesiętnym oraz odpowiadający jej napis (w jednej linii).",
+    "starterCode": "with open(\"symbole.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (symbole_przyklad.txt)",
+        "files": {
+          "symbole.txt": "arkusze/2025/stara-formula-maj/pliki/dane maj 23/symbole_przyklad.txt"
+        },
+        "expected": "519789 ***+o*ooo++o"
+      },
+      {
+        "label": "Dane egzaminacyjne (symbole.txt)",
+        "files": {
+          "symbole.txt": "arkusze/2025/stara-formula-maj/pliki/dane maj 23/symbole.txt"
+        },
+        "expected": "531246 *******o+*+o"
+      }
+    ]
+  },
+  {
+    "id": "2025-stara-formula-maj-4.5",
+    "sessionId": "2025/stara-formula-maj",
+    "number": "4.5",
+    "title": "Suma liczb trójkowych",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "systemy-liczbowe",
+      "pliki-tekstowe"
+    ],
+    "summary": "Oblicz sumę wszystkich liczb z pliku symbole.txt (zapis trójkowy jak w zadaniu 2.3). Podaj ją w zapisie dziesiętnym oraz w zapisie trójkowym z użyciem symboli o, +, * (w jednej linii).",
+    "starterCode": "with open(\"symbole.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (symbole_przyklad.txt)",
+        "files": {
+          "symbole.txt": "arkusze/2025/stara-formula-maj/pliki/dane maj 23/symbole_przyklad.txt"
+        },
+        "expected": "4841542 +oooo****+oo+o+"
+      },
+      {
+        "label": "Dane egzaminacyjne (symbole.txt)",
+        "files": {
+          "symbole.txt": "arkusze/2025/stara-formula-maj/pliki/dane maj 23/symbole.txt"
+        },
+        "expected": "527865439 ++oo*+oo*++ooo*o*++"
+      }
+    ]
+  }
+]
