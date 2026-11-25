@@ -94,7 +94,7 @@
     "points": 3,
     "topics": ["teoria-liczb", "pliki-tekstowe"],
     "summary": "Liczba o parzystej liczbie cyfr jest połowicznie względnie pierwsza, gdy NWD liczb powstałych z cięcia jej zapisu na połowę jest równe 1 (np. 3487: NWD(34, 87) = 1). Plik liczby1.txt zawiera 500 liczb (4, 6 lub 8 cyfr) – podaj, ile z nich jest połowicznie względnie pierwszych.",
-    "starterCode": "from math import gcd\n\nwith open(\"liczby1.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -122,7 +122,7 @@
     "points": 3,
     "topics": ["teoria-liczb", "napisy", "pliki-tekstowe"],
     "summary": "Rozważ wszystkie cięcia zapisu liczby n² na dwie niepuste części a i b (np. 7601049 → 760 i 1049). Stopień Kaprekara liczby n to liczba cięć, dla których a + b ≤ n. Plik liczby2.txt zawiera 1000 liczb z [10, 30000] – wypisz największy stopień Kaprekara, a w drugiej linii liczbę, która go ma.",
-    "starterCode": "with open(\"liczby2.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -150,7 +150,7 @@
     "points": 3,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik dane.txt zawiera jeden napis z 10 000 znaków, wśród których ukryte są liczby – maksymalne ciągi cyfr. Podaj, ile ukrytych liczb zaczyna się od cyfr 50 (powtórzenia liczymy osobno).",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -178,7 +178,7 @@
     "points": 3,
     "topics": ["slowniki", "pliki-tekstowe"],
     "summary": "Podaj cyfrę, która występuje w pliku dane.txt najczęściej, oraz liczbę jej wystąpień.",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -206,7 +206,7 @@
     "points": 3,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Numer telefonu to ukryta liczba złożona z dokładnie 9 cyfr. Wypisz, w kolejności występowania, wszystkie numery telefonów zaczynające się od cyfry 5.",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -234,7 +234,7 @@
     "points": 3,
     "topics": ["napisy", "slowniki", "pliki-tekstowe"],
     "summary": "Spośród wszystkich numerów telefonów (9-cyfrowych ukrytych liczb) wypisz te, które składają się z najmniejszej liczby różnych cyfr.",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

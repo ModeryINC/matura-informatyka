@@ -106,7 +106,7 @@
     "points": 2,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik pary.txt zawiera 500 par słów. Niech f(s) to suma kodów ASCII liter słowa s. Znajdź parę z jednego wiersza, dla której |f(s1) − f(s2)| jest największe, i wypisz oba słowa oraz tę wartość.",
-    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -134,7 +134,7 @@
     "points": 3,
     "topics": ["napisy", "slowniki", "pliki-tekstowe"],
     "summary": "Wspólna liczba wystąpień litery x w słowach s1, s2 to minimum z liczby jej wystąpień w każdym z nich. Znajdź parę słów z jednego wiersza, dla której suma wspólnych wystąpień wszystkich liter jest największa; wypisz oba słowa i tę sumę.",
-    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -162,7 +162,7 @@
     "points": 4,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Prefiksosufiks pary słów to słowo, które jest początkiem jednego z nich i jednocześnie końcem drugiego. Wypisz (w kolejności z pliku) wszystkie pary, których najdłuższy prefiksosufiks ma co najmniej 5 liter, a przy każdej parze – długość tego prefiksosufiksu.",
-    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -190,7 +190,7 @@
     "points": 2,
     "topics": ["grafy", "tablice", "pliki-tekstowe"],
     "summary": "Plik korpo.txt opisuje hierarchię 50 000 pracowników: w i-tym wierszu jest numer bezpośredniego przełożonego pracownika i (prezes, nr 1, ma 0). Podaj, ilu pracowników nie jest przełożonym nikogo.",
-    "starterCode": "with open(\"korpo.txt\") as plik:\n    przelozony = [int(wiersz) for wiersz in plik]  # przelozony[i - 1] dla pracownika i\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -218,7 +218,7 @@
     "points": 2,
     "topics": ["slowniki", "grafy", "pliki-tekstowe"],
     "summary": "Podaj numer pracownika, który ma najwięcej bezpośrednich podwładnych, oraz liczbę tych podwładnych.",
-    "starterCode": "with open(\"korpo.txt\") as plik:\n    przelozony = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -246,7 +246,7 @@
     "points": 3,
     "topics": ["grafy", "programowanie-dynamiczne", "pliki-tekstowe"],
     "summary": "Przełożonymi pracownika są jego bezpośredni przełożony i wszyscy przełożeni tamtego. Podaj, ilu najwięcej przełożonych ma jeden pracownik, oraz ilu pracowników ma taką liczbę przełożonych. Wskazówka: numer przełożonego jest zawsze mniejszy od numeru pracownika.",
-    "starterCode": "with open(\"korpo.txt\") as plik:\n    przelozony = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

@@ -106,7 +106,7 @@
     "points": 4,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik pary.txt zawiera 500 par słów. Niech f(s) to suma kodów ASCII liter słowa s.\n\na) Wypisz parę z jednego wiersza, dla której f(s1) + f(s2) jest najmniejsza, oraz tę sumę.\nb) Wypisz parę, dla której |f(s1) − f(s2)| jest największa, oraz tę wartość.",
-    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -134,7 +134,7 @@
     "points": 4,
     "topics": ["slowniki", "napisy", "pliki-tekstowe"],
     "summary": "Wspólna liczba wystąpień litery x w słowach s1, s2 to minimum z liczby jej wystąpień w obu słowach.\n\na) Wypisz parę (lub pary – każdą w osobnym wierszu, w kolejności z pliku), w której litera b ma największą wspólną liczbę wystąpień.\nb) Wypisz parę, dla której suma wspólnych wystąpień wszystkich liter jest największa.",
-    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -162,7 +162,7 @@
     "points": 4,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Prefiksosufiks pary słów to słowo, które jest początkiem jednego z nich i jednocześnie końcem drugiego. Wypisz (w kolejności z pliku) wszystkie pary, których najdłuższy prefiksosufiks ma co najmniej 5 liter, a przy każdej parze – długość tego prefiksosufiksu.",
-    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

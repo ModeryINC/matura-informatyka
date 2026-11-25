@@ -83,7 +83,7 @@
     "points": 3,
     "topics": ["tablice", "pliki-tekstowe"],
     "summary": "Luka to wartość bezwzględna różnicy dwóch kolejnych elementów ciągu. Plik dane4.txt zawiera ciąg 1000 dodatnich liczb. Wypisz największą i najmniejszą lukę.",
-    "starterCode": "with open(\"dane4.txt\") as plik:\n    a = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -105,7 +105,7 @@
     "points": 4,
     "topics": ["podciagi", "pliki-tekstowe"],
     "summary": "Fragment ciągu jest regularny, gdy wszystkie jego luki są równe (np. 11, 12, 13, 14). Znajdź najdłuższy fragment regularny (jest jeden) i wypisz jego długość oraz wartości na jego początku i końcu.",
-    "starterCode": "with open(\"dane4.txt\") as plik:\n    a = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -126,7 +126,7 @@
     "points": 4,
     "topics": ["slowniki", "pliki-tekstowe"],
     "summary": "Krotność luki to liczba jej wystąpień. Wypisz krotność najczęstszej luki, a następnie wartości wszystkich luk o tej krotności (w dowolnej kolejności).",
-    "starterCode": "with open(\"dane4.txt\") as plik:\n    a = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

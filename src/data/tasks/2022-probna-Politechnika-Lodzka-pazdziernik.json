@@ -137,7 +137,7 @@
     "points": 5,
     "topics": ["szyfrowanie", "napisy", "pliki-tekstowe"],
     "summary": "Zmodyfikowany szyfr Cezara: klucz to ciąg cyfr, a i-tą literę tekstu (wielkie litery A–Z) przesuwamy w alfabecie o i-tą cyfrę klucza (cyklicznie – po wyczerpaniu cyfr wracamy do początku klucza, a po Z jest A). Np. MAMA z kluczem 210 → OBMC.\n\nPlik dane.txt zawiera klucz, liczbę n i n wierszy: rodzaj łańcucha (0 – jawny, 1 – zaszyfrowany) i łańcuch. Plik wynikowy ma zawierać klucz, n, a potem każdy łańcuch w przeciwnej postaci, poprzedzony nowym rodzajem (np. 0 ABC → 1 …). Wypisz wiersz numer 25 takiego pliku wynikowego.\n\nUwaga: odpowiedź w kluczu Politechniki różni się od wyniku algorytmu na trzech pozycjach – sprawdzarka wymaga wyniku zgodnego z opisanym algorytmem.",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    klucz = plik.readline().strip()\n    n = int(plik.readline())\n    wiersze = [plik.readline().split() for _ in range(n)]  # [rodzaj, łańcuch]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -158,7 +158,7 @@
     "points": 1,
     "topics": ["pliki-tekstowe"],
     "summary": "Podaj, ile łańcuchów w pliku dane.txt jest niezaszyfrowanych (rodzaj 0).",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    klucz = plik.readline().strip()\n    n = int(plik.readline())\n    wiersze = [plik.readline().split() for _ in range(n)]  # [rodzaj, łańcuch]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

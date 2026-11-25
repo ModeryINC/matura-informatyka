@@ -63,7 +63,7 @@
     "points": 3,
     "topics": ["tablice-2d", "grafy", "pliki-tekstowe"],
     "summary": "Plik plansza.txt opisuje planszę 100×100 z cyfr 0/1 (1 – pole statku). Podaj, na ilu polach można jeszcze postawić jednomasztowiec, tzn. ile pól zawiera 0 i nie styka się bokiem ani wierzchołkiem z żadnym polem statku.",
-    "starterCode": "with open(\"plansza.txt\") as plik:\n    P = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -91,7 +91,7 @@
     "points": 3,
     "topics": ["tablice-2d", "grafy", "pliki-tekstowe"],
     "summary": "Jednomasztowiec to pojedyncze pole statku otoczone zerami (lub krawędzią planszy). Podaj liczbę par jednomasztowców położonych symetrycznie względem przekątnej z lewego górnego do prawego dolnego rogu (statków na przekątnej nie liczymy).",
-    "starterCode": "with open(\"plansza.txt\") as plik:\n    P = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -119,7 +119,7 @@
     "points": 3,
     "topics": ["tablice-2d", "grafy", "pliki-tekstowe"],
     "summary": "Dwumasztowiec to dwa sąsiednie (w poziomie lub pionie) pola statku otoczone zerami. Statki nie stykają się ze sobą. Podaj liczbę dwumasztowców na planszy.",
-    "starterCode": "with open(\"plansza.txt\") as plik:\n    P = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -147,7 +147,7 @@
     "points": 3,
     "topics": ["tablice-2d", "grafy", "pliki-tekstowe"],
     "summary": "Podaj liczbę jednomasztowców, a w drugiej linii liczbę dwumasztowców, których co najmniej jedno pole leży na jednej z dwóch głównych przekątnych planszy.",
-    "starterCode": "with open(\"plansza.txt\") as plik:\n    P = [list(map(int, wiersz.split())) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

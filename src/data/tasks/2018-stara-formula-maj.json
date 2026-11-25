@@ -75,7 +75,7 @@
     "points": 2,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik slowa.txt zawiera 1000 wierszy po dwa słowa z wielkich liter. Podaj, ile słów (licząc oba słowa w każdym wierszu) kończy się literą A.",
-    "starterCode": "with open(\"slowa.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -96,7 +96,7 @@
     "points": 4,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Podaj, w ilu wierszach pierwsze słowo zawiera się (jako spójny fragment) w drugim, np. ADC zawiera się w ASWADCF, ale nie w ASWADFC.",
-    "starterCode": "with open(\"slowa.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -117,7 +117,7 @@
     "points": 4,
     "topics": ["anagramy", "napisy", "pliki-tekstowe"],
     "summary": "Podaj, w ilu wierszach pierwsze słowo jest anagramem drugiego (składa się z tych samych liter w tej samej liczbie), a następnie wypisz te pary – po jednej w wierszu, w kolejności z pliku.",
-    "starterCode": "with open(\"slowa.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

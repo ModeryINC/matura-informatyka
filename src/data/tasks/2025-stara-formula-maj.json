@@ -63,7 +63,7 @@
     "points": 2,
     "topics": ["napisy", "palindromy", "pliki-tekstowe"],
     "summary": "Plik symbole.txt zawiera 2000 napisów po 12 znaków z alfabetu o, +, *. Wypisz (po jednym w wierszu, w kolejności z pliku) wszystkie napisy, które są palindromami.",
-    "starterCode": "with open(\"symbole.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -91,7 +91,7 @@
     "points": 2,
     "topics": ["palindromy", "napisy", "pliki-tekstowe"],
     "summary": "Podaj, ile napisów z pliku symbole.txt nie jest palindromami, ale stanie się nimi po zmianie dokładnie jednego znaku.",
-    "starterCode": "with open(\"symbole.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -119,7 +119,7 @@
     "points": 4,
     "topics": ["tablice-2d", "grafy", "pliki-tekstowe"],
     "summary": "Traktując wiersze pliku symbole.txt jako planszę, znajdź wszystkie kwadraty 3×3 złożone z dziewięciu identycznych symboli. Wypisz ich liczbę, a następnie dla każdego kwadratu numer wiersza i numer pozycji (licząc od 1) jego środkowego pola.",
-    "starterCode": "with open(\"symbole.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -147,7 +147,7 @@
     "points": 2,
     "topics": ["systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Każdy napis traktujemy jak liczbę w systemie trójkowym (o = 0, + = 1, * = 2). Podaj największą z tych liczb w zapisie dziesiętnym oraz odpowiadający jej napis (w jednej linii).",
-    "starterCode": "with open(\"symbole.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -175,7 +175,7 @@
     "points": 3,
     "topics": ["systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Oblicz sumę wszystkich liczb z pliku symbole.txt (zapis trójkowy jak w zadaniu 2.3). Podaj ją w zapisie dziesiętnym oraz w zapisie trójkowym z użyciem symboli o, +, * (w jednej linii).",
-    "starterCode": "with open(\"symbole.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

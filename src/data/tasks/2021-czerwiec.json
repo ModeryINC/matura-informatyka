@@ -102,7 +102,7 @@
     "points": 2,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik napisy.txt zawiera 1000 wierszy po 50 znaków (wielkie litery i cyfry). Podaj łączną liczbę cyfr we wszystkich napisach.",
-    "starterCode": "with open(\"napisy.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -130,7 +130,7 @@
     "points": 2,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "W wierszach o numerach 20, 40, …, 1000 ukryto po jednej literze hasła: w wierszu 20 na pozycji 1, w wierszu 40 na pozycji 2, …, w wierszu 1000 na pozycji 50. Wypisz to hasło.",
-    "starterCode": "with open(\"napisy.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -158,7 +158,7 @@
     "points": 4,
     "topics": ["palindromy", "napisy", "pliki-tekstowe"],
     "summary": "Niektóre napisy można zamienić w palindrom, dopisując dokładnie jeden znak na początku albo na końcu. Złóż hasło ze środkowych liter tak utworzonych palindromów (w kolejności wierszy).",
-    "starterCode": "with open(\"napisy.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -186,7 +186,7 @@
     "points": 4,
     "topics": ["napisy", "systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Cyfry z każdego wiersza grupuj po dwie (ostatnią pomiń, jeśli jest ich nieparzyście). Liczbę z pary zamień na znak ASCII, jeśli należy do [65, 90]; w przeciwnym razie ją pomiń. Zakończ po otrzymaniu trzech kolejnych znaków X i wypisz odczytane hasło (razem z XXX).",
-    "starterCode": "with open(\"napisy.txt\") as plik:\n    napisy = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

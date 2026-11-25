@@ -59,7 +59,7 @@
     "points": 2,
     "topics": ["teoria-liczb", "pliki-tekstowe"],
     "summary": "Plik liczby.txt zawiera 200 różnych liczb z zakresu [10, 100000]. Podaj, ile z nich ma taką samą pierwszą i ostatnią cyfrę, oraz pierwszą taką liczbę w pliku.",
-    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -87,7 +87,7 @@
     "points": 4,
     "topics": ["liczby-pierwsze", "pliki-tekstowe"],
     "summary": "Znajdź w pliku liczby.txt liczbę, która ma w rozkładzie najwięcej czynników pierwszych (licząc z powtórzeniami), oraz liczbę, która ma najwięcej różnych czynników pierwszych. Wypisz w jednej linii: pierwszą liczbę, liczbę jej czynników, drugą liczbę, liczbę jej różnych czynników (np. 420 = 2·2·3·5·7 ma 5 czynników, w tym 4 różne).",
-    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -116,7 +116,7 @@
     "points": 4,
     "topics": ["teoria-liczb", "programowanie-dynamiczne", "pliki-tekstowe"],
     "summary": "Trójka (x, y, z) różnych liczb z pliku jest dobra, jeśli x dzieli y, a y dzieli z; analogicznie definiujemy dobrą piątkę (każda kolejna liczba dzieli następną). Kolejność liczb w pliku nie ma znaczenia. Wypisz liczbę dobrych trójek, a w drugiej linii – liczbę dobrych piątek.",
-    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

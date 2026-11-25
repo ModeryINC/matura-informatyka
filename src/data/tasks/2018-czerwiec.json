@@ -118,7 +118,7 @@
     "points": 1,
     "topics": ["tablice", "pliki-tekstowe"],
     "summary": "Pliki dane1.txt i dane2.txt mają po 1000 wierszy; w każdym jest niemalejący ciąg 10 liczb z przedziału [0, 100]. Porównaj odpowiadające sobie wiersze obu plików i podaj, w ilu z nich ostatnie liczby ciągów są równe.",
-    "starterCode": "def wczytaj(nazwa):\n    with open(nazwa) as plik:\n        return [list(map(int, wiersz.split())) for wiersz in plik]\n\n\nA = wczytaj(\"dane1.txt\")\nB = wczytaj(\"dane2.txt\")\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -148,7 +148,7 @@
     "points": 3,
     "topics": ["tablice", "pliki-tekstowe"],
     "summary": "Podaj, ile jest par odpowiadających sobie ciągów (z dane1.txt i dane2.txt), w których każdy z dwóch ciągów zawiera dokładnie 5 liczb parzystych i 5 nieparzystych.",
-    "starterCode": "def wczytaj(nazwa):\n    with open(nazwa) as plik:\n        return [list(map(int, wiersz.split())) for wiersz in plik]\n\n\nA = wczytaj(\"dane1.txt\")\nB = wczytaj(\"dane2.txt\")\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -178,7 +178,7 @@
     "points": 4,
     "topics": ["slowniki", "pliki-tekstowe"],
     "summary": "Policz pary odpowiadających sobie ciągów zbudowanych z tych samych liczb (liczba powtórzeń może się różnić). Wypisz liczbę takich par, a w drugiej linii numery wierszy, w których się znajdują.",
-    "starterCode": "def wczytaj(nazwa):\n    with open(nazwa) as plik:\n        return [list(map(int, wiersz.split())) for wiersz in plik]\n\n\nA = wczytaj(\"dane1.txt\")\nB = wczytaj(\"dane2.txt\")\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -208,7 +208,7 @@
     "points": 4,
     "topics": ["sortowanie", "tablice", "pliki-tekstowe"],
     "summary": "Scal każdą parę odpowiadających sobie ciągów w jeden ciąg niemalejący – tak jak w sortowaniu przez scalanie: porównuj pierwsze nieprzepisane elementy obu ciągów i przepisuj mniejszy. Wypisz wynikowe ciągi, po jednym w wierszu (liczby oddzielone spacjami). Spróbuj nie używać sort/sorted.",
-    "starterCode": "def wczytaj(nazwa):\n    with open(nazwa) as plik:\n        return [list(map(int, wiersz.split())) for wiersz in plik]\n\n\nA = wczytaj(\"dane1.txt\")\nB = wczytaj(\"dane2.txt\")\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

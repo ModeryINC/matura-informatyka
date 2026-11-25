@@ -78,7 +78,7 @@
     "points": 3,
     "topics": ["teoria-liczb", "pliki-tekstowe"],
     "summary": "Plik liczby.txt zawiera 500 liczb z zakresu 1–100 000. Podaj, ile z nich jest potęgami liczby 3 (1, 3, 9, 27, …).",
-    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -106,7 +106,7 @@
     "points": 4,
     "topics": ["teoria-liczb", "pliki-tekstowe"],
     "summary": "Wypisz, w kolejności z pliku, wszystkie liczby równe sumie silni swoich cyfr (np. 145 = 1! + 4! + 5!). Przyjmujemy 0! = 1.",
-    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -134,7 +134,7 @@
     "points": 5,
     "topics": ["teoria-liczb", "podciagi", "pliki-tekstowe"],
     "summary": "Znajdź najdłuższy ciąg kolejnych liczb z pliku, których największy wspólny dzielnik jest większy od 1. Wypisz pierwszą liczbę tego ciągu, jego długość i największy wspólny dzielnik jego elementów. Przyda się NWD(a, b, c) = NWD(NWD(a, b), c).",
-    "starterCode": "from math import gcd\n\nwith open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

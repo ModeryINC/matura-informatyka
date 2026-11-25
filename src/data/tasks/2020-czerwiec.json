@@ -113,7 +113,7 @@
     "points": 3,
     "topics": ["liczby-pierwsze", "pliki-tekstowe"],
     "summary": "Plik pary.txt zawiera 100 wierszy: liczbę (3–100) i słowo. Każdą parzystą liczbę z pliku przedstaw jako sumę dwóch liczb pierwszych – wybierz rozkład o największej różnicy składników. Wypisz w kolejnych wierszach: liczbę i oba składniki w kolejności niemalejącej (np. 20 3 17).",
-    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]  # [liczba (tekst), słowo]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -141,7 +141,7 @@
     "points": 4,
     "topics": ["napisy", "podciagi", "pliki-tekstowe"],
     "summary": "Dla każdego słowa z pliku pary.txt znajdź najdłuższy spójny fragment złożony z identycznych liter (przy remisie – pierwszy). Wypisz w kolejnych wierszach ten fragment i jego długość, np. dla zxyzzzz: zzzz 4.",
-    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]  # [liczba (tekst), słowo]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -169,7 +169,7 @@
     "points": 3,
     "topics": ["sortowanie", "napisy", "pliki-tekstowe"],
     "summary": "Spośród par z pliku pary.txt, w których liczba jest równa długości słowa, wypisz najmniejszą – porównujemy najpierw liczby, a przy równych liczbach słowa leksykograficznie.",
-    "starterCode": "with open(\"pary.txt\") as plik:\n    pary = [wiersz.split() for wiersz in plik]  # [liczba (tekst), słowo]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

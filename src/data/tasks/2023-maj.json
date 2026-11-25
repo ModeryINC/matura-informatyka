@@ -106,7 +106,7 @@
     "points": 2,
     "topics": ["systemy-liczbowe", "napisy", "pliki-tekstowe"],
     "summary": "Plik bin.txt zawiera 100 liczb zapisanych binarnie (co najwyżej 20 cyfr). Podaj, ile z nich składa się z co najwyżej dwóch bloków.",
-    "starterCode": "with open(\"bin.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -134,7 +134,7 @@
     "points": 2,
     "topics": ["systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Wypisz (w zapisie binarnym) największą z liczb zapisanych w pliku bin.txt.",
-    "starterCode": "with open(\"bin.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -162,7 +162,7 @@
     "points": 3,
     "topics": ["systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Dla każdej liczby p z pliku bin.txt oblicz p XOR (p div 2) i wypisz wynik w systemie binarnym – każdy w osobnym wierszu, w kolejności z pliku (to tzw. kod Graya).",
-    "starterCode": "with open(\"bin.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -190,7 +190,7 @@
     "points": 2,
     "topics": ["podciagi", "pliki-tekstowe"],
     "summary": "Plik pi.txt zawiera 10 000 cyfr rozwinięcia liczby π (po jednej w wierszu). Fragment 2-cyfrowy to dwie kolejne cyfry. Podaj, ile fragmentów 2-cyfrowych zapisuje liczbę większą od 90.",
-    "starterCode": "with open(\"pi.txt\") as plik:\n    cyfry = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -218,7 +218,7 @@
     "points": 3,
     "topics": ["slowniki", "pliki-tekstowe"],
     "summary": "Spośród 100 możliwych fragmentów 2-cyfrowych (00–99) znajdź ten, który występuje w pliku pi.txt najrzadziej, i ten, który występuje najczęściej (przy remisie – o mniejszej wartości). Wypisz w dwóch liniach: fragment i liczbę wystąpień.",
-    "starterCode": "with open(\"pi.txt\") as plik:\n    cyfry = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -246,7 +246,7 @@
     "points": 3,
     "topics": ["podciagi", "pliki-tekstowe"],
     "summary": "Ciąg (co najmniej 4 elementy) jest rosnąco-malejący, jeśli da się go podzielić na niepusty ciąg ściśle rosnący (min. 2 elementy) i następujący po nim ściśle malejący (min. 2 elementy). Podaj, ile jest rosnąco-malejących ciągów złożonych z dokładnie sześciu kolejnych cyfr pliku pi.txt.",
-    "starterCode": "with open(\"pi.txt\") as plik:\n    cyfry = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -274,7 +274,7 @@
     "points": 2,
     "topics": ["podciagi", "pliki-tekstowe"],
     "summary": "Znajdź najdłuższy rosnąco-malejący ciąg kolejnych cyfr w pliku pi.txt (jest jeden). W pierwszej linii wypisz numer wiersza, w którym się zaczyna, a w drugiej – jego cyfry bez odstępów.",
-    "starterCode": "with open(\"pi.txt\") as plik:\n    cyfry = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

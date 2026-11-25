@@ -94,7 +94,7 @@
     "points": 2,
     "topics": ["napisy", "sortowanie"],
     "summary": "Sufiks s[k..n] słowa s to jego końcowy fragment od pozycji k. Plik slowa.txt ma trzy wiersze: długość n, słowo s oraz liczby k1 i k2. Zaimplementuj funkcję czy_mniejszy z arkusza i wypisz TAK, jeśli sufiks s[k1..n] jest alfabetycznie mniejszy od s[k2..n], albo NIE w przeciwnym razie (pozycje numerujemy od 1). Program jest uruchamiany kolejno na kilku plikach.",
-    "starterCode": "with open(\"slowa.txt\") as plik:\n    n = int(plik.readline())\n    s = plik.readline().strip()\n    k1, k2 = map(int, plik.readline().split())\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -182,7 +182,7 @@
     "points": 2,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik slowa4.txt zawiera 10 wierszy: długość n i słowo. Dla każdego słowa wypisz (w osobnym wierszu) jego alfabetycznie najmniejszy sufiks, np. dla mascarpone – arpone.",
-    "starterCode": "with open(\"slowa4.txt\") as plik:\n    for wiersz in plik:\n        n, s = wiersz.split()\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -210,7 +210,7 @@
     "points": 2,
     "topics": ["systemy-liczbowe", "napisy", "pliki-tekstowe"],
     "summary": "Plik anagram.txt zawiera 1000 różnych liczb binarnych (do 14 cyfr). Liczba jest zrównoważona, gdy ma tyle samo zer i jedynek, a prawie zrównoważona, gdy te liczby różnią się o 1. Wypisz liczbę zrównoważonych, a w drugiej linii – prawie zrównoważonych.",
-    "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -238,7 +238,7 @@
     "points": 3,
     "topics": ["anagramy", "systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Anagramy cyfrowe to liczby z tego samego zestawu cyfr w innej kolejności, bez zera na początku (np. z 11100 można utworzyć 6 anagramów). Wypisz, w kolejności z pliku, wszystkie 8-cyfrowe liczby binarne, z których można utworzyć najwięcej anagramów.\n\nUwaga: w odpowiedzi do pliku przykładowego w arkuszu pominięto liczbę 10011100, choć spełnia ona warunek – sprawdzarka jej wymaga.",
-    "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -266,7 +266,7 @@
     "points": 2,
     "topics": ["systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Podaj największą wartość bezwzględną różnicy między liczbami z sąsiednich wierszy pliku anagram.txt – w zapisie binarnym.",
-    "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -294,7 +294,7 @@
     "points": 4,
     "topics": ["systemy-liczbowe", "teoria-liczb", "pliki-tekstowe"],
     "summary": "Zamień liczby z pliku na system dziesiętny. a) Podaj, w ilu z nich nie występuje cyfra 0. b) Podaj liczbę o największej sumie różnych cyfr (np. dla 20462 to 2 + 0 + 4 + 6 = 12; przy remisie – pierwszą w pliku). Odpowiedzi wypisz w dwóch liniach.",
-    "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

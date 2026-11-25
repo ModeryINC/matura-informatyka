@@ -82,7 +82,7 @@
     "points": 4,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik slowa.txt zawiera 50 słów z małych liter. WK-słowo to słowo, w którym litery w i k występują tyle samo razy (także 0 razy). Wypisz wszystkie WK-słowa, po jednym w wierszu, w kolejności z pliku.",
-    "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -110,7 +110,7 @@
     "points": 4,
     "topics": ["slowniki", "napisy", "pliki-tekstowe"],
     "summary": "Dla każdego słowa oblicz, ile słów wakacje można ułożyć z jego liter (każdej litery można użyć najwyżej raz). Wypisz w jednym wierszu 50 liczb oddzielonych spacjami.",
-    "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -138,7 +138,7 @@
     "points": 4,
     "topics": ["napisy", "zachlanne", "pliki-tekstowe"],
     "summary": "Wakacyjne słowo to wakacje sklejone ze sobą dowolnie wiele razy (także słowo puste). Dla każdego słowa oblicz najmniejszą liczbę liter, które trzeba z niego wykreślić, aby powstało wakacyjne słowo. Wypisz w jednym wierszu 50 liczb oddzielonych spacjami.",
-    "starterCode": "with open(\"slowa.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

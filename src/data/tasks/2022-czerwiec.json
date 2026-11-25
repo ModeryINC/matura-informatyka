@@ -157,7 +157,7 @@
     "points": 3,
     "topics": ["napisy", "teoria-liczb", "pliki-tekstowe"],
     "summary": "Plik liczby.txt zawiera 100 nieparzystych liczb z przedziału [10, 9999]. Odbicie liczby to liczba o odwróconej kolejności cyfr (2019 → 9102). Wypisz (w kolejności z pliku) te odbicia, które są podzielne przez 17.",
-    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -185,7 +185,7 @@
     "points": 3,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Znajdź liczbę z pliku, dla której wartość bezwzględna różnicy między nią a jej odbiciem jest największa. Wypisz tę liczbę i tę różnicę.",
-    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -213,7 +213,7 @@
     "points": 3,
     "topics": ["liczby-pierwsze", "pliki-tekstowe"],
     "summary": "Wypisz (po jednej w wierszu, w kolejności z pliku) wszystkie liczby pierwsze z pliku, których odbicia również są liczbami pierwszymi.",
-    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -241,7 +241,7 @@
     "points": 3,
     "topics": ["slowniki", "pliki-tekstowe"],
     "summary": "Podaj w jednej linii: ile różnych liczb jest w pliku, ile liczb występuje w nim dokładnie dwa razy, a ile dokładnie trzy razy.",
-    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

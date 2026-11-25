@@ -94,7 +94,7 @@
     "points": 2,
     "topics": ["napisy", "symulacja", "pliki-tekstowe"],
     "summary": "Plik instrukcje.txt zawiera 2000 instrukcji automatu tworzącego napis: DOPISZ litera, ZMIEN litera (zmienia ostatnią literę), USUN 1 (usuwa ostatnią literę), PRZESUN litera (pierwsze wystąpienie litery zamienia na następną w alfabecie, Z na A). Napis jest początkowo pusty. Podaj długość napisu po wykonaniu wszystkich instrukcji.",
-    "starterCode": "with open(\"instrukcje.txt\") as plik:\n    instrukcje = [wiersz.split() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -122,7 +122,7 @@
     "points": 2,
     "topics": ["podciagi", "pliki-tekstowe"],
     "summary": "Znajdź najdłuższy ciąg kolejnych instrukcji tego samego rodzaju (DOPISZ, ZMIEN, USUN lub PRZESUN). Wypisz rodzaj instrukcji i długość ciągu.",
-    "starterCode": "with open(\"instrukcje.txt\") as plik:\n    instrukcje = [wiersz.split() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -150,7 +150,7 @@
     "points": 3,
     "topics": ["slowniki", "pliki-tekstowe"],
     "summary": "Podaj literę, która najczęściej występuje w instrukcjach DOPISZ, oraz ile razy jest dopisywana.",
-    "starterCode": "with open(\"instrukcje.txt\") as plik:\n    instrukcje = [wiersz.split() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -178,7 +178,7 @@
     "points": 4,
     "topics": ["napisy", "symulacja", "pliki-tekstowe"],
     "summary": "Wykonaj wszystkie instrukcje z pliku instrukcje.txt (wszystkie cztery rodzaje) i wypisz powstały napis.",
-    "starterCode": "with open(\"instrukcje.txt\") as plik:\n    instrukcje = [wiersz.split() for wiersz in plik]\n\nnapis = []\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

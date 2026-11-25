@@ -97,7 +97,7 @@
     "points": 4,
     "topics": ["liczby-pierwsze", "pliki-tekstowe"],
     "summary": "Plik liczby.txt zawiera 300 liczb z zakresu 1–100 000. Wypisz (w kolejności z pliku) te, które są liczbami pierwszymi z przedziału [100, 5000].",
-    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -125,7 +125,7 @@
     "points": 4,
     "topics": ["liczby-pierwsze", "napisy", "pliki-tekstowe"],
     "summary": "Plik pierwsze.txt zawiera 200 liczb pierwszych. Wypisz (w kolejności z pliku) te, które czytane od prawej do lewej również są liczbami pierwszymi (np. 17 → 71).",
-    "starterCode": "with open(\"pierwsze.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -153,7 +153,7 @@
     "points": 4,
     "topics": ["teoria-liczb", "pliki-tekstowe"],
     "summary": "Wagą liczby N nazywamy jednocyfrowy wynik wielokrotnego sumowania cyfr (np. 31699 → 28 → 10 → 1, więc waga to 1). Podaj, ile liczb z pliku pierwsze.txt ma wagę równą 1.",
-    "starterCode": "with open(\"pierwsze.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

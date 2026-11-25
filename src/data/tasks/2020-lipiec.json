@@ -51,7 +51,7 @@
     "points": 3,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik identyfikator.txt zawiera 200 identyfikatorów dokumentów: seria (3 wielkie litery) i numer (6 cyfr). Wypisz, w kolejności z pliku, identyfikatory o największej sumie cyfr numeru.",
-    "starterCode": "with open(\"identyfikator.txt\") as plik:\n    identyfikatory = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -79,7 +79,7 @@
     "points": 4,
     "topics": ["palindromy", "napisy", "pliki-tekstowe"],
     "summary": "Wypisz, w kolejności z pliku, identyfikatory, w których seria lub numer jest palindromem.\n\nUwaga: odpowiedź do pliku przykładowego podana w arkuszu pomija identyfikator MOS302203, którego numer jest palindromem – dlatego sprawdzarka testuje tylko pełne dane.",
-    "starterCode": "with open(\"identyfikator.txt\") as plik:\n    identyfikatory = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -100,7 +100,7 @@
     "points": 4,
     "topics": ["napisy", "teoria-liczb", "pliki-tekstowe"],
     "summary": "Pierwsza cyfra numeru jest cyfrą kontrolną. Litery serii zamieniamy na liczby (A = 10, …, Z = 35), mnożymy kolejne elementy identyfikatora (bez cyfry kontrolnej) przez wagi 7, 3, 1, 7, 3, 1, 7, 3 i sumujemy; identyfikator jest poprawny, gdy suma mod 10 jest równa cyfrze kontrolnej. Wypisz wszystkie niepoprawne identyfikatory w kolejności z pliku.",
-    "starterCode": "with open(\"identyfikator.txt\") as plik:\n    identyfikatory = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

@@ -51,7 +51,7 @@
     "points": 2,
     "topics": ["teoria-liczb", "pliki-tekstowe"],
     "summary": "Plik liczby.txt zawiera 2000 różnych liczb czterocyfrowych. Podaj, ile z nich jest kwadratami liczb całkowitych, oraz pierwszą taką liczbę w pliku.",
-    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -79,7 +79,7 @@
     "points": 3,
     "topics": ["liczby-pierwsze", "pliki-tekstowe"],
     "summary": "Wypisz (w kolejności z pliku) liczby, w których rozkładzie na czynniki pierwsze występuje co najmniej pięć różnych liczb pierwszych (np. 2730 = 2·3·5·7·13).",
-    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -107,7 +107,7 @@
     "points": 3,
     "topics": ["teoria-liczb", "sortowanie", "pliki-tekstowe"],
     "summary": "Z cyfr liczby układamy największą i najmniejszą możliwą liczbę (zera traktujemy jak inne cyfry) i obliczamy ich różnicę, np. 3151 → 5311 − 1135 = 4176. Podaj, ile razy różnica jest mniejsza od danej liczby, ile razy większa, a ile razy równa – w jednej linii – a potem wypisz liczby, dla których różnica jest równa danej liczbie.",
-    "starterCode": "with open(\"liczby.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -135,7 +135,7 @@
     "points": 2,
     "topics": ["geometria", "pliki-tekstowe"],
     "summary": "Plik prostokaty.txt opisuje 5000 prostokątów (wysokość i szerokość). Podaj najmniejsze i największe pole prostokąta.",
-    "starterCode": "with open(\"prostokaty.txt\") as plik:\n    prostokaty = [tuple(map(int, wiersz.split())) for wiersz in plik]  # (wysokość, szerokość)\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -163,7 +163,7 @@
     "points": 2,
     "topics": ["podciagi", "pliki-tekstowe"],
     "summary": "Prostokąt mieści się w poprzednim, gdy jego szerokość i wysokość są nie większe niż poprzedniego. Znajdź najdłuższy ciąg kolejnych prostokątów, w którym każdy (poza pierwszym) mieści się w poprzednim. Wypisz długość ciągu oraz wysokość i szerokość ostatniego prostokąta.",
-    "starterCode": "with open(\"prostokaty.txt\") as plik:\n    prostokaty = [tuple(map(int, wiersz.split())) for wiersz in plik]  # (wysokość, szerokość)\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -191,7 +191,7 @@
     "points": 4,
     "topics": ["slowniki", "sortowanie", "pliki-tekstowe"],
     "summary": "Prostokąty o tej samej wysokości można skleić w jeden – jego szerokość to suma szerokości. Podaj największe szerokości, jakie można uzyskać, sklejając dokładnie 2, 3 i 5 prostokątów z różnych wierszy pliku (trzy liczby w jednej linii).",
-    "starterCode": "with open(\"prostokaty.txt\") as plik:\n    prostokaty = [tuple(map(int, wiersz.split())) for wiersz in plik]  # (wysokość, szerokość)\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

@@ -149,7 +149,7 @@
     "points": 2,
     "topics": ["systemy-liczbowe", "napisy", "pliki-tekstowe"],
     "summary": "Plik anagram.txt zawiera 1000 różnych liczb binarnych (do 14 cyfr). Liczba jest zrównoważona, gdy ma tyle samo zer i jedynek, a prawie zrównoważona, gdy te liczby różnią się o 1. Wypisz liczbę zrównoważonych, a w drugiej linii – prawie zrównoważonych.",
-    "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -177,7 +177,7 @@
     "points": 3,
     "topics": ["anagramy", "systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Anagramy cyfrowe to liczby z tego samego zestawu cyfr w innej kolejności, bez zera na początku (np. z 11100 można utworzyć 6 anagramów). Wypisz, w kolejności z pliku, wszystkie 8-cyfrowe liczby binarne, z których można utworzyć najwięcej anagramów.",
-    "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -205,7 +205,7 @@
     "points": 2,
     "topics": ["systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Podaj największą wartość bezwzględną różnicy między liczbami z sąsiednich wierszy pliku anagram.txt – w zapisie binarnym.",
-    "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -233,7 +233,7 @@
     "points": 4,
     "topics": ["systemy-liczbowe", "teoria-liczb", "pliki-tekstowe"],
     "summary": "Zamień liczby z pliku na system dziesiętny. a) Podaj, w ilu z nich nie występuje cyfra 0. b) Podaj liczbę o największej sumie różnych cyfr (np. dla 20462 to 2 + 0 + 4 + 6 = 12; przy remisie – pierwszą w pliku). Odpowiedzi wypisz w dwóch liniach.",
-    "starterCode": "with open(\"anagram.txt\") as plik:\n    liczby = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

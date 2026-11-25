@@ -55,7 +55,7 @@
     "points": 3,
     "topics": ["liczby-pierwsze", "pliki-tekstowe"],
     "summary": "Plik dane.txt zawiera 5000 różnych liczb z zakresu 100–100 000. Podaj, ile z nich jest liczbami pierwszymi, a w kolejnych liniach największą i najmniejszą z nich.",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -83,7 +83,7 @@
     "points": 3,
     "topics": ["palindromy", "systemy-liczbowe", "pliki-tekstowe"],
     "summary": "Liczba jest palindromiczna, gdy jej zapis binarny jest palindromem (107 = 1101011), a prawie palindromiczna, gdy staje się palindromem po dopisaniu zer przed najstarszą jedynką (238 = 11101110 → 011101110). Podaj łączną liczbę liczb palindromicznych i prawie palindromicznych w pliku.",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -111,7 +111,7 @@
     "points": 4,
     "topics": ["slowniki", "teoria-liczb", "pliki-tekstowe"],
     "summary": "Podaj, ile różnych par liczb z pliku ma w zapisie dziesiętnym ten sam zbiór cyfr (np. 178 i 817, 10122 i 120). Pary (a, b) i (b, a) liczymy raz.",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    liczby = [int(wiersz) for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

@@ -176,7 +176,7 @@
     "points": 3,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik sygnaly.txt zawiera 1000 słów z wielkich liter. Złącz dziesiąte litery co czterdziestego słowa (zaczynając od słowa czterdziestego) i wypisz powstałe przesłanie.",
-    "starterCode": "with open(\"sygnaly.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -204,7 +204,7 @@
     "points": 4,
     "topics": ["napisy", "slowniki", "pliki-tekstowe"],
     "summary": "Znajdź słowo z największą liczbą różnych liter (przy remisie – pierwsze w pliku). Wypisz to słowo i liczbę różnych liter.",
-    "starterCode": "with open(\"sygnaly.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -232,7 +232,7 @@
     "points": 4,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Wypisz (po jednym w wierszu, w kolejności z pliku) wszystkie słowa, w których każde dwie litery są odległe w alfabecie co najwyżej o 10 (np. CGECF tak, ABEZA nie – odległość A–Z to 25).",
-    "starterCode": "with open(\"sygnaly.txt\") as plik:\n    slowa = [wiersz.strip() for wiersz in plik]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

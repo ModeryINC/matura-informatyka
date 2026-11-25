@@ -102,7 +102,7 @@
     "points": 2,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "np-para to dwa kolejne znaki napisu, z których pierwszy stoi na pozycji nieparzystej (MATURA ma np-pary MA, TU, RA). Plik dane.txt zawiera jeden napis parzystej długości. Podaj, ile razy dwie kolejne np-pary są takie same (dla ABABAB odpowiedź to 2).",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    s = plik.read().strip()\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -130,7 +130,7 @@
     "points": 3,
     "topics": ["liczby-pierwsze", "napisy", "pliki-tekstowe"],
     "summary": "np-para jest parzyście pierwsza, gdy suma kodów ASCII jej dwóch znaków jest liczbą pierwszą. Wypisz wszystkie różne parzyście pierwsze np-pary z pliku dane.txt w kolejności pierwszego wystąpienia (w jednej linii lub po jednej w wierszu).",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    s = plik.read().strip()\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -160,7 +160,7 @@
     "points": 3,
     "topics": ["liczby-pierwsze", "napisy", "pliki-tekstowe"],
     "summary": "Fragment złożony z kolejnych np-par jest parzyście pierwszy, gdy suma kodów ASCII wszystkich jego znaków jest liczbą pierwszą (np. NEWS – 317). Wypisz najdłuższy taki fragment napisu z pliku oraz sumę kodów jego znaków. Przydadzą się sumy prefiksowe.",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    s = plik.read().strip()\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -188,7 +188,7 @@
     "points": 4,
     "topics": ["slowniki", "sortowanie", "pliki-tekstowe"],
     "summary": "Uporządkuj różne np-pary rosnąco według liczby wystąpień (żadne dwie nie mają tej samej liczby wystąpień). Wypisz w jednej linii napis z ich złączenia, największą i najmniejszą liczbę wystąpień, np. dla RAPARA: PARA 2 1.",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    s = plik.read().strip()\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

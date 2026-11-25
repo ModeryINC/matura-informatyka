@@ -85,7 +85,7 @@
     "points": 3,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Plik dane.txt zawiera jeden napis z 10 000 znaków, wśród których ukryte są liczby – maksymalne ciągi cyfr. Podaj, ile ukrytych liczb zaczyna się od cyfr 50 (powtórzenia liczymy osobno).",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -113,7 +113,7 @@
     "points": 3,
     "topics": ["slowniki", "pliki-tekstowe"],
     "summary": "Podaj cyfrę, która występuje w pliku dane.txt najczęściej, oraz liczbę jej wystąpień.",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -141,7 +141,7 @@
     "points": 3,
     "topics": ["napisy", "pliki-tekstowe"],
     "summary": "Numer telefonu to ukryta liczba złożona z dokładnie 9 cyfr. Wypisz, w kolejności występowania, wszystkie numery telefonów zaczynające się od cyfry 5.",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -169,7 +169,7 @@
     "points": 3,
     "topics": ["napisy", "slowniki", "pliki-tekstowe"],
     "summary": "Spośród wszystkich numerów telefonów (9-cyfrowych ukrytych liczb) wypisz te, które składają się z najmniejszej liczby różnych cyfr.",
-    "starterCode": "with open(\"dane.txt\") as plik:\n    tekst = plik.read().strip()\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

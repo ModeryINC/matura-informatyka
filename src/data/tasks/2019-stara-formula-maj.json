@@ -184,7 +184,7 @@
     "points": 3,
     "topics": ["tablice-2d", "pliki-tekstowe"],
     "summary": "Plik dzialki.txt zawiera 50 map działek 30×30 (po każdej mapie pusty wiersz): . – pole puste, * – trawa, X – przeszkoda. Podaj, ile działek ma co najmniej 70% powierzchni porośniętej trawą.",
-    "starterCode": "with open(\"dzialki.txt\") as plik:\n    wiersze = [w.strip() for w in plik if w.strip()]\nmapy = [wiersze[i:i + 30] for i in range(0, len(wiersze), 30)]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -212,7 +212,7 @@
     "points": 3,
     "topics": ["tablice-2d", "pliki-tekstowe"],
     "summary": "Dwie mapy są identyczne, gdy jedną z nich obróci się o 180°. Podaj numery tych dwóch działek (numeracja według kolejności w pliku, od 1).",
-    "starterCode": "with open(\"dzialki.txt\") as plik:\n    wiersze = [w.strip() for w in plik if w.strip()]\nmapy = [wiersze[i:i + 30] for i in range(0, len(wiersze), 30)]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -240,7 +240,7 @@
     "points": 4,
     "topics": ["tablice-2d", "pliki-tekstowe"],
     "summary": "W lewym górnym rogu działki trzeba wytyczyć kwadratowy plac bez przeszkód (X). Znajdź działkę(-i), na której zmieści się największy taki plac, i wypisz jej numer oraz długość boku placu – po jednej działce w wierszu.",
-    "starterCode": "with open(\"dzialki.txt\") as plik:\n    wiersze = [w.strip() for w in plik if w.strip()]\nmapy = [wiersze[i:i + 30] for i in range(0, len(wiersze), 30)]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {

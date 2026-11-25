@@ -51,7 +51,7 @@
     "points": 4,
     "topics": ["slowniki", "pliki-tekstowe"],
     "summary": "Plik galerie.txt opisuje 50 galerii: kod kraju, miasto i 70 par liczb – wymiary lokali (pary zerowe oznaczają brak lokalu). Dla każdego kraju wypisz kod i liczbę miast z galeriami – kraje w kolejności pierwszego wystąpienia w pliku.",
-    "starterCode": "with open(\"galerie.txt\") as plik:\n    galerie = [wiersz.split() for wiersz in plik]  # [kraj, miasto, liczby...]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -79,7 +79,7 @@
     "points": 4,
     "topics": ["tablice", "pliki-tekstowe"],
     "summary": "a) Dla każdej galerii (w kolejności z pliku) wypisz miasto, łączną powierzchnię lokali (suma iloczynów wymiarów) i liczbę lokali.\nb) Następnie wypisz miasto z galerią o największej powierzchni i tę powierzchnię, a w kolejnej linii – miasto z galerią o najmniejszej powierzchni.",
-    "starterCode": "with open(\"galerie.txt\") as plik:\n    galerie = [wiersz.split() for wiersz in plik]  # [kraj, miasto, liczby...]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
@@ -107,7 +107,7 @@
     "points": 4,
     "topics": ["slowniki", "pliki-tekstowe"],
     "summary": "Lokale są tego samego rodzaju, gdy mają tę samą powierzchnię. Wypisz miasto z galerią o największej liczbie różnych rodzajów lokali i tę liczbę, a w drugiej linii – miasto z galerią o najmniejszej liczbie rodzajów.",
-    "starterCode": "with open(\"galerie.txt\") as plik:\n    galerie = [wiersz.split() for wiersz in plik]  # [kraj, miasto, liczby...]\n\n",
+    "starterCode": "",
     "kind": "program",
     "checks": [
       {
