@@ -1,0 +1,174 @@
+[
+  {
+    "id": "2020-lipiec-2.2",
+    "sessionId": "2020/lipiec",
+    "number": "2.2",
+    "title": "Rozkład na ułamki egipskie",
+    "part": 1,
+    "points": 4,
+    "topics": [
+      "zachlanne",
+      "teoria-liczb"
+    ],
+    "summary": "Ułamek egipski ma postać 1/m. Metoda zachłanna rozkłada liczbę p/q < 1: bierzemy najmniejsze n ≥ q/p (sufit), odejmujemy 1/n i powtarzamy dla reszty, aż będzie równa 0. Np. 4/5 = 1/2 + 1/4 + 1/20.\n\nNapisz funkcję egipskie(p, q), która zwróci listę kolejnych mianowników. Licz na liczbach całkowitych, nie na ułamkach dziesiętnych – inaczej pojawią się błędy zaokrągleń.",
+    "starterCode": "def egipskie(p, q):\n    # Twoje rozwiązanie\n    return 0\n",
+    "kind": "function",
+    "functionName": "egipskie",
+    "tests": [
+      {
+        "args": [
+          4,
+          5
+        ],
+        "expected": [
+          2,
+          4,
+          20
+        ]
+      },
+      {
+        "args": [
+          3,
+          4
+        ],
+        "expected": [
+          2,
+          4
+        ]
+      },
+      {
+        "args": [
+          2,
+          3
+        ],
+        "expected": [
+          2,
+          6
+        ]
+      },
+      {
+        "args": [
+          5,
+          6
+        ],
+        "expected": [
+          2,
+          3
+        ]
+      },
+      {
+        "args": [
+          7,
+          15
+        ],
+        "expected": [
+          3,
+          8,
+          120
+        ]
+      },
+      {
+        "args": [
+          1,
+          7
+        ],
+        "expected": [
+          7
+        ]
+      },
+      {
+        "args": [
+          5,
+          121
+        ],
+        "expected": [
+          25,
+          757,
+          763309,
+          873960180913
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2020-lipiec-4.1",
+    "sessionId": "2020/lipiec",
+    "number": "4.1",
+    "title": "Największa suma cyfr identyfikatora",
+    "part": 2,
+    "points": 3,
+    "topics": [
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Plik identyfikator.txt zawiera 200 identyfikatorów dokumentów: seria (3 wielkie litery) i numer (6 cyfr). Wypisz, w kolejności z pliku, identyfikatory o największej sumie cyfr numeru.",
+    "starterCode": "with open(\"identyfikator.txt\") as plik:\n    identyfikatory = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane przykładowe (identyfikator_przyklad.txt)",
+        "files": {
+          "identyfikator.txt": "arkusze/2020/lipiec/pliki/DANE/identyfikator_przyklad.txt"
+        },
+        "expected": "CHY728985"
+      },
+      {
+        "label": "Dane egzaminacyjne (identyfikator.txt)",
+        "files": {
+          "identyfikator.txt": "arkusze/2020/lipiec/pliki/DANE/identyfikator.txt"
+        },
+        "expected": "GYJ959787\nJOK786969"
+      }
+    ]
+  },
+  {
+    "id": "2020-lipiec-4.2",
+    "sessionId": "2020/lipiec",
+    "number": "4.2",
+    "title": "Palindromy w identyfikatorach",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "palindromy",
+      "napisy",
+      "pliki-tekstowe"
+    ],
+    "summary": "Wypisz, w kolejności z pliku, identyfikatory, w których seria lub numer jest palindromem.\n\nUwaga: odpowiedź do pliku przykładowego podana w arkuszu pomija identyfikator MOS302203, którego numer jest palindromem – dlatego sprawdzarka testuje tylko pełne dane.",
+    "starterCode": "with open(\"identyfikator.txt\") as plik:\n    identyfikatory = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane egzaminacyjne (identyfikator.txt)",
+        "files": {
+          "identyfikator.txt": "arkusze/2020/lipiec/pliki/DANE/identyfikator.txt"
+        },
+        "expected": "MBF340043\nJKJ452719\nGFG148345\nAXA231829\nKIK866983\nLOL695279"
+      }
+    ]
+  },
+  {
+    "id": "2020-lipiec-4.3",
+    "sessionId": "2020/lipiec",
+    "number": "4.3",
+    "title": "Cyfra kontrolna identyfikatora",
+    "part": 2,
+    "points": 4,
+    "topics": [
+      "napisy",
+      "teoria-liczb",
+      "pliki-tekstowe"
+    ],
+    "summary": "Pierwsza cyfra numeru jest cyfrą kontrolną. Litery serii zamieniamy na liczby (A = 10, …, Z = 35), mnożymy kolejne elementy identyfikatora (bez cyfry kontrolnej) przez wagi 7, 3, 1, 7, 3, 1, 7, 3 i sumujemy; identyfikator jest poprawny, gdy suma mod 10 jest równa cyfrze kontrolnej. Wypisz wszystkie niepoprawne identyfikatory w kolejności z pliku.",
+    "starterCode": "with open(\"identyfikator.txt\") as plik:\n    identyfikatory = [wiersz.strip() for wiersz in plik]\n\n",
+    "kind": "program",
+    "checks": [
+      {
+        "label": "Dane egzaminacyjne (identyfikator.txt)",
+        "files": {
+          "identyfikator.txt": "arkusze/2020/lipiec/pliki/DANE/identyfikator.txt"
+        },
+        "expected": "LIK235378\nMBF340043\nHFG378931\nKIJ511146\nNUK840936\nOKH427482\nRTS278686"
+      }
+    ]
+  }
+]
