@@ -24,7 +24,10 @@ const theme = EditorView.theme({
     color: 'var(--text-muted)',
     borderRight: '1px solid var(--border)',
   },
-  '.cm-activeLine, .cm-activeLineGutter': { backgroundColor: 'var(--code-active)' },
+  // Tło aktywnej linii leży nad warstwą zaznaczenia – musi być półprzezroczyste,
+  // inaczej zaznaczenie w bieżącej linii jest niewidoczne.
+  '.cm-activeLine': { backgroundColor: 'color-mix(in srgb, var(--code-active) 45%, transparent)' },
+  '.cm-activeLineGutter': { backgroundColor: 'var(--code-active)' },
   '&.cm-focused .cm-selectionBackground, .cm-selectionBackground, ::selection': {
     backgroundColor: 'var(--code-selection) !important',
   },
