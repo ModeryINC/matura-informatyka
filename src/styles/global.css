@@ -1839,6 +1839,10 @@ progress::-moz-progress-bar {
   scrollbar-color: var(--scrollbar-thumb) #eef1f8;
 }
 
+.xl-workbook-host {
+  block-size: 100%;
+}
+
 /*
  * Przesuwanie palcem po komórkach przewija arkusz (nie stronę naraz z nim);
  * na krawędzi arkusza przewijanie przechodzi na stronę (src/lib/scrollChain.ts).

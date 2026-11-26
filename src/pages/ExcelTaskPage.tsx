@@ -189,8 +189,9 @@ function ExcelWorkspace({ task }: { task: SpreadsheetTask }) {
               się w przeglądarce.
             </li>
             <li>
-              Formuły możesz pisać po polsku, np. <code>=LICZ.JEŻELI(B2:B154;"&gt;100")</code> – po
-              zatwierdzeniu zamienią się na angielskie nazwy (<code>COUNTIF</code>) i przecinki.
+              Formuły piszesz i widzisz po polsku, jak w polskim Excelu, np.{' '}
+              <code>=LICZ.JEŻELI(B2:B154;"&gt;100")</code> – także w pasku formuły i w
+              podpowiedziach funkcji. Formuły po angielsku też działają.
             </li>
             <li>
               Odpowiedź wpisz w pole albo zaznacz komórki w arkuszu i kliknij{' '}

@@ -21,8 +21,9 @@ export function HelpPage() {
       <h2>Zadania z Excela</h2>
       <p>
         W zakładce Zadania → Excel są zadania z arkusza kalkulacyjnego (arkusze 2018–2026). Dane z
-        plików są już wczytane – każdy plik w osobnej karcie. Formuły możesz pisać po polsku (
-        <code>=SUMA.JEŻELI(B2:B100;"Z";E2:E100)</code>) – zamienią się na angielskie nazwy funkcji.
+        plików są już wczytane – każdy plik w osobnej karcie. Formuły piszesz i widzisz po polsku,
+        jak w polskim Excelu (<code>=SUMA.JEŻELI(B2:B100;"Z";E2:E100)</code>) – także w pasku
+        formuły, w edytorze komórki i w podpowiedziach funkcji. Formuły po angielsku też działają.
         Odpowiedź wpisz albo zaznacz komórki w arkuszu i kliknij „Wstaw z zaznaczenia”. Liczby
         całkowite muszą się zgadzać dokładnie, ułamki – z dokładnością klucza; daty można zapisać
         jako <code>2035-12-13</code> lub <code>13.12.2035</code>. Wykresy zrób w Excelu – nie są

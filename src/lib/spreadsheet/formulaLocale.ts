@@ -3,7 +3,8 @@
  *
  * Na maturze zwykle używa się polskiego Excela, więc formułę można wpisać po polsku,
  * np. `=LICZ.WARUNKI(B:B;">100";C:C;"Z")` – przy zatwierdzeniu komórki zamieniamy
- * nazwy funkcji, średniki na przecinki i przecinek dziesiętny na kropkę.
+ * nazwy funkcji, średniki na przecinki i przecinek dziesiętny na kropkę. W drugą
+ * stronę (`toPolishFormula`) – przy wyświetlaniu formuły w pasku i w edytorze komórki.
  */
 export const POLISH_FUNCTIONS: Record<string, string> = {
   SUMA: 'SUM',
@@ -101,30 +102,87 @@ export const POLISH_FUNCTIONS: Record<string, string> = {
   'ÓSM.NA.DZIES': 'OCT2DEC',
 };
 
-/** Fragmenty formuły: teksty w cudzysłowach zostawiamy bez zmian. */
+/** Angielska nazwa → polska (przy dwóch polskich nazwach wygrywa pierwsza z listy). */
+export const ENGLISH_FUNCTIONS: Record<string, string> = {};
+for (const [polish, english] of Object.entries(POLISH_FUNCTIONS)) {
+  ENGLISH_FUNCTIONS[english] ??= polish;
+}
+
+/**
+ * Fragmenty formuły: teksty w cudzysłowach i nazwy kart w apostrofach
+ * zostawiamy bez zmian.
+ */
 function splitStrings(formula: string): { text: string; quoted: boolean }[] {
-  return formula.split(/("(?:[^"]|"")*")/).map((text, i) => ({ text, quoted: i % 2 === 1 }));
+  return formula
+    .split(/("(?:[^"]|"")*"|'(?:[^']|'')*')/)
+    .map((text, i) => ({ text, quoted: i % 2 === 1 }));
 }
 
 const NAME = /([A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż][A-Za-z0-9ĄĆĘŁŃÓŚŹŻąćęłńóśźż.]*)(\s*\()/g;
-const BOOLEAN = /\b(PRAWDA|FAŁSZ)\b(?!\s*\()/giu;
+const POLISH_BOOLEAN = /(?<![\p{L}\d.])(PRAWDA|FAŁSZ)(?![\p{L}\d.]|\s*\()/giu;
+const ENGLISH_BOOLEAN = /(?<![\p{L}\d.])(TRUE|FALSE)(?![\p{L}\d.]|\s*\()/giu;
+
+const upper = (name: string) => name.toLocaleUpperCase('pl');
+/** Nazwy funkcji użyte w formule (bez tekstów w cudzysłowach). */
+const functionNames = (formula: string) =>
+  splitStrings(formula)
+    .filter((part) => !part.quoted)
+    .flatMap((part) => [...part.text.matchAll(NAME)].map((match) => upper(match[1]!)));
+
+/**
+ * Czy formuła jest zapisana po polsku. Średnik albo polska nazwa funkcji
+ * przesądzają sprawę, angielska nazwa (np. `SUM`) – też. Formuła bez takich
+ * wskazówek (np. `=A1*1,5`, `=MAX(A1;B1)`) jest traktowana jak polska, bo
+ * po polsku jest wyświetlana w arkuszu.
+ */
+function isPolish(formula: string): boolean {
+  const unquoted = splitStrings(formula).filter((part) => !part.quoted);
+  if (unquoted.some((part) => part.text.includes(';'))) return true;
+  const names = functionNames(formula);
+  const own = (map: Record<string, string>, name: string) =>
+    Object.hasOwn(map, name) && map[name] !== name;
+  if (names.some((name) => own(POLISH_FUNCTIONS, name))) return true;
+  if (unquoted.some((part) => new RegExp(POLISH_BOOLEAN.source, 'iu').test(part.text))) return true;
+  if (names.some((name) => own(ENGLISH_FUNCTIONS, name))) return false;
+  return !unquoted.some((part) => new RegExp(ENGLISH_BOOLEAN.source, 'iu').test(part.text));
+}
 
 /** Tłumaczy formułę wpisaną po polsku; formuła po angielsku zostaje bez zmian. */
 export function translateFormula(formula: string): string {
-  if (!formula.startsWith('=')) return formula;
-  const polishSeparators = splitStrings(formula).some(
-    (part) => !part.quoted && part.text.includes(';'),
-  );
+  if (!formula.startsWith('=') || !isPolish(formula)) return formula;
   return splitStrings(formula)
     .map(({ text, quoted }) => {
       if (quoted) return text;
-      let out = text.replace(NAME, (match, name: string, paren: string) => {
-        const english = POLISH_FUNCTIONS[name.toLocaleUpperCase('pl')];
-        return english ? english + paren : match;
-      });
-      out = out.replace(BOOLEAN, (word: string) => POLISH_FUNCTIONS[word.toLocaleUpperCase('pl')]!);
-      if (polishSeparators) out = out.replace(/(\d),(\d)/g, '$1.$2').replace(/;/g, ',');
-      return out;
+      return text
+        .replace(NAME, (match, name: string, paren: string) => {
+          const english = POLISH_FUNCTIONS[upper(name)];
+          return english ? english + paren : match;
+        })
+        .replace(POLISH_BOOLEAN, (word: string) => POLISH_FUNCTIONS[upper(word)]!)
+        .replace(/(\d),(\d)/g, '$1.$2')
+        .replace(/;/g, ',');
+    })
+    .join('');
+}
+
+/**
+ * Formuła z arkusza (po angielsku) zapisana tak, jak w polskim Excelu: polskie
+ * nazwy funkcji, średniki między argumentami i przecinek dziesiętny. Funkcje bez
+ * polskiej nazwy na liście zostają po angielsku.
+ */
+export function toPolishFormula(formula: string): string {
+  if (!formula.startsWith('=')) return formula;
+  return splitStrings(formula)
+    .map(({ text, quoted }) => {
+      if (quoted) return text;
+      return text
+        .replace(NAME, (match, name: string, paren: string) => {
+          const polish = ENGLISH_FUNCTIONS[name.toUpperCase()];
+          return polish ? polish + paren : match;
+        })
+        .replace(ENGLISH_BOOLEAN, (word: string) => ENGLISH_FUNCTIONS[word.toUpperCase()]!)
+        .replace(/,/g, ';')
+        .replace(/(\d)\.(\d)/g, '$1,$2');
     })
     .join('');
 }
