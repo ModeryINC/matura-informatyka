@@ -9,7 +9,7 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
 ## Co potrafi
 
 - **Strona startowa** z animowanym przykładem rozwiązania (Python i Excel) i skrótem
-  możliwości; menu: **Zadania** (podział: Python, Excel, SQL – wkrótce), **Arkusze**, **Pomoc**.
+  możliwości; menu: **Zadania** (podział: Python, Excel, SQL), **Arkusze**, **Pomoc**.
 - **Przegląd arkuszy** – 39 sesji (główne, dodatkowe, próbne, stara formuła) z podglądem PDF,
   przyciskami do zadań z danego arkusza, kluczem odpowiedzi i plikami z danymi (podgląd
   w oknie z przyciskiem pobierania).
@@ -24,6 +24,14 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
   polsku (`=LICZ.JEŻELI(A:A;">5")`), arkusz można wyeksportować do .xlsx i wczytać z takiego
   pliku ([ExcelJS](https://github.com/exceljs/exceljs), MIT), a odpowiedzi – także całe zestawienia wstawiane
   z zaznaczenia – są sprawdzane z kluczem CKE. Wykresów nie sprawdzamy.
+- **Zadania z SQL** (Zadania → SQL) – 33 zadania z baz danych ze wszystkich arkuszy CKE
+  2018–2026. Pliki z danymi są od razu tabelami bazy SQLite w przeglądarce
+  ([sql.js](https://github.com/sql-js/sql.js), MIT; zapytania działają w Web Workerze z limitem
+  czasu). Rozumiemy też typową składnię Accessa (`SELECT TOP 1`, `Year()`, `IIf()`,
+  `#2020-05-01#`, `&`, `LIKE "*abc*"`). Wynik zapytania wstawia się jednym kliknięciem do
+  podpunktu i sprawdza z kluczem – listy bez względu na kolejność wierszy i kolumn. Podpunkty,
+  w których zapytanie pisze się na kartce (tabel nie ma w plikach), mają przykładowe
+  rozwiązanie z klucza.
 - **Wyszukiwanie** po temacie (sortowanie, rekurencja, słowniki, liczby pierwsze, …), roku,
   części arkusza, statusie i dowolnej frazie – bez względu na polskie znaki. Filtry są
   zapisywane w adresie, więc wyszukiwanie można udostępnić linkiem.
@@ -56,6 +64,7 @@ npm run dev          # http://localhost:5173
 | `npm run test:python`      | testy `harness.py` (unittest)                                    |
 | `npm run verify:solutions` | uruchamia rozwiązania wzorcowe i porównuje je z kluczem w danych |
 | `npm run verify:excel`     | obliczenia wzorcowe zadań z Excela kontra klucz w danych         |
+| `npm run verify:sql`       | zapytania wzorcowe zadań z SQL kontra klucz w danych             |
 | `npm run lint`             | ESLint (bez tolerancji ostrzeżeń)                                |
 | `npm run typecheck`        | TypeScript                                                       |
 | `npm run format`           | Prettier                                                         |
@@ -84,6 +93,7 @@ public/arkusze/<rok>/<sesja>/{arkusz,odpowiedzi,pliki}/   materiały CKE
 src/
   data/tasks/*.json      zadania (po jednym pliku na sesję)
   data/spreadsheet/*.json  zadania z arkusza kalkulacyjnego (Zadania → Excel)
+  data/sql/*.json        zadania z baz danych (Zadania → SQL)
   data/index.ts          dostęp do katalogu i zadań
   lib/                   logika bez Reacta: porównywanie, wyszukiwanie, zapis, walidacja
   python/                worker Pyodide, harness i klient (PythonRunner)
@@ -91,6 +101,7 @@ src/
   styles/global.css      style w czystym CSS (tokeny, motywy, układ)
 solutions/<sesja>/*.py   rozwiązania wzorcowe (tylko do weryfikacji w CI)
 solutions/excel/*.py     obliczenia wzorcowe do kluczy zadań z Excela
+solutions/sql/*.sql      zapytania wzorcowe do kluczy zadań z SQL
 worker/                  pośrednik podpowiedzi AI (Cloudflare Worker, klucz Gemini jako sekret)
 scripts/                 generowanie katalogu i weryfikacja rozwiązań
 tests/                   konfiguracja testów i testy harnessu Pythona
@@ -106,7 +117,7 @@ Workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
 
 - przy każdym pushu i pull requeście: lint, formatowanie, typy, testy z pokryciem, build,
   testy harnessu Pythona oraz **weryfikacja wszystkich kluczy odpowiedzi** rozwiązaniami
-  wzorcowymi (także zadań z Excela),
+  wzorcowymi (także zadań z Excela i z SQL),
 - po zmianach na `main`: wdrożenie pośrednika podpowiedzi AI na Cloudflare Workers (klucz
   Gemini jako sekret Workera), build strony z adresem pośrednika i wdrożenie na GitHub Pages
   (strona działa pod `/<nazwa-repo>/`, ścieżkę ustawia zmienna `BASE_PATH`).

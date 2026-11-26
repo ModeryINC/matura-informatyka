@@ -38,7 +38,7 @@ def main():
     found, missing = {}, []
     task_files = glob.glob(str(ROOT / "src" / "data" / "tasks" / "*.json")) + glob.glob(
         str(ROOT / "src" / "data" / "spreadsheet" / "*.json")
-    )
+    ) + glob.glob(str(ROOT / "src" / "data" / "sql" / "*.json"))
     for task_file in sorted(task_files):
         for task in json.loads(Path(task_file).read_text("utf-8")):
             # Nagłówek „Zadanie 3.1.” (z wielkiej litery – pomija odwołania „do zadania 3.1”).

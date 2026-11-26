@@ -10,7 +10,7 @@
  *   (`2019-05-22 16:00`, `22.05.2019 16:00`),
  * - tekst: bez względu na wielkość liter, nadmiarowe spacje i polskie znaki.
  */
-import type { SpreadsheetField, SpreadsheetTable } from '../../types';
+import type { AnswerList, SpreadsheetField, SpreadsheetTable } from '../../types';
 
 const ISO_DATE = /^(\d{4})[-./](\d{1,2})[-./](\d{1,2})$/;
 const PL_DATE = /^(\d{1,2})[-./](\d{1,2})[-./](\d{4})$/;
@@ -55,12 +55,16 @@ export function parseClock(text: string): number | null {
   return Number(match[1]) * 60 + Number(match[2]);
 }
 
-/** Data z godziną jako `rrrr-mm-dd gg:mm` albo `null` (np. `22.05.2019 16:00`, `2019-05-22 4:00`). */
+/**
+ * Data z godziną jako `rrrr-mm-dd gg:mm` (z `:ss`, gdy sekundy nie są zerowe) albo `null`
+ * (np. `22.05.2019 16:00`, `2019-05-22 4:00`, `06-11-2015 12:38:46`).
+ */
 export function parseDateTime(text: string): string | null {
-  const match = /^(\S+)[ T]+(\d{1,2}):(\d{2})(?::00)?$/.exec(text.trim());
+  const match = /^(\S+)[ T]+(\d{1,2}):(\d{2})(?::(\d{2}))?$/.exec(text.trim());
   const day = match ? parseDate(match[1]!) : null;
   if (!match || !day || Number(match[2]) > 23 || Number(match[3]) > 59) return null;
-  return `${day} ${match[2]!.padStart(2, '0')}:${match[3]}`;
+  const seconds = match[4] && match[4] !== '00' ? `:${match[4]}` : '';
+  return `${day} ${match[2]!.padStart(2, '0')}:${match[3]}${seconds}`;
 }
 
 /** Numer seryjny daty (jak w Excelu) → `rrrr-mm-dd`. */
@@ -170,4 +174,64 @@ export function fitSelection(selection: string[][], table: SpreadsheetTable): st
   // Gdy pasuje kilka układów, wybieramy ten z największą liczbą trafień.
   const score = (m: string[][]) => tableMatches(m, table).flat().filter(Boolean).length;
   return candidates.reduce((best, m) => (score(m) > score(best) ? m : best));
+}
+
+export interface ListCheck {
+  passed: boolean;
+  /** Liczba oczekiwanych wierszy znalezionych w odpowiedzi. */
+  matched: number;
+  /** Liczba niepustych wierszy odpowiedzi. */
+  rows: number;
+}
+
+/** Wszystkie różnowartościowe przyporządkowania `k` kolumn klucza kolumnom odpowiedzi. */
+function columnMappings(k: number, width: number): number[][] {
+  const result: number[][] = [];
+  const pick = (current: number[]) => {
+    if (current.length === k) {
+      result.push(current);
+      return;
+    }
+    for (let c = 0; c < width; c += 1) if (!current.includes(c)) pick([...current, c]);
+  };
+  pick([]);
+  return result;
+}
+
+/**
+ * Sprawdza listę wierszy (np. wynik zapytania): kolejność wierszy i kolumn nie ma
+ * znaczenia, odpowiedź może mieć dodatkowe kolumny (np. identyfikatory), ale musi
+ * mieć dokładnie tyle wierszy, ile klucz.
+ */
+export function listMatches(actual: string[][], list: AnswerList): ListCheck {
+  const rows = actual.filter((row) => row.some((value) => value.trim() !== ''));
+  const width = Math.min(10, Math.max(0, ...rows.map((row) => row.length)));
+  const k = list.columns.length;
+  let best = 0;
+  if (width >= k) {
+    for (const mapping of columnMappings(k, width)) {
+      const used = new Set<number>();
+      let matched = 0;
+      for (const expected of list.expected) {
+        const index = rows.findIndex(
+          (row, i) =>
+            !used.has(i) &&
+            expected.every((value, c) =>
+              valueMatches(row[mapping[c]!] ?? '', value, list.tolerance),
+            ),
+        );
+        if (index !== -1) {
+          used.add(index);
+          matched += 1;
+        }
+      }
+      best = Math.max(best, matched);
+      if (best === list.expected.length) break;
+    }
+  }
+  return {
+    passed: best === list.expected.length && rows.length === list.expected.length,
+    matched: best,
+    rows: rows.length,
+  };
 }

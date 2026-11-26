@@ -1,5 +1,12 @@
 import { useState } from 'react';
-import { fieldMatches, fitSelection, tableMatches } from '../lib/spreadsheet/answers';
+import {
+  fieldMatches,
+  fitSelection,
+  listMatches,
+  tableMatches,
+  type ListCheck,
+} from '../lib/spreadsheet/answers';
+import { plural } from '../lib/plural';
 import type { PartAnswer } from '../lib/spreadsheet/storage';
 import type { SpreadsheetPart } from '../types';
 import { LuCheck, LuCircleCheck, LuClipboardPaste, LuPartyPopper } from 'react-icons/lu';
@@ -10,9 +17,21 @@ interface SpreadsheetPartCardProps {
   onChange: (answer: PartAnswer) => void;
   /** Wartości zaznaczone w arkuszu (`null` – arkusz niegotowy albo brak zaznaczenia). */
   getSelection: () => string[][] | null;
+  /** Napis na przycisku wstawiania (np. „Wstaw z wyniku” w zadaniach z SQL). */
+  insertLabel?: string;
+  /** Komunikat, gdy nie ma czego wstawić. */
+  emptySelectionMessage?: string;
 }
 
-type Feedback = { fields?: boolean[]; table?: boolean[][]; passed: boolean } | null;
+type Feedback = {
+  fields?: boolean[];
+  table?: boolean[][];
+  list?: ListCheck;
+  passed: boolean;
+} | null;
+
+/** Ile wierszy listy pokazujemy w podglądzie odpowiedzi. */
+const LIST_PREVIEW = 8;
 
 /** Jeden podpunkt zadania: polecenie, pola na odpowiedź i sprawdzenie. */
 export function SpreadsheetPartCard({
@@ -20,6 +39,8 @@ export function SpreadsheetPartCard({
   answer,
   onChange,
   getSelection,
+  insertLabel = 'Wstaw z zaznaczenia',
+  emptySelectionMessage = 'Najpierw zaznacz komórki w arkuszu.',
 }: SpreadsheetPartCardProps) {
   const [feedback, setFeedback] = useState<Feedback>(null);
   const [message, setMessage] = useState<string | null>(null);
@@ -30,6 +51,7 @@ export function SpreadsheetPartCard({
     part.table?.rows.map((_, r) =>
       part.table!.columns.map((_, c) => answer.table?.[r]?.[c] ?? ''),
     ) ?? [];
+  const list = answer.list ?? [];
 
   const update = (next: Partial<PartAnswer>) => {
     // Zmiana odpowiedzi ukrywa oznaczenia z poprzedniego sprawdzenia
@@ -44,10 +66,31 @@ export function SpreadsheetPartCard({
   const setCell = (r: number, c: number, value: string) =>
     update({ table: table.map((row, i) => row.map((v, j) => (i === r && j === c ? value : v))) });
 
+  /** Wstawia zaznaczenie (wynik zapytania) jako listę wierszy. */
+  const insertList = () => {
+    const selection = getSelection();
+    if (!part.list || !selection || selection.length === 0) {
+      setMessage(emptySelectionMessage);
+      return;
+    }
+    // Zaznaczenie w arkuszu może zaczynać się od wiersza z nagłówkami kolumn.
+    const withoutHeader = selection.slice(1);
+    const rows =
+      !listMatches(selection, part.list).passed && listMatches(withoutHeader, part.list).passed
+        ? withoutHeader
+        : selection;
+    update({ list: rows });
+    setMessage(null);
+  };
+
   const insertSelection = () => {
+    if (!part.fields && !part.table) {
+      insertList();
+      return;
+    }
     const selection = getSelection();
     if (!selection || selection.length === 0) {
-      setMessage('Najpierw zaznacz komórki w arkuszu.');
+      setMessage(emptySelectionMessage);
       return;
     }
     if (part.table) {
@@ -77,16 +120,28 @@ export function SpreadsheetPartCard({
   const check = () => {
     const fieldResults = part.fields?.map((field, i) => fieldMatches(fields[i] ?? '', field));
     const tableResults = part.table ? tableMatches(table, part.table) : undefined;
-    const passed = [...(fieldResults ?? []), ...(tableResults?.flat() ?? [])].every(Boolean);
-    setFeedback({ fields: fieldResults, table: tableResults, passed });
-    const wrong = [...(fieldResults ?? []), ...(tableResults?.flat() ?? [])].filter(
-      (ok) => !ok,
-    ).length;
-    setMessage(passed ? null : `Niepoprawnych odpowiedzi: ${wrong}.`);
+    const listResult = part.list ? listMatches(list, part.list) : undefined;
+    const cells = [...(fieldResults ?? []), ...(tableResults?.flat() ?? [])];
+    const passed = cells.every(Boolean) && (listResult?.passed ?? true);
+    setFeedback({ fields: fieldResults, table: tableResults, list: listResult, passed });
+    const problems: string[] = [];
+    const wrong = cells.filter((ok) => !ok).length;
+    if (wrong > 0) problems.push(`Niepoprawnych odpowiedzi: ${wrong}.`);
+    if (listResult && part.list && !listResult.passed) {
+      const expected = part.list.expected.length;
+      problems.push(
+        listResult.rows === 0
+          ? 'Lista jest pusta – wstaw wynik zapytania.'
+          : `Lista: zgadza się ${listResult.matched} z ${expected} oczekiwanych wierszy` +
+              (listResult.rows !== expected ? `, a lista ma ${listResult.rows}.` : '.'),
+      );
+    }
+    setMessage(passed ? null : problems.join(' '));
     onChange({
       ...answer,
       fields: part.fields ? fields : undefined,
       table: part.table ? table : undefined,
+      list: part.list ? list : undefined,
       passed: answer.passed === true || passed,
     });
   };
@@ -95,8 +150,9 @@ export function SpreadsheetPartCard({
     ok === undefined ? '' : ok ? ' xl-input--ok' : ' xl-input--wrong';
 
   const headingId = `podpunkt-${part.number}`;
-  // Podpunkt z samym wykresem nie ma odpowiedzi do sprawdzenia.
-  const checkable = part.fields !== undefined || part.table !== undefined;
+  // Podpunkt z samym wykresem albo zapytaniem na kartce nie ma odpowiedzi do sprawdzenia.
+  const checkable =
+    part.fields !== undefined || part.table !== undefined || part.list !== undefined;
   return (
     <section
       className={`xl-part${answer.passed ? ' xl-part--passed' : ''}`}
@@ -173,11 +229,68 @@ export function SpreadsheetPartCard({
         </div>
       )}
 
+      {part.list && (
+        <div className="xl-list">
+          <p className="muted">
+            Lista ({part.list.columns.join(', ')}) – kolejność wierszy i kolumn nie ma znaczenia,
+            dodatkowe kolumny też nie.{' '}
+            {list.length > 0
+              ? `Wstawiono ${list.length} ${plural(list.length, 'wiersz', 'wiersze', 'wierszy')}.`
+              : 'Nic jeszcze nie wstawiono.'}
+          </p>
+          {list.length > 0 && (
+            <div className="xl-table-wrap">
+              <table
+                className={`xl-table xl-list__table${
+                  feedback?.list
+                    ? feedback.list.passed
+                      ? ' xl-input--ok'
+                      : ' xl-input--wrong'
+                    : ''
+                }`}
+              >
+                <tbody>
+                  {list.slice(0, LIST_PREVIEW).map((row, r) => (
+                    <tr key={r}>
+                      {row.map((value, c) => (
+                        <td key={c}>{value}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {list.length > LIST_PREVIEW && (
+                <p className="muted">… i {list.length - LIST_PREVIEW} więcej.</p>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {part.query && (
+        <details className="xl-part__query">
+          <summary>Pokaż przykładowe rozwiązanie z klucza</summary>
+          <p className="muted">
+            Tabel z tego podpunktu nie ma w plikach – zapytanie pisze się na kartce. Nie sprawdzamy
+            go automatycznie.
+          </p>
+          <pre>
+            <code>{part.query}</code>
+          </pre>
+        </details>
+      )}
+
       {checkable && (
         <div className="xl-part__actions">
           <button type="button" className="button button--small" onClick={insertSelection}>
-            <LuClipboardPaste aria-hidden className="icon" /> Wstaw z zaznaczenia
+            <LuClipboardPaste aria-hidden className="icon" /> {insertLabel}
+            {part.list && (part.fields || part.table) ? ' do pól' : ''}
           </button>
+          {part.list && (part.fields || part.table) && (
+            <button type="button" className="button button--small" onClick={insertList}>
+              <LuClipboardPaste aria-hidden className="icon" /> {insertLabel} do listy
+            </button>
+          )}
           <button type="button" className="button button--small button--primary" onClick={check}>
             <LuCheck aria-hidden className="icon" /> Sprawdź
           </button>

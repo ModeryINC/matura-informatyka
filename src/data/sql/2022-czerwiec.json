@@ -1,0 +1,119 @@
+[
+  {
+    "id": "2022-czerwiec-6",
+    "sessionId": "2022/czerwiec",
+    "number": "6",
+    "title": "Rozgrywki siatkarskie",
+    "summary": "W pewnej lidze siatkówki w sezonie 2019/2020 (od października 2019 do maja 2020) rozegrano ponad 300 spotkań. Pola w plikach są rozdzielone średnikami.\n\nkluby: Id_klubu, Nazwa, Miasto (w którym klub rozgrywa mecze). sedziowie: Id_sedziego, Imie, Nazwisko. mecze: Id_meczu, Data, Id_klubu (gospodarz), Sety_wygrane, Sety_przegrane, Id_sedziego. Plik nie zawiera informacji o drużynach gości.",
+    "tables": [
+      {
+        "name": "kluby",
+        "path": "arkusze/2022/czerwiec/pliki/DANE/kluby.txt"
+      },
+      {
+        "name": "sedziowie",
+        "path": "arkusze/2022/czerwiec/pliki/DANE/sedziowie.txt"
+      },
+      {
+        "name": "mecze",
+        "path": "arkusze/2022/czerwiec/pliki/DANE/mecze.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 1,
+        "prompt": "Ile meczów zakończyło się tie-breakiem, czyli rozegrano w nich dokładnie pięć setów?",
+        "fields": [
+          {
+            "label": "Liczba meczów",
+            "expected": "109"
+          }
+        ]
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Utwórz zestawienie miast z liczbą rozegranych w nich meczów, od największej liczby meczów do najmniejszej.",
+        "list": {
+          "columns": ["miasto", "liczba meczów"],
+          "expected": [
+            ["Wiralow", "41"],
+            ["Kukurykow", "39"],
+            ["Szymbark", "32"],
+            ["Preziowo", "30"],
+            ["Bialowo", "21"],
+            ["Gorkowo", "18"],
+            ["Kielkowo", "17"],
+            ["Licowo", "15"],
+            ["Sadelko", "15"],
+            ["Radelko", "15"],
+            ["Koszalkowo", "15"],
+            ["Barylkowo", "14"],
+            ["Orecin", "14"],
+            ["Rezkow", "13"],
+            ["Warkowo", "13"],
+            ["Lewkowo", "12"]
+          ]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 3,
+        "prompt": "Podaj imiona i nazwiska sędziów, którzy poprowadzili więcej spotkań niż średnia liczba spotkań przeprowadzonych przez jednego sędziego.",
+        "list": {
+          "columns": ["imię", "nazwisko"],
+          "expected": [
+            ["Franciszek", "Dudek"],
+            ["Natalia", "Jankowska"],
+            ["Barbara", "Kaczmarek"],
+            ["Monika", "Kowalczyk"],
+            ["Kamila", "Majewska"],
+            ["Katarzyna", "Olszewska"],
+            ["Szymon", "Rutkowski"]
+          ]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 3,
+        "prompt": "Podaj imiona i nazwiska sędziów, którzy nie prowadzili żadnego spotkania ani w Licowie („Licowo”), ani w Szymbarku („Szymbark”) w okresie od 15 października 2019 do 15 grudnia 2019 roku.",
+        "list": {
+          "columns": ["imię", "nazwisko"],
+          "expected": [
+            ["Jan", "Malinowski"],
+            ["Anna", "Nowak"],
+            ["Agnieszka", "Wieczorek"],
+            ["Kamila", "Majewska"],
+            ["Piotr", "Lewandowski"],
+            ["Franciszek", "Dudek"],
+            ["Barbara", "Kaczmarek"],
+            ["Zofia", "Grabowska"]
+          ]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 3,
+        "prompt": "Spotkanie jest wygrane, jeśli liczba wygranych setów jest większa niż przegranych. Utwórz zestawienie klubów, w przypadku których liczba wygranych spotkań jest większa lub równa liczbie przegranych: nazwa, miasto oraz liczby spotkań wygranych i przegranych.",
+        "list": {
+          "columns": ["nazwa", "miasto", "wygrane", "przegrane"],
+          "expected": [
+            ["Sfinks", "Szymbark", "9", "7"],
+            ["Zenit", "Licowo", "8", "7"],
+            ["Victoria", "Radelko", "10", "5"],
+            ["Zjednoczeni", "Kukurykow", "10", "8"],
+            ["Olimpia", "Orecin", "9", "5"],
+            ["Stolar", "Wiralow", "11", "9"],
+            ["Astecja", "Rezkow", "10", "3"],
+            ["Bradownia", "Preziowo", "9", "9"],
+            ["Spirca", "Lewkowo", "6", "6"],
+            ["Huraganer", "Szymbark", "8", "8"],
+            ["Waleczni", "Preziowo", "7", "5"],
+            ["Libero", "Warkowo", "8", "5"]
+          ]
+        }
+      }
+    ]
+  }
+]

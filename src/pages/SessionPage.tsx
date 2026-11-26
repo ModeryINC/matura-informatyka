@@ -4,9 +4,11 @@ import { MorphItem } from '../components/MorphItem';
 import { PdfViewer } from '../components/PdfViewer';
 import { sessionsById, tasksForSession } from '../data';
 import { checkableParts, spreadsheetTasks } from '../data/spreadsheets';
+import { checkableSqlParts, sqlTasks } from '../data/sql';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useSolutionStatuses } from '../hooks/useSolutions';
 import { passedParts } from '../lib/spreadsheet/storage';
+import { passedSqlParts } from '../lib/sql/storage';
 import { NotFoundPage } from './NotFoundPage';
 import { LuCircleCheck } from 'react-icons/lu';
 
@@ -19,7 +21,8 @@ export function SessionPage() {
   if (!session) return <NotFoundPage />;
   const tasks = tasksForSession(session.id);
   const excelTasks = spreadsheetTasks.filter((t) => t.sessionId === session.id);
-  const count = tasks.length + excelTasks.length;
+  const databaseTasks = sqlTasks.filter((t) => t.sessionId === session.id);
+  const count = tasks.length + excelTasks.length + databaseTasks.length;
 
   return (
     <div className="page page--detail">
@@ -81,6 +84,25 @@ export function SessionPage() {
                     <span className="task-jump__number">
                       {done && <LuCircleCheck className="icon" aria-label="zaliczone" />}
                       {task.number} · Excel
+                    </span>
+                    <span className="task-jump__name">{task.title}</span>
+                  </Link>
+                </MorphItem>
+              );
+            })}
+            {databaseTasks.map((task) => {
+              const done = passedSqlParts(task.id) >= checkableSqlParts(task).length;
+              return (
+                <MorphItem key={task.id} to={`/sql/${encodeURIComponent(task.id)}`}>
+                  <Link
+                    viewTransition
+                    to={`/sql/${encodeURIComponent(task.id)}`}
+                    className={`task-jump__button task-jump__button--sql${done ? ' task-jump__button--zaliczone' : ''}`}
+                    title={task.title}
+                  >
+                    <span className="task-jump__number">
+                      {done && <LuCircleCheck className="icon" aria-label="zaliczone" />}
+                      {task.number} · SQL
                     </span>
                     <span className="task-jump__name">{task.title}</span>
                   </Link>

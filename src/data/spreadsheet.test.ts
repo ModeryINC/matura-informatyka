@@ -90,7 +90,7 @@ describe('validateSpreadsheetTask', () => {
     expect(errors.join('\n')).toMatch(/powtórzona karta/);
     expect(errors.join('\n')).toMatch(/"sheet" i "path"/);
     expect(errors.join('\n')).toMatch(/points/);
-    expect(errors.join('\n')).toMatch(/"fields", "table" lub "chart"/);
+    expect(errors.join('\n')).toMatch(/"fields", "table", "list", "chart" lub "query"/);
     expect(errors.join('\n')).toMatch(/"label" i "expected"/);
     expect(errors.join('\n')).toMatch(/rozmiar "expected"/);
     expect(errors.join('\n')).toMatch(/wymaga "rows", "columns"/);

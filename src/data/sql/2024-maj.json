@@ -1,0 +1,67 @@
+[
+  {
+    "id": "2024-maj-8",
+    "sessionId": "2024/maj",
+    "number": "8",
+    "title": "Rejestr wykroczeń",
+    "summary": "W plikach kierowcy.txt, taryfikator.txt i rejestr.txt zapisano dane o przekroczeniach dozwolonej prędkości na pewnej trasie w okresie 2023-01-01 – 2023-12-30 (dane fikcyjne, pola rozdzielone średnikiem).\n\nkierowcy: IdOsoby, Imie, Nazwisko, NrRejestracyjny. taryfikator: IdWykroczenia, Wykroczenie (opis), Punkty (punkty karne), Kwota (mandat). rejestr: IdZdarzenia, Data (rrrr-mm-dd), IdOsoby, IdWykroczenia.",
+    "tables": [
+      {
+        "name": "kierowcy",
+        "path": "arkusze/2024/maj/pliki/Dane-NF-2405/kierowcy.txt"
+      },
+      {
+        "name": "taryfikator",
+        "path": "arkusze/2024/maj/pliki/Dane-NF-2405/taryfikator.txt"
+      },
+      {
+        "name": "rejestr",
+        "path": "arkusze/2024/maj/pliki/Dane-NF-2405/rejestr.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "8.1",
+        "points": 2,
+        "prompt": "Podaj imię i nazwisko kierowcy, dla którego suma kwot za wszystkie mandaty była największa, oraz tę największą sumę. Jest tylko jeden taki kierowca.",
+        "list": {
+          "columns": ["imię", "nazwisko", "suma kwot"],
+          "expected": [["Rafael", "Blake", "3700"]]
+        }
+      },
+      {
+        "number": "8.2",
+        "points": 2,
+        "prompt": "W którym miesiącu kierowcy otrzymali najmniej punktów karnych (łącznie) za przekroczenie dozwolonej prędkości o więcej niż 20 km/h (wykroczenia o identyfikatorach od 3 do 6)? Podaj miesiąc (numer) oraz łączną liczbę punktów karnych z tego miesiąca.",
+        "list": {
+          "columns": ["miesiąc", "punkty karne"],
+          "expected": [["11", "1766"]]
+        }
+      },
+      {
+        "number": "8.3",
+        "points": 3,
+        "prompt": "Wykonaj zestawienie numerów rejestracyjnych samochodów wraz z imionami i nazwiskami ich właścicieli, którzy nie figurują w rejestrze wykroczeń. Zestawienie posortuj alfabetycznie według numerów rejestracyjnych.",
+        "list": {
+          "columns": ["imię", "nazwisko", "numer rejestracyjny"],
+          "expected": [
+            ["Sandra", "Wheeler", "BHW4028"],
+            ["Quynn", "Travis", "CJX1859"],
+            ["Jasper", "Santos", "KNM7950"],
+            ["Honorato", "Roth", "NIP6570"],
+            ["Ivy", "Bowen", "QFR8936"],
+            ["Helen", "White", "SRU9727"],
+            ["Quentin", "Tyler", "XHK9060"],
+            ["Kevin", "Wright", "YYS1077"]
+          ]
+        }
+      },
+      {
+        "number": "8.4",
+        "points": 2,
+        "prompt": "Do bazy dodano tabelę Fotoradar (IdFotoradaru, Miejscowosc, DozwolonaPredkosc), a do tabeli Rejestr – pole IdFotoradaru. Zapisz zapytanie SQL, które poda identyfikatory fotoradarów, które nie zarejestrowały żadnego wykroczenia.",
+        "query": "SELECT Fotoradar.IdFotoradaru\nFROM Fotoradar\nLEFT JOIN Rejestr ON Fotoradar.IdFotoradaru = Rejestr.IdFotoradaru\nWHERE Rejestr.IdFotoradaru IS NULL;"
+      }
+    ]
+  }
+]

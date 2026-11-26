@@ -1,0 +1,96 @@
+[
+  {
+    "id": "2026-stara-formula-maj-6",
+    "sessionId": "2026/stara-formula-maj",
+    "number": "6",
+    "title": "Sieć sklepów",
+    "summary": "W plikach klienci.txt, transakcje.txt i opis_transakcji.txt zapisano dane o sprzedaży w sieci sklepów w porach wieczornych (22:00–23:59) pierwszych trzech dni każdego miesiąca od stycznia do czerwca 2025 roku.\n\nklienci: IdKlienta, Imie, Nazwisko, Plec (K lub M). transakcje: IdTransakcji, DataTransakcji, IdKlienta, IdSklepu, IdSprzedawcy – puste pole oznacza zakup w kasie samoobsługowej. opis_transakcji: IdTransakcji, IdProduktu, Cena (cena jednostkowa), Liczba (liczba sztuk).",
+    "tables": [
+      {
+        "name": "klienci",
+        "path": "arkusze/2026/stara-formula-maj/pliki/informatyka-2026-maj-matura-stara-rozszerzona-zalaczniki/klienci.txt"
+      },
+      {
+        "name": "transakcje",
+        "path": "arkusze/2026/stara-formula-maj/pliki/informatyka-2026-maj-matura-stara-rozszerzona-zalaczniki/transakcje.txt"
+      },
+      {
+        "name": "opis_transakcji",
+        "path": "arkusze/2026/stara-formula-maj/pliki/informatyka-2026-maj-matura-stara-rozszerzona-zalaczniki/opis_transakcji.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 2,
+        "prompt": "Podaj imię i nazwisko klienta, który dokonał łącznie najwięcej transakcji w całym analizowanym okresie, oraz liczbę tych transakcji.",
+        "list": {
+          "columns": ["imię", "nazwisko", "liczba transakcji"],
+          "expected": [["Marcelino", "Kruk", "8"]]
+        }
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Podaj, ile kobiet (K) oraz ilu mężczyzn (M) spośród klientów sieci nie kupiło niczego w całym analizowanym okresie.",
+        "list": {
+          "columns": ["płeć", "liczba klientów"],
+          "expected": [
+            ["K", "689"],
+            ["M", "651"]
+          ]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 2,
+        "prompt": "Podaj, ilu różnych klientów dokonało transakcji w kasach samoobsługowych.",
+        "fields": [
+          {
+            "label": "Liczba klientów",
+            "expected": "146"
+          }
+        ]
+      },
+      {
+        "number": "6.4",
+        "points": 2,
+        "prompt": "Podaj liczbę różnych sklepów, w których dokonano transakcji w kasach samoobsługowych, oraz ile pieniędzy zapłacono łącznie za zakupy w tych kasach.",
+        "fields": [
+          {
+            "label": "Liczba sklepów",
+            "expected": "28"
+          },
+          {
+            "label": "Łączna kwota",
+            "expected": "19443,29"
+          }
+        ]
+      },
+      {
+        "number": "6.5",
+        "points": 4,
+        "prompt": "Niektórzy sprzedawcy pracowali w różnych sklepach sieci w ciągu miesiąca. a) Podaj IdSprzedawcy, który obsługiwał klientów w największej liczbie różnych sklepów w jednym miesiącu, oraz ten miesiąc (numer). b) Dla tego miesiąca i sprzedawcy podaj identyfikatory sklepów, w których w tym miesiącu obsługiwał klientów, i liczbę transakcji w każdym z nich.",
+        "fields": [
+          {
+            "label": "a) IdSprzedawcy",
+            "expected": "14"
+          },
+          {
+            "label": "a) miesiąc",
+            "expected": "1",
+            "alternatives": ["styczeń"]
+          }
+        ],
+        "list": {
+          "columns": ["IdSklepu", "liczba transakcji"],
+          "expected": [
+            ["10", "4"],
+            ["25", "5"],
+            ["27", "2"]
+          ]
+        }
+      }
+    ]
+  }
+]

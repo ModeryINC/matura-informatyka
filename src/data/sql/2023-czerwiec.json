@@ -1,0 +1,77 @@
+[
+  {
+    "id": "2023-czerwiec-7",
+    "sessionId": "2023/czerwiec",
+    "number": "7",
+    "title": "Instalacje",
+    "summary": "Baza firmy X zawiera informacje o instalacjach pewnej aplikacji, o urządzeniach, na których ją zainstalowano, i o krajach, w których przeprowadzono instalację.\n\nkraje: kod_k, nazwa_k, ludnosc_k. urzadzenia: kod_u, nazwa_u (nazwa nie jest unikatowa), producent_u, typ_u (Tablet, Phone lub PC). instalacje: data_i, kod_k, kod_u – kod oznacza rodzaj urządzenia, więc na urządzeniach o tym samym kodzie może być wiele instalacji.",
+    "tables": [
+      {
+        "name": "kraje",
+        "path": "arkusze/2023/czerwiec/pliki/DANE/DANE_E/kraje.txt"
+      },
+      {
+        "name": "urzadzenia",
+        "path": "arkusze/2023/czerwiec/pliki/DANE/DANE_E/urzadzenia.txt"
+      },
+      {
+        "name": "instalacje",
+        "path": "arkusze/2023/czerwiec/pliki/DANE/DANE_E/instalacje.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "7.1",
+        "points": 2,
+        "prompt": "Dla każdego typu urządzenia podaj liczbę instalacji aplikacji na tym typie urządzenia.",
+        "list": {
+          "columns": ["typ urządzenia", "liczba instalacji"],
+          "expected": [
+            ["PC", "16"],
+            ["Phone", "2814"],
+            ["Tablet", "267"]
+          ]
+        }
+      },
+      {
+        "number": "7.2",
+        "points": 2,
+        "prompt": "Podaj nazwę producenta urządzeń, dla którego w lutym 2019 wykonano najwięcej instalacji, oraz liczbę tych instalacji.",
+        "list": {
+          "columns": ["producent", "liczba instalacji"],
+          "expected": [["Samsung", "478"]]
+        }
+      },
+      {
+        "number": "7.3",
+        "points": 2,
+        "prompt": "Podaj nazwy pięciu krajów, w których przeprowadzono najwięcej instalacji w przeliczeniu na 1 000 000 mieszkańców, i dla każdego z nich liczbę instalacji na 1 000 000 mieszkańców z dokładnością do dwóch miejsc po przecinku. Pomiń kraje, w których jest mniej niż milion mieszkańców.",
+        "list": {
+          "columns": ["kraj", "instalacji na milion"],
+          "expected": [
+            ["SWITZERLAND", "5,28"],
+            ["SLOVENIA", "4,35"],
+            ["IRELAND", "3,91"],
+            ["AUSTRIA", "3,84"],
+            ["CZECH REPUBLIC", "3,76"]
+          ]
+        }
+      },
+      {
+        "number": "7.4",
+        "points": 2,
+        "prompt": "Podaj kod oraz nazwę urządzenia typu Tablet, na którym zainstalowano aplikację w największej liczbie krajów, oraz liczbę tych krajów.",
+        "list": {
+          "columns": ["kod urządzenia", "nazwa", "liczba krajów"],
+          "expected": [["11935", "Galaxy Tab A (2016)", "20"]]
+        }
+      },
+      {
+        "number": "7.5",
+        "points": 2,
+        "prompt": "Do bazy dołączono tabelę firmy (id_firmy, nazwa), a do tabeli instalacje – pole id_firmy (relacja jeden do wielu). Zapisz zapytanie SQL, które dla każdej nazwy firmy zliczy instalacje wykonane w tej firmie, z wynikiem posortowanym nierosnąco według liczby instalacji.",
+        "query": "SELECT firmy.nazwa, COUNT(*) AS liczba\nFROM firmy\nINNER JOIN instalacje ON firmy.id_firmy = instalacje.id_firmy\nGROUP BY firmy.id_firmy, firmy.nazwa\nORDER BY COUNT(*) DESC;"
+      }
+    ]
+  }
+]

@@ -1,0 +1,115 @@
+[
+  {
+    "id": "2020-probna-CKE-kwiecien-6",
+    "sessionId": "2020/probna-CKE-kwiecien",
+    "number": "6",
+    "title": "Salon urody",
+    "summary": "Salon urody „BEAUTY” świadczy usługi kosmetyczne i fryzjerskie. Identyfikator klienta to litera i liczba: Y – mężczyzna, X – kobieta (np. X10, Y20). Wizyty obejmują okres od 10 listopada 2017 do 27 stycznia 2018 roku; dane są bez polskich znaków.\n\nklienci: id_klienta, imie, nazwisko. zabiegi: kod_zabiegu, dzial, zabieg, cena (zl) – nazwa ze spacją, w SQL zapisz ją jako [cena (zl)]. wizytydane: id_wizyty, data, nr_wizyty (w danym dniu), id_klienta. wizytyzabiegi: id_wizyty, kod_zabiegu – podczas jednej wizyty może być kilka zabiegów.",
+    "tables": [
+      {
+        "name": "klienci",
+        "path": "arkusze/2020/probna-CKE-kwiecien/pliki/klienci.txt"
+      },
+      {
+        "name": "zabiegi",
+        "path": "arkusze/2020/probna-CKE-kwiecien/pliki/zabiegi.txt"
+      },
+      {
+        "name": "wizytydane",
+        "path": "arkusze/2020/probna-CKE-kwiecien/pliki/wizytydane.txt"
+      },
+      {
+        "name": "wizytyzabiegi",
+        "path": "arkusze/2020/probna-CKE-kwiecien/pliki/wizytyzabiegi.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 1,
+        "prompt": "Podaj kwotę, jaką za wszystkie wizyty zapłaciła Alicja Kowalska.",
+        "fields": [
+          {
+            "label": "Kwota (zł)",
+            "expected": "3841"
+          }
+        ]
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Podaj imię, nazwisko i liczbę wizyt klienta (klientki), który najczęściej korzystał z usług salonu.",
+        "list": {
+          "columns": ["imię", "nazwisko", "liczba wizyt"],
+          "expected": [["Johan", "Bor", "20"]]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 3,
+        "prompt": "Podaj liczbę oraz daty (w porządku nierosnącym) wszystkich wizyt, podczas których wykonano zabieg „Magia Hawajow”.",
+        "fields": [
+          {
+            "label": "Liczba wizyt",
+            "expected": "21"
+          }
+        ],
+        "list": {
+          "columns": ["data"],
+          "expected": [
+            ["25.01.2018"],
+            ["20.01.2018"],
+            ["18.01.2018"],
+            ["12.01.2018"],
+            ["10.01.2018"],
+            ["04.01.2018"],
+            ["04.01.2018"],
+            ["03.01.2018"],
+            ["22.12.2017"],
+            ["21.12.2017"],
+            ["19.12.2017"],
+            ["18.12.2017"],
+            ["14.12.2017"],
+            ["12.12.2017"],
+            ["08.12.2017"],
+            ["06.12.2017"],
+            ["04.12.2017"],
+            ["27.11.2017"],
+            ["22.11.2017"],
+            ["20.11.2017"],
+            ["13.11.2017"]
+          ]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 3,
+        "prompt": "Od 6 grudnia 2017 do 15 stycznia 2018 roku (włącznie) salon oferował paniom 20% zniżki na dowolny makijaż (dział MAKIJAZ). Podaj liczbę różnych kobiet, które skorzystały z promocji, oraz ile łącznie zapłaciły za makijaż (z uwzględnieniem zniżki).",
+        "fields": [
+          {
+            "label": "Liczba kobiet",
+            "expected": "7"
+          },
+          {
+            "label": "Suma (zł)",
+            "expected": "400"
+          }
+        ]
+      },
+      {
+        "number": "6.5",
+        "points": 3,
+        "prompt": "Podaj nazwy zabiegów z działu „Fryzjer męski”, z których nikt nie skorzystał w okresie, który obejmują dane.",
+        "list": {
+          "columns": ["zabieg"],
+          "expected": [
+            ["Odsiwianie"],
+            ["Kuracja L'Oreal"],
+            ["Rytual Kerastase (dyscyplinujacy)"],
+            ["Maska Masquargil"]
+          ]
+        }
+      }
+    ]
+  }
+]

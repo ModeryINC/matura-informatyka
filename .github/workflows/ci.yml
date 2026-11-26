@@ -57,6 +57,8 @@ jobs:
         run: npm run verify:basics
       - name: Klucze zadań z Excela zgadzają się z obliczeniami wzorcowymi
         run: npm run verify:excel
+      - name: Klucze zadań z SQL zgadzają się z zapytaniami wzorcowymi
+        run: npm run verify:sql
 
   ai-proxy:
     name: Pośrednik podpowiedzi AI (Cloudflare Worker)

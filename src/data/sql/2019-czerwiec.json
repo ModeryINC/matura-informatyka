@@ -1,0 +1,124 @@
+[
+  {
+    "id": "2019-czerwiec-6",
+    "sessionId": "2019/czerwiec",
+    "number": "6",
+    "title": "„Wymarzony Dom”",
+    "summary": "Biuro nieruchomości „Wymarzony Dom” przechowuje informacje o aktualnych i sprzedanych lokalach oraz o agentach, którzy zajmują się ich sprzedażą.\n\nagenci: Id_agenta, Imie, Nazwisko. oferty: Id_oferty (przedostatni znak: D – dom, M – mieszkanie; ostatni: T – z basenem, N – bez), Woj, Status (A – aktualna, S – sprzedane), Pow, L_pokoi, L_laz, Cena, Data_zglosz, Id_agenta. klienci: Id_klienta, Nazwisko, Imie. zainteresowanie: Id_oferty, Id_klienta.",
+    "tables": [
+      {
+        "name": "agenci",
+        "path": "arkusze/2019/czerwiec/pliki/MIN-R2A1P-193_dane/agenci.txt"
+      },
+      {
+        "name": "oferty",
+        "path": "arkusze/2019/czerwiec/pliki/MIN-R2A1P-193_dane/oferty.txt"
+      },
+      {
+        "name": "klienci",
+        "path": "arkusze/2019/czerwiec/pliki/MIN-R2A1P-193_dane/klienci.txt"
+      },
+      {
+        "name": "zainteresowanie",
+        "path": "arkusze/2019/czerwiec/pliki/MIN-R2A1P-193_dane/zainteresowanie.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 2,
+        "prompt": "Która oferta wzbudziła zainteresowanie największej liczby klientów? Podaj jej identyfikator oraz imię i nazwisko agenta, który się nią zajmował. Jest tylko jedna taka oferta.",
+        "list": {
+          "columns": ["Id_oferty", "imię", "nazwisko"],
+          "expected": [["AB553DN", "Karol", "Zakowicz"]]
+        }
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Podaj średnią cenę ofert w każdym województwie, z dokładnością do dwóch miejsc po przecinku, w kolejności alfabetycznej województw.",
+        "list": {
+          "columns": ["województwo", "średnia cena"],
+          "expected": [
+            ["dolnoslaskie", "345000,00"],
+            ["kujawsko-pomorskie", "299000,00"],
+            ["lodzkie", "304100,00"],
+            ["lubelskie", "260879,33"],
+            ["lubuskie", "227283,33"],
+            ["malopolskie", "650000,00"],
+            ["mazowieckie", "267082,83"],
+            ["opolskie", "400000,00"],
+            ["podkarpackie", "301312,50"],
+            ["podlaskie", "271206,95"],
+            ["pomorskie", "414150,00"],
+            ["swietokrzyskie", "319207,63"],
+            ["warminsko-mazurskie", "132450,00"],
+            ["wielkopolskie", "298600,00"],
+            ["zachodniopomorskie", "269025,20"]
+          ]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 3,
+        "prompt": "Którzy agenci mają aktualne oferty mieszkań z basenem? Podaj imię i nazwisko agenta, identyfikator oferty, województwo, powierzchnię i cenę mieszkania.",
+        "list": {
+          "columns": ["Id_oferty", "nazwisko", "imię", "województwo", "powierzchnia", "cena"],
+          "expected": [
+            ["AB543MT", "Kopacz", "Piotr", "podlaskie", "85", "325000"],
+            ["AB557MT", "Nowak", "Adam", "lubelskie", "83", "349000"],
+            ["AB644MT", "Zakowicz", "Karol", "mazowieckie", "76", "174500"],
+            ["AB691MT", "Karwik", "Milena", "lubuskie", "39", "170000"],
+            ["AB695MT", "Nowak", "Adam", "podkarpackie", "162", "420800"],
+            ["AB696MT", "Siedlecka", "Rozalia", "wielkopolskie", "42", "160000"],
+            ["AB699MT", "Szwarc", "Karol", "lodzkie", "68", "190500"],
+            ["AB700MT", "Nowak", "Krzysztof", "mazowieckie", "85", "265000"],
+            ["AB702MT", "Nowak", "Adam", "mazowieckie", "49", "186000"]
+          ]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 3,
+        "prompt": "Podaj imiona i nazwiska agentów, którzy spośród swoich ofert z 2017 roku nie sprzedali żadnego domu ani mieszkania.",
+        "list": {
+          "columns": ["imię", "nazwisko"],
+          "expected": [
+            ["Jerzy", "Andrzejewski"],
+            ["Krzysztof", "Nowak"],
+            ["Milena", "Karwik"]
+          ]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 2,
+        "prompt": "Podaj aktualne oferty domów i mieszkań o powierzchni powyżej 180 m² z co najmniej 2 łazienkami: identyfikator oferty, powierzchnię, liczbę pokoi, liczbę łazienek, cenę oraz imię i nazwisko agenta.",
+        "list": {
+          "columns": [
+            "Id_oferty",
+            "powierzchnia",
+            "pokoje",
+            "łazienki",
+            "cena",
+            "imię",
+            "nazwisko"
+          ],
+          "expected": [
+            ["AB672DT", "212", "6", "2", "575000", "Sebastian", "Babij"],
+            ["AB683DN", "195", "5", "2", "395800", "Piotr", "Kopacz"],
+            ["AB692DT", "244", "8", "3", "650000", "Piotr", "Kopacz"],
+            ["AB682DN", "203", "5", "3", "485000", "Adam", "Nowak"],
+            ["AB686MN", "192", "6", "2", "375000", "Adam", "Nowak"],
+            ["AB680DT", "220", "6", "2", "520000", "Adam", "Nowak"],
+            ["AB666DN", "220", "6", "3", "450000", "Krzysztof", "Nowak"],
+            ["AB693DN", "182", "7", "2", "425000", "Krzysztof", "Nowak"],
+            ["AB697DN", "195", "6", "2", "460000", "Karol", "Szwarc"],
+            ["AB694DN", "212", "8", "3", "630000", "Karol", "Szwarc"],
+            ["AB670DN", "208", "5", "3", "358400", "Karol", "Zakowicz"]
+          ]
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "2026-maj-8",
+    "sessionId": "2026/maj",
+    "number": "8",
+    "title": "Sieć sklepów",
+    "summary": "W plikach klienci.txt, transakcje.txt i opis_transakcji.txt zapisano dane o sprzedaży w sieci sklepów w porach wieczornych (22:00–23:59) pierwszych trzech dni każdego miesiąca od stycznia do czerwca 2025 roku.\n\nklienci: IdKlienta, Imie, Nazwisko, Plec (K lub M). transakcje: IdTransakcji, DataTransakcji, IdKlienta, IdSklepu, IdSprzedawcy – puste pole oznacza zakup w kasie samoobsługowej. opis_transakcji: IdTransakcji, IdProduktu, Cena (cena jednostkowa), Liczba (liczba sztuk).",
+    "tables": [
+      { "name": "klienci", "path": "arkusze/2026/maj/pliki/Dane-NF-2605/klienci.txt" },
+      { "name": "transakcje", "path": "arkusze/2026/maj/pliki/Dane-NF-2605/transakcje.txt" },
+      {
+        "name": "opis_transakcji",
+        "path": "arkusze/2026/maj/pliki/Dane-NF-2605/opis_transakcji.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "8.1",
+        "points": 1,
+        "prompt": "Podaj imię i nazwisko klienta, który dokonał łącznie najwięcej transakcji w całym analizowanym okresie.",
+        "list": { "columns": ["imię", "nazwisko"], "expected": [["Marcelino", "Kruk"]] }
+      },
+      {
+        "number": "8.2",
+        "points": 2,
+        "prompt": "Podaj, ile kobiet (K) oraz ilu mężczyzn (M) spośród klientów sieci nie kupiło niczego w całym analizowanym okresie.",
+        "list": {
+          "columns": ["płeć", "liczba klientów"],
+          "expected": [
+            ["K", "689"],
+            ["M", "651"]
+          ]
+        }
+      },
+      {
+        "number": "8.3",
+        "points": 2,
+        "prompt": "Podaj liczbę różnych sklepów, w których dokonano transakcji w kasach samoobsługowych, oraz ile zapłacono łącznie za zakupy w tych kasach.",
+        "fields": [
+          { "label": "Liczba sklepów", "expected": "28" },
+          { "label": "Łączna kwota", "expected": "19443,29" }
+        ]
+      },
+      {
+        "number": "8.4",
+        "points": 2,
+        "prompt": "Niektórzy sprzedawcy pracowali w różnych sklepach sieci w ciągu miesiąca. Podaj IdSprzedawcy, który obsługiwał klientów w największej liczbie różnych sklepów w jednym miesiącu, oraz ten miesiąc (numer).",
+        "list": { "columns": ["IdSprzedawcy", "miesiąc"], "expected": [["14", "1"]] }
+      },
+      {
+        "number": "8.5",
+        "points": 2,
+        "prompt": "Do bazy dodano tabele Kategorie (IdKategorii, NazwaKategorii) i Produkty (IdProduktu, IdKategorii, Nazwa, Opis). Zapisz zapytanie SQL, które wyświetli produkty (IdProduktu i Nazwa) z kategorii „spozywcze” zawierające w opisie fragment „do ekspresu kolbowego”.",
+        "query": "SELECT Produkty.IdProduktu, Nazwa\nFROM Opis_transakcji\nJOIN Produkty ON Opis_transakcji.IdProduktu = Produkty.IdProduktu\nJOIN Kategorie ON Kategorie.IdKategorii = Produkty.IdKategorii\nWHERE NazwaKategorii = 'spozywcze' AND Opis LIKE '%do ekspresu kolbowego%';"
+      }
+    ]
+  }
+]

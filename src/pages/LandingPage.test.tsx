@@ -1,6 +1,7 @@
 import { act, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { sessions, tasks } from '../data';
+import { sqlTasks } from '../data/sql';
 import { saveSolution } from '../lib/storage';
 import { renderAt } from '../../tests/render';
 import { routes } from '../routes';
@@ -41,7 +42,9 @@ describe('strona startowa', () => {
       'href',
       '/zadania/sql',
     );
-    expect(within(features).getByText('wkrótce')).toBeInTheDocument();
+    expect(screen.getByText('zadania z SQL').nextSibling).toHaveTextContent(
+      String(sqlTasks.length),
+    );
   });
 
   it('pokazuje postęp, gdy są zaliczone zadania', () => {
@@ -103,14 +106,24 @@ describe('nawigacja i zakładka „Zadania”', () => {
       'aria-current',
       'page',
     );
-    expect(within(tabs).getByRole('link', { name: /SQL/ })).toHaveTextContent('wkrótce');
+    expect(within(tabs).getByRole('link', { name: /SQL/ })).toHaveTextContent(
+      String(sqlTasks.length),
+    );
   });
 
-  it('zakładka SQL to zapowiedź', () => {
+  it('zakładka SQL pokazuje zadania z baz danych pogrupowane według lat', () => {
     renderAt('/zadania/sql', routes);
-    expect(
-      screen.getByRole('heading', { name: 'Zadania z SQL – już wkrótce' }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Zadania z baz danych' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: '2018' })).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: 'Sieć sklepów' })[0]).toHaveAttribute(
+      'href',
+      '/sql/2026-maj-8',
+    );
+  });
+
+  it('stary adres /sql prowadzi do zakładki SQL', () => {
+    const { router } = renderAt('/sql', routes);
+    expect(router.state.location.pathname).toBe('/zadania/sql');
   });
 
   it('stary adres /excel prowadzi do zakładki Excel', () => {

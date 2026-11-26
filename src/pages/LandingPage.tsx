@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { HeroDemo } from '../components/HeroDemo';
 import { sessions, tasks } from '../data';
 import { spreadsheetTasks } from '../data/spreadsheets';
+import { sqlTasks } from '../data/sql';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useSolutionStatuses } from '../hooks/useSolutions';
 import { LuDatabase, LuFileText, LuSheet } from 'react-icons/lu';
@@ -28,8 +29,7 @@ const FEATURES = [
     to: '/zadania/sql',
     icon: LuDatabase,
     title: 'SQL',
-    text: 'Zadania z baz danych – w przygotowaniu.',
-    soon: true,
+    text: `${sqlTasks.length} zadań z baz danych. Pliki są już tabelami – piszesz zapytania (także w stylu Accessa), wynik porównujemy z kluczem.`,
   },
   {
     to: '/arkusze',
@@ -43,7 +43,7 @@ const STEPS = [
   ['Wybierz zadanie', 'Z listy, po temacie albo prosto z arkusza, który przerabiasz.'],
   [
     'Rozwiąż w przeglądarce',
-    'Edytor Pythona lub arkusz kalkulacyjny – bez instalowania czegokolwiek.',
+    'Edytor Pythona, arkusz kalkulacyjny albo baza danych z SQL – bez instalowania czegokolwiek.',
   ],
   ['Sprawdź z kluczem', 'Wynik od razu porównany z kluczem CKE. Utknąłeś? Poproś o podpowiedź.'],
 ];
@@ -85,6 +85,10 @@ export function LandingPage() {
               <dd>{spreadsheetTasks.length}</dd>
             </div>
             <div>
+              <dt>zadania z SQL</dt>
+              <dd>{sqlTasks.length}</dd>
+            </div>
+            <div>
               <dt>arkuszy</dt>
               <dd>{sessions.length}</dd>
             </div>
@@ -103,16 +107,12 @@ export function LandingPage() {
         <h2 id="co-tu-jest">Co tu znajdziesz</h2>
         <ul className="feature-grid">
           {FEATURES.map((feature) => (
-            <li
-              key={feature.to}
-              className={`feature-card${feature.soon ? ' feature-card--soon' : ''}`}
-            >
+            <li key={feature.to} className="feature-card">
               <feature.icon aria-hidden className="feature-card__icon" />
               <h3>
                 <Link to={feature.to} className="stretched-link">
                   {feature.title}
                 </Link>
-                {feature.soon && <span className="tabs__badge">wkrótce</span>}
               </h3>
               <p>{feature.text}</p>
             </li>

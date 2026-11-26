@@ -1,0 +1,114 @@
+[
+  {
+    "id": "2021-probna-CKE-marzec-6",
+    "sessionId": "2021/probna-CKE-marzec",
+    "number": "6",
+    "title": "Wyścigi kolarskie",
+    "summary": "Kibic zapisywał informacje o zawodnikach startujących w corocznym wyścigu kolarskim wraz z wynikami ich startów.\n\ngrupy: kod_grupy, nazwa, siedziba. zawodnicy: id_zawodnika, imie, nazwisko, data (urodzenia). startujacy: id_startu, rok (edycja wyścigu), id_zawodnika, kod_grupy, obywatel_kraju. czasy: id_startu, czas (mm:ss:ms) – tylko starty zawodników, którzy ukończyli wyścig.",
+    "tables": [
+      {
+        "name": "grupy",
+        "path": "arkusze/2021/probna-CKE-marzec/pliki/Dane_2103/grupy.txt"
+      },
+      {
+        "name": "zawodnicy",
+        "path": "arkusze/2021/probna-CKE-marzec/pliki/Dane_2103/zawodnicy.txt"
+      },
+      {
+        "name": "startujacy",
+        "path": "arkusze/2021/probna-CKE-marzec/pliki/Dane_2103/startujacy.txt"
+      },
+      {
+        "name": "czasy",
+        "path": "arkusze/2021/probna-CKE-marzec/pliki/Dane_2103/czasy.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 1,
+        "prompt": "Podaj imię, nazwisko i czas zawodnika, który uzyskał najlepszy czas spośród wszystkich wyników. Jest tylko jeden taki zawodnik.",
+        "list": {
+          "columns": ["imię", "nazwisko", "czas"],
+          "expected": [["Chris", "Froome", "83:56:40"]]
+        }
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Który zawodnik z Polski uczestniczył w największej liczbie wyścigów? Podaj jego imię, nazwisko i liczbę wyścigów. Jest tylko jeden taki zawodnik.",
+        "list": {
+          "columns": ["imię", "nazwisko", "liczba wyścigów"],
+          "expected": [["Maciej", "Bodnar", "5"]]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 2,
+        "prompt": "Podaj imiona i nazwiska najmłodszych uczestników wyścigu w kolejnych latach. Użyj wieku rocznikowego (liczby lat, którą zawodnik ukończył w roku zawodów).",
+        "list": {
+          "columns": ["imię", "nazwisko"],
+          "expected": [
+            ["Gerald", "Ciolek"],
+            ["John-Lee", "Augustyn"],
+            ["Roman", "Kreuziger"],
+            ["Rigoberto", "Uran"],
+            ["Fabio", "Felline"],
+            ["Anthony", "Delaplace"],
+            ["Peter", "Sagan"],
+            ["Thibaut", "Pinot"],
+            ["Danny", "van Poppel"],
+            ["Danny", "van Poppel"],
+            ["Merhawi", "Kudus"],
+            ["Alexis", "Gougeard"],
+            ["Dylan", "Groenewegen"],
+            ["Timo", "Roosen"],
+            ["Sondre Holst", "Enger"],
+            ["Luka", "Pibernik"],
+            ["Elie", "Gesbert"]
+          ]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 2,
+        "prompt": "W którym roku nie ukończyła wyścigu największa grupa zawodników? Podaj rok oraz liczbę zawodników, którzy nie ukończyli wyścigu (jest tylko jeden taki rok).",
+        "list": {
+          "columns": ["rok", "liczba zawodników"],
+          "expected": [["2012", "46"]]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 3,
+        "prompt": "Utwórz zestawienie zawierające dla każdego roku liczbę grup, w których wszyscy zawodnicy byli obywatelami jednego kraju.",
+        "list": {
+          "columns": ["rok", "liczba grup"],
+          "expected": [
+            ["2008", "1"],
+            ["2009", "1"],
+            ["2010", "1"],
+            ["2011", "4"],
+            ["2012", "2"],
+            ["2013", "2"],
+            ["2014", "2"],
+            ["2015", "1"],
+            ["2017", "1"]
+          ]
+        }
+      },
+      {
+        "number": "6.6",
+        "points": 2,
+        "prompt": "Zawodnicy czasem zmieniają obywatelstwo. Podaj imiona i nazwiska zawodników, którzy zmieniali obywatelstwo, oraz nazwy państw, które reprezentowali.",
+        "list": {
+          "columns": ["imię", "nazwisko"],
+          "expected": [
+            ["Chris", "Froome"],
+            ["Heinrich", "Haussler"]
+          ]
+        }
+      }
+    ]
+  }
+]

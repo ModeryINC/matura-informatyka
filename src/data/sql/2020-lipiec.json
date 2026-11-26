@@ -1,0 +1,111 @@
+[
+  {
+    "id": "2020-lipiec-6",
+    "sessionId": "2020/lipiec",
+    "number": "6",
+    "title": "Ankieta",
+    "summary": "Biuro badań opinii przeprowadziło ankietę wśród 280 mieszkańców różnych województw o zainteresowaniach (od jednego do trzech), wykształceniu, dochodach i środkach lokomocji używanych w różnych porach roku.\n\ndane_ankiet: Id, Nazwisko, Imie, Wiek, Wyksztalcenie, Dochod (miesięczny), Wojewodztwo. zain: Id, Zainteresowania. lok: Id, Srod_lok (środek lokomocji), Pora_roku.",
+    "tables": [
+      {
+        "name": "dane_ankiet",
+        "path": "arkusze/2020/lipiec/pliki/DANE/dane_ankiet.txt"
+      },
+      {
+        "name": "zain",
+        "path": "arkusze/2020/lipiec/pliki/DANE/zain.txt"
+      },
+      {
+        "name": "lok",
+        "path": "arkusze/2020/lipiec/pliki/DANE/lok.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 2,
+        "prompt": "Podaj liczbę kobiet i liczbę mężczyzn uczestniczących w ankiecie. Imiona wszystkich kobiet (i tylko kobiet) kończą się literą „a”.",
+        "fields": [
+          {
+            "label": "Kobiety",
+            "expected": "161"
+          },
+          {
+            "label": "Mężczyźni",
+            "expected": "119"
+          }
+        ]
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Utwórz zestawienie zawierające nazwy środków lokomocji oraz liczby ankietowanych z województwa mazowieckiego korzystających z nich latem.",
+        "list": {
+          "columns": ["środek lokomocji", "liczba osób"],
+          "expected": [
+            ["autobus", "1"],
+            ["pociag", "5"],
+            ["rower", "13"],
+            ["samochod", "4"],
+            ["tramwaj", "20"]
+          ]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 2,
+        "prompt": "Utwórz zestawienie województw, w których w badaniu wzięło udział więcej niż 20 osób, z liczbą ankietowanych w każdym z nich.",
+        "list": {
+          "columns": ["województwo", "liczba osób"],
+          "expected": [
+            ["Dolnoslaskie", "30"],
+            ["Mazowieckie", "43"],
+            ["Slaskie", "23"],
+            ["Wielkopolskie", "30"]
+          ]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 3,
+        "prompt": "Znajdź ankietowanych w wieku powyżej 50 lat, z wykształceniem wyższym (wyzsze) lub średnim (srednie), którzy nie interesują się ani informatyką (informatyka), ani grami komputerowymi (gry komputerowe). Podaj ich imiona, nazwiska i województwa, posortowane alfabetycznie według nazwiska; każda osoba tylko raz.",
+        "list": {
+          "columns": ["nazwisko", "imię", "województwo"],
+          "expected": [
+            ["Bobowik", "Maria", "Lubelskie"],
+            ["Borowska", "Elzbieta", "Malopolskie"],
+            ["Borowska", "Anna", "Malopolskie"],
+            ["Busma", "Sebastian", "Lubuskie"],
+            ["Czajewska", "Marta", "Pomorskie"],
+            ["Dziegielewska", "Barbara", "Pomorskie"],
+            ["Gawkowski", "Piotr", "Podkarpackie"],
+            ["Glowacka", "Kamila", "Swietokrzyskie"],
+            ["Iwaszczuk", "Andrzej", "Mazowieckie"],
+            ["Janasz", "Michal", "Mazowieckie"],
+            ["Jankowska", "Justyna", "Mazowieckie"],
+            ["Jasinski", "Marcin", "Mazowieckie"],
+            ["Kanadys", "Grzegorz", "Warminsko - Mazurskie"],
+            ["Karwowska", "Katarzyna", "Mazowieckie"],
+            ["Kimsza", "Marta", "Pomorskie"],
+            ["Klimaszewska", "Klara", "Dolnoslaskie"],
+            ["Kobeszko", "Emilia", "Lubelskie"],
+            ["Korol", "Maria", "Malopolskie"],
+            ["Korzunowicz", "Piotr", "Dolnoslaskie"],
+            ["Kozlowska", "Karolina", "Mazowieckie"],
+            ["Krasowska", "Monika", "Lubelskie"]
+          ]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 3,
+        "prompt": "Podaj średni dochód kobiet z województwa zachodniopomorskiego, dla których jednym ze środków lokomocji jest rower.",
+        "fields": [
+          {
+            "label": "Średni dochód",
+            "expected": "3250"
+          }
+        ]
+      }
+    ]
+  }
+]

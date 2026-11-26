@@ -31,6 +31,20 @@ export function HelpPage() {
         zrobić wykres w Excelu), a „Importuj z .xlsx” wczyta skoroszyt z powrotem – z wartościami,
         formułami, datami i pogrubieniem; wykresy i scalenia komórek z pliku są pomijane.
       </p>
+      <h2>Zadania z SQL</h2>
+      <p>
+        W zakładce Zadania → SQL są zadania z baz danych (arkusze 2018–2026). Każdy plik z danymi
+        jest już tabelą bazy SQLite o nazwie pliku – typy pól i daty (<code>rrrr-mm-dd</code>) są
+        rozpoznane przy imporcie. Zapytanie uruchomisz przyciskiem „Uruchom” albo <kbd>Ctrl</kbd>+
+        <kbd>Enter</kbd>; możesz wpisać kilka poleceń rozdzielonych średnikami. Działa też składnia
+        z Accessa: <code>SELECT TOP 1</code>, <code>Year()</code>, <code>IIf()</code>,{' '}
+        <code>DateDiff()</code>, daty <code>#2020-05-01#</code>, <code>&amp;</code> i{' '}
+        <code>LIKE "*abc*"</code>. Przy podpunkcie kliknij „Wstaw z wyniku” – trafi tam wynik
+        ostatniego zapytania. Listy (np. nazwiska klientów) są sprawdzane bez względu na kolejność
+        wierszy i kolumn, a dodatkowe kolumny (np. identyfikatory) nie przeszkadzają – liczba
+        wierszy musi się jednak zgadzać. Zapytań pisanych na kartce (tabel nie ma w plikach) nie
+        sprawdzamy – możesz porównać swoje z przykładowym rozwiązaniem z klucza.
+      </p>
       <h2>Jak porównywany jest wynik?</h2>
       <ul>
         <li>wielkość liter, dodatkowe spacje i puste linie nie mają znaczenia,</li>

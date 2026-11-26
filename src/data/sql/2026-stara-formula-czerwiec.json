@@ -1,0 +1,89 @@
+[
+  {
+    "id": "2026-stara-formula-czerwiec-6",
+    "sessionId": "2026/stara-formula-czerwiec",
+    "number": "6",
+    "title": "Oceny",
+    "summary": "W trzech plikach zapisano dane o ocenianiu grupy uczniów pewnej szkoły od września 2023 do czerwca 2024 (bez polskich znaków).\n\nuczniowie: Id_Ucznia, Plec (k lub m), Id_Klasy. nauczyciele: Id_Naucz, Przedmiot. oceny: Id_Oceny, Id_Ucznia, Data (rrrr-mm-dd), Ocena, Id_Naucz – nauczyciel, który wystawił ocenę.",
+    "tables": [
+      {
+        "name": "uczniowie",
+        "path": "arkusze/2026/stara-formula-czerwiec/pliki/informatyka-2026-czerwiec-matura-stara-rozszerzona-zalaczniki/uczniowie.txt"
+      },
+      {
+        "name": "nauczyciele",
+        "path": "arkusze/2026/stara-formula-czerwiec/pliki/informatyka-2026-czerwiec-matura-stara-rozszerzona-zalaczniki/nauczyciele.txt"
+      },
+      {
+        "name": "oceny",
+        "path": "arkusze/2026/stara-formula-czerwiec/pliki/informatyka-2026-czerwiec-matura-stara-rozszerzona-zalaczniki/oceny.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 2,
+        "prompt": "Wykonaj zestawienie średnich wszystkich ocen każdej klasy. Zestawienie posortuj niemalejąco według średnich.",
+        "list": {
+          "columns": ["klasa", "średnia"],
+          "expected": [
+            ["A", "3,27"],
+            ["B", "3,51"],
+            ["C", "3,63"],
+            ["D", "4,01"]
+          ]
+        }
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Wyszukaj ucznia, który otrzymał najwięcej ocen celujących (6). Podaj identyfikator tego ucznia, identyfikator jego klasy oraz liczbę ocen celujących (jeśli jest kilku takich uczniów – dane wszystkich).",
+        "list": {
+          "columns": ["Id_Ucznia", "Id_Klasy", "liczba szóstek"],
+          "expected": [["u25", "D", "12"]]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 2,
+        "prompt": "Oblicz średnią ocen z matematyki oddzielnie dla kobiet i dla mężczyzn. Wynik podaj z dokładnością do dwóch miejsc po przecinku.",
+        "list": {
+          "columns": ["płeć", "średnia"],
+          "expected": [
+            ["k", "3,57"],
+            ["m", "3,73"]
+          ]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 2,
+        "prompt": "Dla każdego miesiąca podaj ocenę, która została wystawiona najmniejszą liczbę razy, oraz liczbę wystąpień tej oceny.",
+        "list": {
+          "columns": ["miesiąc", "ocena", "liczba ocen"],
+          "expected": [
+            ["1", "1", "74"],
+            ["2", "4", "21"],
+            ["3", "3", "42"],
+            ["4", "1", "46"],
+            ["5", "6", "22"],
+            ["6", "6", "8"],
+            ["9", "1", "44"],
+            ["10", "1", "66"],
+            ["11", "1", "107"],
+            ["12", "6", "109"]
+          ]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 2,
+        "prompt": "Podaj identyfikatory nauczycieli, którzy nie wystawili żadnej oceny niedostatecznej (1) w okresie od 2023-12-01 do 2023-12-31.",
+        "list": {
+          "columns": ["Id_Naucz"],
+          "expected": [["N10"], ["N22"]]
+        }
+      }
+    ]
+  }
+]

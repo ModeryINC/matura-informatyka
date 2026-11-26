@@ -1,5 +1,6 @@
-import type { SpreadsheetTable } from '../../types';
+import type { AnswerList, SpreadsheetTable } from '../../types';
 import {
+  listMatches,
   fieldMatches,
   fitSelection,
   isoToSerial,
@@ -166,4 +167,67 @@ describe('godziny, daty z godziną i polskie znaki', () => {
     expect(valueMatches('Ciechanów', 'Ciechanow')).toBe(true);
     expect(valueMatches('Łódź', 'lodz')).toBe(true);
   });
+});
+
+describe('listMatches', () => {
+  const list: AnswerList = {
+    columns: ['imię', 'nazwisko', 'kwota'],
+    expected: [
+      ['Anna', 'Nowak', '12,5'],
+      ['Jan', 'Kowalski', '7'],
+    ],
+  };
+
+  it('nie zważa na kolejność wierszy i kolumn ani na dodatkowe kolumny', () => {
+    expect(
+      listMatches(
+        [
+          ['2', 'Kowalski', 'Jan', '7'],
+          ['1', 'Nowak', 'Anna', '12.50'],
+        ],
+        list,
+      ),
+    ).toEqual({ passed: true, matched: 2, rows: 2 });
+  });
+
+  it('wymaga dokładnie tylu wierszy, ile klucz, i pomija puste wiersze', () => {
+    expect(
+      listMatches(
+        [
+          ['Anna', 'Nowak', '12,5'],
+          ['', '', ''],
+        ],
+        list,
+      ),
+    ).toEqual({ passed: false, matched: 1, rows: 1 });
+    const extra = listMatches(
+      [
+        ['Anna', 'Nowak', '12,5'],
+        ['Jan', 'Kowalski', '7'],
+        ['Ola', 'Lis', '1'],
+      ],
+      list,
+    );
+    expect(extra).toEqual({ passed: false, matched: 2, rows: 3 });
+  });
+
+  it('nie zalicza zbyt wąskiej odpowiedzi ani powtórzonego wiersza', () => {
+    expect(listMatches([['Anna', 'Nowak']], list).matched).toBe(0);
+    expect(
+      listMatches(
+        [
+          ['Anna', 'Nowak', '12,5'],
+          ['Anna', 'Nowak', '12,5'],
+        ],
+        list,
+      ),
+    ).toMatchObject({ passed: false, matched: 1 });
+  });
+});
+
+test('daty z godziną zachowują niezerowe sekundy', () => {
+  expect(parseDateTime('06-11-2015 12:38:46')).toBe('2015-11-06 12:38:46');
+  expect(parseDateTime('2015-11-06 12:38:00')).toBe('2015-11-06 12:38');
+  expect(valueMatches('2015-11-06 12:38:46', '06-11-2015 12:38:46')).toBe(true);
+  expect(valueMatches('2015-11-06 12:38:45', '06-11-2015 12:38:46')).toBe(false);
 });

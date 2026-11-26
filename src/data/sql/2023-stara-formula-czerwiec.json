@@ -1,0 +1,127 @@
+[
+  {
+    "id": "2023-stara-formula-czerwiec-6",
+    "sessionId": "2023/stara-formula-czerwiec",
+    "number": "6",
+    "title": "Instalacje",
+    "summary": "Baza firmy X zawiera informacje o instalacjach pewnej aplikacji, o urządzeniach, na których ją zainstalowano, i o krajach, w których przeprowadzono instalację.\n\nkraje: kod_k, nazwa_k, ludnosc_k. urzadzenia: kod_u, nazwa_u (nazwa nie jest unikatowa), producent_u, typ_u (Tablet, Phone lub PC). instalacje: data_i, kod_k, kod_u – kod oznacza rodzaj urządzenia, więc na urządzeniach o tym samym kodzie może być wiele instalacji.",
+    "tables": [
+      {
+        "name": "kraje",
+        "path": "arkusze/2023/stara-formula-czerwiec/pliki/DANE/DANE_E/kraje.txt"
+      },
+      {
+        "name": "urzadzenia",
+        "path": "arkusze/2023/stara-formula-czerwiec/pliki/DANE/DANE_E/urzadzenia.txt"
+      },
+      {
+        "name": "instalacje",
+        "path": "arkusze/2023/stara-formula-czerwiec/pliki/DANE/DANE_E/instalacje.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 2,
+        "prompt": "Dla każdego typu urządzenia podaj liczbę instalacji aplikacji na tym typie urządzenia.",
+        "list": {
+          "columns": ["typ urządzenia", "liczba instalacji"],
+          "expected": [
+            ["PC", "16"],
+            ["Phone", "2814"],
+            ["Tablet", "267"]
+          ]
+        }
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Wykonaj zestawienie, w którym dla każdego producenta urządzeń podasz liczbę instalacji przeprowadzonych na urządzeniach tego producenta w lutym 2019. Wynik posortuj nierosnąco według liczby instalacji.",
+        "list": {
+          "columns": ["producent", "liczba instalacji"],
+          "expected": [
+            ["Samsung", "478"],
+            ["Huawei", "142"],
+            ["LGE", "81"],
+            ["Xiaomi", "78"],
+            ["Motorola", "67"],
+            ["OnePlus", "34"],
+            ["Google", "33"],
+            ["Lenovo", "25"],
+            ["Sony", "23"],
+            ["ZTE", "21"],
+            ["Asus", "20"],
+            ["TCT (Alcatel)", "14"],
+            ["Oppo", "10"],
+            ["Nokia", "9"],
+            ["Vivo", "6"],
+            ["HTC", "5"],
+            ["RCA", "4"],
+            ["Sky Devices", "2"],
+            ["Meizu", "2"],
+            ["Lanix", "2"],
+            ["Infinix", "2"],
+            ["Hyundai", "2"],
+            ["bq", "1"],
+            ["Verizon Wireless", "1"],
+            ["Vankyo", "1"],
+            ["Umidigi", "1"],
+            ["Ulefone", "1"],
+            ["Tech 4u", "1"],
+            ["SSB PHONES", "1"],
+            ["Redmi", "1"],
+            ["Razer", "1"],
+            ["Nextbook", "1"],
+            ["Myphone", "1"],
+            ["MyPhone (PL)", "1"],
+            ["Logicom", "1"],
+            ["Leeco", "1"],
+            ["Kyocera", "1"],
+            ["KOOLNEE", "1"],
+            ["Itel", "1"],
+            ["Gigaset", "1"],
+            ["Essential Products", "1"],
+            ["Chuwi", "1"],
+            ["Blu", "1"],
+            ["Bitel", "1"],
+            ["BQru", "1"],
+            ["Acer", "1"]
+          ]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 3,
+        "prompt": "Podaj nazwy pięciu krajów, w których przeprowadzono najwięcej instalacji w przeliczeniu na 1 000 000 mieszkańców, i dla każdego z nich liczbę instalacji na 1 000 000 mieszkańców z dokładnością do dwóch miejsc po przecinku. Pomiń kraje, w których jest mniej niż milion mieszkańców.",
+        "list": {
+          "columns": ["kraj", "instalacji na milion"],
+          "expected": [
+            ["SWITZERLAND", "5,28"],
+            ["SLOVENIA", "4,35"],
+            ["IRELAND", "3,91"],
+            ["AUSTRIA", "3,84"],
+            ["CZECH REPUBLIC", "3,76"]
+          ]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 2,
+        "prompt": "Podaj kod oraz nazwę urządzenia typu Tablet, na którym zainstalowano aplikację w największej liczbie krajów, oraz liczbę tych krajów.",
+        "list": {
+          "columns": ["kod urządzenia", "nazwa", "liczba krajów"],
+          "expected": [["11935", "Galaxy Tab A (2016)", "20"]]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 2,
+        "prompt": "Podaj nazwy krajów, w których nie wykonano ani jednej instalacji na urządzeniach typu „Phone”.",
+        "list": {
+          "columns": ["kraj"],
+          "expected": [["CUBA"], ["BAHRAIN"], ["ZIMBABWE"]]
+        }
+      }
+    ]
+  }
+]

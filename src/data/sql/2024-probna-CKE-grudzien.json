@@ -1,0 +1,110 @@
+[
+  {
+    "id": "2024-probna-CKE-grudzien-8",
+    "sessionId": "2024/probna-CKE-grudzien",
+    "number": "8",
+    "title": "Serwis samochodowy",
+    "summary": "W trzech plikach zgromadzono dane o usługach pewnego serwisu samochodowego w listopadzie i grudniu 2024 roku.\n\nsamochody: nr_rejestracyjny, marka, rok_produkcji, id_wlasciciela – samochody przyjęte do serwisu (także te, które jeszcze czekają na usługę). uslugi: id_uslugi, usluga, rodzaj_uslugi, cena. wykonane: data, nr_rejestracyjny, id_uslugi.",
+    "tables": [
+      {
+        "name": "samochody",
+        "path": "arkusze/2024/probna-CKE-grudzien/pliki/Dane-2412/samochody.txt"
+      },
+      {
+        "name": "uslugi",
+        "path": "arkusze/2024/probna-CKE-grudzien/pliki/Dane-2412/uslugi.txt"
+      },
+      {
+        "name": "wykonane",
+        "path": "arkusze/2024/probna-CKE-grudzien/pliki/Dane-2412/wykonane.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "8.1",
+        "points": 2,
+        "prompt": "Podaj liczbę różnych samochodów spoza województwa śląskiego (numer rejestracyjny nie zaczyna się na literę S), które zostały przyjęte do serwisu i dla których wykonano co najmniej jedną usługę.",
+        "fields": [
+          {
+            "label": "Liczba samochodów",
+            "expected": "177"
+          }
+        ]
+      },
+      {
+        "number": "8.2",
+        "points": 2,
+        "prompt": "Podaj nazwę najliczniej wykonywanej usługi w badanym okresie oraz ile razy ją wykonano. Wymień marki samochodów, dla których ta usługa nie była wykonywana.",
+        "fields": [
+          {
+            "label": "Usługa",
+            "expected": "wymiana plynu chlodniczego"
+          },
+          {
+            "label": "Liczba wykonań",
+            "expected": "29"
+          }
+        ],
+        "list": {
+          "columns": ["marka"],
+          "expected": [
+            ["bmw"],
+            ["daewoo"],
+            ["honda"],
+            ["kia"],
+            ["lancia"],
+            ["mazda"],
+            ["nissan"],
+            ["saab"],
+            ["volkswagen"]
+          ]
+        }
+      },
+      {
+        "number": "8.3",
+        "points": 2,
+        "prompt": "Podaj identyfikator właściciela samochodu (samochodów), który zapłacił najwięcej za wszystkie wykonane usługi, oraz numery rejestracyjne jego samochodów i nazwy wykonanych usług.",
+        "fields": [
+          {
+            "label": "id_wlasciciela",
+            "expected": "897"
+          }
+        ],
+        "list": {
+          "columns": ["numer rejestracyjny", "usługa"],
+          "expected": [
+            ["SB 3799", "wymiana amortyzatora tyl"],
+            ["SB 3799", "wymiana sprzegla"],
+            ["SB 9213", "ozonowanie ukladu klimatyzacji i kabiny"],
+            ["SB 9213", "felga stalowa do 16 cali"],
+            ["SB 5822", "wymiana oleju silnikowego z filtrem"],
+            ["SB 5822", "wymiana paska rozrzadu"]
+          ]
+        }
+      },
+      {
+        "number": "8.4",
+        "points": 2,
+        "prompt": "Podaj kwotę przychodu, jaką serwis uzyskał za wykonane usługi w listopadzie, i kwotę przychodu z grudnia.",
+        "fields": [
+          {
+            "label": "Listopad",
+            "expected": "150530",
+            "alternatives": ["150935"]
+          },
+          {
+            "label": "Grudzień",
+            "expected": "105860",
+            "alternatives": ["106130"]
+          }
+        ]
+      },
+      {
+        "number": "8.5",
+        "points": 2,
+        "prompt": "Do bazy dołączono tabelę wlasciciele (id_wlasciciela, imie, nazwisko), połączoną z tabelą samochody relacją jeden do wielu. Zapisz zapytanie SQL, które poda imiona i nazwiska właścicieli samochodów zarejestrowanych w Chorzowie (numer zaczyna się od SH) i wyprodukowanych w 2020 roku, z nazwiskami w kolejności alfabetycznej.",
+        "query": "SELECT Wlasciciele.imie, Wlasciciele.nazwisko\nFROM Wlasciciele\nINNER JOIN Samochody ON Wlasciciele.id_wlasciciela = Samochody.id_wlasciciela\nWHERE Samochody.nr_rejestracyjny LIKE 'SH%' AND Samochody.rok_produkcji = 2020\nORDER BY Wlasciciele.nazwisko;"
+      }
+    ]
+  }
+]

@@ -1,0 +1,113 @@
+[
+  {
+    "id": "2019-stara-formula-maj-5",
+    "sessionId": "2019/stara-formula-maj",
+    "number": "5",
+    "title": "Oscary",
+    "summary": "Pliki zawierają informacje o Oscarach przyznanych w latach 1928–2016 w czterech kategoriach: najlepsza aktorka i najlepszy aktor pierwszoplanowy oraz drugoplanowy.\n\nfilmy: id_filmu, rok (przyznania Oscara), tytul. aktorzy: id_aktora, imie, nazwisko, data_ur, kraj_urodzenia. nagrody: id_filmu, id_aktora, kategoria.",
+    "tables": [
+      {
+        "name": "filmy",
+        "path": "arkusze/2019/stara-formula-maj/pliki/Dane_PR2/filmy.txt"
+      },
+      {
+        "name": "aktorzy",
+        "path": "arkusze/2019/stara-formula-maj/pliki/Dane_PR2/aktorzy.txt"
+      },
+      {
+        "name": "nagrody",
+        "path": "arkusze/2019/stara-formula-maj/pliki/Dane_PR2/nagrody.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 2,
+        "prompt": "Podaj listę krajów, w których urodzili się laureaci Oscarów, i dla każdego kraju liczbę nagrodzonych, którzy się w nim urodzili. Listę posortuj niemalejąco według liczby aktorów.",
+        "list": {
+          "columns": ["kraj urodzenia", "liczba aktorów"],
+          "expected": [
+            ["Austria", "1"],
+            ["Belgia", "1"],
+            ["Grecja", "1"],
+            ["RPA", "1"],
+            ["Rumunia", "1"],
+            ["Szkocja", "1"],
+            ["Ukraina", "1"],
+            ["Wegry", "1"],
+            ["Hiszpania", "2"],
+            ["Indie", "2"],
+            ["Irlandia", "2"],
+            ["Meksyk", "2"],
+            ["Niemcy", "2"],
+            ["Szwecja", "2"],
+            ["Japonia", "3"],
+            ["Portoryko", "3"],
+            ["Rosja", "3"],
+            ["Wlochy", "3"],
+            ["Francja", "4"],
+            ["Australia", "6"],
+            ["Kanada", "8"],
+            ["Wielkia Brytania", "38"],
+            ["Stany Zjednoczone", "204"]
+          ]
+        }
+      },
+      {
+        "number": "5.2",
+        "points": 2,
+        "prompt": "Ile lat miała najmłodsza osoba w roku otrzymania Oscara? Podaj imię, nazwisko i wiek tej osoby (różnica roku nagrody i roku urodzenia).",
+        "list": {
+          "columns": ["imię", "nazwisko", "wiek"],
+          "expected": [["Tatum", "ONeal", "10"]]
+        }
+      },
+      {
+        "number": "5.3",
+        "points": 2,
+        "prompt": "Podaj imię i nazwisko osoby, która zdobyła najwięcej Oscarów, oraz zestawienie wszystkich jej nagród: rok i tytuł filmu.",
+        "fields": [
+          {
+            "label": "Imię",
+            "expected": "Katharine"
+          },
+          {
+            "label": "Nazwisko",
+            "expected": "Hepburn"
+          }
+        ],
+        "list": {
+          "columns": ["rok", "tytuł"],
+          "expected": [
+            ["1968", "Lew w zimie"],
+            ["1981", "Nad zlotym stawem"],
+            ["1932", "Poranna chwala"],
+            ["1967", "Zgadnij, kto przyjdzie na obiad"]
+          ]
+        }
+      },
+      {
+        "number": "5.4",
+        "points": 4,
+        "prompt": "Podaj imiona i nazwiska osób, które zdobyły Oscary zarówno za rolę pierwszoplanową, jak i drugoplanową, i dla każdej z nich najdłuższy okres (w latach) między otrzymaniem nagród w różnych kategoriach (np. nagrody pierwszoplanowe w 1940 i 1965 oraz drugoplanowe w 1935, 1950 i 1970 dają 30 lat).",
+        "list": {
+          "columns": ["imię", "nazwisko", "okres (lata)"],
+          "expected": [
+            ["Gene", "Hackman", "21"],
+            ["Helen", "Hayes", "39"],
+            ["Jessica", "Lange", "12"],
+            ["Jack", "Lemmon", "18"],
+            ["Jack", "Nicholson", "14"],
+            ["Maggie", "Smith", "9"],
+            ["Ingrid", "Bergman", "30"],
+            ["Kevin", "Spacey", "4"],
+            ["Meryl", "Streep", "32"],
+            ["Denzel", "Washington", "12"],
+            ["Cate", "Blanchett", "9"],
+            ["Robert", "De Niro", "6"]
+          ]
+        }
+      }
+    ]
+  }
+]

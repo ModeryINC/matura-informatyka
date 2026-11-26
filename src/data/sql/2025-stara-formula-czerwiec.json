@@ -1,0 +1,103 @@
+[
+  {
+    "id": "2025-stara-formula-czerwiec-5",
+    "sessionId": "2025/stara-formula-czerwiec",
+    "number": "5",
+    "title": "Fryzjerzy",
+    "summary": "W czterech plikach zapisano dane o wizytach klientów w salonie fryzjerskim (bez polskich znaków).\n\nklienci: id_klienta, imie, nazwisko, emeryt (TAK/NIE). fryzjerzy: id_fryzjera, imie. uslugi: id_uslugi, nazwa, cena (w zł). wizyty: id_wizyty, id_klienta, id_fryzjera, id_uslugi, termin – data i godzina rozpoczęcia usługi.",
+    "tables": [
+      {
+        "name": "klienci",
+        "path": "arkusze/2025/stara-formula-czerwiec/pliki/informatyka-2025-czerwiec-matura-stara-rozszerzona-zalaczniki/klienci.txt"
+      },
+      {
+        "name": "fryzjerzy",
+        "path": "arkusze/2025/stara-formula-czerwiec/pliki/informatyka-2025-czerwiec-matura-stara-rozszerzona-zalaczniki/fryzjerzy.txt"
+      },
+      {
+        "name": "uslugi",
+        "path": "arkusze/2025/stara-formula-czerwiec/pliki/informatyka-2025-czerwiec-matura-stara-rozszerzona-zalaczniki/uslugi.txt"
+      },
+      {
+        "name": "wizyty",
+        "path": "arkusze/2025/stara-formula-czerwiec/pliki/informatyka-2025-czerwiec-matura-stara-rozszerzona-zalaczniki/wizyty.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 2,
+        "prompt": "Podaj imię i nazwisko osoby, która wydała najwięcej na usługi fryzjerskie, oraz sumę jej wydatków.",
+        "list": {
+          "columns": ["imię", "nazwisko", "suma wydatków"],
+          "expected": [["Marta", "Jasczyk", "4846"]]
+        }
+      },
+      {
+        "number": "5.2",
+        "points": 2,
+        "prompt": "Podaj identyfikatory i imiona fryzjerów, którzy pracowali w kwietniu, ale nie wykonali w tym miesiącu usługi o nazwie Strzyzenie meskie.",
+        "list": {
+          "columns": ["id_fryzjera", "imię"],
+          "expected": [
+            ["F02", "Natalia"],
+            ["F03", "Krzysztof"],
+            ["F04", "Grzegorz"],
+            ["F07", "Kamila"],
+            ["F08", "Aneta"],
+            ["F10", "Bartosz"],
+            ["F18", "Kalina"]
+          ]
+        }
+      },
+      {
+        "number": "5.3",
+        "points": 2,
+        "prompt": "Podaj identyfikatory oraz imiona i nazwiska klientów, którzy co najmniej raz skorzystali z usług fryzjera o takim samym imieniu jak ten klient. Zestawienie uporządkuj alfabetycznie według imion.",
+        "list": {
+          "columns": ["id_klienta", "imię", "nazwisko"],
+          "expected": [
+            ["K358", "Anna", "Dymek"],
+            ["K151", "Anna", "Mason"],
+            ["K052", "Anna", "Wiatr"],
+            ["K275", "Barbara", "Wroblewska"],
+            ["K045", "Grzegorz", "Sikora"],
+            ["K227", "Hanna", "Mazur"],
+            ["K224", "Krzysztof", "Orlik"],
+            ["K164", "Krzysztof", "Szostak"],
+            ["K221", "Marcin", "Ozga"],
+            ["K374", "Marek", "Sitko"],
+            ["K277", "Mateusz", "Szymczyk"],
+            ["K137", "Natalia", "Chwiszczuk"],
+            ["K282", "Natalia", "Kejza"]
+          ]
+        }
+      },
+      {
+        "number": "5.4",
+        "points": 3,
+        "prompt": "Wykonaj zestawienie, w którym obliczysz całkowitą liczbę wizyt umówionych: do godziny 11 włącznie, po godzinie 11 do 13 włącznie, po godzinie 13 do 16 włącznie oraz po godzinie 16.",
+        "table": {
+          "rows": ["do 11:00", "11:00–13:00", "13:00–16:00", "po 16:00"],
+          "columns": ["liczba wizyt"],
+          "expected": [["405"], ["293"], ["390"], ["137"]]
+        }
+      },
+      {
+        "number": "5.5",
+        "points": 3,
+        "prompt": "Codziennie w godzinach 10:00–12:00 emeryci otrzymują 10% rabatu na wszystkie usługi (gdy usługa rozpoczęła się w godzinach 10:00–12:00 włącznie). a) Podaj łączną sumę udzielonych rabatów. b) Podaj, ile różnych osób otrzymało rabat.",
+        "fields": [
+          {
+            "label": "a) Suma rabatów (zł)",
+            "expected": "1848,6"
+          },
+          {
+            "label": "b) Liczba osób",
+            "expected": "51"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "2022-maj-6",
+    "sessionId": "2022/maj",
+    "number": "6",
+    "title": "System kontroli dostępu",
+    "summary": "W plikach zapisano dane z automatycznego systemu kontroli wejść i wyjść w pewnej szkole z 5 dni (od 4 do 8 kwietnia 2022 r.). Obecny uczeń danego dnia wchodzi do szkoły raz i raz z niej wychodzi. Pola są rozdzielone średnikiem.\n\nklasa: IdKlasy, ProfilKlasy. uczen: IdUcznia, Imie, Nazwisko, IdKlasy. ewidencja: IdEwidencji, IdUcznia, Wejscie, Wyjscie – data i godzina wejścia oraz wyjścia (rrrr-mm-dd gg:mm:ss).",
+    "tables": [
+      {
+        "name": "klasa",
+        "path": "arkusze/2022/maj/pliki/Dane_2205/klasa.txt"
+      },
+      {
+        "name": "uczen",
+        "path": "arkusze/2022/maj/pliki/Dane_2205/uczen.txt"
+      },
+      {
+        "name": "ewidencja",
+        "path": "arkusze/2022/maj/pliki/Dane_2205/ewidencja.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 2,
+        "prompt": "Podaj, ile wszystkich wejść dziewcząt z klas o profilu „biologiczno-chemiczny” zarejestrował system w analizowanym okresie 5 dni. Imiona wszystkich dziewcząt (i tylko dziewcząt) kończą się literą a.",
+        "fields": [
+          {
+            "label": "Liczba wejść",
+            "expected": "165"
+          }
+        ]
+      },
+      {
+        "number": "6.2",
+        "points": 3,
+        "prompt": "Utwórz zestawienie liczby uczniów, którzy w poszczególnych dniach nie spóźnili się do szkoły. Zajęcia zaczynają się o 8:00 – wejście zarejestrowane po 8:00 to spóźnienie.",
+        "table": {
+          "rows": ["2022-04-04", "2022-04-05", "2022-04-06", "2022-04-07", "2022-04-08"],
+          "columns": ["nie spóźniło się"],
+          "expected": [["233"], ["303"], ["134"], ["280"], ["127"]]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 3,
+        "prompt": "Dla każdej osoby zliczamy łączny czas pobytu w szkole w ciągu 5 dni. Podaj identyfikatory oraz imiona i nazwiska trzech osób, które przebywały najdłużej na terenie szkoły.",
+        "list": {
+          "columns": ["IdUcznia", "imię", "nazwisko"],
+          "expected": [
+            ["314", "Sebastian", "Rabaj"],
+            ["172", "Monika", "Kado"],
+            ["299", "Alicja", "Kronecka"]
+          ]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 3,
+        "prompt": "Podaj imiona i nazwiska wszystkich uczniów, którzy byli nieobecni 6.04.2022 r.",
+        "list": {
+          "columns": ["imię", "nazwisko"],
+          "expected": [
+            ["Mateusz", "Kordas"],
+            ["Krzysztof", "Michalak"],
+            ["Oliwier", "Ziolko"]
+          ]
+        }
+      }
+    ]
+  }
+]

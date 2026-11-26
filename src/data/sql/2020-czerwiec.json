@@ -1,0 +1,107 @@
+[
+  {
+    "id": "2020-czerwiec-5",
+    "sessionId": "2020/czerwiec",
+    "number": "5",
+    "title": "Języki",
+    "summary": "W plikach zawarte są informacje o 40 największych państwach świata, językach świata i ich użytkownikach. W jednym państwie może być kilka języków urzędowych, język może być urzędowy w jednym państwie, a w innym nie, a mieszkaniec może posługiwać się kilkoma językami.\n\npanstwa: Panstwo, Kontynent (na którym leży stolica), Populacja (w milionach). jezyki: Jezyk, Rodzina (rodzina językowa albo „jezyk izolowany”). uzytkownicy: Panstwo, Jezyk, Uzytkownicy (w milionach), Urzedowy (tak/nie).",
+    "tables": [
+      {
+        "name": "panstwa",
+        "path": "arkusze/2020/czerwiec/pliki/Dane_PR2/panstwa.txt"
+      },
+      {
+        "name": "jezyki",
+        "path": "arkusze/2020/czerwiec/pliki/Dane_PR2/jezyki.txt"
+      },
+      {
+        "name": "uzytkownicy",
+        "path": "arkusze/2020/czerwiec/pliki/Dane_PR2/uzytkownicy.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 2,
+        "prompt": "Utwórz zestawienie, które dla każdej rodziny językowej podaje, ile języków do niej należy, posortowane nierosnąco według liczby języków. „jezyk izolowany” nie jest rodziną językową.",
+        "list": {
+          "columns": ["rodzina", "liczba języków"],
+          "expected": [
+            ["nigero-kongijska", "137"],
+            ["austronezyjska", "65"],
+            ["indoeuropejska", "63"],
+            ["sino-tybetanska", "43"],
+            ["nilo-saharyjska", "30"],
+            ["afroazjatycka", "28"],
+            ["dajska", "23"],
+            ["austroazjatycka", "20"],
+            ["turecka", "15"],
+            ["drawidyjska", "15"],
+            ["otomang", "7"],
+            ["polnocno-wschodniokaukaska", "7"],
+            ["majanska", "5"],
+            ["mongolska", "5"],
+            ["hmong-mien", "4"],
+            ["uralska", "3"],
+            ["abchasko-adygijska", "3"],
+            ["na-dene", "1"],
+            ["tungusko-mandzurska", "1"],
+            ["algijska", "1"],
+            ["uto-aztecka", "1"],
+            ["keczua", "1"],
+            ["tupi", "1"]
+          ]
+        }
+      },
+      {
+        "number": "5.2",
+        "points": 2,
+        "prompt": "Podaj liczbę języków, które nie są językami urzędowymi w żadnym państwie.",
+        "fields": [
+          {
+            "label": "Liczba języków",
+            "expected": "445"
+          }
+        ]
+      },
+      {
+        "number": "5.3",
+        "points": 2,
+        "prompt": "Podaj wszystkie języki, którymi posługują się użytkownicy na co najmniej czterech kontynentach (państwo leży na kontynencie, na którym jest jego stolica).",
+        "list": {
+          "columns": ["język"],
+          "expected": [["angielski"], ["arabski"], ["gudzaracki"], ["tamilski"]]
+        }
+      },
+      {
+        "number": "5.4",
+        "points": 3,
+        "prompt": "Znajdź 6 języków spoza rodziny indoeuropejskiej, którymi posługuje się łącznie najwięcej mieszkańców obu Ameryk („Ameryka Polnocna” i „Ameryka Poludniowa”). Dla każdego podaj nazwę, rodzinę językową i liczbę użytkowników w obu Amerykach łącznie (w milionach).",
+        "list": {
+          "columns": ["język", "rodzina", "użytkownicy (mln)"],
+          "expected": [
+            ["mandarynski", "sino-tybetanska", "3,1"],
+            ["arabski", "afroazjatycka", "2,7"],
+            ["tagalog", "austronezyjska", "1,9"],
+            ["wietnamski", "austroazjatycka", "1,5"],
+            ["nahuatl", "uto-aztecka", "1,4"],
+            ["koreanski", "jezyk izolowany", "1,2"]
+          ]
+        }
+      },
+      {
+        "number": "5.5",
+        "points": 3,
+        "prompt": "Znajdź państwa, w których co najmniej 30% populacji posługuje się językiem, który nie jest w tym państwie urzędowy. Podaj nazwę państwa, ten język oraz procent populacji, która się nim posługuje.",
+        "list": {
+          "columns": ["państwo", "język", "procent"],
+          "expected": [
+            ["Etiopia", "oromo", "35,51"],
+            ["Indonezja", "jawajski", "32,73"],
+            ["Pakistan", "pendzabski", "40,44"]
+          ]
+        }
+      }
+    ]
+  }
+]

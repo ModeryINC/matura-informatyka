@@ -1,0 +1,110 @@
+[
+  {
+    "id": "2019-maj-6",
+    "sessionId": "2019/maj",
+    "number": "6",
+    "title": "Perfumeria DlaWas",
+    "summary": "Pliki opisują ofertę perfumerii „DlaWas”: perfumy różnych marek składają się z kilku składników, a zestaw składników decyduje, do jakiej rodziny zapachów należą.\n\nmarki: id_marki, nazwa_m. perfumy: id_perfum, nazwa_p, id_marki, rodzina_zapachow, cena. sklad: id_perfum, nazwa_skladnika.",
+    "tables": [
+      {
+        "name": "marki",
+        "path": "arkusze/2019/maj/pliki/Dane_PR/marki.txt"
+      },
+      {
+        "name": "perfumy",
+        "path": "arkusze/2019/maj/pliki/Dane_PR/perfumy.txt"
+      },
+      {
+        "name": "sklad",
+        "path": "arkusze/2019/maj/pliki/Dane_PR/sklad.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 1,
+        "prompt": "Podaj nazwy wszystkich perfum, których jednym ze składników jest „absolut jasminu”.",
+        "list": {
+          "columns": ["nazwa perfum"],
+          "expected": [["Oyal Priather"], ["Ologne D'oud"], ["Uelques FleuE"]]
+        }
+      },
+      {
+        "number": "6.2",
+        "points": 3,
+        "prompt": "Podaj listę różnych rodzin zapachów. Dla każdej rodziny podaj jej nazwę, cenę najtańszych perfum z tej rodziny i ich nazwę.",
+        "list": {
+          "columns": ["rodzina zapachów", "cena", "nazwa perfum"],
+          "expected": [
+            ["aromatyczna", "124", "Ibrary Ollec D'amore"],
+            ["cytrusowa", "259", "Sian Grad"],
+            ["cytrusowo-aromatyczna", "178", "Re Nostrum,ir"],
+            ["drzewna", "123", "Pperlee Bouquet"],
+            ["kwiatowa", "110", "Ose Deurmaline"],
+            ["kwiatowo-drzewna", "104", "Rougna"],
+            ["kwiatowo-orientalna", "103", "Arla : Vivace"],
+            ["kwiatowo-szyprowa", "287", "Etish Pothal"],
+            ["orientalna", "113", "Anille La Tosca"],
+            ["orientalna lagodna", "122", "Ndy Warhol S Rose"],
+            ["orientalno-drzewna", "138", "LackNight"],
+            ["owocowa", "154", "Ake Perfucturne"],
+            ["pudrowa", "139", "Ivm Cristal"],
+            ["skorzana", "112", "Ui Mare"],
+            ["szyprowa", "226", "Usk ti 1888"],
+            ["szyprowo-skorzana", "158", "Uir OtPlace"],
+            ["wodna", "146", "Ilver Mounaya"],
+            ["zielona", "406", "EOman"]
+          ]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 3,
+        "prompt": "Utwórz uporządkowaną alfabetycznie listę nazw marek, które nie mają w swoich perfumach żadnego składnika ze słowem „paczula” w nazwie.",
+        "list": {
+          "columns": ["marka"],
+          "expected": [
+            ["Aison Eranciro"],
+            ["Arthbey"],
+            ["Embert Lucas"],
+            ["Enmith"],
+            ["Nnick a Kieffo"]
+          ]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 3,
+        "prompt": "Ceny wszystkich perfum marki Mou De Rosine z rodziny „orientalno-drzewna” obniżono o 15%. Podaj nazwy tych perfum i ich ceny po obniżce, posortowane niemalejąco według ceny.",
+        "list": {
+          "columns": ["nazwa perfum", "cena po obniżce"],
+          "expected": [
+            ["Ourn Boise", "141,95"],
+            ["Onou Back", "222,7"],
+            ["Pic An", "230,35"],
+            ["Nterl Bambola", "292,4"],
+            ["Ubilatio Champs", "381,65"],
+            ["Ibrary Ollec D'or", "489,6"],
+            ["Ate An", "544,85"],
+            ["Elov & Musc", "660,45"]
+          ]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 2,
+        "prompt": "Istnieją marki, których wszystkie perfumy należą do jednej rodziny zapachów. Podaj nazwy takich marek i nazwy tych rodzin.",
+        "list": {
+          "columns": ["marka", "rodzina zapachów"],
+          "expected": [
+            ["Ightce", "aromatyczna"],
+            ["X ICologne", "orientalno-drzewna"],
+            ["Nnick a Kieffo", "orientalna"],
+            ["Enmith", "kwiatowo-orientalna"],
+            ["Issmkunstwerke", "orientalna"]
+          ]
+        }
+      }
+    ]
+  }
+]

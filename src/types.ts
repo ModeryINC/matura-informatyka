@@ -201,6 +201,21 @@ export interface SpreadsheetPart {
   chart?: string;
   fields?: SpreadsheetField[];
   table?: SpreadsheetTable;
+  /** Odpowiedź w postaci listy wierszy w dowolnej kolejności (np. nazwiska klientów). */
+  list?: AnswerList;
+  /**
+   * Podpunkt, w którym zapytanie SQL pisze się na kartce (tabel nie ma w plikach):
+   * przykładowe rozwiązanie z klucza. Taki podpunkt nie liczy się do postępu.
+   */
+  query?: string;
+}
+
+/** Lista wierszy – kolejność wierszy i kolumn nie ma znaczenia, nadmiarowe kolumny też nie. */
+export interface AnswerList {
+  /** Podpisy kolumn odpowiedzi (np. `imię`, `nazwisko`). */
+  columns: string[];
+  expected: string[][];
+  tolerance?: number;
 }
 
 /** Zadanie rozwiązywane w arkuszu kalkulacyjnym (np. „Zadanie 6. Konfitury owocowe”). */
@@ -214,5 +229,32 @@ export interface SpreadsheetTask {
   summary: string;
   /** Pliki z danymi; pusta lista – zadanie startuje z pustym arkuszem. */
   files: SpreadsheetFile[];
+  parts: SpreadsheetPart[];
+}
+
+/* ───────────────────────── Zadania z baz danych (SQL) ───────────────────────── */
+
+/** Plik z danymi wczytywany jako tabela bazy. */
+export interface SqlTable {
+  /** Nazwa tabeli, np. `klienci`. */
+  name: string;
+  /** Ścieżka względem `public/`. */
+  path: string;
+  /** Nazwy pól, gdy plik nie ma wiersza nagłówkowego (z opisu zadania). */
+  headers?: string[];
+  /** Separator kolumn (domyślnie wykrywany: tabulator, średnik lub spacja). */
+  separator?: string;
+}
+
+/** Zadanie z bazy danych (np. „Zadanie 8. Sieć sklepów”). */
+export interface SqlTask {
+  /** Np. `2026-maj-8`. */
+  id: string;
+  sessionId: string;
+  number: string;
+  title: string;
+  /** Wprowadzenie z arkusza (akapity rozdzielone pustą linią). */
+  summary: string;
+  tables: SqlTable[];
   parts: SpreadsheetPart[];
 }

@@ -1,0 +1,94 @@
+[
+  {
+    "id": "2018-maj-6",
+    "sessionId": "2018/maj",
+    "number": "6",
+    "title": "Centrum danych",
+    "summary": "Firma utrzymuje centrum danych z kilkuset komputerami; specjalny zespół wykrywa i usuwa ich awarie. Dane dotyczą 2015 roku.\n\nkomputery: Numer_komputera, Sekcja (wielka litera A, B, C, …), Pojemnosc_dysku (GB). awarie: Numer_zgloszenia, Numer_komputera, Czas_awarii (data i godzina), Priorytet (od 1 do 10). naprawy: Numer_zgloszenia, Czas_naprawy (zakończenie naprawy), Rodzaj (restart albo wymiana) – jedno zgłoszenie mogło wymagać kilku napraw.",
+    "tables": [
+      {
+        "name": "komputery",
+        "path": "arkusze/2018/maj/pliki/Dane_PR/komputery.txt"
+      },
+      {
+        "name": "awarie",
+        "path": "arkusze/2018/maj/pliki/Dane_PR/awarie.txt"
+      },
+      {
+        "name": "naprawy",
+        "path": "arkusze/2018/maj/pliki/Dane_PR/naprawy.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 2,
+        "prompt": "Znajdź 10 najczęściej występujących pojemności dysków wśród komputerów w centrum i dla każdej podaj liczbę komputerów z takim dyskiem, nierosnąco według liczby komputerów.",
+        "list": {
+          "columns": ["pojemność", "liczba komputerów"],
+          "expected": [
+            ["300", "173"],
+            ["200", "31"],
+            ["500", "31"],
+            ["800", "29"],
+            ["700", "28"],
+            ["600", "26"],
+            ["400", "20"],
+            ["290", "11"],
+            ["220", "10"],
+            ["160", "10"]
+          ]
+        }
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Znajdź wszystkie komputery w sekcji A, w których trzeba było przynajmniej dziesięciokrotnie wymieniać podzespoły. Podaj ich numery i liczbę wymian dla każdego z nich.",
+        "list": {
+          "columns": ["numer komputera", "liczba wymian"],
+          "expected": [
+            ["202", "12"],
+            ["123", "11"],
+            ["171", "12"],
+            ["42", "11"]
+          ]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 3,
+        "prompt": "Pewnego dnia nastąpiła awaria wszystkich komputerów w jednej z sekcji. Podaj datę awarii oraz symbol tej sekcji.",
+        "fields": [
+          {
+            "label": "Data",
+            "expected": "2015-12-23"
+          },
+          {
+            "label": "Sekcja",
+            "expected": "Q"
+          }
+        ]
+      },
+      {
+        "number": "6.4",
+        "points": 3,
+        "prompt": "Znajdź awarię, której usunięcie trwało najdłużej (od wystąpienia awarii do zakończenia ostatniej z jej napraw). Podaj numer zgłoszenia, czas wystąpienia awarii i czas zakończenia ostatniej naprawy.",
+        "list": {
+          "columns": ["numer zgłoszenia", "czas awarii", "koniec naprawy"],
+          "expected": [["2087", "2015-11-06 12:38:46", "2015-11-13 12:38:32"]]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 2,
+        "prompt": "Podaj liczbę komputerów, które nie uległy żadnej awarii o priorytecie większym lub równym 8 (łącznie z komputerami, które w ogóle nie uległy awarii).",
+        "fields": [
+          {
+            "label": "Liczba komputerów",
+            "expected": "149"
+          }
+        ]
+      }
+    ]
+  }
+]

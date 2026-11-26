@@ -1,0 +1,132 @@
+[
+  {
+    "id": "2021-maj-6",
+    "sessionId": "2021/maj",
+    "number": "6",
+    "title": "Bitwa",
+    "summary": "W internetowej grze Bitwa o Kamienną Bramę każdy gracz buduje jednostki (np. robotników, łuczników, magów), które zajmują miejsca na dużej planszy. Pliki opisują aktualny stan planszy.\n\ngracze: id_gracza, kraj, data_dolaczenia. klasy: nazwa, sila, strzal, magia, szybkosc. jednostki: id_jednostki, id_gracza, nazwa (klasa jednostki), lok_x, lok_y (współrzędne na planszy).",
+    "tables": [
+      {
+        "name": "gracze",
+        "path": "arkusze/2021/maj/pliki/DANE_2105/gracze.txt"
+      },
+      {
+        "name": "klasy",
+        "path": "arkusze/2021/maj/pliki/DANE_2105/klasy.txt"
+      },
+      {
+        "name": "jednostki",
+        "path": "arkusze/2021/maj/pliki/DANE_2105/jednostki.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 2,
+        "prompt": "Podaj 5 krajów, z których najwięcej graczy dołączyło do gry w 2018 roku, i dla każdego z nich liczbę graczy, którzy dołączyli w 2018 roku.",
+        "list": {
+          "columns": ["kraj", "liczba graczy"],
+          "expected": [
+            ["Polska", "11"],
+            ["Stany Zjednoczone", "8"],
+            ["Francja", "7"],
+            ["Rosja", "6"],
+            ["Niemcy", "6"]
+          ]
+        }
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Podaj sumę wartości pola strzal dla każdej klasy jednostek, które mają „elf” jako część nazwy (sumujemy po wszystkich jednostkach danej klasy).",
+        "list": {
+          "columns": ["klasa", "suma strzał"],
+          "expected": [
+            ["ciemny elf", "555"],
+            ["elfi czarodziej", "435"],
+            ["lesny elf", "1815"],
+            ["wysoki elf-gwardzista", "870"]
+          ]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 2,
+        "prompt": "Podaj numery graczy, którzy nie mają artylerzystów (jednostek o nazwie artylerzysta), w porządku rosnącym.",
+        "list": {
+          "columns": ["id_gracza"],
+          "expected": [
+            ["22"],
+            ["24"],
+            ["29"],
+            ["35"],
+            ["36"],
+            ["37"],
+            ["38"],
+            ["47"],
+            ["54"],
+            ["61"],
+            ["64"],
+            ["72"],
+            ["110"],
+            ["114"],
+            ["115"],
+            ["122"],
+            ["123"],
+            ["138"],
+            ["141"],
+            ["167"]
+          ]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 2,
+        "prompt": "Jednostka w jednej turze może przejść z punktu (x, y) do (x1, y1), jeśli |x – x1| + |y – y1| ≤ szybkosc. Kamienna Brama znajduje się w miejscu (100, 100). Dla każdej klasy podaj jej nazwę i liczbę jej jednostek, które mogą w jednej turze dojść do Bramy.",
+        "list": {
+          "columns": ["klasa", "liczba jednostek"],
+          "expected": [
+            ["architekt", "1"],
+            ["artylerzysta", "4"],
+            ["balista", "2"],
+            ["ciemny elf", "1"],
+            ["drwal", "3"],
+            ["elfi czarodziej", "1"],
+            ["goniec", "2"],
+            ["ifryt", "1"],
+            ["kaplan", "2"],
+            ["kawalerzysta", "7"],
+            ["konny lucznik", "4"],
+            ["kusznik", "1"],
+            ["lekki jezdziec", "19"],
+            ["lucznik", "1"],
+            ["mag powietrza", "3"],
+            ["mag wody", "2"],
+            ["paladyn", "1"],
+            ["piechur", "7"],
+            ["pikinier", "5"],
+            ["robotnik", "5"],
+            ["topornik", "5"],
+            ["wysoki elf-gwardzista", "1"],
+            ["zwiadowca", "4"]
+          ]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 4,
+        "prompt": "Jeśli w pewnej lokalizacji znajdują się jednostki więcej niż jednego gracza, toczy się tam (jedna) bitwa. Oblicz: a) ile bitew ma miejsce na planszy, b) w ilu bitwach biorą udział gracze z Polski. W jednej lokalizacji może być kilka jednostek tego samego gracza.",
+        "fields": [
+          {
+            "label": "a) Liczba bitew",
+            "expected": "1061"
+          },
+          {
+            "label": "b) Bitwy z udziałem Polaków",
+            "expected": "245"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,11 +1,12 @@
 import { NavLink, Outlet } from 'react-router';
 import { tasks } from '../data';
 import { spreadsheetTasks } from '../data/spreadsheets';
+import { sqlTasks } from '../data/sql';
 
 const TABS = [
   { to: 'python', label: 'Python', count: tasks.length },
   { to: 'excel', label: 'Excel', count: spreadsheetTasks.length },
-  { to: 'sql', label: 'SQL', soon: true },
+  { to: 'sql', label: 'SQL', count: sqlTasks.length },
 ] as const;
 
 /** Zakładka „Zadania”: wspólny nagłówek i podział na Python, Excel i SQL. */
@@ -18,11 +19,7 @@ export function TasksSection() {
           {TABS.map((tab) => (
             <NavLink key={tab.to} to={tab.to} className="tabs__tab">
               {tab.label}
-              {'soon' in tab ? (
-                <span className="tabs__badge">wkrótce</span>
-              ) : (
-                <span className="tabs__count">{tab.count}</span>
-              )}
+              <span className="tabs__count">{tab.count}</span>
             </NavLink>
           ))}
         </nav>

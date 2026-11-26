@@ -1,0 +1,85 @@
+[
+  {
+    "id": "2022-probna-CKE-grudzien-5",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "5",
+    "title": "Hotel „Panorama”",
+    "summary": "W plikach zapisano informacje o usługach hotelu „Panorama” od 1.07.2022 do 30.09.2022.\n\nklienci: nr_dowodu, nazwisko, imie, miejscowosc. pokoje: nr_pokoju, standard (N – normalny, W – wysoki), cena (za dobę). noclegi: id_pobytu, data_przyjazdu, data_wyjazdu, nr_dowodu, nr_pokoju.",
+    "tables": [
+      {
+        "name": "klienci",
+        "path": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/klienci.txt"
+      },
+      {
+        "name": "pokoje",
+        "path": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/pokoje.txt"
+      },
+      {
+        "name": "noclegi",
+        "path": "arkusze/2022/probna-CKE-grudzien/pliki/Dane_2212/noclegi.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 2,
+        "prompt": "Podaj imię i nazwisko gościa, który skorzystał łącznie z największej liczby noclegów podczas wszystkich swoich pobytów, oraz liczbę tych noclegów (np. pobyty 10–12.07 i 15–18.08 to 2 + 3 = 5 noclegów).",
+        "list": {
+          "columns": ["imię", "nazwisko", "liczba noclegów"],
+          "expected": [["Mateusz", "Tokarczyk", "9"]]
+        }
+      },
+      {
+        "number": "5.2",
+        "points": 2,
+        "prompt": "Podaj imiona i nazwiska osób, które zapłaciły łącznie za noclegi powyżej 2000 zł.",
+        "list": {
+          "columns": ["imię", "nazwisko"],
+          "expected": [
+            ["Anna", "Poplawska"],
+            ["Marcin", "Bober"],
+            ["Mateusz", "Slomka"]
+          ]
+        }
+      },
+      {
+        "number": "5.3",
+        "points": 2,
+        "prompt": "Podaj numery pokoi o normalnym standardzie (N), których w okresie od 1.07.2022 do 30.09.2022 nie wynajmował nikt z Opola i nikt z Katowic.",
+        "list": {
+          "columns": ["numer pokoju"],
+          "expected": [
+            ["104"],
+            ["107"],
+            ["109"],
+            ["110"],
+            ["114"],
+            ["117"],
+            ["207"],
+            ["215"],
+            ["306"],
+            ["310"],
+            ["314"],
+            ["402"],
+            ["411"],
+            ["415"],
+            ["416"],
+            ["418"]
+          ]
+        }
+      },
+      {
+        "number": "5.4",
+        "points": 1,
+        "prompt": "Do bazy dodano tabelę uslugi_dodatkowe (data_wykonania, id_pobytu, rodzaj – np. śniadanie, basen, masaż – i cena_uslugi). Napisz zapytanie SQL, które dla każdego rodzaju usługi poda liczbę wszystkich jej zamówień.",
+        "query": "SELECT rodzaj, COUNT(*)\nFROM uslugi_dodatkowe\nGROUP BY rodzaj;"
+      },
+      {
+        "number": "5.5",
+        "points": 2,
+        "prompt": "Napisz zapytanie SQL, które poda dane gości (imię i nazwisko) korzystających z usług dodatkowych oraz łączne kwoty, jakie zapłacili za te usługi.",
+        "query": "SELECT klienci.imie, klienci.nazwisko, SUM(uslugi_dodatkowe.cena_uslugi)\nFROM uslugi_dodatkowe\nINNER JOIN noclegi ON uslugi_dodatkowe.id_pobytu = noclegi.id_pobytu\nINNER JOIN klienci ON klienci.nr_dowodu = noclegi.nr_dowodu\nGROUP BY klienci.nr_dowodu, klienci.imie, klienci.nazwisko;"
+      }
+    ]
+  }
+]

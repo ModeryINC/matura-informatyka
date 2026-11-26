@@ -1,0 +1,112 @@
+[
+  {
+    "id": "2023-stara-formula-maj-6",
+    "sessionId": "2023/stara-formula-maj",
+    "number": "6",
+    "title": "Gry planszowe",
+    "summary": "Serwis internetowy prowadzi ranking gier planszowych; jego baza jest zapisana w trzech plikach.\n\ngry: id_gry, nazwa, kategoria (każda gra należy do jednej kategorii). gracze: id_gracza, imie, nazwisko, wiek. oceny: id_gry, id_gracza, stan (posiada, chce kupic lub sprzedal), ocena (liczba całkowita od 0 do 10).",
+    "tables": [
+      {
+        "name": "gry",
+        "path": "arkusze/2023/stara-formula-maj/pliki/Dane_2305/gry.txt"
+      },
+      {
+        "name": "gracze",
+        "path": "arkusze/2023/stara-formula-maj/pliki/Dane_2305/gracze.txt"
+      },
+      {
+        "name": "oceny",
+        "path": "arkusze/2023/stara-formula-maj/pliki/Dane_2305/oceny.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 1,
+        "prompt": "Podaj tytuł gry, która otrzymała najwięcej ocen.",
+        "list": {
+          "columns": ["tytuł gry"],
+          "expected": [["K2"]]
+        }
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Dla każdej gry z kategorii „imprezowa” podaj średnią jej ocen z dokładnością do dwóch miejsc po przecinku.",
+        "list": {
+          "columns": ["tytuł gry", "średnia ocen"],
+          "expected": [
+            ["5 sekund", "8,16"],
+            ["Avalone", "8,25"],
+            ["Colt Express", "7,54"],
+            ["Jenga", "8,16"],
+            ["Koncept", "8,37"],
+            ["Mamy szpiega", "8,22"],
+            ["Przebiegle wielblady", "7,73"],
+            ["Sushi Go", "8,07"],
+            ["Swiatowy Konflikt", "7,80"],
+            ["Szeryf z Nottingham", "7,88"]
+          ]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 3,
+        "prompt": "Podaj imiona i nazwiska graczy, którzy wystawili co najmniej jedną ocenę oraz posiadają (stan „posiada”) tylko gry z kategorii „imprezowa” i nie posiadają gier z innych kategorii. Wynik posortuj niemalejąco według nazwisk.",
+        "list": {
+          "columns": ["imię", "nazwisko"],
+          "expected": [
+            ["Fryderyk", "Baran"],
+            ["Denis", "Blaszczyk"],
+            ["Dobromil", "Duda"],
+            ["Janusz", "Glowacki"],
+            ["Igor", "Jasinski"],
+            ["Julian", "Kaczmarczyk"],
+            ["Oktawian", "Kaminski"],
+            ["Maciej", "Kaminski"],
+            ["Maurycy", "Kaminski"],
+            ["Heronim", "Krawczyk"],
+            ["Mateusz", "Kucharski"],
+            ["Olgierd", "Michalak"],
+            ["Miroslaw", "Pawlak"],
+            ["Boguslawa", "Sawicka"],
+            ["Ireneusz", "Szczepanski"],
+            ["Roman", "Szewczyk"],
+            ["Allan", "Szewczyk"],
+            ["Franciszek", "Szymczak"],
+            ["Andzelika", "Szymczak"],
+            ["Danuta", "Walczak"],
+            ["Aleksander", "Wasilewski"],
+            ["Leonardo", "Wojcik"],
+            ["Korneliusz", "Zalewski"]
+          ]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 2,
+        "prompt": "Podaj liczbę graczy, którzy nie posiadają żadnej z ocenianych przez siebie gier (nie mają żadnej gry ze stanem „posiada”), a wystawili co najmniej jedną ocenę.",
+        "fields": [
+          {
+            "label": "Liczba graczy",
+            "expected": "334"
+          }
+        ]
+      },
+      {
+        "number": "6.5",
+        "points": 3,
+        "prompt": "Osoby oceniające gry podzielono na kategorie wiekowe: juniorzy (do 19 lat), seniorzy (od 20 do 49 lat) i weterani (od 50 lat). Dla każdej kategorii wiekowej podaj największą liczbę ocen wystawionych jednej grze przez użytkowników z tej kategorii oraz tytuły gier z tą liczbą ocen (wszystkie, jeśli jest ich kilka).",
+        "list": {
+          "columns": ["kategoria wiekowa", "tytuł gry", "liczba ocen"],
+          "expected": [
+            ["juniorzy", "Terraformacja Marsa", "6"],
+            ["juniorzy", "K2", "6"],
+            ["seniorzy", "K2", "24"],
+            ["weterani", "Robinson Crusoe", "28"]
+          ]
+        }
+      }
+    ]
+  }
+]

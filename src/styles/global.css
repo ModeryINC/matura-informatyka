@@ -2001,6 +2001,143 @@ progress::-moz-progress-bar {
   font-size: 1.15rem;
 }
 
+/* Zadania z SQL: tabele, edytor zapytań i wyniki --------------------------- */
+.sql-work {
+  display: grid;
+  gap: 0.75rem;
+  min-inline-size: 0;
+}
+
+.sql-work .code-editor {
+  block-size: clamp(220px, 34dvh, 420px);
+}
+
+.sql-schema {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sql-schema__table details {
+  padding: 0.35rem 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.sql-schema__table details[open] {
+  min-inline-size: min(16rem, 100%);
+}
+
+.sql-schema__table summary {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.sql-schema__columns {
+  margin: 0.4rem 0 0.1rem;
+  padding-inline-start: 1.25rem;
+  font-size: 0.85rem;
+}
+
+.sql-work__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sql-results {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.sql-result {
+  display: grid;
+  gap: 0.35rem;
+  min-inline-size: 0;
+}
+
+.sql-result__meta {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.sql-result__scroll {
+  max-block-size: 26rem;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overscroll-behavior: contain;
+}
+
+.sql-table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.sql-table th,
+.sql-table td {
+  padding: 0.3rem 0.6rem;
+  border-block-end: 1px solid var(--border);
+  text-align: start;
+  white-space: nowrap;
+}
+
+.sql-table thead th {
+  position: sticky;
+  inset-block-start: 0;
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.sql-table__num {
+  text-align: end;
+}
+
+.sql-table__null {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.xl-list {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.xl-list p {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.xl-list__table td {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.85rem;
+}
+
+.xl-part__query summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.xl-part__query pre {
+  margin: 0.5rem 0 0;
+  padding: 0.75rem;
+  overflow-x: auto;
+  background: var(--code-bg);
+  color: var(--code-fg);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+}
+
 /* Strona startowa -------------------------------------------------------- */
 /* Poświata i pływające symbole nie mogą poszerzać strony (poziomy pasek przewijania). */
 .page--landing {
@@ -2455,18 +2592,10 @@ progress::-moz-progress-bar {
   }
 }
 
-.feature-card--soon {
-  border-style: dashed;
-}
-
 .feature-card__icon {
   inline-size: 2rem;
   block-size: 2rem;
   color: var(--accent);
-}
-
-.feature-card--soon .feature-card__icon {
-  color: var(--text-muted);
 }
 
 .feature-card h3 {
@@ -2629,15 +2758,6 @@ progress::-moz-progress-bar {
   font-size: 0.75rem;
 }
 
-.tabs__badge {
-  padding: 0.05rem 0.45rem;
-  border-radius: 999px;
-  background: var(--warning-soft);
-  color: var(--warning);
-  font-size: 0.7rem;
-  font-weight: 600;
-}
-
 .tab-intro h2,
 .tab-intro-wrap > h2 {
   margin-block: 0 0.4rem;
@@ -2645,27 +2765,6 @@ progress::-moz-progress-bar {
 
 .tab-intro {
   margin-block-end: 1.5rem;
-}
-
-.coming-soon {
-  display: grid;
-  justify-items: center;
-  gap: 0.5rem;
-  padding: clamp(2rem, 6vw, 4rem) 1rem;
-  text-align: center;
-  border: 1px dashed var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-}
-
-.coming-soon__icon {
-  inline-size: 3rem;
-  block-size: 3rem;
-  color: var(--text-muted);
-}
-
-.coming-soon h2 {
-  margin: 0;
 }
 
 /* Strona arkusza: przyciski do zadań ------------------------------------- */
@@ -2726,6 +2825,10 @@ progress::-moz-progress-bar {
 
 .task-jump__button--excel {
   border-inline-start: 3px solid var(--success);
+}
+
+.task-jump__button--sql {
+  border-inline-start: 3px solid var(--accent);
 }
 
 .task-jump__button--rozpoczete {

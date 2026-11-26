@@ -12,6 +12,8 @@ const WORKBOOK = 'matura-inf:excel-arkusz:';
 export interface PartAnswer {
   fields?: string[];
   table?: string[][];
+  /** Lista wierszy (np. wynik zapytania SQL). */
+  list?: string[][];
   /** Wynik ostatniego sprawdzenia. */
   passed?: boolean;
 }

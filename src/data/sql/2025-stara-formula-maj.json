@@ -1,0 +1,93 @@
+[
+  {
+    "id": "2025-stara-formula-maj-6",
+    "sessionId": "2025/stara-formula-maj",
+    "number": "6",
+    "title": "Poszukiwanie wody na Marsie",
+    "summary": "W plikach laziki.txt, obszary.txt i pomiary.txt zapisano dane o poszukiwaniu wody na Marsie w latach 2050–2080. Łaziki wykonują pomiary georadarowe, na podstawie których szacują ilość wody i głębokość, na której się znajduje.\n\nlaziki: nr_lazika, nazwa_lazika, rok_wyslania (rok startu z Ziemi), wsp_ladowania (np. 44.90S, 130.80W). obszary: kod_obszaru, nazwa_obszaru. pomiary: nr_lazika, data_pomiaru, kod_obszaru, wspolrzedne (np. 13.17N, 77.80E), glebokosc (w metrach), ilosc (w m³).",
+    "tables": [
+      {
+        "name": "laziki",
+        "path": "arkusze/2025/stara-formula-maj/pliki/dane maj 23/laziki.txt"
+      },
+      {
+        "name": "obszary",
+        "path": "arkusze/2025/stara-formula-maj/pliki/dane maj 23/obszary.txt"
+      },
+      {
+        "name": "pomiary",
+        "path": "arkusze/2025/stara-formula-maj/pliki/dane maj 23/pomiary.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 2,
+        "prompt": "Podaj lata, w których wysłano z Ziemi najwięcej łazików, oraz liczbę tych łazików.",
+        "list": {
+          "columns": ["rok wysłania", "liczba łazików"],
+          "expected": [
+            ["2067", "8"],
+            ["2071", "8"]
+          ]
+        }
+      },
+      {
+        "number": "6.2",
+        "points": 3,
+        "prompt": "Podaj nazwę obszaru, na którym znaleziono łącznie we wszystkich pomiarach najwięcej m³ wody na głębokości do 100 metrów włącznie, oraz liczbę m³ tej wody. Jest jeden taki obszar.",
+        "list": {
+          "columns": ["nazwa obszaru", "woda (m³)"],
+          "expected": [["Mare Boreum", "4103901"]]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 2,
+        "prompt": "Podaj nazwę łazika, który wykonywał pomiary w najdłuższym okresie, licząc od pierwszego do ostatniego pomiaru. Podaj datę pierwszego i ostatniego pomiaru wykonanego przez ten łazik.",
+        "list": {
+          "columns": ["nazwa łazika", "pierwszy pomiar", "ostatni pomiar"],
+          "expected": [["Spirit 14", "2066-08-29", "2076-07-25"]]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 2,
+        "prompt": "Podaj nazwy obszarów na Marsie, na których żaden z łazików nie wykonał ani jednego pomiaru w tym samym roku, w którym został wysłany z Ziemi.",
+        "list": {
+          "columns": ["nazwa obszaru"],
+          "expected": [
+            ["Aeolis"],
+            ["Amazonis"],
+            ["Arabia"],
+            ["Elysium"],
+            ["Eridania"],
+            ["Mare Tyrrhenum"],
+            ["Sinus Sabaeus"],
+            ["Syrtis Major"]
+          ]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 2,
+        "prompt": "Podaj nazwy łazików, które wylądowały na półkuli południowej (S), ale wykonywały pomiary na obu półkulach: północnej (N) i południowej (S).",
+        "list": {
+          "columns": ["nazwa łazika"],
+          "expected": [
+            ["Mariner 14"],
+            ["Mariner 15"],
+            ["Mariner 20"],
+            ["Viking 17"],
+            ["Spirit 7"],
+            ["Spirit 12"],
+            ["Rosetta 1"],
+            ["Rosetta 8"],
+            ["Phoenix 3"],
+            ["Phoenix 13"]
+          ]
+        }
+      }
+    ]
+  }
+]

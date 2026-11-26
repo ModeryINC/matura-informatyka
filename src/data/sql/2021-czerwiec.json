@@ -1,0 +1,104 @@
+[
+  {
+    "id": "2021-czerwiec-6",
+    "sessionId": "2021/czerwiec",
+    "number": "6",
+    "title": "Koncerty",
+    "summary": "Rozgłośnia radiowa podsumowuje wakacje 2017 roku (lipiec i sierpień) pod względem liczby koncertów. Pola w plikach są rozdzielone średnikami.\n\nzespoly: id_zespolu, nazwa, liczba_artystow. miasta: kod_miasta, miasto, wojewodztwo. koncerty: id, id_zespolu, kod_miasta, data.",
+    "tables": [
+      {
+        "name": "zespoly",
+        "path": "arkusze/2021/czerwiec/pliki/DANE/zespoly.txt"
+      },
+      {
+        "name": "miasta",
+        "path": "arkusze/2021/czerwiec/pliki/DANE/miasta.txt"
+      },
+      {
+        "name": "koncerty",
+        "path": "arkusze/2021/czerwiec/pliki/DANE/koncerty.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 1,
+        "prompt": "Ile koncertów odbyło się w lipcu?",
+        "fields": [
+          {
+            "label": "Liczba koncertów",
+            "expected": "122"
+          }
+        ]
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Podaj nazwę miasta (lub miast), w którym wystąpiło łącznie najwięcej artystów. Artystę, który w danym mieście wystąpił ze swoim zespołem kilkakrotnie, liczymy tylko raz.",
+        "list": {
+          "columns": ["miasto"],
+          "expected": [["Piotrkow Trybunalski"], ["Grudziadz"]]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 3,
+        "prompt": "Dla każdego województwa podaj średnią liczbę koncertów w przeliczeniu na jedno miasto w tym województwie, w zaokrągleniu do dwóch miejsc po przecinku, od najwyższej do najniższej średniej.",
+        "list": {
+          "columns": ["województwo", "średnia"],
+          "expected": [
+            ["swietokrzyskie", "8,00"],
+            ["lodzkie", "7,00"],
+            ["opolskie", "7,00"],
+            ["lubuskie", "6,50"],
+            ["slaskie", "5,53"],
+            ["malopolskie", "5,33"],
+            ["lubelskie", "5,00"],
+            ["podkarpackie", "5,00"],
+            ["dolnoslaskie", "4,75"],
+            ["kujawsko-pomorskie", "4,25"],
+            ["wielkopolskie", "4,25"],
+            ["podlaskie", "4,00"],
+            ["warminsko-mazurskie", "4,00"],
+            ["zachodniopomorskie", "4,00"],
+            ["mazowieckie", "2,67"],
+            ["pomorskie", "2,67"]
+          ]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 2,
+        "prompt": "Podaj nazwy zespołów, które nie koncertowały w okresie od 20 do 25 lipca włącznie.",
+        "list": {
+          "columns": ["zespół"],
+          "expected": [
+            ["Male nutki"],
+            ["Stare mandoliny"],
+            ["Wiosenne bebny"],
+            ["Powolne fortepiany"],
+            ["Ciche organy"],
+            ["Fajne trojkaty"],
+            ["Rozstrojone pianina"],
+            ["Metalowe klarnety"],
+            ["Zlote saksofony"],
+            ["Piszczace trabki"]
+          ]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 3,
+        "prompt": "Podaj nazwy zespołów, które częściej koncertowały w weekendy (sobota, niedziela) niż w dni powszednie, i dla każdego z nich liczbę koncertów w weekendy oraz w dni powszednie.",
+        "list": {
+          "columns": ["zespół", "weekendy", "dni powszednie"],
+          "expected": [
+            ["Niebieskie kontrabasy", "4", "1"],
+            ["Powolne fortepiany", "5", "4"],
+            ["Wiosenne bebny", "4", "3"]
+          ]
+        }
+      }
+    ]
+  }
+]

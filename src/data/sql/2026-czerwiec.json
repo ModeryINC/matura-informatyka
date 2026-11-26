@@ -1,0 +1,75 @@
+[
+  {
+    "id": "2026-czerwiec-8",
+    "sessionId": "2026/czerwiec",
+    "number": "8",
+    "title": "Oceny",
+    "summary": "W trzech plikach zapisano dane o ocenianiu grupy uczniów pewnej szkoły od września 2023 do czerwca 2024 (bez polskich znaków).\n\nuczniowie: Id_Ucznia, Plec (k lub m), Id_Klasy. nauczyciele: Id_Naucz, Przedmiot. oceny: Id_Oceny, Id_Ucznia, Data (rrrr-mm-dd), Ocena, Id_Naucz – nauczyciel, który wystawił ocenę.",
+    "tables": [
+      {
+        "name": "uczniowie",
+        "path": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/uczniowie.txt"
+      },
+      {
+        "name": "nauczyciele",
+        "path": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/nauczyciele.txt"
+      },
+      {
+        "name": "oceny",
+        "path": "arkusze/2026/czerwiec/pliki/informatyka-2026-czerwiec-matura-rozszerzona-zalaczniki/oceny.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "8.1",
+        "points": 2,
+        "prompt": "Oblicz średnią ocen z matematyki oddzielnie dla kobiet i dla mężczyzn. Wynik podaj z dokładnością do dwóch miejsc po przecinku.",
+        "list": {
+          "columns": ["płeć", "średnia"],
+          "expected": [
+            ["k", "3,57"],
+            ["m", "3,73"]
+          ]
+        }
+      },
+      {
+        "number": "8.2",
+        "points": 2,
+        "prompt": "Podaj identyfikatory nauczycieli, którzy nie wystawili żadnej oceny niedostatecznej (1) w okresie od 2023-12-01 do 2023-12-31.",
+        "list": { "columns": ["Id_Naucz"], "expected": [["N10"], ["N22"]] }
+      },
+      {
+        "number": "8.3",
+        "points": 2,
+        "prompt": "Dla każdego miesiąca podaj ocenę, która została wystawiona najmniejszą liczbę razy, oraz liczbę wystąpień tej oceny.",
+        "list": {
+          "columns": ["miesiąc", "ocena", "liczba ocen"],
+          "expected": [
+            ["1", "1", "74"],
+            ["2", "4", "21"],
+            ["3", "3", "42"],
+            ["4", "1", "46"],
+            ["5", "6", "22"],
+            ["6", "6", "8"],
+            ["9", "1", "44"],
+            ["10", "1", "66"],
+            ["11", "1", "107"],
+            ["12", "6", "109"]
+          ]
+        }
+      },
+      {
+        "number": "8.4",
+        "points": 2,
+        "prompt": "Do bazy dodano tabelę Kategorie (Id_Kategorii, Nazwa_Kategorii), a do tabeli Oceny – pole Id_Kategorii. Napisz zapytanie SQL, które poda dla każdej kategorii jej nazwę i liczbę wystawionych ocen.",
+        "query": "SELECT Kategorie.Nazwa_Kategorii, Count(Oceny.Id_Oceny)\nFROM Kategorie INNER JOIN Oceny\nON Kategorie.Id_Kategorii = Oceny.Id_Kategorii\nGROUP BY Kategorie.Nazwa_Kategorii;"
+      },
+      {
+        "number": "8.5",
+        "points": 2,
+        "prompt": "Napisz zapytanie SQL, które poda identyfikator ucznia, który otrzymał najwięcej ocen celujących (6) ze sprawdzianów (nazwa kategorii: sprawdzian).",
+        "query": "SELECT TOP 1 Oceny.Id_Ucznia\nFROM Oceny\nINNER JOIN Kategorie ON Kategorie.Id_Kategorii = Oceny.Id_Kategorii\nWHERE Kategorie.Nazwa_Kategorii = 'sprawdzian' AND Oceny.Ocena = 6\nGROUP BY Oceny.Id_Ucznia\nORDER BY Count(Oceny.Id_Oceny) DESC;"
+      }
+    ]
+  }
+]

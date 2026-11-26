@@ -150,3 +150,46 @@ całe zadanie z arkusza (np. „Zadanie 6. Konfitury owocowe”) z podpunktami:
 
 Klucz potwierdź obliczeniami w `solutions/excel/<id>.py` (opis w `solutions/README.md`)
 i uruchom `npm run verify:excel`, a potem `python scripts/find_sheet_pages.py`.
+
+## Zadania z baz danych (Zadania → SQL)
+
+Plik `src/data/sql/<rok>-<sesja>.json` to tablica zadań; jedno zadanie obejmuje całe zadanie
+z arkusza (np. „Zadanie 8. Sieć sklepów”):
+
+```json
+{
+  "id": "2026-maj-8",
+  "sessionId": "2026/maj",
+  "number": "8",
+  "title": "Sieć sklepów",
+  "summary": "Wprowadzenie z arkusza (akapity oddzielone
+
+)",
+  "tables": [{ "name": "klienci", "path": "arkusze/2026/maj/pliki/Dane-NF-2605/klienci.txt" }],
+  "parts": [
+    {
+      "number": "8.2",
+      "points": 2,
+      "prompt": "…",
+      "list": { "columns": ["płeć", "liczba klientów"], "expected": [["K", "689"], ["M", "651"]] }
+    },
+    { "number": "8.3", "points": 2, "prompt": "…", "fields": [{ "label": "…", "expected": "28" }] },
+    { "number": "8.5", "points": 2, "prompt": "…", "query": "SELECT … (przykład z klucza)" }
+  ]
+}
+```
+
+- `tables` – każdy plik to tabela o podanej nazwie (litery, cyfry, `_`). Pierwszy wiersz to
+  nazwy pól; `headers: [...]` podaje je dla pliku bez nagłówka. Separator (tabulator, średnik,
+  spacja) i kodowanie (UTF-8, UTF-16, Windows-1250) są wykrywane, a typy pól (liczby, daty,
+  godziny, tekst) – rozpoznawane z zawartości.
+- `list` – zbiór wierszy bez względu na kolejność wierszy i kolumn; odpowiedź może mieć
+  dodatkowe kolumny, ale tyle samo wierszy co klucz. `fields` i `table` działają jak w zadaniach
+  z Excela; podpunkt może mieć `fields` i `list` naraz (np. nazwa i lista jej elementów).
+- `query` – podpunkt, w którym zapytanie pisze się na kartce (tabel nie ma w plikach): pokazujemy
+  przykładowe rozwiązanie z klucza, a podpunkt nie liczy się do postępu.
+
+Klucz potwierdź zapytaniami w `solutions/sql/<id>.sql` – podpunkty oddziela komentarz
+`-- 8.1`. Pola dostają kolejne wartości ze wszystkich wyników podpunktu, a `table` i `list` –
+wiersze ostatniego wyniku. Uruchom `npm run verify:sql` (zapytania wykonuje ten sam silnik co
+strona), a potem `python scripts/find_sheet_pages.py`.

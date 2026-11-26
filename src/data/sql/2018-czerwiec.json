@@ -1,0 +1,100 @@
+[
+  {
+    "id": "2018-czerwiec-6",
+    "sessionId": "2018/czerwiec",
+    "number": "6",
+    "title": "Wypożyczalnia samochodów",
+    "summary": "Wypożyczalnia samochodów WYPSA ma przedstawicielstwa w kilku miejscowościach; można w nich wypożyczyć samochód klasy B, C lub D. Wypożyczenia obejmują pierwsze półrocze 2015 roku, a pola są rozdzielone średnikami.\n\nsamochody: Nr_ew, Nr_firmowy (pierwsza litera to klasa samochodu), Miejscowosc, Nr_rej. ceny_za_dobe: Klasa, Cena (za dobę). klienci: Nr_klienta, Imie, Nazwisko. wypozyczenia: Nr_ew, Nr_klienta, Wypozyczenie, Zwrot.",
+    "tables": [
+      {
+        "name": "samochody",
+        "path": "arkusze/2018/czerwiec/pliki/informatyka-2018-czerwiec-matura-rozszerzona-zalaczniki/samochody.txt"
+      },
+      {
+        "name": "ceny_za_dobe",
+        "path": "arkusze/2018/czerwiec/pliki/informatyka-2018-czerwiec-matura-rozszerzona-zalaczniki/ceny_za_dobe.txt"
+      },
+      {
+        "name": "klienci",
+        "path": "arkusze/2018/czerwiec/pliki/informatyka-2018-czerwiec-matura-rozszerzona-zalaczniki/klienci.txt"
+      },
+      {
+        "name": "wypozyczenia",
+        "path": "arkusze/2018/czerwiec/pliki/informatyka-2018-czerwiec-matura-rozszerzona-zalaczniki/wypozyczenia.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 3,
+        "prompt": "Utwórz zestawienie: imię, nazwisko, numer rejestracyjny, czas wypożyczenia (liczba dób między datą wypożyczenia a zwrotu, np. od 2015-05-24 do 2015-05-28 to 4 doby) i należność. Posortuj rosnąco według nazwiska, potem imienia i numeru rejestracyjnego. Podaj pierwszy i ostatni wiersz zestawienia.",
+        "table": {
+          "rows": ["pierwszy wiersz", "ostatni wiersz"],
+          "columns": ["nazwisko", "imię", "nr rejestracyjny", "doby", "należność"],
+          "expected": [
+            ["Aabacka", "Nela", "WI1150", "2", "160"],
+            ["Zgbacka", "Aaricia", "WI1126", "11", "880"]
+          ]
+        }
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Dla każdej klasy samochodu podaj liczbę wypożyczeń samochodów tej klasy.",
+        "list": {
+          "columns": ["klasa", "liczba wypożyczeń"],
+          "expected": [
+            ["B", "100"],
+            ["C", "48"],
+            ["D", "53"]
+          ]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 1,
+        "prompt": "Podaj imię i nazwisko osoby (osób), która wypożyczała samochody największą liczbę razy, oraz liczbę tych wypożyczeń.",
+        "list": {
+          "columns": ["imię", "nazwisko", "liczba wypożyczeń"],
+          "expected": [["Ramzes", "Hcbacki", "5"]]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 2,
+        "prompt": "Przygotuj zestawienie samochodów, które nie były wypożyczane: podaj ich liczbę w podziale na klasy i miejscowości.",
+        "list": {
+          "columns": ["klasa", "miejscowość", "liczba samochodów"],
+          "expected": [
+            ["B", "Aniolkowo", "12"],
+            ["C", "Aniolkowo", "8"],
+            ["D", "Aniolkowo", "7"],
+            ["B", "Manipulatowo", "31"],
+            ["C", "Manipulatowo", "14"],
+            ["D", "Manipulatowo", "11"],
+            ["B", "Nieszczerzyn", "17"],
+            ["C", "Nieszczerzyn", "9"],
+            ["D", "Nieszczerzyn", "4"],
+            ["B", "Piarowa", "16"],
+            ["C", "Piarowa", "18"],
+            ["D", "Piarowa", "8"],
+            ["B", "Wielka Wola", "25"],
+            ["C", "Wielka Wola", "11"],
+            ["D", "Wielka Wola", "7"]
+          ]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 2,
+        "prompt": "Podaj liczbę zarejestrowanych klientów, którzy nie wypożyczyli żadnego samochodu.",
+        "fields": [
+          {
+            "label": "Liczba klientów",
+            "expected": "72"
+          }
+        ]
+      }
+    ]
+  }
+]

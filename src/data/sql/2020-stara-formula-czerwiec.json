@@ -1,0 +1,89 @@
+[
+  {
+    "id": "2020-stara-formula-czerwiec-6",
+    "sessionId": "2020/stara-formula-czerwiec",
+    "number": "6",
+    "title": "Usługi hostingowe",
+    "summary": "Firma ENTER s.c. sprzedaje dostęp do usług internetowych na pełną liczbę lat – od roku do pięciu lat. Pliki zawierają listę klientów, umowy obowiązujące 5 maja 2018 i oferowane usługi; pola są rozdzielone średnikami.\n\nklienci: ID_klienta (pierwsza litera to kategoria: I – indywidualny, E – edukacyjny, F – firma), klient (nazwa), miejscowosc. umowy: ID_klienta, ID_uslugi, data_rozpoczecia, data_zakonczenia (ostatni dzień umowy). uslugi: ID_uslugi, nazwa uslugi – nazwa ze spacją, w SQL zapisz ją jako [nazwa uslugi].",
+    "tables": [
+      {
+        "name": "klienci",
+        "path": "arkusze/2020/stara-formula-czerwiec/pliki/PR2s/klienci.txt"
+      },
+      {
+        "name": "umowy",
+        "path": "arkusze/2020/stara-formula-czerwiec/pliki/PR2s/umowy.txt"
+      },
+      {
+        "name": "uslugi",
+        "path": "arkusze/2020/stara-formula-czerwiec/pliki/PR2s/uslugi.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 1,
+        "prompt": "Podaj, ile umów kończy się w czerwcu 2018 roku.",
+        "fields": [
+          {
+            "label": "Liczba umów",
+            "expected": "41"
+          }
+        ]
+      },
+      {
+        "number": "6.2",
+        "points": 2,
+        "prompt": "Utwórz zestawienie liczby umów zawartych przez klientów indywidualnych (I), instytucje edukacyjne (E) i firmy (F).",
+        "list": {
+          "columns": ["kategoria", "liczba umów"],
+          "expected": [
+            ["E", "391"],
+            ["F", "519"],
+            ["I", "1060"]
+          ]
+        }
+      },
+      {
+        "number": "6.3",
+        "points": 2,
+        "prompt": "Podaj dane klientów (ID, nazwa klienta, miejscowość), którzy nie podpisali żadnej umowy.",
+        "list": {
+          "columns": ["ID_klienta", "klient", "miejscowość"],
+          "expected": [
+            ["I1261", "Rafal Prymus", "Zielona"],
+            ["I1353", "Magdalena Siarkowska", "Leszno"]
+          ]
+        }
+      },
+      {
+        "number": "6.4",
+        "points": 2,
+        "prompt": "Utwórz zestawienie nazw klientów, którzy zawarli umowy na 5 lat, z nazwą usługi i datą zakończenia umowy, posortowane od umowy, która kończy się najwcześniej.",
+        "list": {
+          "columns": ["klient", "usługa", "data zakończenia"],
+          "expected": [
+            ["Barbara Gaweda", "biuro 100", "2022-05-01"],
+            ["Przemyslaw Sarnowski", "backup mini", "2022-05-02"],
+            ["Marcin Wozniak", "poczta indywidualna", "2022-05-04"],
+            ["Szkola Podstawowa 93", "poczta profesjonalna", "2023-04-30"]
+          ]
+        }
+      },
+      {
+        "number": "6.5",
+        "points": 3,
+        "prompt": "Podaj nazwy oraz ID klientów, którzy zawarli co najmniej 4 umowy na usługi poczty elektronicznej (nazwa usługi zawiera słowo „poczta”) i równocześnie co najmniej 3 umowy na serwery www (nazwa zawiera „serwer www”). Zestawienie posortuj alfabetycznie według nazw.",
+        "list": {
+          "columns": ["ID_klienta", "klient"],
+          "expected": [
+            ["F1205", "Firma Handlowa 1"],
+            ["I1215", "Jakub Wielebny"],
+            ["F1038", "Przedsiebiorstwo Handlowo-Uslugowe 24"],
+            ["E1307", "Technikum 48"]
+          ]
+        }
+      }
+    ]
+  }
+]

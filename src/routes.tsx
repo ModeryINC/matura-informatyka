@@ -8,6 +8,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { PythonBasicsPage } from './pages/PythonBasicsPage';
 import { SessionPage } from './pages/SessionPage';
 import { SessionsPage } from './pages/SessionsPage';
+import { SqlTaskPage } from './pages/SqlTaskPage';
 import { SqlTasksPage } from './pages/SqlTasksPage';
 import { TaskPage } from './pages/TaskPage';
 import { TasksPage } from './pages/TasksPage';
@@ -38,6 +39,8 @@ export const routes: RouteObject[] = [
       { path: 'zadanie/:taskId', element: <TaskPage /> },
       { path: 'excel', element: <Navigate to="/zadania/excel" replace /> },
       { path: 'excel/:taskId', element: <ExcelTaskPage /> },
+      { path: 'sql', element: <Navigate to="/zadania/sql" replace /> },
+      { path: 'sql/:taskId', element: <SqlTaskPage /> },
       { path: 'arkusze', element: <SessionsPage /> },
       { path: 'arkusze/:year/:slug', element: <SessionPage /> },
       { path: 'python', element: <PythonBasicsPage /> },

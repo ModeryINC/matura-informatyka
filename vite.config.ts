@@ -34,10 +34,13 @@ export default defineConfig({
         'src/**/*.d.ts',
         // Worker wymaga prawdziwego Pyodide – testowany przez harness (unittest) i ręcznie.
         'src/python/worker.ts',
+        // Worker z SQLite – silnik (engine.ts) jest testowany bezpośrednio w Node.
+        'src/lib/sql/worker.ts',
         'scripts/build-catalog.ts',
         'scripts/verify-solutions.ts',
         'scripts/verify-basics.ts',
         'scripts/verify-excel.ts',
+        'scripts/verify-sql.ts',
         // Arkusz rysuje na <canvas> (brak w jsdom) – w testach jest podmieniany.
         'src/components/SpreadsheetWorkbook.tsx',
       ],

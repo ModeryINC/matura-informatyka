@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { basicSetup, EditorView } from 'codemirror';
 import { python } from '@codemirror/lang-python';
+import { SQLite, sql } from '@codemirror/lang-sql';
 import { HighlightStyle, indentUnit, syntaxHighlighting } from '@codemirror/language';
 import { tags } from '@lezer/highlight';
 import { EditorState } from '@codemirror/state';
@@ -16,6 +17,10 @@ interface CodeEditorProps {
   label: string;
   /** Wysokość dopasowana do treści (np. krótkie przykłady) zamiast stałej. */
   autoHeight?: boolean;
+  /** Język kodu (domyślnie Python). */
+  language?: 'python' | 'sql';
+  /** Tabele i ich kolumny – podpowiedzi nazw w edytorze SQL. */
+  schema?: Record<string, string[]>;
 }
 
 const theme = EditorView.theme({
@@ -52,11 +57,19 @@ const highlight = HighlightStyle.define([
 ]);
 
 /**
- * Edytor kodu Python oparty na CodeMirror 6.
+ * Edytor kodu (Python albo SQL) oparty na CodeMirror 6.
  * Komponent jest „półkontrolowany”: zewnętrzna zmiana `value` (np. reset)
  * podmienia treść, a wpisywanie zgłasza zmiany przez `onChange`.
  */
-export function CodeEditor({ value, onChange, onSubmit, label, autoHeight }: CodeEditorProps) {
+export function CodeEditor({
+  value,
+  onChange,
+  onSubmit,
+  label,
+  autoHeight,
+  language = 'python',
+  schema,
+}: CodeEditorProps) {
   const host = useRef<HTMLDivElement>(null);
   const view = useRef<EditorView | null>(null);
   const callbacks = useRef({ onChange, onSubmit });
@@ -85,8 +98,8 @@ export function CodeEditor({ value, onChange, onSubmit, label, autoHeight }: Cod
             indentWithTab,
           ]),
           basicSetup,
-          python(),
-          indentUnit.of('    '),
+          language === 'sql' ? sql({ dialect: SQLite, schema, upperCaseKeywords: true }) : python(),
+          indentUnit.of(language === 'sql' ? '  ' : '    '),
           theme,
           syntaxHighlighting(highlight),
           EditorView.contentAttributes.of({ 'aria-label': label }),

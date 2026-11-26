@@ -1,0 +1,85 @@
+[
+  {
+    "id": "2024-czerwiec-8",
+    "sessionId": "2024/czerwiec",
+    "number": "8",
+    "title": "Szczepienia",
+    "summary": "Lekarz przepisuje pacjentowi szczepionkę, a każda szczepionka ma rekomendowaną liczbę dawek. Pacjent jest zaszczepiony, jeśli przyjmie wszystkie dawki rekomendowane dla danej szczepionki. Dane obejmują szczepienia od 2 stycznia 2023 do 7 maja 2024.\n\nszczepionki: kod_szczepionki, liczba_dawek (rekomendowana). wizyty: pesel, kod_szczepionki, data_szczepienia (rrrr-mm-dd), numer_dawki – która dawka szczepionki została podana.",
+    "tables": [
+      {
+        "name": "szczepionki",
+        "path": "arkusze/2024/czerwiec/pliki/informatyka-2024-czerwiec-matura-rozszerzona-zalaczniki/informatyka-2024-czerwiec-matura-rozszerzona-zalaczniki/szczepionki.txt"
+      },
+      {
+        "name": "wizyty",
+        "path": "arkusze/2024/czerwiec/pliki/informatyka-2024-czerwiec-matura-rozszerzona-zalaczniki/informatyka-2024-czerwiec-matura-rozszerzona-zalaczniki/wizyty.txt"
+      }
+    ],
+    "parts": [
+      {
+        "number": "8.1",
+        "points": 2,
+        "prompt": "Dla każdej szczepionki podaj, ile łącznie jej dawek zostało podanych pacjentom (kod szczepionki i liczba dawek), w kolejności nierosnącej według liczby dawek.",
+        "list": {
+          "columns": ["kod szczepionki", "liczba dawek"],
+          "expected": [
+            ["sz15_5d", "111"],
+            ["sz10_4d", "83"],
+            ["sz21_5d", "82"],
+            ["sz17_4d", "81"],
+            ["sz20_5d", "79"],
+            ["sz9_5d", "73"],
+            ["sz3_5d", "72"],
+            ["sz13_5d", "71"],
+            ["sz1_3d", "69"],
+            ["sz6_3d", "64"],
+            ["sz7_5d", "60"],
+            ["sz12_3d", "60"],
+            ["sz24_3d", "59"],
+            ["sz22_3d", "45"],
+            ["sz18_2d", "38"],
+            ["sz19_2d", "35"],
+            ["sz4_2d", "34"],
+            ["sz8_2d", "29"],
+            ["sz16_1d", "28"],
+            ["sz11_1d", "25"],
+            ["sz23_1d", "23"],
+            ["sz5_1d", "23"],
+            ["sz14_1d", "16"],
+            ["sz2_1d", "15"]
+          ]
+        }
+      },
+      {
+        "number": "8.2",
+        "points": 2,
+        "prompt": "Podaj, ilu różnych pacjentów przyjęło przynajmniej jedną dawkę szczepionki o kodzie sz12_3d, oraz ile wśród nich było kobiet (płeć określa przedostatnia cyfra numeru PESEL – cyfra parzysta oznacza kobietę).",
+        "fields": [
+          {
+            "label": "Liczba pacjentów",
+            "expected": "24"
+          },
+          {
+            "label": "Liczba kobiet",
+            "expected": "17"
+          }
+        ]
+      },
+      {
+        "number": "8.3",
+        "points": 3,
+        "prompt": "Podaj rok i miesiąc, w którym najwięcej osób ukończyło szczepienie (w tym miesiącu przyjęło ostatnią rekomendowaną dawkę danego szczepienia), oraz liczbę osób, które ukończyły szczepienie w tym terminie.",
+        "list": {
+          "columns": ["rok", "miesiąc", "liczba osób"],
+          "expected": [["2023", "5", "48"]]
+        }
+      },
+      {
+        "number": "8.4",
+        "points": 2,
+        "prompt": "Bazę rozszerzono o tabele Pacjenci (pesel, wojewodztwo_pacjenta) i Punkt_szczepien (kod_punktu, wojewodztwo_punktu), a do tabeli Wizyty dodano pole kod_punktu. Zapisz zapytanie SQL, które poda numery PESEL pacjentów, którzy przyjęli co najmniej jedną dawkę w województwie innym niż to, w którym mieszkają (PESEL może się powtarzać).",
+        "query": "SELECT Wizyty.pesel\nFROM Pacjenci\nJOIN Wizyty ON Pacjenci.pesel = Wizyty.pesel\nJOIN Punkt_szczepien ON Wizyty.kod_punktu = Punkt_szczepien.kod_punktu\nWHERE Pacjenci.wojewodztwo_pacjenta <> Punkt_szczepien.wojewodztwo_punktu;"
+      }
+    ]
+  }
+]
