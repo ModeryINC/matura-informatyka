@@ -45,6 +45,8 @@ function localizeEditor(editor: Element, formula: string) {
 export interface SpreadsheetHandle {
   /** Wartości zaznaczonego zakresu tak, jak są wyświetlane; `null` – brak zaznaczenia. */
   getSelectionValues(): string[][] | null;
+  /** Aktualna zawartość wszystkich kart (np. do eksportu); `null` – arkusz niegotowy. */
+  getSheets(): Sheet[] | null;
 }
 
 interface SpreadsheetWorkbookProps {
@@ -144,6 +146,9 @@ export default function SpreadsheetWorkbook({ sheets, onChange, ref }: Spreadshe
       if (!api || !range) return null;
       const cells = api.getCellsByRange({ row: range.row, column: range.column });
       return cells.map((row) => row.map(cellText));
+    },
+    getSheets() {
+      return workbook.current?.getAllSheets() ?? null;
     },
   }));
 

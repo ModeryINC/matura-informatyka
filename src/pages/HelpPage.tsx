@@ -27,7 +27,9 @@ export function HelpPage() {
         Odpowiedź wpisz albo zaznacz komórki w arkuszu i kliknij „Wstaw z zaznaczenia”. Liczby
         całkowite muszą się zgadzać dokładnie, ułamki – z dokładnością klucza; daty można zapisać
         jako <code>2035-12-13</code> lub <code>13.12.2035</code>. Wykresy zrób w Excelu – nie są
-        sprawdzane.
+        sprawdzane. Przyciskiem „Eksportuj do .xlsx” zapiszesz arkusz razem z formułami (np. żeby
+        zrobić wykres w Excelu), a „Importuj z .xlsx” wczyta skoroszyt z powrotem – z wartościami,
+        formułami, datami i pogrubieniem; wykresy i scalenia komórek z pliku są pomijane.
       </p>
       <h2>Jak porównywany jest wynik?</h2>
       <ul>

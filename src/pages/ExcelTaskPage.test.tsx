@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { useImperativeHandle, type Ref } from 'react';
 import type { SpreadsheetHandle } from '../components/SpreadsheetWorkbook';
 import { loadAnswers, loadWorkbook, saveWorkbook } from '../lib/spreadsheet/storage';
+import { sheetsToXlsx } from '../lib/spreadsheet/xlsx';
 import { renderAt } from '../../tests/render';
 import { ExcelTaskPage } from './ExcelTaskPage';
 import { ExcelTasksPage } from './ExcelTasksPage';
@@ -22,7 +23,10 @@ vi.mock('../components/SpreadsheetWorkbook', () => ({
     onChange: (s: unknown[]) => void;
     ref: Ref<SpreadsheetHandle>;
   }) {
-    useImperativeHandle(ref, () => ({ getSelectionValues: () => selection }));
+    useImperativeHandle(ref, () => ({
+      getSelectionValues: () => selection,
+      getSheets: () => null,
+    }));
     changes.emit = onChange;
     return <div data-testid="arkusz">{sheets.map((s) => s.name).join(',')}</div>;
   },
@@ -190,5 +194,48 @@ describe('zadanie bez pliku i podpunkt z samym wykresem', () => {
     const chartOnly = screen.getByRole('region', { name: 'Zadanie 5.2' });
     expect(within(chartOnly).queryByRole('button', { name: /Sprawdź/ })).not.toBeInTheDocument();
     expect(screen.getByText(/Zaliczone: 0\/4 podpunktów/)).toBeInTheDocument();
+  });
+});
+
+describe('eksport i import .xlsx', () => {
+  it('eksportuje arkusz do pliku .xlsx', async () => {
+    const createUrl = vi.fn<(blob: Blob) => string>(() => 'blob:arkusz');
+    Object.assign(URL, { createObjectURL: createUrl, revokeObjectURL: vi.fn() });
+    const click = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
+    renderAt('/excel/2023-maj-6', routes);
+    await screen.findByTestId('arkusz');
+    await userEvent.click(screen.getByRole('button', { name: /Eksportuj do \.xlsx/ }));
+    await waitFor(() => expect(click).toHaveBeenCalled());
+    expect(createUrl.mock.calls[0]![0]).toBeInstanceOf(Blob);
+    expect((click.mock.contexts[0] as HTMLAnchorElement).download).toBe('2023-maj-6.xlsx');
+  });
+
+  it('wczytuje arkusz z pliku .xlsx po potwierdzeniu', async () => {
+    vi.spyOn(window, 'confirm').mockReturnValue(true);
+    const blob = await sheetsToXlsx([
+      {
+        name: 'z pliku',
+        order: 0,
+        celldata: [{ r: 0, c: 0, v: { v: 5, m: '5', ct: { fa: 'General', t: 'n' } } }],
+      },
+    ]);
+    const file = new File([await blob.arrayBuffer()], 'moje.xlsx');
+    const { container } = renderAt('/excel/2023-maj-6', routes);
+    await screen.findByTestId('arkusz');
+    const input = container.querySelector<HTMLInputElement>('input[type="file"]')!;
+    await userEvent.upload(input, file);
+    expect(await screen.findByText('Wczytano plik „moje.xlsx”.')).toBeInTheDocument();
+    expect(screen.getByTestId('arkusz')).toHaveTextContent('z pliku');
+    expect(loadWorkbook('2023-maj-6')?.[0]?.name).toBe('z pliku');
+  });
+
+  it('pokazuje błąd dla pliku, który nie jest skoroszytem', async () => {
+    vi.spyOn(window, 'confirm').mockReturnValue(true);
+    const { container } = renderAt('/excel/2023-maj-6', routes);
+    await screen.findByTestId('arkusz');
+    const input = container.querySelector<HTMLInputElement>('input[type="file"]')!;
+    await userEvent.upload(input, new File(['nie xlsx'], 'zly.xlsx'));
+    expect(await screen.findByText(/Nie udało się wczytać pliku/)).toBeInTheDocument();
+    expect(screen.getByTestId('arkusz')).toHaveTextContent('owoce');
   });
 });

@@ -1,6 +1,7 @@
 import type { Sheet } from '@fortune-sheet/core';
-import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ChangeEvent } from 'react';
 import { Link, useParams } from 'react-router';
+import { LuDownload, LuUpload } from 'react-icons/lu';
 import { FileList } from '../components/FileList';
 import { PdfViewer } from '../components/PdfViewer';
 import { SpreadsheetPartCard } from '../components/SpreadsheetPartCard';
@@ -44,6 +45,9 @@ function ExcelWorkspace({ task }: { task: SpreadsheetTask }) {
   const [saveFailed, setSaveFailed] = useState(false);
   const [answers, setAnswers] = useState<StoredSpreadsheetAnswers>(() => loadAnswers(task.id));
   const [showSheet, setShowSheet] = useState(false);
+  const [fileStatus, setFileStatus] = useState<{ error: boolean; text: string } | null>(null);
+  const [fileBusy, setFileBusy] = useState(false);
+  const fileInput = useRef<HTMLInputElement>(null);
   const workbook = useRef<SpreadsheetHandle>(null);
   const pending = useRef<Sheet[] | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -101,6 +105,59 @@ function ExcelWorkspace({ task }: { task: SpreadsheetTask }) {
     setSaveFailed(false);
     setSheets(null);
     setVersion((v) => v + 1);
+  };
+
+  const exportXlsx = async () => {
+    const current = workbook.current?.getSheets() ?? sheets;
+    if (!current) return;
+    setFileBusy(true);
+    setFileStatus(null);
+    try {
+      const { sheetsToXlsx } = await import('../lib/spreadsheet/xlsx');
+      const blob = await sheetsToXlsx(compactSheets(current));
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${task.id}.xlsx`;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch {
+      setFileStatus({ error: true, text: 'Nie udało się zapisać pliku .xlsx.' });
+    } finally {
+      setFileBusy(false);
+    }
+  };
+
+  const importXlsx = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    event.target.value = '';
+    if (!file) return;
+    if (
+      !window.confirm(
+        `Wczytać „${file.name}”? Obecna zawartość arkusza zostanie zastąpiona zawartością pliku.`,
+      )
+    )
+      return;
+    setFileBusy(true);
+    setFileStatus(null);
+    try {
+      const { xlsxToSheets } = await import('../lib/spreadsheet/xlsx');
+      const imported = await xlsxToSheets(await file.arrayBuffer());
+      clearTimeout(timer.current);
+      pending.current = null;
+      setSaveFailed(!saveWorkbook(task.id, imported));
+      setLoadError(null);
+      setSheets(imported);
+      setVersion((v) => v + 1);
+      setFileStatus({ error: false, text: `Wczytano plik „${file.name}”.` });
+    } catch {
+      setFileStatus({
+        error: true,
+        text: 'Nie udało się wczytać pliku – wybierz skoroszyt Excela (.xlsx).',
+      });
+    } finally {
+      setFileBusy(false);
+    }
   };
 
   const setPart = (number: string, answer: PartAnswer) => {
@@ -164,7 +221,35 @@ function ExcelWorkspace({ task }: { task: SpreadsheetTask }) {
           <button type="button" className="button button--ghost" onClick={resetData}>
             Przywróć dane z plików
           </button>
+          <button
+            type="button"
+            className="button button--ghost"
+            onClick={() => void exportXlsx()}
+            disabled={!sheets || fileBusy}
+          >
+            <LuDownload aria-hidden className="icon" /> Eksportuj do .xlsx
+          </button>
+          <button
+            type="button"
+            className="button button--ghost"
+            onClick={() => fileInput.current?.click()}
+            disabled={fileBusy}
+          >
+            <LuUpload aria-hidden className="icon" /> Importuj z .xlsx
+          </button>
+          <input
+            ref={fileInput}
+            type="file"
+            accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            hidden
+            onChange={(event) => void importXlsx(event)}
+          />
         </div>
+        {fileStatus && (
+          <p className={fileStatus.error ? 'hints__error' : 'muted'} role="status">
+            {fileStatus.text}
+          </p>
+        )}
         {showSheet && session && (
           <PdfViewer
             files={session.sheets}
@@ -186,7 +271,8 @@ function ExcelWorkspace({ task }: { task: SpreadsheetTask }) {
           <ul>
             <li>
               Dane są już wczytane – każdy plik w osobnej karcie (na dole arkusza). Zmiany zapisują
-              się w przeglądarce.
+              się w przeglądarce. Arkusz możesz wyeksportować do pliku .xlsx (np. żeby zrobić wykres
+              w Excelu) i wczytać z powrotem z takiego pliku.
             </li>
             <li>
               Formuły piszesz i widzisz po polsku, jak w polskim Excelu, np.{' '}

@@ -20,8 +20,9 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
   - _funkcje_ (część 1, „zapisz algorytm”) – funkcja sprawdzana zestawem testów.
 - **Zadania z Excela** (Zadania → Excel) – 34 zadania z arkusza kalkulacyjnego ze wszystkich
   arkuszy 2018–2026 (poza próbnymi Politechniki Łódzkiej – skany lub niepełny klucz). Dane są od razu wczytane do arkusza w przeglądarce
-  ([Fortune Sheet](https://github.com/ruilisi/fortune-sheet), MIT), formuły można pisać po
-  polsku (`=LICZ.JEŻELI(A:A;">5")`), a odpowiedzi – także całe zestawienia wstawiane
+  ([Fortune Sheet](https://github.com/ruilisi/fortune-sheet), MIT), formuły pisze się i widzi po
+  polsku (`=LICZ.JEŻELI(A:A;">5")`), arkusz można wyeksportować do .xlsx i wczytać z takiego
+  pliku ([ExcelJS](https://github.com/exceljs/exceljs), MIT), a odpowiedzi – także całe zestawienia wstawiane
   z zaznaczenia – są sprawdzane z kluczem CKE. Wykresów nie sprawdzamy.
 - **Wyszukiwanie** po temacie (sortowanie, rekurencja, słowniki, liczby pierwsze, …), roku,
   części arkusza, statusie i dowolnej frazie – bez względu na polskie znaki. Filtry są
