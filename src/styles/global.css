@@ -2041,20 +2041,172 @@ progress::-moz-progress-bar {
 
 @media (min-width: 1100px) {
   .xl-workspace {
-    grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: start;
+    gap: 1rem;
   }
 
   .xl-sheet {
     position: sticky;
     inset-block-start: 5rem;
   }
+}
 
-  .xl-parts {
-    max-block-size: calc(100dvh - 6rem);
-    overflow-y: auto;
-    padding-inline-end: 0.25rem;
+/*
+ * Panel odpowiedzi z boku (src/components/SidePanel.tsx). Szeroki ekran: kolumna
+ * obok arkusza z zakładką do zwijania; węższy: szuflada wysuwana z prawej krawędzi.
+ */
+.side-panel__toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 0.45rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  writing-mode: vertical-rl;
+  transition:
+    background-color 0.15s ease-out,
+    color 0.15s ease-out;
+}
+
+.side-panel__toggle .icon {
+  writing-mode: horizontal-tb;
+}
+
+.side-panel__toggle:hover {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.side-panel__toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.side-panel__badge {
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.75rem;
+  font-weight: 600;
+  writing-mode: horizontal-tb;
+}
+
+.side-panel__body {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 0;
+}
+
+.side-panel__header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-block-end: 0.75rem;
+}
+
+.side-panel__header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.side-panel__close {
+  margin-inline-start: auto;
+  inline-size: 2.25rem;
+  min-block-size: 2.25rem;
+}
+
+.side-panel__content {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-inline-end: 0.25rem;
+}
+
+/* Szeroki ekran: kolumna obok arkusza; zwinięta – sama zakładka. */
+.side-panel--docked {
+  position: sticky;
+  inset-block-start: 5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  max-block-size: calc(100dvh - 6rem);
+}
+
+.side-panel--docked .side-panel__toggle {
+  border-radius: var(--radius-sm);
+}
+
+.side-panel--docked .side-panel__body {
+  inline-size: clamp(340px, 28vw, 440px);
+  max-block-size: calc(100dvh - 6rem);
+  overflow: hidden;
+}
+
+.side-panel--docked:not([data-open]) .side-panel__body {
+  inline-size: 0;
+  opacity: 0;
+}
+
+.side-panel--docked .side-panel__close {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .side-panel--docked .side-panel__body {
+    transition:
+      inline-size 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 0.25s ease-out;
   }
+}
+
+/* Węższy ekran: szuflada z prawej krawędzi, zakładka przyklejona do jej brzegu. */
+.side-panel--drawer {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-end: 0;
+  z-index: 30;
+  inline-size: min(28rem, calc(100vw - 3rem));
+  background: var(--bg);
+  border-inline-start: 1px solid var(--border);
+  box-shadow: -12px 0 40px rgb(0 0 0 / 22%);
+}
+
+.side-panel--drawer:not([data-open]) {
+  translate: 100% 0;
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .side-panel--drawer {
+    transition:
+      translate 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+      box-shadow 0.35s ease-out;
+  }
+}
+
+/* Właściwości fizyczne: logiczne liczyłyby się w pionowym trybie pisma zakładki. */
+.side-panel--drawer .side-panel__toggle {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  translate: 0 -50%;
+  border-right: 0;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.side-panel--drawer .side-panel__body {
+  block-size: 100%;
+  padding: max(1rem, env(safe-area-inset-top)) 1rem max(1rem, env(safe-area-inset-bottom));
 }
 
 .xl-sheet {

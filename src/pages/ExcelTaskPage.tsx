@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router';
 import { LuDownload, LuUpload } from 'react-icons/lu';
 import { FileList } from '../components/FileList';
 import { PdfViewer } from '../components/PdfViewer';
+import { SidePanel } from '../components/SidePanel';
 import { SpreadsheetPartCard } from '../components/SpreadsheetPartCard';
 import type { SpreadsheetHandle } from '../components/SpreadsheetWorkbook';
 import { sessionsById, sheetLocation } from '../data';
@@ -328,17 +329,19 @@ function ExcelWorkspace({ task }: { task: SpreadsheetTask }) {
           )}
         </section>
 
-        <section className="xl-parts" aria-label="Odpowiedzi">
-          {task.parts.map((part) => (
-            <SpreadsheetPartCard
-              key={part.number}
-              part={part}
-              answer={answers.parts[part.number] ?? {}}
-              onChange={(answer) => setPart(part.number, answer)}
-              getSelection={getSelection}
-            />
-          ))}
-        </section>
+        <SidePanel title="Odpowiedzi" badge={`${passed.length}/${checkableParts(task).length}`}>
+          <div className="xl-parts">
+            {task.parts.map((part) => (
+              <SpreadsheetPartCard
+                key={part.number}
+                part={part}
+                answer={answers.parts[part.number] ?? {}}
+                onChange={(answer) => setPart(part.number, answer)}
+                getSelection={getSelection}
+              />
+            ))}
+          </div>
+        </SidePanel>
       </div>
     </div>
   );

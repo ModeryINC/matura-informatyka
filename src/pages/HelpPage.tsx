@@ -66,9 +66,11 @@ export function HelpPage() {
       <p>
         Menu (Start, Zadania, Arkusze, Pomoc) jest w dolnym pasku, a u góry zostają logo i
         przełącznik motywu. W zadaniu z Pythona konsolę i podpowiedzi AI otwierasz przyciskami pod
-        edytorem – wysuwają się od dołu ekranu, a „Uruchom” sam otwiera konsolę. Zadania da się
-        rozwiązywać także na telefonie, choć przy dłuższym kodzie wygodniej pracuje się na
-        komputerze.
+        edytorem – wysuwają się od dołu ekranu, a „Uruchom” sam otwiera konsolę (po „Sprawdź” wysuwa
+        się wynik, w SQL – wynik zapytania). Przeciągnij panel w górę, żeby zajął cały ekran, a w
+        dół, żeby go zmniejszyć lub zamknąć. Odpowiedzi do zadań z Excela i z SQL są w panelu z boku
+        – rozsuwasz go zakładką „Odpowiedzi” przy prawej krawędzi. Zadania da się rozwiązywać także
+        na telefonie, choć przy dłuższym kodzie wygodniej pracuje się na komputerze.
       </p>
       <h2>Skróty</h2>
       <ul>

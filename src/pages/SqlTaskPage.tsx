@@ -6,6 +6,7 @@ import { CodeEditor } from '../components/CodeEditor';
 import { MOBILE_NAV_QUERY } from '../components/Layout';
 import { FileList } from '../components/FileList';
 import { PdfViewer } from '../components/PdfViewer';
+import { SidePanel } from '../components/SidePanel';
 import { SpreadsheetPartCard } from '../components/SpreadsheetPartCard';
 import { SqlResults } from '../components/SqlResults';
 import { sessionsById, sheetLocation } from '../data';
@@ -318,19 +319,21 @@ function SqlWorkspace({ task }: { task: SqlTask }) {
           )}
         </section>
 
-        <section className="xl-parts" aria-label="Odpowiedzi">
-          {task.parts.map((part) => (
-            <SpreadsheetPartCard
-              key={part.number}
-              part={part}
-              answer={answers.parts[part.number] ?? {}}
-              onChange={(answer) => setPart(part.number, answer)}
-              getSelection={getSelection}
-              insertLabel="Wstaw z wyniku"
-              emptySelectionMessage="Najpierw uruchom zapytanie – wstawiany jest wynik ostatniego z nich."
-            />
-          ))}
-        </section>
+        <SidePanel title="Odpowiedzi" badge={`${passed.length}/${checkableSqlParts(task).length}`}>
+          <div className="xl-parts">
+            {task.parts.map((part) => (
+              <SpreadsheetPartCard
+                key={part.number}
+                part={part}
+                answer={answers.parts[part.number] ?? {}}
+                onChange={(answer) => setPart(part.number, answer)}
+                getSelection={getSelection}
+                insertLabel="Wstaw z wyniku"
+                emptySelectionMessage="Najpierw uruchom zapytanie – wstawiany jest wynik ostatniego z nich."
+              />
+            ))}
+          </div>
+        </SidePanel>
       </div>
     </div>
   );

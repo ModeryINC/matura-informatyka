@@ -48,7 +48,12 @@ Odpowiedzi zapisują się tylko lokalnie w przeglądarce – z innego urządzeni
   (`localStorage`); na innym urządzeniu ich nie ma, a wyczyszczenie danych witryny je usuwa.
 - **Układ na telefon** – górny pasek z logo, nazwą i przełącznikiem motywu, a nawigacja
   (Start, Zadania, Arkusze, Pomoc) w dolnym pasku pod kciukiem. Konsola i podpowiedzi AI
-  w zadaniu otwierają się przyciskiem w panelu wysuwanym od dołu („Uruchom” otwiera konsolę).
+  w zadaniu otwierają się przyciskiem w panelu wysuwanym od dołu („Uruchom” otwiera konsolę,
+  „Sprawdź” – wynik, a w SQL „Uruchom” – wynik zapytania). Panel przeciąga się palcem: w górę
+  na cały ekran, w dół (przy treści przewiniętej do góry) – z powrotem i do zamknięcia.
+- **Panel odpowiedzi z boku** (Excel i SQL) – na szerokim ekranie stoi obok arkusza lub edytora
+  i można go zwinąć do zakładki (arkusz dostaje wtedy całą szerokość); na węższym wysuwa się
+  z prawej krawędzi zakładką „Odpowiedzi”.
 - **Ładowanie w tle** – po wejściu na zakładkę Zadania → Python / Excel / SQL strona, gdy nie
   ma nic pilniejszego do roboty, pobiera odpowiednio Pythona (Pyodide), arkusz kalkulacyjny
   albo SQLite, więc zadanie otwiera się gotowe. W trybie oszczędzania danych tego nie robi.

@@ -87,6 +87,10 @@ src/data/tasks/*.json ───────────────(import.meta.
 - **Panel od dołu na telefonie** – `ActionSheet` to modalny `<dialog>` z animacją
   `@starting-style`; konsola i podpowiedzi są w nim stale zamontowane, więc ich stan
   (wejście, historia podpowiedzi) przetrwa zamknięcie panelu.
+- **Panel odpowiedzi z boku** (`SidePanel`) – na szerokim ekranie kolumna zwijana do
+  zakładki (stan w `localStorage`), na węższym szuflada renderowana portalem w `<body>`
+  (strona szczegółów ma własny kontekst warstw przez `view-transition-name`). Arkusz
+  Fortune Sheet dostaje sztuczne zdarzenie `resize`, gdy zmienia się szerokość jego ramki.
 - **Czysty CSS** – tokeny w zmiennych CSS, motyw jasny/ciemny przez
   `prefers-color-scheme` i atrybut `data-theme`, właściwości logiczne, `clamp()`,
   `color-mix()`, `:focus-visible`, `prefers-reduced-motion`.

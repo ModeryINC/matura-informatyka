@@ -139,6 +139,26 @@ export default function SpreadsheetWorkbook({ sheets, onChange, ref }: Spreadshe
     return () => observer.disconnect();
   }, []);
 
+  // Arkusz przelicza wymiary tylko przy zmianie rozmiaru okna – gdy zmienia się
+  // sama ramka (np. zwinięty panel odpowiedzi), wysyłamy mu takie zdarzenie.
+  useEffect(() => {
+    const root = container.current;
+    if (!root || typeof ResizeObserver === 'undefined') return;
+    let width = root.clientWidth;
+    let frame = 0;
+    const observer = new ResizeObserver(() => {
+      if (root.clientWidth === width) return;
+      width = root.clientWidth;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+    });
+    observer.observe(root);
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
   useImperativeHandle(ref, () => ({
     getSelectionValues() {
       const api = workbook.current;
