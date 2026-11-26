@@ -64,8 +64,8 @@ export function LandingPage() {
             czegokolwiek
           </h1>
           <p className="landing-hero__lead">
-            Rozwiązuj prawdziwe zadania z arkuszy CKE w Pythonie i w Excelu prosto w przeglądarce.
-            Każda odpowiedź jest od razu sprawdzana z kluczem.
+            Rozwiązuj prawdziwe zadania z arkuszy CKE w Pythonie, w Excelu i w SQL prosto w
+            przeglądarce. Każda odpowiedź jest od razu sprawdzana z kluczem.
           </p>
           <div className="landing-hero__actions">
             <Link to="/zadania/python" className="button button--primary button--large">

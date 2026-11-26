@@ -55,16 +55,24 @@ export function HelpPage() {
         </li>
         <li>liczby muszą się zgadzać dokładnie – zaokrąglaj tak, jak każe polecenie.</li>
       </ul>
-      <h2>Gdzie jest mój kod?</h2>
+      <h2>Gdzie są moje odpowiedzi?</h2>
       <p>
-        Strona nie ma serwera. Python (Pyodide) działa w Twojej przeglądarce, a rozwiązania zapisują
-        się w jej pamięci lokalnej – na innym komputerze ich nie zobaczysz. Wyczyszczenie danych
-        witryny usuwa rozwiązania.
+        Kod w Pythonie, odpowiedzi do zadań z Excela i z SQL oraz Twoje zapytania zapisują się tylko
+        w pamięci tej przeglądarki – na innym urządzeniu (ani w innej przeglądarce) ich nie
+        zobaczysz. Wyczyszczenie danych witryny je usuwa. Arkusz z Excela możesz zachować na dłużej,
+        eksportując go do pliku .xlsx.
+      </p>
+      <h2>Na telefonie</h2>
+      <p>
+        Menu (Start, Zadania, Arkusze, Pomoc) jest w dolnym pasku, a u góry zostają logo i
+        przełącznik motywu. Zadania da się rozwiązywać także na telefonie, choć przy dłuższym kodzie
+        wygodniej pracuje się na komputerze.
       </p>
       <h2>Skróty</h2>
       <ul>
         <li>
-          <kbd>Ctrl</kbd> + <kbd>Enter</kbd> – sprawdź rozwiązanie,
+          <kbd>Ctrl</kbd> + <kbd>Enter</kbd> – sprawdź rozwiązanie (w zadaniach z SQL – uruchom
+          zapytanie),
         </li>
         <li>
           <kbd>Ctrl</kbd> + <kbd>S</kbd> – pobierz rozwiązanie jako plik <code>.py</code> (zamiast

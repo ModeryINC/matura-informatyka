@@ -244,7 +244,7 @@ function SqlWorkspace({ task }: { task: SqlTask }) {
                     </summary>
                     <ul className="sql-schema__columns">
                       {table.columns.map((column, i) => (
-                        <li key={column}>
+                        <li key={column} style={{ '--i': i } as React.CSSProperties}>
                           <code>{column}</code>{' '}
                           <span className="muted">{TYPE_LABELS[table.types[i]!]}</span>
                         </li>

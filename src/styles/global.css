@@ -377,6 +377,89 @@ pre {
   background: var(--accent-soft);
 }
 
+/*
+ * Telefon: nawigacja jest dolnym paskiem (ikona nad podpisem, łatwa do kciuka),
+ * a górny pasek ma tylko logo, nazwę i przełącznik motywu. Pasek omija dolny
+ * „notch” (`env(safe-area-inset-bottom)`, wymaga `viewport-fit=cover`).
+ */
+.bottom-nav {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 10;
+  padding: 0.35rem max(0.5rem, env(safe-area-inset-left)) max(0.35rem, env(safe-area-inset-bottom))
+    max(0.5rem, env(safe-area-inset-right));
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  backdrop-filter: blur(12px);
+  border-block-start: 1px solid var(--border);
+  box-shadow: 0 -6px 20px rgb(16 24 40 / 8%);
+}
+
+:root:not(.theme-transition) .bottom-nav {
+  view-transition-name: dolny-pasek;
+}
+
+.bottom-nav .nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.25rem;
+  max-inline-size: 32rem;
+  margin-inline: auto;
+}
+
+.bottom-nav .nav a {
+  display: grid;
+  justify-items: center;
+  gap: 0.1rem;
+  padding: 0.3rem 0.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
+  background: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Aktywna pozycja: kapsułka za ikoną (jak w aplikacjach mobilnych). */
+.bottom-nav .nav .icon {
+  box-sizing: content-box;
+  inline-size: 1.3rem;
+  block-size: 1.3rem;
+  padding: 0.2rem 1rem;
+  border-radius: 999px;
+  vertical-align: 0;
+  transition: background-color 0.2s ease-out;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      background-color 0.2s ease-out,
+      scale 0.25s cubic-bezier(0.3, 1.5, 0.5, 1);
+  }
+}
+
+.bottom-nav .nav a:hover {
+  background: none;
+}
+
+.bottom-nav .nav a:hover .icon {
+  background: var(--surface-2);
+}
+
+.bottom-nav .nav a[aria-current='page'] .icon {
+  background: var(--accent-soft);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bottom-nav .nav a:active .icon {
+    scale: 0.9;
+  }
+}
+
+/* Miejsce na dolny pasek pod stopką. */
+body:has(.bottom-nav) {
+  padding-block-end: calc(4.5rem + env(safe-area-inset-bottom));
+}
+
 .site-main {
   flex: 1;
   inline-size: 100%;
@@ -400,6 +483,10 @@ pre {
 .site-footer p {
   margin: 0 auto;
   max-inline-size: 80ch;
+}
+
+.site-footer p + p {
+  margin-block-start: 0.35rem;
 }
 
 .page--narrow {
@@ -2038,12 +2125,91 @@ progress::-moz-progress-bar {
   gap: 0.35rem;
   cursor: pointer;
   font-size: 0.9rem;
+  list-style: none;
+}
+
+.sql-schema__table summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Strzałka obraca się przy rozwijaniu. */
+.sql-schema__table summary::after {
+  content: '';
+  inline-size: 0.45em;
+  block-size: 0.45em;
+  margin-inline-start: 0.25rem;
+  border-block-end: 2px solid currentcolor;
+  border-inline-end: 2px solid currentcolor;
+  color: var(--text-muted);
+  rotate: 45deg;
+  translate: 0 -0.15em;
+}
+
+.sql-schema__table details[open] > summary::after {
+  rotate: 225deg;
+  translate: 0 0.1em;
 }
 
 .sql-schema__columns {
   margin: 0.4rem 0 0.1rem;
   padding-inline-start: 1.25rem;
   font-size: 0.85rem;
+}
+
+/*
+ * Rozwijanie tabeli: pole rośnie płynnie do wysokości zawartości (`::details-content`
+ * z `interpolate-size`), a kolumny wjeżdżają po kolei. Przeglądarki bez tych
+ * funkcji po prostu rozwijają listę od razu.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .sql-schema__table details {
+    interpolate-size: allow-keywords;
+    transition:
+      min-inline-size 0.3s ease-out,
+      border-color 0.2s ease-out,
+      box-shadow 0.2s ease-out;
+  }
+
+  .sql-schema__table details:hover {
+    border-color: var(--accent);
+  }
+
+  .sql-schema__table details[open] {
+    box-shadow: var(--shadow);
+  }
+
+  .sql-schema__table summary::after {
+    transition:
+      rotate 0.3s cubic-bezier(0.3, 1.4, 0.5, 1),
+      translate 0.3s ease-out;
+  }
+
+  .sql-schema__table details::details-content {
+    block-size: 0;
+    opacity: 0;
+    overflow: clip;
+    transition:
+      block-size 0.3s ease-out,
+      opacity 0.25s ease-out,
+      content-visibility 0.3s allow-discrete;
+  }
+
+  .sql-schema__table details[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+
+  .sql-schema__table details[open] .sql-schema__columns li {
+    animation: kolumna-wjezdza 0.3s ease-out backwards;
+    animation-delay: calc(min(var(--i, 0), 12) * 25ms);
+  }
+}
+
+@keyframes kolumna-wjezdza {
+  from {
+    opacity: 0;
+    translate: -0.5rem 0;
+  }
 }
 
 .sql-work__actions {
@@ -2356,6 +2522,11 @@ progress::-moz-progress-bar {
 .hero-window--excel .hero-window__tag {
   background: var(--success-soft);
   color: var(--success);
+}
+
+.hero-window--sql .hero-window__tag {
+  background: var(--warning-soft);
+  color: var(--warning);
 }
 
 .hero-window__body {
@@ -2679,7 +2850,25 @@ progress::-moz-progress-bar {
   background: var(--surface-2);
   border: 1px solid var(--border);
   max-inline-size: 100%;
-  overflow-x: auto;
+  /*
+   * Bez przewijania: kapsułka aktywnej zakładki przy przesuwaniu lekko „przestrzeliwuje”,
+   * co w kontenerze z `overflow: auto` chwilowo pokazywało poziomy pasek przewijania.
+   * Zakładki zawsze się mieszczą (na wąskim ekranie dzielą szerokość po równo).
+   */
+  overflow: visible;
+}
+
+@media (max-width: 480px) {
+  .tabs {
+    display: flex;
+    inline-size: 100%;
+  }
+
+  .tabs__tab {
+    flex: 1;
+    justify-content: center;
+    padding-inline: 0.5rem;
+  }
 }
 
 .tabs__tab {

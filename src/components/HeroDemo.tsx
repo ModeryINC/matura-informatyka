@@ -2,7 +2,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { LuCheck, LuPause, LuPlay } from 'react-icons/lu';
 
 /**
- * Animacja w sekcji hero: na zmianę rozwiązanie zadania w Pythonie i w Excelu,
+ * Animacja w sekcji hero: po kolei rozwiązanie zadania w Pythonie, w Excelu i w SQL,
  * pisane znak po znaku i „sprawdzane” z kluczem. Zadanie jest prawdziwe
  * (maj 2023, zadanie 6.2 – w 19 dniach dostarczono najwięcej porzeczek).
  *
@@ -11,7 +11,7 @@ import { LuCheck, LuPause, LuPlay } from 'react-icons/lu';
  */
 
 interface Scene {
-  kind: 'python' | 'excel';
+  kind: 'python' | 'excel' | 'sql';
   title: string;
   code: string;
   result: string;
@@ -37,14 +37,33 @@ print(dni)`,
     code: '=JEŻELI(ORAZ(D2>B2;D2>C2);1;0)',
     result: '19',
   },
+  {
+    kind: 'sql',
+    title: 'zapytanie.sql',
+    code: `SELECT COUNT(*) AS dni
+FROM owoce
+WHERE porzeczki > maliny
+  AND porzeczki > truskawki;`,
+    result: '19',
+  },
 ];
+
+const TAGS: Record<Scene['kind'], string> = { python: 'Python', excel: 'Excel', sql: 'SQL' };
+/** Co stoi przed wynikiem w dolnej części okna. */
+const PROMPTS: Record<Scene['kind'], string> = {
+  python: '>>>',
+  excel: '=SUMA(E2:E154)',
+  sql: 'dni =',
+};
 
 const TYPE_MS = 45;
 /** Klatki po napisaniu kodu: wynik, dwa testy, przerwa przed kolejną sceną. */
 const AFTER = { output: 8, check1: 20, check2: 30, next: 85 };
 
-const KEYWORDS = /\b(with|open|as|for|in|if|print|int|max|next|JEŻELI|ORAZ)\b/;
-const TOKEN = /("[^"]*"?|\b\d+\b|\b(?:with|open|as|for|in|if|print|int|max|next|JEŻELI|ORAZ)\b)/;
+const WORDS =
+  'with|open|as|for|in|if|print|int|max|next|JEŻELI|ORAZ|SELECT|COUNT|AS|FROM|WHERE|AND';
+const KEYWORDS = new RegExp(`^(?:${WORDS})$`);
+const TOKEN = new RegExp(String.raw`("[^"]*"?|\b\d+\b|\b(?:${WORDS})\b)`);
 
 /** Proste kolorowanie składni dla częściowo napisanego kodu. */
 function highlight(code: string): ReactNode[] {
@@ -128,9 +147,11 @@ export function HeroDemo() {
   const demo = useHeroAnimation();
   const { scene } = demo;
   const python = scene.kind === 'python';
+  const sql = scene.kind === 'sql';
+  const excel = scene.kind === 'excel';
   const caret = demo.typing && !demo.reduced && <span className="hero-caret" />;
   // Kolumna E wypełnia się po wpisaniu formuły (w ukrytej scenie – od razu, by zająć miejsce).
-  const filled = python || demo.showOutput;
+  const filled = !excel || demo.showOutput;
 
   return (
     <div className="hero-demo" data-paused={demo.paused || undefined}>
@@ -149,7 +170,7 @@ export function HeroDemo() {
 
       <figure
         className={`hero-window hero-window--${scene.kind}`}
-        aria-label="Przykład: rozwiązanie zadania 6.2 z matury 2023 w Pythonie i w Excelu, sprawdzone z kluczem"
+        aria-label="Przykład: rozwiązanie zadania 6.2 z matury 2023 w Pythonie, w Excelu i w SQL, sprawdzone z kluczem"
       >
         <div className="hero-window__bar" aria-hidden="true">
           <span className="hero-window__dots">
@@ -158,14 +179,14 @@ export function HeroDemo() {
             <i />
           </span>
           <span className="hero-window__title">{scene.title}</span>
-          <span className="hero-window__tag">{scene.kind === 'python' ? 'Python' : 'Excel'}</span>
+          <span className="hero-window__tag">{TAGS[scene.kind]}</span>
         </div>
 
         <div className="hero-window__body" aria-hidden="true">
           {/*
-           * Obie sceny leżą w tej samej komórce siatki (nieaktywna jest niewidoczna,
-           * ale zajmuje miejsce), więc okno ma zawsze ten sam rozmiar – największy
-           * z obu – niezależnie od szerokości ekranu i czcionki.
+           * Wszystkie sceny leżą w tej samej komórce siatki (nieaktywne są niewidoczne,
+           * ale zajmują miejsce), więc okno ma zawsze ten sam rozmiar – największy
+           * z nich – niezależnie od szerokości ekranu i czcionki.
            */}
           <div className="hero-stage">
             <pre className={`hero-code${python ? '' : ' is-hidden'}`}>
@@ -174,12 +195,18 @@ export function HeroDemo() {
                 {python && caret}
               </code>
             </pre>
-            <div className={`hero-sheet${python ? ' is-hidden' : ''}`}>
+            <pre className={`hero-code${sql ? '' : ' is-hidden'}`}>
+              <code>
+                {highlight(sql ? demo.typed : SCENES[2]!.code)}
+                {sql && caret}
+              </code>
+            </pre>
+            <div className={`hero-sheet${excel ? '' : ' is-hidden'}`}>
               <div className="hero-sheet__formula">
                 <span>fx</span>
                 <code>
-                  {highlight(python ? SCENES[1]!.code : demo.typed)}
-                  {!python && caret}
+                  {highlight(excel ? demo.typed : SCENES[1]!.code)}
+                  {excel && caret}
                 </code>
               </div>
               <table>
@@ -214,8 +241,7 @@ export function HeroDemo() {
 
           <div className="hero-output">
             <div className={`hero-output__line${demo.showOutput ? ' is-visible' : ''}`}>
-              <span className="muted">{scene.kind === 'python' ? '>>>' : '=SUMA(E2:E154)'}</span>{' '}
-              <strong>{scene.result}</strong>
+              <span className="muted">{PROMPTS[scene.kind]}</span> <strong>{scene.result}</strong>
             </div>
             <div className="hero-checks">
               <span className={`hero-check${demo.check1 ? ' is-visible' : ''}`}>

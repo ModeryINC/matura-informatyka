@@ -2,8 +2,11 @@
 
 ## Założenia
 
-- **Bez serwera** – statyczne pliki na GitHub Pages; cała logika (w tym Python) działa
-  w przeglądarce.
+- **Statyczna strona** – pliki na GitHub Pages; Python (Pyodide), arkusz kalkulacyjny
+  (Fortune Sheet) i baza danych (sql.js) działają w przeglądarce. Jedyny element po stronie
+  serwera to opcjonalny pośrednik podpowiedzi AI (Cloudflare Worker).
+- **Dane użytkownika tylko lokalnie** – rozwiązania i odpowiedzi są w `localStorage`; nie ma
+  kont ani synchronizacji między urządzeniami.
 - **Dane jako pliki** – katalog arkuszy jest generowany z drzewa `public/arkusze`, zadania są
   opisane w plikach JSON i walidowane w testach.
 - **Logika oddzielona od UI** – wszystko, co da się przetestować bez przeglądarki, jest
@@ -34,18 +37,23 @@ src/data/tasks/*.json ───────────────(import.meta.
 
 ## Najważniejsze moduły
 
-| Moduł                    | Odpowiedzialność                                                        |
-| ------------------------ | ----------------------------------------------------------------------- |
-| `src/types.ts`           | model domenowy: sesje, zadania (`program` / `function`), wyniki, tematy |
-| `src/lib/sessions.ts`    | rozpoznawanie rodzaju sesji z nazwy folderu, sortowanie                 |
-| `src/lib/compare.ts`     | porównywanie wyjścia programu z kluczem                                 |
-| `src/lib/search.ts`      | filtrowanie zadań i synchronizacja filtrów z adresem URL                |
-| `src/lib/storage.ts`     | zapis rozwiązań w `localStorage` + zdarzenia zmian                      |
-| `src/lib/validate.ts`    | walidacja plików zadań                                                  |
-| `src/python/protocol.ts` | typy wiadomości wątek główny ↔ worker                                   |
-| `src/python/worker.ts`   | ładowanie Pyodide, wirtualny system plików, wywołanie harnessu          |
-| `src/python/harness.py`  | wykonanie kodu użytkownika, przechwycenie stdout, porównanie wyników    |
-| `src/python/runner.ts`   | cykl życia workera, limit czasu, budowanie `SubmissionResult`           |
+| Moduł                    | Odpowiedzialność                                                         |
+| ------------------------ | ------------------------------------------------------------------------ |
+| `src/types.ts`           | model domenowy: sesje, zadania (`program` / `function`), wyniki, tematy  |
+| `src/lib/sessions.ts`    | rozpoznawanie rodzaju sesji z nazwy folderu, sortowanie                  |
+| `src/lib/compare.ts`     | porównywanie wyjścia programu z kluczem                                  |
+| `src/lib/search.ts`      | filtrowanie zadań i synchronizacja filtrów z adresem URL                 |
+| `src/lib/storage.ts`     | zapis rozwiązań w `localStorage` + zdarzenia zmian                       |
+| `src/lib/validate.ts`    | walidacja plików zadań                                                   |
+| `src/python/protocol.ts` | typy wiadomości wątek główny ↔ worker                                    |
+| `src/python/worker.ts`   | ładowanie Pyodide, wirtualny system plików, wywołanie harnessu           |
+| `src/python/harness.py`  | wykonanie kodu użytkownika, przechwycenie stdout, porównanie wyników     |
+| `src/python/runner.ts`   | cykl życia workera, limit czasu, budowanie `SubmissionResult`            |
+| `src/lib/spreadsheet/`   | zadania z Excela: wczytanie danych, formuły po polsku, sprawdzanie, xlsx |
+| `src/lib/sql/tables.ts`  | pliki z danymi → tabele (kodowanie, separator, typy pól, daty)           |
+| `src/lib/sql/engine.ts`  | baza SQLite (sql.js), tłumaczenie składni Accessa, wykonanie zapytań     |
+| `src/lib/sql/client.ts`  | worker z bazą, limit czasu zapytania, odtwarzanie danych                 |
+| `src/components/Layout`  | nagłówek, nawigacja (na telefonie – dolny pasek), stopka                 |
 
 ## Decyzje projektowe
 
@@ -67,6 +75,11 @@ src/data/tasks/*.json ───────────────(import.meta.
   przejdzie niezauważona.
 - **Tolerancyjne porównywanie** – na maturze liczy się wynik, nie format; sprawdzarka
   akceptuje opisy, różne układy linii i dłuższe rozwinięcia dziesiętne.
+- **SQLite w Web Workerze** – zapytania z pętlą bez końca (np. rekurencyjne `WITH`) nie
+  blokują strony; po 10 s worker jest kończony, a baza wczytywana od nowa z plików.
+- **Dolny pasek na telefonie** – poniżej 640 px nawigacja jest renderowana poza nagłówkiem
+  jako stały pasek u dołu (`useMediaQuery`), bo przypięty nagłówek z `backdrop-filter`
+  byłby blokiem zawierającym dla `position: fixed`.
 - **Czysty CSS** – tokeny w zmiennych CSS, motyw jasny/ciemny przez
   `prefers-color-scheme` i atrybut `data-theme`, właściwości logiczne, `clamp()`,
   `color-mix()`, `:focus-visible`, `prefers-reduced-motion`.

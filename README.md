@@ -1,15 +1,17 @@
 # Matura z informatyki – arkusze i zadania z automatycznym sprawdzaniem
 
 Strona z arkuszami maturalnymi z informatyki (poziom rozszerzony, 2018–2026), na której można
-**rozwiązywać zadania algorytmiczne w Pythonie** i od razu sprawdzać je z kluczem CKE.
-Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na GitHub Pages.
+**rozwiązywać zadania w Pythonie, w arkuszu kalkulacyjnym i w SQL** i od razu sprawdzać je
+z kluczem CKE. Kod, formuły i zapytania działają w przeglądarce, nic nie trzeba instalować.
+Odpowiedzi zapisują się tylko lokalnie w przeglądarce – z innego urządzenia ich nie widać.
 
 **Strona: <https://moderyinc.github.io/matura-informatyka/>**
 
 ## Co potrafi
 
-- **Strona startowa** z animowanym przykładem rozwiązania (Python i Excel) i skrótem
-  możliwości; menu: **Zadania** (podział: Python, Excel, SQL), **Arkusze**, **Pomoc**.
+- **Strona startowa** z animowanym przykładem rozwiązania tego samego zadania w Pythonie,
+  w Excelu i w SQL oraz skrótem możliwości; menu: **Zadania** (podział: Python, Excel, SQL),
+  **Arkusze**, **Pomoc**.
 - **Przegląd arkuszy** – 39 sesji (główne, dodatkowe, próbne, stara formuła) z podglądem PDF,
   przyciskami do zadań z danego arkusza, kluczem odpowiedzi i plikami z danymi (podgląd
   w oknie z przyciskiem pobierania).
@@ -19,7 +21,8 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
     na danych przykładowych z arkusza i na pełnych danych egzaminacyjnych,
   - _funkcje_ (część 1, „zapisz algorytm”) – funkcja sprawdzana zestawem testów.
 - **Zadania z Excela** (Zadania → Excel) – 34 zadania z arkusza kalkulacyjnego ze wszystkich
-  arkuszy 2018–2026 (poza próbnymi Politechniki Łódzkiej – skany lub niepełny klucz). Dane są od razu wczytane do arkusza w przeglądarce
+  arkuszy 2018–2026 (poza próbnymi Politechniki Łódzkiej – skany lub niepełny klucz). Dane są
+  od razu wczytane do arkusza w przeglądarce
   ([Fortune Sheet](https://github.com/ruilisi/fortune-sheet), MIT), formuły pisze się i widzi po
   polsku (`=LICZ.JEŻELI(A:A;">5")`), arkusz można wyeksportować do .xlsx i wczytać z takiego
   pliku ([ExcelJS](https://github.com/exceljs/exceljs), MIT), a odpowiedzi – także całe zestawienia wstawiane
@@ -28,7 +31,8 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
   2018–2026. Pliki z danymi są od razu tabelami bazy SQLite w przeglądarce
   ([sql.js](https://github.com/sql-js/sql.js), MIT; zapytania działają w Web Workerze z limitem
   czasu). Rozumiemy też typową składnię Accessa (`SELECT TOP 1`, `Year()`, `IIf()`,
-  `#2020-05-01#`, `&`, `LIKE "*abc*"`). Wynik zapytania wstawia się jednym kliknięciem do
+  `#2020-05-01#`, `&`, `LIKE "*abc*"`). Tabele z polami i typami są w rozwijanym schemacie
+  nad edytorem (z podpowiadaniem nazw tabel i pól). Wynik zapytania wstawia się jednym kliknięciem do
   podpunktu i sprawdza z kluczem – listy bez względu na kolejność wierszy i kolumn. Podpunkty,
   w których zapytanie pisze się na kartce (tabel nie ma w plikach), mają przykładowe
   rozwiązanie z klucza.
@@ -40,8 +44,12 @@ Wszystko działa w przeglądarce – strona nie ma serwera i jest hostowana na G
 - **Podpowiedzi AI** (Google Gemini) – naprowadzają na podstawie Twojego kodu i wyniku
   sprawdzenia, bez podawania gotowego rozwiązania. Klucz jest bezpieczny po stronie
   pośrednika na Cloudflare Workers ([konfiguracja](docs/podpowiedzi-ai.md)).
-- **Postęp** – rozwiązania i statusy zapisują się lokalnie w przeglądarce.
-- Motyw jasny/ciemny, obsługa klawiatury (Ctrl+Enter – sprawdź), układ na telefon.
+- **Postęp** – rozwiązania, odpowiedzi i statusy zapisują się lokalnie w przeglądarce
+  (`localStorage`); na innym urządzeniu ich nie ma, a wyczyszczenie danych witryny je usuwa.
+- **Układ na telefon** – górny pasek z logo, nazwą i przełącznikiem motywu, a nawigacja
+  (Start, Zadania, Arkusze, Pomoc) w dolnym pasku pod kciukiem.
+- Motyw jasny/ciemny (z animacją rozlewania), przejścia między stronami (View Transitions),
+  obsługa klawiatury (Ctrl+Enter – sprawdź / uruchom), szacunek dla `prefers-reduced-motion`.
 
 ## Szybki start
 
@@ -132,8 +140,8 @@ Dependabot co tydzień proponuje aktualizacje zależności i akcji.
 - Arkusze próbne Politechniki Łódzkiej z lat 2021–2022 są skanami, a w marcu 2024 tekst nie ma
   mapowania znaków – ich treść została odczytana z obrazu stron. Gdy klucz był dostępny tylko
   jako skan, oczekiwane wyniki pochodzą z rozwiązań wzorcowych (zaznaczono to w opisie zadania).
-- Zadania wymagające arkusza kalkulacyjnego lub bazy danych oraz pytania testowe (P/F) nie mają
-  sprawdzarki – są dostępne w arkuszach PDF.
+- Pytania testowe (P/F), wykresy i zapytania pisane tylko na kartce nie mają sprawdzarki –
+  są dostępne w arkuszach PDF (przy zapytaniach z kartki pokazujemy przykład z klucza).
 
 ## Źródła i prawa
 

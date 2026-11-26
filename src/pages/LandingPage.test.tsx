@@ -75,6 +75,14 @@ describe('strona startowa', () => {
     act(() => vi.advanceTimersByTime(45 * 60));
     expect(within(window).getByText('Excel')).toBeInTheDocument();
 
+    // Potem to samo zadanie w SQL.
+    act(() => vi.advanceTimersByTime(45 * 120));
+    expect(within(window).getByText('SQL')).toBeInTheDocument();
+    act(() => vi.advanceTimersByTime(45 * 30));
+    expect(window.querySelector('.hero-code:not(.is-hidden) code')!.textContent).toMatch(
+      /^SELECT COUNT/,
+    );
+
     vi.useRealTimers();
     const pause = screen.getByRole('button', { name: /Zatrzymaj animację/ });
     await userEvent.click(pause);
