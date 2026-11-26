@@ -79,9 +79,9 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
   const [busy, setBusy] = useState(false);
   const [showSheet, setShowSheet] = useState(false);
   const runnerStatus = useRunnerStatus(runner);
-  // Na telefonie konsola i podpowiedzi AI otwierają się w panelu wysuwanym od dołu.
+  // Na telefonie konsola, wynik sprawdzenia i podpowiedzi AI wysuwają się od dołu.
   const mobile = useMediaQuery(MOBILE_NAV_QUERY);
-  const [sheet, setSheet] = useState<'console' | 'hints' | null>(null);
+  const [sheet, setSheet] = useState<'console' | 'result' | 'hints' | null>(null);
   const status = solutionStatus(task.id);
 
   // Zapis szkicu z opóźnieniem, żeby nie pisać do localStorage przy każdym znaku.
@@ -117,12 +117,14 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
     const submission = await runner.submit(task, code);
     saveSolution(task.id, { code, lastResult: submission });
     setResult(submission);
+    if (mobile) setSheet('result');
     // Wynik jest pod konsolą – pokazujemy go (w prawej kolumnie lub na stronie).
-    requestAnimationFrame(() =>
-      resultRef.current?.scrollIntoView?.({ block: 'nearest', behavior: 'smooth' }),
-    );
+    else
+      requestAnimationFrame(() =>
+        resultRef.current?.scrollIntoView?.({ block: 'nearest', behavior: 'smooth' }),
+      );
     setBusy(false);
-  }, [runner, task, code]);
+  }, [runner, task, code, mobile]);
 
   // Ctrl+S na stronie zadania pobiera rozwiązanie jako plik .py zamiast zapisywać stronę.
   const saveFile = useCallback(
@@ -363,6 +365,20 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
                         />
                       )}
                     </button>
+                    {result && (
+                      <button
+                        type="button"
+                        className="button"
+                        onClick={() => setSheet('result')}
+                        aria-haspopup="dialog"
+                      >
+                        <LuCheck aria-hidden className="icon" /> Wynik
+                        <span
+                          className={`sheet-buttons__dot${result.passed ? '' : ' sheet-buttons__dot--error'}`}
+                          aria-label={result.passed ? '(zaliczone)' : '(niezaliczone)'}
+                        />
+                      </button>
+                    )}
                     {aiConfig && (
                       <button
                         type="button"
@@ -374,7 +390,13 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
                       </button>
                     )}
                   </div>
-                  {resultPanel}
+                  <ActionSheet
+                    open={sheet === 'result'}
+                    onClose={() => setSheet(null)}
+                    label="Wynik sprawdzenia"
+                  >
+                    {resultPanel}
+                  </ActionSheet>
                   <ActionSheet
                     open={sheet === 'console'}
                     onClose={() => setSheet(null)}

@@ -194,6 +194,23 @@ describe('TaskPage na telefonie', () => {
     expect(screen.getByRole('dialog', { name: 'Konsola' })).toHaveAttribute('open');
   });
 
+  it('„Sprawdź” wysuwa od dołu wynik sprawdzenia', async () => {
+    renderMobile(
+      fakeRunner({
+        passed: false,
+        durationMs: 3,
+        results: [{ label: 'Dane przykładowe', passed: false, expected: '2', actual: '3' }],
+      }),
+    );
+    await userEvent.click(screen.getByRole('button', { name: /Sprawdź/ }));
+    const sheet = await screen.findByRole('dialog', { name: 'Wynik sprawdzenia' });
+    expect(within(sheet).getByText('Dane przykładowe')).toBeInTheDocument();
+    await userEvent.click(within(sheet).getByRole('button', { name: 'Zamknij' }));
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: /^Wynik/ }));
+    expect(screen.getByRole('dialog', { name: 'Wynik sprawdzenia' })).toBeInTheDocument();
+  });
+
   it('„Uruchom” otwiera konsolę z wyjściem programu', async () => {
     renderMobile(fakeRunner({ passed: true, results: [], durationMs: 1 }));
     await userEvent.click(screen.getByRole('button', { name: /Uruchom/ }));

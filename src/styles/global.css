@@ -814,13 +814,14 @@ select:focus-visible {
   background: rgb(10 14 24 / 55%);
 }
 
-/* Panel wysuwany od dołu (telefon): konsola i podpowiedzi AI ----------------- */
+/* Panel wysuwany od dołu (telefon): konsola, wynik, podpowiedzi AI ---------- */
 .action-sheet {
   inset-block: auto 0;
   inset-inline: 0;
   inline-size: 100%;
   max-inline-size: 100%;
-  max-block-size: 88dvh;
+  /* Do połowy ekranu (albo mniej, gdy treść jest krótka); `full` – cały ekran. */
+  max-block-size: 62dvh;
   margin: 0;
   padding: 0;
   border: 1px solid var(--border);
@@ -837,6 +838,13 @@ select:focus-visible {
   flex-direction: column;
 }
 
+.action-sheet[data-size='full'] {
+  block-size: 100dvh;
+  max-block-size: 100dvh;
+  border-radius: 0;
+  padding-block-start: env(safe-area-inset-top);
+}
+
 .action-sheet::backdrop {
   background: rgb(10 14 24 / 50%);
 }
@@ -845,10 +853,19 @@ select:focus-visible {
 @media (prefers-reduced-motion: no-preference) {
   .action-sheet {
     translate: 0 100%;
+    interpolate-size: allow-keywords;
     transition:
       translate 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+      block-size 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+      max-block-size 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-radius 0.3s ease-out,
       overlay 0.3s allow-discrete,
       display 0.3s allow-discrete;
+  }
+
+  /* Podczas przeciągania panel idzie za palcem, bez opóźnienia. */
+  .action-sheet.is-dragging {
+    transition: none;
   }
 
   .action-sheet[open] {
@@ -887,7 +904,11 @@ select:focus-visible {
   position: relative;
   display: flex;
   justify-content: flex-end;
+  gap: 0.25rem;
   padding: 0.4rem 0.5rem 0;
+  /* Uchwyt i pasek przeciąga się palcem (ruch obsługuje skrypt). */
+  touch-action: none;
+  cursor: grab;
 }
 
 .action-sheet__handle {
@@ -926,8 +947,7 @@ select:focus-visible {
 
 .sheet-buttons {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
   gap: 0.5rem;
 }
 

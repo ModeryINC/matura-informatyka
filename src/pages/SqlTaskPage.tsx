@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router';
-import { LuDatabase, LuPlay, LuRotateCcw } from 'react-icons/lu';
+import { LuDatabase, LuPlay, LuRotateCcw, LuTable } from 'react-icons/lu';
+import { ActionSheet } from '../components/ActionSheet';
 import { CodeEditor } from '../components/CodeEditor';
+import { MOBILE_NAV_QUERY } from '../components/Layout';
 import { FileList } from '../components/FileList';
 import { PdfViewer } from '../components/PdfViewer';
 import { SpreadsheetPartCard } from '../components/SpreadsheetPartCard';
@@ -9,6 +11,7 @@ import { SqlResults } from '../components/SqlResults';
 import { sessionsById, sheetLocation } from '../data';
 import { checkableSqlParts, sqlTasksById, sqlTotalPoints } from '../data/sql';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { plural } from '../lib/plural';
 import { SqlClient } from '../lib/sql/client';
 import { formatValue, type QueryOutcome } from '../lib/sql/engine';
@@ -55,6 +58,9 @@ function SqlWorkspace({ task }: { task: SqlTask }) {
   const [running, setRunning] = useState(false);
   const [answers, setAnswers] = useState<StoredSqlAnswers>(() => loadSqlAnswers(task.id));
   const [showSheet, setShowSheet] = useState(false);
+  // Na telefonie wynik zapytania wysuwa się od dołu.
+  const mobile = useMediaQuery(MOBILE_NAV_QUERY);
+  const [resultsOpen, setResultsOpen] = useState(false);
   const lastRows = useRef<string[][] | null>(null);
 
   useEffect(() => {
@@ -72,6 +78,7 @@ function SqlWorkspace({ task }: { task: SqlTask }) {
   }, [client]);
 
   const run = useCallback(async () => {
+    if (mobile) setResultsOpen(true);
     setRunning(true);
     try {
       const result = await client.run(query);
@@ -88,7 +95,7 @@ function SqlWorkspace({ task }: { task: SqlTask }) {
     } finally {
       setRunning(false);
     }
-  }, [client, query]);
+  }, [client, query, mobile]);
 
   const onQueryChange = (value: string) => {
     setQuery(value);
@@ -281,8 +288,34 @@ function SqlWorkspace({ task }: { task: SqlTask }) {
             <span className="muted">
               <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
             </span>
+            {mobile && outcome && (
+              <button
+                type="button"
+                className="button button--ghost"
+                onClick={() => setResultsOpen(true)}
+                aria-haspopup="dialog"
+              >
+                <LuTable aria-hidden className="icon" /> Wynik
+              </button>
+            )}
           </div>
-          <div aria-live="polite">{outcome && <SqlResults outcome={outcome} />}</div>
+          {mobile ? (
+            <ActionSheet
+              open={resultsOpen}
+              onClose={() => setResultsOpen(false)}
+              label="Wynik zapytania"
+            >
+              <div aria-live="polite">
+                {running && !outcome ? (
+                  <p className="muted">Wykonywanie…</p>
+                ) : (
+                  outcome && <SqlResults outcome={outcome} />
+                )}
+              </div>
+            </ActionSheet>
+          ) : (
+            <div aria-live="polite">{outcome && <SqlResults outcome={outcome} />}</div>
+          )}
         </section>
 
         <section className="xl-parts" aria-label="Odpowiedzi">
