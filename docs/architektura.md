@@ -80,6 +80,13 @@ src/data/tasks/*.json ───────────────(import.meta.
 - **Dolny pasek na telefonie** – poniżej 640 px nawigacja jest renderowana poza nagłówkiem
   jako stały pasek u dołu (`useMediaQuery`), bo przypięty nagłówek z `backdrop-filter`
   byłby blokiem zawierającym dla `position: fixed`.
+- **Ładowanie w tle** (`src/lib/preload.ts`) – lista zadań danego rodzaju w czasie
+  bezczynności (`requestIdleCallback`) uruchamia Pyodide (`getRunner().init()`), moduł
+  Fortune Sheet (ten sam `import()` co `lazy()`) albo „zapasowego” workera z załadowanym
+  SQLite, którego przejmuje pierwsze otwarte zadanie. Pomijane przy `saveData`.
+- **Panel od dołu na telefonie** – `ActionSheet` to modalny `<dialog>` z animacją
+  `@starting-style`; konsola i podpowiedzi są w nim stale zamontowane, więc ich stan
+  (wejście, historia podpowiedzi) przetrwa zamknięcie panelu.
 - **Czysty CSS** – tokeny w zmiennych CSS, motyw jasny/ciemny przez
   `prefers-color-scheme` i atrybut `data-theme`, właściwości logiczne, `clamp()`,
   `color-mix()`, `:focus-visible`, `prefers-reduced-motion`.

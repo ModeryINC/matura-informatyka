@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router';
+import { ActionSheet } from '../components/ActionSheet';
 import { CodeEditor } from '../components/CodeEditor';
+import { MOBILE_NAV_QUERY } from '../components/Layout';
 import { Console } from '../components/Console';
 import { FileList } from '../components/FileList';
 import { HintPanel } from '../components/HintPanel';
@@ -10,6 +12,7 @@ import { StatusBadge } from '../components/StatusBadge';
 import { TopicList } from '../components/TopicBadge';
 import { sessionsById, sheetLocation, tasksById, tasksForSession } from '../data';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { useRunnerStatus } from '../hooks/useRunnerStatus';
 import { downloadText, isSaveShortcut, solutionFileName } from '../lib/download';
 import { findForbidden } from '../lib/restrictions';
@@ -24,6 +27,8 @@ import {
   LuCheck,
   LuDownload,
   LuPlay,
+  LuSparkles,
+  LuTerminal,
   LuTriangleAlert,
 } from 'react-icons/lu';
 
@@ -74,6 +79,9 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
   const [busy, setBusy] = useState(false);
   const [showSheet, setShowSheet] = useState(false);
   const runnerStatus = useRunnerStatus(runner);
+  // Na telefonie konsola i podpowiedzi AI otwierają się w panelu wysuwanym od dołu.
+  const mobile = useMediaQuery(MOBILE_NAV_QUERY);
+  const [sheet, setSheet] = useState<'console' | 'hints' | null>(null);
   const status = solutionStatus(task.id);
 
   // Zapis szkicu z opóźnieniem, żeby nie pisać do localStorage przy każdym znaku.
@@ -84,6 +92,7 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
   }, [code, task]);
 
   const run = useCallback(async () => {
+    if (mobile) setSheet('console');
     setBusy(true);
     setRunning(true);
     setResult(null);
@@ -95,7 +104,7 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
     setOutput(finished);
     setRunning(false);
     setBusy(false);
-  }, [runner, task, code, stdin]);
+  }, [runner, task, code, stdin, mobile]);
 
   const resultRef = useRef<HTMLDivElement>(null);
   const forbiddenUsed = useMemo(
@@ -144,6 +153,33 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
   const next = siblings[index + 1];
   const dataFiles =
     task.kind === 'program' ? [...new Set(task.checks.flatMap((c) => Object.values(c.files)))] : [];
+
+  const consolePanel = (
+    <Console
+      output={output.stdout}
+      error={output.error}
+      running={running}
+      stdin={stdin}
+      onStdinChange={setStdin}
+      onClear={() => setOutput(EMPTY_OUTPUT)}
+      usesInput={USES_INPUT.test(code)}
+    />
+  );
+  const resultPanel = (
+    <div aria-live="polite" ref={resultRef}>
+      {result && <ResultPanel result={result} />}
+    </div>
+  );
+  const hintPanel = aiConfig && (
+    <HintPanel
+      config={aiConfig}
+      task={task}
+      code={code}
+      result={result}
+      output={output.stdout || output.error ? output : null}
+      solved={status === 'zaliczone'}
+    />
+  );
 
   return (
     <div className="page page--task page--detail">
@@ -310,27 +346,58 @@ function TaskWorkspace({ task, runner, aiConfig }: TaskWorkspaceProps) {
               )}
             </div>
             <div className="editor-pane__output">
-              <Console
-                output={output.stdout}
-                error={output.error}
-                running={running}
-                stdin={stdin}
-                onStdinChange={setStdin}
-                onClear={() => setOutput(EMPTY_OUTPUT)}
-                usesInput={USES_INPUT.test(code)}
-              />
-              <div aria-live="polite" ref={resultRef}>
-                {result && <ResultPanel result={result} />}
-              </div>
-              {aiConfig && (
-                <HintPanel
-                  config={aiConfig}
-                  task={task}
-                  code={code}
-                  result={result}
-                  output={output.stdout || output.error ? output : null}
-                  solved={status === 'zaliczone'}
-                />
+              {mobile ? (
+                <>
+                  <div className="sheet-buttons">
+                    <button
+                      type="button"
+                      className="button"
+                      onClick={() => setSheet('console')}
+                      aria-haspopup="dialog"
+                    >
+                      <LuTerminal aria-hidden className="icon" /> Konsola
+                      {(running || output.stdout || output.error) && (
+                        <span
+                          className={`sheet-buttons__dot${output.error ? ' sheet-buttons__dot--error' : ''}`}
+                          aria-label={output.error ? '(błąd)' : '(jest wyjście)'}
+                        />
+                      )}
+                    </button>
+                    {aiConfig && (
+                      <button
+                        type="button"
+                        className="button"
+                        onClick={() => setSheet('hints')}
+                        aria-haspopup="dialog"
+                      >
+                        <LuSparkles aria-hidden className="icon" /> Podpowiedź AI
+                      </button>
+                    )}
+                  </div>
+                  {resultPanel}
+                  <ActionSheet
+                    open={sheet === 'console'}
+                    onClose={() => setSheet(null)}
+                    label="Konsola"
+                  >
+                    {consolePanel}
+                  </ActionSheet>
+                  {hintPanel && (
+                    <ActionSheet
+                      open={sheet === 'hints'}
+                      onClose={() => setSheet(null)}
+                      label="Podpowiedzi AI"
+                    >
+                      {hintPanel}
+                    </ActionSheet>
+                  )}
+                </>
+              ) : (
+                <>
+                  {consolePanel}
+                  {resultPanel}
+                  {hintPanel}
+                </>
               )}
             </div>
           </div>

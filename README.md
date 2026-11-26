@@ -47,7 +47,11 @@ Odpowiedzi zapisują się tylko lokalnie w przeglądarce – z innego urządzeni
 - **Postęp** – rozwiązania, odpowiedzi i statusy zapisują się lokalnie w przeglądarce
   (`localStorage`); na innym urządzeniu ich nie ma, a wyczyszczenie danych witryny je usuwa.
 - **Układ na telefon** – górny pasek z logo, nazwą i przełącznikiem motywu, a nawigacja
-  (Start, Zadania, Arkusze, Pomoc) w dolnym pasku pod kciukiem.
+  (Start, Zadania, Arkusze, Pomoc) w dolnym pasku pod kciukiem. Konsola i podpowiedzi AI
+  w zadaniu otwierają się przyciskiem w panelu wysuwanym od dołu („Uruchom” otwiera konsolę).
+- **Ładowanie w tle** – po wejściu na zakładkę Zadania → Python / Excel / SQL strona, gdy nie
+  ma nic pilniejszego do roboty, pobiera odpowiednio Pythona (Pyodide), arkusz kalkulacyjny
+  albo SQLite, więc zadanie otwiera się gotowe. W trybie oszczędzania danych tego nie robi.
 - Motyw jasny/ciemny (z animacją rozlewania), przejścia między stronami (View Transitions),
   obsługa klawiatury (Ctrl+Enter – sprawdź / uruchom), szacunek dla `prefers-reduced-motion`.
 

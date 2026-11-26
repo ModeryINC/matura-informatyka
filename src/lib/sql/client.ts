@@ -29,10 +29,26 @@ export interface SqlClientOptions {
 export const SQL_TIMEOUT_MESSAGE =
   'Przekroczono limit czasu – zapytanie działa zbyt długo (może brakuje warunku złączenia tabel?). Baza zostanie wczytana od nowa.';
 
-const defaultWorker = (): SqlWorkerLike =>
+const newWorker = (): SqlWorkerLike =>
   new Worker(new URL('./worker.ts', import.meta.url), {
     type: 'module',
   }) as unknown as SqlWorkerLike;
+
+/** Worker z załadowanym już SQLite, czekający na pierwsze zadanie. */
+let spare: SqlWorkerLike | null = null;
+
+/** Uruchamia w tle workera z SQLite – pierwsze zadanie dostanie go gotowego. */
+export function preloadSql(): void {
+  if (spare) return;
+  spare = newWorker();
+  spare.postMessage({ type: 'warm' });
+}
+
+const defaultWorker = (): SqlWorkerLike => {
+  const worker = spare ?? newWorker();
+  spare = null;
+  return worker;
+};
 
 const assetUrl = (path: string) => `${import.meta.env.BASE_URL}${encodeURI(path)}`;
 

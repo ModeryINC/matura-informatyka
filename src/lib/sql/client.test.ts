@@ -51,7 +51,11 @@ function setup(respond?: (m: SqlWorkerRequest) => SqlWorkerResponse | null, time
       const worker = new FakeWorker(
         respond ??
           ((m) =>
-            m.type === 'init' ? { type: 'ready', schema } : { type: 'result', id: m.id, outcome }),
+            m.type === 'init'
+              ? { type: 'ready', schema }
+              : m.type === 'exec'
+                ? { type: 'result', id: m.id, outcome }
+                : null),
       );
       workers.push(worker);
       return worker;

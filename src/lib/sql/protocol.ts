@@ -13,7 +13,9 @@ export interface TableInfo {
 
 export type SqlWorkerRequest =
   | { type: 'init'; tables: { spec: SqlTable; content: string }[]; wasmUrl?: string }
-  | { type: 'exec'; id: number; sql: string };
+  | { type: 'exec'; id: number; sql: string }
+  /** Załaduj SQLite z wyprzedzeniem (bez odpowiedzi) – baza powstanie przy `init`. */
+  | { type: 'warm'; wasmUrl?: string };
 
 export type SqlWorkerResponse =
   | { type: 'ready'; schema: TableInfo[] }

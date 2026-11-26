@@ -26,6 +26,7 @@ const schema: TableInfo[] = [
 
 // Prawdziwa baza działa w Web Workerze, którego jsdom nie ma – podmieniamy klienta.
 vi.mock('../lib/sql/client', () => ({
+  preloadSql: vi.fn(),
   SqlClient: class {
     init() {
       return fake.initError ? Promise.reject(new Error(fake.initError)) : Promise.resolve(schema);

@@ -65,8 +65,10 @@ export function HelpPage() {
       <h2>Na telefonie</h2>
       <p>
         Menu (Start, Zadania, Arkusze, Pomoc) jest w dolnym pasku, a u góry zostają logo i
-        przełącznik motywu. Zadania da się rozwiązywać także na telefonie, choć przy dłuższym kodzie
-        wygodniej pracuje się na komputerze.
+        przełącznik motywu. W zadaniu z Pythona konsolę i podpowiedzi AI otwierasz przyciskami pod
+        edytorem – wysuwają się od dołu ekranu, a „Uruchom” sam otwiera konsolę. Zadania da się
+        rozwiązywać także na telefonie, choć przy dłuższym kodzie wygodniej pracuje się na
+        komputerze.
       </p>
       <h2>Skróty</h2>
       <ul>

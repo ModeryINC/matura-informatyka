@@ -1,4 +1,4 @@
-import { fireEvent, screen } from '@testing-library/react';
+import { fireEvent, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { tasks } from '../data';
 import { loadSolution, saveSolution } from '../lib/storage';
@@ -153,5 +153,52 @@ describe('TaskPage', () => {
   it('dla nieznanego zadania pokazuje stronę 404', () => {
     renderTask(fakeRunner({ passed: true, results: [], durationMs: 1 }), 'nie-ma');
     expect(screen.getByRole('heading', { name: 'Nie znaleziono strony' })).toBeInTheDocument();
+  });
+});
+
+describe('TaskPage na telefonie', () => {
+  beforeEach(() => {
+    vi.stubGlobal(
+      'matchMedia',
+      vi.fn((query: string) => ({
+        matches: query.includes('max-width'),
+        media: query,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+      })),
+    );
+  });
+  afterEach(() => vi.unstubAllGlobals());
+
+  const renderMobile = (runner: PythonRunner) =>
+    renderAt(`/zadanie/${task.id}`, [
+      {
+        path: '/zadanie/:taskId',
+        element: <TaskPage runner={runner} aiConfig={{ endpoint: 'https://proxy.example/' }} />,
+      },
+    ]);
+
+  it('konsola i podpowiedzi AI otwierają się w panelu od dołu', async () => {
+    renderMobile(fakeRunner({ passed: true, results: [], durationMs: 1 }));
+    // Zamknięte panele są ukryte – konsoli i podpowiedzi nie ma na stronie.
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    expect(screen.queryByRole('log')).not.toBeInTheDocument();
+
+    await userEvent.click(screen.getByRole('button', { name: /Podpowiedź AI/ }));
+    const hintsSheet = screen.getByRole('dialog', { name: 'Podpowiedzi AI' });
+    expect(within(hintsSheet).getByRole('region', { name: 'Podpowiedzi AI' })).toBeInTheDocument();
+    await userEvent.click(within(hintsSheet).getByRole('button', { name: 'Zamknij' }));
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+
+    await userEvent.click(screen.getByRole('button', { name: /^Konsola/ }));
+    expect(screen.getByRole('dialog', { name: 'Konsola' })).toHaveAttribute('open');
+  });
+
+  it('„Uruchom” otwiera konsolę z wyjściem programu', async () => {
+    renderMobile(fakeRunner({ passed: true, results: [], durationMs: 1 }));
+    await userEvent.click(screen.getByRole('button', { name: /Uruchom/ }));
+    const consoleSheet = screen.getByRole('dialog', { name: 'Konsola' });
+    expect(consoleSheet).toHaveAttribute('open');
+    expect(await within(consoleSheet).findByRole('log')).toHaveTextContent('Witaj');
   });
 });

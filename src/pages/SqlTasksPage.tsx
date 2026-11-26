@@ -5,6 +5,8 @@ import { sessionsById } from '../data';
 import { checkableSqlParts, sqlTasks, sqlTotalPoints } from '../data/sql';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { plural } from '../lib/plural';
+import { usePreload } from '../lib/preload';
+import { preloadSql } from '../lib/sql/client';
 import { passedSqlParts } from '../lib/sql/storage';
 import type { SqlTask } from '../types';
 
@@ -21,6 +23,7 @@ function byYear(tasks: SqlTask[]): [number, SqlTask[]][] {
 /** Lista zadań z baz danych rozwiązywanych zapytaniami SQL. */
 export function SqlTasksPage() {
   useDocumentTitle('Zadania z SQL');
+  usePreload(preloadSql);
 
   return (
     <section className="tab-intro-wrap" aria-labelledby="sql-tytul">

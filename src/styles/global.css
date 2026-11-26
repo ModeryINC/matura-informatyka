@@ -814,6 +814,138 @@ select:focus-visible {
   background: rgb(10 14 24 / 55%);
 }
 
+/* Panel wysuwany od dołu (telefon): konsola i podpowiedzi AI ----------------- */
+.action-sheet {
+  inset-block: auto 0;
+  inset-inline: 0;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  max-block-size: 88dvh;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-block-end: 0;
+  border-radius: 20px 20px 0 0;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 -12px 40px rgb(0 0 0 / 25%);
+  overflow: hidden;
+}
+
+.action-sheet[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.action-sheet::backdrop {
+  background: rgb(10 14 24 / 50%);
+}
+
+/* Wysuwanie i chowanie (z `@starting-style`; bez obsługi – panel pojawia się od razu). */
+@media (prefers-reduced-motion: no-preference) {
+  .action-sheet {
+    translate: 0 100%;
+    transition:
+      translate 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+      overlay 0.3s allow-discrete,
+      display 0.3s allow-discrete;
+  }
+
+  .action-sheet[open] {
+    translate: 0 0;
+
+    @starting-style {
+      translate: 0 100%;
+    }
+  }
+
+  .action-sheet::backdrop {
+    opacity: 0;
+    transition:
+      opacity 0.3s ease-out,
+      overlay 0.3s allow-discrete,
+      display 0.3s allow-discrete;
+  }
+
+  .action-sheet[open]::backdrop {
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+}
+
+.action-sheet__inner {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-block-size: 0;
+}
+
+.action-sheet__bar {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.4rem 0.5rem 0;
+}
+
+.action-sheet__handle {
+  position: absolute;
+  inset-block-start: 0.5rem;
+  inset-inline-start: 50%;
+  inline-size: 2.5rem;
+  block-size: 0.3rem;
+  border-radius: 999px;
+  background: var(--border);
+  translate: -50% 0;
+}
+
+.action-sheet__close {
+  inline-size: 2.25rem;
+  min-block-size: 2.25rem;
+  border-color: transparent;
+}
+
+.action-sheet__content {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 1rem max(1rem, env(safe-area-inset-bottom));
+}
+
+.action-sheet__content > .console,
+.action-sheet__content > .hints {
+  margin: 0;
+  border: 0;
+  box-shadow: none;
+  padding-inline: 0;
+  background: none;
+}
+
+.sheet-buttons {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.sheet-buttons .button {
+  position: relative;
+}
+
+.sheet-buttons__dot {
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
+  border-radius: 50%;
+  background: var(--success);
+}
+
+.sheet-buttons__dot--error {
+  background: var(--danger);
+}
+
 .file-preview__inner {
   display: flex;
   flex: 1 1 auto;

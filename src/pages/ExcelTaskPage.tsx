@@ -22,9 +22,10 @@ import {
   type StoredSpreadsheetAnswers,
 } from '../lib/spreadsheet/storage';
 import type { SpreadsheetTask } from '../types';
+import { loadWorkbookModule } from '../lib/preload';
 import { NotFoundPage } from './NotFoundPage';
 
-const SpreadsheetWorkbook = lazy(() => import('../components/SpreadsheetWorkbook'));
+const SpreadsheetWorkbook = lazy(loadWorkbookModule);
 
 const SAVE_DELAY_MS = 1000;
 

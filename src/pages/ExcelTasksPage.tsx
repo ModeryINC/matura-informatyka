@@ -5,6 +5,7 @@ import { sessionsById } from '../data';
 import { checkableParts, spreadsheetTasks, totalPoints } from '../data/spreadsheets';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { plural } from '../lib/plural';
+import { loadWorkbookModule, usePreload } from '../lib/preload';
 import { passedParts } from '../lib/spreadsheet/storage';
 import type { SpreadsheetTask } from '../types';
 
@@ -21,6 +22,7 @@ function byYear(tasks: SpreadsheetTask[]): [number, SpreadsheetTask[]][] {
 /** Lista zadań rozwiązywanych w arkuszu kalkulacyjnym. */
 export function ExcelTasksPage() {
   useDocumentTitle('Zadania z Excela');
+  usePreload(loadWorkbookModule);
 
   return (
     <section className="tab-intro-wrap" aria-labelledby="excel-tytul">

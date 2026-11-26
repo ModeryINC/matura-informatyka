@@ -4,6 +4,8 @@ import { TaskCard } from '../components/TaskCard';
 import { TaskFilters } from '../components/TaskFilters';
 import { sessionsById, tasks } from '../data';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { usePreload } from '../lib/preload';
+import { getRunner } from '../python/runner';
 import { useSolutionStatuses } from '../hooks/useSolutions';
 import {
   countTopics,
@@ -14,8 +16,12 @@ import {
 } from '../lib/search';
 
 /** Zakładka „Python”: wyszukiwarka i lista zadań z automatycznym sprawdzaniem. */
+/** Python (Pyodide) ładuje się w tle – pierwsze „Uruchom” w zadaniu nie czeka. */
+const preloadPython = () => getRunner().init();
+
 export function TasksPage() {
   useDocumentTitle('Zadania w Pythonie');
+  usePreload(preloadPython);
   const [params, setParams] = useSearchParams();
   const filters = useMemo(() => paramsToFilters(params), [params]);
   const statusOf = useSolutionStatuses();
