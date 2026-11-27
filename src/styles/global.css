@@ -2315,6 +2315,12 @@ progress::-moz-progress-bar {
   border-radius: var(--radius-sm) 0 0 var(--radius-sm);
 }
 
+.side-panel__footer {
+  display: grid;
+  padding-block-start: 0.75rem;
+  border-block-start: 1px solid var(--border);
+}
+
 .side-panel--drawer .side-panel__body {
   block-size: 100%;
   padding: max(1rem, env(safe-area-inset-top)) 1rem max(1rem, env(safe-area-inset-bottom));

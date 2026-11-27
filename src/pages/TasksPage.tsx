@@ -1,9 +1,12 @@
 import { useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router';
+import { MOBILE_NAV_QUERY } from '../components/Layout';
+import { SidePanel } from '../components/SidePanel';
 import { TaskCard } from '../components/TaskCard';
 import { TaskFilters } from '../components/TaskFilters';
 import { sessionsById, tasks } from '../data';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { usePreload } from '../lib/preload';
 import { getRunner } from '../python/runner';
 import { useSolutionStatuses } from '../hooks/useSolutions';
@@ -25,6 +28,14 @@ export function TasksPage() {
   const [params, setParams] = useSearchParams();
   const filters = useMemo(() => paramsToFilters(params), [params]);
   const statusOf = useSolutionStatuses();
+  // Na telefonie wyszukiwarka wysuwa się z prawej krawędzi (jak panel odpowiedzi).
+  const mobile = useMediaQuery(MOBILE_NAV_QUERY);
+  const activeFilters =
+    (filters.query.trim() ? 1 : 0) +
+    filters.topics.length +
+    filters.years.length +
+    (filters.part ? 1 : 0) +
+    (filters.status ? 1 : 0);
 
   const topicCounts = useMemo(() => countTopics(tasks), []);
   const years = useMemo(
@@ -41,6 +52,10 @@ export function TasksPage() {
   const solved = tasks.filter((t) => statusOf(t.id) === 'zaliczone').length;
 
   const onChange = (next: Filters) => setParams(filtersToParams(next), { replace: true });
+
+  const filterPanel = (
+    <TaskFilters filters={filters} onChange={onChange} topicCounts={topicCounts} years={years} />
+  );
 
   return (
     <>
@@ -60,14 +75,22 @@ export function TasksPage() {
       </section>
 
       <div className="tasks-layout">
-        <aside className="tasks-layout__filters">
-          <TaskFilters
-            filters={filters}
-            onChange={onChange}
-            topicCounts={topicCounts}
-            years={years}
-          />
-        </aside>
+        {mobile ? (
+          <SidePanel
+            title="Szukaj"
+            badge={activeFilters > 0 ? String(activeFilters) : undefined}
+            drawerOnly
+            footer={(close) => (
+              <button type="button" className="button button--primary" onClick={close}>
+                Pokaż zadania ({visible.length})
+              </button>
+            )}
+          >
+            {filterPanel}
+          </SidePanel>
+        ) : (
+          <aside className="tasks-layout__filters">{filterPanel}</aside>
+        )}
         <section className="tasks-layout__results" aria-labelledby="wyniki">
           <h2 id="wyniki" className="results-heading">
             {visible.length === tasks.length ? 'Wszystkie zadania' : 'Wyniki wyszukiwania'}{' '}

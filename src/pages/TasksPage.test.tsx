@@ -40,3 +40,36 @@ describe('TasksPage', () => {
     expect(screen.getByText(/Zaliczone:/)).toHaveTextContent(`Zaliczone: 1 z ${tasks.length}`);
   });
 });
+
+describe('TasksPage na telefonie', () => {
+  beforeEach(() => {
+    vi.stubGlobal(
+      'matchMedia',
+      vi.fn((query: string) => ({
+        matches: query.includes('max-width'),
+        media: query,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+      })),
+    );
+  });
+  afterEach(() => vi.unstubAllGlobals());
+
+  it('wyszukiwarka wysuwa się z prawej i pokazuje liczbę aktywnych filtrów', async () => {
+    renderAt('/zadania/python?tematy=rekurencja', routes);
+    const panel = screen.getByRole('complementary', { name: 'Szukaj' });
+    expect(panel).toHaveClass('side-panel--drawer');
+    expect(panel).not.toHaveAttribute('data-open');
+
+    const toggle = within(panel).getByRole('button', { name: /^Szukaj\s*1$/ });
+    await userEvent.click(toggle);
+    expect(panel).toHaveAttribute('data-open');
+    expect(within(panel).getByRole('searchbox')).toBeInTheDocument();
+
+    const expected = tasks.filter((t) => t.topics.includes('rekurencja')).length;
+    await userEvent.click(
+      within(panel).getByRole('button', { name: `Pokaż zadania (${expected})` }),
+    );
+    expect(panel).not.toHaveAttribute('data-open');
+  });
+});

@@ -27,6 +27,10 @@ interface SidePanelProps {
   title: string;
   /** Krótki stan obok tytułu na zakładce (np. „2/4”). */
   badge?: string;
+  /** Zawsze szuflada z boku, także na szerokim ekranie (np. wyszukiwarka na telefonie). */
+  drawerOnly?: boolean;
+  /** Stopka szuflady, np. przycisk „Pokaż wyniki” (dostaje funkcję zsuwającą panel). */
+  footer?: (close: () => void) => ReactNode;
   children: ReactNode;
 }
 
@@ -40,8 +44,9 @@ interface SidePanelProps {
  *
  * Zawartość jest zawsze zamontowana; zsunięta jest `inert` (niedostępna z klawiatury).
  */
-export function SidePanel({ title, badge, children }: SidePanelProps) {
-  const docked = useMediaQuery(DOCKED_PANEL_QUERY);
+export function SidePanel({ title, badge, drawerOnly = false, footer, children }: SidePanelProps) {
+  const wide = useMediaQuery(DOCKED_PANEL_QUERY);
+  const docked = wide && !drawerOnly;
   const [dockedOpen, setDockedOpen] = useState(loadDockedOpen);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const open = docked ? dockedOpen : drawerOpen;
@@ -95,6 +100,7 @@ export function SidePanel({ title, badge, children }: SidePanelProps) {
           </button>
         </header>
         <div className="side-panel__content">{children}</div>
+        {footer && <div className="side-panel__footer">{footer(() => setOpen(false))}</div>}
       </div>
     </aside>
   );
