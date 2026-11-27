@@ -1,6 +1,7 @@
 import { useId, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import { LuChevronLeft, LuChevronRight, LuX } from 'react-icons/lu';
+import { LuX } from 'react-icons/lu';
+import { MorphIcon } from './MorphIcon';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 
 /** Od tej szerokości panel stoi obok arkusza / edytora (węższy ekran – wysuwa się z boku). */
@@ -60,7 +61,6 @@ export function SidePanel({ title, badge, drawerOnly = false, footer, children }
     } else setDrawerOpen(value);
   };
 
-  const Chevron = open ? LuChevronRight : LuChevronLeft;
   const panel = (
     <aside
       className={`side-panel side-panel--${docked ? 'docked' : 'drawer'}`}
@@ -81,7 +81,7 @@ export function SidePanel({ title, badge, drawerOnly = false, footer, children }
         aria-controls={bodyId}
         title={open ? `Zsuń panel „${title}”` : `Rozsuń panel „${title}”`}
       >
-        <Chevron aria-hidden className="icon" />
+        <MorphIcon shape={open ? 'chevron-right' : 'chevron-left'} />
         <span className="side-panel__toggle-label">
           {title}
           {badge && <span className="side-panel__badge">{badge}</span>}

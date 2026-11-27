@@ -4663,3 +4663,45 @@ progress::-moz-progress-bar {
 .open-part__self .button[aria-pressed='true'] {
   outline: 2px solid var(--accent);
 }
+
+/*
+ * Ikony morfujące (src/components/MorphIcon.tsx): kształty przechodzą płynnie
+ * jeden w drugi. Przy ograniczeniu ruchu przejścia skraca reguła globalna.
+ */
+.morph-icon path {
+  transition: d 0.4s var(--ease);
+}
+
+.morph-icon .morph-eye__slash {
+  stroke-dasharray: 29;
+  stroke-dashoffset: 29;
+  transition: stroke-dashoffset 0.35s var(--ease);
+}
+
+.morph-eye.is-off .morph-eye__slash {
+  stroke-dashoffset: 0;
+}
+
+.morph-theme__grow {
+  transition: r 0.5s var(--ease-emphasized);
+}
+
+.morph-theme__move {
+  transition: transform 0.5s var(--ease-emphasized);
+}
+
+.morph-theme__rays {
+  transform-origin: 12px 12px;
+  transition:
+    transform 0.5s var(--ease-emphasized),
+    opacity 0.35s var(--ease);
+}
+
+.morph-theme--system .morph-theme__rays {
+  transform: rotate(22.5deg) scale(0.9);
+}
+
+.morph-theme--dark .morph-theme__rays {
+  transform: rotate(90deg) scale(0.4);
+  opacity: 0;
+}

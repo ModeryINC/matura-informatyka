@@ -1,5 +1,6 @@
 import { useId, useState, type ReactNode } from 'react';
-import { LuCheck, LuCircleCheck, LuEye, LuEyeOff, LuX } from 'react-icons/lu';
+import { LuCheck, LuCircleCheck } from 'react-icons/lu';
+import { EyeMorphIcon, MorphIcon } from './MorphIcon';
 import type { Choice, TheoryPartAnswer } from '../lib/theory/storage';
 import type { TheoryPart } from '../types';
 import { InlineText } from './HintText';
@@ -78,12 +79,8 @@ export function TheoryPartCard({ part, answer, onChange, heading }: TheoryPartCa
                 </div>
                 {revealed && (
                   <span className="theory-key">
-                    {wrong ? (
-                      <LuX aria-hidden className="icon" />
-                    ) : (
-                      <LuCheck aria-hidden className="icon" />
-                    )}{' '}
-                    klucz: {expected === 'P' ? 'prawda' : 'fałsz'}
+                    <MorphIcon shape={wrong ? 'x' : 'check'} /> klucz:{' '}
+                    {expected === 'P' ? 'prawda' : 'fałsz'}
                   </span>
                 )}
               </fieldset>
@@ -107,12 +104,7 @@ export function TheoryPartCard({ part, answer, onChange, heading }: TheoryPartCa
             onClick={() => setRevealed((v) => !v)}
             aria-pressed={revealed}
           >
-            {revealed ? (
-              <LuEyeOff aria-hidden className="icon" />
-            ) : (
-              <LuEye aria-hidden className="icon" />
-            )}{' '}
-            {revealed ? 'Ukryj klucz' : 'Pokaż klucz'}
+            <EyeMorphIcon off={revealed} /> {revealed ? 'Ukryj klucz' : 'Pokaż klucz'}
           </button>
         )}
         {!complete && <span className="muted">Oceń wszystkie zdania.</span>}

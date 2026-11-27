@@ -1,5 +1,6 @@
 import { useId, type ReactNode } from 'react';
-import { LuCheck, LuCircleCheck, LuEye, LuEyeOff, LuThumbsDown, LuThumbsUp } from 'react-icons/lu';
+import { LuCheck, LuCircleCheck, LuThumbsDown, LuThumbsUp } from 'react-icons/lu';
+import { EyeMorphIcon } from './MorphIcon';
 import { normalizeShortAnswer, type OpenPartAnswer } from '../lib/theory/storage';
 import type { OpenPart } from '../types';
 import { HintText } from './HintText';
@@ -73,11 +74,7 @@ export function OpenPartCard({ part, answer, onChange, heading }: OpenPartCardPr
           aria-expanded={answer.revealed ?? false}
           aria-controls={`${id}-klucz`}
         >
-          {answer.revealed ? (
-            <LuEyeOff aria-hidden className="icon" />
-          ) : (
-            <LuEye aria-hidden className="icon" />
-          )}{' '}
+          <EyeMorphIcon off={answer.revealed ?? false} />{' '}
           {answer.revealed ? 'Ukryj rozwiązanie' : 'Pokaż rozwiązanie'}
         </button>
       </div>

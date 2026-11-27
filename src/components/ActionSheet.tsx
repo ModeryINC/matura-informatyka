@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { LuMaximize2, LuMinimize2, LuX } from 'react-icons/lu';
+import { LuX } from 'react-icons/lu';
+import { MorphIcon } from './MorphIcon';
 
 interface ActionSheetProps {
   open: boolean;
@@ -160,11 +161,7 @@ export function ActionSheet({ open, onClose, label, children }: ActionSheetProps
             onClick={() => setSize(full ? 'half' : 'full')}
             aria-label={full ? 'Zmniejsz panel' : 'Rozciągnij na cały ekran'}
           >
-            {full ? (
-              <LuMinimize2 aria-hidden className="icon" />
-            ) : (
-              <LuMaximize2 aria-hidden className="icon" />
-            )}
+            <MorphIcon shape={full ? 'minimize' : 'maximize'} />
           </button>
           <button
             type="button"

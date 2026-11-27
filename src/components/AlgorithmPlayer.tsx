@@ -4,10 +4,9 @@ import {
   LuChevronRight,
   LuChevronsLeft,
   LuChevronsRight,
-  LuPause,
-  LuPlay,
   LuRotateCcw,
 } from 'react-icons/lu';
+import { MorphIcon } from './MorphIcon';
 import { formatInput, parseInput } from '../lib/algorithms';
 import type {
   AlgorithmDef,
@@ -178,15 +177,8 @@ export function AlgorithmPlayer({ algorithm }: { algorithm: AlgorithmDef }) {
             } else setPlaying(!running);
           }}
         >
-          {running ? (
-            <>
-              <LuPause aria-hidden className="icon" /> Pauza
-            </>
-          ) : (
-            <>
-              <LuPlay aria-hidden className="icon" /> {atEnd ? 'Od nowa' : 'Odtwórz'}
-            </>
-          )}
+          <MorphIcon shape={running ? 'pause' : 'play'} />{' '}
+          {running ? 'Pauza' : atEnd ? 'Od nowa' : 'Odtwórz'}
         </button>
         <button
           type="button"

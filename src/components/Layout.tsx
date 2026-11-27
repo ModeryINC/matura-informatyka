@@ -1,20 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { Link, NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router';
-import {
-  LuBookOpen,
-  LuCircleHelp,
-  LuFileText,
-  LuHouse,
-  LuListTodo,
-  LuMoon,
-  LuSun,
-  LuSunMoon,
-} from 'react-icons/lu';
+import { LuBookOpen, LuCircleHelp, LuFileText, LuHouse, LuListTodo } from 'react-icons/lu';
+import { ThemeMorphIcon } from './MorphIcon';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { useTheme } from '../hooks/useTheme';
 
 const THEME_LABELS = { system: 'Motyw: systemowy', light: 'Motyw: jasny', dark: 'Motyw: ciemny' };
-const THEME_ICONS = { system: LuSunMoon, light: LuSun, dark: LuMoon };
 
 /** Szerokość, poniżej której nawigacja jest dolnym paskiem (jak w aplikacji mobilnej). */
 export const MOBILE_NAV_QUERY = '(max-width: 640px)';
@@ -22,7 +13,6 @@ export const MOBILE_NAV_QUERY = '(max-width: 640px)';
 /** Wspólny układ strony: nagłówek, nawigacja (na telefonie – dolny pasek), treść i stopka. */
 export function Layout() {
   const [theme, cycleTheme] = useTheme();
-  const ThemeIcon = THEME_ICONS[theme];
   const mobile = useMediaQuery(MOBILE_NAV_QUERY);
   const { pathname } = useLocation();
   useFocusOnNavigation(pathname);
@@ -50,7 +40,7 @@ export function Layout() {
             aria-label={THEME_LABELS[theme]}
             title={THEME_LABELS[theme]}
           >
-            <ThemeIcon aria-hidden className="icon" />
+            <ThemeMorphIcon theme={theme} />
           </button>
         </div>
       </header>

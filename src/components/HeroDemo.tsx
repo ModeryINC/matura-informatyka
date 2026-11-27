@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import { LuCheck, LuPause, LuPlay } from 'react-icons/lu';
+import { LuCheck } from 'react-icons/lu';
+import { MorphIcon } from './MorphIcon';
 
 /**
  * Animacja w sekcji hero: po kolei rozwiązanie zadania w Pythonie, w Excelu i w SQL,
@@ -257,15 +258,8 @@ export function HeroDemo() {
 
       {!demo.reduced && (
         <button type="button" className="hero-demo__pause" onClick={demo.togglePause}>
-          {demo.paused ? (
-            <>
-              <LuPlay aria-hidden className="icon" /> Wznów animację
-            </>
-          ) : (
-            <>
-              <LuPause aria-hidden className="icon" /> Zatrzymaj animację
-            </>
-          )}
+          <MorphIcon shape={demo.paused ? 'play' : 'pause'} />{' '}
+          {demo.paused ? 'Wznów animację' : 'Zatrzymaj animację'}
         </button>
       )}
     </div>
