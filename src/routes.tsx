@@ -1,4 +1,5 @@
 import { Navigate, type RouteObject } from 'react-router';
+import { BasicsSection } from './components/BasicsLayout';
 import { Layout } from './components/Layout';
 import { AlgorithmsBasicsPage } from './pages/AlgorithmsBasicsPage';
 import { ExcelBasicsPage } from './pages/ExcelBasicsPage';
@@ -52,12 +53,18 @@ export const routes: RouteObject[] = [
       { path: 'test/:taskId', element: <TheoryTaskPage /> },
       { path: 'arkusze', element: <SessionsPage /> },
       { path: 'arkusze/:year/:slug', element: <SessionPage /> },
-      { path: 'podstawy', element: <Navigate to="/podstawy/python" replace /> },
-      { path: 'podstawy/python', element: <PythonBasicsPage /> },
-      { path: 'podstawy/excel', element: <ExcelBasicsPage /> },
-      { path: 'podstawy/sql', element: <SqlBasicsPage /> },
-      { path: 'podstawy/teoria', element: <TheoryBasicsPage /> },
-      { path: 'podstawy/algorytmy', element: <AlgorithmsBasicsPage /> },
+      {
+        path: 'podstawy',
+        element: <BasicsSection />,
+        children: [
+          { index: true, element: <Navigate to="python" replace /> },
+          { path: 'python', element: <PythonBasicsPage /> },
+          { path: 'excel', element: <ExcelBasicsPage /> },
+          { path: 'sql', element: <SqlBasicsPage /> },
+          { path: 'teoria', element: <TheoryBasicsPage /> },
+          { path: 'algorytmy', element: <AlgorithmsBasicsPage /> },
+        ],
+      },
       { path: 'python', element: <Navigate to="/podstawy/python" replace /> },
       { path: 'pomoc', element: <HelpPage /> },
       { path: '*', element: <NotFoundPage /> },

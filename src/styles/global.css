@@ -1864,19 +1864,37 @@ progress::-moz-progress-bar {
   margin-block-end: 1.5rem;
 }
 
-.basics-header__tabs {
-  flex-wrap: wrap;
+.basics-tabs {
   margin-block-end: 1rem;
 }
 
-/* Na wąskim ekranie pięć zakładek podstaw zawija się do dwóch wierszy. */
+/*
+ * Na wąskim ekranie pięć zakładek nie mieści się w jednym wierszu. Zamiast
+ * przypadkowego zawijania – stała siatka 3 + 2: sześć kolumn, w pierwszym wierszu
+ * zakładki zajmują po dwie, w drugim po trzy, więc oba wiersze mają pełną szerokość.
+ * Zakładki i kapsułka dostają zaokrąglenie dopasowane do prostokątnego tła.
+ */
 @media (max-width: 560px) {
-  .basics-header__tabs {
+  .tabs.basics-tabs {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    inline-size: 100%;
+    border-radius: calc(var(--radius) + 0.25rem);
+  }
+
+  .basics-tabs .tabs__tab {
+    grid-column: span 2;
+    justify-content: center;
+    padding-inline: 0.5rem;
     border-radius: var(--radius);
   }
 
-  .basics-header__tabs .tabs__tab {
-    flex: 1 1 30%;
+  .basics-tabs .tabs__tab:nth-child(n + 4) {
+    grid-column: span 3;
+  }
+
+  .tabs.basics-tabs::before {
+    border-radius: var(--radius);
   }
 }
 

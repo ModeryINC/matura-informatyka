@@ -3,13 +3,20 @@ import userEvent from '@testing-library/user-event';
 import { EXCEL_BASICS } from '../data/excelBasics';
 import { SQL_BASICS } from '../data/sqlBasics';
 import type { SqlClient } from '../lib/sql/client';
-import { renderWithRouter } from '../../tests/render';
+import { renderAt, renderWithRouter } from '../../tests/render';
+import { BasicsSection } from '../components/BasicsLayout';
 import { ExcelBasicsPage } from './ExcelBasicsPage';
 import { SqlBasicsPage } from './SqlBasicsPage';
 
 describe('Podstawy Excela', () => {
   it('ma zakładki, spis treści i wszystkie działy', () => {
-    renderWithRouter(<ExcelBasicsPage />);
+    renderAt('/podstawy/excel', [
+      {
+        path: '/podstawy',
+        element: <BasicsSection />,
+        children: [{ path: 'excel', element: <ExcelBasicsPage /> }],
+      },
+    ]);
     const tabs = screen.getByRole('navigation', { name: 'Podstawy' });
     expect(
       within(tabs)

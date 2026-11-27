@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, Outlet } from 'react-router';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { InlineText } from './HintText';
 import { SidePanel } from './SidePanel';
@@ -32,7 +32,26 @@ interface BasicsLayoutProps<S extends BasicsSectionShell> {
   before?: ReactNode;
 }
 
-/** Wspólny układ podstron „Podstawy …”: zakładki, spis treści i działy. */
+/**
+ * Trasa nadrzędna „Podstawy”: zakładki zostają na miejscu przy zmianie podstrony
+ * (jak w „Zadaniach”), więc kapsułka aktywnej zakładki przesuwa się płynnie.
+ */
+export function BasicsSection() {
+  return (
+    <div className="page page--basics">
+      <nav aria-label="Podstawy" className="tabs basics-tabs">
+        {TABS.map((tab) => (
+          <NavLink key={tab.to} to={tab.to} className="tabs__tab">
+            {tab.label}
+          </NavLink>
+        ))}
+      </nav>
+      <Outlet />
+    </div>
+  );
+}
+
+/** Wspólny układ podstron „Podstawy …”: nagłówek, spis treści i działy. */
 export function BasicsLayout<S extends BasicsSectionShell>({
   title,
   lead,
@@ -42,15 +61,8 @@ export function BasicsLayout<S extends BasicsSectionShell>({
 }: BasicsLayoutProps<S>) {
   const docked = useMediaQuery(TOC_DOCKED_QUERY);
   return (
-    <div className="page page--basics">
+    <>
       <header className="basics-header">
-        <nav aria-label="Podstawy" className="tabs basics-header__tabs">
-          {TABS.map((tab) => (
-            <NavLink key={tab.to} to={tab.to} className="tabs__tab" viewTransition>
-              {tab.label}
-            </NavLink>
-          ))}
-        </nav>
         <h1>{title}</h1>
         {lead}
       </header>
@@ -102,7 +114,7 @@ export function BasicsLayout<S extends BasicsSectionShell>({
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
