@@ -1,0 +1,17 @@
+id_ucznia	imie	nazwisko	plec	klasa	data_urodzenia
+1	Ola	Nowak	K	3a	2007-03-02
+2	Kuba	Wiśniewski	M	3b	2007-06-13
+3	Zosia	Kowalska	K	3c	2007-09-15
+4	Antek	Zieliński	M	3d	2007-09-20
+5	Maja	Szymańska	K	3a	2007-11-28
+6	Filip	Woźniak	M	3b	2007-02-22
+7	Lena	Dąbrowska	K	3c	2007-04-25
+8	Szymon	Kamiński	M	3d	2007-11-04
+9	Hanna	Lewandowska	K	3a	2007-11-15
+10	Igor	Jankowski	M	3b	2007-10-12
+11	Julia	Mazur	K	3c	2007-08-04
+12	Marcel	Krawczyk	M	3d	2007-10-21
+13	Nina	Piotrowska	K	3a	2007-10-08
+14	Oskar	Grabowski	M	3b	2007-09-09
+15	Pola	Pawłowska	K	3c	2007-10-28
+16	Tymon	Michalski	M	3d	2007-08-14

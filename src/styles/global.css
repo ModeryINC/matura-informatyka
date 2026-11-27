@@ -1848,6 +1848,117 @@ progress::-moz-progress-bar {
   margin-block-end: 1.5rem;
 }
 
+.basics-header__tabs {
+  margin-block-end: 1rem;
+}
+
+.basics-tables {
+  margin: 0 0 0.75rem;
+  padding-inline-start: 1.25rem;
+  font-size: 0.9rem;
+}
+
+/* Mały arkusz w „Podstawach Excela” */
+.mini-sheet {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.mini-sheet__formula {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.6rem;
+  border-block-end: 1px solid var(--border);
+  background: var(--surface-2);
+  font-size: 0.85rem;
+}
+
+.mini-sheet__address {
+  min-inline-size: 2.5rem;
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  font-family: var(--font-mono);
+  text-align: center;
+}
+
+.mini-sheet__fx {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.mini-sheet__formula code {
+  overflow-wrap: anywhere;
+}
+
+.mini-sheet__scroll {
+  overflow-x: auto;
+}
+
+.mini-sheet table {
+  border-collapse: collapse;
+  inline-size: 100%;
+  font-size: 0.85rem;
+}
+
+.mini-sheet th,
+.mini-sheet td {
+  padding: 0;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.mini-sheet thead th,
+.mini-sheet tbody th,
+.mini-sheet__corner {
+  padding: 0.2rem 0.5rem;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.mini-sheet td {
+  padding: 0.3rem 0.55rem;
+}
+
+.mini-sheet__num {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.mini-sheet__header {
+  font-weight: 600;
+}
+
+.mini-sheet td.mini-sheet__formula-cell {
+  padding: 0;
+  background: var(--success-soft);
+}
+
+.mini-sheet__formula-cell button {
+  inline-size: 100%;
+  padding: 0.3rem 0.55rem;
+  border: 0;
+  background: none;
+  color: var(--success);
+  font: inherit;
+  font-weight: 600;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.mini-sheet td.is-selected {
+  outline: 2px solid var(--success);
+  outline-offset: -2px;
+}
+
 .basics-header h1 {
   margin-block-start: 0;
 }

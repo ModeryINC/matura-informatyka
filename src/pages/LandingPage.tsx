@@ -131,8 +131,9 @@ export function LandingPage() {
           ))}
         </ol>
         <p className="landing-note muted">
-          Strona nie ma serwera: kod i postępy zostają w Twojej przeglądarce. Nie znasz jeszcze
-          Pythona? Zajrzyj do <Link to="/python">podstaw Pythona</Link>.
+          Kod i postępy zostają w Twojej przeglądarce. Zaczynasz od zera? Zajrzyj do podstaw:{' '}
+          <Link to="/podstawy/python">Python</Link>, <Link to="/podstawy/excel">Excel</Link>,{' '}
+          <Link to="/podstawy/sql">SQL</Link>.
         </p>
       </section>
     </div>

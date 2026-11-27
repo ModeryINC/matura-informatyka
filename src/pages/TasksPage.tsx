@@ -49,7 +49,7 @@ export function TasksPage() {
         <p className="lead">
           Zadania algorytmiczne z arkuszy CKE. Kod uruchamia się w Twojej przeglądarce i jest od
           razu porównywany z kluczem odpowiedzi. Nowy w Pythonie? Zacznij od{' '}
-          <Link to="/python">podstaw Pythona</Link>.
+          <Link to="/podstawy/python">podstaw Pythona</Link>.
         </p>
         <p className="progress" aria-live="polite">
           <span>

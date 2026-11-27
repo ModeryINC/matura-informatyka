@@ -1,0 +1,5 @@
+klasa	profil	wychowawca
+3a	matematyczno-informatyczny	Anna Lis
+3b	biologiczno-chemiczny	Piotr Wróbel
+3c	humanistyczny	Ewa Sowa
+3d	matematyczno-fizyczny	Jan Kruk

@@ -31,7 +31,7 @@ export function SqlTasksPage() {
       <p className="lead">
         Zadania z arkuszy maturalnych 2018–2026, które rozwiązuje się w bazie danych. Pliki są już
         wczytane jako tabele – pisz zapytania SQL (także w stylu Accessa), a wyniki sprawdzisz z
-        kluczem CKE.
+        kluczem CKE. Nowy w SQL? Zacznij od <Link to="/podstawy/sql">podstaw SQL</Link>.
       </p>
       {byYear(sqlTasks).map(([year, tasks]) => (
         <section key={year} className="year-group" aria-labelledby={`sql-rok-${year}`}>

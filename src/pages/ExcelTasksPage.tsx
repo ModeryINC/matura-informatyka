@@ -30,7 +30,8 @@ export function ExcelTasksPage() {
       <p className="lead">
         Zadania z arkuszy maturalnych 2018–2026, które rozwiązuje się w Excelu. Dane są już wczytane
         do arkusza w przeglądarce – pisz formuły (także po polsku), a odpowiedzi sprawdzisz z
-        kluczem CKE.
+        kluczem CKE. Nie pamiętasz funkcji? Zajrzyj do{' '}
+        <Link to="/podstawy/excel">podstaw Excela</Link>.
       </p>
       {byYear(spreadsheetTasks).map(([year, tasks]) => (
         <section key={year} className="year-group" aria-labelledby={`excel-rok-${year}`}>

@@ -1,5 +1,6 @@
 import { Navigate, type RouteObject } from 'react-router';
 import { Layout } from './components/Layout';
+import { ExcelBasicsPage } from './pages/ExcelBasicsPage';
 import { ExcelTaskPage } from './pages/ExcelTaskPage';
 import { ExcelTasksPage } from './pages/ExcelTasksPage';
 import { HelpPage } from './pages/HelpPage';
@@ -8,6 +9,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { PythonBasicsPage } from './pages/PythonBasicsPage';
 import { SessionPage } from './pages/SessionPage';
 import { SessionsPage } from './pages/SessionsPage';
+import { SqlBasicsPage } from './pages/SqlBasicsPage';
 import { SqlTaskPage } from './pages/SqlTaskPage';
 import { SqlTasksPage } from './pages/SqlTasksPage';
 import { TaskPage } from './pages/TaskPage';
@@ -43,7 +45,11 @@ export const routes: RouteObject[] = [
       { path: 'sql/:taskId', element: <SqlTaskPage /> },
       { path: 'arkusze', element: <SessionsPage /> },
       { path: 'arkusze/:year/:slug', element: <SessionPage /> },
-      { path: 'python', element: <PythonBasicsPage /> },
+      { path: 'podstawy', element: <Navigate to="/podstawy/python" replace /> },
+      { path: 'podstawy/python', element: <PythonBasicsPage /> },
+      { path: 'podstawy/excel', element: <ExcelBasicsPage /> },
+      { path: 'podstawy/sql', element: <SqlBasicsPage /> },
+      { path: 'python', element: <Navigate to="/podstawy/python" replace /> },
       { path: 'pomoc', element: <HelpPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],

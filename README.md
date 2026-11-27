@@ -36,6 +36,10 @@ Odpowiedzi zapisują się tylko lokalnie w przeglądarce – z innego urządzeni
   podpunktu i sprawdza z kluczem – listy bez względu na kolejność wierszy i kolumn. Podpunkty,
   w których zapytanie pisze się na kartce (tabel nie ma w plikach), mają przykładowe
   rozwiązanie z klucza.
+- **Podstawy** (Podstawy → Python / Excel / SQL): krótkie lekcje z przykładami. W Pythonie
+  i SQL każdy przykład można zmienić i uruchomić (SQL – na małej przykładowej bazie szkoły
+  z `public/podstawy/sql`), w Excelu są małe arkusze z formułami po polsku (kliknięcie komórki
+  pokazuje formułę). Zapytania i wyniki formuł z lekcji są sprawdzane w testach.
 - **Wyszukiwanie** po temacie (sortowanie, rekurencja, słowniki, liczby pierwsze, …), roku,
   części arkusza, statusie i dowolnej frazie – bez względu na polskie znaki. Filtry są
   zapisywane w adresie, więc wyszukiwanie można udostępnić linkiem.
