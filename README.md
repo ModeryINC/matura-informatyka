@@ -41,6 +41,14 @@ Odpowiedzi zapisują się tylko lokalnie w przeglądarce – z innego urządzeni
   bezpieczeństwa i prawa, punkt tylko za komplet (jak na maturze), podgląd klucza po
   sprawdzeniu oraz losowy test z 10 podpunktów. Pominięto podpunkty oparte na rysunkach
   (np. zegary binarne) i te, w których dane w PDF są nieczytelne.
+- **Podstawy algorytmiki** (Podstawy → Algorytmy) – 26 algorytmów z wizualizacją krok po kroku
+  (przyciski, strzałki ← →, odtwarzanie z wyborem tempa) na własnych danych, z kodem w Pythonie
+  i podświetloną bieżącą linią: sortowania (bąbelkowe, wybieranie, wstawianie, scalanie, szybkie,
+  zliczanie), wyszukiwanie (liniowe, binarne, min i max jednocześnie), NWD, sito Eratostenesa,
+  pierwszość, rozkład na czynniki, zamiana systemów, schemat Hornera, szybkie potęgowanie,
+  rekurencja z rosnącym drzewem wywołań (silnia, Fibonacci) i wieże Hanoi, palindrom,
+  wyszukiwanie wzorca, anagramy, bisekcja, metoda Herona, pole metodą prostokątów i trapezów,
+  wydawanie reszty.
 - **Podstawy teorii** (Podstawy → Teoria) – 15 działów z wiedzy do zadań testowych: systemy
   liczbowe, U2 i liczby zmiennoprzecinkowe, jednostki i kodowanie znaków, logika, adresacja IP,
   sieci i protokoły, WWW, grafika, szyfrowanie, bezpieczeństwo, bazy danych, struktury danych,

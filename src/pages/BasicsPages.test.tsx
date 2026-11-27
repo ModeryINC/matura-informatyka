@@ -15,7 +15,7 @@ describe('Podstawy Excela', () => {
       within(tabs)
         .getAllByRole('link')
         .map((l) => l.textContent),
-    ).toEqual(['Python', 'Excel', 'SQL', 'Teoria']);
+    ).toEqual(['Python', 'Excel', 'SQL', 'Algorytmy', 'Teoria']);
     const toc = screen.getByRole('navigation', { name: 'Spis treści' });
     expect(within(toc).getAllByRole('link')).toHaveLength(EXCEL_BASICS.length);
   });
@@ -93,5 +93,39 @@ describe('Podstawy teorii', () => {
       'aria-pressed',
       'true',
     );
+  });
+});
+
+describe('Podstawy algorytmiki', () => {
+  it('przechodzi algorytm krok po kroku i przyjmuje własne dane', async () => {
+    const { ALGORITHMS } = await import('../lib/algorithms');
+    const { AlgorithmsBasicsPage } = await import('./AlgorithmsBasicsPage');
+    renderWithRouter(<AlgorithmsBasicsPage />);
+    const toc = screen.getByRole('navigation', { name: 'Spis treści' });
+    expect(within(toc).getAllByRole('link')).toHaveLength(ALGORITHMS.length);
+
+    const bubble = screen.getByRole('region', { name: /Sortowanie bąbelkowe/ });
+    expect(within(bubble).getByText(/Krok 1\//)).toBeInTheDocument();
+    await userEvent.click(within(bubble).getByRole('button', { name: 'Następny krok' }));
+    await userEvent.click(within(bubble).getByRole('button', { name: 'Następny krok' }));
+    expect(within(bubble).getByText(/Krok 3\//)).toBeInTheDocument();
+    expect(within(bubble).getByText(/Porównujemy t\[0\]/)).toBeInTheDocument();
+
+    const input = within(bubble).getByLabelText('Tablica (liczby oddzielone przecinkami)');
+    await userEvent.clear(input);
+    await userEvent.type(input, '3, 1, 2');
+    await userEvent.click(within(bubble).getByRole('button', { name: /Zastosuj dane/ }));
+    expect(within(bubble).getByText(/Krok 1\//)).toBeInTheDocument();
+    await userEvent.click(within(bubble).getByRole('button', { name: 'Na koniec' }));
+    expect(bubble.querySelector('.algo__note')).toHaveTextContent(/posortowana/);
+
+    await userEvent.clear(input);
+    await userEvent.type(input, '3, x');
+    await userEvent.click(within(bubble).getByRole('button', { name: /Zastosuj dane/ }));
+    expect(within(bubble).getByText(/Wpisz liczby całkowite/)).toBeInTheDocument();
+
+    const fib = screen.getByRole('region', { name: /Fibonacciego/ });
+    await userEvent.click(within(fib).getByRole('button', { name: 'Na koniec' }));
+    expect(within(fib).getByRole('img', { name: /fib\(5\) = 5/ })).toBeInTheDocument();
   });
 });

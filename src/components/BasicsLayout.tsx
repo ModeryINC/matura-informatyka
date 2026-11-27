@@ -6,6 +6,7 @@ const TABS = [
   { to: '/podstawy/python', label: 'Python' },
   { to: '/podstawy/excel', label: 'Excel' },
   { to: '/podstawy/sql', label: 'SQL' },
+  { to: '/podstawy/algorytmy', label: 'Algorytmy' },
   { to: '/podstawy/teoria', label: 'Teoria' },
 ] as const;
 

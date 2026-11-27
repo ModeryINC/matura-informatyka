@@ -1,5 +1,6 @@
 import { Navigate, type RouteObject } from 'react-router';
 import { Layout } from './components/Layout';
+import { AlgorithmsBasicsPage } from './pages/AlgorithmsBasicsPage';
 import { ExcelBasicsPage } from './pages/ExcelBasicsPage';
 import { ExcelTaskPage } from './pages/ExcelTaskPage';
 import { ExcelTasksPage } from './pages/ExcelTasksPage';
@@ -56,6 +57,7 @@ export const routes: RouteObject[] = [
       { path: 'podstawy/excel', element: <ExcelBasicsPage /> },
       { path: 'podstawy/sql', element: <SqlBasicsPage /> },
       { path: 'podstawy/teoria', element: <TheoryBasicsPage /> },
+      { path: 'podstawy/algorytmy', element: <AlgorithmsBasicsPage /> },
       { path: 'python', element: <Navigate to="/podstawy/python" replace /> },
       { path: 'pomoc', element: <HelpPage /> },
       { path: '*', element: <NotFoundPage /> },

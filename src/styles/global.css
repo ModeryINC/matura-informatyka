@@ -1849,7 +1849,19 @@ progress::-moz-progress-bar {
 }
 
 .basics-header__tabs {
+  flex-wrap: wrap;
   margin-block-end: 1rem;
+}
+
+/* Na wąskim ekranie pięć zakładek podstaw zawija się do dwóch wierszy. */
+@media (max-width: 560px) {
+  .basics-header__tabs {
+    border-radius: var(--radius);
+  }
+
+  .basics-header__tabs .tabs__tab {
+    flex: 1 1 30%;
+  }
 }
 
 .theory-table {
@@ -1983,6 +1995,505 @@ progress::-moz-progress-bar {
   font-family: var(--font-mono);
   font-weight: 700;
   text-align: center;
+}
+
+/* Wizualizacje algorytmów (src/components/AlgorithmPlayer.tsx) */
+.algo__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+.algo__category {
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.algo {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  min-inline-size: 0;
+}
+
+.algo__inputs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.5rem 0.75rem;
+}
+
+.algo__inputs .field {
+  flex: 1 1 10rem;
+}
+
+.algo__inputs input {
+  min-block-size: 2.25rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--code-bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+.field__error {
+  color: var(--danger);
+  font-size: 0.8rem;
+}
+
+.algo__stage {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  min-inline-size: 0;
+}
+
+.algo__view {
+  display: grid;
+  place-items: center;
+  min-block-size: 11rem;
+  overflow-x: auto;
+}
+
+.algo__note {
+  margin: 0;
+  min-block-size: 3em;
+}
+
+.algo__vars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+}
+
+.algo__vars code {
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.8rem;
+}
+
+.algo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.algo__controls .icon-button {
+  inline-size: 2.25rem;
+  min-block-size: 2.25rem;
+}
+
+.algo__slider {
+  flex: 1 1 8rem;
+  accent-color: var(--accent);
+}
+
+.algo__speed select {
+  min-block-size: 2.25rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.algo__code {
+  display: grid;
+  margin: 0;
+  padding: 0.5rem 0;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--code-bg);
+  color: var(--code-fg);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.algo__line {
+  padding-inline: 0.75rem;
+  white-space: pre;
+  border-inline-start: 3px solid transparent;
+  transition: background-color 0.2s ease-out;
+}
+
+.algo__line.is-current {
+  border-inline-start-color: var(--accent);
+  background: var(--code-active);
+  font-weight: 600;
+}
+
+/* Role elementów (kolory) */
+.algo-role--compare {
+  --role: var(--warning);
+  --role-soft: var(--warning-soft);
+}
+
+.algo-role--swap,
+.algo-role--pivot {
+  --role: var(--danger);
+  --role-soft: var(--danger-soft);
+}
+
+.algo-role--sorted,
+.algo-role--found {
+  --role: var(--success);
+  --role-soft: var(--success-soft);
+}
+
+.algo-role--active,
+.algo-role--min,
+.algo-role--max {
+  --role: var(--accent);
+  --role-soft: var(--accent-soft);
+}
+
+.algo-role--muted {
+  opacity: 0.35;
+}
+
+.algo-array {
+  display: grid;
+  gap: 0.75rem;
+  inline-size: 100%;
+}
+
+.algo-array__bars {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 0.3rem;
+  block-size: 10rem;
+  margin: 0;
+  padding: 0 0 2.6rem;
+  list-style: none;
+}
+
+.algo-bar {
+  position: relative;
+  display: flex;
+  flex: 0 1 2.4rem;
+  flex-direction: column;
+  justify-content: end;
+  block-size: 100%;
+  min-inline-size: 1.3rem;
+}
+
+.algo-bar__fill {
+  display: block;
+  min-block-size: 3px;
+  border-radius: 4px 4px 0 0;
+  background: var(--role, color-mix(in srgb, var(--text-muted) 55%, var(--surface)));
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      block-size 0.3s ease-out,
+      background-color 0.2s ease-out;
+  }
+}
+
+.algo-bar__value,
+.algo-bar__index,
+.algo-bar__pointer {
+  position: absolute;
+  inset-inline: 0;
+  text-align: center;
+  font-family: var(--font-mono);
+}
+
+.algo-bar__value {
+  inset-block-end: -1.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.algo-bar__index {
+  inset-block-end: -2.4rem;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+.algo-bar__pointer {
+  inset-block-start: -1.3rem;
+  color: var(--accent-strong);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.algo-array__aux {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.algo-array__aux ol,
+.algo-text ol {
+  display: flex;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.algo-cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: var(--cell, 1.9rem);
+  block-size: 1.9rem;
+  border: 1px solid var(--role, var(--border));
+  border-radius: 6px;
+  background: var(--role-soft, var(--surface));
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.algo-text {
+  --cell: 1.9rem;
+  display: grid;
+  gap: 1.4rem;
+  max-inline-size: 100%;
+  padding-block-end: 1rem;
+}
+
+.algo-text__row {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.algo-text__label {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.algo-text ol {
+  gap: 0;
+}
+
+.algo-cell__index {
+  position: absolute;
+  inset-block-start: 100%;
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  font-weight: 400;
+}
+
+.algo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(2.3rem, 1fr));
+  gap: 0.25rem;
+  inline-size: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.algo-grid__cell {
+  display: grid;
+  place-items: center;
+  block-size: 2.1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      background-color 0.25s ease-out,
+      opacity 0.25s ease-out;
+  }
+}
+
+.algo-grid__cell.is-current {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 700;
+}
+
+.algo-grid__cell.is-prime {
+  border-color: var(--success);
+  background: var(--success-soft);
+  color: var(--success);
+  font-weight: 700;
+}
+
+.algo-grid__cell.is-marking {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.algo-grid__cell.is-crossed {
+  opacity: 0.35;
+  text-decoration: line-through;
+}
+
+.algo-table {
+  inline-size: 100%;
+  max-block-size: 18rem;
+  overflow: auto;
+}
+
+.algo-table table {
+  border-collapse: collapse;
+  inline-size: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.algo-table th,
+.algo-table td {
+  padding: 0.3rem 0.55rem;
+  border-block-end: 1px solid var(--border);
+  text-align: end;
+  white-space: nowrap;
+}
+
+.algo-table th {
+  position: sticky;
+  inset-block-start: 0;
+  background: var(--surface-2);
+  font-family: var(--font-sans);
+}
+
+.algo-table tr.is-current td {
+  background: var(--accent-soft);
+  font-weight: 700;
+}
+
+.algo-tree {
+  inline-size: 100%;
+  overflow-x: auto;
+}
+
+.algo-tree svg {
+  display: block;
+  inline-size: 100%;
+  margin-inline: auto;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.algo-tree__edge {
+  stroke: var(--border);
+  stroke-width: 2;
+}
+
+.algo-tree__node rect {
+  fill: var(--surface);
+  stroke: var(--border);
+  stroke-width: 1.5;
+}
+
+.algo-tree__node text {
+  fill: var(--text);
+}
+
+.algo-tree__node.is-active rect {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.algo-tree__node.is-waiting rect {
+  fill: var(--warning-soft);
+  stroke: var(--warning);
+}
+
+.algo-tree__node.is-done rect {
+  fill: var(--success-soft);
+  stroke: var(--success);
+}
+
+.algo-tree__result {
+  font-weight: 700;
+  fill: var(--success) !important;
+}
+
+.algo-tree__node {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: wezel-wchodzi 0.3s ease-out;
+  }
+}
+
+@keyframes wezel-wchodzi {
+  from {
+    opacity: 0;
+  }
+}
+
+.algo-hanoi {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  inline-size: 100%;
+}
+
+.algo-hanoi__peg {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+}
+
+.algo-hanoi__stack {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: start;
+  gap: 2px;
+  inline-size: 100%;
+  block-size: calc(var(--discs) * 1.5rem + 1rem);
+  border-block-end: 4px solid var(--text-muted);
+}
+
+.algo-hanoi__stack::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: calc(50% - 3px);
+  z-index: 0;
+  inline-size: 6px;
+  border-radius: 3px 3px 0 0;
+  background: var(--text-muted);
+}
+
+.algo-hanoi__disc {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  block-size: 1.3rem;
+  border-radius: 999px;
+  background: hsl(var(--hue) 65% 55%);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.algo-hanoi__name {
+  font-weight: 700;
 }
 
 .basics-tables {
@@ -3422,6 +3933,23 @@ progress::-moz-progress-bar {
     flex: 1;
     justify-content: center;
     padding-inline: 0.5rem;
+  }
+
+  /* Cztery zakładki z licznikami: licznik pod nazwą, żeby wszystko się zmieściło. */
+  .section-header .tabs__tab {
+    flex-direction: column;
+    gap: 0;
+    padding-block: 0.3rem;
+    border-radius: var(--radius);
+    line-height: 1.25;
+  }
+
+  .section-header .tabs {
+    border-radius: calc(var(--radius) + 0.25rem);
+  }
+
+  .section-header .tabs__count {
+    font-size: 0.7rem;
   }
 }
 
