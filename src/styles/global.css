@@ -2098,7 +2098,7 @@ progress::-moz-progress-bar {
   display: grid;
   place-items: center;
   min-block-size: 11rem;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .algo__note {
@@ -2392,7 +2392,7 @@ progress::-moz-progress-bar {
 .algo-table {
   inline-size: 100%;
   max-block-size: 18rem;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: auto;
   scrollbar-gutter: stable;
 }
