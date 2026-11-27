@@ -11,13 +11,7 @@
         "points": 1,
         "prompt": "Jaką złożoność czasową – kwadratową, liniową, logarytmiczną czy inną – ma najlepszy algorytm znajdujący pierwszą liczbę zapisaną przez Jasia? Jak go zrealizować?",
         "answer": "Logarytmiczną – wyszukiwanie binarne. Tablica składa się z bloku liczb nieparzystych, a po nim bloku parzystych, więc sprawdzając parzystość elementu środkowego, można za każdym razem odrzucić połowę przedziału.\n\nW arkuszu ocenia się zgodność odpowiedzi z własnym algorytmem z zadania 1.1 (np. liniowe przeszukiwanie – złożoność liniowa).",
-        "accepted": [
-          "logarytmiczna",
-          "logarytmiczną",
-          "log n",
-          "o(log n)",
-          "log(n)"
-        ]
+        "accepted": ["logarytmiczna", "logarytmiczną", "log n", "o(log n)", "log(n)"]
       }
     ]
   },
@@ -59,9 +53,7 @@
         "points": 1,
         "prompt": "Dana jest tabela PRACOWNICY:\n\n| Nr | Nazwisko | Imie | Stanowisko | Dzial |\n|---|---|---|---|---|\n| 7369 | Smitko | Alan | urzędnik | 20 |\n| 7499 | Nowak | Kazimierz | sprzedawca | 30 |\n| 7521 | Wicek | Mariusz | sprzedawca | 30 |\n| 7566 | Jonas | Kamil | kierownik | 20 |\n| 7654 | Martin | Leon | sprzedawca | 30 |\n| 7698 | Bracki | Bartosz | kierownik | 30 |\n| 7782 | Celerek | Agnieszka | kierownik | 10 |\n| 7788 | Skotnik | Natalia | analityk | 20 |\n| 7839 | King | Mirosława | prezes | 10 |\n\nOceń prawdziwość zdań (wpisz cztery litery P/F):\n\n1. Wynikiem `SELECT COUNT(Stanowisko) FROM PRACOWNICY;` jest 5.\n2. Wynikiem `SELECT COUNT(Stanowisko) FROM PRACOWNICY WHERE Stanowisko <> \"kierownik\";` jest 6.\n3. Wynikiem `SELECT Stanowisko, COUNT(*) FROM PRACOWNICY GROUP BY Stanowisko;` jest: urzędnik 1, sprzedawca 3, kierownik 3, analityk 1, prezes 1.\n4. Wynikiem `SELECT COUNT(Stanowisko) FROM PRACOWNICY WHERE Stanowisko LIKE \"*nik\";` jest 2.",
         "answer": "FPPF\n\n1. F – COUNT liczy wszystkie wiersze z niepustym stanowiskiem: 9 (różnych stanowisk jest 5).\n2. P – 9 − 3 kierowników = 6.\n3. P.\n4. F – w SQL wzorzec „dowolne znaki” to %, a nawet przy takim znaczeniu pasowałyby 4 wiersze (urzędnik i 3 kierowników).",
-        "accepted": [
-          "FPPF"
-        ]
+        "accepted": ["FPPF"]
       }
     ]
   }

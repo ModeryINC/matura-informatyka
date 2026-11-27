@@ -26,21 +26,14 @@
         "points": 1,
         "prompt": "Ile razy łącznie zostanie wywołana funkcja f, jeśli pierwszym wywołaniem będzie f(987654321, 123456789)?",
         "answer": "10 – po jednym wywołaniu na każdą z 9 cyfr b i jeszcze jedno dla b = 0.",
-        "accepted": [
-          "10"
-        ]
+        "accepted": ["10"]
       },
       {
         "number": "2.3",
         "points": 2,
         "prompt": "Ile razy łącznie zostanie wykonana instrukcja w ← w + a, jeśli pierwszym wywołaniem będzie:\n\n- a) f(2024, 1000)\n- b) f(2024, 1234)\n\nWpisz dwie liczby, np. „3, 7”.",
         "answer": "- a) 1\n- b) 10\n\nInstrukcja wykonuje się tyle razy, ile wynosi suma cyfr b: 1 + 0 + 0 + 0 = 1 oraz 1 + 2 + 3 + 4 = 10. Funkcja f liczy iloczyn a · b metodą mnożenia pisemnego.",
-        "accepted": [
-          "1, 10",
-          "1 10",
-          "1,10",
-          "1;10"
-        ]
+        "accepted": ["1, 10", "1 10", "1,10", "1;10"]
       }
     ]
   }

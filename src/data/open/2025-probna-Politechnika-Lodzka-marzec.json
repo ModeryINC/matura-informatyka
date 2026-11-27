@@ -11,11 +11,7 @@
         "points": 2,
         "prompt": "Uzupełnij tabelę, wyznaczając k dla podanych x.\n\n| x | k |\n|---|---|\n| 37 | 3 |\n| 872 | |\n| 6532 | 724 |\n| 42165 | |",
         "answer": "| x | k |\n|---|---|\n| 872 | 95 |\n| 42165 | 4683 |\n\nk = (x − Sₓ) / 9: (872 − 17) / 9 = 95, (42165 − 18) / 9 = 4683.",
-        "accepted": [
-          "95, 4683",
-          "95 4683",
-          "95,4683"
-        ]
+        "accepted": ["95, 4683", "95 4683", "95,4683"]
       },
       {
         "number": "1.2",
@@ -51,18 +47,14 @@
         "points": 1,
         "prompt": "Oceń prawdziwość zdań o sieciach komputerowych (wpisz cztery litery P/F):\n\n1. Serwer DHCP przydziela komputerom w sieci adresy IP i konfigurację sieciową.\n2. Klasa adresów C pozwala maksymalnie zaadresować 65536 hostów w jednej sieci.\n3. Adres IPv6 składa się z 64 bitów.\n4. Do danego adresu IP może być przypisanych wiele różnych nazw.",
         "answer": "PFFP\n\n2. F – klasa C ma 256 adresów (254 hosty); 65536 to klasa B.\n3. F – IPv6 ma 128 bitów.",
-        "accepted": [
-          "PFFP"
-        ]
+        "accepted": ["PFFP"]
       },
       {
         "number": "6.2",
         "points": 1,
         "prompt": "Oceń prawdziwość zdań o grafice (wpisz cztery litery P/F):\n\n1. Grafika wektorowa jest nieskalowalna – przy powiększaniu obraz traci jakość.\n2. W systemach wydruku stosuje się model barw CMYK.\n3. Grafika rastrowa jest nazywana grafiką obrazu rzeczywistego i stosuje się ją w fotografii cyfrowej.\n4. JPG jest formatem pliku graficznego, w którym wykorzystano kompresję stratną.",
         "answer": "FPPP\n\n1. F – to grafika rastrowa traci jakość przy powiększaniu; wektorowa skaluje się bez strat.",
-        "accepted": [
-          "FPPP"
-        ]
+        "accepted": ["FPPP"]
       }
     ]
   }

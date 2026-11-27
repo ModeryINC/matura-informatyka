@@ -61,7 +61,9 @@ export function validateOpenTask(task: unknown, sessionIds: Set<string>): string
       errors.push(`${label}: "points" to dodatnia liczba całkowita`);
     if (
       part.accepted !== undefined &&
-      (!Array.isArray(part.accepted) || part.accepted.length === 0 || !part.accepted.every(isString))
+      (!Array.isArray(part.accepted) ||
+        part.accepted.length === 0 ||
+        !part.accepted.every(isString))
     )
       errors.push(`${label}: "accepted" to niepusta lista tekstów`);
   }

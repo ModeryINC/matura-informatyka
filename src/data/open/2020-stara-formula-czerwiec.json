@@ -11,38 +11,21 @@
         "points": 2,
         "prompt": "Jakie wartości przyjmą zmienne x i y po wykonaniu algorytmu dla A = [5, 8, 10, 14, 20, 12, 19, 23, 38, 30]? Wpisz dwie liczby: x i y.",
         "answer": "x = 5, y = 38",
-        "accepted": [
-          "5, 38",
-          "5 38",
-          "5,38",
-          "x=5,y=38"
-        ]
+        "accepted": ["5, 38", "5 38", "5,38", "x=5,y=38"]
       },
       {
         "number": "1.2",
         "points": 2,
         "prompt": "Wpisz dwie litery (dla x i dla y):\n\n- a) Po wykonaniu algorytmu wartością x jest: A. najmniejsza liczba w tablicy A, B. największa liczba w tablicy A.\n- b) Po wykonaniu algorytmu wartością y jest: A. najmniejsza liczba w tablicy A, B. największa liczba w tablicy A.",
         "answer": "- a) A – x to minimum.\n- b) B – y to maksimum.\n\nPierwsza pętla ustawia w każdej parze mniejszy element przed większym; potem minimum szukamy tylko wśród mniejszych, a maksimum – wśród większych.",
-        "accepted": [
-          "A, B",
-          "A B",
-          "AB",
-          "A,B"
-        ]
+        "accepted": ["A, B", "A B", "AB", "A,B"]
       },
       {
         "number": "1.3",
         "points": 2,
         "prompt": "Podaj łączną liczbę porównań w wierszach oznaczonych (*) w zależności od n.",
         "answer": "3n/2 − 2\n\nPierwsza pętla: n/2 porównań. Druga pętla wykonuje się (n − 2)/2 razy po 2 porównania, czyli n − 2. Razem n/2 + n − 2 = 3n/2 − 2 (mniej niż 2n − 2 przy osobnym szukaniu minimum i maksimum).",
-        "accepted": [
-          "3n/2-2",
-          "3/2n-2",
-          "1.5n-2",
-          "(3n)/2-2",
-          "3n/2 - 2",
-          "(3/2)n-2"
-        ]
+        "accepted": ["3n/2-2", "3/2n-2", "1.5n-2", "(3n)/2-2", "3n/2 - 2", "(3/2)n-2"]
       }
     ]
   },

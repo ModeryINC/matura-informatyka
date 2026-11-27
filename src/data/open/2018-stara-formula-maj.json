@@ -23,9 +23,7 @@
         "points": 1,
         "prompt": "Oceń prawdziwość stwierdzeń (wpisz dwie litery P/F):\n\n1. Dla danej dodatniej liczby całkowitej n wszystkie elementy tablicy T są liczbami wesołymi albo wszystkie są liczbami smutnymi.\n2. Pomnożenie liczby n przez 10 nie wpływa na zmianę opisanych właściwości liczby.",
         "answer": "PP\n\n1. Każdy element T prowadzi do tego samego końca co n.\n2. Dopisanie zera nie zmienia sumy kwadratów cyfr.",
-        "accepted": [
-          "PP"
-        ]
+        "accepted": ["PP"]
       },
       {
         "number": "1.4",
@@ -47,11 +45,7 @@
         "points": 2,
         "prompt": "Wpisz TAK przy liczbach automorficznych i NIE przy pozostałych.\n\n| n | automorficzna? |\n|---|---|\n| 5 | TAK |\n| 6 | |\n| 11 | |\n| 25 | |\n| 36 | |\n| 76 | |",
         "answer": "| n | n² | automorficzna? |\n|---|---|---|\n| 6 | 36 | TAK |\n| 11 | 121 | NIE |\n| 25 | 625 | TAK |\n| 36 | 1296 | NIE |\n| 76 | 5776 | TAK |\n\n1 pkt za tabelę z jednym błędem.",
-        "accepted": [
-          "TAK, NIE, TAK, NIE, TAK",
-          "T, N, T, N, T",
-          "TNTNT"
-        ]
+        "accepted": ["TAK, NIE, TAK, NIE, TAK", "T, N, T, N, T", "TNTNT"]
       }
     ]
   },
@@ -66,9 +60,7 @@
         "points": 1,
         "prompt": "Dana jest tablica T[0..3, 0..3]:\n\n| | 0 | 1 | 2 | 3 |\n|---|---|---|---|---|\n| 0 | 1 | 2 | 3 | 4 |\n| 1 | 2 | 2 | 4 | 6 |\n| 2 | 4 | 4 | 6 | 6 |\n| 3 | 4 | 5 | 6 | 8 |\n\nOceń poprawność podanych wyników (wpisz cztery litery P/F).\n\n1. Wynik: 64\n\n```\nsuma = 0\ndla każdego i od 0 do 2\n    dla każdego k od 0 do 2\n        suma = suma + T[i,k]\nwypisz suma\n```\n\n2. Wynik: 16\n\n```\nk = 3\nsuma = 0\ndla każdego i od 0 do 3\n    suma = suma + T[i,k]\n    k = k - 1\nwypisz suma\n```\n\n3. Wypisane liczby: 2, 2, 4, 6\n\n```\ndla każdego i od 0 do 3\n    dla każdego k od 0 do 3\n        W[k,i] = T[i,k]\nk = 2\ndla każdego i od 0 do 3\n    wypisz W[i,k]\n```\n\n4. Wypisane liczby: 1, 2, 6, 8\n\n```\ndla każdego i od 0 do 3\n    dla każdego k od 0 do 3\n        W[k,i] = T[i,k]\ndla każdego i od 0 do 3\n    wypisz W[i,i]\n```",
         "answer": "FPFP\n\n1. F – suma lewego górnego kwadratu 3 × 3 to 28.\n2. P – przekątna T[0,3] + T[1,2] + T[2,1] + T[3,0] = 4 + 4 + 4 + 4 = 16.\n3. F – W jest transpozycją T, więc W[i,2] = T[2,i]: 4, 4, 6, 6.\n4. P – przekątna się nie zmienia: 1, 2, 6, 8.",
-        "accepted": [
-          "FPFP"
-        ]
+        "accepted": ["FPFP"]
       }
     ]
   }

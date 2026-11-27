@@ -23,20 +23,14 @@
         "points": 2,
         "prompt": "Dla n ≥ 10 podaj wartości dziesięciu pierwszych elementów tablicy S (S[1], …, S[10]).",
         "answer": "S = 0, 1, 2, 2, 3, 3, 4, 4, 4, 4\n\nS[j] to liczba liczb pierwszych nie większych od j (S[1] = 0, bo pętla z S zaczyna się od j = 2).",
-        "accepted": [
-          "0, 1, 2, 2, 3, 3, 4, 4, 4, 4",
-          "0 1 2 2 3 3 4 4 4 4",
-          "0,1,2,2,3,3,4,4,4,4"
-        ]
+        "accepted": ["0, 1, 2, 2, 3, 3, 4, 4, 4, 4", "0 1 2 2 3 3 4 4 4 4", "0,1,2,2,3,3,4,4,4,4"]
       },
       {
         "number": "1.3",
         "points": 1,
         "prompt": "Dokończ zdanie (wpisz literę). Dla 1 < a ≤ b ≤ n różnica S[b] − S[a − 1] jest równa\n\n- A. liczbie dzielników pierwszych liczby b − a.\n- B. liczbie liczb pierwszych należących do przedziału [a, b].\n- C. największemu wspólnemu dzielnikowi a i b.\n- D. liczbie liczb pierwszych należących do przedziału [a − 1, b].",
         "answer": "B – S[b] liczy liczby pierwsze ≤ b, a S[a − 1] – liczby pierwsze ≤ a − 1.",
-        "accepted": [
-          "B"
-        ]
+        "accepted": ["B"]
       }
     ]
   }

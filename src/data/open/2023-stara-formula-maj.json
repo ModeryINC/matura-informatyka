@@ -26,11 +26,7 @@
         "points": 3,
         "prompt": "Podaj, ile razy po wywołaniu f(1, n) zostanie wykonana operacja zamień() (liczba nie zależy od zawartości tablicy, tylko od n).\n\n| n | liczba operacji zamień() |\n|---|---|\n| 4 | 4 |\n| 8 | |\n| 16 | |\n| 256 | |",
         "answer": "| n | liczba operacji zamień() |\n|---|---|\n| 8 | 12 |\n| 16 | 32 |\n| 256 | 1024 |\n\nDla n = 2^k: T(n) = n/2 + 2 · T(n/2), czyli T(n) = (n/2) · log₂ n.",
-        "accepted": [
-          "12, 32, 1024",
-          "12 32 1024",
-          "12,32,1024"
-        ]
+        "accepted": ["12, 32, 1024", "12 32 1024", "12,32,1024"]
       }
     ]
   }

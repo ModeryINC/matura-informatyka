@@ -17,20 +17,14 @@
         "points": 1,
         "prompt": "Ile razy dla n = 100 jest spełniony warunek p <= k podczas wykonywania pętli, gdy szukana liczba jest większa od każdego elementu tablicy T?",
         "answer": "7 razy – przedział zmniejsza się: 100 → 50 → 25 → 12 → 6 → 3 → 1 → 0; warunek jest prawdziwy dla 7 niepustych przedziałów.",
-        "accepted": [
-          "7"
-        ]
+        "accepted": ["7"]
       },
       {
         "number": "1.3",
         "points": 1,
         "prompt": "Sprawdź działanie funkcji F(T, x) dla nieuporządkowanej tablicy T = [3; 5; 7; 8; X; 13; 33; 37; 40; 43], w której piąty element X jest większy od pozostałych (dokładna wartość jest w arkuszu). Podaj wynik dla x = 43.",
         "answer": "fałsz – pierwsze s = 5, a T[5] > 43, więc k ← 4 i dalej szukamy tylko w T[1..4], gdzie 43 nie ma. Wyszukiwanie binarne działa poprawnie tylko na tablicy uporządkowanej.",
-        "accepted": [
-          "fałsz",
-          "falsz",
-          "false"
-        ]
+        "accepted": ["fałsz", "falsz", "false"]
       }
     ]
   },

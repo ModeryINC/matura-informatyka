@@ -17,9 +17,7 @@
         "points": 2,
         "prompt": "Niech n będzie liczbą k-cyfrową (k > 0). Oceń prawdziwość zdań o liczbie wywołań funkcji przestaw w zależności od k. Wpisz cztery litery P/F, np. PFFP.\n\n1. Liczba wywołań jest równa k / 2.\n2. Liczba wywołań jest równa (k + 1) div 2 (div – dzielenie całkowite).\n3. Liczba wywołań jest równa k / 2, gdy k jest parzyste, oraz (k + 1) / 2, gdy k jest nieparzyste.\n4. Liczba wywołań jest równa k / 2 + 1.",
         "answer": "FPPF\n\nKażde wywołanie zjada dwie cyfry, więc wywołań jest ⌈k / 2⌉. Wzór k / 2 nie działa dla nieparzystych k, a k / 2 + 1 – dla parzystych.\n\n2 pkt za 4 poprawne odpowiedzi, 1 pkt za 3.",
-        "accepted": [
-          "FPPF"
-        ]
+        "accepted": ["FPPF"]
       }
     ]
   },
@@ -35,11 +33,7 @@
         "points": 2,
         "prompt": "Dla podanych liczb bazowych podaj liczbę falistą o tej samej długości zapisu i tej samej bazie.\n\n| liczba bazowa | liczba falista |\n|---|---|\n| 326 | |\n| 414141 | |\n| 7732 | |\n| 21289 | |",
         "answer": "| liczba bazowa | liczba falista |\n|---|---|\n| 326 | 626 |\n| 414141 | 414141 |\n| 7732 | 3232 |\n| 21289 | 98989 |\n\n2 pkt za wszystkie pola, 1 pkt za trzy.",
-        "accepted": [
-          "626, 414141, 3232, 98989",
-          "626 414141 3232 98989",
-          "626,414141,3232,98989"
-        ]
+        "accepted": ["626, 414141, 3232, 98989", "626 414141 3232 98989", "626,414141,3232,98989"]
       }
     ]
   }

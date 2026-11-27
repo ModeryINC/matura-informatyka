@@ -26,7 +26,12 @@
         "points": 3,
         "prompt": "Podaj wynik fun(a, 2) dla podanych a.\n\n| a | fun(a, 2) |\n|---|---|\n| 0 | FAŁSZ |\n| 1 | |\n| 7 | |\n| 16 | |\n| −4 | |",
         "answer": "| a | fun(a, 2) |\n|---|---|\n| 1 | FAŁSZ |\n| 7 | PRAWDA |\n| 16 | FAŁSZ |\n| −4 | FAŁSZ |\n\nFunkcja sprawdza, czy a jest liczbą pierwszą.",
-        "accepted": ["FAŁSZ, PRAWDA, FAŁSZ, FAŁSZ", "F, P, F, F", "FPFF", "falsz, prawda, falsz, falsz"]
+        "accepted": [
+          "FAŁSZ, PRAWDA, FAŁSZ, FAŁSZ",
+          "F, P, F, F",
+          "FPFF",
+          "falsz, prawda, falsz, falsz"
+        ]
       },
       {
         "number": "2.2",

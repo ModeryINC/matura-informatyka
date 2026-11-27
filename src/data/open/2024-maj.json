@@ -23,7 +23,16 @@
         "points": 1,
         "prompt": "Dana jest kwadratowa plansza o n wierszach i n kolumnach. Podaj, jaka jest największa możliwa liczba czarnych pól na tej planszy, dla których wynikiem działania algorytmu jest PRAWDA.",
         "answer": "(n − 1)²\n\nNajkrótsza ścieżka w prawo i w dół ma zawsze 2n − 1 białych pól, więc czarnych może być n² − (2n − 1) = (n − 1)².",
-        "accepted": ["(n-1)^2", "(n-1)²", "(n-1)*(n-1)", "(n-1)(n-1)", "n^2-2n+1", "n²-2n+1", "n*n-2n+1", "n*n-2*n+1"]
+        "accepted": [
+          "(n-1)^2",
+          "(n-1)²",
+          "(n-1)*(n-1)",
+          "(n-1)(n-1)",
+          "n^2-2n+1",
+          "n²-2n+1",
+          "n*n-2n+1",
+          "n*n-2*n+1"
+        ]
       }
     ]
   },

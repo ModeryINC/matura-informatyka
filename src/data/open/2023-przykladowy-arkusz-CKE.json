@@ -11,9 +11,7 @@
         "points": 2,
         "prompt": "Niech A = [5, 10, 15, 20, 25, …, 95, 100] oraz s = 500. Na ilu polach planszy B znajdą się pionki po zakończeniu gry?",
         "answer": "101 – pionki staną na polach B[0], B[5], B[10], …, B[500].\n\nPętla idzie od końca, więc w jednej turze każda liczba A[k] jest użyta co najwyżej raz: pionki stoją na polach, których numery są sumami pewnych elementów A. Suma wszystkich elementów to 1050, a sumy podzbiorów dają wszystkie wielokrotności 5 do 500.\n\n1 pkt za odpowiedź 100.",
-        "accepted": [
-          "101"
-        ]
+        "accepted": ["101"]
       },
       {
         "number": "2.3",
@@ -35,12 +33,7 @@
         "points": 2,
         "prompt": "Uzupełnij tabelę – podaj brakującą liczbę (x lub b), dla której a^x mod M = b.\n\n| M | a | x | b |\n|---|---|---|---|\n| 7 | 2 | 5 | 4 |\n| 11 | 3 | 3 | |\n| 31 | 5 | | 25 |\n| 59 | 2 | | 5 |",
         "answer": "| M | a | x | b |\n|---|---|---|---|\n| 11 | 3 | 3 | 5 |\n| 31 | 5 | 2 | 25 |\n| 59 | 2 | 6 | 5 |\n\n27 mod 11 = 5; 5² = 25; 2⁶ = 64 = 59 + 5.\n\n1 pkt za co najmniej dwa poprawne pola.",
-        "accepted": [
-          "5, 2, 6",
-          "5 2 6",
-          "5,2,6",
-          "5;2;6"
-        ]
+        "accepted": ["5, 2, 6", "5 2 6", "5,2,6", "5;2;6"]
       }
     ]
   },
@@ -56,11 +49,7 @@
         "points": 1,
         "prompt": "Podaj liczby wpłynięć statków do portu w poszczególnych latach: 2016, 2017, 2018 i 2019.",
         "answer": "| rok | liczba wpłynięć |\n|---|---|\n| 2016 | 2531 |\n| 2017 | 2522 |\n| 2018 | 2449 |\n| 2019 | 2532 |\n\nNp. `SELECT YEAR(Data_przybycia), COUNT(*) FROM Przybycia GROUP BY YEAR(Data_przybycia);`",
-        "accepted": [
-          "2531, 2522, 2449, 2532",
-          "2531 2522 2449 2532",
-          "2531,2522,2449,2532"
-        ]
+        "accepted": ["2531, 2522, 2449, 2532", "2531 2522 2449 2532", "2531,2522,2449,2532"]
       },
       {
         "number": "5.2",
@@ -99,12 +88,7 @@
         "points": 2,
         "prompt": "Przy transakcjach w sklepie internetowym potrzebne są m.in. trzy wrażliwe informacje: login, hasło do serwisu i dane karty kredytowej. Dla każdej z nich wskaż zalecany (zgodny z dobrymi praktykami bezpieczeństwa) sposób postępowania w bazie danych sklepu:\n\n- A. należy zapisać w bazie danych sklepu w całości;\n- B. nie należy przechowywać w bazie danych sklepu w żadnej formie;\n- C. należy zapisać jedynie skrót (hash) danych, a nie całą oryginalną treść.\n\nWpisz litery dla: loginu, hasła i danych karty (np. „A, B, C”).",
         "answer": "- login – A (zapisać w całości),\n- hasło – C (zapisać tylko skrót – hash),\n- dane karty kredytowej – B (nie przechowywać w żadnej formie).\n\n2 pkt za trzy poprawne wiersze, 1 pkt za dwa.",
-        "accepted": [
-          "A, C, B",
-          "A C B",
-          "ACB",
-          "A,C,B"
-        ]
+        "accepted": ["A, C, B", "A C B", "ACB", "A,C,B"]
       }
     ]
   }

@@ -11,21 +11,14 @@
         "points": 2,
         "prompt": "Podaj najmniejszą oraz największą liczbę n, dla której wynikiem działania algorytmu będzie p = 10.",
         "answer": "Najmniejsza: 730, największa: 1000.\n\nAlgorytm wyszukuje binarnie najmniejsze p, dla którego p³ ≥ n (zaokrąglony w górę pierwiastek sześcienny). p = 10, gdy 9³ < n ≤ 10³, czyli 730 ≤ n ≤ 1000.",
-        "accepted": [
-          "730, 1000",
-          "730 1000",
-          "730,1000",
-          "730;1000"
-        ]
+        "accepted": ["730, 1000", "730 1000", "730,1000", "730;1000"]
       },
       {
         "number": "1.3",
         "points": 1,
         "prompt": "Dokończ zdanie (wpisz literę). Dla każdej liczby całkowitej n > 1 instrukcja oznaczona (*) wykona się\n\n- A. mniej niż 2 · log₂ n razy.\n- B. więcej niż n/2, ale mniej niż n razy.\n- C. więcej niż n + 1, ale mniej niż 2n razy.\n- D. więcej niż n² razy.",
         "answer": "A – każdy obrót pętli połowi przedział [p, q], więc obrotów jest około log₂ n.",
-        "accepted": [
-          "A"
-        ]
+        "accepted": ["A"]
       }
     ]
   }

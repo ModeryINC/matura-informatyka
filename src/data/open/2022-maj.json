@@ -11,11 +11,7 @@
         "points": 2,
         "prompt": "Dla każdego ciągu podaj najmniejszą liczbę elementów, które trzeba podmienić, żeby był n-permutacją (0, jeśli już nią jest).\n\n| n | ciąg | do podmiany |\n|---|---|---|\n| 3 | (1, 3, 1) | 1 |\n| 4 | (1, 4, 2, 5) | |\n| 5 | (2, 2, 2, 2, 2) | |\n| 4 | (4, 2, 3, 1) | |\n| 6 | (5, 4, 1, 5, 6, 8) | |\n| 6 | (8, 4, 9, 6, 5, 7) | |",
         "answer": "| ciąg | do podmiany |\n|---|---|\n| (1, 4, 2, 5) | 1 |\n| (2, 2, 2, 2, 2) | 4 |\n| (4, 2, 3, 1) | 0 |\n| (5, 4, 1, 5, 6, 8) | 2 |\n| (8, 4, 9, 6, 5, 7) | 3 |\n\nWynik to n minus liczba różnych wartości z zakresu 1..n w ciągu.\n\n2 pkt za pięć poprawnych wierszy, 1 pkt za cztery.",
-        "accepted": [
-          "1, 4, 0, 2, 3",
-          "1 4 0 2 3",
-          "1,4,0,2,3"
-        ]
+        "accepted": ["1, 4, 0, 2, 3", "1 4 0 2 3", "1,4,0,2,3"]
       }
     ]
   },
@@ -31,12 +27,7 @@
         "points": 2,
         "prompt": "Wpisz wynik algorytmu (k) dla podanych słów.\n\n| n | s | k |\n|---|---|---|\n| 5 | aabab | 4 |\n| 2 | ab | 2 |\n| 3 | aaa | 3 |\n| 6 | aababb | |\n| 9 | baabbaaab | |",
         "answer": "| s | k |\n|---|---|\n| aababb | 5 |\n| baabbaaab | 6 |\n\nk to długość najdłuższego podciągu postaci a…ab…b (najpierw same a, potem same b).",
-        "accepted": [
-          "5, 6",
-          "5 6",
-          "5,6",
-          "5;6"
-        ]
+        "accepted": ["5, 6", "5 6", "5,6", "5;6"]
       },
       {
         "number": "2.2",
@@ -49,10 +40,7 @@
         "points": 2,
         "prompt": "Zapis a^m oznacza literę a powtórzoną m razy (analogicznie b^m). Podaj wynik algorytmu (k) dla słowa a^300 b^550 a^300 b^7 a^280 b^110.",
         "answer": "k = 990 – podział po pierwszym bloku b: wszystkie a z bloków przed nim … najlepiej wziąć a^300 a^300 a^280 = 880 liter a i b^110 = 110 liter b (880 + 110 = 990).\n\n1 pkt za 967 lub 989.",
-        "accepted": [
-          "990",
-          "k=990"
-        ]
+        "accepted": ["990", "k=990"]
       }
     ]
   },
@@ -67,9 +55,7 @@
         "points": 1,
         "prompt": "W bazie danych jest tabela mandaty(numer, id_osoby, punkty):\n\n| numer | id_osoby | punkty |\n|---|---|---|\n| 1 | 1 | 5 |\n| 2 | 1 | 14 |\n| 3 | 2 | 20 |\n| 4 | 3 | 21 |\n| 5 | 2 | 1 |\n| 6 | 1 | 2 |\n\nOceń prawdziwość zdań (wpisz cztery litery P/F):\n\n1. Wynikiem zapytania `SELECT id_osoby, sum(punkty) FROM mandaty HAVING sum(punkty) > 5` jest zestawienie: (1, 14), (2, 20), (3, 21).\n2. Wynikiem zapytania `SELECT id_osoby, sum(punkty) FROM mandaty GROUP BY id_osoby` jest zestawienie: (1, 21), (2, 21), (3, 21).\n3. Wynikiem zapytania `SELECT numer + punkty FROM mandaty` jest 86.\n4. Wynikiem zapytania `SELECT count(punkty) FROM mandaty WHERE punkty = 21` jest 1.",
         "answer": "FPFP\n\n1. F – bez GROUP BY nie powstaje zestawienie dla każdej osoby.\n2. P – każda osoba ma łącznie 21 punktów.\n3. F – zapytanie zwraca 6 wierszy (sumę dla każdego wiersza osobno), a nie jedną liczbę.\n4. P – tylko jeden mandat ma 21 punktów.",
-        "accepted": [
-          "FPFP"
-        ]
+        "accepted": ["FPFP"]
       }
     ]
   }

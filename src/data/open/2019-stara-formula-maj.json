@@ -11,9 +11,7 @@
         "points": 1,
         "prompt": "Podany algorytm jest (wpisz literę):\n\n- A. liniowy\n- B. kwadratowy\n- C. sześcienny\n- D. wykładniczy",
         "answer": "B – kwadratowy: dla każdego i pętla wewnętrzna wykonuje i − 1 obrotów, razem n(n − 1)/2.",
-        "accepted": [
-          "B"
-        ]
+        "accepted": ["B"]
       },
       {
         "number": "1.3",

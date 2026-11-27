@@ -11,20 +11,14 @@
         "points": 2,
         "prompt": "Podaj najmniejszą i największą możliwą liczbę wywołań funkcji Rek po wywołaniu Rek(2019, 6, 14) dla n = 17 i pewnej rosnącej tablicy T[1..17] różnych liczb (pierwsze wywołanie też liczymy). Wpisz dwie liczby: najmniejszą i największą.",
         "answer": "Najmniejsza: 4, największa: 5.\n\nPrzedział 6..14 ma 9 elementów; po podziale zostaje 5 albo 4 elementy, potem 3 albo 2 itd. Przedział jednoelementowy osiągamy po 3 albo 4 podziałach.",
-        "accepted": [
-          "4, 5",
-          "4 5",
-          "4,5"
-        ]
+        "accepted": ["4, 5", "4 5", "4,5"]
       },
       {
         "number": "1.3",
         "points": 1,
         "prompt": "Złożoność czasowa algorytmu Rek dla parametrów x = 1, p = 1, k = n jest (wpisz literę):\n\n- A. sześcienna\n- B. kwadratowa\n- C. liniowa\n- D. logarytmiczna",
         "answer": "D – logarytmiczna: każde wywołanie połowi przedział.",
-        "accepted": [
-          "D"
-        ]
+        "accepted": ["D"]
       }
     ]
   },

@@ -11,13 +11,7 @@
         "points": 2,
         "prompt": "Wpisz TAK, jeśli liczba jest nudna, albo NIE w przeciwnym razie.\n\n| n | nudna? |\n|---|---|\n| 4 | NIE |\n| 229 | |\n| 82 | |",
         "answer": "| n | nudna? |\n|---|---|\n| 229 | NIE |\n| 82 | TAK |\n\n229 → 89 → 145 → 42 → 20 → 4 → … (cykl). 82 → 68 → 100 → 1.",
-        "accepted": [
-          "NIE, TAK",
-          "NIE TAK",
-          "NIE,TAK",
-          "N, T",
-          "NT"
-        ]
+        "accepted": ["NIE, TAK", "NIE TAK", "NIE,TAK", "N, T", "NT"]
       }
     ]
   },
@@ -33,11 +27,7 @@
         "points": 2,
         "prompt": "Podaj liczbę wszystkich wywołań funkcji Koduj (łącznie z pierwszym) po wywołaniu Koduj(n).\n\n| n | liczba wywołań |\n|---|---|\n| 1 | 1 |\n| 2 | 2 |\n| 12 | |\n| 33 | |\n| 1022 | |",
         "answer": "| n | liczba wywołań |\n|---|---|\n| 12 | 4 |\n| 33 | 6 |\n| 1022 | 10 |\n\nLiczba wywołań to liczba cyfr zapisu binarnego n (12 = 1100₂, 33 = 100001₂, 1022 = 1111111110₂).",
-        "accepted": [
-          "4, 6, 10",
-          "4 6 10",
-          "4,6,10"
-        ]
+        "accepted": ["4, 6, 10", "4 6 10", "4,6,10"]
       },
       {
         "number": "2.3",

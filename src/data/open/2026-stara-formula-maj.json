@@ -32,12 +32,7 @@
         "points": 1,
         "prompt": "Dla danych dwóch liczb a i b podaj, ile razy pojawiają się przeniesienia podczas ich dodawania.\n\n| a | b | liczba przeniesień |\n|---|---|---|\n| 37932 | 12528 | 3 |\n| 88765 | 11111 | |\n| 456789 | 222222 | |",
         "answer": "| a | b | liczba przeniesień |\n|---|---|---|\n| 37932 | 12528 | 3 |\n| 88765 | 11111 | 0 |\n| 456789 | 222222 | 3 |",
-        "accepted": [
-          "0, 3",
-          "0 3",
-          "0;3",
-          "0,3"
-        ]
+        "accepted": ["0, 3", "0 3", "0;3", "0,3"]
       }
     ]
   }
