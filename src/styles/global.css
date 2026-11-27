@@ -56,6 +56,14 @@
   --focus: 0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent);
   --gutter: clamp(1rem, 3vw, 2rem);
   --max-width: 1320px;
+
+  /*
+   * Krzywe ruchu: łagodny rozbieg, szybki środek i dłuższe wyhamowanie – ruch
+   * wygląda naturalnie, a nie mechanicznie (jak przy `linear`).
+   * `--ease` do drobnych zmian (kolor, cień), `--ease-emphasized` do przesunięć paneli.
+   */
+  --ease: cubic-bezier(0.45, 0, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.6, 0, 0.1, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -238,6 +246,10 @@ p {
 a {
   color: var(--accent);
   text-underline-offset: 0.15em;
+  transition:
+    color 0.2s var(--ease),
+    text-decoration-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
 }
 
 a:hover {
@@ -307,6 +319,10 @@ pre {
   background: var(--accent);
   color: var(--accent-contrast);
   border-radius: var(--radius-sm);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: inset-block-start 0.25s var(--ease-emphasized);
+  }
 }
 
 .skip-link:focus {
@@ -370,8 +386,8 @@ pre {
   text-decoration: none;
   font-weight: 500;
   transition:
-    color 0.15s ease-out,
-    background-color 0.15s ease-out;
+    color 0.15s var(--ease),
+    background-color 0.15s var(--ease);
 }
 
 .nav a:hover {
@@ -435,11 +451,11 @@ pre {
   padding: 0.2rem 1rem;
   border-radius: 999px;
   vertical-align: 0;
-  transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s var(--ease);
 
   @media (prefers-reduced-motion: no-preference) {
     transition:
-      background-color 0.2s ease-out,
+      background-color 0.2s var(--ease),
       scale 0.25s cubic-bezier(0.3, 1.5, 0.5, 1);
   }
 }
@@ -518,19 +534,19 @@ body:has(.bottom-nav) {
   text-decoration: none;
   cursor: pointer;
   transition:
-    background-color 0.15s ease-out,
-    border-color 0.15s ease-out,
-    box-shadow 0.15s ease-out,
-    color 0.15s ease-out;
+    background-color 0.15s var(--ease),
+    border-color 0.15s var(--ease),
+    box-shadow 0.15s var(--ease),
+    color 0.15s var(--ease);
 
   @media (prefers-reduced-motion: no-preference) {
     transition:
-      background-color 0.15s ease-out,
-      border-color 0.15s ease-out,
-      box-shadow 0.15s ease-out,
-      color 0.15s ease-out,
-      translate 0.15s ease-out,
-      scale 0.1s ease-out;
+      background-color 0.15s var(--ease),
+      border-color 0.15s var(--ease),
+      box-shadow 0.15s var(--ease),
+      color 0.15s var(--ease),
+      translate 0.15s var(--ease),
+      scale 0.1s var(--ease);
   }
 }
 
@@ -561,9 +577,9 @@ body:has(.bottom-nav) {
 .pager a .icon {
   @media (prefers-reduced-motion: no-preference) {
     transition:
-      translate 0.2s ease-out,
-      rotate 0.3s ease-out,
-      scale 0.2s ease-out;
+      translate 0.2s var(--ease),
+      rotate 0.3s var(--ease),
+      scale 0.2s var(--ease);
   }
 }
 
@@ -638,6 +654,21 @@ select {
   font: inherit;
 }
 
+/* Pola formularzy: ramka i obwódka fokusu pojawiają się płynnie. */
+input,
+select,
+textarea {
+  transition:
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
+    background-color 0.2s var(--ease);
+}
+
+/* `:where` – niska specyficzność, żeby nie przykryć kolorów poprawna/błędna odpowiedź. */
+:where(input, select, textarea):hover:not(:disabled, :focus-visible) {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+
 input:focus-visible,
 select:focus-visible {
   border-color: var(--accent);
@@ -659,9 +690,9 @@ select:focus-visible {
 
 .chip {
   transition:
-    border-color 0.15s ease-out,
-    background-color 0.15s ease-out,
-    color 0.15s ease-out;
+    border-color 0.15s var(--ease),
+    background-color 0.15s var(--ease),
+    color 0.15s var(--ease);
 }
 
 .chip:hover {
@@ -671,6 +702,20 @@ select:focus-visible {
 
 .chip[aria-pressed='true']:hover {
   background: var(--accent-strong);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .chip {
+    transition:
+      border-color 0.15s var(--ease),
+      background-color 0.15s var(--ease),
+      color 0.15s var(--ease),
+      scale 0.15s var(--ease);
+  }
+
+  .chip:active {
+    scale: 0.95;
+  }
 }
 
 .chip[aria-pressed='true'] {
@@ -862,10 +907,10 @@ select:focus-visible {
     translate: 0 100%;
     interpolate-size: allow-keywords;
     transition:
-      translate 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-      block-size 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-      max-block-size 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-      border-radius 0.3s ease-out,
+      translate 0.3s var(--ease-emphasized),
+      block-size 0.3s var(--ease-emphasized),
+      max-block-size 0.3s var(--ease-emphasized),
+      border-radius 0.3s var(--ease),
       overlay 0.3s allow-discrete,
       display 0.3s allow-discrete;
   }
@@ -886,7 +931,7 @@ select:focus-visible {
   .action-sheet::backdrop {
     opacity: 0;
     transition:
-      opacity 0.3s ease-out,
+      opacity 0.3s var(--ease),
       overlay 0.3s allow-discrete,
       display 0.3s allow-discrete;
   }
@@ -1041,6 +1086,11 @@ select:focus-visible {
 details > summary {
   cursor: pointer;
   font-weight: 600;
+  transition: color 0.2s var(--ease);
+}
+
+details > summary:hover {
+  color: var(--accent);
 }
 
 /* 5. Widoki ---------------------------------------------------------------- */
@@ -1171,14 +1221,14 @@ progress::-moz-progress-bar {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   transition:
-    border-color 0.2s ease-out,
-    box-shadow 0.2s ease-out;
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
 
   @media (prefers-reduced-motion: no-preference) {
     transition:
-      border-color 0.2s ease-out,
-      box-shadow 0.2s ease-out,
-      translate 0.2s ease-out;
+      border-color 0.2s var(--ease),
+      box-shadow 0.2s var(--ease),
+      translate 0.2s var(--ease);
   }
 }
 
@@ -2017,6 +2067,21 @@ progress::-moz-progress-bar {
   font-family: var(--font-mono);
   font-weight: 700;
   cursor: pointer;
+  transition:
+    background-color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    color 0.2s var(--ease),
+    scale 0.15s var(--ease);
+}
+
+.theory-bit:hover {
+  border-color: var(--accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .theory-bit:active {
+    scale: 0.94;
+  }
 }
 
 .theory-bit.is-on,
@@ -2170,7 +2235,7 @@ progress::-moz-progress-bar {
   padding-inline: 0.75rem;
   white-space: pre;
   border-inline-start: 3px solid transparent;
-  transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s var(--ease);
 }
 
 .algo__line.is-current {
@@ -2243,8 +2308,8 @@ progress::-moz-progress-bar {
 
   @media (prefers-reduced-motion: no-preference) {
     transition:
-      block-size 0.3s ease-out,
-      background-color 0.2s ease-out;
+      block-size 0.3s var(--ease),
+      background-color 0.2s var(--ease);
   }
 }
 
@@ -2359,8 +2424,8 @@ progress::-moz-progress-bar {
 
   @media (prefers-reduced-motion: no-preference) {
     transition:
-      background-color 0.25s ease-out,
-      opacity 0.25s ease-out;
+      background-color 0.25s var(--ease),
+      opacity 0.25s var(--ease);
   }
 }
 
@@ -2477,7 +2542,7 @@ progress::-moz-progress-bar {
 
 .algo-tree__node {
   @media (prefers-reduced-motion: no-preference) {
-    animation: wezel-wchodzi 0.3s ease-out;
+    animation: wezel-wchodzi 0.3s var(--ease);
   }
 }
 
@@ -2838,6 +2903,7 @@ progress::-moz-progress-bar {
 .xl-intro .data-files summary {
   cursor: pointer;
   font-weight: 600;
+  transition: color 0.2s var(--ease);
 }
 
 .xl-cheatsheet ul {
@@ -2889,8 +2955,8 @@ progress::-moz-progress-bar {
   box-shadow: var(--shadow);
   writing-mode: vertical-rl;
   transition:
-    background-color 0.15s ease-out,
-    color 0.15s ease-out;
+    background-color 0.15s var(--ease),
+    color 0.15s var(--ease);
 }
 
 .side-panel__toggle .icon {
@@ -2983,8 +3049,8 @@ progress::-moz-progress-bar {
 @media (prefers-reduced-motion: no-preference) {
   .side-panel--docked .side-panel__body {
     transition:
-      inline-size 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-      opacity 0.25s ease-out;
+      inline-size 0.35s var(--ease-emphasized),
+      opacity 0.25s var(--ease);
   }
 }
 
@@ -3008,8 +3074,8 @@ progress::-moz-progress-bar {
 @media (prefers-reduced-motion: no-preference) {
   .side-panel--drawer {
     transition:
-      translate 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-      box-shadow 0.35s ease-out;
+      translate 0.35s var(--ease-emphasized),
+      box-shadow 0.35s var(--ease);
   }
 }
 
@@ -3296,9 +3362,9 @@ progress::-moz-progress-bar {
   .sql-schema__table details {
     interpolate-size: allow-keywords;
     transition:
-      min-inline-size 0.3s ease-out,
-      border-color 0.2s ease-out,
-      box-shadow 0.2s ease-out;
+      min-inline-size 0.3s var(--ease),
+      border-color 0.2s var(--ease),
+      box-shadow 0.2s var(--ease);
   }
 
   .sql-schema__table details:hover {
@@ -3312,7 +3378,7 @@ progress::-moz-progress-bar {
   .sql-schema__table summary::after {
     transition:
       rotate 0.3s cubic-bezier(0.3, 1.4, 0.5, 1),
-      translate 0.3s ease-out;
+      translate 0.3s var(--ease);
   }
 
   .sql-schema__table details::details-content {
@@ -3320,8 +3386,8 @@ progress::-moz-progress-bar {
     opacity: 0;
     overflow: clip;
     transition:
-      block-size 0.3s ease-out,
-      opacity 0.25s ease-out,
+      block-size 0.3s var(--ease),
+      opacity 0.25s var(--ease),
       content-visibility 0.3s allow-discrete;
   }
 
@@ -3331,7 +3397,7 @@ progress::-moz-progress-bar {
   }
 
   .sql-schema__table details[open] .sql-schema__columns li {
-    animation: kolumna-wjezdza 0.3s ease-out backwards;
+    animation: kolumna-wjezdza 0.3s var(--ease) backwards;
     animation-delay: calc(min(var(--i, 0), 12) * 25ms);
   }
 }
@@ -3425,6 +3491,7 @@ progress::-moz-progress-bar {
 .xl-part__query summary {
   cursor: pointer;
   font-weight: 600;
+  transition: color 0.2s var(--ease);
 }
 
 .xl-part__query pre {
@@ -3791,8 +3858,8 @@ progress::-moz-progress-bar {
   @media (prefers-reduced-motion: no-preference) {
     translate: 0 6px;
     transition:
-      opacity 0.35s ease-out,
-      translate 0.35s ease-out;
+      opacity 0.35s var(--ease),
+      translate 0.35s var(--ease);
   }
 }
 
@@ -3826,10 +3893,23 @@ progress::-moz-progress-bar {
   font: inherit;
   font-size: 0.8rem;
   cursor: pointer;
+  transition:
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    background-color 0.2s var(--ease),
+    scale 0.15s var(--ease);
 }
 
 .hero-demo__pause:hover {
   color: var(--text);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-demo__pause:active {
+    scale: 0.95;
+  }
 }
 
 .hero-demo__pause:focus-visible {
@@ -3854,9 +3934,9 @@ progress::-moz-progress-bar {
   position: relative;
   @media (prefers-reduced-motion: no-preference) {
     transition:
-      border-color 0.2s ease-out,
-      box-shadow 0.2s ease-out,
-      translate 0.2s ease-out;
+      border-color 0.2s var(--ease),
+      box-shadow 0.2s var(--ease),
+      translate 0.2s var(--ease);
   }
   display: grid;
   gap: 0.4rem;
@@ -3866,8 +3946,8 @@ progress::-moz-progress-bar {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
 }
 
 .feature-card:hover {
@@ -3885,7 +3965,7 @@ progress::-moz-progress-bar {
   @media (prefers-reduced-motion: no-preference) {
     transition:
       scale 0.3s cubic-bezier(0.3, 1.5, 0.5, 1),
-      rotate 0.3s ease-out;
+      rotate 0.3s var(--ease);
   }
 }
 
@@ -4040,7 +4120,7 @@ progress::-moz-progress-bar {
 .tabs__tab {
   position: relative;
   z-index: 1;
-  transition: color 0.2s ease-out;
+  transition: color 0.2s var(--ease);
 }
 
 .tabs__tab[aria-current='page'] {
@@ -4140,8 +4220,8 @@ progress::-moz-progress-bar {
   color: var(--text);
   text-decoration: none;
   transition:
-    border-color 0.2s,
-    background-color 0.2s;
+    border-color 0.2s var(--ease),
+    background-color 0.2s var(--ease);
 }
 
 .task-jump__button:hover {
@@ -4156,9 +4236,9 @@ progress::-moz-progress-bar {
 .task-jump__button {
   @media (prefers-reduced-motion: no-preference) {
     transition:
-      border-color 0.2s ease-out,
-      background-color 0.2s ease-out,
-      translate 0.2s ease-out;
+      border-color 0.2s var(--ease),
+      background-color 0.2s var(--ease),
+      translate 0.2s var(--ease);
   }
 }
 
@@ -4274,9 +4354,17 @@ progress::-moz-progress-bar {
   font-weight: 700;
   cursor: pointer;
   transition:
-    background-color 0.15s ease-out,
-    border-color 0.15s ease-out,
-    color 0.15s ease-out;
+    background-color 0.15s var(--ease),
+    border-color 0.15s var(--ease),
+    color 0.15s var(--ease),
+    box-shadow 0.2s var(--ease),
+    scale 0.15s var(--ease);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .theory-choice label:active span {
+    scale: 0.93;
+  }
 }
 
 .theory-choice label:hover span {
@@ -4355,7 +4443,9 @@ progress::-moz-progress-bar {
 .file-list a,
 .file-list__open {
   text-decoration-thickness: 1px;
-  transition: text-decoration-thickness 0.15s ease-out;
+  transition:
+    color 0.2s var(--ease),
+    text-decoration-thickness 0.2s var(--ease);
 }
 
 .file-list a:hover,
@@ -4382,7 +4472,7 @@ progress::-moz-progress-bar {
 
 ::view-transition-group(szczegoly) {
   animation-duration: 0.45s;
-  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation-timing-function: var(--ease-emphasized);
 }
 
 ::view-transition-old(szczegoly),
@@ -4399,6 +4489,7 @@ progress::-moz-progress-bar {
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 0.25s;
+  animation-timing-function: var(--ease);
 }
 
 /* Zmiana motywu: nowe kolory rozlewają się kołem od przycisku motywu. */
@@ -4407,7 +4498,7 @@ progress::-moz-progress-bar {
 }
 
 .theme-transition::view-transition-new(root) {
-  animation: rozlanie-motywu 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: rozlanie-motywu 0.6s var(--ease-emphasized);
 }
 
 @keyframes rozlanie-motywu {
@@ -4542,8 +4633,9 @@ progress::-moz-progress-bar {
 }
 
 .open-part__input:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 1px;
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--focus);
 }
 
 .open-part__key {
