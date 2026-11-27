@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { LuRefreshCw } from 'react-icons/lu';
+import { ClearAnswersButton } from '../components/ClearAnswersButton';
 import { PdfViewer } from '../components/PdfViewer';
 import { TheoryPartCard } from '../components/TheoryPartCard';
 import { sessionsById } from '../data';
 import { allTheoryParts, theoryTasksById } from '../data/theory';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import {
+  clearTheoryAnswers,
   loadTheoryAnswers,
   saveTheoryAnswers,
   type StoredTheoryAnswers,
@@ -39,7 +41,10 @@ function TheoryWorkspace({ task }: { task: TheoryTask }) {
   useDocumentTitle(`Test: zadanie ${task.number} – ${session?.label ?? ''} ${session?.year ?? ''}`);
   const [answers, setAnswers] = useState<StoredTheoryAnswers>(() => loadTheoryAnswers(task.id));
   const [showSheet, setShowSheet] = useState(false);
+  // Zwiększany przy czyszczeniu – karty montują się od nowa (znika też odsłonięty klucz).
+  const [round, setRound] = useState(0);
   const passed = task.parts.filter((part) => answers.parts[part.number]?.passed).length;
+  const touched = Object.keys(answers.parts).length > 0;
 
   const setPart = (number: string, answer: TheoryPartAnswer) => {
     const next = { parts: { ...answers.parts, [number]: answer } };
@@ -74,8 +79,8 @@ function TheoryWorkspace({ task }: { task: TheoryTask }) {
         Oceń prawdziwość zdań: zaznacz P, jeśli zdanie jest prawdziwe, albo F – jeśli jest fałszywe.
         W każdym podpunkcie punkt uzyskasz tylko za komplet poprawnych odpowiedzi.
       </p>
-      {session && (
-        <div className="task-actions">
+      <div className="task-actions">
+        {session && (
           <button
             type="button"
             className="button button--ghost"
@@ -84,15 +89,23 @@ function TheoryWorkspace({ task }: { task: TheoryTask }) {
           >
             {showSheet ? 'Ukryj arkusz' : 'Pokaż arkusz (PDF)'}
           </button>
-        </div>
-      )}
+        )}
+        <ClearAnswersButton
+          disabled={!touched}
+          onClear={() => {
+            clearTheoryAnswers(task.id);
+            setAnswers({ parts: {} });
+            setRound((r) => r + 1);
+          }}
+        />
+      </div>
       {showSheet && session && (
         <PdfViewer files={session.sheets} title={`Arkusz ${session.label} ${session.year}`} />
       )}
       <div className="theory-parts">
         {task.parts.map((part) => (
           <TheoryPartCard
-            key={part.number}
+            key={`${round}-${part.number}`}
             part={part}
             answer={answers.parts[part.number] ?? { choices: [] }}
             onChange={(answer) => setPart(part.number, answer)}

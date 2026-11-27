@@ -8,6 +8,7 @@ import { ExcelTasksPage } from './pages/ExcelTasksPage';
 import { HelpPage } from './pages/HelpPage';
 import { LandingPage } from './pages/LandingPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { OpenTaskPage } from './pages/OpenTaskPage';
 import { PythonBasicsPage } from './pages/PythonBasicsPage';
 import { SessionPage } from './pages/SessionPage';
 import { SessionsPage } from './pages/SessionsPage';
@@ -51,6 +52,7 @@ export const routes: RouteObject[] = [
       { path: 'sql/:taskId', element: <SqlTaskPage /> },
       { path: 'test', element: <Navigate to="/zadania/test" replace /> },
       { path: 'test/:taskId', element: <TheoryTaskPage /> },
+      { path: 'test/otwarte/:taskId', element: <OpenTaskPage /> },
       { path: 'arkusze', element: <SessionsPage /> },
       { path: 'arkusze/:year/:slug', element: <SessionPage /> },
       {

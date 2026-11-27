@@ -2,13 +2,14 @@ import { NavLink, Outlet } from 'react-router';
 import { tasks } from '../data';
 import { spreadsheetTasks } from '../data/spreadsheets';
 import { sqlTasks } from '../data/sql';
+import { openTasks } from '../data/open';
 import { theoryTasks } from '../data/theory';
 
 const TABS = [
   { to: 'python', label: 'Python', count: tasks.length },
   { to: 'excel', label: 'Excel', count: spreadsheetTasks.length },
   { to: 'sql', label: 'SQL', count: sqlTasks.length },
-  { to: 'test', label: 'Test', count: theoryTasks.length },
+  { to: 'test', label: 'Test', count: theoryTasks.length + openTasks.length },
 ] as const;
 
 /** Zakładka „Zadania”: wspólny nagłówek i podział na Python, Excel, SQL i Test. */

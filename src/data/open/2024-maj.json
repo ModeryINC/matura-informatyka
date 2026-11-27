@@ -1,0 +1,66 @@
+[
+  {
+    "id": "2024-maj-1",
+    "sessionId": "2024/maj",
+    "number": "1",
+    "title": "Plansza",
+    "intro": "Dana jest prostokątna plansza złożona z n wierszy i m kolumn zawierająca n · m pól. Wiersze są ponumerowane od góry liczbami 1, 2, …, n, a kolumny od lewej do prawej liczbami 1, 2, …, m. Każde pole jest albo białe, albo czarne.\n\nPlanszę opisuje tablica A[1..n][1..m]: A[i][j] = 0, jeśli pole w i-tym wierszu i j-tej kolumnie jest czarne, oraz A[i][j] = 1, jeśli jest białe. Pola w lewym górnym i prawym dolnym rogu są zawsze białe (A[1][1] = 1 oraz A[n][m] = 1).\n\nAlgorytm korzysta z pomocniczej tablicy P[1..n][1..m] o wartościach logicznych (PRAWDA albo FAŁSZ).\n\n**Dane:** n, m – liczby całkowite dodatnie, wymiary planszy; A[1..n][1..m] – opis planszy.\n**Wynik:** PRAWDA albo FAŁSZ.\n\n```\nP[1][1] ← PRAWDA\ndla i = 1, 2, ..., n wykonuj\n    dla j = 1, 2, ..., m wykonuj\n        jeżeli A[i][j] = 0\n            P[i][j] ← FAŁSZ\n        w przeciwnym przypadku\n            jeżeli i = 1 oraz j ≠ 1\n                P[i][j] ← P[i][j - 1]\n            jeżeli i ≠ 1 oraz j = 1\n                P[i][j] ← P[i - 1][j]\n            jeżeli i ≠ 1 oraz j ≠ 1\n                P[i][j] ← P[i][j - 1] lub P[i - 1][j]\npodaj wynik P[n][m]\n```",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Podaj wynik działania algorytmu dla plansz z rysunków w arkuszu (otwórz arkusz PDF):\n\n- a) n = 3, m = 3\n- b) n = 5, m = 3\n- c) n = 5, m = 5",
+        "answer": "- a) PRAWDA\n- b) FAŁSZ\n- c) PRAWDA\n\n2 pkt za trzy poprawne odpowiedzi, 1 pkt za dwie."
+      },
+      {
+        "number": "1.2",
+        "points": 2,
+        "prompt": "Przy założeniu, że lewy górny i prawy dolny róg planszy są białe, podaj przykład planszy (np. jako tablicę zer i jedynek):\n\n- a) o 5 wierszach i 5 kolumnach, na której co najwyżej 2 pola są czarne, a wynikiem działania algorytmu jest FAŁSZ;\n- b) o 4 wierszach i 4 kolumnach, na której co najmniej 9 pól jest czarnych, a wynikiem działania algorytmu jest PRAWDA.",
+        "answer": "Algorytm zwraca PRAWDA dokładnie wtedy, gdy istnieje ścieżka po białych polach z lewego górnego do prawego dolnego rogu, w której poruszamy się tylko w prawo lub w dół.\n\nPrzykład a) – czarne pola (1,2) i (2,1) odcinają róg:\n\n```\n1 0 1 1 1\n0 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1\n```\n\nPrzykład b) – białe tylko pierwszy wiersz i ostatnia kolumna (7 białych, 9 czarnych):\n\n```\n1 1 1 1\n0 0 0 1\n0 0 0 1\n0 0 0 1\n```"
+      },
+      {
+        "number": "1.3",
+        "points": 1,
+        "prompt": "Dana jest kwadratowa plansza o n wierszach i n kolumnach. Podaj, jaka jest największa możliwa liczba czarnych pól na tej planszy, dla których wynikiem działania algorytmu jest PRAWDA.",
+        "answer": "(n − 1)²\n\nNajkrótsza ścieżka w prawo i w dół ma zawsze 2n − 1 białych pól, więc czarnych może być n² − (2n − 1) = (n − 1)².",
+        "accepted": ["(n-1)^2", "(n-1)²", "(n-1)*(n-1)", "(n-1)(n-1)", "n^2-2n+1", "n²-2n+1", "n*n-2n+1", "n*n-2*n+1"]
+      }
+    ]
+  },
+  {
+    "id": "2024-maj-2",
+    "sessionId": "2024/maj",
+    "number": "2",
+    "title": "Cyfry",
+    "intro": "Przeanalizuj poniższy algorytm, który dla danej nieujemnej liczby całkowitej n oblicza liczbę całkowitą c.\n\n```\nb ← 1\nc ← 0\ndopóki n > 0 wykonuj\n    a ← n mod 10\n    n ← n div 10\n    jeżeli (a mod 2 = 0)\n        c ← c + b * (a div 2)\n    w przeciwnym razie\n        c ← c + b\n    b ← b * 10\n```\n\nUwaga: x mod y i x div y oznaczają odpowiednio resztę i iloraz z dzielenia całkowitego x przez y.",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 2,
+        "prompt": "Uzupełnij tabelę – dla każdej z podanych liczb wpisz wartość zmiennej c po wykonaniu algorytmu oraz liczbę wykonań instrukcji c ← c + b.\n\n| n | wartość c po wykonaniu algorytmu | liczba wykonań c ← c + b |\n|---|---|---|\n| 33658 | 11314 | 3 |\n| 542102 | | |\n| 87654321012345678 | | |",
+        "answer": "| n | wartość c | liczba wykonań c ← c + b |\n|---|---|---|\n| 33658 | 11314 | 3 |\n| 542102 | 121101 | 2 |\n| 87654321012345678 | 41312111011121314 | 8 |"
+      },
+      {
+        "number": "2.2",
+        "points": 1,
+        "prompt": "Podaj wartość c po wykonaniu algorytmu dla osiemnastocyfrowej liczby całkowitej n, w której pierwszych sześć cyfr to 3, następnych sześć cyfr to 6, a pozostałych sześć cyfr to 9.",
+        "answer": "c = 111111333333111111\n\nCyfra nieparzysta daje 1, a parzysta – swoją połowę: 3 → 1, 6 → 3, 9 → 1.",
+        "accepted": ["111111333333111111", "c=111111333333111111"]
+      }
+    ]
+  },
+  {
+    "id": "2024-maj-6",
+    "sessionId": "2024/maj",
+    "number": "6",
+    "title": "Działania w systemach trójkowym i dziewiątkowym",
+    "parts": [
+      {
+        "number": "6",
+        "points": 2,
+        "prompt": "Wykonaj działania na liczbach zapisanych w systemie trójkowym i dziewiątkowym. Wyniki podaj w systemie trójkowym.\n\n- 101112₃ + 121₉ = ?\n- 101112₃ − 121₉ = ?",
+        "answer": "- 101112₃ + 121₉ = 112020₃\n- 101112₃ − 121₉ = 20211₃\n\nNajprościej zamienić 121₉ na system trójkowy cyfra po cyfrze (każda cyfra dziewiątkowa to dwie trójkowe): 1 → 01, 2 → 02, 1 → 01, czyli 121₉ = 10201₃. Dziesiętnie: 284 + 100 = 384, 284 − 100 = 184."
+      }
+    ]
+  }
+]

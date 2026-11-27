@@ -1,12 +1,13 @@
 import type { ReactNode } from 'react';
 
 /**
- * Bezpieczne wyświetlanie odpowiedzi AI z prostym formatowaniem Markdown:
- * bloki ``` , `kod`, **pogrubienie**, listy „- ” i akapity. Tworzy elementy
+ * Bezpieczne wyświetlanie tekstu z prostym formatowaniem Markdown (odpowiedzi AI,
+ * treści zadań otwartych): bloki ``` , `kod`, **pogrubienie**, listy „- ”,
+ * tabele `| a | b |` i akapity. Tworzy elementy
  * Reacta (bez `innerHTML`), więc odpowiedź nie może wstrzyknąć HTML-a.
  */
-export function HintText({ text }: { text: string }) {
-  return <div className="hint-text">{renderBlocks(text)}</div>;
+export function HintText({ text, className = 'hint-text' }: { text: string; className?: string }) {
+  return <div className={className}>{renderBlocks(text)}</div>;
 }
 
 /** Jedna linia tekstu z `kodem` i **pogrubieniem** (bez akapitów). */
@@ -58,7 +59,14 @@ function renderBlocks(text: string): ReactNode[] {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]!;
-    if (line.trimStart().startsWith('```')) {
+    if (line.trimStart().startsWith('|')) {
+      flushParagraph();
+      flushList();
+      const rows: string[] = [];
+      for (; i < lines.length && lines[i]!.trimStart().startsWith('|'); i++) rows.push(lines[i]!);
+      i--;
+      blocks.push(renderTable(rows, `t${blocks.length}`));
+    } else if (line.trimStart().startsWith('```')) {
       flushParagraph();
       flushList();
       const code: string[] = [];
@@ -85,4 +93,47 @@ function renderBlocks(text: string): ReactNode[] {
   flushParagraph();
   flushList();
   return blocks;
+}
+
+const cells = (row: string) =>
+  row
+    .trim()
+    .replace(/^\|/, '')
+    .replace(/\|$/, '')
+    .split('|')
+    .map((cell) => cell.trim());
+
+/** Tabela `| a | b |`; wiersz `|---|---|` oddziela nagłówek od treści. */
+function renderTable(rows: string[], key: string): ReactNode {
+  const separator = rows.findIndex((row) => /^\s*\|[\s:|-]+\|?\s*$/.test(row) && row.includes('-'));
+  const head = separator > 0 ? rows.slice(0, separator) : [];
+  const body = separator > 0 ? rows.slice(separator + 1) : rows;
+  return (
+    <div key={key} className="rich-table">
+      <table>
+        {head.length > 0 && (
+          <thead>
+            {head.map((row, r) => (
+              <tr key={r}>
+                {cells(row).map((cell, c) => (
+                  <th key={c} scope="col">
+                    {renderInline(cell, `${key}-h${r}-${c}`)}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+        )}
+        <tbody>
+          {body.map((row, r) => (
+            <tr key={r}>
+              {cells(row).map((cell, c) => (
+                <td key={c}>{renderInline(cell, `${key}-${r}-${c}`)}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }

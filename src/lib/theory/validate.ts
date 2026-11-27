@@ -32,3 +32,38 @@ export function validateTheoryTask(task: unknown, sessionIds: Set<string>): stri
   }
   return errors;
 }
+
+/** Walidacja zadań otwartych (`src/data/open/*.json`). */
+export function validateOpenTask(task: unknown, sessionIds: Set<string>): string[] {
+  if (typeof task !== 'object' || task === null) return ['zadanie nie jest obiektem'];
+  const t = task as Record<string, unknown>;
+  const id = isString(t.id) ? t.id : '?';
+  const errors: string[] = [];
+  for (const key of ['id', 'sessionId', 'number', 'title'] as const)
+    if (!isString(t[key])) errors.push(`${id}: brak pola "${key}"`);
+  if (isString(t.sessionId) && !sessionIds.has(t.sessionId))
+    errors.push(`${id}: nieznana sesja "${t.sessionId}"`);
+  if (t.intro !== undefined && !isString(t.intro)) errors.push(`${id}: "intro" to tekst`);
+  if (!Array.isArray(t.parts) || t.parts.length === 0) {
+    errors.push(`${id}: zadanie wymaga listy "parts"`);
+    return errors;
+  }
+  const numbers = new Set<string>();
+  for (const raw of t.parts as unknown[]) {
+    const part = (raw ?? {}) as Record<string, unknown>;
+    const label = `${id} ${isString(part.number) ? part.number : '?'}`;
+    if (!isString(part.number)) errors.push(`${label}: brak numeru`);
+    else if (numbers.has(part.number)) errors.push(`${label}: powtórzony numer`);
+    else numbers.add(part.number);
+    if (!isString(part.prompt)) errors.push(`${label}: brak treści "prompt"`);
+    if (!isString(part.answer)) errors.push(`${label}: brak rozwiązania "answer"`);
+    if (typeof part.points !== 'number' || !Number.isInteger(part.points) || part.points < 1)
+      errors.push(`${label}: "points" to dodatnia liczba całkowita`);
+    if (
+      part.accepted !== undefined &&
+      (!Array.isArray(part.accepted) || part.accepted.length === 0 || !part.accepted.every(isString))
+    )
+      errors.push(`${label}: "accepted" to niepusta lista tekstów`);
+  }
+  return errors;
+}

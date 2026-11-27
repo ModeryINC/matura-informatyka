@@ -2098,7 +2098,7 @@ progress::-moz-progress-bar {
   display: grid;
   place-items: center;
   min-block-size: 11rem;
-  overflow-x: auto;
+  overflow-x: scroll;
 }
 
 .algo__note {
@@ -2392,7 +2392,7 @@ progress::-moz-progress-bar {
 .algo-table {
   inline-size: 100%;
   max-block-size: 18rem;
-  overflow-x: auto;
+  overflow-x: scroll;
   overflow-y: auto;
   scrollbar-gutter: stable;
 }
@@ -4426,4 +4426,148 @@ progress::-moz-progress-bar {
   ::view-transition-new(*) {
     animation: none !important;
   }
+}
+
+/* Zadania otwarte (zakładka „Test”) ------------------------------------------ */
+.test-group__title {
+  margin-block: 2rem 0.75rem;
+  padding-block-start: 1rem;
+  border-block-start: 1px solid var(--border);
+  font-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.4rem);
+  scroll-margin-block-start: 5rem;
+}
+
+.year-group__title {
+  font-size: 1.1rem;
+}
+
+.rich-text {
+  display: grid;
+  gap: 0.6rem;
+  min-inline-size: 0;
+  line-height: 1.6;
+}
+
+.rich-text p,
+.rich-text ul {
+  margin: 0;
+}
+
+.rich-text ul {
+  padding-inline-start: 1.2rem;
+}
+
+.rich-text code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 0.05em 0.3em;
+  border-radius: 4px;
+  background: var(--surface-2);
+}
+
+.rich-text pre {
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  background: var(--code-bg);
+  line-height: 1.5;
+}
+
+.rich-text pre code {
+  padding: 0;
+  background: none;
+}
+
+.rich-table {
+  max-inline-size: 100%;
+  overflow-x: auto;
+}
+
+.rich-table table {
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.rich-table th,
+.rich-table td {
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.rich-table th {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.open-intro {
+  margin-block: 1rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.open-part {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.open-part__points {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.open-part__label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.open-part__input {
+  inline-size: 100%;
+  min-block-size: 2.5rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border-strong, var(--border));
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  resize: vertical;
+  field-sizing: content;
+}
+
+.open-part__input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.open-part__key {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-sm);
+  border-inline-start: 3px solid var(--success);
+  background: var(--success-soft);
+}
+
+.open-part__key h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.open-part__self {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.open-part__self .button[aria-pressed='true'] {
+  outline: 2px solid var(--accent);
 }

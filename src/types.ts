@@ -279,3 +279,34 @@ export interface TheoryTask {
   title: string;
   parts: TheoryPart[];
 }
+
+/**
+ * Podpunkt zadania otwartego: odpowiedź wpisuje się własnymi słowami, a potem
+ * porównuje z rozwiązaniem z klucza CKE. Teksty to prosty Markdown (akapity,
+ * `kod`, **pogrubienie**, listy, bloki ``` i tabele `| a | b |`).
+ */
+export interface OpenPart {
+  /** Np. `1.1` (albo `5`, gdy zadanie nie ma podpunktów). */
+  number: string;
+  points: number;
+  prompt: string;
+  /** Rozwiązanie z klucza (przykładowe albo jedyne poprawne). */
+  answer: string;
+  /**
+   * Akceptowane krótkie odpowiedzi do automatycznego sprawdzenia (porównanie
+   * bez wielkości liter i odstępów). Brak – samoocena po porównaniu z kluczem.
+   */
+  accepted?: string[];
+}
+
+/** Zadanie otwarte z arkusza (np. analiza algorytmu), którego nie da się rozwiązać w edytorze. */
+export interface OpenTask {
+  /** Np. `2024-maj-1`. */
+  id: string;
+  sessionId: string;
+  number: string;
+  title: string;
+  /** Wspólny opis zadania (np. specyfikacja algorytmu) nad podpunktami. */
+  intro?: string;
+  parts: OpenPart[];
+}
