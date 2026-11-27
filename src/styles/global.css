@@ -134,6 +134,8 @@
 }
 
 html {
+  /* Miejsce na pasek przewijania strony jest zawsze zarezerwowane – treść się nie przesuwa. */
+  scrollbar-gutter: stable;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   /*
@@ -151,7 +153,12 @@ html {
   }
 }
 
-/* Wewnętrzne przewijane obszary – cieńsze paski (pasek strony zostaje zwykły). */
+/*
+ * Wewnętrzne przewijane obszary – cieńsze paski (pasek strony zostaje zwykły).
+ * Miejsce na pasek jest w nich zarezerwowane z góry: pionowy – `scrollbar-gutter: stable`,
+ * poziomy – `overflow-x: scroll` (tor jest przezroczysty, więc pusty pasek nie jest widoczny),
+ * dzięki czemu pojawienie się paska nie przesuwa ani nie powiększa zawartości.
+ */
 body * {
   scrollbar-width: thin;
 }
@@ -932,6 +939,7 @@ select:focus-visible {
   flex: 1 1 auto;
   min-block-size: 0;
   overflow-y: auto;
+  scrollbar-gutter: stable;
   overscroll-behavior: contain;
   padding: 0 1rem max(1rem, env(safe-area-inset-bottom));
 }
@@ -1008,7 +1016,9 @@ select:focus-visible {
   min-block-size: 0;
   margin: 0;
   padding: 0.75rem 1rem;
-  overflow: auto;
+  overflow-x: scroll;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
   background: var(--code-bg);
   color: var(--code-fg);
   font-family: var(--font-mono);
@@ -1088,6 +1098,7 @@ progress::-moz-progress-bar {
     inset-block-start: 5rem;
     max-block-size: calc(100dvh - 6rem);
     overflow-y: auto;
+    scrollbar-gutter: stable;
   }
 }
 
@@ -1285,6 +1296,7 @@ progress::-moz-progress-bar {
   .editor-pane__output {
     max-block-size: clamp(420px, calc(100dvh - 15rem), 820px);
     overflow-y: auto;
+    scrollbar-gutter: stable;
     padding-inline-end: 0.25rem;
   }
 }
@@ -1481,7 +1493,9 @@ progress::-moz-progress-bar {
   max-block-size: 280px;
   margin: 0;
   padding: 0.6rem 0.75rem;
-  overflow: auto;
+  overflow-x: scroll;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
   background: var(--surface-2);
   border-radius: 6px;
   font-family: var(--font-mono);
@@ -1638,7 +1652,7 @@ progress::-moz-progress-bar {
 .hint-text pre {
   margin: 0;
   padding: 0.5rem 0.7rem;
-  overflow-x: auto;
+  overflow-x: scroll;
   border-radius: 6px;
   background: var(--code-bg);
 }
@@ -1664,7 +1678,9 @@ progress::-moz-progress-bar {
 
 .check__body pre {
   max-block-size: 260px;
-  overflow: auto;
+  overflow-x: scroll;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
   padding: 0.6rem 0.75rem;
   background: var(--surface-2);
   border-radius: 6px;
@@ -1865,7 +1881,7 @@ progress::-moz-progress-bar {
 }
 
 .theory-table {
-  overflow-x: auto;
+  overflow-x: scroll;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
 }
@@ -2064,7 +2080,7 @@ progress::-moz-progress-bar {
   display: grid;
   place-items: center;
   min-block-size: 11rem;
-  overflow-x: auto;
+  overflow-x: scroll;
 }
 
 .algo__note {
@@ -2116,7 +2132,7 @@ progress::-moz-progress-bar {
   display: grid;
   margin: 0;
   padding: 0.5rem 0;
-  overflow-x: auto;
+  overflow-x: scroll;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--code-bg);
@@ -2352,7 +2368,9 @@ progress::-moz-progress-bar {
 .algo-table {
   inline-size: 100%;
   max-block-size: 18rem;
-  overflow: auto;
+  overflow-x: scroll;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
 }
 
 .algo-table table {
@@ -2384,7 +2402,6 @@ progress::-moz-progress-bar {
 
 .algo-tree {
   inline-size: 100%;
-  overflow-x: auto;
 }
 
 .algo-tree svg {
@@ -2541,7 +2558,7 @@ progress::-moz-progress-bar {
 }
 
 .mini-sheet__scroll {
-  overflow-x: auto;
+  overflow-x: scroll;
 }
 
 .mini-sheet table {
@@ -2722,7 +2739,9 @@ progress::-moz-progress-bar {
   margin: 0;
   padding: 0.6rem 0.75rem;
   max-block-size: 260px;
-  overflow: auto;
+  overflow-x: scroll;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
   border-radius: 6px;
   background: var(--surface-2);
   font-family: var(--font-mono);
@@ -2883,6 +2902,7 @@ progress::-moz-progress-bar {
   flex: 1 1 auto;
   min-block-size: 0;
   overflow-y: auto;
+  scrollbar-gutter: stable;
   overscroll-behavior: contain;
   padding-inline-end: 0.25rem;
 }
@@ -3097,7 +3117,9 @@ progress::-moz-progress-bar {
 
 .xl-table-wrap {
   max-block-size: 420px;
-  overflow: auto;
+  overflow-x: scroll;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
 }
@@ -3302,7 +3324,9 @@ progress::-moz-progress-bar {
 
 .sql-result__scroll {
   max-block-size: 26rem;
-  overflow: auto;
+  overflow-x: scroll;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   overscroll-behavior: contain;
@@ -3362,7 +3386,7 @@ progress::-moz-progress-bar {
 .xl-part__query pre {
   margin: 0.5rem 0 0;
   padding: 0.75rem;
-  overflow-x: auto;
+  overflow-x: scroll;
   background: var(--code-bg);
   color: var(--code-fg);
   border-radius: var(--radius-sm);
