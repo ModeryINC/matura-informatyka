@@ -57,14 +57,14 @@ export function SessionPage() {
                   <Link
                     viewTransition
                     to={`/zadanie/${encodeURIComponent(task.id)}`}
-                    className={`task-jump__button task-jump__button--${status}`}
+                    className={`task-jump__button task-jump__button--python task-jump__button--${status}`}
                     title={task.title}
                   >
                     <span className="task-jump__number">
                       {status === 'zaliczone' && (
                         <LuCircleCheck className="icon" aria-label="zaliczone" />
                       )}
-                      {task.number}
+                      {task.number} · Python
                     </span>
                     <span className="task-jump__name">{task.title}</span>
                   </Link>

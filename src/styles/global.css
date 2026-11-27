@@ -3316,6 +3316,10 @@ progress::-moz-progress-bar {
   }
 }
 
+.task-jump__button--python {
+  border-inline-start: 3px solid var(--warning);
+}
+
 .task-jump__button--excel {
   border-inline-start: 3px solid var(--success);
 }
