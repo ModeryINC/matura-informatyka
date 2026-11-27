@@ -1,0 +1,22 @@
+[
+  {
+    "id": "2022-maj-3",
+    "sessionId": "2022/maj",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Dany jest algorytm: `s ← 0; dla i = 1, 2, …, n: dla j = i, i + 1, …, n: s ← s + 1`. Złożoność obliczeniowa tego algorytmu, oceniona liczbą wykonań instrukcji `s ← s + 1` w zależności od dodatniej liczby całkowitej `n`, jest",
+        "statements": ["liniowa.", "kwadratowa.", "n log n.", "nie większa niż sześcienna."],
+        "answers": "FPFP"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Po dodaniu liczb 132₄ oraz 3111₄ zapisanych w systemie czwórkowym otrzymamy:",
+        "statements": ["1111011₂", "362₈", "F3₁₆", "3303₄"],
+        "answers": "FFPP"
+      }
+    ]
+  }
+]

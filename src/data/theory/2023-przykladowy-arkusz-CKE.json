@@ -1,0 +1,20 @@
+[
+  {
+    "id": "2023-przykladowy-arkusz-CKE-6",
+    "sessionId": "2023/przykladowy-arkusz-CKE",
+    "number": "6",
+    "title": "Wikipedia",
+    "parts": [
+      {
+        "number": "6",
+        "prompt": "W myśl polskiego prawa dozwolone jest",
+        "statements": [
+          "skopiowanie treści z wikipedia.org i użycie jej jako części własnego referatu, z nieznaczną zmianą tak, aby sformułowania nie były dokładnie takie same.",
+          "użycie na własnym blogu zdjęcia z wikipedia.org z uwagą „zdjęcie pochodzi z wikipedia.org” i identyfikatorem autora.",
+          "wklejenie własnego referatu jako część odpowiedniego hasła na wikipedia.org."
+        ],
+        "answers": "FPP"
+      }
+    ]
+  }
+]

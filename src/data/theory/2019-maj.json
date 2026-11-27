@@ -1,0 +1,27 @@
+[
+  {
+    "id": "2019-maj-3",
+    "sessionId": "2019/maj",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.2",
+        "prompt": "Po pomnożeniu dwóch liczb 1111110₂ oraz 101₂ zapisanych w systemie dwójkowym otrzymamy:",
+        "statements": ["21312₄", "1001010110₂", "1166₈", "276₁₆"],
+        "answers": "PFPP"
+      },
+      {
+        "number": "3.3",
+        "prompt": "System nazw domenowych:",
+        "statements": [
+          "DNS to skrót od Domain Name System.",
+          "Do danego adresu IP może być przypisanych wiele różnych nazw.",
+          "Przy zmianie adresu IP komputera pełniącego funkcję serwera WWW jest konieczna zmiana nazwy domeny internetowej.",
+          "System DNS ma jedną centralną bazę danych adresów IP i nazw."
+        ],
+        "answers": "PPFF"
+      }
+    ]
+  }
+]

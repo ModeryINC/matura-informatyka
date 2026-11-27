@@ -1,0 +1,44 @@
+[
+  {
+    "id": "2024-stara-formula-maj-3",
+    "sessionId": "2024/stara-formula-maj",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Tabela `Autorzy` (`id_autora`, `autor`) zawiera: 3 Piotr Piotrowski, 4 Paweł Makrowski, 5 Marta Piwar, 6 Pamela Sikor, 7 Izydor Mikuła, 8 Paweł Piotrowski. Wynikiem zapytania `SELECT autor FROM Autorzy WHERE autor LIKE \"P%r\";` (gdzie `%` oznacza ciąg dowolnych znaków) jest:",
+        "statements": [
+          "Piotr Piotrowski, Paweł Makrowski, Pamela Sikor",
+          "Marta Piwar",
+          "Pamela Sikor",
+          "pusty wynik"
+        ],
+        "answers": "FFPF"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Tabela `Utwory` (`id_utworu`, `tytul`, `rok_wydania`, `id_autora`) zawiera utwory autorów (z tabeli `Autorzy` jak wyżej): autor 3 – jeden utwór (1993), autor 4 – jeden (1990), autor 5 – dwa (2001, 2010), autor 6 – dwa (2001, 2008), autor 7 – jeden (1983), autor 8 – jeden (1993). Otrzymano zestawienie: Izydor Mikuła 1, Marta Piwar 2, Pamela Sikor 2, Paweł Makrowski 1, Paweł Piotrowski 1, Piotr Piotrowski 1. Które zapytanie wygeneruje taką odpowiedź?",
+        "statements": [
+          "`SELECT SUM(Autorzy.autor), rok_wydania FROM Autorzy INNER JOIN Utwory ON Autorzy.id_autora = Utwory.id_autora GROUP BY Autorzy.id_autora;`",
+          "`SELECT COUNT(Autorzy.autor), Utwory.rok_wydania FROM Autorzy INNER JOIN Utwory ON Autorzy.id_autora = Utwory.id_autora GROUP BY rok_wydania;`",
+          "`SELECT Autorzy.autor, COUNT(*) FROM Autorzy INNER JOIN Utwory ON Autorzy.id_autora = Utwory.id_autora GROUP BY Autorzy.autor;`",
+          "`SELECT Autorzy.autor, COUNT(Utwory.id_autora) FROM Autorzy INNER JOIN Utwory ON Autorzy.id_autora = Utwory.id_autora GROUP BY Autorzy.id_autora;`"
+        ],
+        "answers": "FFPP"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Różnica 100100111₂ – 1111100₂ jest równa:",
+        "statements": ["10101011₂", "253₈", "AB₁₆", "2323₄"],
+        "answers": "PPPF"
+      },
+      {
+        "number": "3.4",
+        "prompt": "Suma 100100111₂ + 1111100₂ jest równa:",
+        "statements": ["110100010₂", "645₈", "1A3₁₆", "12203₄"],
+        "answers": "FFPP"
+      }
+    ]
+  }
+]

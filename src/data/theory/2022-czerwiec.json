@@ -1,0 +1,27 @@
+[
+  {
+    "id": "2022-czerwiec-3",
+    "sessionId": "2022/czerwiec",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Po dodaniu dwóch liczb 101101₂ i 111011₂ zapisanych w systemie binarnym otrzymamy:",
+        "statements": ["1101000₂", "68₁₆", "140₈", "1120₄"],
+        "answers": "PPFF"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Tabela `Lekarze` (`Id_lekarza` – klucz główny, `Imie_lekarza`, `Nazwisko_lekarza`, `Specjalnosc_lekarza`) jest połączona relacją „jeden do wielu” z tabelą `Wizyty` (`Id_lekarza` – klucz obcy, `Id_pacjenta`, `Data_wizyty`).",
+        "statements": [
+          "Wynikiem zapytania `SELECT Imie_lekarza, Nazwisko_lekarza, count(*) FROM Lekarze JOIN Wizyty ON Lekarze.Id_lekarza = Wizyty.Id_lekarza GROUP BY Wizyty.Id_lekarza;` jest zestawienie zawierające imię i nazwisko każdego lekarza oraz liczbę wizyt u tego lekarza.",
+          "Wynikiem zapytania `SELECT Specjalnosc_lekarza, count(*) FROM Lekarze JOIN Wizyty ON Lekarze.Id_lekarza = Wizyty.Id_lekarza GROUP BY Lekarze.Id_lekarza;` jest zestawienie zawierające nazwy specjalności oraz łączne liczby wizyt u lekarzy tych specjalności.",
+          "Wynikiem zapytania `SELECT Specjalnosc_lekarza, count(Specjalnosc_lekarza) FROM Lekarze JOIN Wizyty ON Lekarze.Id_lekarza = Wizyty.Id_lekarza GROUP BY Wizyty.Id_lekarza;` jest zestawienie zawierające nazwy specjalności oraz łączne liczby wizyt u lekarzy tych specjalności.",
+          "Wynikiem zapytania `SELECT Id_pacjenta, count(*) FROM Wizyty JOIN Lekarze ON Lekarze.Id_lekarza = Wizyty.Id_lekarza GROUP BY Lekarze.Id_lekarza;` jest zestawienie zawierające liczby wizyt pacjentów u poszczególnych lekarzy."
+        ],
+        "answers": "PFFF"
+      }
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "2021-probna-CKE-marzec-3",
+    "sessionId": "2021/probna-CKE-marzec",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "W komórce C1 arkusza kalkulacyjnego zapisano formułę: `=JEŻELI(ORAZ(MOD(A1;2)=1;MOD(B1;2)=1);A1+B1;A1*B1)`",
+        "statements": [
+          "Jeśli w A1 wpisano liczbę 1, a w B1 liczbę 3, to w C1 w wyniku obliczenia formuły pojawi się liczba 4.",
+          "Jeśli w A1 wpisano liczbę 4, a w B1 liczbę 3, to w C1 w wyniku obliczenia formuły pojawi się liczba 3.",
+          "Jeśli w A1 i B1 wpiszemy dowolną liczbę całkowitą dodatnią, to w wyniku obliczenia formuły w C1 zawsze pojawi się liczba parzysta.",
+          "Jeśli w A1 i B1 wpiszemy dowolną liczbę całkowitą dodatnią, to w wyniku obliczenia formuły w C1 zawsze pojawi się liczba większa niż 1."
+        ],
+        "answers": "PFPP"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Dane są operacje logiczne na bitach `not` i `and` oraz wyrażenie `W(a,b) = (not ((not a) and b)) and (not (a and (not b)))`.",
+        "statements": ["W(0,0) = 0", "W(1,0) = 0", "W(0,1) = 1", "W(1,1) = 1"],
+        "answers": "FPFP"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Różnica 1011101₂ – 10111₂ dwóch liczb zapisanych w systemie binarnym jest:",
+        "statements": [
+          "mniejsza niż 100111₂",
+          "równa 1000110₂",
+          "większa niż 10111₂",
+          "równa 1001000₂"
+        ],
+        "answers": "FPPF"
+      }
+    ]
+  }
+]

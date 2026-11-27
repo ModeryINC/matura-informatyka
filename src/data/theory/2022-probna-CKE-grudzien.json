@@ -1,0 +1,19 @@
+[
+  {
+    "id": "2022-probna-CKE-grudzien-7",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "7",
+    "title": "Szyfrowanie symetryczne",
+    "parts": [
+      {
+        "number": "7",
+        "prompt": "Szyfrowanie symetryczne:",
+        "statements": [
+          "Klucz symetryczny umożliwia przeprowadzanie operacji szyfrowania i deszyfrowania.",
+          "W szyfrowaniu symetrycznym używa się dwóch kluczy: prywatnego i publicznego."
+        ],
+        "answers": "PF"
+      }
+    ]
+  }
+]

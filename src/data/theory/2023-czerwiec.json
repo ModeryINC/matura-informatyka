@@ -1,0 +1,19 @@
+[
+  {
+    "id": "2023-czerwiec-5",
+    "sessionId": "2023/czerwiec",
+    "number": "5",
+    "title": "Kolory w CSS",
+    "parts": [
+      {
+        "number": "5",
+        "prompt": "Zapis koloru tła w arkuszu CSS został wyrażony w postaci `background-color: #E9967A;`",
+        "statements": [
+          "Zapis dziesiętny składowej czerwonej koloru #E9967A to 233.",
+          "Zmiana zapisu `#E9967A` na `rgb(255,255,255)` da w efekcie biały kolor tła."
+        ],
+        "answers": "PP"
+      }
+    ]
+  }
+]

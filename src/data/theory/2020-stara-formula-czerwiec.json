@@ -1,0 +1,66 @@
+[
+  {
+    "id": "2020-stara-formula-czerwiec-3",
+    "sessionId": "2020/stara-formula-czerwiec",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "W algorytmie `n` jest nieujemną liczbą całkowitą, `mod` to reszta z dzielenia, `div` – dzielenie całkowite:\n\n`w ← 0; dopóki n ≠ 0 wykonuj: w ← w + (n mod 10); n ← n div 10`",
+        "statements": [
+          "Po wykonaniu algorytmu dla n = 45778 zmienna w przyjmuje wartość 30.",
+          "Po wykonaniu algorytmu dla liczby n wartością zmiennej w jest suma cyfr liczby n w zapisie dziesiętnym.",
+          "Podczas wykonywania algorytmu dla n = 1234 w kolejnych iteracjach pętli dopóki zmienna w przyjmuje wartości 1, 3, 6, 10.",
+          "Po wykonaniu algorytmu dla n = 11111 zmienna w przyjmuje wartość 5."
+        ],
+        "answers": "FPFP"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Urządzenie sieciowe, którego głównym zadaniem jest łączenie ze sobą różnych sieci w celu umożliwienia im wzajemnej komunikacji oraz określanie ścieżki przepływu danych pomiędzy sieciami na podstawie adresu IP, to",
+        "statements": ["host.", "hub.", "switch.", "router."],
+        "answers": "FFFP"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Kaskadowe arkusze stylów:",
+        "statements": [
+          "CSS to skrót określający Kaskadowe Arkusze Stylów.",
+          "CSS stworzono w celu oddzielenia struktury dokumentu od formy jego prezentacji.",
+          "CSS stosuje się w arkuszach kalkulacyjnych do warunkowego formatowania komórek.",
+          "CSS to język służący do opisu prezentacji stron WWW."
+        ],
+        "answers": "PPFP"
+      },
+      {
+        "number": "3.4",
+        "prompt": "Liczba 10110101101₂ zapisana w systemie binarnym jest równa:",
+        "statements": ["1540₁₀", "23121₄", "2655₈", "5AD₁₆"],
+        "answers": "FFPP"
+      },
+      {
+        "number": "3.5",
+        "prompt": "Stos:",
+        "statements": [
+          "Stos to struktura danych, z której dane pobierane są w takiej samej kolejności, w jakiej zostały wstawione.",
+          "Stos to struktura danych, w której dane dokładane są na wierzchołek stosu i z jego wierzchołka są pobierane.",
+          "Stos to struktura danych, w której każdy element jest bezpośrednio dostępny.",
+          "Wszystkie elementy w stosie muszą być różne."
+        ],
+        "answers": "FPFF"
+      },
+      {
+        "number": "3.6",
+        "prompt": "Komputer A: adres IPv4 `192.168.10.65`, maska `255.255.255.0`. Komputer B: adres IPv4 `192.168.10.128`, maska `255.255.255.0`.",
+        "statements": [
+          "Komputer A i komputer B są w tej samej sieci.",
+          "Adresem sieci dla komputera A jest adres `192.168.10.0`.",
+          "Dla maski `255.255.255.0` są dostępne 254 adresy hostów.",
+          "Adres rozgłoszeniowy sieci, do której należy komputer B, to `192.168.255.255`."
+        ],
+        "answers": "PPPF"
+      }
+    ]
+  }
+]

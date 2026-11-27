@@ -1,0 +1,32 @@
+[
+  {
+    "id": "2020-czerwiec-3",
+    "sessionId": "2020/czerwiec",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.2",
+        "prompt": "W algorytmie `n` jest nieujemną liczbą całkowitą, `mod` to reszta z dzielenia, `div` – dzielenie całkowite:\n\n`w ← 0; dopóki n ≠ 0 wykonuj: w ← w + (n mod 10); n ← n div 10`",
+        "statements": [
+          "Po wykonaniu algorytmu dla n = 45778 zmienna w przyjmuje wartość 30.",
+          "Po wykonaniu algorytmu dla liczby n wartością zmiennej w jest suma cyfr liczby n w zapisie dziesiętnym.",
+          "Podczas wykonywania algorytmu dla n = 1234 w kolejnych iteracjach pętli dopóki zmienna w przyjmuje wartości 1, 3, 6, 10.",
+          "Po wykonaniu algorytmu dla n = 11111 zmienna w przyjmuje wartość 5."
+        ],
+        "answers": "FPFP"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Komputer A: adres IPv4 `192.168.10.65`, maska `255.255.255.0`. Komputer B: adres IPv4 `192.168.10.128`, maska `255.255.255.0`.",
+        "statements": [
+          "Komputer A i komputer B są w tej samej sieci.",
+          "Adresem sieci dla komputera A jest adres `192.168.10.0`.",
+          "Dla maski `255.255.255.0` są dostępne 254 adresy hostów.",
+          "Adres rozgłoszeniowy sieci, do której należy komputer B, to `192.168.255.255`."
+        ],
+        "answers": "PPPF"
+      }
+    ]
+  }
+]

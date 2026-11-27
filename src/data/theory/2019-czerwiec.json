@@ -1,0 +1,49 @@
+[
+  {
+    "id": "2019-czerwiec-3",
+    "sessionId": "2019/czerwiec",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Dane są tabele `Uczniowie` i `Oceny`. Przeanalizuj zapytanie:\n\n`SELECT Uczniowie.imie, Uczniowie.nazwisko, AVG(Oceny.ocena) FROM Uczniowie INNER JOIN Oceny ON Uczniowie.id_ucznia = Oceny.id_ucznia GROUP BY Uczniowie.id_ucznia, Uczniowie.imie, Uczniowie.nazwisko HAVING AVG(Oceny.ocena) >= 4 ORDER BY AVG(Oceny.ocena), Uczniowie.nazwisko;`",
+        "statements": [
+          "W wyniku zapytania, przy odpowiednich danych, mogą pojawić się następujące po sobie wiersze: „Jan Abacki 4.08” i „Jan Kowalski 4.85”.",
+          "W wyniku zapytania to samo imię i nazwisko może pojawić się tylko raz, nawet jeśli dwóch uczniów ma takie samo imię i nazwisko.",
+          "W wyniku zapytania otrzymamy trzy kolumny z danymi.",
+          "Jedynym kryterium określającym kolejność wierszy w odpowiedzi jest średnia ocena."
+        ],
+        "answers": "PFPF"
+      },
+      {
+        "number": "3.2",
+        "prompt": "W arkuszu kalkulacyjnym jest tablica kwadratów: w wierszu 1 (B1:K1) i kolumnie A (A2:A10) są liczby, a w komórkach B2:K10 – kwadraty ich sum. Tablicę można otrzymać, kopiując jedną formułę z komórki B2 do pozostałych komórek zakresu B2:K10. Do komórki B2 należy wpisać:",
+        "statements": [
+          "`=($A2+B$1)*($A2+B$1)`",
+          "`=(A2+B1)*(A2+B1)`",
+          "`=($A2+B$1)^2`",
+          "`=($A$2+$B$1)^2`"
+        ],
+        "answers": "PFPF"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Protokół HTTPS",
+        "statements": [
+          "jest protokołem pobierania poczty elektronicznej ze zdalnego serwera przez połączenie TCP/IP.",
+          "obsługuje system nazywania domen.",
+          "przydziela adresy IP poszczególnym komputerom.",
+          "jest szyfrowaną wersją protokołu HTTP."
+        ],
+        "answers": "FFFP"
+      },
+      {
+        "number": "3.4",
+        "prompt": "Różnica 11001001₂ – 1111111₂ jest równa",
+        "statements": ["2A₁₆", "112₈", "2110₄", "1001010₂"],
+        "answers": "FPFP"
+      }
+    ]
+  }
+]

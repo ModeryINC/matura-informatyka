@@ -1,0 +1,49 @@
+[
+  {
+    "id": "2025-stara-formula-maj-3",
+    "sessionId": "2025/stara-formula-maj",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Program typu keylogger służy do",
+        "statements": [
+          "szyfrowania informacji do postaci uniemożliwiającej jej odczytanie bez zdefiniowanego klucza.",
+          "przechowywania danych logowania, w tym – haseł, w bezpiecznym miejscu na dysku użytkownika.",
+          "generowania kodu, który umożliwia użytkownikowi bankowości elektronicznej wykonanie operacji.",
+          "przechwytywania i gromadzenia informacji o naciśniętych klawiszach."
+        ],
+        "answers": "FFFP"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Liczba 1111 1111 1111 1111₂ (zapisana w systemie binarnym) jest równa",
+        "statements": ["33333333₄", "777777₈", "65535₁₀", "FFFF₁₆"],
+        "answers": "PFPP"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Tabele `Wlasciciele` (`Id_Wlasciciela`, `Imie`, `Nazwisko`) i `Zwierzaki` (`Id_Zwierzaka`, `Imie`, `Gatunek`, `Id_Wlasciciela`) są połączone relacją jeden do wielu. Właściciele: 1 Anna Kowalska, 2 Jan Wierzbicki, 3 Ewa Nowak. Zwierzaki: As (pies, 1), Reksio (pies, 2), Kapsel (pies, 3), Mruczek (kot, 1), Kiciak (kot, 1), Puszek (królik, 3), Burek (pies, 2). Wynikiem zapytania `SELECT Wlasciciele.Imie, Wlasciciele.Nazwisko, count(*) FROM Wlasciciele INNER JOIN Zwierzaki ON Wlasciciele.Id_Wlasciciela = Zwierzaki.Id_Wlasciciela GROUP BY Wlasciciele.Imie, Wlasciciele.Nazwisko;` jest",
+        "statements": [
+          "Pies 4, Kot 2, Królik 1",
+          "Anna Kowalska 3, Ewa Nowak 2, Jan Wierzbicki 2",
+          "Anna Kowalska 10, Ewa Nowak 9, Jan Wierzbicki 9",
+          "lista imion i nazwisk właścicieli oraz liczb ich zwierząt."
+        ],
+        "answers": "FPFP"
+      },
+      {
+        "number": "3.4",
+        "prompt": "Te same tabele. Wynikiem zapytania `SELECT Wlasciciele.Imie, Wlasciciele.Nazwisko, Zwierzaki.Imie FROM Wlasciciele INNER JOIN Zwierzaki ON Wlasciciele.Id_Wlasciciela = Zwierzaki.Id_Wlasciciela WHERE Zwierzaki.Imie > \"P\" ORDER BY Wlasciciele.Nazwisko ASC;` jest",
+        "statements": [
+          "Ewa Nowak Puszek, Jan Wierzbicki Reksio",
+          "pusty wynik.",
+          "lista imion i nazwisk właścicieli zwierząt i imiona ich zwierząt zaczynające się literą P.",
+          "Anna Kowalska Reksio"
+        ],
+        "answers": "PFFF"
+      }
+    ]
+  }
+]

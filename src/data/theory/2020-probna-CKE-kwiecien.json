@@ -1,0 +1,49 @@
+[
+  {
+    "id": "2020-probna-CKE-kwiecien-3",
+    "sessionId": "2020/probna-CKE-kwiecien",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "W tabeli `T` zapisano rekordy z informacjami o zawodnikach. Pola rekordu: `id`, `nazwisko`, `imie`, `plec`, `wzrost`, `numer_startowy`, `punkty`, `id_klubu`. Polecenie SQL obliczające średnią punktów zawodników z klubu o `id_klubu` równym 100 może mieć postać:",
+        "statements": [
+          "`select count(punkty) as srednia from T where id_klubu=100;`",
+          "`select avg(punkty) as srednia from T where id=100;`",
+          "`select sum(punkty) from T where id_klubu=100;`",
+          "`select avg(punkty) from T where id_klubu=100;`"
+        ],
+        "answers": "FFFP"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Różnica 11001001₂ – 1111110₂ (dwóch liczb zapisanych w systemie binarnym) jest równa",
+        "statements": ["4C₁₆", "113₈", "1023₄", "1001010₂"],
+        "answers": "FPPF"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Protokół HTTPS",
+        "statements": [
+          "jest protokołem pobierania poczty elektronicznej ze zdalnego serwera przez połączenie TCP/IP.",
+          "jest szyfrowaną wersją protokołu HTTP.",
+          "przydziela adresy IP poszczególnym komputerom.",
+          "obsługuje system nazywania domen."
+        ],
+        "answers": "FPFF"
+      },
+      {
+        "number": "3.4",
+        "prompt": "Liczba, która w zapisie binarnym ma dokładnie 16 cyfr i jedynkę na najbardziej znaczącej pozycji, ma w zapisie",
+        "statements": [
+          "czwórkowym dokładnie 9 cyfr.",
+          "ósemkowym dokładnie 7 cyfr.",
+          "szesnastkowym dokładnie 4 cyfry.",
+          "dziesiętnym dokładnie 5 cyfr."
+        ],
+        "answers": "FFPP"
+      }
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "2024-maj-5",
+    "sessionId": "2024/maj",
+    "number": "5",
+    "title": "Protokoły sieciowe",
+    "parts": [
+      {
+        "number": "5",
+        "prompt": "Protokoły sieciowe:",
+        "statements": [
+          "HTTP to protokół komunikacyjny opisujący sposób przekazywania poczty elektronicznej w internecie.",
+          "FTP to protokół zamiany nazw domenowych na adresy IP.",
+          "DHCP to protokół umożliwiający hostom uzyskanie od serwera danych konfiguracyjnych, np. adresu IP, adresu bramy sieciowej, adresu serwera DNS."
+        ],
+        "answers": "FFP"
+      }
+    ]
+  }
+]

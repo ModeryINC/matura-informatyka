@@ -1,0 +1,21 @@
+[
+  {
+    "id": "2026-stara-formula-maj-3",
+    "sessionId": "2026/stara-formula-maj",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3",
+        "prompt": "Tabela `Osoby` (`Id_Osoby`, `Imie`, `Nazwisko`): 1 Janusz Warecki, 2 Wojciech Namyslo, 3 Beata Kosińska, 4 Ewelina Nowicka. Tabela `Samochody` (`Nr_rejestracyjny`, `Marka`, `Model`, `Rok_produkcji`, `Id_Osoby`): Fiat Punto (2), Toyota Rav4 (2), Ford Focus (4), Ford Galaxy (4), Opel Corsa (1), Opel Corsa (1), Nissan QASHQAI (1). Zapytanie: `SELECT Osoby.Id_Osoby, Osoby.Imie, Osoby.Nazwisko, Count(Samochody.Marka) AS Liczba FROM Osoby LEFT JOIN Samochody ON Samochody.Id_Osoby = Osoby.Id_Osoby GROUP BY Osoby.Id_Osoby;` W wyniku tego zapytania",
+        "statements": [
+          "dla każdego właściciela otrzymamy informację, ile ma różnych marek pojazdów.",
+          "dla każdego właściciela otrzymamy informację, ile ma pojazdów.",
+          "dla Eweliny Nowickiej w polu Liczba otrzymamy wynik 3.",
+          "dla Beaty Kosińskiej w polu Liczba otrzymamy wynik 0."
+        ],
+        "answers": "FPFP"
+      }
+    ]
+  }
+]

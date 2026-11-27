@@ -5,6 +5,8 @@ import { PdfViewer } from '../components/PdfViewer';
 import { sessionsById, tasksForSession } from '../data';
 import { checkableParts, spreadsheetTasks } from '../data/spreadsheets';
 import { checkableSqlParts, sqlTasks } from '../data/sql';
+import { theoryTasks } from '../data/theory';
+import { passedTheoryParts } from '../lib/theory/storage';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useSolutionStatuses } from '../hooks/useSolutions';
 import { passedParts } from '../lib/spreadsheet/storage';
@@ -22,7 +24,8 @@ export function SessionPage() {
   const tasks = tasksForSession(session.id);
   const excelTasks = spreadsheetTasks.filter((t) => t.sessionId === session.id);
   const databaseTasks = sqlTasks.filter((t) => t.sessionId === session.id);
-  const count = tasks.length + excelTasks.length + databaseTasks.length;
+  const testTasks = theoryTasks.filter((t) => t.sessionId === session.id);
+  const count = tasks.length + excelTasks.length + databaseTasks.length + testTasks.length;
 
   return (
     <div className="page page--detail">
@@ -103,6 +106,25 @@ export function SessionPage() {
                     <span className="task-jump__number">
                       {done && <LuCircleCheck className="icon" aria-label="zaliczone" />}
                       {task.number} · SQL
+                    </span>
+                    <span className="task-jump__name">{task.title}</span>
+                  </Link>
+                </MorphItem>
+              );
+            })}
+            {testTasks.map((task) => {
+              const done = passedTheoryParts(task.id) >= task.parts.length;
+              return (
+                <MorphItem key={task.id} to={`/test/${encodeURIComponent(task.id)}`}>
+                  <Link
+                    viewTransition
+                    to={`/test/${encodeURIComponent(task.id)}`}
+                    className={`task-jump__button task-jump__button--test${done ? ' task-jump__button--zaliczone' : ''}`}
+                    title={task.title}
+                  >
+                    <span className="task-jump__number">
+                      {done && <LuCircleCheck className="icon" aria-label="zaliczone" />}
+                      {task.number} · Test
                     </span>
                     <span className="task-jump__name">{task.title}</span>
                   </Link>

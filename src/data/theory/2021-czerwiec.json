@@ -1,0 +1,38 @@
+[
+  {
+    "id": "2021-czerwiec-3",
+    "sessionId": "2021/czerwiec",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Dane są operacje logiczne na bitach `not`, `and` i `or` oraz wyrażenie `W(a,b) = ((not a) and b) or (a and (not b))`.",
+        "statements": ["W(0,0) = 1", "W(1,0) = 1", "W(0,1) = 0", "W(1,1) = 0"],
+        "answers": "FPFP"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Oceń poprawność działań:",
+        "statements": [
+          "(10101)₂ + (101011)₂ = (111111)₂",
+          "(A)₁₆ + (B)₁₆ = (F)₁₆",
+          "(12)₈ + (12)₈ = (14)₁₆",
+          "(123)₁₀ = (1111101)₂"
+        ],
+        "answers": "FFPF"
+      },
+      {
+        "number": "3.3",
+        "prompt": "W bazie danych są tabele połączone relacją: `uczniowie` (`iducznia` – klucz główny, `imie`, `nazwisko`, `klasa`) oraz `oceny` (`idoceny` – klucz główny, `iducznia` – klucz obcy, `ocena`).",
+        "statements": [
+          "Zapytanie `SELECT uczniowie.klasa, Count(oceny.ocena) FROM uczniowie INNER JOIN oceny ON uczniowie.iducznia = oceny.iducznia WHERE oceny.ocena=6 GROUP BY uczniowie.klasa;` da w wyniku zestawienie podające dla każdej klasy liczbę ocen celujących (6).",
+          "Zapytanie `SELECT Count(uczniowie.klasa) FROM uczniowie INNER JOIN oceny ON uczniowie.iducznia = oceny.iducznia WHERE oceny.ocena=6` da w wyniku zestawienie podające dla każdej klasy liczbę ocen celujących (6).",
+          "Zapytanie `SELECT Count(uczniowie.klasa), oceny.ocena FROM uczniowie INNER JOIN oceny ON uczniowie.iducznia = oceny.iducznia GROUP BY oceny.ocena;` da w wyniku zestawienie podające dla każdej klasy liczbę wszystkich ocen.",
+          "Zapytanie `SELECT Count(uczniowie.klasa), oceny.ocena FROM uczniowie INNER JOIN oceny ON uczniowie.iducznia = oceny.iducznia WHERE oceny.ocena=3 GROUP BY oceny.ocena;` da w wyniku zestawienie podające dla każdej klasy liczbę ocen dostatecznych (3)."
+        ],
+        "answers": "PFFF"
+      }
+    ]
+  }
+]

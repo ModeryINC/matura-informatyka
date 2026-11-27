@@ -1,0 +1,38 @@
+[
+  {
+    "id": "2020-lipiec-3",
+    "sessionId": "2020/lipiec",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Dana jest rekurencyjna funkcja `f(n)`: jeżeli `n = 0`, wynikiem jest 1; w przeciwnym przypadku `s ← 1`, dla `i = 0, 1, …, n − 1`: `s ← s + f(i)`, a wynikiem jest `s`.",
+        "statements": [
+          "Dla n < 10 wynikiem działania funkcji f jest liczba mniejsza od 1000.",
+          "Obliczenie poprawnego wyniku f(200) zajmie na komputerze w dowolnej szkolnej pracowni najwyżej kilka sekund.",
+          "W trakcie obliczania wartości funkcji f dla dowolnego n > 0 nastąpi łącznie co najwyżej 2n wywołań tej funkcji.",
+          "f(10) = 1024."
+        ],
+        "answers": "PFFP"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Liczba BA₁₆ (zapisana w systemie szesnastkowym) jest równa",
+        "statements": ["186₁₀", "252₈", "10111010₂", "2232₄"],
+        "answers": "PFPF"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Dane są tabele `Rezyserzy` (`idrezysera`, `imie`, `nazwisko`) i `Filmy` (`idfilmu`, `tytul`, `data_premiery`, `idrezysera`). Wskaż, które uzupełnienia luk w zapytaniu `SELECT Rezyserzy.nazwisko, Rezyserzy.imie, [1] FROM Rezyserzy INNER JOIN Filmy ON [2] GROUP BY [3];` sprawią, że wynikiem będzie lista zawierająca dla każdego reżysera jego nazwisko, imię oraz łączną liczbę wyreżyserowanych przez niego filmów.",
+        "statements": [
+          "[1] `avg(*)`, [2] `Rezyserzy.idrezysera=Filmy.idrezysera`, [3] `Filmy.nazwisko, Rezyserzy.imie`",
+          "[1] `*`, [2] `Rezyserzy.idrezysera=Filmy.idfilmu`, [3] `Filmy.idrezysera`",
+          "[1] `count(nazwisko)`, [2] `Rezyserzy.idrezysera=Filmy.idrezysera`, [3] `Rezyserzy.nazwisko`",
+          "[1] `count(*)`, [2] `Rezyserzy.idrezysera=Filmy.idrezysera`, [3] `Rezyserzy.imie, Rezyserzy.nazwisko, Rezyserzy.idrezysera`"
+        ],
+        "answers": "FFFP"
+      }
+    ]
+  }
+]

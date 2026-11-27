@@ -1,0 +1,49 @@
+[
+  {
+    "id": "2023-stara-formula-maj-3",
+    "sessionId": "2023/stara-formula-maj",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Funkcje `F` i `G` dla liczby całkowitej `x > 1`:\n\n`F(x): i ← 2; dopóki x mod i ≠ 0 wykonuj i ← i + 1; zwróć i`\n\n`G(x): i ← x − 1; dopóki x mod i ≠ 0 wykonuj i ← i − 1; zwróć i`",
+        "statements": [
+          "F(2) = 2 oraz G(2) = 1.",
+          "Dla każdej liczby parzystej x wartość F(x) jest parzysta.",
+          "Dla każdej liczby parzystej x wartość G(x) jest parzysta.",
+          "Dla każdej liczby x większej od 2 F(x) dzieli liczbę x."
+        ],
+        "answers": "PPFP"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Porównania liczb zapisanych w różnych systemach:",
+        "statements": ["A5₁₆ = 245₈", "A5₁₆ < 10100100₂", "10100100₂ = 2210₄", "2210₄ < 245₈"],
+        "answers": "PFPP"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Tabela `zwierzeta` (`id` – klucz, `gatunek`, `sposob_odzywiania`, `id_gromady`) i tabela `gromady` (`id` – klucz, `gromada`). Przykładowe dane: zwierzęta – lew afrykanski (gromada 2), zyrafa (2), krokodyl nilowy (3); gromady – 1 ptaki, 2 ssaki, 3 gady, 4 ryby. Listę nazw gatunków wszystkich ssaków otrzymamy w wyniku zapytania",
+        "statements": [
+          "`SELECT gatunek FROM zwierzeta WHERE id_gromady = 2;`",
+          "`SELECT gatunek FROM zwierzeta, gromady WHERE zwierzeta.id_gromady=gromady.id AND gromada = \"ssaki\";`",
+          "`SELECT gatunek FROM zwierzeta INNER JOIN gromady ON zwierzeta.id_gromady=gromady.id WHERE gromada = \"ssaki\";`",
+          "`SELECT gatunek FROM zwierzeta LEFT JOIN gromady ON zwierzeta.id_gromady=gromady.id WHERE gromada = \"2\";`"
+        ],
+        "answers": "PPPF"
+      },
+      {
+        "number": "3.4",
+        "prompt": "Te same tabele `zwierzeta` i `gromady` z przykładowymi danymi.",
+        "statements": [
+          "W wyniku zapytania `SELECT gromada, count(*) FROM gromady INNER JOIN zwierzeta ON zwierzeta.id_gromady = gromady.id GROUP BY gromada;` otrzymamy nazwy gromad oraz liczby gatunków zwierząt należących do tych gromad.",
+          "W wyniku zapytania `SELECT gromada, count(*) FROM gromady INNER JOIN zwierzeta ON zwierzeta.id_gromady = gromady.id GROUP BY gromada;` otrzymamy liczbę różnych gromad z tabeli `gromady`.",
+          "W wyniku zapytania `SELECT count(*) FROM zwierzeta INNER JOIN gromady ON zwierzeta.id_gromady = gromady.id WHERE gromady.id=2;` otrzymamy liczbę gatunków ssaków z tabeli `zwierzeta`.",
+          "W wyniku zapytania `SELECT count(*) FROM zwierzeta, gromady WHERE zwierzeta.id_gromady = gromady.id AND gromady.gromada = \"ssaki\";` otrzymamy liczbę gatunków ssaków z tabeli `zwierzeta`."
+        ],
+        "answers": "PFPP"
+      }
+    ]
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "id": "2018-czerwiec-3",
+    "sessionId": "2018/czerwiec",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "W tabeli `T` zapisano rekordy z informacjami o zawodnikach. Pola rekordu: `id`, `nazwisko`, `imie`, `plec`, `wzrost`, `numer_startowy`, `punkty`, `id_klubu`. Polecenie SQL obliczające sumę punktów zawodników z klubu o `id_klubu` równym 100 może mieć postać:",
+        "statements": [
+          "`select sum(punkty) as suma from T where id_klubu=100;`",
+          "`select avg(punkty) from T where id=100;`",
+          "`select punkty as suma from T where id_klubu=100;`",
+          "`select sum(punkty) from T where id_klubu=100;`"
+        ],
+        "answers": "PFFP"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Które zdania dotyczące struktury danych zwanej stosem są prawdziwe?",
+        "statements": [
+          "Elementy stosu są zdejmowane w odwrotnej kolejności niż kolejność ich wkładania na stos.",
+          "Tylko pierwszy dodany element jest zawsze dostępny na stosie.",
+          "Stos może być używany m.in. przy obliczaniu wartości wyrażeń zapisanych w Odwrotnej Notacji Polskiej (ONP).",
+          "Tylko ostatnio dodany element jest zawsze dostępny na stosie."
+        ],
+        "answers": "PFPP"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Do jednoznacznego zakodowania znaków pięcioelementowego alfabetu wystarczą/y:",
+        "statements": ["2 bity.", "3 bity.", "5 bitów.", "8 bitów."],
+        "answers": "FPPP"
+      },
+      {
+        "number": "3.4",
+        "prompt": "Dana jest funkcja rekurencyjna `Rek(n)` dla nieujemnej liczby całkowitej `n`: jeśli `n > 0`, to wykonuje kolejno dwie instrukcje: (1) wywołaj `Rek(n-1)`, (2) wypisz `n`. Jeśli wywołamy ją dla `n = 5`, to:",
+        "statements": [
+          "Zero będzie wypisane.",
+          "Największą wypisaną liczbą będzie 5.",
+          "Zostanie wypisanych 5 liczb.",
+          "Liczby zostaną wypisane w kolejności malejącej."
+        ],
+        "answers": "FPPF"
+      }
+    ]
+  }
+]

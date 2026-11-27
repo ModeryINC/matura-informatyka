@@ -71,7 +71,7 @@ export function Layout() {
 
 function MainNav({ pathname, mobile }: { pathname: string; mobile: boolean }) {
   // „Zadania” są aktywne także na stronie pojedynczego zadania (Python, Excel i SQL).
-  const tasksActive = /^\/(zadania|zadanie|excel|sql)(\/|$)/.test(pathname);
+  const tasksActive = /^\/(zadania|zadanie|excel|sql|test)(\/|$)/.test(pathname);
   return (
     <nav aria-label="Główna nawigacja" className={mobile ? 'bottom-nav' : undefined}>
       <ul className="nav">

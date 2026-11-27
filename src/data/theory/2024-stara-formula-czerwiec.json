@@ -1,0 +1,27 @@
+[
+  {
+    "id": "2024-stara-formula-czerwiec-3",
+    "sessionId": "2024/stara-formula-czerwiec",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Tabela `miasta` (`identyfikator`, `miasto`, `wojewodztwo`, `ludnosc`) zawiera wiersze: 767 Szamotuły wielkopolskie 18853; 768 Szczawnica małopolskie 5711; 769 Szczawno-Zdrój dolnośląskie 5569; 770 Szczebrzeszyn lubelskie 4964; 771 Szczecin zachodniopomorskie 401907. W wyniku zapytania `SELECT ludnosc FROM miasta WHERE identyfikator > 770 OR miasto = \"Szamotuły\"` otrzymamy",
+        "statements": ["dwie liczby.", "pusty wynik.", "401907.", "420760."],
+        "answers": "PFFF"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Wynik dodawania liczb binarnych 1011101₂ oraz 111₂ jest:",
+        "statements": [
+          "równy 1100110₂",
+          "mniejszy niż 1111111₂",
+          "większy niż 1110000₂",
+          "równy 1100100₂"
+        ],
+        "answers": "FPFP"
+      }
+    ]
+  }
+]

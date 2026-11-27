@@ -1,0 +1,20 @@
+[
+  {
+    "id": "2025-czerwiec-4",
+    "sessionId": "2025/czerwiec",
+    "number": "4",
+    "title": "Formaty grafiki",
+    "parts": [
+      {
+        "number": "4",
+        "prompt": "Formaty plików graficznych:",
+        "statements": [
+          "W pliku w formacie GIF zapiszemy obraz w 16 milionach kolorów bez utraty informacji o nich.",
+          "W plikach w formacie JPG są wykorzystywane metody kompresji danych.",
+          "Format JPG obsługuje przezroczyste tła obrazów."
+        ],
+        "answers": "FPF"
+      }
+    ]
+  }
+]

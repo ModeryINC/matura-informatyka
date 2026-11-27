@@ -258,3 +258,24 @@ export interface SqlTask {
   tables: SqlTable[];
   parts: SpreadsheetPart[];
 }
+
+/** Podpunkt zadania testowego: kilka zdań do oceny – prawda (P) albo fałsz (F). */
+export interface TheoryPart {
+  /** Np. `3.1` (albo `5`, gdy zadanie nie ma podpunktów). */
+  number: string;
+  /** Wspólny początek zdań / opis sytuacji; `kod` w odwrotnych apostrofach. */
+  prompt: string;
+  statements: string[];
+  /** Odpowiedzi z klucza, np. `PFFP` – po jednej literze na zdanie. */
+  answers: string;
+}
+
+/** Zadanie „Test” z arkusza: wiedza ogólna (systemy liczbowe, sieci, SQL, prawo…). */
+export interface TheoryTask {
+  /** Np. `2024-maj-5`. */
+  id: string;
+  sessionId: string;
+  number: string;
+  title: string;
+  parts: TheoryPart[];
+}

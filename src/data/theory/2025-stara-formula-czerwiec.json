@@ -1,0 +1,38 @@
+[
+  {
+    "id": "2025-stara-formula-czerwiec-3",
+    "sessionId": "2025/stara-formula-czerwiec",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Dla liczb 11010101₂, 1222₄, 333₈, D6₁₆ zapisanych w systemach pozycyjnych o podstawach 2, 4, 8 i 16:",
+        "statements": ["11010101₂ > 1222₄", "1222₄ > 333₈", "333₈ > D6₁₆", "D6₁₆ > 11010101₂"],
+        "answers": "PFPP"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Formaty plików graficznych:",
+        "statements": [
+          "W pliku w formacie GIF można zapisać obraz z 16 milionami kolorów bez utraty informacji o nich.",
+          "W formacie JPG są wykorzystywane metody kompresji danych.",
+          "Format JPG obsługuje przezroczyste tła obrazów.",
+          "Pliki w formacie JPG mogą mieć rozszerzenie .jpg lub .jpeg."
+        ],
+        "answers": "FPFP"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Tabele `kontrahenci` (`id_kontrahenta`, `nazwa`) i `faktury` (`nr_faktury`, `id_kontrahenta`, `kwota`, `data`) są w relacji „jeden do wielu”. Kontrahenci: 001 Zima, 002 Wiosna, 003 Lato, 004 Jesien. Faktury (kontrahent, kwota): 004 426; 002 142; 001 689; 001 603; 001 599; 004 161; 003 769; 003 748.",
+        "statements": [
+          "Wynikiem zapytania `SELECT Sum(Faktury.kwota) FROM Faktury;` jest suma kwot.",
+          "Wynikiem zapytania `SELECT Kontrahenci.Nazwa, Count(Faktury.nr_faktury) FROM Kontrahenci JOIN Faktury ON Kontrahenci.id_kontrahenta = Faktury.id_kontrahenta GROUP BY Kontrahenci.Nazwa HAVING ((Count(Faktury.nr_faktury))>=2);` jest zestawienie: Jesien 2, Lato 2.",
+          "Wynikiem zapytania `SELECT Faktury.nr_faktury FROM Faktury WHERE Faktury.kwota Between 100 And 300;` jest lista dwóch numerów faktur.",
+          "Wynikiem zapytania `SELECT Kontrahenci.Nazwa, Faktury.kwota FROM Kontrahenci JOIN Faktury ON Kontrahenci.id_kontrahenta = Faktury.id_kontrahenta ORDER BY Faktury.kwota DESC;` jest lista kontrahentów i kwot posortowana rosnąco według kwoty."
+        ],
+        "answers": "PFPF"
+      }
+    ]
+  }
+]

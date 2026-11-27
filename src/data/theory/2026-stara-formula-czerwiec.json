@@ -1,0 +1,28 @@
+[
+  {
+    "id": "2026-stara-formula-czerwiec-3",
+    "sessionId": "2026/stara-formula-czerwiec",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Liczba 11101010₂ (zapisana w systemie binarnym) jest",
+        "statements": ["= EA₁₆", "= 3222₄", "= 253₈", "> 255₁₀"],
+        "answers": "PPFF"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Tabela `wyniki` (`runda`, `gospodarze`, `goscie`, `nr_przeciwnika`) – punkty w 12 rundach: 1: 9–4 (przeciwnik 1), 2: 4–7 (2), 3: 1–4 (3), 4: 7–3 (1), 5: 10–5 (2), 6: 9–6 (3), 7: 1–10 (1), 8: 3–10 (2), 9: 9–10 (3), 10: 4–3 (1), 11: 5–7 (2), 12: 2–4 (3). W wyniku zapytania `SELECT nr_przeciwnika, SUM(gospodarze) FROM wyniki GROUP BY nr_przeciwnika;` otrzymamy odpowiedź:",
+        "statements": ["1 21, 2 22, 3 21", "1 20, 2 29, 3 24", "22", "29"],
+        "answers": "PFFF"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Ta sama tabela `wyniki`. W wyniku zapytania `SELECT runda FROM wyniki WHERE (gospodarze > 8 OR goscie > 8) AND (gospodarze - 7 > goscie);` otrzymamy odpowiedź:",
+        "statements": ["1 2 3", "6", "pusty wynik", "5"],
+        "answers": "FFPF"
+      }
+    ]
+  }
+]

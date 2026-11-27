@@ -1,0 +1,54 @@
+[
+  {
+    "id": "2018-stara-formula-maj-3",
+    "sessionId": "2018/stara-formula-maj",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Oceń poprawność działań na liczbach zapisanych w różnych systemach pozycyjnych (indeks oznacza podstawę systemu):",
+        "statements": [
+          "A5₁₆ + 234₈ = 149₁₆",
+          "A5₁₆ – 234₈ = 9₁₆",
+          "A5₁₆ · 1000₂ = A50₁₆",
+          "128₁₀ / 2₈ = 1000000₂"
+        ],
+        "answers": "FPFP"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Dane są adresy IPv4 komputerów: nr 1 – `196.122.128.0`, nr 2 – `196.122.129.0`, nr 3 – `196.123.129.0`.",
+        "statements": [
+          "Dla maski `255.255.0.0` komputery pierwszy i drugi należą do tej samej sieci.",
+          "Dla maski `255.255.255.0` komputery drugi i trzeci należą do tej samej sieci.",
+          "Dla maski `255.255.0.0` adres sieci, w której jest pierwszy komputer, to `196.122.0.0`.",
+          "Dla maski `255.255.255.0` adres rozgłoszeniowy sieci, w której jest trzeci komputer, to `196.123.129.255`."
+        ],
+        "answers": "PFPP"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Dana jest funkcja rekurencyjna: `f(x) = 1` dla `x ≤ 1` oraz `f(x) = x + f(x div 2)` dla `x > 1`, gdzie `x` jest nieujemną liczbą całkowitą, a `x div 2` to część całkowita z dzielenia `x` przez 2.",
+        "statements": [
+          "f(15) = 25",
+          "f(12) = 22",
+          "Podczas obliczania wartości f(12) operacja dodawania zostanie wykonana 4 razy.",
+          "Dla x równych potędze dwójki f(x) = 2·x − 1."
+        ],
+        "answers": "FPFP"
+      },
+      {
+        "number": "3.4",
+        "prompt": "Prawidłowe przyporządkowania rozszerzeń plików i ich zastosowania to:",
+        "statements": [
+          "TIFF, OCR, OGG – pliki w grafice wektorowej",
+          "BMP, JPG, PNG – pliki w grafice rastrowej",
+          "AVI, MOV, MPEG – pliki filmowe",
+          "WMA, WAV, MIDI – pliki dźwiękowe"
+        ],
+        "answers": "FPPP"
+      }
+    ]
+  }
+]

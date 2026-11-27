@@ -1,0 +1,43 @@
+[
+  {
+    "id": "2018-maj-3",
+    "sessionId": "2018/maj",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Na pewnym serwerze WWW znajduje się strona napisana w języku PHP, a jej kod zawiera fragmenty w języku JavaScript. Pewien komputer-klient pobrał i wyświetlił tę stronę. Wiadomo, że:",
+        "statements": [
+          "kod PHP jest wykonywany przez komputer – serwer.",
+          "kod JavaScript jest wykonywany przez komputer – klient.",
+          "podczas wykonywania kodu PHP zawsze pobierane są dane od klienta.",
+          "podczas wykonywania kodu JavaScript mogą być pobierane dodatkowe dane zarówno od klienta, jak i od serwera."
+        ],
+        "answers": "PPFP"
+      },
+      {
+        "number": "3.2",
+        "prompt": "Modele barw:",
+        "statements": [
+          "Plakat do druku lepiej przygotować w modelu barw RGB niż CMYK.",
+          "Kolor żółty jest kolorem podstawowym w modelu RGB.",
+          "W wyniku nałożenia się składowych Yellow i Magenta w modelu CMYK otrzymamy kolor czerwony.",
+          "W modelu barw CMYK litera C pochodzi od angielskiego słowa contrast."
+        ],
+        "answers": "FFPF"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Wskaż zdania prawdziwe dla języka SQL.",
+        "statements": [
+          "W wynikach zapytania postaci `SELECT (...) ORDER BY (...)` zawsze dostajemy rekordy uporządkowane ściśle rosnąco według wskazanego pola.",
+          "Zapytanie `UPDATE` może zmienić wartości pól w bazie danych.",
+          "Zapytanie postaci `SELECT * FROM tabela1 WHERE pole LIKE (...)` może w pewnych warunkach dać wszystkie rekordy z tabeli `tabela1`.",
+          "Wynik zapytania `SELECT * FROM tabela1 JOIN tabela2 ON tabela1.pole = tabela2.pole` może być pusty przy niepustych tabelach `tabela1` oraz `tabela2`."
+        ],
+        "answers": "FPPP"
+      }
+    ]
+  }
+]

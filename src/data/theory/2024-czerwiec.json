@@ -1,0 +1,19 @@
+[
+  {
+    "id": "2024-czerwiec-5",
+    "sessionId": "2024/czerwiec",
+    "number": "5",
+    "title": "Prawo autorskie",
+    "parts": [
+      {
+        "number": "5",
+        "prompt": "Prawo autorskie:",
+        "statements": [
+          "Ochrona praw autorskich przysługuje twórcy niezależnie od spełnienia jakichkolwiek formalności.",
+          "Programy komputerowe nie są dziełami chronionymi prawami autorskimi."
+        ],
+        "answers": "PF"
+      }
+    ]
+  }
+]

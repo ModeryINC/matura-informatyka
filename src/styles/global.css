@@ -3445,6 +3445,149 @@ progress::-moz-progress-bar {
   border-inline-start: 3px solid var(--accent);
 }
 
+.task-jump__button--test {
+  border-inline-start: 3px solid var(--syn-keyword);
+}
+
+/* Zadania testowe (P/F) */
+.theory-random {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-block: 0 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--accent-soft) 50%, var(--surface));
+}
+
+.theory-random p {
+  margin: 0.2rem 0 0;
+}
+
+.theory-parts {
+  display: grid;
+  gap: 1rem;
+  margin-block: 1rem 1.5rem;
+}
+
+.theory-part h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.theory-statements {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding-inline-start: 1.5rem;
+}
+
+.theory-statements li {
+  padding: 0.5rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+
+.theory-statements li.is-wrong {
+  background: var(--danger-soft);
+}
+
+.theory-statements li.is-right {
+  background: var(--success-soft);
+}
+
+.theory-statements fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 1rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.theory-statements legend {
+  float: left;
+  flex: 1 1 16rem;
+  padding: 0;
+}
+
+.theory-choice {
+  display: inline-flex;
+  gap: 0.35rem;
+  margin-inline-start: auto;
+}
+
+.theory-choice label {
+  position: relative;
+}
+
+/* Prawdziwe pole wyboru leży pod przyciskiem (dostępne dla klawiatury i czytników). */
+.theory-choice input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.theory-choice span {
+  display: grid;
+  place-items: center;
+  inline-size: 2.4rem;
+  block-size: 2.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease-out,
+    border-color 0.15s ease-out,
+    color 0.15s ease-out;
+}
+
+.theory-choice label:hover span {
+  border-color: var(--accent);
+}
+
+.theory-choice input:checked + span {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.theory-choice input:focus-visible + span {
+  box-shadow: var(--focus);
+}
+
+.theory-key {
+  flex-basis: 100%;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.is-wrong .theory-key {
+  color: var(--danger);
+}
+
+.is-right .theory-key {
+  color: var(--success);
+}
+
+.theory-result {
+  margin: 0;
+  min-block-size: 1.4em;
+  font-weight: 600;
+}
+
+.theory-result.is-passed {
+  color: var(--success);
+}
+
 .task-jump__button--rozpoczete {
   border-color: var(--warning);
 }

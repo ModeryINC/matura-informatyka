@@ -1,0 +1,20 @@
+[
+  {
+    "id": "2024-probna-CKE-grudzien-5",
+    "sessionId": "2024/probna-CKE-grudzien",
+    "number": "5",
+    "title": "Podpis elektroniczny",
+    "parts": [
+      {
+        "number": "5",
+        "prompt": "Oceń prawdziwość zdań dotyczących podpisu elektronicznego.",
+        "statements": [
+          "Podpis elektroniczny jest gwarancją poufności treści (szyfruje zawartość dokumentu).",
+          "Podpis elektroniczny służy do uwierzytelniania tożsamości podmiotu wystawiającego dokument.",
+          "Podpis elektroniczny zabezpiecza przed utratą danych."
+        ],
+        "answers": "FPF"
+      }
+    ]
+  }
+]

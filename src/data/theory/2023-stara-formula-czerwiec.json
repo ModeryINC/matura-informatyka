@@ -1,0 +1,38 @@
+[
+  {
+    "id": "2023-stara-formula-czerwiec-3",
+    "sessionId": "2023/stara-formula-czerwiec",
+    "number": "3",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "3.1",
+        "prompt": "Oceń poprawność równości liczb zapisanych w różnych systemach:",
+        "statements": ["101₁₆ = 11001011₂", "101₁₆ = 401₈", "401₈ = 100000001₂", "101₈ = 41₁₆"],
+        "answers": "FPPP"
+      },
+      {
+        "number": "3.2",
+        "prompt": "W bazie są tabele `zwierzeta` (`id` – klucz podstawowy, `gatunek`, `imie`, `id_osoby` – właściciel) oraz `osoby` (`id_osoby` – klucz podstawowy, `imie`, `nazwisko`). Przykładowe osoby: 1 Jan Nowak, 2 Adam Kowalski, 3 Anna Nowakowska.",
+        "statements": [
+          "W wyniku zapytania `SELECT DISTINCT nazwisko FROM osoby;` otrzymamy listę różnych nazwisk osób z tabeli `osoby` (nazwiska nie będą się powtarzać).",
+          "W wyniku zapytania `SELECT nazwisko FROM osoby WHERE nazwisko LIKE \"A\";` otrzymamy listę nazwisk zaczynających się od litery A.",
+          "W wyniku zapytania `SELECT imie FROM osoby WHERE imie BETWEEN \"A\" AND \"C\";` otrzymamy listę imion zaczynających się od litery A lub B.",
+          "W wyniku zapytania `SELECT imie, nazwisko FROM osoby WHERE imie IN (\"Ala\",\"Ula\");` otrzymamy listę imion i nazwisk wszystkich osób mających imiona, które w kolejności alfabetycznej znajdują się pomiędzy „Ala” a „Ula”."
+        ],
+        "answers": "PFPF"
+      },
+      {
+        "number": "3.3",
+        "prompt": "Te same tabele `zwierzeta` i `osoby`. Przykładowe zwierzęta: 1 pies Azor (osoba 1), 2 kot Mruczek (2), 3 kot Kicia (3), 4 pies Pimpek (2).",
+        "statements": [
+          "W wyniku zapytania `SELECT count(DISTINCT gatunek) FROM zwierzeta;` otrzymamy liczbę różnych nazw gatunków zwierząt z tabeli `zwierzeta`.",
+          "W wyniku zapytania `SELECT count(gatunek) FROM zwierzeta WHERE gatunek = \"pies\";` otrzymamy liczbę psów w tabeli `zwierzeta`.",
+          "W wyniku zapytania `SELECT count(*) FROM zwierzeta INNER JOIN osoby ON zwierzeta.id_osoby = osoby.id_osoby WHERE gatunek = \"pies\";` otrzymamy liczby psów z podziałem na różnych właścicieli.",
+          "W wyniku zapytania `SELECT nazwisko, count(*) FROM zwierzeta INNER JOIN osoby ON zwierzeta.id_osoby = osoby.id_osoby GROUP BY osoby.id_osoby;` otrzymamy zestawienie z nazwiskami osób i liczbami ich zwierząt."
+        ],
+        "answers": "PPFP"
+      }
+    ]
+  }
+]

@@ -15,6 +15,8 @@ import { SqlTasksPage } from './pages/SqlTasksPage';
 import { TaskPage } from './pages/TaskPage';
 import { TasksPage } from './pages/TasksPage';
 import { TasksSection } from './pages/TasksSection';
+import { TheoryTaskPage } from './pages/TheoryTaskPage';
+import { TheoryTasksPage } from './pages/TheoryTasksPage';
 
 /**
  * Trasy aplikacji (w osobnym pliku, żeby `App.tsx` eksportował tylko komponent –
@@ -36,6 +38,7 @@ export const routes: RouteObject[] = [
           { path: 'python', element: <TasksPage /> },
           { path: 'excel', element: <ExcelTasksPage /> },
           { path: 'sql', element: <SqlTasksPage /> },
+          { path: 'test', element: <TheoryTasksPage /> },
         ],
       },
       { path: 'zadanie/:taskId', element: <TaskPage /> },
@@ -43,6 +46,8 @@ export const routes: RouteObject[] = [
       { path: 'excel/:taskId', element: <ExcelTaskPage /> },
       { path: 'sql', element: <Navigate to="/zadania/sql" replace /> },
       { path: 'sql/:taskId', element: <SqlTaskPage /> },
+      { path: 'test', element: <Navigate to="/zadania/test" replace /> },
+      { path: 'test/:taskId', element: <TheoryTaskPage /> },
       { path: 'arkusze', element: <SessionsPage /> },
       { path: 'arkusze/:year/:slug', element: <SessionPage /> },
       { path: 'podstawy', element: <Navigate to="/podstawy/python" replace /> },

@@ -1,0 +1,19 @@
+[
+  {
+    "id": "2023-maj-4",
+    "sessionId": "2023/maj",
+    "number": "4",
+    "title": "Szyfrowanie asymetryczne",
+    "parts": [
+      {
+        "number": "4",
+        "prompt": "W komunikacji między dwoma osobami A i B z wykorzystaniem szyfrowania asymetrycznego klucz prywatny osoby A stosuje się do",
+        "statements": [
+          "odszyfrowania wiadomości wysłanej do osoby A przez osobę B.",
+          "uwierzytelnienia osoby B przez osobę A."
+        ],
+        "answers": "PF"
+      }
+    ]
+  }
+]

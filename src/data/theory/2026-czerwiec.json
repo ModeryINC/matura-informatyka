@@ -1,0 +1,19 @@
+[
+  {
+    "id": "2026-czerwiec-6",
+    "sessionId": "2026/czerwiec",
+    "number": "6",
+    "title": "Uwierzytelnianie dwuskładnikowe",
+    "parts": [
+      {
+        "number": "6",
+        "prompt": "Uwierzytelnianie dwuskładnikowe:",
+        "statements": [
+          "Stosowanie uwierzytelniania dwuskładnikowego nie gwarantuje braku dostępu dla osób niepowołanych.",
+          "Stosowanie uwierzytelniania dwuskładnikowego jest możliwe tylko na urządzeniach wyposażonych w kamerę i w mikrofon."
+        ],
+        "answers": "PF"
+      }
+    ]
+  }
+]

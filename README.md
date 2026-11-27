@@ -10,7 +10,7 @@ Odpowiedzi zapisują się tylko lokalnie w przeglądarce – z innego urządzeni
 ## Co potrafi
 
 - **Strona startowa** z animowanym przykładem rozwiązania tego samego zadania w Pythonie,
-  w Excelu i w SQL oraz skrótem możliwości; menu: **Zadania** (podział: Python, Excel, SQL),
+  w Excelu i w SQL oraz skrótem możliwości; menu: **Zadania** (podział: Python, Excel, SQL, Test),
   **Arkusze**, **Pomoc**.
 - **Przegląd arkuszy** – 39 sesji (główne, dodatkowe, próbne, stara formuła) z podglądem PDF,
   przyciskami do zadań z danego arkusza, kluczem odpowiedzi i plikami z danymi (podgląd
@@ -36,6 +36,11 @@ Odpowiedzi zapisują się tylko lokalnie w przeglądarce – z innego urządzeni
   podpunktu i sprawdza z kluczem – listy bez względu na kolejność wierszy i kolumn. Podpunkty,
   w których zapytanie pisze się na kartce (tabel nie ma w plikach), mają przykładowe
   rozwiązanie z klucza.
+- **Zadania testowe** (Zadania → Test) – zadania „Test” z arkuszy 2018–2026 (32 sesje,
+  81 podpunktów, 310 zdań): ocena zdań P/F z systemów liczbowych, sieci, SQL, grafiki,
+  bezpieczeństwa i prawa, punkt tylko za komplet (jak na maturze), podgląd klucza po
+  sprawdzeniu oraz losowy test z 10 podpunktów. Pominięto podpunkty oparte na rysunkach
+  (np. zegary binarne) i te, w których dane w PDF są nieczytelne.
 - **Podstawy** (Podstawy → Python / Excel / SQL): krótkie lekcje z przykładami. W Pythonie
   i SQL każdy przykład można zmienić i uruchomić (SQL – na małej przykładowej bazie szkoły
   z `public/podstawy/sql`), w Excelu są małe arkusze z formułami po polsku (kliknięcie komórki
@@ -116,6 +121,7 @@ src/
   data/tasks/*.json      zadania (po jednym pliku na sesję)
   data/spreadsheet/*.json  zadania z arkusza kalkulacyjnego (Zadania → Excel)
   data/sql/*.json        zadania z baz danych (Zadania → SQL)
+  data/theory/*.json     zadania testowe P/F (Zadania → Test)
   data/index.ts          dostęp do katalogu i zadań
   lib/                   logika bez Reacta: porównywanie, wyszukiwanie, zapis, walidacja
   python/                worker Pyodide, harness i klient (PythonRunner)
