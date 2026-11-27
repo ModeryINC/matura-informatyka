@@ -15,6 +15,7 @@ import { SqlTasksPage } from './pages/SqlTasksPage';
 import { TaskPage } from './pages/TaskPage';
 import { TasksPage } from './pages/TasksPage';
 import { TasksSection } from './pages/TasksSection';
+import { TheoryBasicsPage } from './pages/TheoryBasicsPage';
 import { TheoryTaskPage } from './pages/TheoryTaskPage';
 import { TheoryTasksPage } from './pages/TheoryTasksPage';
 
@@ -54,6 +55,7 @@ export const routes: RouteObject[] = [
       { path: 'podstawy/python', element: <PythonBasicsPage /> },
       { path: 'podstawy/excel', element: <ExcelBasicsPage /> },
       { path: 'podstawy/sql', element: <SqlBasicsPage /> },
+      { path: 'podstawy/teoria', element: <TheoryBasicsPage /> },
       { path: 'python', element: <Navigate to="/podstawy/python" replace /> },
       { path: 'pomoc', element: <HelpPage /> },
       { path: '*', element: <NotFoundPage /> },

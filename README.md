@@ -41,6 +41,18 @@ Odpowiedzi zapisują się tylko lokalnie w przeglądarce – z innego urządzeni
   bezpieczeństwa i prawa, punkt tylko za komplet (jak na maturze), podgląd klucza po
   sprawdzeniu oraz losowy test z 10 podpunktów. Pominięto podpunkty oparte na rysunkach
   (np. zegary binarne) i te, w których dane w PDF są nieczytelne.
+- **Podstawy teorii** (Podstawy → Teoria) – 15 działów z wiedzy do zadań testowych: systemy
+  liczbowe, U2 i liczby zmiennoprzecinkowe, jednostki i kodowanie znaków, logika, adresacja IP,
+  sieci i protokoły, WWW, grafika, szyfrowanie, bezpieczeństwo, bazy danych, struktury danych,
+  złożoność, prawo autorskie i licencje, sprzęt. Interaktywne narzędzia: zamiana systemów
+  (z rozpisaniem), U2, kalkulator podsieci, kolory #RRGGBB, rozmiar bitmapy, bramki logiczne,
+  szyfr Cezara i RSA na małych liczbach.
+- **Podstawy teorii** (Podstawy → Teoria) – 15 działów z wiedzy do zadań testowych: systemy
+  liczbowe, U2 i liczby zmiennoprzecinkowe, jednostki i kodowanie znaków, logika, adresacja IP,
+  sieci i protokoły, WWW, grafika, szyfrowanie, bezpieczeństwo, bazy danych, struktury danych,
+  złożoność, prawo autorskie i licencje, sprzęt. Interaktywne narzędzia: zamiana systemów
+  (z rozpisaniem), U2, kalkulator podsieci, kolory #RRGGBB, rozmiar bitmapy, bramki logiczne,
+  szyfr Cezara i RSA na małych liczbach.
 - **Podstawy** (Podstawy → Python / Excel / SQL): krótkie lekcje z przykładami. W Pythonie
   i SQL każdy przykład można zmienić i uruchomić (SQL – na małej przykładowej bazie szkoły
   z `public/podstawy/sql`), w Excelu są małe arkusze z formułami po polsku (kliknięcie komórki

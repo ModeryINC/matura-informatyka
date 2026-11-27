@@ -1852,6 +1852,139 @@ progress::-moz-progress-bar {
   margin-block-end: 1rem;
 }
 
+.theory-table {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.theory-table table,
+.theory-tool__table {
+  border-collapse: collapse;
+  inline-size: 100%;
+  font-size: 0.9rem;
+}
+
+.theory-table th,
+.theory-table td,
+.theory-tool__table th,
+.theory-tool__table td {
+  padding: 0.4rem 0.65rem;
+  border-block-end: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.theory-table thead th,
+.theory-tool__table thead th {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.theory-tool__table tbody th {
+  inline-size: 11rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.theory-tool {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--accent-soft) 35%, var(--surface));
+}
+
+.theory-tool__title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.theory-tool__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.theory-tool__row input:not([type='color']),
+.theory-tool__row select {
+  min-block-size: 2.25rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  max-inline-size: 100%;
+}
+
+.theory-tool__row input[type='number'] {
+  inline-size: 7rem;
+}
+
+.theory-tool__result,
+.theory-tool__steps,
+.theory-tool p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.theory-tool__steps {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.theory-tool__list {
+  margin: 0;
+  padding-inline-start: 1.25rem;
+}
+
+.theory-bits {
+  letter-spacing: 0.1em;
+}
+
+.theory-bits__sign {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.theory-swatch {
+  display: inline-block;
+  inline-size: 1.4rem;
+  block-size: 1.4rem;
+  margin-inline-end: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+.theory-bit {
+  min-block-size: 2.25rem;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.theory-bit.is-on,
+.theory-gates td.is-on {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.theory-gates td {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-align: center;
+}
+
 .basics-tables {
   margin: 0 0 0.75rem;
   padding-inline-start: 1.25rem;

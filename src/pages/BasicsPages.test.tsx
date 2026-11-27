@@ -15,7 +15,7 @@ describe('Podstawy Excela', () => {
       within(tabs)
         .getAllByRole('link')
         .map((l) => l.textContent),
-    ).toEqual(['Python', 'Excel', 'SQL']);
+    ).toEqual(['Python', 'Excel', 'SQL', 'Teoria']);
     const toc = screen.getByRole('navigation', { name: 'Spis treści' });
     expect(within(toc).getAllByRole('link')).toHaveLength(EXCEL_BASICS.length);
   });
@@ -64,5 +64,34 @@ describe('Podstawy SQL', () => {
     await userEvent.click(within(section).getAllByRole('button', { name: /Uruchom/ })[0]!);
     expect(client.run).toHaveBeenCalledWith(SQL_BASICS[0]!.examples[0]!.sql);
     expect(await within(section).findByRole('cell', { name: 'Ola' })).toBeInTheDocument();
+  });
+});
+
+describe('Podstawy teorii', () => {
+  it('ma wszystkie działy i działające narzędzia', async () => {
+    const { THEORY_BASICS } = await import('../data/theoryBasics');
+    const { TheoryBasicsPage } = await import('./TheoryBasicsPage');
+    renderWithRouter(<TheoryBasicsPage />);
+    const toc = screen.getByRole('navigation', { name: 'Spis treści' });
+    expect(within(toc).getAllByRole('link')).toHaveLength(THEORY_BASICS.length);
+
+    const numbers = screen.getByRole('region', { name: /Zamiana systemów liczbowych/ });
+    expect(within(numbers).getByText('BA₁₆')).toBeInTheDocument();
+    await userEvent.clear(within(numbers).getByLabelText('Liczba'));
+    await userEvent.type(within(numbers).getByLabelText('Liczba'), '255');
+    expect(within(numbers).getByText('FF₁₆')).toBeInTheDocument();
+
+    const ip = screen.getByRole('region', { name: /adresacji IPv4/ });
+    expect(within(ip).getByText('192.168.10.64')).toBeInTheDocument();
+    await userEvent.clear(within(ip).getByLabelText(/Maska/));
+    await userEvent.type(within(ip).getByLabelText(/Maska/), '/24');
+    expect(within(ip).getByText('192.168.10.0')).toBeInTheDocument();
+
+    const gates = screen.getByRole('region', { name: /Bramki logiczne/ });
+    await userEvent.click(within(gates).getByRole('button', { name: 'b = 0' }));
+    expect(within(gates).getByRole('button', { name: 'b = 1' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
   });
 });

@@ -28,7 +28,8 @@ export function TheoryTasksPage() {
       <p className="lead">
         Zadania „Test” z arkuszy 2018–2026: zdania do oceny – prawda czy fałsz – z systemów
         liczbowych, sieci, baz danych, grafiki, bezpieczeństwa i prawa. Punkt jest tylko za komplet
-        poprawnych odpowiedzi, jak na maturze.
+        poprawnych odpowiedzi, jak na maturze. Teorię znajdziesz w{' '}
+        <Link to="/podstawy/teoria">podstawach teorii</Link>.
       </p>
       <div className="theory-random">
         <div>
