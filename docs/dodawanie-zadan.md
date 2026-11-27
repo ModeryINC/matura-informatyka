@@ -200,7 +200,7 @@ Podpunkty, których nie da się rozwiązać w edytorze (analiza algorytmu, uzupe
 tabeli, złożoność, krótkie odpowiedzi z teorii), trafiają do `src/data/open/<sesja>.json`
 – jeden plik na sesję, np. `2024-maj.json`. Każde zadanie z arkusza to jeden obiekt:
 
-```json
+````json
 {
   "id": "2024-maj-2",
   "sessionId": "2024/maj",
@@ -217,11 +217,11 @@ tabeli, złożoność, krótkie odpowiedzi z teorii), trafiają do `src/data/ope
     }
   ]
 }
-```
+````
 
 - `id` to `<sesja z myślnikiem>-<numer zadania>`; test `src/data/open.test.ts` pilnuje formatu.
 - `accepted` (opcjonalne) – krótkie odpowiedzi sprawdzane automatycznie (bez wielkości liter
   i odstępów). Bez tego pola zdający po odsłonięciu klucza sam ocenia odpowiedź.
 - Rysunki zostają w arkuszu – strona zadania ma przycisk „Pokaż arkusz (PDF)”.
 - Po dodaniu zadań uruchom `python scripts/find_sheet_pages.py` i `npx prettier --write
-  src/data/sheet-pages.json`, żeby podgląd PDF otwierał się na właściwej stronie.
+src/data/sheet-pages.json`, żeby podgląd PDF otwierał się na właściwej stronie.
