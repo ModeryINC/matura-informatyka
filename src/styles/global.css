@@ -408,9 +408,9 @@ pre {
 
 .bottom-nav .nav {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 0.25rem;
-  max-inline-size: 32rem;
+  max-inline-size: 34rem;
   margin-inline: auto;
 }
 

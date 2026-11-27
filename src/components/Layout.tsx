@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link, NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router';
 import {
+  LuBookOpen,
   LuCircleHelp,
   LuFileText,
   LuHouse,
@@ -90,6 +91,12 @@ function MainNav({ pathname, mobile }: { pathname: string; mobile: boolean }) {
           </Link>
         </li>
         <li>
+          <NavLink to="/podstawy" viewTransition>
+            {mobile && <LuBookOpen aria-hidden className="icon" />}
+            <span>Podstawy</span>
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/arkusze" viewTransition>
             {mobile && <LuFileText aria-hidden className="icon" />}
             <span>Arkusze</span>
@@ -109,7 +116,7 @@ function MainNav({ pathname, mobile }: { pathname: string; mobile: boolean }) {
 /**
  * Po przejściu na inną stronę fokus trafia na treść (`#tresc`), żeby czytnik ekranu
  * i klawiatura zaczynały od nowej zawartości, a nie od klikniętego, już nieistniejącego
- * linku. Przełączanie zakładek „Zadania” (Python / Excel / SQL) zostawia fokus na zakładce.
+ * linku. Przełączanie zakładek „Zadania” i „Podstawy” zostawia fokus na zakładce.
  */
 function useFocusOnNavigation(pathname: string) {
   const previous = useRef(pathname);
@@ -117,7 +124,9 @@ function useFocusOnNavigation(pathname: string) {
     const before = previous.current;
     previous.current = pathname;
     if (before === pathname) return;
-    if (before.startsWith('/zadania/') && pathname.startsWith('/zadania/')) return;
+    for (const section of ['/zadania/', '/podstawy/']) {
+      if (before.startsWith(section) && pathname.startsWith(section)) return;
+    }
     document.getElementById('tresc')?.focus({ preventScroll: true });
   }, [pathname]);
 }

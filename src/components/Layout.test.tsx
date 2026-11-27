@@ -68,7 +68,13 @@ describe('Layout', () => {
       const nav = screen.getByRole('navigation', { name: 'Główna nawigacja' });
       expect(nav).toHaveClass('bottom-nav');
       expect(nav.closest('header')).toBeNull();
-      expect(within(nav).getByRole('link', { name: 'Start' })).toBeInTheDocument();
+      expect(within(nav).getAllByRole('link').map((l) => l.textContent)).toEqual([
+        'Start',
+        'Zadania',
+        'Podstawy',
+        'Arkusze',
+        'Pomoc',
+      ]);
       expect(within(nav).getByRole('link', { name: 'Zadania' })).toHaveAttribute(
         'aria-current',
         'page',
