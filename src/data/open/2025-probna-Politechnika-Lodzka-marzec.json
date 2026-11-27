@@ -1,0 +1,69 @@
+[
+  {
+    "id": "2025-probna-Politechnika-Lodzka-marzec-1",
+    "sessionId": "2025/probna-Politechnika-Lodzka-marzec",
+    "number": "1",
+    "title": "Ciekawostki matematyczne",
+    "intro": "Liczba jest podzielna przez 9, gdy suma jej cyfr jest podzielna przez 9. Ogólniej: każdą liczbę naturalną x da się zapisać jako sumę jej cyfr i pewnej liczby naturalnej k pomnożonej przez 9:\n\nx = Sₓ + 9k,\n\ngdzie Sₓ to suma cyfr x. Np. 12 = (1 + 2) + 9 · 1, 64 = (6 + 4) + 9 · 6, 1984 = (1 + 9 + 8 + 4) + 9 · 218.",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Uzupełnij tabelę, wyznaczając k dla podanych x.\n\n| x | k |\n|---|---|\n| 37 | 3 |\n| 872 | |\n| 6532 | 724 |\n| 42165 | |",
+        "answer": "| x | k |\n|---|---|\n| 872 | 95 |\n| 42165 | 4683 |\n\nk = (x − Sₓ) / 9: (872 − 17) / 9 = 95, (42165 − 18) / 9 = 4683.",
+        "accepted": [
+          "95, 4683",
+          "95 4683",
+          "95,4683"
+        ]
+      },
+      {
+        "number": "1.2",
+        "points": 2,
+        "prompt": "Funkcja SumaCyfr przyjmuje liczbę całkowitą i zwraca sumę jej cyfr. Uzupełnij brakujące wiersze 3 i 6 (mod – reszta z dzielenia, div – dzielenie całkowite):\n\n```\n1.  SumaCyfr(x):\n2.      s = 0\n3.      ...\n4.          s = s + x mod 10\n5.          x = x div 10\n6.      zwróć ...\n```",
+        "answer": "```\n3.      dopóki (x różne od 0)\n6.      zwróć s\n```"
+      }
+    ]
+  },
+  {
+    "id": "2025-probna-Politechnika-Lodzka-marzec-3",
+    "sessionId": "2025/probna-Politechnika-Lodzka-marzec",
+    "number": "3",
+    "title": "Układ równań",
+    "intro": "Punkt przecięcia dwóch prostych to rozwiązanie układu ich równań. Metodą wyznaczników liczymy W, Wₓ i W_y. Jeśli W ≠ 0, rozwiązaniem jest x = Wₓ / W, y = W_y / W. Jeśli W = 0, układ jest nieoznaczony (gdy także Wₓ = 0 i W_y = 0) albo sprzeczny (gdy co najmniej jeden z Wₓ, W_y jest różny od zera).",
+    "parts": [
+      {
+        "number": "3.2",
+        "points": 2,
+        "prompt": "Uzupełnij miejsca wykropkowane w wierszach 1, 3 i 9 funkcji, która wypisuje rozwiązanie układu albo komunikat.\n\n```\nFunkcja Wynik(Wx, Wy, W)\n1.  jeżeli ..............\n2.      x = Wx / W\n3.      y = ...............\n4.      wypisz x i y\n5.  w przeciwnym wypadku\n6.      jeżeli Wx = 0 i Wy = 0\n7.          wypisz \"nieskończenie wiele rozwiązań\"\n8.      w przeciwnym wypadku\n9.          wypisz \"...................\"\n```",
+        "answer": "- wiersz 1: W ≠ 0 (W > 0 też uznano w kluczu)\n- wiersz 3: y = Wy / W\n- wiersz 9: układ równań sprzeczny"
+      }
+    ]
+  },
+  {
+    "id": "2025-probna-Politechnika-Lodzka-marzec-6",
+    "sessionId": "2025/probna-Politechnika-Lodzka-marzec",
+    "number": "6",
+    "title": "Test",
+    "parts": [
+      {
+        "number": "6.1",
+        "points": 1,
+        "prompt": "Oceń prawdziwość zdań o sieciach komputerowych (wpisz cztery litery P/F):\n\n1. Serwer DHCP przydziela komputerom w sieci adresy IP i konfigurację sieciową.\n2. Klasa adresów C pozwala maksymalnie zaadresować 65536 hostów w jednej sieci.\n3. Adres IPv6 składa się z 64 bitów.\n4. Do danego adresu IP może być przypisanych wiele różnych nazw.",
+        "answer": "PFFP\n\n2. F – klasa C ma 256 adresów (254 hosty); 65536 to klasa B.\n3. F – IPv6 ma 128 bitów.",
+        "accepted": [
+          "PFFP"
+        ]
+      },
+      {
+        "number": "6.2",
+        "points": 1,
+        "prompt": "Oceń prawdziwość zdań o grafice (wpisz cztery litery P/F):\n\n1. Grafika wektorowa jest nieskalowalna – przy powiększaniu obraz traci jakość.\n2. W systemach wydruku stosuje się model barw CMYK.\n3. Grafika rastrowa jest nazywana grafiką obrazu rzeczywistego i stosuje się ją w fotografii cyfrowej.\n4. JPG jest formatem pliku graficznego, w którym wykorzystano kompresję stratną.",
+        "answer": "FPPP\n\n1. F – to grafika rastrowa traci jakość przy powiększaniu; wektorowa skaluje się bez strat.",
+        "accepted": [
+          "FPPP"
+        ]
+      }
+    ]
+  }
+]

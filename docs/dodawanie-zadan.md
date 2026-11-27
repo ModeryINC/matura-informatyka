@@ -193,3 +193,35 @@ Klucz potwierdź zapytaniami w `solutions/sql/<id>.sql` – podpunkty oddziela k
 `-- 8.1`. Pola dostają kolejne wartości ze wszystkich wyników podpunktu, a `table` i `list` –
 wiersze ostatniego wyniku. Uruchom `npm run verify:sql` (zapytania wykonuje ten sam silnik co
 strona), a potem `python scripts/find_sheet_pages.py`.
+
+## Zadania otwarte (Zadania → Test)
+
+Podpunkty, których nie da się rozwiązać w edytorze (analiza algorytmu, uzupełnianie
+tabeli, złożoność, krótkie odpowiedzi z teorii), trafiają do `src/data/open/<sesja>.json`
+– jeden plik na sesję, np. `2024-maj.json`. Każde zadanie z arkusza to jeden obiekt:
+
+```json
+{
+  "id": "2024-maj-2",
+  "sessionId": "2024/maj",
+  "number": "2",
+  "title": "Cyfry",
+  "intro": "Wspólny opis zadania (Markdown: akapity, `kod`, bloki ```, tabele | a | b |).",
+  "parts": [
+    {
+      "number": "2.2",
+      "points": 1,
+      "prompt": "Treść podpunktu.",
+      "answer": "Rozwiązanie z klucza CKE.",
+      "accepted": ["111111333333111111"]
+    }
+  ]
+}
+```
+
+- `id` to `<sesja z myślnikiem>-<numer zadania>`; test `src/data/open.test.ts` pilnuje formatu.
+- `accepted` (opcjonalne) – krótkie odpowiedzi sprawdzane automatycznie (bez wielkości liter
+  i odstępów). Bez tego pola zdający po odsłonięciu klucza sam ocenia odpowiedź.
+- Rysunki zostają w arkuszu – strona zadania ma przycisk „Pokaż arkusz (PDF)”.
+- Po dodaniu zadań uruchom `python scripts/find_sheet_pages.py` i `npx prettier --write
+  src/data/sheet-pages.json`, żeby podgląd PDF otwierał się na właściwej stronie.
