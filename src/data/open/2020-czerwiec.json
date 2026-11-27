@@ -1,0 +1,69 @@
+[
+  {
+    "id": "2020-czerwiec-1",
+    "sessionId": "2020/czerwiec",
+    "number": "1",
+    "title": "Podobne tablice",
+    "intro": "Niech n będzie dodatnią liczbą całkowitą, a A[1..n] i B[1..n] tablicami liczb całkowitych. Dla nieujemnej liczby całkowitej k < n tablice A i B są k-podobne, gdy A[1..k] = B[n − k + 1..n] oraz A[k + 1..n] = B[1..n − k] (B to A przesunięta cyklicznie). Liczbę k nazywamy świadectwem podobieństwa; dla k = 0 przyjmujemy, że A[1..0] = B[n + 1..n] jest prawdą.",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 1,
+        "prompt": "Uzupełnij tabelę: w wierszach 5 i 7 wpisz PRAWDA, jeśli tablice są k-podobne dla podanego k, albo FAŁSZ; w wierszu 6 wpisz k, dla którego tablice są k-podobne.\n\n| lp. | n | A | B | k | odpowiedź |\n|---|---|---|---|---|---|\n| 1 | 3 | [5, 7, 9] | [5, 7, 9] | 0 | PRAWDA |\n| 3 | 5 | [10, 9, 12, 10, 9] | [10, 10, 9, 9, 12] | 3 | FAŁSZ |\n| 4 | 5 | [3, 6, 5, 1, 8] | [5, 1, 8, 3, 6] | 4 | FAŁSZ |\n| 5 | 5 | [1, 2, 3, 4, 5] | [3, 4, 5, 1, 2] | 2 | |\n| 6 | 9 | [1,1,1,1,3,1,1,1,1] | [3,1,1,1,1,1,1,1,1] | | PRAWDA |\n| 7 | 6 | [4, 2, 4, 4, 2, 6] | [4, 4, 2, 6, 4, 2] | 1 | |",
+        "answer": "- wiersz 5: PRAWDA\n- wiersz 6: k = 4\n- wiersz 7: FAŁSZ\n\nW wierszu 6: A[1..4] = [1,1,1,1] = B[6..9] oraz A[5..9] = [3,1,1,1,1] = B[1..5]."
+      }
+    ]
+  },
+  {
+    "id": "2020-czerwiec-2",
+    "sessionId": "2020/czerwiec",
+    "number": "2",
+    "title": "Symetryczny ciąg",
+    "intro": "Argumentami procedury sym(a, b) są nieujemne liczby całkowite a i b. Wywołanie wypisuje pewien ciąg liczb:\n\n```\nsym(a, b)\n    jeżeli a ≠ 0\n        sym(a - 1, b + 1)\n        wypisz a * b\n        sym(a - 1, b + 1)\n```\n\nNp. sym(4, 2) wypisuje 5 8 5 9 5 8 5 8 5 8 5 9 5 8 5.",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 2,
+        "prompt": "Podaj wynik działania procedury sym(a, b).\n\n| a | b | sym(a, b) |\n|---|---|---|\n| 3 | 3 | |\n| 4 | 1 | |",
+        "answer": "| a | b | sym(a, b) |\n|---|---|---|\n| 3 | 3 | 5 8 5 9 5 8 5 |\n| 4 | 1 | 4 6 4 6 4 6 4 4 4 6 4 6 4 6 4 |\n\nŚrodkowa liczba to a · b, a po obu stronach jest wynik sym(a − 1, b + 1)."
+      },
+      {
+        "number": "2.2",
+        "points": 3,
+        "prompt": "Podaj długość ciągu wypisanego przez sym(a, b).\n\n| a | b | długość |\n|---|---|---|\n| 3 | 2 | 7 |\n| 4 | 4 | 15 |\n| 5 | 1 | |\n| 6 | 6 | |\n| 10 | 2020 | |",
+        "answer": "| a | b | długość |\n|---|---|---|\n| 5 | 1 | 31 |\n| 6 | 6 | 63 |\n| 10 | 2020 | 1023 |\n\nDługość zależy tylko od a: L(a) = 2 · L(a − 1) + 1, czyli 2^a − 1.",
+        "accepted": [
+          "31, 63, 1023",
+          "31 63 1023",
+          "31,63,1023"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2020-czerwiec-3",
+    "sessionId": "2020/czerwiec",
+    "number": "3",
+    "title": "Zegar binarny i SQL",
+    "parts": [
+      {
+        "number": "3.1",
+        "points": 1,
+        "prompt": "Na zegarze binarnym każda z części godzina, minuty, sekundy jest zapisana w postaci binarnej: zapalona dioda (czarny kwadrat) oznacza 1, zgaszona – 0, a najniższy wiersz to najmniej znaczące cyfry. Rysunki zegarów A–D są w arkuszu (otwórz arkusz PDF).\n\nOceń prawdziwość zdań (wpisz cztery litery P/F):\n\n1. Zegar A wskazuje godzinę 22:30:48.\n2. Zegar B wskazuje godzinę 07:58:35.\n3. Zegar C wskazuje godzinę 10:44:24.\n4. Zegar D wskazuje godzinę 17:48:54.",
+        "answer": "FPPF",
+        "accepted": [
+          "FPPF"
+        ]
+      },
+      {
+        "number": "3.4",
+        "points": 1,
+        "prompt": "Dana jest tabela pracownicy:\n\n| nr_p | nazwisko | imie | staz | pensja |\n|---|---|---|---|---|\n| 7369 | Smitko | Alan | 10 | 2000 |\n| 7499 | Nowak | Kazimierz | 15 | 3000 |\n| 7521 | Wicek | Mariusz | 11 | 3500 |\n| 7566 | Jonas | Kamil | 12 | 2500 |\n| 7654 | Martin | Leon | 20 | 2300 |\n| 7698 | Bracki | Bartosz | 15 | 1530 |\n| 7782 | Celerek | Agnieszka | 12 | 1680 |\n| 7788 | Skotnik | Natalia | 21 | 2000 |\n| 7839 | King | Mirosław | 22 | 1500 |\n\noraz zapytanie:\n\n```\nSELECT * FROM pracownicy\nWHERE pensja < 2000\nORDER BY staz DESC;\n```\n\nOceń prawdziwość zdań (wpisz cztery litery P/F):\n\n1. Wynik zapytania to 3.\n2. Wynikiem jest zestawienie wierszy: King (staż 22, 1500), Bracki (staż 15, 1530), Celerek (staż 12, 1680) – ze wszystkimi kolumnami.\n3. Wynikiem są wiersze z wszystkimi danymi pracowników z pensją mniejszą niż 2000, posortowane nierosnąco według stażu.\n4. Wynikiem jest zestawienie (nr_p, staz, pensja): (7782, 12, 1680), (7698, 15, 1530), (7839, 22, 1500).",
+        "answer": "FPPF\n\n1. F – zapytanie zwraca wiersze, a nie ich liczbę.\n2. P.\n3. P.\n4. F – SELECT * zwraca wszystkie kolumny, a sortowanie DESC daje staż malejąco.",
+        "accepted": [
+          "FPPF"
+        ]
+      }
+    ]
+  }
+]

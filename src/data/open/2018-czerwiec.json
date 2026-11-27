@@ -1,0 +1,52 @@
+[
+  {
+    "id": "2018-czerwiec-1",
+    "sessionId": "2018/czerwiec",
+    "number": "1",
+    "title": "Wyszukiwanie liczb",
+    "intro": "Funkcja F(T, x) dostaje tablicę T[1..n] liczb całkowitych uporządkowanych niemalejąco (n > 0) i liczbę x, której szuka w tablicy. Wynikiem jest prawda, jeśli x występuje w T, albo fałsz w przeciwnym razie (div – dzielenie całkowite):\n\n```\np ← 1\nk ← n\ndopóki p <= k powtarzaj:\n    s ← (p+k) div 2\n    jeśli T[s] = x to\n        wynikiem jest prawda\n        zakończ działanie funkcji\n    w przeciwnym razie\n        jeśli T[s] < x to p ← s+1\n        w przeciwnym razie k ← s-1\nwynikiem jest fałsz\n```",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 4,
+        "prompt": "Rozważmy tablicę T = [3; 5; 7; 8; 9; 13; 33; 37; 40; 43].\n\n- A. Podaj wynik F(T, x) dla x = 7.\n- B. Ile razy zostanie zmodyfikowana wartość zmiennej p, a ile razy zmiennej k podczas pętli dla x = 7 oraz dla x = 43?\n- C. Podaj kolejne wartości zmiennej s dla x = 7.\n\n| zmienna | x = 7 | x = 43 |\n|---|---|---|\n| p | | |\n| k | | |",
+        "answer": "- A. prawda\n- B.\n\n| zmienna | x = 7 | x = 43 |\n|---|---|---|\n| p | 1 | 3 |\n| k | 1 | 0 |\n\n- C. 5, 2, 3\n\nDla x = 7: s = 5 (T[5] = 9 > 7, k ← 4), s = 2 (T[2] = 5 < 7, p ← 3), s = 3 (znaleziono). Dla x = 43: s = 5, 8, 9, 10 – p zmienia się trzy razy.\n\n1 pkt za A, 2 pkt za B (po 1 pkt za kolumnę), 1 pkt za C."
+      },
+      {
+        "number": "1.2",
+        "points": 1,
+        "prompt": "Ile razy dla n = 100 jest spełniony warunek p <= k podczas wykonywania pętli, gdy szukana liczba jest większa od każdego elementu tablicy T?",
+        "answer": "7 razy – przedział zmniejsza się: 100 → 50 → 25 → 12 → 6 → 3 → 1 → 0; warunek jest prawdziwy dla 7 niepustych przedziałów.",
+        "accepted": [
+          "7"
+        ]
+      },
+      {
+        "number": "1.3",
+        "points": 1,
+        "prompt": "Sprawdź działanie funkcji F(T, x) dla nieuporządkowanej tablicy T = [3; 5; 7; 8; X; 13; 33; 37; 40; 43], w której piąty element X jest większy od pozostałych (dokładna wartość jest w arkuszu). Podaj wynik dla x = 43.",
+        "answer": "fałsz – pierwsze s = 5, a T[5] > 43, więc k ← 4 i dalej szukamy tylko w T[1..4], gdzie 43 nie ma. Wyszukiwanie binarne działa poprawnie tylko na tablicy uporządkowanej.",
+        "accepted": [
+          "fałsz",
+          "falsz",
+          "false"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2018-czerwiec-2",
+    "sessionId": "2018/czerwiec",
+    "number": "2",
+    "title": "Liczby Fibonacciego",
+    "intro": "Liczby Fibonacciego: F₁ = 1, F₂ = 1, Fₙ = Fₙ₋₁ + Fₙ₋₂ dla n ≥ 3. Algorytm rekurencyjny:\n\n```\nfunkcja F(n)\n    jeśli n=1 lub n=2\n        wynikiem jest 1\n    w przeciwnym razie\n        wynikiem jest F(n-1) + F(n-2)\n```",
+    "parts": [
+      {
+        "number": "2.2",
+        "points": 1,
+        "prompt": "Aby obliczyć F₄₅, wywołano najpierw funkcję iteracyjną, a potem rekurencyjną. Funkcja rekurencyjna liczyła bardzo długo, a iteracyjna podała wynik prawie natychmiast. Uzasadnij długi czas działania funkcji rekurencyjnej.",
+        "answer": "Drzewo wywołań rekurencyjnych zawiera wielokrotne obliczanie tych samych wyrazów (np. F(43) liczone jest 2 razy, F(42) – 3 razy itd.). Liczba wywołań rośnie wykładniczo (rzędu Fₙ), podczas gdy wersja iteracyjna wykonuje tylko n − 2 dodawań."
+      }
+    ]
+  }
+]

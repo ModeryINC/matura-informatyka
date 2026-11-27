@@ -1,0 +1,50 @@
+[
+  {
+    "id": "2022-czerwiec-1",
+    "sessionId": "2022/czerwiec",
+    "number": "1",
+    "title": "Liczby nudne i ciekawe",
+    "intro": "Dodatniej liczbie całkowitej przyporządkowujemy sumę kwadratów jej cyfr, np. 123 → 1² + 2² + 3² = 14. Tworzymy ciąg: pierwszy element to n, a każdy kolejny to wynik tej operacji dla poprzedniego. Jeśli w ciągu pojawi się 1, liczba n jest nudna, w przeciwnym razie – ciekawa.\n\nNp. 13 → 10 → 1, więc 13 jest nudna. Liczba 4 jest ciekawa: 4 → 16 → 37 → 58 → 89 → 145 → 42 → 20 → 4 → … (cykl bez jedynki).",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Wpisz TAK, jeśli liczba jest nudna, albo NIE w przeciwnym razie.\n\n| n | nudna? |\n|---|---|\n| 4 | NIE |\n| 229 | |\n| 82 | |",
+        "answer": "| n | nudna? |\n|---|---|\n| 229 | NIE |\n| 82 | TAK |\n\n229 → 89 → 145 → 42 → 20 → 4 → … (cykl). 82 → 68 → 100 → 1.",
+        "accepted": [
+          "NIE, TAK",
+          "NIE TAK",
+          "NIE,TAK",
+          "N, T",
+          "NT"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022-czerwiec-2",
+    "sessionId": "2022/czerwiec",
+    "number": "2",
+    "title": "Kodowanie liczby",
+    "intro": "Funkcja Koduj(n) dla dodatniej liczby całkowitej n zwraca słowo puste albo słowo z liter A i B (div – część całkowita z dzielenia, mod – reszta, + łączy słowa):\n\n```\nKoduj(n):\n    jeżeli n = 1\n        wynikiem jest ''\n    w przeciwnym wypadku\n        k ← n div 2\n        jeżeli k mod 2 = 0\n            wynikiem jest Koduj(k) + 'A'\n        w przeciwnym wypadku\n            wynikiem jest 'B' + Koduj(k)\n```\n\nNp. Koduj(1) = '' (słowo puste), Koduj(2) = B.",
+    "parts": [
+      {
+        "number": "2.2",
+        "points": 2,
+        "prompt": "Podaj liczbę wszystkich wywołań funkcji Koduj (łącznie z pierwszym) po wywołaniu Koduj(n).\n\n| n | liczba wywołań |\n|---|---|\n| 1 | 1 |\n| 2 | 2 |\n| 12 | |\n| 33 | |\n| 1022 | |",
+        "answer": "| n | liczba wywołań |\n|---|---|\n| 12 | 4 |\n| 33 | 6 |\n| 1022 | 10 |\n\nLiczba wywołań to liczba cyfr zapisu binarnego n (12 = 1100₂, 33 = 100001₂, 1022 = 1111111110₂).",
+        "accepted": [
+          "4, 6, 10",
+          "4 6 10",
+          "4,6,10"
+        ]
+      },
+      {
+        "number": "2.3",
+        "points": 2,
+        "prompt": "Podaj dwie różne dodatnie liczby całkowite, dla których funkcja Koduj daje ten sam kod złożony z sześciu znaków.",
+        "answer": "Np. 66 i 67. Kod ma 6 znaków dla liczb o 7 cyfrach binarnych, a ostatnia cyfra binarna nie wpływa na wynik (pierwszy krok to n div 2). Ogólniej: dowolne 2k i 2k + 1 z przedziału 64–127.\n\n1 pkt za parę liczb z tym samym kodem pięcio- albo siedmioznakowym."
+      }
+    ]
+  }
+]

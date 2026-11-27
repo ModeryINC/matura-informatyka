@@ -1,0 +1,64 @@
+[
+  {
+    "id": "2020-stara-formula-czerwiec-1",
+    "sessionId": "2020/stara-formula-czerwiec",
+    "number": "1",
+    "title": "Minimum i maksimum",
+    "intro": "Dane są dodatnia parzysta liczba całkowita n oraz n liczb w tablicy A[0..n−1]. Przeanalizuj algorytm (wiersze z porównaniami oznaczono (*)):\n\n```\ni ← 0\ndopóki i < n-1 wykonuj\n(*)  jeżeli A[i] > A[i+1] wykonuj\n         pom ← A[i]\n         A[i] ← A[i+1]\n         A[i+1] ← pom\n     i ← i+2\ni ← 0\nx ← A[i]\ny ← A[i+1]\ndopóki i < n-3 wykonuj\n(*)  jeżeli A[i+2] < x wykonuj x ← A[i+2]\n(*)  jeżeli A[i+3] > y wykonuj y ← A[i+3]\n     i ← i+2\n```",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Jakie wartości przyjmą zmienne x i y po wykonaniu algorytmu dla A = [5, 8, 10, 14, 20, 12, 19, 23, 38, 30]? Wpisz dwie liczby: x i y.",
+        "answer": "x = 5, y = 38",
+        "accepted": [
+          "5, 38",
+          "5 38",
+          "5,38",
+          "x=5,y=38"
+        ]
+      },
+      {
+        "number": "1.2",
+        "points": 2,
+        "prompt": "Wpisz dwie litery (dla x i dla y):\n\n- a) Po wykonaniu algorytmu wartością x jest: A. najmniejsza liczba w tablicy A, B. największa liczba w tablicy A.\n- b) Po wykonaniu algorytmu wartością y jest: A. najmniejsza liczba w tablicy A, B. największa liczba w tablicy A.",
+        "answer": "- a) A – x to minimum.\n- b) B – y to maksimum.\n\nPierwsza pętla ustawia w każdej parze mniejszy element przed większym; potem minimum szukamy tylko wśród mniejszych, a maksimum – wśród większych.",
+        "accepted": [
+          "A, B",
+          "A B",
+          "AB",
+          "A,B"
+        ]
+      },
+      {
+        "number": "1.3",
+        "points": 2,
+        "prompt": "Podaj łączną liczbę porównań w wierszach oznaczonych (*) w zależności od n.",
+        "answer": "3n/2 − 2\n\nPierwsza pętla: n/2 porównań. Druga pętla wykonuje się (n − 2)/2 razy po 2 porównania, czyli n − 2. Razem n/2 + n − 2 = 3n/2 − 2 (mniej niż 2n − 2 przy osobnym szukaniu minimum i maksimum).",
+        "accepted": [
+          "3n/2-2",
+          "3/2n-2",
+          "1.5n-2",
+          "(3n)/2-2",
+          "3n/2 - 2",
+          "(3/2)n-2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2020-stara-formula-czerwiec-2",
+    "sessionId": "2020/stara-formula-czerwiec",
+    "number": "2",
+    "title": "Kod BCD",
+    "intro": "Kod BCD nieujemnej liczby całkowitej L powstaje przez zamianę każdej cyfry zapisu dziesiętnego L na jej czterobitowy kod binarny. Np. 3768₁₀ = 0011 0111 0110 1000 = 0011011101101000 (BCD).",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 4,
+        "prompt": "Uzupełnij tabelę.\n\n| L (dziesiętnie) | kod BCD | liczba jedynek w BCD |\n|---|---|---|\n| 259 | | |\n| | 0010000000010111 | 5 |\n| | 00100011010101110100 | |\n| 15893 | | |",
+        "answer": "| L | kod BCD | liczba jedynek |\n|---|---|---|\n| 259 | 001001011001 | 5 |\n| 2017 | 0010000000010111 | 5 |\n| 23574 | 00100011010101110100 | 9 |\n| 15893 | 00010101100010010011 | 8 |\n\n1 pkt za każdy poprawny wiersz."
+      }
+    ]
+  }
+]

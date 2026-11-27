@@ -1,0 +1,70 @@
+[
+  {
+    "id": "2021-probna-CKE-marzec-1",
+    "sessionId": "2021/probna-CKE-marzec",
+    "number": "1",
+    "title": "Turniej",
+    "intro": "W turnieju siatkówki gra n = 2^k drużyn ponumerowanych 0, 1, …, n − 1, systemem pucharowym (przegrywający odpada). W pierwszej rundzie w meczu nr i grają drużyny 2(i − 1) i 2(i − 1) + 1, a w każdej kolejnej rundzie w meczu nr i grają zwycięzcy meczów 2i − 1 i 2i z poprzedniej rundy. Turniej trwa k rund.\n\nNp. w turnieju 8 drużyn w 1. rundzie grają pary (0,1), (2,3), (4,5), (6,7), w 2. rundzie – zwycięzcy par (0,1) i (2,3) oraz (4,5) i (6,7), a w 3. rundzie – finał.\n\nNumer rundy, w której mogą się spotkać drużyny x i y, można wyznaczyć z ich zapisów binarnych o długości k.",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Wyznacz numer rundy, w której mogą się zmierzyć drużyny x i y.\n\n| k | x | y | x dwójkowo | y dwójkowo | runda |\n|---|---|---|---|---|---|\n| 3 | 2 | 6 | 010 | 110 | 3 |\n| 4 | 0 | 3 | 0000 | 0011 | 2 |\n| 4 | 3 | 7 | 0011 | 0111 | |\n| 5 | 16 | 30 | 10000 | 11110 | |",
+        "answer": "| k | x | y | runda |\n|---|---|---|---|\n| 4 | 3 | 7 | 3 |\n| 5 | 16 | 30 | 4 |\n\nNumer rundy to pozycja (licząc od prawej, od 1) najstarszego bitu, którym różnią się x i y.",
+        "accepted": [
+          "3, 4",
+          "3 4",
+          "3,4"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2021-probna-CKE-marzec-2",
+    "sessionId": "2021/probna-CKE-marzec",
+    "number": "2",
+    "title": "Funkcja Algo",
+    "intro": "Funkcja Algo(n) dla dodatniej liczby całkowitej n (div – dzielenie całkowite):\n\n```\nAlgo(n)\n    jeżeli n ≤ 2 to\n        wynikiem jest 1\n    w przeciwnym przypadku\n        p ← 1\n        k ← n\n        dopóki k - p > 1 wykonuj\n            s ← (p + k) div 2\n            jeżeli s * s ≤ n to\n                p ← s\n            w przeciwnym przypadku\n                k ← s\n        wynikiem jest p\n```",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 2,
+        "prompt": "Podaj wynik Algo(n).\n\n| n | Algo(n) |\n|---|---|\n| 5 | 2 |\n| 35 | |\n| 1025 | |",
+        "answer": "| n | Algo(n) |\n|---|---|\n| 35 | 5 |\n| 1025 | 32 |\n\nFunkcja liczy wyszukiwaniem binarnym część całkowitą pierwiastka z n.",
+        "accepted": [
+          "5, 32",
+          "5 32",
+          "5,32"
+        ]
+      },
+      {
+        "number": "2.2",
+        "points": 3,
+        "prompt": "Podaj liczbę wykonań instrukcji s ← (p + k) div 2 podczas obliczania Algo(n).\n\n| n | liczba wykonań |\n|---|---|\n| 5 | 2 |\n| 2 | |\n| 63 | |\n| 1024 | |",
+        "answer": "| n | liczba wykonań |\n|---|---|\n| 2 | 0 |\n| 63 | 6 |\n| 1024 | 10 |\n\nDla n ≤ 2 pętla w ogóle się nie wykonuje; w innym przypadku przedział [1, n] jest połowiony, aż k − p = 1.",
+        "accepted": [
+          "0, 6, 10",
+          "0 6 10",
+          "0,6,10"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2021-probna-CKE-marzec-3",
+    "sessionId": "2021/probna-CKE-marzec",
+    "number": "3",
+    "title": "Zapytania SQL",
+    "parts": [
+      {
+        "number": "3.4",
+        "points": 1,
+        "prompt": "W bazie danych jest tabela oceny(id_oceny, id_ucznia, przedmiot, ocena):\n\n| id_oceny | id_ucznia | przedmiot | ocena |\n|---|---|---|---|\n| 1 | 1 | matematyka | 3 |\n| 2 | 1 | informatyka | 5 |\n| 3 | 1 | fizyka | 2 |\n| 4 | 2 | matematyka | 6 |\n| 5 | 2 | fizyka | 3 |\n| 6 | 2 | informatyka | 5 |\n| 7 | 3 | matematyka | 4 |\n| 8 | 3 | fizyka | 2 |\n| 9 | 3 | informatyka | 3 |\n\nOceń prawdziwość zdań (wpisz cztery litery P/F):\n\n1. Wynikiem `SELECT COUNT(id_ucznia) FROM oceny;` jest 3.\n2. Wynikiem `SELECT COUNT(id_ucznia) FROM oceny WHERE przedmiot = \"fizyka\";` jest 3.\n3. Wynikiem `SELECT COUNT(przedmiot) FROM oceny;` jest 9.\n4. Wynikiem `SELECT COUNT(przedmiot) FROM oceny WHERE ocena > 3;` jest 4.",
+        "answer": "FPPP\n\n1. F – COUNT liczy wiersze (9), a nie różnych uczniów; różnych policzyłoby COUNT(DISTINCT id_ucznia).\n2. P – są trzy oceny z fizyki.\n3. P – tabela ma 9 wierszy.\n4. P – oceny większe od 3: 5, 6, 5, 4.",
+        "accepted": [
+          "FPPP"
+        ]
+      }
+    ]
+  }
+]

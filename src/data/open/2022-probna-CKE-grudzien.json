@@ -1,0 +1,71 @@
+[
+  {
+    "id": "2022-probna-CKE-grudzien-2",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "2",
+    "title": "Strzałki",
+    "intro": "Dla dodatniej liczby całkowitej N rysujemy N punktów ponumerowanych 1, 2, …, N. Funkcja strzałka(x, y) rysuje strzałkę od punktu x do punktu y. Funkcja rekurencyjna rysuj(x), dla x z przedziału [1, N]:\n\n```\nfunkcja rysuj(x)\n    jeżeli 2*x ≤ N\n        strzałka(x, 2*x)\n        rysuj(2*x)\n    jeżeli 2*x + 1 ≤ N\n        strzałka(x, 2*x + 1)\n        rysuj(2*x + 1)\n```",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 2,
+        "prompt": "Dla N = 10 wypisz wszystkie strzałki (np. „1→2”), które powstaną po wywołaniu rysuj(1).",
+        "answer": "1→2, 1→3, 2→4, 2→5, 3→6, 3→7, 4→8, 4→9, 5→10\n\nPowstaje drzewo binarne (jak w kopcu): z punktu x strzałki prowadzą do 2x i 2x + 1.\n\n1 pkt za rysunek z co najwyżej jedną błędną lub brakującą strzałką."
+      },
+      {
+        "number": "2.2",
+        "points": 2,
+        "prompt": "Podaj, ile strzałek zostanie łącznie narysowanych po wywołaniu rysuj(1):\n\n- a) dla N = 20,\n- b) dla dowolnego N.",
+        "answer": "- a) 19\n- b) N − 1\n\nDo każdego punktu oprócz 1 prowadzi dokładnie jedna strzałka (od punktu x div 2).",
+        "accepted": [
+          "19, N-1",
+          "19 N-1",
+          "19,N-1",
+          "19;N-1"
+        ]
+      },
+      {
+        "number": "2.3",
+        "points": 1,
+        "prompt": "Niech N = 2047. Po ilu strzałkach trzeba przejść, żeby dotrzeć z punktu 1 do punktu N (zgodnie z ich zwrotami)? Np. dla N = 5 z punktu 1 do punktu 5 przechodzimy po dwóch strzałkach.",
+        "answer": "10 – 2047 = 11111111111₂ ma 11 cyfr binarnych, a każda strzałka dopisuje jedną cyfrę (1 → 3 → 7 → … → 2047).",
+        "accepted": [
+          "10"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022-probna-CKE-grudzien-6",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "6",
+    "title": "Protokoły",
+    "parts": [
+      {
+        "number": "6",
+        "points": 1,
+        "prompt": "Dopasuj protokół (FTP, SMTP, IMAP, HTTPS) do opisu – wpisz cztery nazwy w kolejności:\n\n1. protokół wysyłania poczty elektronicznej,\n2. protokół przesyłania plików,\n3. szyfrowany protokół przesyłania dokumentów hipertekstowych,\n4. protokół odbierania poczty elektronicznej.",
+        "answer": "1. SMTP\n2. FTP\n3. HTTPS\n4. IMAP",
+        "accepted": [
+          "SMTP, FTP, HTTPS, IMAP",
+          "SMTP FTP HTTPS IMAP",
+          "SMTP,FTP,HTTPS,IMAP"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022-probna-CKE-grudzien-8",
+    "sessionId": "2022/probna-CKE-grudzien",
+    "number": "8",
+    "title": "Systemy liczbowe",
+    "parts": [
+      {
+        "number": "8",
+        "points": 2,
+        "prompt": "Zapisz wyniki działań na liczbach czwórkowych w systemie czwórkowym i szesnastkowym.\n\n| działanie | wynik (podstawa 4) | wynik (podstawa 16) |\n|---|---|---|\n| 3211₄ + 2322₄ | | |\n| 3211₄ − 2322₄ | | |",
+        "answer": "| działanie | podstawa 4 | podstawa 16 |\n|---|---|---|\n| 3211₄ + 2322₄ | 12133₄ | 19F₁₆ |\n| 3211₄ − 2322₄ | 223₄ | 2B₁₆ |\n\nDziesiętnie: 229 + 186 = 415, 229 − 186 = 43. Przy zamianie na szesnastkowy łączymy cyfry czwórkowe w pary: 1|21|33 → 1|9|F.\n\n1 pkt za jeden wiersz albo jedną kolumnę."
+      }
+    ]
+  }
+]

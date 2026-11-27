@@ -1,0 +1,46 @@
+[
+  {
+    "id": "2020-probna-CKE-kwiecien-1",
+    "sessionId": "2020/probna-CKE-kwiecien",
+    "number": "1",
+    "title": "Wyszukiwanie binarne",
+    "intro": "Dana jest dodatnia liczba całkowita n oraz uporządkowana rosnąco tablica różnych liczb całkowitych T[1..n]. Funkcja rekurencyjna ma parametry x, p, k, gdzie 1 ≤ p ≤ k ≤ n (div – część całkowita z dzielenia):\n\n```\nRek(x, p, k)\n    jeżeli p < k\n        s ← (p + k) div 2\n        jeżeli T[s] ≥ x\n            wynikiem jest Rek(x, p, s)\n        w przeciwnym razie\n            wynikiem jest Rek(x, s + 1, k)\n    w przeciwnym razie\n        jeżeli T[p] = x\n            wynikiem jest p\n        w przeciwnym razie\n            wynikiem jest -1\n```",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Podaj najmniejszą i największą możliwą liczbę wywołań funkcji Rek po wywołaniu Rek(2020, 5, 14) dla n = 17 i pewnej rosnącej tablicy T[1..17] różnych liczb (pierwsze wywołanie też liczymy). Wpisz dwie liczby: najmniejszą i największą.",
+        "answer": "Najmniejsza: 4, największa: 5.\n\nPrzedział 5..14 ma 10 elementów. Po podziale ma 5 albo 5 elementów, potem 3 albo 2, potem 2 albo 1… – w zależności od kierunku przedział długości 1 osiągamy po 3 lub 4 podziałach.",
+        "accepted": [
+          "4, 5",
+          "4 5",
+          "4,5"
+        ]
+      },
+      {
+        "number": "1.3",
+        "points": 1,
+        "prompt": "Złożoność czasowa algorytmu Rek dla parametrów x = 1, p = 1, k = n jest (wpisz literę):\n\n- A. sześcienna\n- B. kwadratowa\n- C. liniowa\n- D. logarytmiczna",
+        "answer": "D – logarytmiczna: każde wywołanie połowi przedział [p, k].",
+        "accepted": [
+          "D"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2020-probna-CKE-kwiecien-2",
+    "sessionId": "2020/probna-CKE-kwiecien",
+    "number": "2",
+    "title": "Moda",
+    "intro": "Moda (dominanta) zestawu danych to element występujący w nim najczęściej. Np. w zestawie 2, 3, 4, 2, 3, 5, 2, 100, 67 modą jest 2, a w zestawie 2, 3, −4, 2, 3, −5, 2, 3 są dwie mody: 2 i 3. Jeśli wszystkie elementy występują tyle samo razy, zestaw nie ma mody (np. 4, 4, 2, 3, 2, 3).",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 1,
+        "prompt": "Ile maksymalnie różnych mód może mieć 10-elementowy zestaw danych? Podaj przykład 10-elementowego zestawu z dokładnie trzema różnymi modami.",
+        "answer": "Maksymalnie 4 mody, np. 1, 1, 2, 2, 3, 3, 4, 4, 5, 6 (pięć mód 2+2+2+2+2 byłoby niemożliwe – wszystkie elementy miałyby tę samą liczebność).\n\nPrzykład z trzema modami: 1, 1, 1, 2, 2, 2, 3, 3, 3, 4."
+      }
+    ]
+  }
+]

@@ -1,0 +1,76 @@
+[
+  {
+    "id": "2022-maj-1",
+    "sessionId": "2022/maj",
+    "number": "1",
+    "title": "n-permutacja",
+    "intro": "Dla dodatniej liczby całkowitej n, n-permutacją nazywamy n-elementowy ciąg, który zawiera każdą z liczb 1, 2, …, n dokładnie raz. Np. (4,2,1,3) jest 4-permutacją, a (1,3,1,2) i (2,3,4,5) nie są.\n\nW ciągu, który nie jest n-permutacją, można podmienić niektóre elementy, żeby ją otrzymać – np. w (1,3,1) wystarczy zamienić jedną jedynkę na dwójkę.",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Dla każdego ciągu podaj najmniejszą liczbę elementów, które trzeba podmienić, żeby był n-permutacją (0, jeśli już nią jest).\n\n| n | ciąg | do podmiany |\n|---|---|---|\n| 3 | (1, 3, 1) | 1 |\n| 4 | (1, 4, 2, 5) | |\n| 5 | (2, 2, 2, 2, 2) | |\n| 4 | (4, 2, 3, 1) | |\n| 6 | (5, 4, 1, 5, 6, 8) | |\n| 6 | (8, 4, 9, 6, 5, 7) | |",
+        "answer": "| ciąg | do podmiany |\n|---|---|\n| (1, 4, 2, 5) | 1 |\n| (2, 2, 2, 2, 2) | 4 |\n| (4, 2, 3, 1) | 0 |\n| (5, 4, 1, 5, 6, 8) | 2 |\n| (8, 4, 9, 6, 5, 7) | 3 |\n\nWynik to n minus liczba różnych wartości z zakresu 1..n w ciągu.\n\n2 pkt za pięć poprawnych wierszy, 1 pkt za cztery.",
+        "accepted": [
+          "1, 4, 0, 2, 3",
+          "1 4 0 2 3",
+          "1,4,0,2,3"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022-maj-2",
+    "sessionId": "2022/maj",
+    "number": "2",
+    "title": "Słowa z liter a i b",
+    "intro": "Niech s będzie słowem długości n z liter a i b; s[i] to i-ta litera. Wynikiem algorytmu jest wartość k:\n\n```\nA[0] ← 0\ndla i = 1, 2, ..., n\n    jeżeli s[i] = 'a'\n        A[i] ← A[i - 1] + 1\n    w przeciwnym razie\n        A[i] ← A[i - 1]\nB[n + 1] ← 0\ndla j = n, n - 1, ..., 1\n    jeżeli s[j] = 'b'\n        B[j] ← B[j + 1] + 1\n    w przeciwnym razie\n        B[j] ← B[j + 1]\nk ← 1\ndla i = 0, 1, 2, ..., n\n    jeżeli A[i] + B[i + 1] > k\n        k ← A[i] + B[i + 1]\n```\n\nA[i] to liczba liter a wśród pierwszych i liter, a B[j] – liczba liter b od pozycji j do końca.",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 2,
+        "prompt": "Wpisz wynik algorytmu (k) dla podanych słów.\n\n| n | s | k |\n|---|---|---|\n| 5 | aabab | 4 |\n| 2 | ab | 2 |\n| 3 | aaa | 3 |\n| 6 | aababb | |\n| 9 | baabbaaab | |",
+        "answer": "| s | k |\n|---|---|\n| aababb | 5 |\n| baabbaaab | 6 |\n\nk to długość najdłuższego podciągu postaci a…ab…b (najpierw same a, potem same b).",
+        "accepted": [
+          "5, 6",
+          "5 6",
+          "5,6",
+          "5;6"
+        ]
+      },
+      {
+        "number": "2.2",
+        "points": 2,
+        "prompt": "Podaj przykłady dziesięcioliterowych słów z liter a i b, dla których wynik algorytmu jest równy odpowiednio 10 i 5.",
+        "answer": "- k = 10: każde słowo, w którym wszystkie a stoją przed wszystkimi b, np. aaaaaaaaaa, bbbbbbbbbb, aaaaabbbbb.\n- k = 5: np. bbbbbaaaaa, bababababa – 5 liter a i 5 liter b, przy czym w każdym prefiksie liter a jest nie więcej niż b.\n\n1 pkt za każdy poprawny przykład."
+      },
+      {
+        "number": "2.3",
+        "points": 2,
+        "prompt": "Zapis a^m oznacza literę a powtórzoną m razy (analogicznie b^m). Podaj wynik algorytmu (k) dla słowa a^300 b^550 a^300 b^7 a^280 b^110.",
+        "answer": "k = 990 – podział po pierwszym bloku b: wszystkie a z bloków przed nim … najlepiej wziąć a^300 a^300 a^280 = 880 liter a i b^110 = 110 liter b (880 + 110 = 990).\n\n1 pkt za 967 lub 989.",
+        "accepted": [
+          "990",
+          "k=990"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022-maj-3",
+    "sessionId": "2022/maj",
+    "number": "3",
+    "title": "Zapytania SQL",
+    "parts": [
+      {
+        "number": "3.3",
+        "points": 1,
+        "prompt": "W bazie danych jest tabela mandaty(numer, id_osoby, punkty):\n\n| numer | id_osoby | punkty |\n|---|---|---|\n| 1 | 1 | 5 |\n| 2 | 1 | 14 |\n| 3 | 2 | 20 |\n| 4 | 3 | 21 |\n| 5 | 2 | 1 |\n| 6 | 1 | 2 |\n\nOceń prawdziwość zdań (wpisz cztery litery P/F):\n\n1. Wynikiem zapytania `SELECT id_osoby, sum(punkty) FROM mandaty HAVING sum(punkty) > 5` jest zestawienie: (1, 14), (2, 20), (3, 21).\n2. Wynikiem zapytania `SELECT id_osoby, sum(punkty) FROM mandaty GROUP BY id_osoby` jest zestawienie: (1, 21), (2, 21), (3, 21).\n3. Wynikiem zapytania `SELECT numer + punkty FROM mandaty` jest 86.\n4. Wynikiem zapytania `SELECT count(punkty) FROM mandaty WHERE punkty = 21` jest 1.",
+        "answer": "FPFP\n\n1. F – bez GROUP BY nie powstaje zestawienie dla każdej osoby.\n2. P – każda osoba ma łącznie 21 punktów.\n3. F – zapytanie zwraca 6 wierszy (sumę dla każdego wiersza osobno), a nie jedną liczbę.\n4. P – tylko jeden mandat ma 21 punktów.",
+        "accepted": [
+          "FPFP"
+        ]
+      }
+    ]
+  }
+]

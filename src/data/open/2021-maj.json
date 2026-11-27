@@ -1,0 +1,65 @@
+[
+  {
+    "id": "2021-maj-1",
+    "sessionId": "2021/maj",
+    "number": "1",
+    "title": "Cyfrowe dopełnienie",
+    "intro": "Niech n będzie nieujemną liczbą całkowitą, której najbardziej znacząca cyfra jest większa od 0 i mniejsza od 9. Cyfrowym dopełnieniem n nazywamy liczbę d, której zapis powstaje przez zamianę każdej cyfry n na jej uzupełnienie do 9. Np. dopełnieniem 2021 jest 7978.",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Podaj czterocyfrową liczbę n, dla której wartość bezwzględna różnicy n i jej cyfrowego dopełnienia d jest:\n\n- a) najmniejsza,\n- b) największa.",
+        "answer": "- a) 5000 (albo 4999) – różnica |5000 − 4999| = 1.\n- b) 8999 (albo 1000) – różnica |8999 − 1000| = 7999.\n\nn + d = 9999, więc |n − d| = |2n − 9999|: najmniejsza dla n najbliżej 4999,5, największa dla n najdalej (pierwsza cyfra od 1 do 8)."
+      }
+    ]
+  },
+  {
+    "id": "2021-maj-2",
+    "sessionId": "2021/maj",
+    "number": "2",
+    "title": "Analiza algorytmu",
+    "intro": "Niech n będzie nieujemną liczbą całkowitą, a T[1..n] tablicą n liczb całkowitych (dla n = 0 tablica jest pusta). Funkcja d(x) rozszerza tablicę T o liczbę x i reorganizuje jej zawartość:\n\n```\nd(x):\n    n ← n + 1\n    T[n] ← x\n    s ← n\n    dopóki ((s div 2) ≥ 1) oraz (T[s] > T[s div 2]) wykonuj\n        pom ← T[s]\n        T[s] ← T[s div 2]\n        T[s div 2] ← pom\n        s ← s div 2\n```\n\nJeśli lewy argument operatora oraz jest fałszem, prawy nie jest obliczany. div – część całkowita z dzielenia. Np. dla T = 26, 3, 5, −4 wywołanie d(5) daje 26, 5, 5, −4, 3.",
+    "parts": [
+      {
+        "number": "2.2",
+        "points": 2,
+        "prompt": "Podaj zawartość tablicy T po sześciu wywołaniach funkcji d kolejno z parametrami 6, −4, 12, 27, 26, 8 (początkowo T jest pusta).",
+        "answer": "27, 26, 8, −4, 12, 6\n\nFunkcja wstawia element do kopca maksymalnego (największy na początku).\n\n1 pkt za odpowiedź z dwiema liczbami zamienionymi miejscami.",
+        "accepted": [
+          "27, 26, 8, -4, 12, 6",
+          "27 26 8 -4 12 6",
+          "27,26,8,-4,12,6"
+        ]
+      },
+      {
+        "number": "2.3",
+        "points": 2,
+        "prompt": "Do pustej tablicy T wstawiono funkcją d kolejno liczby 1, 2, …, k − 1. Teraz wstawiamy k za pomocą d(k). Ile razy podczas d(k) jest sprawdzany warunek pętli dopóki?\n\n| k | liczba sprawdzeń |\n|---|---|\n| 4 | 3 |\n| 16 | |\n| 1025 | |",
+        "answer": "| k | liczba sprawdzeń |\n|---|---|\n| 16 | 5 |\n| 1025 | 11 |\n\nNowa liczba jest największa, więc wędruje aż do korzenia: warunek sprawdzany jest ⌊log₂ k⌋ + 1 razy (ostatni raz, gdy s div 2 = 0).",
+        "accepted": [
+          "5, 11",
+          "5 11",
+          "5,11"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2021-maj-3",
+    "sessionId": "2021/maj",
+    "number": "3",
+    "title": "Zapytania SQL",
+    "parts": [
+      {
+        "number": "3.3",
+        "points": 1,
+        "prompt": "W bazie danych jest tabela produkty(id_produktu, produkt, sztuk, cena):\n\n| id_produktu | produkt | sztuk | cena |\n|---|---|---|---|\n| 1 | zeszyt | 160 | 2 |\n| 2 | okładka | 100 | 3 |\n| 3 | ołówek | 250 | 1 |\n| 4 | długopis | 178 | 5 |\n| 5 | pióro | 100 | 12 |\n| 6 | gumka | 250 | 1 |\n| 7 | piórnik | 125 | 8 |\n| 8 | cyrkiel | 130 | 4 |\n\nOceń prawdziwość zdań (wpisz cztery litery P/F):\n\n1. Wynikiem `SELECT produkt FROM produkty WHERE (cena = 2 OR cena = 4)` jest: cyrkiel.\n2. Wynikiem `SELECT AVG(cena) FROM produkty WHERE sztuk IN (125, 160)` jest 5.\n3. Wynikiem `SELECT SUM(sztuk) FROM produkty WHERE (cena = 1 OR cena = 2)` jest 660.\n4. Wynikiem `SELECT COUNT(cena) FROM produkty WHERE cena BETWEEN 2 AND 4` jest 2.",
+        "answer": "FPPF\n\n1. F – wynikiem są dwa produkty: zeszyt i cyrkiel.\n2. P – (8 + 2) / 2 = 5.\n3. P – 160 + 250 + 250 = 660.\n4. F – BETWEEN obejmuje końce przedziału: zeszyt, okładka, cyrkiel – 3.",
+        "accepted": [
+          "FPPF"
+        ]
+      }
+    ]
+  }
+]

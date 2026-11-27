@@ -1,0 +1,32 @@
+[
+  {
+    "id": "2023-stara-formula-czerwiec-1",
+    "sessionId": "2023/stara-formula-czerwiec",
+    "number": "1",
+    "title": "Liczby „przyjaciółki”",
+    "intro": "Dwie dodatnie liczby całkowite a i b są przyjaciółkami, jeśli suma cyfr a jest równa sumie cyfr b. Są dobrymi przyjaciółkami, jeśli są przyjaciółkami oraz pierwsza cyfra a jest równa ostatniej cyfrze b lub pierwsza cyfra b jest równa ostatniej cyfrze a.\n\nNp. 15 i 24 są przyjaciółkami, ale nie dobrymi. Dobrymi przyjaciółkami są 124 i 61 oraz 431 i 17.",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Uzupełnij tabelę.\n\n| a | b | suma cyfr a | suma cyfr b | przyjaciółki | dobre przyjaciółki |\n|---|---|---|---|---|---|\n| 433 | 352 | 10 | 10 | PRAWDA | PRAWDA |\n| 131 | 50 | | | | |\n| 416 | 84 | | | | |\n| 32 | 221 | | | | |",
+        "answer": "| a | b | suma cyfr a | suma cyfr b | przyjaciółki | dobre przyjaciółki |\n|---|---|---|---|---|---|\n| 131 | 50 | 5 | 5 | PRAWDA | FAŁSZ |\n| 416 | 84 | 11 | 12 | FAŁSZ | FAŁSZ |\n| 32 | 221 | 5 | 5 | PRAWDA | PRAWDA |\n\n32 i 221: pierwsza cyfra b (2) jest równa ostatniej cyfrze a (2).\n\n2 pkt za 3 poprawne wiersze, 1 pkt za 2."
+      }
+    ]
+  },
+  {
+    "id": "2023-stara-formula-czerwiec-2",
+    "sessionId": "2023/stara-formula-czerwiec",
+    "number": "2",
+    "title": "Mnożenie",
+    "intro": "Rekurencyjny algorytm mnożenia dwóch liczb całkowitych dodatnich x, y używa tylko dodawania i dzielenia całkowitego przez 2:\n\n```\niloczyn(x, y):\n    jeżeli y = 1\n        wynikiem jest x\n    w przeciwnym razie\n        k ← y div 2\n        z ← iloczyn(x, k)\n        jeżeli y mod 2 = 0\n            wynikiem jest z + z\n        w przeciwnym razie\n            wynikiem jest x + z + z\n```\n\nPrzebieg iloczyn(9, 11):\n\n| wywołanie | x | y | k | z | wynik |\n|---|---|---|---|---|---|\n| 1 | 9 | 11 | 5 | 45 | 99 (9 + 45 + 45) |\n| 2 | 9 | 5 | 2 | 18 | 45 (9 + 18 + 18) |\n| 3 | 9 | 2 | 1 | 9 | 18 (9 + 9) |\n| 4 | 9 | 1 | – | – | 9 |",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 2,
+        "prompt": "Uzupełnij tabelę tak, aby ilustrowała obliczenia podczas wywołania iloczyn(10, 45).\n\n| wywołanie | x | y | k | z | wynik |\n|---|---|---|---|---|---|\n| 1 | 10 | 45 | 22 | | |\n| 2 | | | | | |\n| 3 | | | | | |\n| 4 | | | | | |\n| 5 | | | | | |\n| 6 | | 1 | – | – | |",
+        "answer": "| wywołanie | x | y | k | z | wynik |\n|---|---|---|---|---|---|\n| 1 | 10 | 45 | 22 | 220 | 450 |\n| 2 | 10 | 22 | 11 | 110 | 220 |\n| 3 | 10 | 11 | 5 | 50 | 110 |\n| 4 | 10 | 5 | 2 | 20 | 50 |\n| 5 | 10 | 2 | 1 | 10 | 20 |\n| 6 | 10 | 1 | – | – | 10 |\n\n2 pkt za 6 poprawnych wierszy, 1 pkt za 5."
+      }
+    ]
+  }
+]

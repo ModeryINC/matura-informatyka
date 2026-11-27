@@ -1,0 +1,37 @@
+[
+  {
+    "id": "2021-czerwiec-1",
+    "sessionId": "2021/czerwiec",
+    "number": "1",
+    "title": "Sumy kwadratów",
+    "intro": "Każdą dodatnią liczbę całkowitą n można zapisać jako sumę kwadratów dodatnich liczb całkowitych, często na wiele sposobów, np. 9 = 3² = 2² + 2² + 1² = 2² + 1² + 1² + 1² + 1² + 1². Długość reprezentacji to liczba składników (tu 1, 3 i 6).\n\nMetoda zachłanna w każdym kroku bierze największy kwadrat, przy którym suma nie przekracza n. Nie zawsze daje najkrótszą reprezentację.",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 3,
+        "prompt": "Uzupełnij tabelę: w wierszu 3 wpisz reprezentację liczby 23 krótszą od zachłannej, a w wierszu 4 podaj własną liczbę n > 23, dla której metoda zachłanna nie daje najkrótszej reprezentacji – z obiema reprezentacjami.\n\n| nr | n | metoda zachłanna | krótsza reprezentacja |\n|---|---|---|---|\n| 1 | 12 | 3² + 1² + 1² + 1² | 2² + 2² + 2² |\n| 2 | 18 | 4² + 1² + 1² | 3² + 3² |\n| 3 | 23 | 4² + 2² + 1² + 1² + 1² | |\n| 4 | | | |",
+        "answer": "- Wiersz 3: 23 = 3² + 3² + 2² + 1² (4 składniki zamiast 5).\n- Wiersz 4, przykład: 32 – zachłannie 5² + 2² + 1² + 1² + 1², a krócej 4² + 4².\n\n1 pkt za wiersz 3, 2 pkt za wiersz 4 (1 pkt za dobrą liczbę, 1 pkt za obie reprezentacje)."
+      }
+    ]
+  },
+  {
+    "id": "2021-czerwiec-2",
+    "sessionId": "2021/czerwiec",
+    "number": "2",
+    "title": "Modyfikacja tablicy",
+    "intro": "Dane są dodatnia liczba całkowita n oraz tablica T[1..n]. Procedura rekurencyjna modyfikuj(s, k) ma dodatnie parametry s i k, s ≤ n:\n\n```\nmodyfikuj(s, k)\n    jeżeli s + k < n to\n        modyfikuj(s + k, k)\n    i ← s + 1\n    dopóki (i ≤ n) oraz (i < s + k) wykonuj\n        T[s] ← T[s] + T[i]\n        i ← i + 1\n```",
+    "parts": [
+      {
+        "number": "2.2",
+        "points": 3,
+        "prompt": "Podaj łączną liczbę wywołań procedury modyfikuj po wywołaniu modyfikuj(s, k) (pierwsze wywołanie też liczymy).\n\n| n | s | k | liczba wywołań |\n|---|---|---|---|\n| 5 | 1 | 3 | 2 |\n| 2021 | 1 | 100 | |\n| 2021 | 20 | 35 | |",
+        "answer": "| n | s | k | liczba wywołań |\n|---|---|---|---|\n| 2021 | 1 | 100 | 21 |\n| 2021 | 20 | 35 | 58 |\n\nKolejne wywołania mają s, s + k, s + 2k, … – ostatnie to pierwsze s, dla którego s + k ≥ n: 2001 (bo 2101 ≥ 2021) oraz 2015 (bo 2050 ≥ 2021).",
+        "accepted": [
+          "21, 58",
+          "21 58",
+          "21,58"
+        ]
+      }
+    ]
+  }
+]
