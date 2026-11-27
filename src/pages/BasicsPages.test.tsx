@@ -125,7 +125,11 @@ describe('Podstawy algorytmiki', () => {
     expect(within(bubble).getByText(/Wpisz liczby całkowite/)).toBeInTheDocument();
 
     const fib = screen.getByRole('region', { name: /Fibonacciego/ });
+    // Miejsce na całe drzewo jest zarezerwowane od pierwszego kroku.
+    const viewBox = within(fib).getByRole('img').getAttribute('viewBox');
+    expect(fib.querySelectorAll('.algo-tree__node')).toHaveLength(1);
     await userEvent.click(within(fib).getByRole('button', { name: 'Na koniec' }));
+    expect(within(fib).getByRole('img').getAttribute('viewBox')).toBe(viewBox);
     expect(within(fib).getByRole('img', { name: /fib\(5\) = 5/ })).toBeInTheDocument();
   });
 });

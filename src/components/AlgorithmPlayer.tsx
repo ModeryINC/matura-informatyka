@@ -12,6 +12,7 @@ import { formatInput, parseInput } from '../lib/algorithms';
 import type {
   AlgorithmDef,
   ArrayView,
+  Frame,
   GridView,
   HanoiView,
   InputValue,
@@ -47,6 +48,7 @@ export function AlgorithmPlayer({ algorithm }: { algorithm: AlgorithmDef }) {
   );
   const [errors, setErrors] = useState<Record<string, string>>({});
   const frames = useMemo(() => algorithm.run(input), [algorithm, input]);
+  const layout = useMemo(() => reserveLayout(frames), [frames]);
   const [step, setStep] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(1);
@@ -131,7 +133,7 @@ export function AlgorithmPlayer({ algorithm }: { algorithm: AlgorithmDef }) {
 
       <div className="algo__stage">
         <div className="algo__view">
-          <FrameView view={frame.view} />
+          <FrameView view={frame.view} layout={layout} />
         </div>
         <p className="algo__note" aria-live="polite">
           <strong>
@@ -139,15 +141,13 @@ export function AlgorithmPlayer({ algorithm }: { algorithm: AlgorithmDef }) {
           </strong>{' '}
           {frame.note}
         </p>
-        {frame.vars && Object.keys(frame.vars).length > 0 && (
-          <p className="algo__vars">
-            {Object.entries(frame.vars).map(([name, value]) => (
-              <code key={name}>
-                {name} = {value}
-              </code>
-            ))}
-          </p>
-        )}
+        <p className="algo__vars">
+          {Object.entries(frame.vars ?? {}).map(([name, value]) => (
+            <code key={name}>
+              {name} = {value}
+            </code>
+          ))}
+        </p>
       </div>
 
       <div className="algo__controls" role="group" aria-label="Sterowanie animacją">
@@ -241,25 +241,76 @@ export function AlgorithmPlayer({ algorithm }: { algorithm: AlgorithmDef }) {
   );
 }
 
-function FrameView({ view }: { view: View }) {
+/**
+ * Rozmiary zarezerwowane z góry na podstawie wszystkich klatek: kolumny tabel mają
+ * szerokość najszerszego wpisu, tablice i teksty – docelową liczbę pól, a drzewo –
+ * układ całego, końcowego drzewa. Dzięki temu nic się nie rozsuwa w trakcie animacji.
+ */
+interface Layout {
+  tree: ReturnType<typeof layoutTree> | null;
+  columns: number[];
+  tableRows: number;
+  slots: number;
+  auxSlots: number;
+  textRows: number;
+  textCols: number;
+}
+
+function reserveLayout(frames: Frame[]): Layout {
+  const layout: Layout = {
+    tree: null,
+    columns: [],
+    tableRows: 0,
+    slots: 0,
+    auxSlots: 0,
+    textRows: 0,
+    textCols: 0,
+  };
+  let lastTree: TreeView | null = null;
+  for (const { view } of frames) {
+    if (view.kind === 'tree') lastTree = view;
+    if (view.kind === 'table') {
+      [view.head, ...view.rows].forEach((row) =>
+        row.forEach((cell, c) => {
+          layout.columns[c] = Math.max(layout.columns[c] ?? 0, String(cell).length);
+        }),
+      );
+      layout.tableRows = Math.max(layout.tableRows, view.rows.length);
+    }
+    if (view.kind === 'array') {
+      layout.slots = Math.max(layout.slots, view.values.length);
+      layout.auxSlots = Math.max(layout.auxSlots, view.aux?.values.length ?? 0);
+    }
+    if (view.kind === 'text') {
+      layout.textRows = Math.max(layout.textRows, view.rows.length);
+      for (const row of view.rows)
+        layout.textCols = Math.max(layout.textCols, row.chars.length + (row.offset ?? 0));
+    }
+  }
+  if (lastTree) layout.tree = layoutTree(lastTree.nodes);
+  return layout;
+}
+
+function FrameView({ view, layout }: { view: View; layout: Layout }) {
   switch (view.kind) {
     case 'array':
-      return <ArrayBars view={view} />;
+      return <ArrayBars view={view} layout={layout} />;
     case 'tree':
-      return <RecursionTree view={view} />;
+      return <RecursionTree view={view} layout={layout} />;
     case 'grid':
       return <SieveGrid view={view} />;
     case 'text':
-      return <TextRows view={view} />;
+      return <TextRows view={view} layout={layout} />;
     case 'table':
-      return <StepTable view={view} />;
+      return <StepTable view={view} layout={layout} />;
     case 'hanoi':
       return <Hanoi view={view} />;
   }
 }
 
-function ArrayBars({ view }: { view: ArrayView }) {
+function ArrayBars({ view, layout }: { view: ArrayView; layout: Layout }) {
   const max = Math.max(1, ...view.values.map(Math.abs));
+  const empty = (count: number) => Array.from({ length: Math.max(0, count) }, (_, i) => i);
   const pointers = Object.entries(view.pointers ?? {});
   return (
     <div className="algo-array">
@@ -283,7 +334,18 @@ function ArrayBars({ view }: { view: ArrayView }) {
               ))}
           </li>
         ))}
+        {empty(layout.slots - view.values.length).map((i) => (
+          <li key={`p${i}`} className="algo-bar is-placeholder" aria-hidden="true" />
+        ))}
       </ol>
+      {!view.aux && layout.auxSlots > 0 && (
+        <div className="algo-array__aux is-placeholder" aria-hidden="true">
+          <span className="muted">&nbsp;</span>
+          <ol>
+            <li className="algo-cell" />
+          </ol>
+        </div>
+      )}
       {view.aux && (
         <div className="algo-array__aux">
           <span className="muted">{view.aux.label}:</span>
@@ -292,6 +354,9 @@ function ArrayBars({ view }: { view: ArrayView }) {
               <li key={i} className={`algo-cell algo-role--${view.aux?.roles?.[i] ?? 'none'}`}>
                 {value ?? ''}
               </li>
+            ))}
+            {empty(layout.auxSlots - view.aux.values.length).map((i) => (
+              <li key={`p${i}`} className="algo-cell is-placeholder" aria-hidden="true" />
             ))}
           </ol>
         </div>
@@ -328,8 +393,9 @@ function layoutTree(nodes: TreeNode[]) {
   return { pos, width, height };
 }
 
-function RecursionTree({ view }: { view: TreeView }) {
-  const { pos, width, height } = layoutTree(view.nodes);
+function RecursionTree({ view, layout }: { view: TreeView; layout: Layout }) {
+  // Pozycje z końcowego drzewa: węzły od początku stoją na swoich miejscach.
+  const { pos, width, height } = layout.tree ?? layoutTree(view.nodes);
   return (
     <div className="algo-tree">
       <svg
@@ -390,8 +456,12 @@ function SieveGrid({ view }: { view: GridView }) {
   );
 }
 
-function TextRows({ view }: { view: TextView }) {
-  const width = Math.max(...view.rows.map((r) => r.chars.length + (r.offset ?? 0)));
+function TextRows({ view, layout }: { view: TextView; layout: Layout }) {
+  const width = Math.max(
+    layout.textCols,
+    ...view.rows.map((r) => r.chars.length + (r.offset ?? 0)),
+  );
+  const missing = Math.max(0, layout.textRows - view.rows.length);
   return (
     <div className="algo-text" style={{ '--cols': width } as React.CSSProperties}>
       {view.rows.map((row, r) => (
@@ -409,14 +479,31 @@ function TextRows({ view }: { view: TextView }) {
           </ol>
         </div>
       ))}
+      {Array.from({ length: missing }, (_, r) => (
+        <div key={`p${r}`} className="algo-text__row is-placeholder" aria-hidden="true">
+          <span className="algo-text__label">&nbsp;</span>
+          <ol>
+            <li className="algo-cell" />
+          </ol>
+        </div>
+      ))}
     </div>
   );
 }
 
-function StepTable({ view }: { view: TableView }) {
+function StepTable({ view, layout }: { view: TableView; layout: Layout }) {
+  const missing = Math.max(0, layout.tableRows - view.rows.length);
   return (
     <div className="algo-table">
       <table>
+        <colgroup>
+          {view.head.map((h, c) => (
+            <col
+              key={h}
+              style={{ inlineSize: `calc(${layout.columns[c] ?? h.length}ch + 1.2rem)` }}
+            />
+          ))}
+        </colgroup>
         <thead>
           <tr>
             {view.head.map((h) => (
@@ -432,6 +519,11 @@ function StepTable({ view }: { view: TableView }) {
               {row.map((cell, c) => (
                 <td key={c}>{cell}</td>
               ))}
+            </tr>
+          ))}
+          {Array.from({ length: missing }, (_, r) => (
+            <tr key={`p${r}`} className="is-placeholder" aria-hidden="true">
+              <td colSpan={view.head.length}>&nbsp;</td>
             </tr>
           ))}
         </tbody>

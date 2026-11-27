@@ -2085,10 +2085,16 @@ progress::-moz-progress-bar {
 
 .algo__note {
   margin: 0;
-  min-block-size: 3em;
+  min-block-size: 4.8em;
+}
+
+/* Miejsca zarezerwowane na elementy, które pojawią się w późniejszych krokach. */
+.algo .is-placeholder {
+  visibility: hidden;
 }
 
 .algo__vars {
+  min-block-size: 1.6rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
@@ -2375,7 +2381,10 @@ progress::-moz-progress-bar {
 
 .algo-table table {
   border-collapse: collapse;
-  inline-size: 100%;
+  /* Kolumny o szerokości najszerszego wpisu ze wszystkich kroków (colgroup). */
+  table-layout: fixed;
+  inline-size: max-content;
+  min-inline-size: 100%;
   font-family: var(--font-mono);
   font-size: 0.82rem;
 }
