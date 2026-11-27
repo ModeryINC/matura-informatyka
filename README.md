@@ -83,7 +83,8 @@ Odpowiedzi zapisują się tylko lokalnie w przeglądarce – z innego urządzeni
 - **Panel odpowiedzi z boku** (Excel i SQL) – na szerokim ekranie stoi obok arkusza lub edytora
   i można go zwinąć do zakładki (arkusz dostaje wtedy całą szerokość); na węższym wysuwa się
   z prawej krawędzi zakładką „Odpowiedzi”. Tak samo na telefonie wysuwa się wyszukiwarka zadań
-  z Pythona (zakładka „Szukaj” z liczbą aktywnych filtrów i przyciskiem „Pokaż zadania”).
+  z Pythona (zakładka „Szukaj” z liczbą aktywnych filtrów i przyciskiem „Pokaż zadania”)
+  oraz spis treści podstaw (na komputerze stoi z boku i przewija się, gdy jest długi).
 - **Ładowanie w tle** – po wejściu na zakładkę Zadania → Python / Excel / SQL strona, gdy nie
   ma nic pilniejszego do roboty, pobiera odpowiednio Pythona (Pyodide), arkusz kalkulacyjny
   albo SQLite, więc zadanie otwiera się gotowe. W trybie oszczędzania danych tego nie robi.

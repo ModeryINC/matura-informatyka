@@ -133,3 +133,37 @@ describe('Podstawy algorytmiki', () => {
     expect(within(fib).getByRole('img', { name: /fib\(5\) = 5/ })).toBeInTheDocument();
   });
 });
+
+describe('spis treści', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  function mockWidth(wide: boolean) {
+    vi.stubGlobal(
+      'matchMedia',
+      vi.fn((query: string) => ({
+        matches: wide ? query.includes('min-width') : query.includes('max-width'),
+        media: query,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+      })),
+    );
+  }
+
+  it('na szerokim ekranie stoi obok treści', () => {
+    mockWidth(true);
+    renderWithRouter(<ExcelBasicsPage />);
+    expect(screen.getByRole('navigation', { name: 'Spis treści' })).toHaveClass('basics__toc');
+    expect(screen.queryByRole('complementary', { name: 'Spis treści' })).not.toBeInTheDocument();
+  });
+
+  it('na telefonie wysuwa się z prawej i zsuwa po wybraniu działu', async () => {
+    mockWidth(false);
+    renderWithRouter(<ExcelBasicsPage />);
+    const panel = screen.getByRole('complementary', { name: 'Spis treści' });
+    expect(panel).toHaveClass('side-panel--drawer');
+    await userEvent.click(within(panel).getByRole('button', { name: /^Spis treści/ }));
+    expect(panel).toHaveAttribute('data-open');
+    await userEvent.click(within(panel).getByRole('link', { name: EXCEL_BASICS[3]!.title }));
+    expect(panel).not.toHaveAttribute('data-open');
+  });
+});

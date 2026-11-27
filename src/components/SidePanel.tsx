@@ -31,7 +31,8 @@ interface SidePanelProps {
   drawerOnly?: boolean;
   /** Stopka szuflady, np. przycisk „Pokaż wyniki” (dostaje funkcję zsuwającą panel). */
   footer?: (close: () => void) => ReactNode;
-  children: ReactNode;
+  /** Zawartość – albo funkcja dostająca `close` (np. spis treści zsuwa panel po kliknięciu). */
+  children: ReactNode | ((close: () => void) => ReactNode);
 }
 
 /**
@@ -99,7 +100,9 @@ export function SidePanel({ title, badge, drawerOnly = false, footer, children }
             <LuX aria-hidden className="icon" />
           </button>
         </header>
-        <div className="side-panel__content">{children}</div>
+        <div className="side-panel__content">
+          {typeof children === 'function' ? children(() => setOpen(false)) : children}
+        </div>
         {footer && <div className="side-panel__footer">{footer(() => setOpen(false))}</div>}
       </div>
     </aside>

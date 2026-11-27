@@ -1,6 +1,11 @@
 import type { ReactNode } from 'react';
 import { NavLink } from 'react-router';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { InlineText } from './HintText';
+import { SidePanel } from './SidePanel';
+
+/** Od tej szerokości spis treści stoi obok treści; węższy ekran – wysuwa się z prawej. */
+const TOC_DOCKED_QUERY = '(min-width: 1000px)';
 
 const TABS = [
   { to: '/podstawy/python', label: 'Python' },
@@ -35,6 +40,7 @@ export function BasicsLayout<S extends BasicsSectionShell>({
   renderExamples,
   before,
 }: BasicsLayoutProps<S>) {
+  const docked = useMediaQuery(TOC_DOCKED_QUERY);
   return (
     <div className="page page--basics">
       <header className="basics-header">
@@ -50,18 +56,20 @@ export function BasicsLayout<S extends BasicsSectionShell>({
       </header>
 
       <div className="basics">
-        <nav className="basics__toc" aria-label="Spis treści">
-          <h2>Spis treści</h2>
-          <ol>
-            {sections.map((section) => (
-              <li key={section.id}>
-                <a href={`#${section.id}`} onClick={(event) => scrollToSection(event, section.id)}>
-                  {section.title}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </nav>
+        {docked ? (
+          <nav className="basics__toc" aria-label="Spis treści">
+            <h2>Spis treści</h2>
+            <TocList sections={sections} />
+          </nav>
+        ) : (
+          <SidePanel title="Spis treści" drawerOnly>
+            {(close) => (
+              <nav className="basics__toc-drawer" aria-label="Spis treści">
+                <TocList sections={sections} onNavigate={close} />
+              </nav>
+            )}
+          </SidePanel>
+        )}
 
         <div className="basics__content">
           {before}
@@ -95,6 +103,32 @@ export function BasicsLayout<S extends BasicsSectionShell>({
         </div>
       </div>
     </div>
+  );
+}
+
+function TocList({
+  sections,
+  onNavigate,
+}: {
+  sections: BasicsSectionShell[];
+  onNavigate?: () => void;
+}) {
+  return (
+    <ol>
+      {sections.map((section) => (
+        <li key={section.id}>
+          <a
+            href={`#${section.id}`}
+            onClick={(event) => {
+              scrollToSection(event, section.id);
+              onNavigate?.();
+            }}
+          >
+            {section.title}
+          </a>
+        </li>
+      ))}
+    </ol>
   );
 }
 
