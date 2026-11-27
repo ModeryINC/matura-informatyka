@@ -1,0 +1,40 @@
+[
+  {
+    "id": "2024-stara-formula-maj-1",
+    "sessionId": "2024/stara-formula-maj",
+    "number": "1",
+    "title": "Największe czynniki pierwsze",
+    "intro": "Każdą liczbę całkowitą większą od 1 można przedstawić jako iloczyn czynników pierwszych (dla liczby pierwszej jedynym czynnikiem jest ona sama), np. 120 = 2 · 2 · 2 · 3 · 5. Największym czynnikiem pierwszym liczby 120 jest 5.",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Dla każdej liczby zapisz jej rozkład na czynniki pierwsze i największy czynnik pierwszy.\n\n| n | rozkład | największy czynnik |\n|---|---|---|\n| 120 | 2 · 2 · 2 · 3 · 5 | 5 |\n| 14 | 2 · 7 | 7 |\n| 32 | | |\n| 99 | | |\n| 252 | | |",
+        "answer": "| n | rozkład | największy czynnik |\n|---|---|---|\n| 32 | 2 · 2 · 2 · 2 · 2 | 2 |\n| 99 | 3 · 3 · 11 | 11 |\n| 252 | 2 · 2 · 3 · 3 · 7 | 7 |\n\n2 pkt za trzy poprawne wiersze, 1 pkt za dwa."
+      }
+    ]
+  },
+  {
+    "id": "2024-stara-formula-maj-2",
+    "sessionId": "2024/stara-formula-maj",
+    "number": "2",
+    "title": "Funkcja fun",
+    "intro": "Przeanalizuj funkcję fun(a, b), której argumentami są liczby całkowite a i b, b ≥ 2:\n\n```\nfun(a, b):\n    jeżeli a ≤ 2\n        jeżeli a = 2\n            wynikiem jest PRAWDA\n            zakończ działanie funkcji\n        w przeciwnym przypadku\n            wynikiem jest FAŁSZ\n            zakończ działanie funkcji\n    jeżeli a mod b = 0\n        wynikiem jest FAŁSZ\n        zakończ działanie funkcji\n    jeżeli b * b > a\n        wynikiem jest PRAWDA\n        zakończ działanie funkcji\n    wynikiem jest fun(a, b + 1)\n```",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 3,
+        "prompt": "Podaj wynik fun(a, 2) dla podanych a.\n\n| a | fun(a, 2) |\n|---|---|\n| 0 | FAŁSZ |\n| 1 | |\n| 7 | |\n| 16 | |\n| −4 | |",
+        "answer": "| a | fun(a, 2) |\n|---|---|\n| 1 | FAŁSZ |\n| 7 | PRAWDA |\n| 16 | FAŁSZ |\n| −4 | FAŁSZ |\n\nFunkcja sprawdza, czy a jest liczbą pierwszą.",
+        "accepted": ["FAŁSZ, PRAWDA, FAŁSZ, FAŁSZ", "F, P, F, F", "FPFF", "falsz, prawda, falsz, falsz"]
+      },
+      {
+        "number": "2.2",
+        "points": 2,
+        "prompt": "Ile razy zostanie wykonane wywołanie fun(a, b + 1) po wywołaniu fun(a, 2)? (Nie liczymy samego fun(a, 2).)\n\n| a | liczba wywołań fun(a, b + 1) |\n|---|---|\n| 2 | 0 |\n| 35 | 3 |\n| 17 | |\n| 77 | |",
+        "answer": "| a | liczba wywołań |\n|---|---|\n| 17 | 3 |\n| 77 | 5 |\n\nDla 17: b = 3, 4, 5 (5 · 5 > 17). Dla 77: b = 3, 4, 5, 6, 7 (77 dzieli się przez 7).",
+        "accepted": ["3, 5", "3 5", "3,5", "3;5"]
+      }
+    ]
+  }
+]

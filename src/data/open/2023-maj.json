@@ -1,0 +1,54 @@
+[
+  {
+    "id": "2023-maj-1",
+    "sessionId": "2023/maj",
+    "number": "1",
+    "title": "Numery półek",
+    "intro": "Adam przechowuje książki w biblioteczce z półek ponumerowanych 0, 1, 2, … (od najwyższej). Półka i ma 2^i przegródek ponumerowanych od lewej 1, 2, …, 2^i; w każdej mieści się jedna książka. B[i, j] to j-ta przegródka na i-tej półce.\n\nKażda książka ma numer. Adam wstawia książki, zawsze zaczynając od przegródki B[0, 1], według reguły: jeśli przegródka B[i, j] jest pusta, wstawia tam książkę. W przeciwnym razie porównuje numer wstawianej książki z numerem książki w przegródce – jeśli jest mniejszy, próbuje wstawić ją do B[i + 1, 2j − 1], a jeśli większy – do B[i + 1, 2j].\n\nPrzykład: po wstawieniu kolejno 10, 2, 15, 13, 1, 5, 25 do pustej biblioteczki:\n\n| półka | zawartość (przegródka: książka) |\n|---|---|\n| 0 | 1: 10 |\n| 1 | 1: 2, 2: 15 |\n| 2 | 1: 1, 2: 5, 3: 13, 4: 25 |",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Podaj zawartość biblioteczki po wstawieniu do niej kolejno książek o numerach: 14, 18, 12, 9, 20, 15, 17 (dla każdej półki: numer przegródki i książki).",
+        "answer": "| półka | zawartość (przegródka: książka) |\n|---|---|\n| 0 | 1: 14 |\n| 1 | 1: 12, 2: 18 |\n| 2 | 1: 9, 3: 15, 4: 20 |\n| 3 | 6: 17 |\n\nBiblioteczka działa jak drzewo BST: 17 > 14 → B[1, 2] (18), 17 < 18 → B[2, 3] (15), 17 > 15 → B[3, 6].\n\n1 pkt za odpowiedź z jedną książką w złym miejscu."
+      },
+      {
+        "number": "1.2",
+        "points": 3,
+        "prompt": "Uzupełnij tabelę – ile minimalnie, a ile maksymalnie musi być półek w biblioteczce, żeby można było umieścić w niej n książek i żeby na ostatniej półce stała co najmniej jedna książka.\n\n| n | minimalna liczba półek | maksymalna liczba półek |\n|---|---|---|\n| 1 | 1 | 1 |\n| 3 | 2 | 3 |\n| 4 | | |\n| 7 | | |\n| 16 | | |\n| 31 | | |\n| 32 | | |\n| 2^k − 1, k > 0 | | |",
+        "answer": "| n | minimalna | maksymalna |\n|---|---|---|\n| 4 | 3 | 4 |\n| 7 | 3 | 7 |\n| 16 | 5 | 16 |\n| 31 | 5 | 31 |\n| 32 | 6 | 32 |\n| 2^k − 1 | k | 2^k − 1 |\n\nNa pierwszych h półkach mieści się 2^h − 1 książek, więc minimum to najmniejsze h z 2^h − 1 ≥ n. Maksimum (n) daje wstawianie książek rosnąco – każda trafia o półkę niżej."
+      }
+    ]
+  },
+  {
+    "id": "2023-maj-2",
+    "sessionId": "2023/maj",
+    "number": "2",
+    "title": "Operacja XOR",
+    "intro": "Dla nieujemnych liczb całkowitych a i b wynikiem a XOR b jest liczba, której kolejne bity powstają z odpowiadających sobie bitów a i b: 1 XOR 1 = 0, 1 XOR 0 = 1, 0 XOR 1 = 1, 0 XOR 0 = 0 (krótszy zapis uzupełniamy zerami z lewej).\n\nNp. 4₁₀ XOR 7₁₀ = 100₂ XOR 111₂ = 011₂ = 3₁₀, a 6₁₀ XOR 11₁₀ = 0110₂ XOR 1011₂ = 1101₂ = 13₁₀.",
+    "parts": [
+      {
+        "number": "2.4",
+        "points": 1,
+        "prompt": "Oblicz (123₁₀ XOR 101101₂) XOR 2D₁₆. Wynik podaj w systemie dziesiętnym.",
+        "answer": "123 – bo 101101₂ = 2D₁₆ = 45, a (x XOR y) XOR y = x.",
+        "accepted": ["123"]
+      }
+    ]
+  },
+  {
+    "id": "2023-maj-5",
+    "sessionId": "2023/maj",
+    "number": "5",
+    "title": "Porównywanie liczb",
+    "parts": [
+      {
+        "number": "5",
+        "points": 1,
+        "prompt": "Wstaw w miejsce kropek znak <, > albo =, tak aby wyrażenia były poprawne (wpisz dwa znaki).\n\n- (2011)₃ = (134)₆\n- (134)₅ … (134)₆\n- (2222)₃ … (1111)₆",
+        "answer": "- (134)₅ **<** (134)₆ – 44 < 58\n- (2222)₃ **<** (1111)₆ – 80 < 259",
+        "accepted": ["<, <", "< <", "<<", "<,<"]
+      }
+    ]
+  }
+]

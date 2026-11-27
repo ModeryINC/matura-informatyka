@@ -1,0 +1,68 @@
+[
+  {
+    "id": "2024-czerwiec-1",
+    "sessionId": "2024/czerwiec",
+    "number": "1",
+    "title": "Cyfry w tablicy",
+    "intro": "Rozważamy tablicę o w wierszach i k kolumnach oraz dodatnią liczbę całkowitą n, której zapis binarny ma co najwyżej w · k cyfr. Cyfry zapisu binarnego n wpisujemy w kolejne komórki tablicy, zaczynając od lewego górnego rogu: najpierw pierwszy wiersz, potem drugi itd. Gdy skończą się cyfry, zaczynamy wpisywać je od nowa (od pierwszej cyfry). Szukamy cyfry w prawym dolnym rogu tablicy.\n\nPrzykład: w = 5, k = 3, n = 19 = 10011₂:\n\n```\n1 0 0\n1 1 1\n0 0 1\n1 1 0\n0 1 1\n```\n\nW prawym dolnym rogu jest 1.",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 1,
+        "prompt": "Wpisz cyfry zapisu binarnego liczby n = 179 do tablicy o wymiarach w = 4 i k = 5 według powyższej metody (np. cztery wiersze po pięć cyfr).",
+        "answer": "179 = 10110011₂\n\n```\n1 0 1 1 0\n0 1 1 1 0\n1 1 0 0 1\n1 1 0 1 1\n```"
+      }
+    ]
+  },
+  {
+    "id": "2024-czerwiec-2",
+    "sessionId": "2024/czerwiec",
+    "number": "2",
+    "title": "Funkcja rekurencyjna",
+    "intro": "Dana jest funkcja F(x), której argumentem jest nieujemna liczba całkowita x (div – dzielenie całkowite):\n\n```\nF(x):\n    jeżeli x = 0\n        wynikiem jest 0\n    w przeciwnym przypadku\n        wynikiem jest 2 + F(x div 2)\n```",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 2,
+        "prompt": "Uzupełnij tabelę. Dla podanych x wpisz wynik funkcji F oraz łączną liczbę wywołań funkcji F po wywołaniu F(x), łącznie z tym wywołaniem.\n\n| x | F(x) | liczba wywołań |\n|---|---|---|\n| 3 | 4 | 3 |\n| 16 | | |\n| 35 | | |",
+        "answer": "| x | F(x) | liczba wywołań |\n|---|---|---|\n| 3 | 4 | 3 |\n| 16 | 10 | 6 |\n| 35 | 12 | 7 |\n\nF(x) to podwojona liczba cyfr zapisu binarnego x."
+      },
+      {
+        "number": "2.2",
+        "points": 2,
+        "prompt": "Podaj najmniejszą i największą wartość parametru x, dla którego wartość funkcji jest równa 18 (dwie liczby, np. „10, 20”).",
+        "answer": "Najmniejsza: 256, największa: 511 – to liczby, które mają 9 cyfr w zapisie binarnym.",
+        "accepted": ["256, 511", "256 511", "256,511", "256;511", "256-511"]
+      }
+    ]
+  },
+  {
+    "id": "2024-czerwiec-4",
+    "sessionId": "2024/czerwiec",
+    "number": "4",
+    "title": "Komputery i pakiety",
+    "intro": "W sieci jest n > 1 komputerów, które przesyłają między sobą pakiety w rundach. W rundzie zerowej każdy komputer ma jeden pakiet oznaczony swoim numerem. Każdy komputer ma z góry zadany numer odbiorcy, do którego w kolejnych rundach wysyła pakiety. Na początku każdej rundy każdy komputer wysyła wszystkie pakiety, które miał w rundzie poprzedniej; pakiety, które przyszły w trakcie rundy, czekają w komputerze do następnej rundy.\n\nNa przykład gdy odbiorcą komputera 1 jest komputer 4, to po pierwszej rundzie pakiet nr 1 jest w komputerze 4, a w drugiej rundzie komputer 4 wysyła go do swojego odbiorcy.",
+    "parts": [
+      {
+        "number": "4.1",
+        "points": 2,
+        "prompt": "Odbiorcy komputerów 1–6 to kolejno: 3, 1, 6, 5, 4, 5. Wpisz numery komputerów, w których znajdą się pakiety 1–6 po rundach 2, 3 i 4.\n\n| pakiet | 1 | 2 | 3 | 4 | 5 | 6 |\n|---|---|---|---|---|---|---|\n| po 1. rundzie | 3 | 1 | 6 | 5 | 4 | 5 |\n| po 2. rundzie | | | | | | |\n| po 3. rundzie | | | | | | |\n| po 4. rundzie | | | | | | |",
+        "answer": "| pakiet | 1 | 2 | 3 | 4 | 5 | 6 |\n|---|---|---|---|---|---|---|\n| po 1. rundzie | 3 | 1 | 6 | 5 | 4 | 5 |\n| po 2. rundzie | 6 | 3 | 5 | 4 | 5 | 4 |\n| po 3. rundzie | 5 | 6 | 4 | 5 | 4 | 5 |\n| po 4. rundzie | 4 | 5 | 5 | 4 | 5 | 4 |\n\n2 pkt za trzy poprawne wiersze, 1 pkt za dwa."
+      }
+    ]
+  },
+  {
+    "id": "2024-czerwiec-6",
+    "sessionId": "2024/czerwiec",
+    "number": "6",
+    "title": "Działania w systemach o podstawach 5 i 6",
+    "parts": [
+      {
+        "number": "6",
+        "points": 2,
+        "prompt": "Wykonaj działania. Wynik dodawania zapisz w systemie o podstawie 5, a wynik odejmowania – w systemie o podstawie 6.\n\n- 203₅ + 4401₅ = ?\n- 4541₆ − 2455₆ = ?",
+        "answer": "- 203₅ + 4401₅ = 10104₅\n- 4541₆ − 2455₆ = 2042₆"
+      }
+    ]
+  }
+]

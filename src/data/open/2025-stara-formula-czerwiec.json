@@ -1,0 +1,47 @@
+[
+  {
+    "id": "2025-stara-formula-czerwiec-1",
+    "sessionId": "2025/stara-formula-czerwiec",
+    "number": "1",
+    "title": "Rozkład na czynniki pierwsze",
+    "intro": "Każdą liczbę całkowitą większą od 1 można rozłożyć na czynniki pierwsze.",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Uzupełnij tabelę – zapisz rozkład podanych liczb n na czynniki pierwsze oraz TAK, jeśli n jest iloczynem dokładnie dwóch różnych liczb pierwszych, albo NIE w przeciwnym przypadku.\n\n| n | rozkład | iloczyn dwóch różnych liczb pierwszych? |\n|---|---|---|\n| 6 | 2 · 3 | TAK |\n| 9 | 3 · 3 | NIE |\n| 12 | 2 · 2 · 3 | NIE |\n| 13 | 13 | NIE |\n| 14 | | |\n| 27 | | |\n| 33 | | |",
+        "answer": "| n | rozkład | iloczyn dwóch różnych liczb pierwszych? |\n|---|---|---|\n| 14 | 2 · 7 | TAK |\n| 27 | 3 · 3 · 3 | NIE |\n| 33 | 3 · 11 | TAK |\n\n2 pkt za wszystkie pola, 1 pkt za co najmniej 4."
+      }
+    ]
+  },
+  {
+    "id": "2025-stara-formula-czerwiec-2",
+    "sessionId": "2025/stara-formula-czerwiec",
+    "number": "2",
+    "title": "Mnożenie pisemne",
+    "intro": "Funkcje skróć, dopisz i ostatnia przyjmują jako argument nieujemną liczbę całkowitą x:\n\n- skróć(x) – usuwa najmniej znaczącą cyfrę x (dla jednocyfrowego x wynik to 0), np. skróć(249) = 24, skróć(5) = 0;\n- dopisz(x) – dopisuje na końcu cyfrę 0, np. dopisz(29) = 290, dopisz(0) = 0;\n- ostatnia(x) – najmniej znacząca cyfra x, np. ostatnia(307) = 7.\n\nDana jest funkcja f(a, b) dla nieujemnych liczb całkowitych a, b:\n\n```\nf(a, b):\n    jeżeli b = 0\n        wynik 0\n        zakończ\n    k ← ostatnia(b)\n    w ← f(a, skróć(b))\n    w ← dopisz(w)\n    dopóki k > 0 powtarzaj\n        w ← w + a\n        k ← k - 1\n    wynik w\n```",
+    "parts": [
+      {
+        "number": "2.2",
+        "points": 1,
+        "prompt": "Ile razy łącznie zostanie wywołana funkcja f, jeśli pierwszym wywołaniem będzie f(987654321, 123456789)?",
+        "answer": "10 – po jednym wywołaniu na każdą z 9 cyfr b i jeszcze jedno dla b = 0.",
+        "accepted": [
+          "10"
+        ]
+      },
+      {
+        "number": "2.3",
+        "points": 2,
+        "prompt": "Ile razy łącznie zostanie wykonana instrukcja w ← w + a, jeśli pierwszym wywołaniem będzie:\n\n- a) f(2024, 1000)\n- b) f(2024, 1234)\n\nWpisz dwie liczby, np. „3, 7”.",
+        "answer": "- a) 1\n- b) 10\n\nInstrukcja wykonuje się tyle razy, ile wynosi suma cyfr b: 1 + 0 + 0 + 0 = 1 oraz 1 + 2 + 3 + 4 = 10. Funkcja f liczy iloczyn a · b metodą mnożenia pisemnego.",
+        "accepted": [
+          "1, 10",
+          "1 10",
+          "1,10",
+          "1;10"
+        ]
+      }
+    ]
+  }
+]

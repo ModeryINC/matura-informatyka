@@ -1,0 +1,55 @@
+[
+  {
+    "id": "2026-czerwiec-1",
+    "sessionId": "2026/czerwiec",
+    "number": "1",
+    "title": "Szyfrowanie",
+    "intro": "Algorytm Szyfr szyfruje tekst jawny o długości n znaków zapisany w tablicy T. Kluczem jest dodatnia liczba całkowita k. Szyfrogram jest zapisywany w tablicy S.\n\n**Dane:** n – długość tekstu; T[1..n] – tekst jawny; k – klucz.\n\n**Wynik:** S[1..n] – szyfrogram.\n\n```\na ← n div k\nc ← n - a\ndla i = 1, 2, ..., n wykonuj\n    jeżeli i mod k = 0\n        b ← i div k\n        S[n - a + b] ← T[i]\n    w przeciwnym razie\n        S[c] ← T[i]\n        c ← c - 1\n```\n\nNa przykład dla tekstu defragmentacja i k = 3 szyfrogram to ajatemaredfgnc.",
+    "parts": [
+      {
+        "number": "1.2",
+        "points": 1,
+        "prompt": "Podaj wartość klucza k, dla której szyfrogram i tekst jawny są zawsze identyczne.",
+        "answer": "k = 1 – wtedy każdy indeks dzieli się przez k i znaki trafiają kolejno na pozycje 1, 2, …, n.",
+        "accepted": ["1", "k=1"]
+      },
+      {
+        "number": "1.3",
+        "points": 1,
+        "prompt": "Podaj wartość klucza k, dla której (dla każdego n) szyfrogram jest zawsze tekstem jawnym zapisanym od końca, np. serwer → rewres. Podana wartość może zależeć od n.",
+        "answer": "k = n + 1 (albo dowolne k > n). Wtedy żaden indeks nie dzieli się przez k, a = 0 i znaki są wpisywane od pozycji n w dół.",
+        "accepted": ["n+1", "k=n+1", "k>n", ">n"]
+      }
+    ]
+  },
+  {
+    "id": "2026-czerwiec-2",
+    "sessionId": "2026/czerwiec",
+    "number": "2",
+    "title": "Tablica k-podobna",
+    "intro": "Dane są: liczba n > 1 oraz tablica T[1..n] liczb całkowitych. Dla 1 ≤ k < n tablica T jest k-podobna wtedy i tylko wtedy, gdy T[1..k] = T[n − k + 1..n] (początek długości k jest równy końcowi długości k). Każda tablica jest też 0-podobna.\n\nPrzykłady: [1,2,1,1,2,1,1] jest 0-, 1- i 4-podobna; [1,2,2] jest tylko 0-podobna; [2,2,2] jest 0-, 1- i 2-podobna (ale nie 3-podobna, bo k < n).",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 2,
+        "prompt": "Dla podanych tablic T wypisz największe k, dla którego T jest k-podobna.\n\n| n | T | największe k |\n|---|---|---|\n| 4 | [1,2,3,4] | |\n| 10 | [3,5,3,5,3,5,3,5,3,5] | |",
+        "answer": "| n | T | największe k |\n|---|---|---|\n| 4 | [1,2,3,4] | 0 |\n| 10 | [3,5,3,5,3,5,3,5,3,5] | 8 |",
+        "accepted": ["0, 8", "0 8", "0,8", "0;8"]
+      }
+    ]
+  },
+  {
+    "id": "2026-czerwiec-5",
+    "sessionId": "2026/czerwiec",
+    "number": "5",
+    "title": "Systemy liczbowe",
+    "parts": [
+      {
+        "number": "5",
+        "points": 2,
+        "prompt": "W miejsce kropek wpisz liczby (w systemie szóstkowym i trójkowym), tak aby obie równości były prawdziwe.\n\n1251₆ + …₆ = 500₁₀ = …₃ − 110102₃",
+        "answer": "1251₆ + **501₆** = 500₁₀ = **1010221₃** − 110102₃\n\n1251₆ = 319, brakuje 181 = 501₆. 110102₃ = 335, a 500 + 335 = 835 = 1010221₃."
+      }
+    ]
+  }
+]

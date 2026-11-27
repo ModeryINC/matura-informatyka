@@ -1,0 +1,46 @@
+[
+  {
+    "id": "2023-czerwiec-1",
+    "sessionId": "2023/czerwiec",
+    "number": "1",
+    "title": "Mnożenie",
+    "intro": "Rekurencyjny algorytm mnożenia dwóch liczb całkowitych dodatnich x, y używa tylko dodawania i dzielenia całkowitego przez 2:\n\n```\niloczyn(x, y):\n    jeżeli y = 1\n        wynikiem jest x\n    w przeciwnym razie\n        k ← y div 2\n        z ← iloczyn(x, k)\n        jeżeli y mod 2 = 0\n            wynikiem jest z + z\n        w przeciwnym razie\n            wynikiem jest x + z + z\n```\n\nPrzebieg iloczyn(9, 11):\n\n| wywołanie | x | y | k | z | wynik |\n|---|---|---|---|---|---|\n| 1 | 9 | 11 | 5 | 45 | 99 (9 + 45 + 45) |\n| 2 | 9 | 5 | 2 | 18 | 45 (9 + 18 + 18) |\n| 3 | 9 | 2 | 1 | 9 | 18 (9 + 9) |\n| 4 | 9 | 1 | – | – | 9 |",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Uzupełnij tabelę tak, aby ilustrowała obliczenia podczas wywołania iloczyn(10, 45).\n\n| wywołanie | x | y | k | z | wynik |\n|---|---|---|---|---|---|\n| 1 | 10 | 45 | 22 | | |\n| 2 | | | | | |\n| 3 | | | | | |\n| 4 | | | | | |\n| 5 | | | | | |\n| 6 | | 1 | – | – | |",
+        "answer": "| wywołanie | x | y | k | z | wynik |\n|---|---|---|---|---|---|\n| 1 | 10 | 45 | 22 | 220 | 450 |\n| 2 | 10 | 22 | 11 | 110 | 220 |\n| 3 | 10 | 11 | 5 | 50 | 110 |\n| 4 | 10 | 5 | 2 | 20 | 50 |\n| 5 | 10 | 2 | 1 | 10 | 20 |\n| 6 | 10 | 1 | – | – | 10 |\n\n2 pkt za 6 poprawnych wierszy, 1 pkt za 5."
+      }
+    ]
+  },
+  {
+    "id": "2023-czerwiec-2",
+    "sessionId": "2023/czerwiec",
+    "number": "2",
+    "title": "Sufiksy",
+    "intro": "Słowo to ciąg małych liter alfabetu angielskiego. Sufiksem słowa s[1..n] jest każde jego podsłowo kończące się na ostatniej pozycji; s[k..n] to k-ty sufiks. Np. sufiksy słowa mascarpone uporządkowane alfabetycznie mają numery 5, 2, 4, 10, 1, 9, 8, 7, 6, 3 (arpone, ascarpone, carpone, e, …).\n\nFunkcja czy_mniejszy(n, s, k1, k2) (k1 ≠ k2) zwraca PRAWDA, gdy sufiks s[k1..n] jest alfabetycznie mniejszy od s[k2..n]:\n\n```\ni ← k1\nj ← k2\ndopóki (i ≤ n oraz j ≤ n) wykonuj\n    jeżeli (s[i] == s[j])\n        i ← i + 1\n        j ← j + 1\n    w przeciwnym razie\n        jeżeli (s[i] < s[j])\n            zakończ z wynikiem PRAWDA\n        w przeciwnym razie\n            zakończ z wynikiem FAŁSZ\njeżeli (j ≤ n)\n    zakończ z wynikiem PRAWDA\nw przeciwnym razie\n    zakończ z wynikiem FAŁSZ\n```\n\nNp. dla s = mascarpone, k1 = 5, k2 = 2 wykonane są 3 porównania: s[5] = s[2]?, s[6] = s[3]? (pierwsza instrukcja jeżeli) oraz s[6] < s[3]? (druga).",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 2,
+        "prompt": "Podaj przykład słowa s o długości ≤ 10 oraz liczb k1 ≠ k2, dla których funkcja czy_mniejszy wykona dokładnie 6 porównań w pierwszej instrukcji jeżeli.",
+        "answer": "Przykład: s = aaaaaaaaaa, k1 = 2, k2 = 5. Indeks j przechodzi przez pozycje 5, 6, …, 10 – sześć równych par – po czym pętla kończy się, bo j > n.\n\nOgólnie: potrzeba 6 sprawdzeń pierwszej instrukcji – albo 6 równych par i koniec słowa, albo 5 równych par i szósta różna. 1 pkt za przykład z 5 albo 7 porównaniami."
+      }
+    ]
+  },
+  {
+    "id": "2023-czerwiec-4",
+    "sessionId": "2023/czerwiec",
+    "number": "4",
+    "title": "Systemy o podstawach 3 i 9",
+    "parts": [
+      {
+        "number": "4",
+        "points": 2,
+        "prompt": "Uzupełnij tabelę: w pierwszym wierszu podaj zapis liczby trójkowej w systemie dziewiątkowym, a w drugim – zapis liczby dziewiątkowej w systemie trójkowym.\n\n| | system o podstawie 3 | system o podstawie 9 |\n|---|---|---|\n| 1. | 101201₃ | |\n| 2. | | 2487₉ |",
+        "answer": "| | podstawa 3 | podstawa 9 |\n|---|---|---|\n| 1. | 101201₃ | 351₉ |\n| 2. | 2112221₃ | 2487₉ |\n\n9 = 3², więc każda cyfra dziewiątkowa to dwie cyfry trójkowe: 10|12|01 → 3|5|1, a 2|4|8|7 → 02|11|22|21."
+      }
+    ]
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "2024-probna-CKE-grudzien-1",
+    "sessionId": "2024/probna-CKE-grudzien",
+    "number": "1",
+    "title": "Pozycje jedynek",
+    "intro": "Dla dodatniej liczby całkowitej n niech J(n) będzie ciągiem kolejnych pozycji jedynek w jej zapisie dwójkowym, zaczynając od pozycji najmniej znaczącej. Pozycje numerujemy od 1 (od ostatniej cyfry).\n\nPrzykład: 19₁₀ = 10011₂, więc J(19) = (1, 2, 5).",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Uzupełnij tabelę.\n\n| n | zapis dwójkowy | J(n) |\n|---|---|---|\n| 6 | 110 | |\n| 42 | | |\n| | | (1, 2, 4, 7) |",
+        "answer": "| n | zapis dwójkowy | J(n) |\n|---|---|---|\n| 6 | 110 | (2, 3) |\n| 42 | 101010 | (2, 4, 6) |\n| 75 | 1001011 | (1, 2, 4, 7) |\n\n2 pkt za całą tabelę, 1 pkt za dwa poprawne wiersze."
+      }
+    ]
+  },
+  {
+    "id": "2024-probna-CKE-grudzien-2",
+    "sessionId": "2024/probna-CKE-grudzien",
+    "number": "2",
+    "title": "Funkcja rekurencyjna",
+    "intro": "Przeanalizuj funkcję, której parametrami są nieujemna liczba całkowita x oraz liczba całkowita 1 < p < 10 (mod – reszta z dzielenia, div – dzielenie całkowite):\n\n```\nF(x, p):\n    jeżeli x = 0\n        podaj wynik 0\n    w przeciwnym przypadku\n        c ← x mod p\n        jeżeli c mod 2 = 1\n            podaj wynik F(x div p, p) + c\n        w przeciwnym przypadku\n            podaj wynik F(x div p, p) - c\n```",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 3,
+        "prompt": "Uzupełnij tabelę: wynik F(x, p) oraz liczbę wywołań funkcji F (łącznie z pierwszym).\n\n| x | p | F(x, p) | liczba wywołań |\n|---|---|---|---|\n| 125 | 2 | 6 | 8 |\n| 130 | 3 | | |\n| 220 | 4 | | |",
+        "answer": "| x | p | F(x, p) | liczba wywołań |\n|---|---|---|---|\n| 125 | 2 | 6 | 8 |\n| 130 | 3 | 2 | 6 |\n| 220 | 4 | 7 | 5 |\n\nFunkcja dodaje nieparzyste cyfry zapisu x w systemie o podstawie p i odejmuje parzyste. 130 = 11211₃: 1 + 1 − 2 + 1 + 1 = 2. 220 = 3130₄: 0 + 3 + 1 + 3 = 7."
+      },
+      {
+        "number": "2.2",
+        "points": 2,
+        "prompt": "Dla podanych p zapisz największą liczbę x < 100, dla której F(x, p) = 0.\n\n| p | x |\n|---|---|\n| 3 | |\n| 4 | |",
+        "answer": "| p | x |\n|---|---|\n| 3 | 96 |\n| 4 | 97 |\n\n96 = 10120₃: 1 + 1 − 2 = 0. 97 = 1201₄: 1 + 1 − 2 = 0.",
+        "accepted": ["96, 97", "96 97", "96,97", "96;97"]
+      }
+    ]
+  },
+  {
+    "id": "2024-probna-CKE-grudzien-6",
+    "sessionId": "2024/probna-CKE-grudzien",
+    "number": "6",
+    "title": "Działania w systemie piątkowym",
+    "parts": [
+      {
+        "number": "6",
+        "points": 2,
+        "prompt": "Wykonaj działania na liczbach zapisanych w systemie piątkowym. Wyniki podaj także w systemie piątkowym.\n\n- 2024₅ + 1044₅ = ?\n- 2024₅ − 1044₅ = ?",
+        "answer": "- 2024₅ + 1044₅ = 3123₅\n- 2024₅ − 1044₅ = 430₅\n\nDziesiętnie: 264 + 149 = 413 oraz 264 − 149 = 115."
+      }
+    ]
+  }
+]

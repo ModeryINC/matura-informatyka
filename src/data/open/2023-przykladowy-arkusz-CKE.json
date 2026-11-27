@@ -1,0 +1,111 @@
+[
+  {
+    "id": "2023-przykladowy-arkusz-CKE-2",
+    "sessionId": "2023/przykladowy-arkusz-CKE",
+    "number": "2",
+    "title": "Gra",
+    "intro": "Gra polega na ustawianiu pionków na jednowymiarowej planszy B z s + 1 polami ponumerowanymi 0, 1, …, s. Na początku stawiamy jeden pionek na polu 0. Gra składa się z n tur, a sposób stawiania pionków zadaje n dodatnich liczb całkowitych w tablicy A[1..n]. W k-tej turze wykonujemy:\n\n```\nTura(k)\n    dla i = s, s - 1, ..., A[k] wykonuj\n        jeśli na polu B[i - A[k]] stoi pionek i pole B[i] jest puste\n            postaw pionek na polu B[i]\n```\n\nRozgrywka: postaw pionek na B[0], a potem wykonaj Tura(1), Tura(2), …, Tura(n). Gra kończy się sukcesem, gdy na polu B[s] stoi pionek.",
+    "parts": [
+      {
+        "number": "2.2",
+        "points": 2,
+        "prompt": "Niech A = [5, 10, 15, 20, 25, …, 95, 100] oraz s = 500. Na ilu polach planszy B znajdą się pionki po zakończeniu gry?",
+        "answer": "101 – pionki staną na polach B[0], B[5], B[10], …, B[500].\n\nPętla idzie od końca, więc w jednej turze każda liczba A[k] jest użyta co najwyżej raz: pionki stoją na polach, których numery są sumami pewnych elementów A. Suma wszystkich elementów to 1050, a sumy podzbiorów dają wszystkie wielokrotności 5 do 500.\n\n1 pkt za odpowiedź 100.",
+        "accepted": [
+          "101"
+        ]
+      },
+      {
+        "number": "2.3",
+        "points": 2,
+        "prompt": "Podaj przykładową zawartość co najwyżej 10-elementowej tablicy A, dla której gra kończy się sukcesem dla każdego s = 1, 2, 3, …, 200.",
+        "answer": "Np. A = [1, 2, 4, 8, 16, 32, 64, 128] – sumami podzbiorów potęg dwójki są wszystkie liczby od 0 do 255.\n\nInny przykład: A = [1, 2, 3, 4, 10, 20, 40, 80, 40].\n\n1 pkt za tablicę działającą dla wszystkich s ≤ 100."
+      }
+    ]
+  },
+  {
+    "id": "2023-przykladowy-arkusz-CKE-3",
+    "sessionId": "2023/przykladowy-arkusz-CKE",
+    "number": "3",
+    "title": "Potęgowanie modularne",
+    "intro": "Potęgowanie modularne (stosowane np. w RSA): liczbę a podnosimy do potęgi x i bierzemy resztę z dzielenia przez M, czyli b = a^x mod M (a, M – dodatnie, x – nieujemne).\n\nNp. 2^5 mod 7 = 32 mod 7 = 4, 3^3 mod 11 = 5, 10^2 mod 13 = 9.",
+    "parts": [
+      {
+        "number": "3.1",
+        "points": 2,
+        "prompt": "Uzupełnij tabelę – podaj brakującą liczbę (x lub b), dla której a^x mod M = b.\n\n| M | a | x | b |\n|---|---|---|---|\n| 7 | 2 | 5 | 4 |\n| 11 | 3 | 3 | |\n| 31 | 5 | | 25 |\n| 59 | 2 | | 5 |",
+        "answer": "| M | a | x | b |\n|---|---|---|---|\n| 11 | 3 | 3 | 5 |\n| 31 | 5 | 2 | 25 |\n| 59 | 2 | 6 | 5 |\n\n27 mod 11 = 5; 5² = 25; 2⁶ = 64 = 59 + 5.\n\n1 pkt za co najmniej dwa poprawne pola.",
+        "accepted": [
+          "5, 2, 6",
+          "5 2 6",
+          "5,2,6",
+          "5;2;6"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2023-przykladowy-arkusz-CKE-5",
+    "sessionId": "2023/przykladowy-arkusz-CKE",
+    "number": "5",
+    "title": "Statki",
+    "intro": "Trzy pliki opisują statki przybywające do portu w Szczecinie od 1.01.2016 do 31.12.2019 (pierwszy wiersz to nagłówek, pola rozdzielone średnikami). Pliki statki.txt, kody.txt i przybycia.txt znajdziesz w załącznikach do arkusza (strona arkusza w zakładce „Arkusze”).\n\n- statki.txt (2192 statki): Nr_IMO – unikatowy identyfikator, Nazwa_statku, Ladownosc.\n- przybycia.txt (10 034 wiersze): LP, Data_przybycia (dd.mm.rrrr), Nr_IMO, Bandera – kod państwa, Nabrzeze – miejsce postoju.\n- kody.txt (240 wierszy): Bandera, Nazwa_kraju, Kontynent.\n\nBandera jest zapisana przy przybyciu, bo statek może ją zmienić (np. po zmianie armatora).",
+    "parts": [
+      {
+        "number": "5.1",
+        "points": 1,
+        "prompt": "Podaj liczby wpłynięć statków do portu w poszczególnych latach: 2016, 2017, 2018 i 2019.",
+        "answer": "| rok | liczba wpłynięć |\n|---|---|\n| 2016 | 2531 |\n| 2017 | 2522 |\n| 2018 | 2449 |\n| 2019 | 2532 |\n\nNp. `SELECT YEAR(Data_przybycia), COUNT(*) FROM Przybycia GROUP BY YEAR(Data_przybycia);`",
+        "accepted": [
+          "2531, 2522, 2449, 2532",
+          "2531 2522 2449 2532",
+          "2531,2522,2449,2532"
+        ]
+      },
+      {
+        "number": "5.2",
+        "points": 2,
+        "prompt": "Dla każdego nabrzeża podaj nazwę i ładowność największego statku, jaki przy nim cumował.",
+        "answer": "| nabrzeże | statek | ładowność |\n|---|---|---|\n| ALMEX | LEOPARD | 274 |\n| ANGIELSKIE | BBC LAGOS | 7138 |\n| ARSENAL | KASZUBY | 24109 |\n| ARSENAL | KUJAWY | 24109 |\n| BELGIJSKIE | BBC BIRTE H | 11494 |\n| BRAK | BALTIVIA | 17790 |\n| BULGARSKIE | WAWEL | 25318 |\n| BULWAR CHROBREGO | BRAEMAR | 24344 |\n| BYDGOSKIE | CAROLIN G | 2545 |\n| BYTOMSKIE | ODELMAR | 24184 |\n| BYTOMSKIE USKOK | TEST24_03_17 | 39727 |\n| CAL | PALICA | 999 |\n| CEMENTOWE | GREENLAND | 4284 |\n| CHORZOWSKIE | DORIC SHOGUN | 35823 |\n| CICHE | HALICZ | 694 |\n| CPN III | ECO DREAM | 5452 |\n| CPN III | ECO GREEN | 5452 |\n| CZESKIE | MORNING CHERRY | 59525 |\n| DOK 1 | SILVER RIVER | 3538 |\n| DOK 3 | COPENHAGEN | 4591 |\n| DOK 3 | SPIEKEROOG | 4591 |\n| DOK 5 | NILEDUTCH LUANDA | 34642 |\n| DRZETOWSKIE N | CAP BEATRICE | 26833 |\n| DRZETOWSKIE S | JAMNO | 22982 |\n| FANT | EEMS CARRIER | 1546 |\n| FARBOLAK SWFIL | GOLFSTRAUM | 7243 |\n| FINSKIE | MORNING CELESTA | 57542 |\n| FOSFATOWE | KERSTI | 4102 |\n| FOSFATOWE DALBY | BESIKTAS ICELAND | 5366 |\n| GDANSKIE | MAZOVIA | 29940 |\n| GDYNSKIE N | POLONIA | 29875 |\n| GDYNSKIE S | FREE STATE | 32379 |\n| GLIWICKIE | APAGEON | 30012 |\n| GNIEâ”€â•Łâ”€ĹŻNIENSKIE | KOSZALIN | 24109 |\n| GNIEâ”€â•Łâ”€ĹŻNIENSKIE | MAZURY | 24109 |\n| GORNOSLASKIE | ROSINA TOPIC  | 26216 |\n| GRECKIE | BBC LONDON | 7138 |\n| HOLENDERSKIE | VLIELAND | 3990 |\n| HUK | NORJARL | 5335 |\n| HUTA (KRA) | JOSE PROGRESS | 30969 |\n| KASZUBSKIE | ELBE HIGHWAY | 23498 |\n| KATOWICKIE | OCEAN OUTSTANDING | 36415 |\n| KATOWICKIE - DALBY | CHEMROAD HOPE | 19984 |\n| MAK | NORRLAND | 5562 |\n| MAZOWIECKIE | CSL RHINE | 6944 |\n| NOTECKIE | NORDIC CHANTAL | 2854 |\n| ODRA NOWE | NOVA ZEELANDIA | 4440 |\n| ODRA STARE | HORDAFOR VII | 3222 |\n| OKO | AIRISTO | 6154 |\n| OKO BASEN | ROMANKA | 997 |\n| PARNICKIE | ALCEDO | 6556 |\n| PASAZERSKIE | STATSRAAD LEHMKUHL | 1516 |\n| PIRS E | PASILA | 10098 |\n| PIRS E | TALI | 10098 |\n| PIRS W | FLEVOGRACHT | 8620 |\n| POLSKIE | SEABOURN OVATION | 41865 |\n| POZNANSKIE | DANIEL K | 3037 |\n| PRCIP | INZ. STANISLAW LÄ�GOWSKI | 1954 |\n| PRZEMYSLOWE | LEUVEBORG | 5598 |\n| REGALICA | EMSMOON | 4563 |\n| REMONTOWE | MAZURY | 24109 |\n| REMSTAT | SERVAL | 275 |\n| ROSYJSKIE | ROMY TRADER | 5941 |\n| RUMUNSKIE | SCOT LEIPZIG | 5145 |\n| RUMUNSKIE | SCOT MUNCHEN | 5145 |\n| SLOWACKIE | TRADE VISION | 45259 |\n| SNOP N | DONAU | 5887 |\n| SNOP S | MARIT | 6046 |\n| SPOLDZIELCZE | SCORPIUS | 7636 |\n| STAROWKA | SEDOV | 3432 |\n| WALBRZYSKIE | POLA ANATOLIA | 6266 |\n| WARSZAWSKIE | VIKING | 332 |\n| WARSZTATOWE | FAIRPLAY 27 | 499 |\n| WEGIERSKIE | OCEAN FORTUNE | 6479 |\n| WROCLAWSKIE | THAMES HIGHWAY | 23498 |\n| WULKAN N | ADHEMAR DE SAINT-VENANT | 7531 |\n| WULKAN POCHYLNIA | CARRIER 7 | 2601 |\n| WULKAN S | CECILIA | 4723 |\n| ZBOZOWE | ATHINA CARRAS | 44190 |\n\nPrzy nabrzeżu ARSENAL dwa statki mają tę samą największą ładowność. 1 pkt za kolumnę z nazwami statków, 1 pkt za kolumnę z ładownością."
+      },
+      {
+        "number": "5.3",
+        "points": 2,
+        "prompt": "Podaj nazwy nabrzeży portu, przy których nie cumowały statki z Europy.",
+        "answer": "Według klucza CKE: ALMEX, BYTOMSKIE USKOK, CAL, OKO BASEN.\n\nNabrzeża z przybyciami statków pod banderą europejską (połączenie Przybycia z Kody po polu Bandera, Kontynent = EUROPA) trzeba odjąć od wszystkich nabrzeży.\n\n1 pkt za odpowiedź bez co najwyżej jednej nazwy."
+      },
+      {
+        "number": "5.4",
+        "points": 2,
+        "prompt": "Do tabel dołączamy tabelę Armator z polami: Id_armatora, Armator (nazwa), Siedziba_armatora, Typ_dzialalnosci (np. przewóz ładunków, transport pasażerów). Do tabeli Przybycia dodano pole Id_armatora.\n\nNapisz w języku SQL zapytanie, które poda zestawienie typów działalności i liczby armatorów prowadzących taką działalność.",
+        "answer": "```\nSELECT Typ_dzialalnosci, COUNT(*)\nFROM Armator\nGROUP BY Typ_dzialalnosci;\n```\n\n1 pkt za odpowiedź bez grupowania albo zliczania."
+      },
+      {
+        "number": "5.5",
+        "points": 2,
+        "prompt": "Napisz w języku SQL zapytanie, które poda różne nazwy statków eksploatowanych przez armatora o nazwie XYZ, które cumowały w porcie (tabele jak w zadaniu 5.4).",
+        "answer": "```\nSELECT DISTINCT Statki.Nazwa_statku\nFROM Armator\nJOIN Przybycia ON Armator.Id_armatora = Przybycia.Id_armatora\nJOIN Statki ON Statki.Nr_IMO = Przybycia.Nr_IMO\nWHERE Armator.Armator = 'XYZ';\n```\n\nZamiast DISTINCT można użyć GROUP BY Statki.Nazwa_statku. 1 pkt za odpowiedź bez DISTINCT albo z innym jednym błędem."
+      }
+    ]
+  },
+  {
+    "id": "2023-przykladowy-arkusz-CKE-7",
+    "sessionId": "2023/przykladowy-arkusz-CKE",
+    "number": "7",
+    "title": "Dane wrażliwe w sklepie internetowym",
+    "parts": [
+      {
+        "number": "7",
+        "points": 2,
+        "prompt": "Przy transakcjach w sklepie internetowym potrzebne są m.in. trzy wrażliwe informacje: login, hasło do serwisu i dane karty kredytowej. Dla każdej z nich wskaż zalecany (zgodny z dobrymi praktykami bezpieczeństwa) sposób postępowania w bazie danych sklepu:\n\n- A. należy zapisać w bazie danych sklepu w całości;\n- B. nie należy przechowywać w bazie danych sklepu w żadnej formie;\n- C. należy zapisać jedynie skrót (hash) danych, a nie całą oryginalną treść.\n\nWpisz litery dla: loginu, hasła i danych karty (np. „A, B, C”).",
+        "answer": "- login – A (zapisać w całości),\n- hasło – C (zapisać tylko skrót – hash),\n- dane karty kredytowej – B (nie przechowywać w żadnej formie).\n\n2 pkt za trzy poprawne wiersze, 1 pkt za dwa.",
+        "accepted": [
+          "A, C, B",
+          "A C B",
+          "ACB",
+          "A,C,B"
+        ]
+      }
+    ]
+  }
+]

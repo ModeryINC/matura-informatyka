@@ -1,0 +1,83 @@
+[
+  {
+    "id": "2026-maj-1",
+    "sessionId": "2026/maj",
+    "number": "1",
+    "title": "Rekurencja",
+    "intro": "Dana jest zdefiniowana rekurencyjnie funkcja A(m, n), gdzie m i n są dodatnimi liczbami całkowitymi:\n\n- A(m, n) = m, gdy n = 1,\n- A(m, n) = A(2 · m, n / 2), gdy n > 1 oraz n jest podzielne przez 2,\n- A(m, n) = 2 · A(m, (n − 1) / 2) + m, gdy n > 1 oraz n nie jest podzielne przez 2.\n\nObliczenie A(3, 9) wprost z definicji wymaga trzech wywołań rekurencyjnych: A(3, 4), A(6, 2), A(12, 1), ponieważ A(3, 9) = 2 · A(3, 4) + 3 = 2 · A(6, 2) + 3 = 2 · A(12, 1) + 3 = 2 · 12 + 3 = 27.",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 3,
+        "prompt": "Uzupełnij tabelę. Podaj liczbę wywołań rekurencyjnych funkcji A oraz wypisz te wywołania wraz z argumentami (w ostatnim wierszu podaj tylko liczbę wywołań).\n\n| m | n | liczba wywołań | wywołania rekurencyjne |\n|---|---|---|---|\n| 3 | 9 | 3 | A(3, 4), A(6, 2), A(12, 1) |\n| 2^5 | 2^5 | | |\n| 10 | 15 | | |\n| 1 | 2^100 + 1 | | – |",
+        "answer": "| m | n | liczba wywołań | wywołania rekurencyjne |\n|---|---|---|---|\n| 3 | 9 | 3 | A(3, 4), A(6, 2), A(12, 1) |\n| 2^5 | 2^5 | 5 | A(2^6, 2^4), A(2^7, 2^3), A(2^8, 2^2), A(2^9, 2^1), A(2^10, 2^0) |\n| 10 | 15 | 3 | A(10, 7), A(10, 3), A(10, 1) |\n| 1 | 2^100 + 1 | 100 | – |\n\n3 pkt za 5 poprawnych pól, 2 pkt za 4, 1 pkt za co najmniej 2."
+      },
+      {
+        "number": "1.3",
+        "points": 3,
+        "prompt": "Uzupełnij tabelę. W drugiej kolumnie podaj liczbę wywołań rekurencyjnych funkcji A dla podanej wartości n (pierwszy argument jest tu nieistotny). W trzeciej kolumnie podaj wyrażenie równe drugiemu argumentowi funkcji w i-tym wywołaniu rekurencyjnym (dla 1 ≤ i ≤ liczba wywołań).\n\n| n | liczba wywołań | drugi argument w i-tym wywołaniu |\n|---|---|---|\n| 8 | 3 | 8 / 2^i (lub 2^(3 − i)) |\n| 2^k | | |\n| 2^k − 1 | | |\n\nk jest liczbą całkowitą większą od 2.",
+        "answer": "| n | liczba wywołań | drugi argument w i-tym wywołaniu |\n|---|---|---|\n| 8 | 3 | 8 / 2^i |\n| 2^k | k | 2^(k − i) (lub 2^k / 2^i) |\n| 2^k − 1 | k − 1 | 2^(k − i) − 1 |\n\nDla n = 2^k − 1 każde wywołanie liczy (n − 1) / 2, czyli 2^(k−1) − 1, 2^(k−2) − 1, …, aż do 2^1 − 1 = 1.\n\n3 pkt za 4 poprawne pola, 2 pkt za 3, 1 pkt za 2."
+      }
+    ]
+  },
+  {
+    "id": "2026-maj-2",
+    "sessionId": "2026/maj",
+    "number": "2",
+    "title": "Dodawanie",
+    "intro": "Rozważamy dodawanie pisemne dwóch liczb zapisanych w systemie dziesiętnym. Na przykład przy dodawaniu 27732 + 72619 = 100351 przeniesienie pojawia się 4 razy.",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 1,
+        "prompt": "Dla danych dwóch liczb a i b podaj, ile razy pojawiają się przeniesienia podczas ich dodawania.\n\n| a | b | liczba przeniesień |\n|---|---|---|\n| 37932 | 12528 | 3 |\n| 88765 | 11111 | |\n| 456789 | 222222 | |",
+        "answer": "| a | b | liczba przeniesień |\n|---|---|---|\n| 37932 | 12528 | 3 |\n| 88765 | 11111 | 0 |\n| 456789 | 222222 | 3 |",
+        "accepted": ["0, 3", "0 3", "0;3", "0,3"]
+      }
+    ]
+  },
+  {
+    "id": "2026-maj-4",
+    "sessionId": "2026/maj",
+    "number": "4",
+    "title": "Korporacja",
+    "intro": "W korporacji pracuje n osób ponumerowanych 1, 2, …, n. Pracownik 1 jest prezesem, a każdy z pozostałych ma dokładnie jednego bezpośredniego przełożonego o mniejszym numerze. Przełożonym pracownika jest jego bezpośredni przełożony i każdy przełożony tego bezpośredniego przełożonego. Jeśli x jest (bezpośrednim) przełożonym y, to y jest (bezpośrednim) podwładnym x.\n\nPrzykładowa hierarchia (Rysunek 1 w arkuszu) – bezpośredni przełożeni pracowników 2–8:\n\n| pracownik | 2 | 3 | 4 | 5 | 6 | 7 | 8 |\n|---|---|---|---|---|---|---|---|\n| bezpośredni przełożony | 1 | 2 | 1 | 2 | 2 | 3 | 4 |\n\nPrzełożonymi pracownika 7 są pracownicy 3, 2 i 1. Podwładnymi pracownika 2 są pracownicy 3, 5, 6 i 7.",
+    "parts": [
+      {
+        "number": "4.1",
+        "points": 1,
+        "prompt": "Dla każdego pracownika z przykładowej hierarchii określ, ilu ma bezpośrednich podwładnych oraz ilu ma wszystkich podwładnych.\n\n| pracownik | bezpośredni podwładni | wszyscy podwładni |\n|---|---|---|\n| 1 | | |\n| 2 | 3 | 4 |\n| 3 | | |\n| 4 | | |\n| 5 | | |\n| 6 | | |\n| 7 | | |\n| 8 | 0 | 0 |",
+        "answer": "| pracownik | bezpośredni podwładni | wszyscy podwładni |\n|---|---|---|\n| 1 | 2 | 7 |\n| 2 | 3 | 4 |\n| 3 | 1 | 1 |\n| 4 | 1 | 1 |\n| 5 | 0 | 0 |\n| 6 | 0 | 0 |\n| 7 | 0 | 0 |\n| 8 | 0 | 0 |"
+      }
+    ]
+  },
+  {
+    "id": "2026-maj-5",
+    "sessionId": "2026/maj",
+    "number": "5",
+    "title": "Systemy liczbowe",
+    "parts": [
+      {
+        "number": "5",
+        "points": 2,
+        "prompt": "Poniżej zapisano wyrażenie z liczbami w systemach piątkowym, dziesiętnym i trójkowym. W miejsce kropek wpisz liczby (w systemie piątkowym i trójkowym), tak aby obie równości były prawdziwe.\n\n1440₅ + …₅ = 427₁₀ = …₃ − 110002₃",
+        "answer": "1440₅ + **1212₅** = 427₁₀ = **1000220₃** − 110002₃\n\n1440₅ = 245, więc brakuje 182 = 1212₅. 110002₃ = 326, więc pierwsza liczba to 753 = 1000220₃."
+      }
+    ]
+  },
+  {
+    "id": "2026-maj-6",
+    "sessionId": "2026/maj",
+    "number": "6",
+    "title": "Długość adresu IP",
+    "parts": [
+      {
+        "number": "6",
+        "points": 1,
+        "prompt": "Uzupełnij zdania – wpisz właściwe liczby bitów (dwie liczby, np. „16, 64”).\n\n- Adres IP w wersji 4 ma długość … bity.\n- Adres IP w wersji 6 ma długość … bitów.",
+        "answer": "- IPv4: 32 bity\n- IPv6: 128 bitów",
+        "accepted": ["32, 128", "32 128", "32,128", "32;128"]
+      }
+    ]
+  }
+]

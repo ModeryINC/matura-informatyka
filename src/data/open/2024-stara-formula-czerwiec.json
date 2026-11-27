@@ -1,0 +1,45 @@
+[
+  {
+    "id": "2024-stara-formula-czerwiec-1",
+    "sessionId": "2024/stara-formula-czerwiec",
+    "number": "1",
+    "title": "Liczby nieliczne",
+    "intro": "Dodatnią liczbę całkowitą L nazywamy liczbą nieliczną, jeżeli w jej zapisie binarnym cyfry 1 nie sąsiadują ze sobą.",
+    "parts": [
+      {
+        "number": "1.1",
+        "points": 2,
+        "prompt": "Uzupełnij tabelę – podaj zapis binarny liczby oraz PRAWDA, gdy liczba jest nieliczna, albo FAŁSZ w przeciwnym przypadku.\n\n| L | zapis binarny | nieliczna? |\n|---|---|---|\n| 259₁₀ | 100000011 | FAŁSZ |\n| 20012₈ | | |\n| 3574₁₆ | | |",
+        "answer": "| L | zapis binarny | nieliczna? |\n|---|---|---|\n| 259₁₀ | 100000011 | FAŁSZ |\n| 20012₈ | 10000000001010 | PRAWDA |\n| 3574₁₆ | 11010101110100 | FAŁSZ |\n\nKażdą cyfrę ósemkową zamieniamy na 3 bity, a szesnastkową – na 4 bity."
+      }
+    ]
+  },
+  {
+    "id": "2024-stara-formula-czerwiec-2",
+    "sessionId": "2024/stara-formula-czerwiec",
+    "number": "2",
+    "title": "Najczęstszy element",
+    "intro": "Dane są dodatnia liczba całkowita n oraz n-elementowy ciąg liczb w tablicy A[1..n].\n\n```\nAlgorytm 1:\np ← 1\nm ← 1\ndla i = 1, 2, ..., n wykonuj\n    licz ← 0\n    dla j = 1, 2, ..., n wykonuj\n        jeżeli A[i] = A[j] wykonuj\n            licz ← licz + 1\n    jeżeli licz > m wykonuj\n        p ← i\n        m ← licz\n```",
+    "parts": [
+      {
+        "number": "2.1",
+        "points": 3,
+        "prompt": "Jakie wartości przyjmą p, A[p] i m po wykonaniu algorytmu dla A = [7, 9, 15, 0, 6, 7, 6, 10, 15, 6, 0]? Wpisz trzy liczby w kolejności p, A[p], m.",
+        "answer": "p = 5, A[p] = 6, m = 3 – liczba 6 występuje najczęściej (3 razy), a pierwszy raz stoi na pozycji 5.",
+        "accepted": ["5, 6, 3", "5 6 3", "5,6,3", "5;6;3", "p=5,a[p]=6,m=3"]
+      },
+      {
+        "number": "2.2",
+        "points": 2,
+        "prompt": "Podaj, ile razy w algorytmie 1 jest sprawdzany warunek A[i] = A[j]:\n\n| n | liczba sprawdzeń |\n|---|---|\n| 3 | |\n| n | |",
+        "answer": "| n | liczba sprawdzeń |\n|---|---|\n| 3 | 9 |\n| n | n² |"
+      },
+      {
+        "number": "2.3",
+        "points": 3,
+        "prompt": "Uzupełnij luki (1)–(3) w algorytmie 2 tak, by był odpowiednikiem algorytmu 1, w którym porównanie A[i] = A[j] jest wykonywane nie więcej niż n(n − 1) / 2 razy.\n\n```\nAlgorytm 2:\np ← 1\nm ← 1\ndla i = (1) wykonuj\n    licz ← (2)\n    dla j = (3) wykonuj\n        jeżeli A[i] = A[j] wykonuj\n            licz ← licz + 1\n    jeżeli licz > m wykonuj\n        p ← i\n        m ← licz\n```",
+        "answer": "- (1) 1, 2, …, n − 1 (albo 1, 2, …, n − m)\n- (2) 1\n- (3) i + 1, i + 2, …, n\n\nWystarczy porównywać element tylko z elementami za nim: pierwsze wystąpienie wartości i tak zliczy wszystkie powtórzenia, a licznik zaczyna od 1 (sam element).\n\n1 pkt za każdą poprawną lukę."
+      }
+    ]
+  }
+]
